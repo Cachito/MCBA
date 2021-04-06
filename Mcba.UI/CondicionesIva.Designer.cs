@@ -1,6 +1,6 @@
 ﻿namespace Mcba.UI
 {
-    partial class Productos
+    partial class CondicionesIva
     {
         /// <summary>
         /// Required designer variable.
@@ -28,42 +28,42 @@
         /// </summary>
         private void InitializeComponent()
         {
-            this.tsProductos = new System.Windows.Forms.ToolStrip();
+            this.tsCondicionesIva = new System.Windows.Forms.ToolStrip();
             this.tsbSalir = new System.Windows.Forms.ToolStripButton();
             this.tsbNew = new System.Windows.Forms.ToolStripButton();
             this.tsbDelete = new System.Windows.Forms.ToolStripButton();
             this.tsbEdit = new System.Windows.Forms.ToolStripButton();
             this.tsbSave = new System.Windows.Forms.ToolStripButton();
             this.gbData = new System.Windows.Forms.GroupBox();
-            this.txtIva = new System.Windows.Forms.TextBox();
-            this.label5 = new System.Windows.Forms.Label();
-            this.txtComision = new System.Windows.Forms.TextBox();
-            this.label4 = new System.Windows.Forms.Label();
-            this.txtVariedad = new System.Windows.Forms.TextBox();
+            this.txtPorcentaje = new System.Windows.Forms.TextBox();
+            this.label6 = new System.Windows.Forms.Label();
             this.label3 = new System.Windows.Forms.Label();
             this.txtDescripcion = new System.Windows.Forms.TextBox();
             this.label2 = new System.Windows.Forms.Label();
             this.txtId = new System.Windows.Forms.TextBox();
             this.label1 = new System.Windows.Forms.Label();
-            this.dgvProductos = new System.Windows.Forms.DataGridView();
-            this.tsProductos.SuspendLayout();
+            this.dgvCondicionesIva = new System.Windows.Forms.DataGridView();
+            this.rbLetraA = new System.Windows.Forms.RadioButton();
+            this.rbLetraB = new System.Windows.Forms.RadioButton();
+            this.chkDiscrimina = new System.Windows.Forms.CheckBox();
+            this.tsCondicionesIva.SuspendLayout();
             this.gbData.SuspendLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.dgvProductos)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.dgvCondicionesIva)).BeginInit();
             this.SuspendLayout();
             // 
-            // tsProductos
+            // tsCondicionesIva
             // 
-            this.tsProductos.Items.AddRange(new System.Windows.Forms.ToolStripItem[] {
+            this.tsCondicionesIva.Items.AddRange(new System.Windows.Forms.ToolStripItem[] {
             this.tsbSalir,
             this.tsbNew,
             this.tsbDelete,
             this.tsbEdit,
             this.tsbSave});
-            this.tsProductos.Location = new System.Drawing.Point(0, 0);
-            this.tsProductos.Name = "tsProductos";
-            this.tsProductos.Size = new System.Drawing.Size(633, 25);
-            this.tsProductos.TabIndex = 0;
-            this.tsProductos.Text = "toolStrip1";
+            this.tsCondicionesIva.Location = new System.Drawing.Point(0, 0);
+            this.tsCondicionesIva.Name = "tsCondicionesIva";
+            this.tsCondicionesIva.Size = new System.Drawing.Size(564, 25);
+            this.tsCondicionesIva.TabIndex = 0;
+            this.tsCondicionesIva.Text = "toolStrip1";
             // 
             // tsbSalir
             // 
@@ -116,11 +116,11 @@
             // 
             // gbData
             // 
-            this.gbData.Controls.Add(this.txtIva);
-            this.gbData.Controls.Add(this.label5);
-            this.gbData.Controls.Add(this.txtComision);
-            this.gbData.Controls.Add(this.label4);
-            this.gbData.Controls.Add(this.txtVariedad);
+            this.gbData.Controls.Add(this.chkDiscrimina);
+            this.gbData.Controls.Add(this.rbLetraB);
+            this.gbData.Controls.Add(this.rbLetraA);
+            this.gbData.Controls.Add(this.txtPorcentaje);
+            this.gbData.Controls.Add(this.label6);
             this.gbData.Controls.Add(this.label3);
             this.gbData.Controls.Add(this.txtDescripcion);
             this.gbData.Controls.Add(this.label2);
@@ -128,70 +128,47 @@
             this.gbData.Controls.Add(this.label1);
             this.gbData.Location = new System.Drawing.Point(12, 28);
             this.gbData.Name = "gbData";
-            this.gbData.Size = new System.Drawing.Size(611, 108);
+            this.gbData.Size = new System.Drawing.Size(541, 108);
             this.gbData.TabIndex = 1;
             this.gbData.TabStop = false;
             // 
-            // txtIva
+            // txtPorcentaje
             // 
-            this.txtIva.Location = new System.Drawing.Point(419, 76);
-            this.txtIva.Name = "txtIva";
-            this.txtIva.Size = new System.Drawing.Size(177, 20);
-            this.txtIva.TabIndex = 9;
+            this.txtPorcentaje.Location = new System.Drawing.Point(357, 45);
+            this.txtPorcentaje.Name = "txtPorcentaje";
+            this.txtPorcentaje.Size = new System.Drawing.Size(168, 20);
+            this.txtPorcentaje.TabIndex = 7;
             // 
-            // label5
+            // label6
             // 
-            this.label5.Location = new System.Drawing.Point(304, 76);
-            this.label5.Name = "label5";
-            this.label5.Size = new System.Drawing.Size(100, 20);
-            this.label5.TabIndex = 8;
-            this.label5.Text = "IVA (%)";
-            this.label5.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
-            // 
-            // txtComision
-            // 
-            this.txtComision.Location = new System.Drawing.Point(419, 43);
-            this.txtComision.Name = "txtComision";
-            this.txtComision.Size = new System.Drawing.Size(177, 20);
-            this.txtComision.TabIndex = 7;
-            // 
-            // label4
-            // 
-            this.label4.Location = new System.Drawing.Point(304, 43);
-            this.label4.Name = "label4";
-            this.label4.Size = new System.Drawing.Size(100, 20);
-            this.label4.TabIndex = 6;
-            this.label4.Text = "Comisión (%)";
-            this.label4.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
-            // 
-            // txtVariedad
-            // 
-            this.txtVariedad.Location = new System.Drawing.Point(121, 77);
-            this.txtVariedad.Name = "txtVariedad";
-            this.txtVariedad.Size = new System.Drawing.Size(177, 20);
-            this.txtVariedad.TabIndex = 5;
+            this.label6.Location = new System.Drawing.Point(265, 45);
+            this.label6.Name = "label6";
+            this.label6.Size = new System.Drawing.Size(86, 20);
+            this.label6.TabIndex = 6;
+            this.label6.Text = "Porcentaje";
+            this.label6.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
             // 
             // label3
             // 
             this.label3.Location = new System.Drawing.Point(6, 77);
             this.label3.Name = "label3";
-            this.label3.Size = new System.Drawing.Size(100, 20);
+            this.label3.Size = new System.Drawing.Size(73, 20);
             this.label3.TabIndex = 4;
-            this.label3.Text = "Variedad";
+            this.label3.Text = "Letra Factura";
             this.label3.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
             // 
             // txtDescripcion
             // 
-            this.txtDescripcion.Location = new System.Drawing.Point(121, 44);
+            this.txtDescripcion.Location = new System.Drawing.Point(85, 45);
             this.txtDescripcion.Name = "txtDescripcion";
-            this.txtDescripcion.Size = new System.Drawing.Size(177, 20);
+            this.txtDescripcion.Size = new System.Drawing.Size(168, 20);
             this.txtDescripcion.TabIndex = 3;
             // 
             // label2
             // 
-            this.label2.Location = new System.Drawing.Point(6, 44);
+            this.label2.Location = new System.Drawing.Point(6, 45);
             this.label2.Name = "label2";
-            this.label2.Size = new System.Drawing.Size(100, 20);
+            this.label2.Size = new System.Drawing.Size(73, 20);
             this.label2.TabIndex = 2;
             this.label2.Text = "Descripción";
             this.label2.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
@@ -199,49 +176,81 @@
             // txtId
             // 
             this.txtId.Enabled = false;
-            this.txtId.Location = new System.Drawing.Point(121, 13);
+            this.txtId.Location = new System.Drawing.Point(85, 13);
             this.txtId.Name = "txtId";
             this.txtId.ReadOnly = true;
-            this.txtId.Size = new System.Drawing.Size(177, 20);
+            this.txtId.Size = new System.Drawing.Size(168, 20);
             this.txtId.TabIndex = 1;
             // 
             // label1
             // 
             this.label1.Location = new System.Drawing.Point(6, 13);
             this.label1.Name = "label1";
-            this.label1.Size = new System.Drawing.Size(100, 20);
+            this.label1.Size = new System.Drawing.Size(73, 20);
             this.label1.TabIndex = 0;
             this.label1.Text = "Id";
             this.label1.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
             // 
-            // dgvProductos
+            // dgvCondicionesIva
             // 
-            this.dgvProductos.AllowUserToAddRows = false;
-            this.dgvProductos.AllowUserToDeleteRows = false;
-            this.dgvProductos.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
-            this.dgvProductos.Location = new System.Drawing.Point(12, 142);
-            this.dgvProductos.Name = "dgvProductos";
-            this.dgvProductos.Size = new System.Drawing.Size(611, 296);
-            this.dgvProductos.TabIndex = 2;
+            this.dgvCondicionesIva.AllowUserToAddRows = false;
+            this.dgvCondicionesIva.AllowUserToDeleteRows = false;
+            this.dgvCondicionesIva.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
+            this.dgvCondicionesIva.Location = new System.Drawing.Point(12, 142);
+            this.dgvCondicionesIva.Name = "dgvCondicionesIva";
+            this.dgvCondicionesIva.Size = new System.Drawing.Size(541, 296);
+            this.dgvCondicionesIva.TabIndex = 2;
             // 
-            // Productos
+            // rbLetraA
+            // 
+            this.rbLetraA.AutoSize = true;
+            this.rbLetraA.Location = new System.Drawing.Point(98, 79);
+            this.rbLetraA.Name = "rbLetraA";
+            this.rbLetraA.Size = new System.Drawing.Size(32, 17);
+            this.rbLetraA.TabIndex = 13;
+            this.rbLetraA.TabStop = true;
+            this.rbLetraA.Text = "A";
+            this.rbLetraA.UseVisualStyleBackColor = true;
+            // 
+            // rbLetraB
+            // 
+            this.rbLetraB.AutoSize = true;
+            this.rbLetraB.Location = new System.Drawing.Point(161, 79);
+            this.rbLetraB.Name = "rbLetraB";
+            this.rbLetraB.Size = new System.Drawing.Size(32, 17);
+            this.rbLetraB.TabIndex = 14;
+            this.rbLetraB.TabStop = true;
+            this.rbLetraB.Text = "B";
+            this.rbLetraB.UseVisualStyleBackColor = true;
+            // 
+            // chkDiscrimina
+            // 
+            this.chkDiscrimina.CheckAlign = System.Drawing.ContentAlignment.MiddleRight;
+            this.chkDiscrimina.Location = new System.Drawing.Point(265, 79);
+            this.chkDiscrimina.Name = "chkDiscrimina";
+            this.chkDiscrimina.Size = new System.Drawing.Size(107, 24);
+            this.chkDiscrimina.TabIndex = 15;
+            this.chkDiscrimina.Text = "Discrimina IVA";
+            this.chkDiscrimina.UseVisualStyleBackColor = true;
+            // 
+            // CondicionesIva
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(633, 450);
+            this.ClientSize = new System.Drawing.Size(564, 450);
             this.ControlBox = false;
-            this.Controls.Add(this.dgvProductos);
+            this.Controls.Add(this.dgvCondicionesIva);
             this.Controls.Add(this.gbData);
-            this.Controls.Add(this.tsProductos);
-            this.Name = "Productos";
+            this.Controls.Add(this.tsCondicionesIva);
+            this.Name = "CondicionesIva";
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterParent;
-            this.Text = "Productos";
-            this.Load += new System.EventHandler(this.Productos_Load);
-            this.tsProductos.ResumeLayout(false);
-            this.tsProductos.PerformLayout();
+            this.Text = "Condiciones IVA";
+            this.Load += new System.EventHandler(this.CondicionesIva_Load);
+            this.tsCondicionesIva.ResumeLayout(false);
+            this.tsCondicionesIva.PerformLayout();
             this.gbData.ResumeLayout(false);
             this.gbData.PerformLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.dgvProductos)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.dgvCondicionesIva)).EndInit();
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -249,9 +258,9 @@
 
         #endregion
 
-        private System.Windows.Forms.ToolStrip tsProductos;
+        private System.Windows.Forms.ToolStrip tsCondicionesIva;
         private System.Windows.Forms.GroupBox gbData;
-        private System.Windows.Forms.DataGridView dgvProductos;
+        private System.Windows.Forms.DataGridView dgvCondicionesIva;
         private System.Windows.Forms.TextBox txtId;
         private System.Windows.Forms.Label label1;
         private System.Windows.Forms.Label label3;
@@ -262,10 +271,10 @@
         private System.Windows.Forms.ToolStripButton tsbSave;
         private System.Windows.Forms.ToolStripButton tsbEdit;
         private System.Windows.Forms.ToolStripButton tsbDelete;
-        private System.Windows.Forms.TextBox txtVariedad;
-        private System.Windows.Forms.TextBox txtComision;
-        private System.Windows.Forms.Label label4;
-        private System.Windows.Forms.TextBox txtIva;
-        private System.Windows.Forms.Label label5;
+        private System.Windows.Forms.TextBox txtPorcentaje;
+        private System.Windows.Forms.Label label6;
+        private System.Windows.Forms.CheckBox chkDiscrimina;
+        private System.Windows.Forms.RadioButton rbLetraB;
+        private System.Windows.Forms.RadioButton rbLetraA;
     }
 }

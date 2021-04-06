@@ -1,6 +1,6 @@
 ﻿namespace Mcba.UI
 {
-    partial class Clientes
+    partial class Choferes
     {
         /// <summary>
         /// Required designer variable.
@@ -28,22 +28,16 @@
         /// </summary>
         private void InitializeComponent()
         {
-            this.tsClientes = new System.Windows.Forms.ToolStrip();
+            this.tsChoferes = new System.Windows.Forms.ToolStrip();
             this.tsbSalir = new System.Windows.Forms.ToolStripButton();
             this.tsbNew = new System.Windows.Forms.ToolStripButton();
             this.tsbDelete = new System.Windows.Forms.ToolStripButton();
             this.tsbEdit = new System.Windows.Forms.ToolStripButton();
             this.tsbSave = new System.Windows.Forms.ToolStripButton();
             this.gbData = new System.Windows.Forms.GroupBox();
-            this.cmbProvincia = new System.Windows.Forms.ComboBox();
-            this.label8 = new System.Windows.Forms.Label();
-            this.cmbLocalidad = new System.Windows.Forms.ComboBox();
-            this.label7 = new System.Windows.Forms.Label();
-            this.cmbPosicion = new System.Windows.Forms.ComboBox();
-            this.txtLocalidad = new System.Windows.Forms.TextBox();
-            this.label4 = new System.Windows.Forms.Label();
+            this.cmbRemitentes = new System.Windows.Forms.ComboBox();
             this.label5 = new System.Windows.Forms.Label();
-            this.txtCuit = new System.Windows.Forms.TextBox();
+            this.txtDni = new System.Windows.Forms.TextBox();
             this.label6 = new System.Windows.Forms.Label();
             this.txtApellido = new System.Windows.Forms.TextBox();
             this.label3 = new System.Windows.Forms.Label();
@@ -51,25 +45,25 @@
             this.label2 = new System.Windows.Forms.Label();
             this.txtId = new System.Windows.Forms.TextBox();
             this.label1 = new System.Windows.Forms.Label();
-            this.dgvClientes = new System.Windows.Forms.DataGridView();
-            this.tsClientes.SuspendLayout();
+            this.dgvChoferes = new System.Windows.Forms.DataGridView();
+            this.tsChoferes.SuspendLayout();
             this.gbData.SuspendLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.dgvClientes)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.dgvChoferes)).BeginInit();
             this.SuspendLayout();
             // 
-            // tsClientes
+            // tsChoferes
             // 
-            this.tsClientes.Items.AddRange(new System.Windows.Forms.ToolStripItem[] {
+            this.tsChoferes.Items.AddRange(new System.Windows.Forms.ToolStripItem[] {
             this.tsbSalir,
             this.tsbNew,
             this.tsbDelete,
             this.tsbEdit,
             this.tsbSave});
-            this.tsClientes.Location = new System.Drawing.Point(0, 0);
-            this.tsClientes.Name = "tsClientes";
-            this.tsClientes.Size = new System.Drawing.Size(810, 25);
-            this.tsClientes.TabIndex = 0;
-            this.tsClientes.Text = "toolStrip1";
+            this.tsChoferes.Location = new System.Drawing.Point(0, 0);
+            this.tsChoferes.Name = "tsChoferes";
+            this.tsChoferes.Size = new System.Drawing.Size(564, 25);
+            this.tsChoferes.TabIndex = 0;
+            this.tsChoferes.Text = "toolStrip1";
             // 
             // tsbSalir
             // 
@@ -122,15 +116,9 @@
             // 
             // gbData
             // 
-            this.gbData.Controls.Add(this.cmbProvincia);
-            this.gbData.Controls.Add(this.label8);
-            this.gbData.Controls.Add(this.cmbLocalidad);
-            this.gbData.Controls.Add(this.label7);
-            this.gbData.Controls.Add(this.cmbPosicion);
-            this.gbData.Controls.Add(this.txtLocalidad);
-            this.gbData.Controls.Add(this.label4);
+            this.gbData.Controls.Add(this.cmbRemitentes);
             this.gbData.Controls.Add(this.label5);
-            this.gbData.Controls.Add(this.txtCuit);
+            this.gbData.Controls.Add(this.txtDni);
             this.gbData.Controls.Add(this.label6);
             this.gbData.Controls.Add(this.txtApellido);
             this.gbData.Controls.Add(this.label3);
@@ -140,103 +128,53 @@
             this.gbData.Controls.Add(this.label1);
             this.gbData.Location = new System.Drawing.Point(12, 28);
             this.gbData.Name = "gbData";
-            this.gbData.Size = new System.Drawing.Size(789, 140);
+            this.gbData.Size = new System.Drawing.Size(541, 108);
             this.gbData.TabIndex = 1;
             this.gbData.TabStop = false;
             // 
-            // cmbProvincia
+            // cmbRemitentes
             // 
-            this.cmbProvincia.FormattingEnabled = true;
-            this.cmbProvincia.Location = new System.Drawing.Point(613, 44);
-            this.cmbProvincia.Name = "cmbProvincia";
-            this.cmbProvincia.Size = new System.Drawing.Size(167, 21);
-            this.cmbProvincia.TabIndex = 16;
-            // 
-            // label8
-            // 
-            this.label8.Location = new System.Drawing.Point(538, 44);
-            this.label8.Name = "label8";
-            this.label8.Size = new System.Drawing.Size(69, 20);
-            this.label8.TabIndex = 15;
-            this.label8.Text = "Provincia";
-            this.label8.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
-            // 
-            // cmbLocalidad
-            // 
-            this.cmbLocalidad.FormattingEnabled = true;
-            this.cmbLocalidad.Location = new System.Drawing.Point(613, 75);
-            this.cmbLocalidad.Name = "cmbLocalidad";
-            this.cmbLocalidad.Size = new System.Drawing.Size(167, 21);
-            this.cmbLocalidad.TabIndex = 14;
-            // 
-            // label7
-            // 
-            this.label7.Location = new System.Drawing.Point(538, 75);
-            this.label7.Name = "label7";
-            this.label7.Size = new System.Drawing.Size(69, 20);
-            this.label7.TabIndex = 13;
-            this.label7.Text = "Localidad";
-            this.label7.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
-            // 
-            // cmbPosicion
-            // 
-            this.cmbPosicion.FormattingEnabled = true;
-            this.cmbPosicion.Location = new System.Drawing.Point(356, 75);
-            this.cmbPosicion.Name = "cmbPosicion";
-            this.cmbPosicion.Size = new System.Drawing.Size(168, 21);
-            this.cmbPosicion.TabIndex = 12;
-            // 
-            // txtLocalidad
-            // 
-            this.txtLocalidad.Location = new System.Drawing.Point(85, 107);
-            this.txtLocalidad.Name = "txtLocalidad";
-            this.txtLocalidad.Size = new System.Drawing.Size(695, 20);
-            this.txtLocalidad.TabIndex = 11;
-            // 
-            // label4
-            // 
-            this.label4.Location = new System.Drawing.Point(6, 106);
-            this.label4.Name = "label4";
-            this.label4.Size = new System.Drawing.Size(73, 20);
-            this.label4.TabIndex = 10;
-            this.label4.Text = "Domicilio";
-            this.label4.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
+            this.cmbRemitentes.FormattingEnabled = true;
+            this.cmbRemitentes.Location = new System.Drawing.Point(357, 77);
+            this.cmbRemitentes.Name = "cmbRemitentes";
+            this.cmbRemitentes.Size = new System.Drawing.Size(168, 21);
+            this.cmbRemitentes.TabIndex = 12;
             // 
             // label5
             // 
-            this.label5.Location = new System.Drawing.Point(264, 75);
+            this.label5.Location = new System.Drawing.Point(265, 77);
             this.label5.Name = "label5";
             this.label5.Size = new System.Drawing.Size(86, 20);
             this.label5.TabIndex = 8;
-            this.label5.Text = "Condición IVA";
+            this.label5.Text = "Remitente";
             this.label5.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
             // 
-            // txtCuit
+            // txtDni
             // 
-            this.txtCuit.Location = new System.Drawing.Point(356, 44);
-            this.txtCuit.Name = "txtCuit";
-            this.txtCuit.Size = new System.Drawing.Size(168, 20);
-            this.txtCuit.TabIndex = 7;
+            this.txtDni.Location = new System.Drawing.Point(357, 44);
+            this.txtDni.Name = "txtDni";
+            this.txtDni.Size = new System.Drawing.Size(168, 20);
+            this.txtDni.TabIndex = 7;
             // 
             // label6
             // 
-            this.label6.Location = new System.Drawing.Point(264, 44);
+            this.label6.Location = new System.Drawing.Point(265, 44);
             this.label6.Name = "label6";
             this.label6.Size = new System.Drawing.Size(86, 20);
             this.label6.TabIndex = 6;
-            this.label6.Text = "CUIT/CUIL/DNI";
+            this.label6.Text = "DNI";
             this.label6.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
             // 
             // txtApellido
             // 
-            this.txtApellido.Location = new System.Drawing.Point(85, 75);
+            this.txtApellido.Location = new System.Drawing.Point(85, 77);
             this.txtApellido.Name = "txtApellido";
             this.txtApellido.Size = new System.Drawing.Size(168, 20);
             this.txtApellido.TabIndex = 5;
             // 
             // label3
             // 
-            this.label3.Location = new System.Drawing.Point(6, 75);
+            this.label3.Location = new System.Drawing.Point(6, 77);
             this.label3.Name = "label3";
             this.label3.Size = new System.Drawing.Size(73, 20);
             this.label3.TabIndex = 4;
@@ -277,34 +215,34 @@
             this.label1.Text = "Id";
             this.label1.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
             // 
-            // dgvClientes
+            // dgvChoferes
             // 
-            this.dgvClientes.AllowUserToAddRows = false;
-            this.dgvClientes.AllowUserToDeleteRows = false;
-            this.dgvClientes.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
-            this.dgvClientes.Location = new System.Drawing.Point(12, 174);
-            this.dgvClientes.Name = "dgvClientes";
-            this.dgvClientes.Size = new System.Drawing.Size(789, 264);
-            this.dgvClientes.TabIndex = 2;
+            this.dgvChoferes.AllowUserToAddRows = false;
+            this.dgvChoferes.AllowUserToDeleteRows = false;
+            this.dgvChoferes.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
+            this.dgvChoferes.Location = new System.Drawing.Point(12, 142);
+            this.dgvChoferes.Name = "dgvChoferes";
+            this.dgvChoferes.Size = new System.Drawing.Size(541, 296);
+            this.dgvChoferes.TabIndex = 2;
             // 
-            // Clientes
+            // Choferes
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(810, 450);
+            this.ClientSize = new System.Drawing.Size(564, 450);
             this.ControlBox = false;
-            this.Controls.Add(this.dgvClientes);
+            this.Controls.Add(this.dgvChoferes);
             this.Controls.Add(this.gbData);
-            this.Controls.Add(this.tsClientes);
-            this.Name = "Clientes";
+            this.Controls.Add(this.tsChoferes);
+            this.Name = "Choferes";
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterParent;
-            this.Text = "Clientes";
-            this.Load += new System.EventHandler(this.Clientes_Load);
-            this.tsClientes.ResumeLayout(false);
-            this.tsClientes.PerformLayout();
+            this.Text = "Choferes";
+            this.Load += new System.EventHandler(this.Choferes_Load);
+            this.tsChoferes.ResumeLayout(false);
+            this.tsChoferes.PerformLayout();
             this.gbData.ResumeLayout(false);
             this.gbData.PerformLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.dgvClientes)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.dgvChoferes)).EndInit();
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -312,9 +250,9 @@
 
         #endregion
 
-        private System.Windows.Forms.ToolStrip tsClientes;
+        private System.Windows.Forms.ToolStrip tsChoferes;
         private System.Windows.Forms.GroupBox gbData;
-        private System.Windows.Forms.DataGridView dgvClientes;
+        private System.Windows.Forms.DataGridView dgvChoferes;
         private System.Windows.Forms.TextBox txtId;
         private System.Windows.Forms.Label label1;
         private System.Windows.Forms.Label label3;
@@ -326,15 +264,9 @@
         private System.Windows.Forms.ToolStripButton tsbEdit;
         private System.Windows.Forms.ToolStripButton tsbDelete;
         private System.Windows.Forms.TextBox txtApellido;
-        private System.Windows.Forms.ComboBox cmbPosicion;
-        private System.Windows.Forms.TextBox txtLocalidad;
-        private System.Windows.Forms.Label label4;
+        private System.Windows.Forms.ComboBox cmbRemitentes;
         private System.Windows.Forms.Label label5;
-        private System.Windows.Forms.TextBox txtCuit;
+        private System.Windows.Forms.TextBox txtDni;
         private System.Windows.Forms.Label label6;
-        private System.Windows.Forms.ComboBox cmbProvincia;
-        private System.Windows.Forms.Label label8;
-        private System.Windows.Forms.ComboBox cmbLocalidad;
-        private System.Windows.Forms.Label label7;
     }
 }

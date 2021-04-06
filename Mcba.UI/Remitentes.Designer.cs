@@ -59,11 +59,16 @@
             this.label1 = new System.Windows.Forms.Label();
             this.dgvRemitentes = new System.Windows.Forms.DataGridView();
             this.gbComisiones = new System.Windows.Forms.GroupBox();
+            this.tsComisiones = new System.Windows.Forms.ToolStrip();
+            this.tsbNewComision = new System.Windows.Forms.ToolStripButton();
+            this.tsbDeleteComision = new System.Windows.Forms.ToolStripButton();
+            this.tsbEditComision = new System.Windows.Forms.ToolStripButton();
             this.dataGridView1 = new System.Windows.Forms.DataGridView();
             this.tsRemitentes.SuspendLayout();
             this.gbData.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.dgvRemitentes)).BeginInit();
             this.gbComisiones.SuspendLayout();
+            this.tsComisiones.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.dataGridView1)).BeginInit();
             this.SuspendLayout();
             // 
@@ -77,7 +82,7 @@
             this.tsbSave});
             this.tsRemitentes.Location = new System.Drawing.Point(0, 0);
             this.tsRemitentes.Name = "tsRemitentes";
-            this.tsRemitentes.Size = new System.Drawing.Size(810, 25);
+            this.tsRemitentes.Size = new System.Drawing.Size(802, 25);
             this.tsRemitentes.TabIndex = 0;
             this.tsRemitentes.Text = "toolStrip1";
             // 
@@ -156,23 +161,23 @@
             this.gbData.Controls.Add(this.label1);
             this.gbData.Location = new System.Drawing.Point(12, 28);
             this.gbData.Name = "gbData";
-            this.gbData.Size = new System.Drawing.Size(789, 156);
+            this.gbData.Size = new System.Drawing.Size(789, 175);
             this.gbData.TabIndex = 1;
             this.gbData.TabStop = false;
             // 
             // cmbProvincias
             // 
             this.cmbProvincias.FormattingEnabled = true;
-            this.cmbProvincias.Location = new System.Drawing.Point(616, 112);
+            this.cmbProvincias.Location = new System.Drawing.Point(357, 145);
             this.cmbProvincias.Name = "cmbProvincias";
             this.cmbProvincias.Size = new System.Drawing.Size(167, 21);
             this.cmbProvincias.TabIndex = 22;
             // 
             // label10
             // 
-            this.label10.Location = new System.Drawing.Point(536, 112);
+            this.label10.Location = new System.Drawing.Point(264, 145);
             this.label10.Name = "label10";
-            this.label10.Size = new System.Drawing.Size(73, 20);
+            this.label10.Size = new System.Drawing.Size(86, 20);
             this.label10.TabIndex = 21;
             this.label10.Text = "Provincia";
             this.label10.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
@@ -180,14 +185,14 @@
             // cmbLocalidad
             // 
             this.cmbLocalidad.FormattingEnabled = true;
-            this.cmbLocalidad.Location = new System.Drawing.Point(616, 79);
+            this.cmbLocalidad.Location = new System.Drawing.Point(616, 145);
             this.cmbLocalidad.Name = "cmbLocalidad";
             this.cmbLocalidad.Size = new System.Drawing.Size(167, 21);
             this.cmbLocalidad.TabIndex = 20;
             // 
             // label11
             // 
-            this.label11.Location = new System.Drawing.Point(536, 79);
+            this.label11.Location = new System.Drawing.Point(536, 145);
             this.label11.Name = "label11";
             this.label11.Size = new System.Drawing.Size(73, 20);
             this.label11.TabIndex = 19;
@@ -196,15 +201,15 @@
             // 
             // txtDomicilio
             // 
-            this.txtDomicilio.Location = new System.Drawing.Point(615, 14);
+            this.txtDomicilio.Location = new System.Drawing.Point(615, 46);
             this.txtDomicilio.Multiline = true;
             this.txtDomicilio.Name = "txtDomicilio";
-            this.txtDomicilio.Size = new System.Drawing.Size(168, 52);
+            this.txtDomicilio.Size = new System.Drawing.Size(168, 86);
             this.txtDomicilio.TabIndex = 18;
             // 
             // label9
             // 
-            this.label9.Location = new System.Drawing.Point(536, 14);
+            this.label9.Location = new System.Drawing.Point(536, 46);
             this.label9.Name = "label9";
             this.label9.Size = new System.Drawing.Size(73, 20);
             this.label9.TabIndex = 17;
@@ -214,31 +219,31 @@
             // cmbPosicion
             // 
             this.cmbPosicion.FormattingEnabled = true;
-            this.cmbPosicion.Location = new System.Drawing.Point(357, 112);
+            this.cmbPosicion.Location = new System.Drawing.Point(86, 145);
             this.cmbPosicion.Name = "cmbPosicion";
             this.cmbPosicion.Size = new System.Drawing.Size(167, 21);
             this.cmbPosicion.TabIndex = 16;
             // 
             // label8
             // 
-            this.label8.Location = new System.Drawing.Point(265, 112);
+            this.label8.Location = new System.Drawing.Point(6, 145);
             this.label8.Name = "label8";
-            this.label8.Size = new System.Drawing.Size(86, 20);
+            this.label8.Size = new System.Drawing.Size(73, 20);
             this.label8.TabIndex = 15;
-            this.label8.Text = "Posición";
+            this.label8.Text = "Consicion IVA";
             this.label8.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
             // 
             // cmbTipoCuenta
             // 
             this.cmbTipoCuenta.FormattingEnabled = true;
-            this.cmbTipoCuenta.Location = new System.Drawing.Point(357, 79);
+            this.cmbTipoCuenta.Location = new System.Drawing.Point(357, 112);
             this.cmbTipoCuenta.Name = "cmbTipoCuenta";
             this.cmbTipoCuenta.Size = new System.Drawing.Size(167, 21);
             this.cmbTipoCuenta.TabIndex = 14;
             // 
             // label7
             // 
-            this.label7.Location = new System.Drawing.Point(265, 79);
+            this.label7.Location = new System.Drawing.Point(264, 112);
             this.label7.Name = "label7";
             this.label7.Size = new System.Drawing.Size(86, 20);
             this.label7.TabIndex = 13;
@@ -248,21 +253,21 @@
             // cmbBancos
             // 
             this.cmbBancos.FormattingEnabled = true;
-            this.cmbBancos.Location = new System.Drawing.Point(357, 13);
+            this.cmbBancos.Location = new System.Drawing.Point(356, 46);
             this.cmbBancos.Name = "cmbBancos";
             this.cmbBancos.Size = new System.Drawing.Size(168, 21);
             this.cmbBancos.TabIndex = 12;
             // 
             // txtLocalidad
             // 
-            this.txtLocalidad.Location = new System.Drawing.Point(357, 46);
+            this.txtLocalidad.Location = new System.Drawing.Point(356, 78);
             this.txtLocalidad.Name = "txtLocalidad";
             this.txtLocalidad.Size = new System.Drawing.Size(168, 20);
             this.txtLocalidad.TabIndex = 11;
             // 
             // label4
             // 
-            this.label4.Location = new System.Drawing.Point(265, 46);
+            this.label4.Location = new System.Drawing.Point(264, 78);
             this.label4.Name = "label4";
             this.label4.Size = new System.Drawing.Size(86, 20);
             this.label4.TabIndex = 10;
@@ -271,7 +276,7 @@
             // 
             // label5
             // 
-            this.label5.Location = new System.Drawing.Point(265, 13);
+            this.label5.Location = new System.Drawing.Point(264, 46);
             this.label5.Name = "label5";
             this.label5.Size = new System.Drawing.Size(86, 20);
             this.label5.TabIndex = 8;
@@ -315,7 +320,7 @@
             this.txtNombre.Location = new System.Drawing.Point(85, 46);
             this.txtNombre.Name = "txtNombre";
             this.txtNombre.Size = new System.Drawing.Size(168, 20);
-            this.txtNombre.TabIndex = 3;
+            this.txtNombre.TabIndex = 1;
             // 
             // label2
             // 
@@ -328,11 +333,11 @@
             // 
             // txtId
             // 
-            this.txtId.Enabled = false;
             this.txtId.Location = new System.Drawing.Point(85, 13);
             this.txtId.Name = "txtId";
+            this.txtId.ReadOnly = true;
             this.txtId.Size = new System.Drawing.Size(168, 20);
-            this.txtId.TabIndex = 1;
+            this.txtId.TabIndex = 0;
             // 
             // label1
             // 
@@ -348,36 +353,77 @@
             this.dgvRemitentes.AllowUserToAddRows = false;
             this.dgvRemitentes.AllowUserToDeleteRows = false;
             this.dgvRemitentes.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
-            this.dgvRemitentes.Location = new System.Drawing.Point(12, 190);
+            this.dgvRemitentes.Location = new System.Drawing.Point(12, 209);
             this.dgvRemitentes.Name = "dgvRemitentes";
-            this.dgvRemitentes.Size = new System.Drawing.Size(524, 248);
+            this.dgvRemitentes.Size = new System.Drawing.Size(524, 229);
             this.dgvRemitentes.TabIndex = 2;
             // 
             // gbComisiones
             // 
+            this.gbComisiones.Controls.Add(this.tsComisiones);
             this.gbComisiones.Controls.Add(this.dataGridView1);
-            this.gbComisiones.Location = new System.Drawing.Point(551, 190);
+            this.gbComisiones.Location = new System.Drawing.Point(551, 209);
             this.gbComisiones.Name = "gbComisiones";
-            this.gbComisiones.Size = new System.Drawing.Size(244, 248);
+            this.gbComisiones.Size = new System.Drawing.Size(244, 229);
             this.gbComisiones.TabIndex = 3;
             this.gbComisiones.TabStop = false;
             this.gbComisiones.Text = "Comisiones";
+            // 
+            // tsComisiones
+            // 
+            this.tsComisiones.Items.AddRange(new System.Windows.Forms.ToolStripItem[] {
+            this.tsbNewComision,
+            this.tsbDeleteComision,
+            this.tsbEditComision});
+            this.tsComisiones.Location = new System.Drawing.Point(3, 16);
+            this.tsComisiones.Name = "tsComisiones";
+            this.tsComisiones.Size = new System.Drawing.Size(238, 25);
+            this.tsComisiones.TabIndex = 4;
+            this.tsComisiones.Text = "toolStrip1";
+            // 
+            // tsbNewComision
+            // 
+            this.tsbNewComision.DisplayStyle = System.Windows.Forms.ToolStripItemDisplayStyle.Image;
+            this.tsbNewComision.Image = global::Mcba.UI.Properties.Resources.iconNew;
+            this.tsbNewComision.ImageTransparentColor = System.Drawing.Color.Magenta;
+            this.tsbNewComision.Name = "tsbNewComision";
+            this.tsbNewComision.Size = new System.Drawing.Size(23, 22);
+            this.tsbNewComision.Text = "toolStripButton1";
+            // 
+            // tsbDeleteComision
+            // 
+            this.tsbDeleteComision.DisplayStyle = System.Windows.Forms.ToolStripItemDisplayStyle.Image;
+            this.tsbDeleteComision.Image = global::Mcba.UI.Properties.Resources.iconDelete;
+            this.tsbDeleteComision.ImageTransparentColor = System.Drawing.Color.Magenta;
+            this.tsbDeleteComision.Name = "tsbDeleteComision";
+            this.tsbDeleteComision.Size = new System.Drawing.Size(23, 22);
+            this.tsbDeleteComision.Text = "toolStripButton1";
+            // 
+            // tsbEditComision
+            // 
+            this.tsbEditComision.DisplayStyle = System.Windows.Forms.ToolStripItemDisplayStyle.Image;
+            this.tsbEditComision.Image = global::Mcba.UI.Properties.Resources.iconEditar;
+            this.tsbEditComision.ImageTransparentColor = System.Drawing.Color.Magenta;
+            this.tsbEditComision.Name = "tsbEditComision";
+            this.tsbEditComision.Size = new System.Drawing.Size(23, 22);
+            this.tsbEditComision.Text = "toolStripButton1";
             // 
             // dataGridView1
             // 
             this.dataGridView1.AllowUserToAddRows = false;
             this.dataGridView1.AllowUserToDeleteRows = false;
             this.dataGridView1.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
-            this.dataGridView1.Location = new System.Drawing.Point(6, 19);
+            this.dataGridView1.Location = new System.Drawing.Point(6, 44);
             this.dataGridView1.Name = "dataGridView1";
-            this.dataGridView1.Size = new System.Drawing.Size(232, 218);
+            this.dataGridView1.Size = new System.Drawing.Size(232, 179);
             this.dataGridView1.TabIndex = 3;
             // 
             // Remitentes
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(810, 450);
+            this.ClientSize = new System.Drawing.Size(802, 443);
+            this.ControlBox = false;
             this.Controls.Add(this.gbComisiones);
             this.Controls.Add(this.dgvRemitentes);
             this.Controls.Add(this.gbData);
@@ -392,6 +438,9 @@
             this.gbData.PerformLayout();
             ((System.ComponentModel.ISupportInitialize)(this.dgvRemitentes)).EndInit();
             this.gbComisiones.ResumeLayout(false);
+            this.gbComisiones.PerformLayout();
+            this.tsComisiones.ResumeLayout(false);
+            this.tsComisiones.PerformLayout();
             ((System.ComponentModel.ISupportInitialize)(this.dataGridView1)).EndInit();
             this.ResumeLayout(false);
             this.PerformLayout();
@@ -432,5 +481,9 @@
         private System.Windows.Forms.Label label9;
         private System.Windows.Forms.GroupBox gbComisiones;
         private System.Windows.Forms.DataGridView dataGridView1;
+        private System.Windows.Forms.ToolStrip tsComisiones;
+        private System.Windows.Forms.ToolStripButton tsbNewComision;
+        private System.Windows.Forms.ToolStripButton tsbDeleteComision;
+        private System.Windows.Forms.ToolStripButton tsbEditComision;
     }
 }

@@ -48,11 +48,29 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="Bancos.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Bancos.Designer.cs">
+      <DependentUpon>Bancos.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Choferes.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Choferes.Designer.cs">
+      <DependentUpon>Choferes.cs</DependentUpon>
+    </Compile>
     <Compile Include="Clientes.cs">
       <SubType>Form</SubType>
     </Compile>
     <Compile Include="Clientes.Designer.cs">
       <DependentUpon>Clientes.cs</DependentUpon>
+    </Compile>
+    <Compile Include="CondicionesIva.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="CondicionesIva.Designer.cs">
+      <DependentUpon>CondicionesIva.cs</DependentUpon>
     </Compile>
     <Compile Include="Facturas.cs">
       <SubType>Form</SubType>
@@ -60,11 +78,23 @@
     <Compile Include="Facturas.Designer.cs">
       <DependentUpon>Facturas.cs</DependentUpon>
     </Compile>
+    <Compile Include="FacturasBuscar.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="FacturasBuscar.Designer.cs">
+      <DependentUpon>FacturasBuscar.cs</DependentUpon>
+    </Compile>
     <Compile Include="FacturasItems.cs">
       <SubType>Form</SubType>
     </Compile>
     <Compile Include="FacturasItems.Designer.cs">
       <DependentUpon>FacturasItems.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Localidades.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Localidades.Designer.cs">
+      <DependentUpon>Localidades.cs</DependentUpon>
     </Compile>
     <Compile Include="Menu.cs">
       <SubType>Form</SubType>
@@ -80,6 +110,18 @@
     </Compile>
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="Provincias.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Provincias.Designer.cs">
+      <DependentUpon>Provincias.cs</DependentUpon>
+    </Compile>
+    <Compile Include="RemitenteComisiones.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="RemitenteComisiones.Designer.cs">
+      <DependentUpon>RemitenteComisiones.cs</DependentUpon>
+    </Compile>
     <Compile Include="Remitentes.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -92,14 +134,41 @@
     <Compile Include="Stock.Designer.cs">
       <DependentUpon>Stock.cs</DependentUpon>
     </Compile>
+    <Compile Include="TiposCuenta.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="TiposCuenta.Designer.cs">
+      <DependentUpon>TiposCuenta.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Unidades.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Unidades.Designer.cs">
+      <DependentUpon>Unidades.cs</DependentUpon>
+    </Compile>
+    <EmbeddedResource Include="Bancos.resx">
+      <DependentUpon>Bancos.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Choferes.resx">
+      <DependentUpon>Choferes.cs</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="Clientes.resx">
       <DependentUpon>Clientes.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="CondicionesIva.resx">
+      <DependentUpon>CondicionesIva.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Facturas.resx">
       <DependentUpon>Facturas.cs</DependentUpon>
     </EmbeddedResource>
+    <EmbeddedResource Include="FacturasBuscar.resx">
+      <DependentUpon>FacturasBuscar.cs</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="FacturasItems.resx">
       <DependentUpon>FacturasItems.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Localidades.resx">
+      <DependentUpon>Localidades.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Menu.resx">
       <DependentUpon>Menu.cs</DependentUpon>
@@ -117,11 +186,23 @@
       <DependentUpon>Resources.resx</DependentUpon>
       <DesignTime>True</DesignTime>
     </Compile>
+    <EmbeddedResource Include="Provincias.resx">
+      <DependentUpon>Provincias.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="RemitenteComisiones.resx">
+      <DependentUpon>RemitenteComisiones.cs</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="Remitentes.resx">
       <DependentUpon>Remitentes.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Stock.resx">
       <DependentUpon>Stock.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="TiposCuenta.resx">
+      <DependentUpon>TiposCuenta.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Unidades.resx">
+      <DependentUpon>Unidades.cs</DependentUpon>
     </EmbeddedResource>
     <None Include="Properties\Settings.settings">
       <Generator>SettingsSingleFileGenerator</Generator>
@@ -139,6 +220,7 @@
   <ItemGroup>
     <None Include="Resources\bsa.png" />
     <Content Include="Resources\filtro28.png" />
+    <None Include="Resources\IconBuscar.png" />
     <Content Include="Resources\iconClear.png" />
     <Content Include="Resources\iconDelete.png" />
     <Content Include="Resources\iconEditar.png" />
