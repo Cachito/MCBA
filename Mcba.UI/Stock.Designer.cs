@@ -35,12 +35,7 @@
             this.tsbEdit = new System.Windows.Forms.ToolStripButton();
             this.tsbSave = new System.Windows.Forms.ToolStripButton();
             this.gbData = new System.Windows.Forms.GroupBox();
-            this.gbChofer = new System.Windows.Forms.GroupBox();
-            this.txtDniChofer = new System.Windows.Forms.TextBox();
-            this.txtApellidoChofer = new System.Windows.Forms.TextBox();
-            this.label10 = new System.Windows.Forms.Label();
-            this.label11 = new System.Windows.Forms.Label();
-            this.txtNombreChofer = new System.Windows.Forms.TextBox();
+            this.cmbChoferes = new System.Windows.Forms.ComboBox();
             this.label9 = new System.Windows.Forms.Label();
             this.txtGuia = new System.Windows.Forms.TextBox();
             this.txtFecha = new System.Windows.Forms.TextBox();
@@ -61,7 +56,6 @@
             this.dgvStock = new System.Windows.Forms.DataGridView();
             this.tsSock.SuspendLayout();
             this.gbData.SuspendLayout();
-            this.gbChofer.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.dgvStock)).BeginInit();
             this.SuspendLayout();
             // 
@@ -130,7 +124,8 @@
             // 
             // gbData
             // 
-            this.gbData.Controls.Add(this.gbChofer);
+            this.gbData.Controls.Add(this.cmbChoferes);
+            this.gbData.Controls.Add(this.label9);
             this.gbData.Controls.Add(this.txtGuia);
             this.gbData.Controls.Add(this.txtFecha);
             this.gbData.Controls.Add(this.cmbProducto);
@@ -149,80 +144,31 @@
             this.gbData.Controls.Add(this.label1);
             this.gbData.Location = new System.Drawing.Point(12, 28);
             this.gbData.Name = "gbData";
-            this.gbData.Size = new System.Drawing.Size(789, 143);
+            this.gbData.Size = new System.Drawing.Size(789, 144);
             this.gbData.TabIndex = 1;
             this.gbData.TabStop = false;
             // 
-            // gbChofer
+            // cmbChoferes
             // 
-            this.gbChofer.Controls.Add(this.txtDniChofer);
-            this.gbChofer.Controls.Add(this.txtApellidoChofer);
-            this.gbChofer.Controls.Add(this.label10);
-            this.gbChofer.Controls.Add(this.label11);
-            this.gbChofer.Controls.Add(this.txtNombreChofer);
-            this.gbChofer.Controls.Add(this.label9);
-            this.gbChofer.Location = new System.Drawing.Point(526, 18);
-            this.gbChofer.Name = "gbChofer";
-            this.gbChofer.Size = new System.Drawing.Size(257, 114);
-            this.gbChofer.TabIndex = 27;
-            this.gbChofer.TabStop = false;
-            this.gbChofer.Text = "Chofer";
-            // 
-            // txtDniChofer
-            // 
-            this.txtDniChofer.Location = new System.Drawing.Point(83, 90);
-            this.txtDniChofer.Multiline = true;
-            this.txtDniChofer.Name = "txtDniChofer";
-            this.txtDniChofer.Size = new System.Drawing.Size(168, 20);
-            this.txtDniChofer.TabIndex = 28;
-            // 
-            // txtApellidoChofer
-            // 
-            this.txtApellidoChofer.Location = new System.Drawing.Point(83, 58);
-            this.txtApellidoChofer.Multiline = true;
-            this.txtApellidoChofer.Name = "txtApellidoChofer";
-            this.txtApellidoChofer.Size = new System.Drawing.Size(168, 20);
-            this.txtApellidoChofer.TabIndex = 27;
-            // 
-            // label10
-            // 
-            this.label10.Location = new System.Drawing.Point(22, 90);
-            this.label10.Name = "label10";
-            this.label10.Size = new System.Drawing.Size(56, 20);
-            this.label10.TabIndex = 26;
-            this.label10.Text = "DNI";
-            this.label10.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
-            // 
-            // label11
-            // 
-            this.label11.Location = new System.Drawing.Point(22, 58);
-            this.label11.Name = "label11";
-            this.label11.Size = new System.Drawing.Size(56, 20);
-            this.label11.TabIndex = 24;
-            this.label11.Text = "Apellido";
-            this.label11.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
-            // 
-            // txtNombreChofer
-            // 
-            this.txtNombreChofer.Location = new System.Drawing.Point(84, 26);
-            this.txtNombreChofer.Multiline = true;
-            this.txtNombreChofer.Name = "txtNombreChofer";
-            this.txtNombreChofer.Size = new System.Drawing.Size(168, 20);
-            this.txtNombreChofer.TabIndex = 23;
+            this.cmbChoferes.FormattingEnabled = true;
+            this.cmbChoferes.Location = new System.Drawing.Point(605, 79);
+            this.cmbChoferes.Name = "cmbChoferes";
+            this.cmbChoferes.Size = new System.Drawing.Size(167, 21);
+            this.cmbChoferes.TabIndex = 28;
             // 
             // label9
             // 
-            this.label9.Location = new System.Drawing.Point(22, 26);
+            this.label9.Location = new System.Drawing.Point(513, 79);
             this.label9.Name = "label9";
-            this.label9.Size = new System.Drawing.Size(56, 20);
-            this.label9.TabIndex = 22;
-            this.label9.Text = "Nombre";
+            this.label9.Size = new System.Drawing.Size(85, 20);
+            this.label9.TabIndex = 27;
+            this.label9.Text = "Chofer";
             this.label9.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
             // 
             // txtGuia
             // 
             this.txtGuia.AcceptsReturn = true;
-            this.txtGuia.Location = new System.Drawing.Point(338, 112);
+            this.txtGuia.Location = new System.Drawing.Point(604, 46);
             this.txtGuia.Name = "txtGuia";
             this.txtGuia.Size = new System.Drawing.Size(168, 20);
             this.txtGuia.TabIndex = 26;
@@ -230,7 +176,7 @@
             // txtFecha
             // 
             this.txtFecha.AcceptsReturn = true;
-            this.txtFecha.Location = new System.Drawing.Point(338, 78);
+            this.txtFecha.Location = new System.Drawing.Point(323, 46);
             this.txtFecha.Name = "txtFecha";
             this.txtFecha.Size = new System.Drawing.Size(168, 20);
             this.txtFecha.TabIndex = 25;
@@ -238,7 +184,7 @@
             // cmbProducto
             // 
             this.cmbProducto.FormattingEnabled = true;
-            this.cmbProducto.Location = new System.Drawing.Point(73, 78);
+            this.cmbProducto.Location = new System.Drawing.Point(73, 79);
             this.cmbProducto.Name = "cmbProducto";
             this.cmbProducto.Size = new System.Drawing.Size(168, 21);
             this.cmbProducto.TabIndex = 24;
@@ -261,7 +207,7 @@
             // 
             // label8
             // 
-            this.label8.Location = new System.Drawing.Point(247, 112);
+            this.label8.Location = new System.Drawing.Point(513, 46);
             this.label8.Name = "label8";
             this.label8.Size = new System.Drawing.Size(85, 20);
             this.label8.TabIndex = 15;
@@ -270,9 +216,9 @@
             // 
             // label7
             // 
-            this.label7.Location = new System.Drawing.Point(247, 78);
+            this.label7.Location = new System.Drawing.Point(255, 46);
             this.label7.Name = "label7";
-            this.label7.Size = new System.Drawing.Size(85, 20);
+            this.label7.Size = new System.Drawing.Size(61, 20);
             this.label7.TabIndex = 13;
             this.label7.Text = "Fecha";
             this.label7.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
@@ -280,32 +226,32 @@
             // cmbUnidad
             // 
             this.cmbUnidad.FormattingEnabled = true;
-            this.cmbUnidad.Location = new System.Drawing.Point(338, 13);
+            this.cmbUnidad.Location = new System.Drawing.Point(323, 79);
             this.cmbUnidad.Name = "cmbUnidad";
             this.cmbUnidad.Size = new System.Drawing.Size(168, 21);
             this.cmbUnidad.TabIndex = 12;
             // 
             // txtCantidad
             // 
-            this.txtCantidad.Location = new System.Drawing.Point(338, 46);
+            this.txtCantidad.Location = new System.Drawing.Point(323, 112);
             this.txtCantidad.Name = "txtCantidad";
             this.txtCantidad.Size = new System.Drawing.Size(168, 20);
             this.txtCantidad.TabIndex = 11;
             // 
             // label4
             // 
-            this.label4.Location = new System.Drawing.Point(247, 46);
+            this.label4.Location = new System.Drawing.Point(255, 112);
             this.label4.Name = "label4";
-            this.label4.Size = new System.Drawing.Size(85, 20);
+            this.label4.Size = new System.Drawing.Size(61, 20);
             this.label4.TabIndex = 10;
             this.label4.Text = "Cantidad";
             this.label4.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
             // 
             // label5
             // 
-            this.label5.Location = new System.Drawing.Point(247, 13);
+            this.label5.Location = new System.Drawing.Point(255, 79);
             this.label5.Name = "label5";
-            this.label5.Size = new System.Drawing.Size(85, 20);
+            this.label5.Size = new System.Drawing.Size(61, 20);
             this.label5.TabIndex = 8;
             this.label5.Text = "Unidad";
             this.label5.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
@@ -321,7 +267,7 @@
             // 
             // label3
             // 
-            this.label3.Location = new System.Drawing.Point(6, 78);
+            this.label3.Location = new System.Drawing.Point(6, 79);
             this.label3.Name = "label3";
             this.label3.Size = new System.Drawing.Size(61, 20);
             this.label3.TabIndex = 4;
@@ -339,9 +285,9 @@
             // 
             // txtLote
             // 
-            this.txtLote.Enabled = false;
             this.txtLote.Location = new System.Drawing.Point(73, 13);
             this.txtLote.Name = "txtLote";
+            this.txtLote.ReadOnly = true;
             this.txtLote.Size = new System.Drawing.Size(168, 20);
             this.txtLote.TabIndex = 1;
             // 
@@ -359,9 +305,9 @@
             this.dgvStock.AllowUserToAddRows = false;
             this.dgvStock.AllowUserToDeleteRows = false;
             this.dgvStock.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
-            this.dgvStock.Location = new System.Drawing.Point(12, 177);
+            this.dgvStock.Location = new System.Drawing.Point(12, 178);
             this.dgvStock.Name = "dgvStock";
-            this.dgvStock.Size = new System.Drawing.Size(789, 261);
+            this.dgvStock.Size = new System.Drawing.Size(789, 260);
             this.dgvStock.TabIndex = 2;
             // 
             // Stock
@@ -369,6 +315,7 @@
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(810, 450);
+            this.ControlBox = false;
             this.Controls.Add(this.dgvStock);
             this.Controls.Add(this.gbData);
             this.Controls.Add(this.tsSock);
@@ -380,8 +327,6 @@
             this.tsSock.PerformLayout();
             this.gbData.ResumeLayout(false);
             this.gbData.PerformLayout();
-            this.gbChofer.ResumeLayout(false);
-            this.gbChofer.PerformLayout();
             ((System.ComponentModel.ISupportInitialize)(this.dgvStock)).EndInit();
             this.ResumeLayout(false);
             this.PerformLayout();
@@ -414,12 +359,7 @@
         private System.Windows.Forms.ComboBox cmbRemitentes;
         private System.Windows.Forms.TextBox txtGuia;
         private System.Windows.Forms.TextBox txtFecha;
-        private System.Windows.Forms.GroupBox gbChofer;
-        private System.Windows.Forms.TextBox txtDniChofer;
-        private System.Windows.Forms.TextBox txtApellidoChofer;
-        private System.Windows.Forms.Label label10;
-        private System.Windows.Forms.Label label11;
-        private System.Windows.Forms.TextBox txtNombreChofer;
+        private System.Windows.Forms.ComboBox cmbChoferes;
         private System.Windows.Forms.Label label9;
     }
 }

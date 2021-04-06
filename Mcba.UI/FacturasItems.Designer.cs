@@ -115,6 +115,7 @@
             this.txtDescripcion.Location = new System.Drawing.Point(85, 76);
             this.txtDescripcion.Multiline = true;
             this.txtDescripcion.Name = "txtDescripcion";
+            this.txtDescripcion.ReadOnly = true;
             this.txtDescripcion.Size = new System.Drawing.Size(177, 57);
             this.txtDescripcion.TabIndex = 11;
             // 
@@ -165,6 +166,7 @@
             this.txtUnidad.Enabled = false;
             this.txtUnidad.Location = new System.Drawing.Point(85, 148);
             this.txtUnidad.Name = "txtUnidad";
+            this.txtUnidad.ReadOnly = true;
             this.txtUnidad.Size = new System.Drawing.Size(177, 20);
             this.txtUnidad.TabIndex = 20;
             // 

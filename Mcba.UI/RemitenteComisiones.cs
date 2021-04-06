@@ -4,11 +4,11 @@ using System.Windows.Forms;
 
 namespace Mcba.UI
 {
-    public partial class Facturas : Form
+    public partial class RemitenteComisiones : Form
     {
         private int idChofer { set; get; }
 
-        public Facturas()
+        public RemitenteComisiones()
         {
             InitializeComponent();
         }
@@ -33,7 +33,7 @@ namespace Mcba.UI
             Save();
         }
 
-        private void Facturas_Load(object sender, EventArgs e)
+        private void RemitenteComisiones_Load(object sender, EventArgs e)
         {
             LoadGrid();
         }
@@ -57,12 +57,10 @@ namespace Mcba.UI
         private void Clean()
         {
             idChofer = 0;
-            txtRazónSocial.Text = string.Empty;
         }
 
         private void ControlsEnabled(bool enable)
         {
-            txtRazónSocial.Enabled = enable;
         }
 
         private void Save()
@@ -72,7 +70,6 @@ namespace Mcba.UI
                 return;
             }
 
-            int.TryParse(txtRazónSocial.Text, out var dni);
 
             LoadGrid();
         }
@@ -81,18 +78,6 @@ namespace Mcba.UI
         {
             var ret = true;
             var mess = new StringBuilder();
-
-            if (txtRazónSocial.Text == string.Empty)
-            {
-                mess.Append("Debe ingreasr DNI.");
-                ret = false;
-            }
-
-            if (!int.TryParse(txtRazónSocial.Text, out var _))
-            {
-                mess.Append("Valor para DNI no válido.");
-                ret = false;
-            }
 
             return ret;
         }

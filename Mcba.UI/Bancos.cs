@@ -4,11 +4,11 @@ using System.Windows.Forms;
 
 namespace Mcba.UI
 {
-    public partial class Facturas : Form
+    public partial class Bancos : Form
     {
         private int idChofer { set; get; }
 
-        public Facturas()
+        public Bancos()
         {
             InitializeComponent();
         }
@@ -33,7 +33,7 @@ namespace Mcba.UI
             Save();
         }
 
-        private void Facturas_Load(object sender, EventArgs e)
+        private void Bancos_Load(object sender, EventArgs e)
         {
             LoadGrid();
         }
@@ -57,12 +57,14 @@ namespace Mcba.UI
         private void Clean()
         {
             idChofer = 0;
-            txtRazónSocial.Text = string.Empty;
+            txtId.Text = string.Empty;
+            txtDescripcion.Text = string.Empty;
         }
 
         private void ControlsEnabled(bool enable)
         {
-            txtRazónSocial.Enabled = enable;
+            txtId.Enabled = enable;
+            txtDescripcion.Enabled = enable;
         }
 
         private void Save()
@@ -72,7 +74,7 @@ namespace Mcba.UI
                 return;
             }
 
-            int.TryParse(txtRazónSocial.Text, out var dni);
+            int.TryParse(txtDescripcion.Text, out var dni);
 
             LoadGrid();
         }
@@ -82,15 +84,21 @@ namespace Mcba.UI
             var ret = true;
             var mess = new StringBuilder();
 
-            if (txtRazónSocial.Text == string.Empty)
+            if (txtDescripcion.Text == string.Empty)
             {
                 mess.Append("Debe ingreasr DNI.");
                 ret = false;
             }
 
-            if (!int.TryParse(txtRazónSocial.Text, out var _))
+            if (!int.TryParse(txtDescripcion.Text, out var _))
             {
                 mess.Append("Valor para DNI no válido.");
+                ret = false;
+            }
+
+            if (txtId.Text == string.Empty)
+            {
+                mess.Append("Debe ingreasr Nombre.");
                 ret = false;
             }
 
