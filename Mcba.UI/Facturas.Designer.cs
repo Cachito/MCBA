@@ -59,6 +59,7 @@
             this.tsbNew = new System.Windows.Forms.ToolStripButton();
             this.tsbDelete = new System.Windows.Forms.ToolStripButton();
             this.tsbSave = new System.Windows.Forms.ToolStripButton();
+            this.tsbPrint = new System.Windows.Forms.ToolStripButton();
             this.tsbSearch = new System.Windows.Forms.ToolStripButton();
             this.tsHeader.SuspendLayout();
             this.gbDataCliente.SuspendLayout();
@@ -75,6 +76,7 @@
             this.tsbNew,
             this.tsbDelete,
             this.tsbSave,
+            this.tsbPrint,
             this.tsbSearch});
             this.tsHeader.Location = new System.Drawing.Point(0, 0);
             this.tsHeader.Name = "tsHeader";
@@ -375,6 +377,15 @@
             this.tsbSave.Text = "toolStripButton1";
             this.tsbSave.Click += new System.EventHandler(this.tsbSave_Click);
             // 
+            // tsbPrint
+            // 
+            this.tsbPrint.DisplayStyle = System.Windows.Forms.ToolStripItemDisplayStyle.Image;
+            this.tsbPrint.Image = global::Mcba.UI.Properties.Resources.iconPrinter;
+            this.tsbPrint.ImageTransparentColor = System.Drawing.Color.Magenta;
+            this.tsbPrint.Name = "tsbPrint";
+            this.tsbPrint.Size = new System.Drawing.Size(23, 22);
+            this.tsbPrint.Text = "toolStripButton1";
+            // 
             // tsbSearch
             // 
             this.tsbSearch.DisplayStyle = System.Windows.Forms.ToolStripItemDisplayStyle.Image;
@@ -448,5 +459,6 @@
         private System.Windows.Forms.TextBox textBox2;
         private System.Windows.Forms.Label label8;
         private System.Windows.Forms.ToolStripButton tsbSearch;
+        private System.Windows.Forms.ToolStripButton tsbPrint;
     }
 }
