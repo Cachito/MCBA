@@ -17,7 +17,7 @@ namespace Mcba.UI
 
         private void tsmiVehiculos_Click(object sender, EventArgs e)
         {
-            Unidades frm = new Unidades
+            Liquidacion frm = new Liquidacion
             {
                 MdiParent = this
             };
