@@ -102,11 +102,23 @@
     <Compile Include="Localidades.Designer.cs">
       <DependentUpon>Localidades.cs</DependentUpon>
     </Compile>
+    <Compile Include="Login.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Login.Designer.cs">
+      <DependentUpon>Login.cs</DependentUpon>
+    </Compile>
     <Compile Include="Menu.cs">
       <SubType>Form</SubType>
     </Compile>
     <Compile Include="Menu.Designer.cs">
       <DependentUpon>Menu.cs</DependentUpon>
+    </Compile>
+    <Compile Include="PermisosFamilias.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="PermisosFamilias.Designer.cs">
+      <DependentUpon>PermisosFamilias.cs</DependentUpon>
     </Compile>
     <Compile Include="Productos.cs">
       <SubType>Form</SubType>
@@ -134,6 +146,12 @@
     <Compile Include="Remitentes.Designer.cs">
       <DependentUpon>Remitentes.cs</DependentUpon>
     </Compile>
+    <Compile Include="PermisosUsuarios.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="PermisosUsuarios.Designer.cs">
+      <DependentUpon>PermisosUsuarios.cs</DependentUpon>
+    </Compile>
     <Compile Include="Stock.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -151,6 +169,12 @@
     </Compile>
     <Compile Include="Unidades.Designer.cs">
       <DependentUpon>Unidades.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Usuarios.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Usuarios.Designer.cs">
+      <DependentUpon>Usuarios.cs</DependentUpon>
     </Compile>
     <EmbeddedResource Include="Bancos.resx">
       <DependentUpon>Bancos.cs</DependentUpon>
@@ -179,8 +203,14 @@
     <EmbeddedResource Include="Localidades.resx">
       <DependentUpon>Localidades.cs</DependentUpon>
     </EmbeddedResource>
+    <EmbeddedResource Include="Login.resx">
+      <DependentUpon>Login.cs</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="Menu.resx">
       <DependentUpon>Menu.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="PermisosFamilias.resx">
+      <DependentUpon>PermisosFamilias.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Productos.resx">
       <DependentUpon>Productos.cs</DependentUpon>
@@ -204,6 +234,9 @@
     <EmbeddedResource Include="Remitentes.resx">
       <DependentUpon>Remitentes.cs</DependentUpon>
     </EmbeddedResource>
+    <EmbeddedResource Include="PermisosUsuarios.resx">
+      <DependentUpon>PermisosUsuarios.cs</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="Stock.resx">
       <DependentUpon>Stock.cs</DependentUpon>
     </EmbeddedResource>
@@ -212,6 +245,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="Unidades.resx">
       <DependentUpon>Unidades.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Usuarios.resx">
+      <DependentUpon>Usuarios.cs</DependentUpon>
     </EmbeddedResource>
     <None Include="Properties\Settings.settings">
       <Generator>SettingsSingleFileGenerator</Generator>
@@ -230,6 +266,8 @@
     <None Include="Resources\bsa.png" />
     <Content Include="Resources\filtro28.png" />
     <None Include="Resources\IconBuscar.png" />
+    <None Include="Resources\iconArrowRight.png" />
+    <None Include="Resources\iconArrowRedLeft.png" />
     <Content Include="Resources\iconClear.png" />
     <Content Include="Resources\iconDelete.png" />
     <Content Include="Resources\iconEditar.png" />

@@ -83,6 +83,26 @@ namespace Mcba.UI.Properties {
         /// <summary>
         ///   Looks up a localized resource of type System.Drawing.Bitmap.
         /// </summary>
+        internal static System.Drawing.Bitmap iconArrowRedLeft {
+            get {
+                object obj = ResourceManager.GetObject("iconArrowRedLeft", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized resource of type System.Drawing.Bitmap.
+        /// </summary>
+        internal static System.Drawing.Bitmap iconArrowRight {
+            get {
+                object obj = ResourceManager.GetObject("iconArrowRight", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized resource of type System.Drawing.Bitmap.
+        /// </summary>
         internal static System.Drawing.Bitmap IconBuscar {
             get {
                 object obj = ResourceManager.GetObject("IconBuscar", resourceCulture);
