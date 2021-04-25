@@ -54,6 +54,12 @@
     <Compile Include="Bancos.Designer.cs">
       <DependentUpon>Bancos.cs</DependentUpon>
     </Compile>
+    <Compile Include="Bitacora.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Bitacora.Designer.cs">
+      <DependentUpon>Bitacora.cs</DependentUpon>
+    </Compile>
     <Compile Include="Choferes.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -113,6 +119,12 @@
     </Compile>
     <Compile Include="Menu.Designer.cs">
       <DependentUpon>Menu.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Permisos.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Permisos.Designer.cs">
+      <DependentUpon>Permisos.cs</DependentUpon>
     </Compile>
     <Compile Include="PermisosFamilias.cs">
       <SubType>Form</SubType>
@@ -179,6 +191,9 @@
     <EmbeddedResource Include="Bancos.resx">
       <DependentUpon>Bancos.cs</DependentUpon>
     </EmbeddedResource>
+    <EmbeddedResource Include="Bitacora.resx">
+      <DependentUpon>Bitacora.cs</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="Choferes.resx">
       <DependentUpon>Choferes.cs</DependentUpon>
     </EmbeddedResource>
@@ -208,6 +223,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="Menu.resx">
       <DependentUpon>Menu.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Permisos.resx">
+      <DependentUpon>Permisos.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="PermisosFamilias.resx">
       <DependentUpon>PermisosFamilias.cs</DependentUpon>

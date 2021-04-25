@@ -17,7 +17,7 @@ namespace Mcba.UI
 
         private void tsmiVehiculos_Click(object sender, EventArgs e)
         {
-            PermisosFamilias frm = new PermisosFamilias
+            Bitacora frm = new Bitacora
             {
                 MdiParent = this
             };
