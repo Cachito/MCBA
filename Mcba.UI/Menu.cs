@@ -17,7 +17,7 @@ namespace Mcba.UI
 
         private void tsmiVehiculos_Click(object sender, EventArgs e)
         {
-            Bitacora frm = new Bitacora
+            Backup frm = new Backup
             {
                 MdiParent = this
             };
