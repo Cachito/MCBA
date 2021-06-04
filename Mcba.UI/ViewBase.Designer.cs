@@ -1,6 +1,7 @@
-﻿namespace Mcba.UI
+﻿
+namespace Mcba.UI
 {
-    partial class Bancos
+    partial class ViewBase
     {
         /// <summary>
         /// Required designer variable.
@@ -28,13 +29,7 @@
         /// </summary>
         private void InitializeComponent()
         {
-            this.tsBancos = new System.Windows.Forms.ToolStrip();
-            this.gbData = new System.Windows.Forms.GroupBox();
-            this.txtDescripcion = new System.Windows.Forms.TextBox();
-            this.label2 = new System.Windows.Forms.Label();
-            this.txtId = new System.Windows.Forms.TextBox();
-            this.label1 = new System.Windows.Forms.Label();
-            this.dgvBancos = new System.Windows.Forms.DataGridView();
+            this.toolBar = new System.Windows.Forms.ToolStrip();
             this.tsbSalir = new System.Windows.Forms.ToolStripButton();
             this.tsbNew = new System.Windows.Forms.ToolStripButton();
             this.tsbDelete = new System.Windows.Forms.ToolStripButton();
@@ -42,14 +37,14 @@
             this.tsbSave = new System.Windows.Forms.ToolStripButton();
             this.tsbFind = new System.Windows.Forms.ToolStripButton();
             this.tsbPrint = new System.Windows.Forms.ToolStripButton();
-            this.tsBancos.SuspendLayout();
-            this.gbData.SuspendLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.dgvBancos)).BeginInit();
+            this.dataGridView = new System.Windows.Forms.DataGridView();
+            this.toolBar.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.dataGridView)).BeginInit();
             this.SuspendLayout();
             // 
-            // tsBancos
+            // toolBar
             // 
-            this.tsBancos.Items.AddRange(new System.Windows.Forms.ToolStripItem[] {
+            this.toolBar.Items.AddRange(new System.Windows.Forms.ToolStripItem[] {
             this.tsbSalir,
             this.tsbNew,
             this.tsbDelete,
@@ -57,67 +52,11 @@
             this.tsbSave,
             this.tsbFind,
             this.tsbPrint});
-            this.tsBancos.Location = new System.Drawing.Point(0, 0);
-            this.tsBancos.Name = "tsBancos";
-            this.tsBancos.Size = new System.Drawing.Size(302, 25);
-            this.tsBancos.TabIndex = 0;
-            this.tsBancos.Text = "toolStrip1";
-            // 
-            // gbData
-            // 
-            this.gbData.Controls.Add(this.txtDescripcion);
-            this.gbData.Controls.Add(this.label2);
-            this.gbData.Controls.Add(this.txtId);
-            this.gbData.Controls.Add(this.label1);
-            this.gbData.Location = new System.Drawing.Point(12, 28);
-            this.gbData.Name = "gbData";
-            this.gbData.Size = new System.Drawing.Size(280, 77);
-            this.gbData.TabIndex = 1;
-            this.gbData.TabStop = false;
-            // 
-            // txtDescripcion
-            // 
-            this.txtDescripcion.Location = new System.Drawing.Point(85, 46);
-            this.txtDescripcion.Name = "txtDescripcion";
-            this.txtDescripcion.Size = new System.Drawing.Size(168, 20);
-            this.txtDescripcion.TabIndex = 3;
-            // 
-            // label2
-            // 
-            this.label2.Location = new System.Drawing.Point(6, 46);
-            this.label2.Name = "label2";
-            this.label2.Size = new System.Drawing.Size(73, 20);
-            this.label2.TabIndex = 2;
-            this.label2.Text = "Descripción";
-            this.label2.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
-            // 
-            // txtId
-            // 
-            this.txtId.Enabled = false;
-            this.txtId.Location = new System.Drawing.Point(85, 13);
-            this.txtId.Name = "txtId";
-            this.txtId.ReadOnly = true;
-            this.txtId.Size = new System.Drawing.Size(168, 20);
-            this.txtId.TabIndex = 1;
-            // 
-            // label1
-            // 
-            this.label1.Location = new System.Drawing.Point(6, 13);
-            this.label1.Name = "label1";
-            this.label1.Size = new System.Drawing.Size(73, 20);
-            this.label1.TabIndex = 0;
-            this.label1.Text = "Id";
-            this.label1.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
-            // 
-            // dgvBancos
-            // 
-            this.dgvBancos.AllowUserToAddRows = false;
-            this.dgvBancos.AllowUserToDeleteRows = false;
-            this.dgvBancos.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
-            this.dgvBancos.Location = new System.Drawing.Point(10, 111);
-            this.dgvBancos.Name = "dgvBancos";
-            this.dgvBancos.Size = new System.Drawing.Size(282, 233);
-            this.dgvBancos.TabIndex = 2;
+            this.toolBar.Location = new System.Drawing.Point(0, 0);
+            this.toolBar.Name = "toolBar";
+            this.toolBar.Size = new System.Drawing.Size(613, 25);
+            this.toolBar.TabIndex = 1;
+            this.toolBar.Text = "toolStrip1";
             // 
             // tsbSalir
             // 
@@ -127,7 +66,6 @@
             this.tsbSalir.Name = "tsbSalir";
             this.tsbSalir.Size = new System.Drawing.Size(23, 22);
             this.tsbSalir.Text = "toolStripButton1";
-            this.tsbSalir.Click += new System.EventHandler(this.tsbSalir_Click);
             // 
             // tsbNew
             // 
@@ -137,7 +75,6 @@
             this.tsbNew.Name = "tsbNew";
             this.tsbNew.Size = new System.Drawing.Size(23, 22);
             this.tsbNew.Text = "toolStripButton1";
-            this.tsbNew.Click += new System.EventHandler(this.tsbNew_Click);
             // 
             // tsbDelete
             // 
@@ -156,7 +93,6 @@
             this.tsbEdit.Name = "tsbEdit";
             this.tsbEdit.Size = new System.Drawing.Size(23, 22);
             this.tsbEdit.Text = "toolStripButton1";
-            this.tsbEdit.Click += new System.EventHandler(this.tsbEdit_Click);
             // 
             // tsbSave
             // 
@@ -166,7 +102,6 @@
             this.tsbSave.Name = "tsbSave";
             this.tsbSave.Size = new System.Drawing.Size(23, 22);
             this.tsbSave.Text = "toolStripButton1";
-            this.tsbSave.Click += new System.EventHandler(this.tsbSave_Click);
             // 
             // tsbFind
             // 
@@ -186,25 +121,31 @@
             this.tsbPrint.Size = new System.Drawing.Size(23, 22);
             this.tsbPrint.Text = "toolStripButton1";
             // 
-            // Bancos
+            // dataGridView
+            // 
+            this.dataGridView.AllowUserToAddRows = false;
+            this.dataGridView.AllowUserToDeleteRows = false;
+            this.dataGridView.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
+            this.dataGridView.Dock = System.Windows.Forms.DockStyle.Bottom;
+            this.dataGridView.Location = new System.Drawing.Point(0, 170);
+            this.dataGridView.Name = "dataGridView";
+            this.dataGridView.Size = new System.Drawing.Size(613, 262);
+            this.dataGridView.TabIndex = 3;
+            // 
+            // ViewBase
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(302, 353);
+            this.ClientSize = new System.Drawing.Size(613, 432);
             this.ControlBox = false;
-            this.Controls.Add(this.dgvBancos);
-            this.Controls.Add(this.gbData);
-            this.Controls.Add(this.tsBancos);
+            this.Controls.Add(this.dataGridView);
+            this.Controls.Add(this.toolBar);
             this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.FixedSingle;
-            this.Name = "Bancos";
-            this.StartPosition = System.Windows.Forms.FormStartPosition.CenterParent;
-            this.Text = "Bancos";
-            this.Load += new System.EventHandler(this.Bancos_Load);
-            this.tsBancos.ResumeLayout(false);
-            this.tsBancos.PerformLayout();
-            this.gbData.ResumeLayout(false);
-            this.gbData.PerformLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.dgvBancos)).EndInit();
+            this.Name = "ViewBase";
+            this.Text = "ViewBase";
+            this.toolBar.ResumeLayout(false);
+            this.toolBar.PerformLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.dataGridView)).EndInit();
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -212,19 +153,14 @@
 
         #endregion
 
-        private System.Windows.Forms.ToolStrip tsBancos;
-        private System.Windows.Forms.GroupBox gbData;
-        private System.Windows.Forms.DataGridView dgvBancos;
-        private System.Windows.Forms.TextBox txtId;
-        private System.Windows.Forms.Label label1;
-        private System.Windows.Forms.TextBox txtDescripcion;
-        private System.Windows.Forms.Label label2;
+        private System.Windows.Forms.ToolStrip toolBar;
         private System.Windows.Forms.ToolStripButton tsbSalir;
         private System.Windows.Forms.ToolStripButton tsbNew;
-        private System.Windows.Forms.ToolStripButton tsbSave;
-        private System.Windows.Forms.ToolStripButton tsbEdit;
         private System.Windows.Forms.ToolStripButton tsbDelete;
+        private System.Windows.Forms.ToolStripButton tsbEdit;
+        private System.Windows.Forms.ToolStripButton tsbSave;
         private System.Windows.Forms.ToolStripButton tsbFind;
         private System.Windows.Forms.ToolStripButton tsbPrint;
+        private System.Windows.Forms.DataGridView dataGridView;
     }
 }
