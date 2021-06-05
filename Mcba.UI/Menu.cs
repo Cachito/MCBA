@@ -17,7 +17,7 @@ namespace Mcba.UI
 
         private void tsmiVehiculos_Click(object sender, EventArgs e)
         {
-            Backup frm = new Backup
+            CambioPassword frm = new CambioPassword
             {
                 MdiParent = this
             };

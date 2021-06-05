@@ -33,15 +33,15 @@
             this.tsbNew = new System.Windows.Forms.ToolStripButton();
             this.tsbDelete = new System.Windows.Forms.ToolStripButton();
             this.gbData = new System.Windows.Forms.GroupBox();
+            this.cmbCriticidad = new System.Windows.Forms.ComboBox();
+            this.dateTimePicker1 = new System.Windows.Forms.DateTimePicker();
+            this.dtpDesde = new System.Windows.Forms.DateTimePicker();
             this.cmbUsuarios = new System.Windows.Forms.ComboBox();
             this.label6 = new System.Windows.Forms.Label();
             this.label3 = new System.Windows.Forms.Label();
             this.label2 = new System.Windows.Forms.Label();
             this.label1 = new System.Windows.Forms.Label();
             this.dgvBitacora = new System.Windows.Forms.DataGridView();
-            this.dtpDesde = new System.Windows.Forms.DateTimePicker();
-            this.dateTimePicker1 = new System.Windows.Forms.DateTimePicker();
-            this.cmbCriticidad = new System.Windows.Forms.ComboBox();
             this.tsBitacora.SuspendLayout();
             this.gbData.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.dgvBitacora)).BeginInit();
@@ -82,7 +82,7 @@
             // tsbDelete
             // 
             this.tsbDelete.DisplayStyle = System.Windows.Forms.ToolStripItemDisplayStyle.Image;
-            this.tsbDelete.Image = global::Mcba.UI.Properties.Resources.iconPrinter;
+            this.tsbDelete.Image = global::Mcba.UI.Properties.Resources.printerBlack;
             this.tsbDelete.ImageTransparentColor = System.Drawing.Color.Magenta;
             this.tsbDelete.Name = "tsbDelete";
             this.tsbDelete.Size = new System.Drawing.Size(23, 22);
@@ -103,6 +103,34 @@
             this.gbData.Size = new System.Drawing.Size(451, 77);
             this.gbData.TabIndex = 1;
             this.gbData.TabStop = false;
+            // 
+            // cmbCriticidad
+            // 
+            this.cmbCriticidad.FormattingEnabled = true;
+            this.cmbCriticidad.Location = new System.Drawing.Point(85, 42);
+            this.cmbCriticidad.Name = "cmbCriticidad";
+            this.cmbCriticidad.Size = new System.Drawing.Size(168, 21);
+            this.cmbCriticidad.TabIndex = 15;
+            // 
+            // dateTimePicker1
+            // 
+            this.dateTimePicker1.CustomFormat = "dd/MM/yyyy";
+            this.dateTimePicker1.DropDownAlign = System.Windows.Forms.LeftRightAlignment.Right;
+            this.dateTimePicker1.Format = System.Windows.Forms.DateTimePickerFormat.Custom;
+            this.dateTimePicker1.Location = new System.Drawing.Point(357, 42);
+            this.dateTimePicker1.Name = "dateTimePicker1";
+            this.dateTimePicker1.Size = new System.Drawing.Size(79, 20);
+            this.dateTimePicker1.TabIndex = 14;
+            // 
+            // dtpDesde
+            // 
+            this.dtpDesde.CustomFormat = "dd/MM/yyyy";
+            this.dtpDesde.DropDownAlign = System.Windows.Forms.LeftRightAlignment.Right;
+            this.dtpDesde.Format = System.Windows.Forms.DateTimePickerFormat.Custom;
+            this.dtpDesde.Location = new System.Drawing.Point(357, 13);
+            this.dtpDesde.Name = "dtpDesde";
+            this.dtpDesde.Size = new System.Drawing.Size(79, 20);
+            this.dtpDesde.TabIndex = 13;
             // 
             // cmbUsuarios
             // 
@@ -157,34 +185,6 @@
             this.dgvBitacora.Name = "dgvBitacora";
             this.dgvBitacora.Size = new System.Drawing.Size(796, 353);
             this.dgvBitacora.TabIndex = 2;
-            // 
-            // dtpDesde
-            // 
-            this.dtpDesde.CustomFormat = "dd/MM/yyyy";
-            this.dtpDesde.DropDownAlign = System.Windows.Forms.LeftRightAlignment.Right;
-            this.dtpDesde.Format = System.Windows.Forms.DateTimePickerFormat.Custom;
-            this.dtpDesde.Location = new System.Drawing.Point(357, 13);
-            this.dtpDesde.Name = "dtpDesde";
-            this.dtpDesde.Size = new System.Drawing.Size(79, 20);
-            this.dtpDesde.TabIndex = 13;
-            // 
-            // dateTimePicker1
-            // 
-            this.dateTimePicker1.CustomFormat = "dd/MM/yyyy";
-            this.dateTimePicker1.DropDownAlign = System.Windows.Forms.LeftRightAlignment.Right;
-            this.dateTimePicker1.Format = System.Windows.Forms.DateTimePickerFormat.Custom;
-            this.dateTimePicker1.Location = new System.Drawing.Point(357, 42);
-            this.dateTimePicker1.Name = "dateTimePicker1";
-            this.dateTimePicker1.Size = new System.Drawing.Size(79, 20);
-            this.dateTimePicker1.TabIndex = 14;
-            // 
-            // cmbCriticidad
-            // 
-            this.cmbCriticidad.FormattingEnabled = true;
-            this.cmbCriticidad.Location = new System.Drawing.Point(85, 42);
-            this.cmbCriticidad.Name = "cmbCriticidad";
-            this.cmbCriticidad.Size = new System.Drawing.Size(168, 21);
-            this.cmbCriticidad.TabIndex = 15;
             // 
             // Bitacora
             // 

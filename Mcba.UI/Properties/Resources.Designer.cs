@@ -173,26 +173,6 @@ namespace Mcba.UI.Properties {
         /// <summary>
         ///   Looks up a localized resource of type System.Drawing.Bitmap.
         /// </summary>
-        internal static System.Drawing.Bitmap iconPrinter {
-            get {
-                object obj = ResourceManager.GetObject("iconPrinter", resourceCulture);
-                return ((System.Drawing.Bitmap)(obj));
-            }
-        }
-        
-        /// <summary>
-        ///   Looks up a localized resource of type System.Drawing.Bitmap.
-        /// </summary>
-        internal static System.Drawing.Bitmap iconPrinter_48 {
-            get {
-                object obj = ResourceManager.GetObject("iconPrinter_48", resourceCulture);
-                return ((System.Drawing.Bitmap)(obj));
-            }
-        }
-        
-        /// <summary>
-        ///   Looks up a localized resource of type System.Drawing.Bitmap.
-        /// </summary>
         internal static System.Drawing.Bitmap iconSave {
             get {
                 object obj = ResourceManager.GetObject("iconSave", resourceCulture);
@@ -213,9 +193,9 @@ namespace Mcba.UI.Properties {
         /// <summary>
         ///   Looks up a localized resource of type System.Drawing.Bitmap.
         /// </summary>
-        internal static System.Drawing.Bitmap printerIcon {
+        internal static System.Drawing.Bitmap Restore_Password_48 {
             get {
-                object obj = ResourceManager.GetObject("printerIcon", resourceCulture);
+                object obj = ResourceManager.GetObject("Restore_Password_48", resourceCulture);
                 return ((System.Drawing.Bitmap)(obj));
             }
         }

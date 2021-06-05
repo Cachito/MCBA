@@ -34,7 +34,32 @@
             this.tsbDelete = new System.Windows.Forms.ToolStripButton();
             this.tsbEdit = new System.Windows.Forms.ToolStripButton();
             this.tsbSave = new System.Windows.Forms.ToolStripButton();
+            this.tsbPrint = new System.Windows.Forms.ToolStripButton();
+            this.tsbBuscar = new System.Windows.Forms.ToolStripButton();
             this.gbData = new System.Windows.Forms.GroupBox();
+            this.gbPrecios = new System.Windows.Forms.GroupBox();
+            this.rbPrecioPlaza = new System.Windows.Forms.RadioButton();
+            this.rbPrecioPromedio = new System.Windows.Forms.RadioButton();
+            this.txtPrecioPlaza = new System.Windows.Forms.TextBox();
+            this.txtPrecioPromedio = new System.Windows.Forms.TextBox();
+            this.gbComisiones = new System.Windows.Forms.GroupBox();
+            this.rbComisionRemitente = new System.Windows.Forms.RadioButton();
+            this.rbComisionProducto = new System.Windows.Forms.RadioButton();
+            this.txtComiaionRemitente = new System.Windows.Forms.TextBox();
+            this.txtComisionProducto = new System.Windows.Forms.TextBox();
+            this.textBox3 = new System.Windows.Forms.TextBox();
+            this.label14 = new System.Windows.Forms.Label();
+            this.textBox2 = new System.Windows.Forms.TextBox();
+            this.label13 = new System.Windows.Forms.Label();
+            this.textBox1 = new System.Windows.Forms.TextBox();
+            this.label12 = new System.Windows.Forms.Label();
+            this.txtActaDecomiso = new System.Windows.Forms.TextBox();
+            this.label11 = new System.Windows.Forms.Label();
+            this.txtCantidadDecomiso = new System.Windows.Forms.TextBox();
+            this.label10 = new System.Windows.Forms.Label();
+            this.txtCantidadVenta = new System.Windows.Forms.TextBox();
+            this.label1 = new System.Windows.Forms.Label();
+            this.txtProducto = new System.Windows.Forms.TextBox();
             this.txtGuia = new System.Windows.Forms.TextBox();
             this.cmbRemitentes = new System.Windows.Forms.ComboBox();
             this.label8 = new System.Windows.Forms.Label();
@@ -43,36 +68,11 @@
             this.label3 = new System.Windows.Forms.Label();
             this.label2 = new System.Windows.Forms.Label();
             this.dgvLiquidacion = new System.Windows.Forms.DataGridView();
-            this.txtProducto = new System.Windows.Forms.TextBox();
-            this.tsbPrint = new System.Windows.Forms.ToolStripButton();
-            this.txtCantidadVenta = new System.Windows.Forms.TextBox();
-            this.label1 = new System.Windows.Forms.Label();
-            this.txtCantidadDecomiso = new System.Windows.Forms.TextBox();
-            this.label10 = new System.Windows.Forms.Label();
-            this.txtActaDecomiso = new System.Windows.Forms.TextBox();
-            this.label11 = new System.Windows.Forms.Label();
-            this.textBox1 = new System.Windows.Forms.TextBox();
-            this.label12 = new System.Windows.Forms.Label();
-            this.textBox2 = new System.Windows.Forms.TextBox();
-            this.label13 = new System.Windows.Forms.Label();
-            this.textBox3 = new System.Windows.Forms.TextBox();
-            this.label14 = new System.Windows.Forms.Label();
-            this.gbComisiones = new System.Windows.Forms.GroupBox();
-            this.rbComisionRemitente = new System.Windows.Forms.RadioButton();
-            this.rbComisionProducto = new System.Windows.Forms.RadioButton();
-            this.txtComiaionRemitente = new System.Windows.Forms.TextBox();
-            this.txtComisionProducto = new System.Windows.Forms.TextBox();
-            this.gbPrecios = new System.Windows.Forms.GroupBox();
-            this.rbPrecioPlaza = new System.Windows.Forms.RadioButton();
-            this.rbPrecioPromedio = new System.Windows.Forms.RadioButton();
-            this.txtPrecioPlaza = new System.Windows.Forms.TextBox();
-            this.txtPrecioPromedio = new System.Windows.Forms.TextBox();
-            this.tsbBuscar = new System.Windows.Forms.ToolStripButton();
             this.tsSock.SuspendLayout();
             this.gbData.SuspendLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.dgvLiquidacion)).BeginInit();
-            this.gbComisiones.SuspendLayout();
             this.gbPrecios.SuspendLayout();
+            this.gbComisiones.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.dgvLiquidacion)).BeginInit();
             this.SuspendLayout();
             // 
             // tsSock
@@ -140,6 +140,24 @@
             this.tsbSave.Text = "toolStripButton1";
             this.tsbSave.Click += new System.EventHandler(this.tsbSave_Click);
             // 
+            // tsbPrint
+            // 
+            this.tsbPrint.DisplayStyle = System.Windows.Forms.ToolStripItemDisplayStyle.Image;
+            this.tsbPrint.Image = global::Mcba.UI.Properties.Resources.printerBlack;
+            this.tsbPrint.ImageTransparentColor = System.Drawing.Color.Magenta;
+            this.tsbPrint.Name = "tsbPrint";
+            this.tsbPrint.Size = new System.Drawing.Size(23, 22);
+            this.tsbPrint.Text = "toolStripButton1";
+            // 
+            // tsbBuscar
+            // 
+            this.tsbBuscar.DisplayStyle = System.Windows.Forms.ToolStripItemDisplayStyle.Image;
+            this.tsbBuscar.Image = global::Mcba.UI.Properties.Resources.IconBuscar;
+            this.tsbBuscar.ImageTransparentColor = System.Drawing.Color.Magenta;
+            this.tsbBuscar.Name = "tsbBuscar";
+            this.tsbBuscar.Size = new System.Drawing.Size(23, 22);
+            this.tsbBuscar.Text = "toolStripButton1";
+            // 
             // gbData
             // 
             this.gbData.Controls.Add(this.gbPrecios);
@@ -169,6 +187,217 @@
             this.gbData.Size = new System.Drawing.Size(708, 240);
             this.gbData.TabIndex = 1;
             this.gbData.TabStop = false;
+            // 
+            // gbPrecios
+            // 
+            this.gbPrecios.Controls.Add(this.rbPrecioPlaza);
+            this.gbPrecios.Controls.Add(this.rbPrecioPromedio);
+            this.gbPrecios.Controls.Add(this.txtPrecioPlaza);
+            this.gbPrecios.Controls.Add(this.txtPrecioPromedio);
+            this.gbPrecios.Location = new System.Drawing.Point(514, 55);
+            this.gbPrecios.Name = "gbPrecios";
+            this.gbPrecios.Size = new System.Drawing.Size(181, 85);
+            this.gbPrecios.TabIndex = 48;
+            this.gbPrecios.TabStop = false;
+            this.gbPrecios.Text = "Precio";
+            // 
+            // rbPrecioPlaza
+            // 
+            this.rbPrecioPlaza.CheckAlign = System.Drawing.ContentAlignment.MiddleRight;
+            this.rbPrecioPlaza.Location = new System.Drawing.Point(21, 52);
+            this.rbPrecioPlaza.Name = "rbPrecioPlaza";
+            this.rbPrecioPlaza.Size = new System.Drawing.Size(76, 17);
+            this.rbPrecioPlaza.TabIndex = 50;
+            this.rbPrecioPlaza.TabStop = true;
+            this.rbPrecioPlaza.Text = "Plaza";
+            this.rbPrecioPlaza.UseVisualStyleBackColor = true;
+            // 
+            // rbPrecioPromedio
+            // 
+            this.rbPrecioPromedio.CheckAlign = System.Drawing.ContentAlignment.MiddleRight;
+            this.rbPrecioPromedio.Location = new System.Drawing.Point(21, 19);
+            this.rbPrecioPromedio.Name = "rbPrecioPromedio";
+            this.rbPrecioPromedio.Size = new System.Drawing.Size(76, 17);
+            this.rbPrecioPromedio.TabIndex = 49;
+            this.rbPrecioPromedio.TabStop = true;
+            this.rbPrecioPromedio.Text = "Promedio";
+            this.rbPrecioPromedio.UseVisualStyleBackColor = true;
+            // 
+            // txtPrecioPlaza
+            // 
+            this.txtPrecioPlaza.Location = new System.Drawing.Point(109, 52);
+            this.txtPrecioPlaza.Name = "txtPrecioPlaza";
+            this.txtPrecioPlaza.Size = new System.Drawing.Size(62, 20);
+            this.txtPrecioPlaza.TabIndex = 48;
+            // 
+            // txtPrecioPromedio
+            // 
+            this.txtPrecioPromedio.Location = new System.Drawing.Point(109, 16);
+            this.txtPrecioPromedio.Name = "txtPrecioPromedio";
+            this.txtPrecioPromedio.ReadOnly = true;
+            this.txtPrecioPromedio.Size = new System.Drawing.Size(62, 20);
+            this.txtPrecioPromedio.TabIndex = 47;
+            // 
+            // gbComisiones
+            // 
+            this.gbComisiones.Controls.Add(this.rbComisionRemitente);
+            this.gbComisiones.Controls.Add(this.rbComisionProducto);
+            this.gbComisiones.Controls.Add(this.txtComiaionRemitente);
+            this.gbComisiones.Controls.Add(this.txtComisionProducto);
+            this.gbComisiones.Location = new System.Drawing.Point(255, 55);
+            this.gbComisiones.Name = "gbComisiones";
+            this.gbComisiones.Size = new System.Drawing.Size(202, 85);
+            this.gbComisiones.TabIndex = 47;
+            this.gbComisiones.TabStop = false;
+            this.gbComisiones.Text = "Comisión";
+            // 
+            // rbComisionRemitente
+            // 
+            this.rbComisionRemitente.CheckAlign = System.Drawing.ContentAlignment.MiddleRight;
+            this.rbComisionRemitente.Location = new System.Drawing.Point(21, 52);
+            this.rbComisionRemitente.Name = "rbComisionRemitente";
+            this.rbComisionRemitente.Size = new System.Drawing.Size(77, 17);
+            this.rbComisionRemitente.TabIndex = 50;
+            this.rbComisionRemitente.TabStop = true;
+            this.rbComisionRemitente.Text = "Remitente";
+            this.rbComisionRemitente.UseVisualStyleBackColor = true;
+            // 
+            // rbComisionProducto
+            // 
+            this.rbComisionProducto.CheckAlign = System.Drawing.ContentAlignment.MiddleRight;
+            this.rbComisionProducto.Location = new System.Drawing.Point(21, 19);
+            this.rbComisionProducto.Name = "rbComisionProducto";
+            this.rbComisionProducto.Size = new System.Drawing.Size(77, 17);
+            this.rbComisionProducto.TabIndex = 49;
+            this.rbComisionProducto.TabStop = true;
+            this.rbComisionProducto.Text = "Producto";
+            this.rbComisionProducto.UseVisualStyleBackColor = true;
+            // 
+            // txtComiaionRemitente
+            // 
+            this.txtComiaionRemitente.Location = new System.Drawing.Point(109, 52);
+            this.txtComiaionRemitente.Name = "txtComiaionRemitente";
+            this.txtComiaionRemitente.ReadOnly = true;
+            this.txtComiaionRemitente.Size = new System.Drawing.Size(83, 20);
+            this.txtComiaionRemitente.TabIndex = 48;
+            // 
+            // txtComisionProducto
+            // 
+            this.txtComisionProducto.Location = new System.Drawing.Point(109, 16);
+            this.txtComisionProducto.Name = "txtComisionProducto";
+            this.txtComisionProducto.ReadOnly = true;
+            this.txtComisionProducto.Size = new System.Drawing.Size(83, 20);
+            this.txtComisionProducto.TabIndex = 47;
+            // 
+            // textBox3
+            // 
+            this.textBox3.Location = new System.Drawing.Point(604, 202);
+            this.textBox3.Name = "textBox3";
+            this.textBox3.ReadOnly = true;
+            this.textBox3.Size = new System.Drawing.Size(91, 20);
+            this.textBox3.TabIndex = 44;
+            // 
+            // label14
+            // 
+            this.label14.Location = new System.Drawing.Point(514, 202);
+            this.label14.Name = "label14";
+            this.label14.Size = new System.Drawing.Size(83, 20);
+            this.label14.TabIndex = 43;
+            this.label14.Text = "A Pagar";
+            this.label14.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
+            // 
+            // textBox2
+            // 
+            this.textBox2.Location = new System.Drawing.Point(344, 201);
+            this.textBox2.Name = "textBox2";
+            this.textBox2.ReadOnly = true;
+            this.textBox2.Size = new System.Drawing.Size(113, 20);
+            this.textBox2.TabIndex = 42;
+            // 
+            // label13
+            // 
+            this.label13.Location = new System.Drawing.Point(255, 201);
+            this.label13.Name = "label13";
+            this.label13.Size = new System.Drawing.Size(83, 20);
+            this.label13.TabIndex = 41;
+            this.label13.Text = "Total Comisión";
+            this.label13.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
+            // 
+            // textBox1
+            // 
+            this.textBox1.Location = new System.Drawing.Point(83, 202);
+            this.textBox1.Name = "textBox1";
+            this.textBox1.ReadOnly = true;
+            this.textBox1.Size = new System.Drawing.Size(159, 20);
+            this.textBox1.TabIndex = 40;
+            // 
+            // label12
+            // 
+            this.label12.Location = new System.Drawing.Point(6, 202);
+            this.label12.Name = "label12";
+            this.label12.Size = new System.Drawing.Size(71, 20);
+            this.label12.TabIndex = 39;
+            this.label12.Text = "Total Ventas";
+            this.label12.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
+            // 
+            // txtActaDecomiso
+            // 
+            this.txtActaDecomiso.Location = new System.Drawing.Point(604, 162);
+            this.txtActaDecomiso.Name = "txtActaDecomiso";
+            this.txtActaDecomiso.Size = new System.Drawing.Size(91, 20);
+            this.txtActaDecomiso.TabIndex = 38;
+            // 
+            // label11
+            // 
+            this.label11.Location = new System.Drawing.Point(514, 162);
+            this.label11.Name = "label11";
+            this.label11.Size = new System.Drawing.Size(83, 20);
+            this.label11.TabIndex = 37;
+            this.label11.Text = "Acta Decomiso";
+            this.label11.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
+            // 
+            // txtCantidadDecomiso
+            // 
+            this.txtCantidadDecomiso.Location = new System.Drawing.Point(344, 161);
+            this.txtCantidadDecomiso.Name = "txtCantidadDecomiso";
+            this.txtCantidadDecomiso.Size = new System.Drawing.Size(113, 20);
+            this.txtCantidadDecomiso.TabIndex = 36;
+            // 
+            // label10
+            // 
+            this.label10.Location = new System.Drawing.Point(255, 161);
+            this.label10.Name = "label10";
+            this.label10.Size = new System.Drawing.Size(83, 20);
+            this.label10.TabIndex = 35;
+            this.label10.Text = "Decomiso";
+            this.label10.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
+            // 
+            // txtCantidadVenta
+            // 
+            this.txtCantidadVenta.Location = new System.Drawing.Point(83, 161);
+            this.txtCantidadVenta.Name = "txtCantidadVenta";
+            this.txtCantidadVenta.ReadOnly = true;
+            this.txtCantidadVenta.Size = new System.Drawing.Size(159, 20);
+            this.txtCantidadVenta.TabIndex = 34;
+            // 
+            // label1
+            // 
+            this.label1.Location = new System.Drawing.Point(6, 161);
+            this.label1.Name = "label1";
+            this.label1.Size = new System.Drawing.Size(61, 20);
+            this.label1.TabIndex = 33;
+            this.label1.Text = "Venta";
+            this.label1.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
+            // 
+            // txtProducto
+            // 
+            this.txtProducto.AcceptsReturn = true;
+            this.txtProducto.Location = new System.Drawing.Point(83, 54);
+            this.txtProducto.Multiline = true;
+            this.txtProducto.Name = "txtProducto";
+            this.txtProducto.ReadOnly = true;
+            this.txtProducto.Size = new System.Drawing.Size(159, 86);
+            this.txtProducto.TabIndex = 29;
             // 
             // txtGuia
             // 
@@ -240,235 +469,6 @@
             this.dgvLiquidacion.Size = new System.Drawing.Size(708, 379);
             this.dgvLiquidacion.TabIndex = 2;
             // 
-            // txtProducto
-            // 
-            this.txtProducto.AcceptsReturn = true;
-            this.txtProducto.Location = new System.Drawing.Point(83, 54);
-            this.txtProducto.Multiline = true;
-            this.txtProducto.Name = "txtProducto";
-            this.txtProducto.ReadOnly = true;
-            this.txtProducto.Size = new System.Drawing.Size(159, 86);
-            this.txtProducto.TabIndex = 29;
-            // 
-            // tsbPrint
-            // 
-            this.tsbPrint.DisplayStyle = System.Windows.Forms.ToolStripItemDisplayStyle.Image;
-            this.tsbPrint.Image = global::Mcba.UI.Properties.Resources.iconPrinter;
-            this.tsbPrint.ImageTransparentColor = System.Drawing.Color.Magenta;
-            this.tsbPrint.Name = "tsbPrint";
-            this.tsbPrint.Size = new System.Drawing.Size(23, 22);
-            this.tsbPrint.Text = "toolStripButton1";
-            // 
-            // txtCantidadVenta
-            // 
-            this.txtCantidadVenta.Location = new System.Drawing.Point(83, 161);
-            this.txtCantidadVenta.Name = "txtCantidadVenta";
-            this.txtCantidadVenta.ReadOnly = true;
-            this.txtCantidadVenta.Size = new System.Drawing.Size(159, 20);
-            this.txtCantidadVenta.TabIndex = 34;
-            // 
-            // label1
-            // 
-            this.label1.Location = new System.Drawing.Point(6, 161);
-            this.label1.Name = "label1";
-            this.label1.Size = new System.Drawing.Size(61, 20);
-            this.label1.TabIndex = 33;
-            this.label1.Text = "Venta";
-            this.label1.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
-            // 
-            // txtCantidadDecomiso
-            // 
-            this.txtCantidadDecomiso.Location = new System.Drawing.Point(344, 161);
-            this.txtCantidadDecomiso.Name = "txtCantidadDecomiso";
-            this.txtCantidadDecomiso.Size = new System.Drawing.Size(113, 20);
-            this.txtCantidadDecomiso.TabIndex = 36;
-            // 
-            // label10
-            // 
-            this.label10.Location = new System.Drawing.Point(255, 161);
-            this.label10.Name = "label10";
-            this.label10.Size = new System.Drawing.Size(83, 20);
-            this.label10.TabIndex = 35;
-            this.label10.Text = "Decomiso";
-            this.label10.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
-            // 
-            // txtActaDecomiso
-            // 
-            this.txtActaDecomiso.Location = new System.Drawing.Point(604, 162);
-            this.txtActaDecomiso.Name = "txtActaDecomiso";
-            this.txtActaDecomiso.Size = new System.Drawing.Size(91, 20);
-            this.txtActaDecomiso.TabIndex = 38;
-            // 
-            // label11
-            // 
-            this.label11.Location = new System.Drawing.Point(514, 162);
-            this.label11.Name = "label11";
-            this.label11.Size = new System.Drawing.Size(83, 20);
-            this.label11.TabIndex = 37;
-            this.label11.Text = "Acta Decomiso";
-            this.label11.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
-            // 
-            // textBox1
-            // 
-            this.textBox1.Location = new System.Drawing.Point(83, 202);
-            this.textBox1.Name = "textBox1";
-            this.textBox1.ReadOnly = true;
-            this.textBox1.Size = new System.Drawing.Size(159, 20);
-            this.textBox1.TabIndex = 40;
-            // 
-            // label12
-            // 
-            this.label12.Location = new System.Drawing.Point(6, 202);
-            this.label12.Name = "label12";
-            this.label12.Size = new System.Drawing.Size(71, 20);
-            this.label12.TabIndex = 39;
-            this.label12.Text = "Total Ventas";
-            this.label12.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
-            // 
-            // textBox2
-            // 
-            this.textBox2.Location = new System.Drawing.Point(344, 201);
-            this.textBox2.Name = "textBox2";
-            this.textBox2.ReadOnly = true;
-            this.textBox2.Size = new System.Drawing.Size(113, 20);
-            this.textBox2.TabIndex = 42;
-            // 
-            // label13
-            // 
-            this.label13.Location = new System.Drawing.Point(255, 201);
-            this.label13.Name = "label13";
-            this.label13.Size = new System.Drawing.Size(83, 20);
-            this.label13.TabIndex = 41;
-            this.label13.Text = "Total Comisión";
-            this.label13.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
-            // 
-            // textBox3
-            // 
-            this.textBox3.Location = new System.Drawing.Point(604, 202);
-            this.textBox3.Name = "textBox3";
-            this.textBox3.ReadOnly = true;
-            this.textBox3.Size = new System.Drawing.Size(91, 20);
-            this.textBox3.TabIndex = 44;
-            // 
-            // label14
-            // 
-            this.label14.Location = new System.Drawing.Point(514, 202);
-            this.label14.Name = "label14";
-            this.label14.Size = new System.Drawing.Size(83, 20);
-            this.label14.TabIndex = 43;
-            this.label14.Text = "A Pagar";
-            this.label14.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
-            // 
-            // gbComisiones
-            // 
-            this.gbComisiones.Controls.Add(this.rbComisionRemitente);
-            this.gbComisiones.Controls.Add(this.rbComisionProducto);
-            this.gbComisiones.Controls.Add(this.txtComiaionRemitente);
-            this.gbComisiones.Controls.Add(this.txtComisionProducto);
-            this.gbComisiones.Location = new System.Drawing.Point(255, 55);
-            this.gbComisiones.Name = "gbComisiones";
-            this.gbComisiones.Size = new System.Drawing.Size(202, 85);
-            this.gbComisiones.TabIndex = 47;
-            this.gbComisiones.TabStop = false;
-            this.gbComisiones.Text = "Comisión";
-            // 
-            // rbComisionRemitente
-            // 
-            this.rbComisionRemitente.CheckAlign = System.Drawing.ContentAlignment.MiddleRight;
-            this.rbComisionRemitente.Location = new System.Drawing.Point(21, 52);
-            this.rbComisionRemitente.Name = "rbComisionRemitente";
-            this.rbComisionRemitente.Size = new System.Drawing.Size(77, 17);
-            this.rbComisionRemitente.TabIndex = 50;
-            this.rbComisionRemitente.TabStop = true;
-            this.rbComisionRemitente.Text = "Remitente";
-            this.rbComisionRemitente.UseVisualStyleBackColor = true;
-            // 
-            // rbComisionProducto
-            // 
-            this.rbComisionProducto.CheckAlign = System.Drawing.ContentAlignment.MiddleRight;
-            this.rbComisionProducto.Location = new System.Drawing.Point(21, 19);
-            this.rbComisionProducto.Name = "rbComisionProducto";
-            this.rbComisionProducto.Size = new System.Drawing.Size(77, 17);
-            this.rbComisionProducto.TabIndex = 49;
-            this.rbComisionProducto.TabStop = true;
-            this.rbComisionProducto.Text = "Producto";
-            this.rbComisionProducto.UseVisualStyleBackColor = true;
-            // 
-            // txtComiaionRemitente
-            // 
-            this.txtComiaionRemitente.Location = new System.Drawing.Point(109, 52);
-            this.txtComiaionRemitente.Name = "txtComiaionRemitente";
-            this.txtComiaionRemitente.ReadOnly = true;
-            this.txtComiaionRemitente.Size = new System.Drawing.Size(83, 20);
-            this.txtComiaionRemitente.TabIndex = 48;
-            // 
-            // txtComisionProducto
-            // 
-            this.txtComisionProducto.Location = new System.Drawing.Point(109, 16);
-            this.txtComisionProducto.Name = "txtComisionProducto";
-            this.txtComisionProducto.ReadOnly = true;
-            this.txtComisionProducto.Size = new System.Drawing.Size(83, 20);
-            this.txtComisionProducto.TabIndex = 47;
-            // 
-            // gbPrecios
-            // 
-            this.gbPrecios.Controls.Add(this.rbPrecioPlaza);
-            this.gbPrecios.Controls.Add(this.rbPrecioPromedio);
-            this.gbPrecios.Controls.Add(this.txtPrecioPlaza);
-            this.gbPrecios.Controls.Add(this.txtPrecioPromedio);
-            this.gbPrecios.Location = new System.Drawing.Point(514, 55);
-            this.gbPrecios.Name = "gbPrecios";
-            this.gbPrecios.Size = new System.Drawing.Size(181, 85);
-            this.gbPrecios.TabIndex = 48;
-            this.gbPrecios.TabStop = false;
-            this.gbPrecios.Text = "Precio";
-            // 
-            // rbPrecioPlaza
-            // 
-            this.rbPrecioPlaza.CheckAlign = System.Drawing.ContentAlignment.MiddleRight;
-            this.rbPrecioPlaza.Location = new System.Drawing.Point(21, 52);
-            this.rbPrecioPlaza.Name = "rbPrecioPlaza";
-            this.rbPrecioPlaza.Size = new System.Drawing.Size(76, 17);
-            this.rbPrecioPlaza.TabIndex = 50;
-            this.rbPrecioPlaza.TabStop = true;
-            this.rbPrecioPlaza.Text = "Plaza";
-            this.rbPrecioPlaza.UseVisualStyleBackColor = true;
-            // 
-            // rbPrecioPromedio
-            // 
-            this.rbPrecioPromedio.CheckAlign = System.Drawing.ContentAlignment.MiddleRight;
-            this.rbPrecioPromedio.Location = new System.Drawing.Point(21, 19);
-            this.rbPrecioPromedio.Name = "rbPrecioPromedio";
-            this.rbPrecioPromedio.Size = new System.Drawing.Size(76, 17);
-            this.rbPrecioPromedio.TabIndex = 49;
-            this.rbPrecioPromedio.TabStop = true;
-            this.rbPrecioPromedio.Text = "Promedio";
-            this.rbPrecioPromedio.UseVisualStyleBackColor = true;
-            // 
-            // txtPrecioPlaza
-            // 
-            this.txtPrecioPlaza.Location = new System.Drawing.Point(109, 52);
-            this.txtPrecioPlaza.Name = "txtPrecioPlaza";
-            this.txtPrecioPlaza.Size = new System.Drawing.Size(62, 20);
-            this.txtPrecioPlaza.TabIndex = 48;
-            // 
-            // txtPrecioPromedio
-            // 
-            this.txtPrecioPromedio.Location = new System.Drawing.Point(109, 16);
-            this.txtPrecioPromedio.Name = "txtPrecioPromedio";
-            this.txtPrecioPromedio.ReadOnly = true;
-            this.txtPrecioPromedio.Size = new System.Drawing.Size(62, 20);
-            this.txtPrecioPromedio.TabIndex = 47;
-            // 
-            // tsbBuscar
-            // 
-            this.tsbBuscar.DisplayStyle = System.Windows.Forms.ToolStripItemDisplayStyle.Image;
-            this.tsbBuscar.Image = global::Mcba.UI.Properties.Resources.IconBuscar;
-            this.tsbBuscar.ImageTransparentColor = System.Drawing.Color.Magenta;
-            this.tsbBuscar.Name = "tsbBuscar";
-            this.tsbBuscar.Size = new System.Drawing.Size(23, 22);
-            this.tsbBuscar.Text = "toolStripButton1";
-            // 
             // Liquidacion
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
@@ -486,11 +486,11 @@
             this.tsSock.PerformLayout();
             this.gbData.ResumeLayout(false);
             this.gbData.PerformLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.dgvLiquidacion)).EndInit();
-            this.gbComisiones.ResumeLayout(false);
-            this.gbComisiones.PerformLayout();
             this.gbPrecios.ResumeLayout(false);
             this.gbPrecios.PerformLayout();
+            this.gbComisiones.ResumeLayout(false);
+            this.gbComisiones.PerformLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.dgvLiquidacion)).EndInit();
             this.ResumeLayout(false);
             this.PerformLayout();
 
