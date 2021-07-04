@@ -201,12 +201,30 @@
     <Compile Include="ReporteCaja.Designer.cs">
       <DependentUpon>ReporteCaja.cs</DependentUpon>
     </Compile>
+    <Compile Include="ReporteLiquidacion.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="ReporteLiquidacion.Designer.cs">
+      <DependentUpon>ReporteLiquidacion.cs</DependentUpon>
+    </Compile>
+    <Compile Include="ReporteRemanente.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="ReporteRemanente.Designer.cs">
+      <DependentUpon>ReporteRemanente.cs</DependentUpon>
+    </Compile>
     <Compile Include="SqlServerTypes\Loader.cs" />
     <Compile Include="Stock.cs">
       <SubType>Form</SubType>
     </Compile>
     <Compile Include="Stock.Designer.cs">
       <DependentUpon>Stock.cs</DependentUpon>
+    </Compile>
+    <Compile Include="StockBuscar.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="StockBuscar.Designer.cs">
+      <DependentUpon>StockBuscar.cs</DependentUpon>
     </Compile>
     <Compile Include="TiposCuenta.cs">
       <SubType>Form</SubType>
@@ -308,9 +326,20 @@
     <EmbeddedResource Include="ReporteCaja.resx">
       <DependentUpon>ReporteCaja.cs</DependentUpon>
     </EmbeddedResource>
+    <EmbeddedResource Include="ReporteLiquidacion.resx">
+      <DependentUpon>ReporteLiquidacion.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="ReporteRemanente.resx">
+      <DependentUpon>ReporteRemanente.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Reportes\ReporteLiquidacion.rdlc" />
+    <EmbeddedResource Include="Reportes\ReporteRemanente.rdlc" />
     <EmbeddedResource Include="Reportes\ReporteCaja.rdlc" />
     <EmbeddedResource Include="Stock.resx">
       <DependentUpon>Stock.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="StockBuscar.resx">
+      <DependentUpon>StockBuscar.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="TiposCuenta.resx">
       <DependentUpon>TiposCuenta.cs</DependentUpon>

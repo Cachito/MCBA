@@ -17,7 +17,7 @@ namespace Mcba.UI
 
         private void tsmiVehiculos_Click(object sender, EventArgs e)
         {
-            ReporteCaja frm = new ReporteCaja
+            StockBuscar frm = new StockBuscar
             {
                 MdiParent = this
             };

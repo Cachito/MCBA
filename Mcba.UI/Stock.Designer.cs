@@ -54,6 +54,7 @@
             this.txtLote = new System.Windows.Forms.TextBox();
             this.label1 = new System.Windows.Forms.Label();
             this.dgvStock = new System.Windows.Forms.DataGridView();
+            this.tsbFind = new System.Windows.Forms.ToolStripButton();
             this.tsSock.SuspendLayout();
             this.gbData.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.dgvStock)).BeginInit();
@@ -66,6 +67,7 @@
             this.tsbNew,
             this.tsbDelete,
             this.tsbEdit,
+            this.tsbFind,
             this.tsbSave});
             this.tsSock.Location = new System.Drawing.Point(0, 0);
             this.tsSock.Name = "tsSock";
@@ -310,6 +312,15 @@
             this.dgvStock.Size = new System.Drawing.Size(789, 260);
             this.dgvStock.TabIndex = 2;
             // 
+            // tsbFind
+            // 
+            this.tsbFind.DisplayStyle = System.Windows.Forms.ToolStripItemDisplayStyle.Image;
+            this.tsbFind.Image = global::Mcba.UI.Properties.Resources.IconBuscar;
+            this.tsbFind.ImageTransparentColor = System.Drawing.Color.Magenta;
+            this.tsbFind.Name = "tsbFind";
+            this.tsbFind.Size = new System.Drawing.Size(23, 22);
+            this.tsbFind.Text = "toolStripButton1";
+            // 
             // Stock
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
@@ -361,5 +372,6 @@
         private System.Windows.Forms.TextBox txtFecha;
         private System.Windows.Forms.ComboBox cmbChoferes;
         private System.Windows.Forms.Label label9;
+        private System.Windows.Forms.ToolStripButton tsbFind;
     }
 }

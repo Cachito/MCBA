@@ -32,7 +32,7 @@
             <Paragraph>
               <TextRuns>
                 <TextRun>
-                  <Value>REPORTE DE CAJA</Value>
+                  <Value>REPORTE DE REMANENTE </Value>
                   <Style>
                     <FontFamily>JetBrains Mono</FontFamily>
                     <FontSize>16pt</FontSize>
@@ -49,7 +49,7 @@
           <Top>0.55245cm</Top>
           <Left>0.26141cm</Left>
           <Height>0.78521cm</Height>
-          <Width>10.94021cm</Width>
+          <Width>11.23126cm</Width>
           <ZIndex>1</ZIndex>
           <Style>
             <Border>
@@ -104,14 +104,14 @@
             </Border>
           </Style>
         </Line>
-        <Textbox Name="Textbox5">
+        <Textbox Name="txtLote">
           <CanGrow>true</CanGrow>
           <KeepTogether>true</KeepTogether>
           <Paragraphs>
             <Paragraph>
               <TextRuns>
                 <TextRun>
-                  <Value>Factura</Value>
+                  <Value>Lote</Value>
                   <Style>
                     <FontFamily>JetBrains Mono</FontFamily>
                   </Style>
@@ -122,11 +122,10 @@
               </Style>
             </Paragraph>
           </Paragraphs>
-          <rd:DefaultName>Textbox5</rd:DefaultName>
-          <Top>2.41405cm</Top>
-          <Left>3.62162cm</Left>
+          <Top>2.37808cm</Top>
+          <Left>2.9337cm</Left>
           <Height>0.6cm</Height>
-          <Width>3.26729cm</Width>
+          <Width>2.5cm</Width>
           <ZIndex>4</ZIndex>
           <Style>
             <Border>
@@ -139,14 +138,14 @@
             <PaddingBottom>2pt</PaddingBottom>
           </Style>
         </Textbox>
-        <Textbox Name="Textbox6">
+        <Textbox Name="txtLote2">
           <CanGrow>true</CanGrow>
           <KeepTogether>true</KeepTogether>
           <Paragraphs>
             <Paragraph>
               <TextRuns>
                 <TextRun>
-                  <Value>Importe</Value>
+                  <Value>Producto</Value>
                   <Style>
                     <FontFamily>JetBrains Mono</FontFamily>
                   </Style>
@@ -157,12 +156,45 @@
               </Style>
             </Paragraph>
           </Paragraphs>
-          <rd:DefaultName>Textbox5</rd:DefaultName>
-          <Top>2.41405cm</Top>
-          <Left>9.29852cm</Left>
+          <Top>2.37808cm</Top>
+          <Left>6.66591cm</Left>
           <Height>0.6cm</Height>
-          <Width>3.26729cm</Width>
+          <Width>2.5cm</Width>
           <ZIndex>5</ZIndex>
+          <Style>
+            <Border>
+              <Style>None</Style>
+            </Border>
+            <VerticalAlign>Middle</VerticalAlign>
+            <PaddingLeft>2pt</PaddingLeft>
+            <PaddingRight>2pt</PaddingRight>
+            <PaddingTop>2pt</PaddingTop>
+            <PaddingBottom>2pt</PaddingBottom>
+          </Style>
+        </Textbox>
+        <Textbox Name="txtLote3">
+          <CanGrow>true</CanGrow>
+          <KeepTogether>true</KeepTogether>
+          <Paragraphs>
+            <Paragraph>
+              <TextRuns>
+                <TextRun>
+                  <Value>Cantidad</Value>
+                  <Style>
+                    <FontFamily>JetBrains Mono</FontFamily>
+                  </Style>
+                </TextRun>
+              </TextRuns>
+              <Style>
+                <TextAlign>Center</TextAlign>
+              </Style>
+            </Paragraph>
+          </Paragraphs>
+          <Top>2.41405cm</Top>
+          <Left>10.95216cm</Left>
+          <Height>0.6cm</Height>
+          <Width>2.5cm</Width>
+          <ZIndex>6</ZIndex>
           <Style>
             <Border>
               <Style>None</Style>
@@ -198,7 +230,7 @@
           <Left>11.66905cm</Left>
           <Height>0.78521cm</Height>
           <Width>4.50673cm</Width>
-          <ZIndex>6</ZIndex>
+          <ZIndex>7</ZIndex>
           <Style>
             <Border>
               <Style>None</Style>
@@ -218,7 +250,7 @@
       </Style>
     </PageHeader>
     <PageFooter>
-      <Height>2.35479cm</Height>
+      <Height>1.13771cm</Height>
       <PrintOnFirstPage>true</PrintOnFirstPage>
       <PrintOnLastPage>true</PrintOnLastPage>
       <ReportItems>
@@ -263,45 +295,10 @@
             </Paragraph>
           </Paragraphs>
           <rd:DefaultName>PageNumber</rd:DefaultName>
-          <Top>1.35792cm</Top>
+          <Top>0.35278cm</Top>
           <Left>8.6487cm</Left>
           <Height>0.6cm</Height>
           <Width>7.52708cm</Width>
-          <Style>
-            <Border>
-              <Style>None</Style>
-            </Border>
-            <VerticalAlign>Middle</VerticalAlign>
-            <PaddingLeft>2pt</PaddingLeft>
-            <PaddingRight>2pt</PaddingRight>
-            <PaddingTop>2pt</PaddingTop>
-            <PaddingBottom>2pt</PaddingBottom>
-          </Style>
-        </Textbox>
-        <Textbox Name="Textbox7">
-          <CanGrow>true</CanGrow>
-          <KeepTogether>true</KeepTogether>
-          <Paragraphs>
-            <Paragraph>
-              <TextRuns>
-                <TextRun>
-                  <Value>Total</Value>
-                  <Style>
-                    <FontFamily>JetBrains Mono</FontFamily>
-                  </Style>
-                </TextRun>
-              </TextRuns>
-              <Style>
-                <TextAlign>Center</TextAlign>
-              </Style>
-            </Paragraph>
-          </Paragraphs>
-          <rd:DefaultName>Textbox5</rd:DefaultName>
-          <Top>0.44097cm</Top>
-          <Left>6.22935cm</Left>
-          <Height>0.6cm</Height>
-          <Width>3.26729cm</Width>
-          <ZIndex>1</ZIndex>
           <Style>
             <Border>
               <Style>None</Style>
@@ -318,7 +315,7 @@
           <Left>0.26141cm</Left>
           <Height>0cm</Height>
           <Width>15.91437cm</Width>
-          <ZIndex>2</ZIndex>
+          <ZIndex>1</ZIndex>
           <Style>
             <Border>
               <Style>Solid</Style>
