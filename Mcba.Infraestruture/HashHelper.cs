@@ -23,15 +23,15 @@ namespace Mcba.Infraestruture
             }
         }
 
-        public static string Base64Encode(string word)
+        public static string Base64Encode(string word, string salt)
         {
-            byte[] byt = Encoding.UTF8.GetBytes(word);
+            byte[] byt = Encoding.UTF8.GetBytes($"{word}{salt}");
             return Convert.ToBase64String(byt);
         }
 
-        public static string Base64Decode(string word)
+        public static string Base64Decode(string word, string salt)
         {
-            byte[] b = Convert.FromBase64String(word);
+            byte[] b = Convert.FromBase64String($"{word}");
             return Encoding.UTF8.GetString(b);
         }
     }
