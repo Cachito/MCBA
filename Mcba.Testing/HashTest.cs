@@ -1,4 +1,4 @@
-﻿using Mcba.Infraestruture;
+﻿using Mcba.Seguridad;
 using NUnit.Framework;
 
 namespace Mcba.Testing
@@ -6,8 +6,6 @@ namespace Mcba.Testing
     [TestFixture]
     public class HashTest
     {
-        private const string SALT = "Cacho";
-
         [Test, Explicit("Solo manual")]
         public void CompareMda5()
         {
@@ -15,8 +13,8 @@ namespace Mcba.Testing
                 "encriptar es cambiar el aspecto de un mensaje para que no lo entienda alguien que no es el receptor. lo mismo que cifrar. dos técnicas reversibles y no reversibles. reversibles: simétricos y asimétricos. simétrico: usa la misma clave o semilla para encriptar o desencriptar. (word, winrar). asimétrico: las claves o semillas son distintas. (clave pública y clave privada). se usa en la transmisión y mensajes por internet, por ejemplo.";
             var shortText = "encriptar";
 
-            var longHash = HashHelper.Crypt(longText, SALT);
-            var shortHash = HashHelper.Crypt(shortText, SALT);
+            var longHash = HashHelper.Crypt(longText);
+            var shortHash = HashHelper.Crypt(shortText);
 
             Assert.AreEqual(longHash.Length, shortHash.Length);
         }
@@ -27,8 +25,8 @@ namespace Mcba.Testing
             var longText =
                 "encriptar es cambiar el aspecto de un mensaje para que no lo entienda alguien que no es el receptor. lo mismo que cifrar. dos técnicas reversibles y no reversibles. reversibles: simétricos y asimétricos. simétrico: usa la misma clave o semilla para encriptar o desencriptar. (word, winrar). asimétrico: las claves o semillas son distintas. (clave pública y clave privada). se usa en la transmisión y mensajes por internet, por ejemplo.";
 
-            var longHash1 = HashHelper.Crypt(longText, SALT);
-            var longHash2 = HashHelper.Crypt(longText, SALT);
+            var longHash1 = HashHelper.Crypt(longText);
+            var longHash2 = HashHelper.Crypt(longText);
 
             Assert.AreEqual(longHash1, longHash2);
         }
@@ -36,13 +34,13 @@ namespace Mcba.Testing
         [Test, Explicit("Solo manual")]
         public void GetBase64()
         {
-            var longText =
-                "encriptar es cambiar el aspecto de un mensaje para que no lo entienda alguien que no es el receptor. lo mismo que cifrar. dos técnicas reversibles y no reversibles. reversibles: simétricos y asimétricos. simétrico: usa la misma clave o semilla para encriptar o desencriptar. (word, winrar). asimétrico: las claves o semillas son distintas. (clave pública y clave privada). se usa en la transmisión y mensajes por internet, por ejemplo.";
+            var text =  "Data.json";
+            //var text =  "{\"Salt\":\"LuisCarro\",\"ConnectionString\":\"Integrated Security=SSPI;Persist Security Info=False;Initial Catalog=Mcba;Data Source=DESKTOP-M95JCSK\\\\SQLEXPRESS;\"}";
 
-            var longHash = HashHelper.Base64Encode(longText, SALT);
-            var longDecode = HashHelper.Base64Decode(longHash, SALT);
+            var hash = HashHelper.Base64Encode(text);
+            var decode = HashHelper.Base64Decode(hash);
 
-            Assert.AreEqual(longText, longDecode);
+            Assert.AreEqual(text, decode);
         }
 
         [Test, Explicit("Solo manual")]
@@ -52,8 +50,8 @@ namespace Mcba.Testing
                 "encriptar es cambiar el aspecto de un mensaje para que no lo entienda alguien que no es el receptor. lo mismo que cifrar. dos técnicas reversibles y no reversibles. reversibles: simétricos y asimétricos. simétrico: usa la misma clave o semilla para encriptar o desencriptar. (word, winrar). asimétrico: las claves o semillas son distintas. (clave pública y clave privada). se usa en la transmisión y mensajes por internet, por ejemplo.";
             var shortText = "encriptar";
 
-            var longHash = HashHelper.Base64Encode(longText, SALT);
-            var shortHash = HashHelper.Base64Encode(shortText, SALT);
+            var longHash = HashHelper.Base64Encode(longText);
+            var shortHash = HashHelper.Base64Encode(shortText);
 
             var longLength = longHash.Length;
             var shortLength = shortHash.Length;

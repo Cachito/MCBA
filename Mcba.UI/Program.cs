@@ -13,7 +13,18 @@ namespace Mcba.UI
         {
             Application.EnableVisualStyles();
             Application.SetCompatibleTextRenderingDefault(false);
-            Application.Run(new Menu());
+
+            var dr = DialogResult.Cancel;
+
+            using (var splash = new Splash())
+            {
+                dr = splash.DialogResult;
+            }
+
+            if (dr == DialogResult.OK)
+            {
+                Application.Run(new Menu());
+            }
         }
     }
 }

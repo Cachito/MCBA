@@ -2,11 +2,11 @@
 using System.Security.Cryptography;
 using System.Text;
 
-namespace Mcba.Infraestruture
+namespace Mcba.Seguridad
 {
     public static class HashHelper
     {
-        public static string Crypt(string word, string salt)
+        public static string Crypt(string word, string salt = "Cacho")
         {
             var sb = new StringBuilder();
             using (var md5 = MD5.Create())
@@ -23,16 +23,22 @@ namespace Mcba.Infraestruture
             }
         }
 
-        public static string Base64Encode(string word, string salt)
+        public static string Base64Encode(string word, string salt = "Cacho", bool useSalt = true)
         {
-            byte[] byt = Encoding.UTF8.GetBytes($"{word}{salt}");
+            var toEncode = useSalt ? $"{word}{salt}" : word;
+            byte[] byt = Encoding.UTF8.GetBytes(toEncode);
+            
             return Convert.ToBase64String(byt);
         }
 
-        public static string Base64Decode(string word, string salt)
+        public static string Base64Decode(string word, string salt = "Cacho", bool useSalt = true)
         {
-            byte[] b = Convert.FromBase64String($"{word}");
-            return Encoding.UTF8.GetString(b);
+            var b = Convert.FromBase64String($"{word}");
+            var decode = Encoding.UTF8.GetString(b);
+
+            decode = useSalt ? decode.Remove(decode.Length - salt.Length) : decode;
+
+            return decode;
         }
     }
 }

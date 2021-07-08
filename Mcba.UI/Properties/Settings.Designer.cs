@@ -22,5 +22,17 @@ namespace Mcba.UI.Properties {
                 return defaultInstance;
             }
         }
+        
+        [global::System.Configuration.UserScopedSettingAttribute()]
+        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+        [global::System.Configuration.DefaultSettingValueAttribute("RGF0YS5qc29uQ2FjaG8=")]
+        public string Data {
+            get {
+                return ((string)(this["Data"]));
+            }
+            set {
+                this["Data"] = value;
+            }
+        }
     }
 }
