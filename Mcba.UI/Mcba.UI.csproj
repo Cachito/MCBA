@@ -54,6 +54,9 @@
     <Reference Include="Microsoft.SqlServer.Types, Version=14.0.0.0, Culture=neutral, PublicKeyToken=89845dcd8080cc91, processorArchitecture=MSIL">
       <HintPath>..\packages\Microsoft.SqlServer.Types.14.0.314.76\lib\net40\Microsoft.SqlServer.Types.dll</HintPath>
     </Reference>
+    <Reference Include="Newtonsoft.Json, Version=13.0.0.0, Culture=neutral, PublicKeyToken=30ad4fe6b2a6aeed, processorArchitecture=MSIL">
+      <HintPath>..\packages\Newtonsoft.Json.13.0.1\lib\net45\Newtonsoft.Json.dll</HintPath>
+    </Reference>
     <Reference Include="System" />
     <Reference Include="System.Core" />
     <Reference Include="System.Web.Services" />
@@ -213,6 +216,12 @@
     <Compile Include="ReporteRemanente.Designer.cs">
       <DependentUpon>ReporteRemanente.cs</DependentUpon>
     </Compile>
+    <Compile Include="Splash.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Splash.Designer.cs">
+      <DependentUpon>Splash.cs</DependentUpon>
+    </Compile>
     <Compile Include="SqlServerTypes\Loader.cs" />
     <Compile Include="Stock.cs">
       <SubType>Form</SubType>
@@ -335,6 +344,9 @@
     <EmbeddedResource Include="Reportes\ReporteLiquidacion.rdlc" />
     <EmbeddedResource Include="Reportes\ReporteRemanente.rdlc" />
     <EmbeddedResource Include="Reportes\ReporteCaja.rdlc" />
+    <EmbeddedResource Include="Splash.resx">
+      <DependentUpon>Splash.cs</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="Stock.resx">
       <DependentUpon>Stock.cs</DependentUpon>
     </EmbeddedResource>
@@ -353,6 +365,9 @@
     <EmbeddedResource Include="ViewBase.resx">
       <DependentUpon>ViewBase.cs</DependentUpon>
     </EmbeddedResource>
+    <None Include="Data.json">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </None>
     <None Include="packages.config" />
     <None Include="Properties\Settings.settings">
       <Generator>SettingsSingleFileGenerator</Generator>
@@ -368,6 +383,7 @@
     <None Include="App.config" />
   </ItemGroup>
   <ItemGroup>
+    <None Include="Resources\Logo2.png" />
     <Content Include="SqlServerTypes\readme.htm" />
     <Content Include="SqlServerTypes\x64\msvcr120.dll">
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
@@ -402,6 +418,10 @@
     <ProjectReference Include="..\Mcba.Infraestruture\Mcba.Infraestruture.csproj">
       <Project>{4ecff366-c27e-46db-a040-eab954c32149}</Project>
       <Name>Mcba.Infraestruture</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\Mcba.Seguridad\Mcba.Seguridad.csproj">
+      <Project>{11206fab-8aba-4683-bb18-d9230e0ee88d}</Project>
+      <Name>Mcba.Seguridad</Name>
     </ProjectReference>
   </ItemGroup>
   <ItemGroup />

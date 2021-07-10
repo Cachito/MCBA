@@ -9,7 +9,7 @@
     <AppDesignerFolder>Properties</AppDesignerFolder>
     <RootNamespace>Mcba.Seguridad</RootNamespace>
     <AssemblyName>Mcba.Seguridad</AssemblyName>
-    <TargetFrameworkVersion>v4.6</TargetFrameworkVersion>
+    <TargetFrameworkVersion>v4.0</TargetFrameworkVersion>
     <FileAlignment>512</FileAlignment>
     <Deterministic>true</Deterministic>
     <TargetFrameworkProfile />
@@ -46,6 +46,7 @@
     <Compile Include="Enums\CriticidadEnum.cs" />
     <Compile Include="Enums\TipoPermisoEnum.cs" />
     <Compile Include="Familia.cs" />
+    <Compile Include="HashHelper.cs" />
     <Compile Include="Patente.cs" />
     <Compile Include="Permiso.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
