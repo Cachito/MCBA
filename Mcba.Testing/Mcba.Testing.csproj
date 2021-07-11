@@ -62,10 +62,6 @@
       <Project>{4514ea8d-d83a-4f2b-9985-56a8aa964e78}</Project>
       <Name>Mcba.Entidad</Name>
     </ProjectReference>
-    <ProjectReference Include="..\Mcba.Infraestruture\Mcba.Infraestruture.csproj">
-      <Project>{4ecff366-c27e-46db-a040-eab954c32149}</Project>
-      <Name>Mcba.Infraestruture</Name>
-    </ProjectReference>
     <ProjectReference Include="..\Mcba.Seguridad\Mcba.Seguridad.csproj">
       <Project>{11206fab-8aba-4683-bb18-d9230e0ee88d}</Project>
       <Name>Mcba.Seguridad</Name>

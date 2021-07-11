@@ -43,6 +43,7 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="DvHelper.cs" />
     <Compile Include="Enums\CriticidadEnum.cs" />
     <Compile Include="Enums\TipoPermisoEnum.cs" />
     <Compile Include="Familia.cs" />
@@ -51,6 +52,15 @@
     <Compile Include="Permiso.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
-  <ItemGroup />
+  <ItemGroup>
+    <ProjectReference Include="..\Mcba.Entidad\Mcba.Entidad.csproj">
+      <Project>{4514ea8d-d83a-4f2b-9985-56a8aa964e78}</Project>
+      <Name>Mcba.Entidad</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\Mcba.Infraestruture\Mcba.Infraestruture.csproj">
+      <Project>{4ecff366-c27e-46db-a040-eab954c32149}</Project>
+      <Name>Mcba.Infraestruture</Name>
+    </ProjectReference>
+  </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>

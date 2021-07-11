@@ -1,4 +1,5 @@
 ﻿using Mcba.Entidad;
+using Mcba.Seguridad;
 using NUnit.Framework;
 
 namespace Mcba.Testing
@@ -18,11 +19,10 @@ namespace Mcba.Testing
                 Email = "luis.carro@gmail.com",
                 IdIdioma = 1,
                 Activo = true,
-                Intentos = 0,
-                Dv = ""
+                Intentos = 0
             };
 
-            var dv = u.DvString();
+            var dv = DvHelper<Usuario>.GetDvhString(u);
         }
     }
 }
