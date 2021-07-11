@@ -55,11 +55,5 @@
   <ItemGroup>
     <None Include="packages.config" />
   </ItemGroup>
-  <ItemGroup>
-    <ProjectReference Include="..\Mcba.Seguridad\Mcba.Seguridad.csproj">
-      <Project>{11206fab-8aba-4683-bb18-d9230e0ee88d}</Project>
-      <Name>Mcba.Seguridad</Name>
-    </ProjectReference>
-  </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>

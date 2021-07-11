@@ -40,16 +40,12 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="Attributes\CryptAttribute.cs" />
+    <Compile Include="CryptMethodEnum.cs" />
     <Compile Include="Idioma.cs" />
-    <Compile Include="DvHelper.cs" />
     <Compile Include="Usuario.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
-  <ItemGroup>
-    <ProjectReference Include="..\Mcba.Infraestruture\Mcba.Infraestruture.csproj">
-      <Project>{4ecff366-c27e-46db-a040-eab954c32149}</Project>
-      <Name>Mcba.Infraestruture</Name>
-    </ProjectReference>
-  </ItemGroup>
+  <ItemGroup />
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>
