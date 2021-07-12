@@ -14,7 +14,7 @@ namespace Mcba.UI
             Application.EnableVisualStyles();
             Application.SetCompatibleTextRenderingDefault(false);
 
-            var dr = DialogResult.Cancel;
+            DialogResult dr;
 
             using (var splash = new Splash())
             {
