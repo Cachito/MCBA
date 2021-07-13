@@ -31,7 +31,7 @@
             this.pbLogo = new System.Windows.Forms.PictureBox();
             this.ssSplash = new System.Windows.Forms.StatusStrip();
             this.tsProgress = new System.Windows.Forms.ToolStripProgressBar();
-            this.toolStripStatusLabel1 = new System.Windows.Forms.ToolStripStatusLabel();
+            this.tsLabel = new System.Windows.Forms.ToolStripStatusLabel();
             this.bgWorker = new System.ComponentModel.BackgroundWorker();
             ((System.ComponentModel.ISupportInitialize)(this.pbLogo)).BeginInit();
             this.ssSplash.SuspendLayout();
@@ -52,7 +52,7 @@
             // 
             this.ssSplash.Items.AddRange(new System.Windows.Forms.ToolStripItem[] {
             this.tsProgress,
-            this.toolStripStatusLabel1});
+            this.tsLabel});
             this.ssSplash.Location = new System.Drawing.Point(0, 428);
             this.ssSplash.Name = "ssSplash";
             this.ssSplash.Size = new System.Drawing.Size(800, 22);
@@ -66,16 +66,19 @@
             this.tsProgress.Size = new System.Drawing.Size(500, 16);
             this.tsProgress.Style = System.Windows.Forms.ProgressBarStyle.Marquee;
             // 
-            // toolStripStatusLabel1
+            // tsLabel
             // 
-            this.toolStripStatusLabel1.Name = "toolStripStatusLabel1";
-            this.toolStripStatusLabel1.Size = new System.Drawing.Size(283, 17);
-            this.toolStripStatusLabel1.Spring = true;
+            this.tsLabel.Name = "tsLabel";
+            this.tsLabel.Size = new System.Drawing.Size(252, 17);
+            this.tsLabel.Spring = true;
             // 
             // bgWorker
             // 
             this.bgWorker.WorkerReportsProgress = true;
             this.bgWorker.WorkerSupportsCancellation = true;
+            this.bgWorker.DoWork += new System.ComponentModel.DoWorkEventHandler(this.bgWorker_DoWork);
+            this.bgWorker.ProgressChanged += new System.ComponentModel.ProgressChangedEventHandler(this.bgWorker_ProgressChanged);
+            this.bgWorker.RunWorkerCompleted += new System.ComponentModel.RunWorkerCompletedEventHandler(this.bgWorker_RunWorkerCompleted);
             // 
             // Splash
             // 
@@ -106,7 +109,7 @@
         private System.Windows.Forms.PictureBox pbLogo;
         private System.Windows.Forms.StatusStrip ssSplash;
         private System.Windows.Forms.ToolStripProgressBar tsProgress;
-        private System.Windows.Forms.ToolStripStatusLabel toolStripStatusLabel1;
+        private System.Windows.Forms.ToolStripStatusLabel tsLabel;
         private System.ComponentModel.BackgroundWorker bgWorker;
     }
 }

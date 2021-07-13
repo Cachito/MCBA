@@ -25,10 +25,11 @@ namespace Mcba.Testing
         public void GetMda5()
         {
             var text = "0";
+            var text2 = "7264";
 
             // con salt sistema
             var hash1 = HashHelper.Crypt(text, SALT_SISTEMA);
-            var hash2 = HashHelper.Crypt(text, SALT_SISTEMA);
+            var hash2 = HashHelper.Crypt(text2, SALT_SISTEMA);
 
             // sin salt sistema (default)
             //var hash1 = HashHelper.Crypt(text);

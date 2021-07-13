@@ -9,6 +9,18 @@ namespace Mcba.Seguridad
         public static string Crypt(string word, string salt = "Cacho")
         {
             var sb = new StringBuilder();
+
+            var hashmd5 = new MD5CryptoServiceProvider();
+            byte[] toEncryptArray = Encoding.UTF8.GetBytes(word);
+            byte[] keyArray = hashmd5.ComputeHash(Encoding.UTF8.GetBytes(salt));
+            hashmd5.Clear();
+
+            //TripleDesProvider.Key = keyArray;
+            //TripleDesProvider.Mode = CipherMode.ECB;
+            //TripleDesProvider.Padding = PaddingMode.PKCS7;
+
+
+
             using (var md5 = MD5.Create())
             {
                 var encoding = new ASCIIEncoding();

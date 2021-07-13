@@ -22,7 +22,7 @@ namespace Mcba.Testing
                 Intentos = 0
             };
 
-            var dv = DvHelper<Usuario>.GetDvhString(u);
+            var dvString = DvHelper<Usuario>.GetDvhString(u);
         }
     }
 }
