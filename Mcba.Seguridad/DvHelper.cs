@@ -10,9 +10,12 @@ namespace Mcba.Seguridad
     {
         public static string GetDvhString(T instancia)
         {
-            var ret = new StringBuilder();
+            var ret = string.Empty;
+
+            var dvBuilder = new StringBuilder();
 
             var props = instancia.GetType().GetProperties();
+
             for (var i = 0; i < props.Length; i++)
             {
                 var value = props[i].GetValue(instancia, null);
@@ -40,47 +43,80 @@ namespace Mcba.Seguridad
                         break;
                 }
 
-                ret.Append(GetCryptString(stringValue, attr));
+                var cryptMethod = GetCryptMethod(attr);
+
+                var cryptString = GetCryptString(stringValue, cryptMethod);
+
+                dvBuilder.Append(cryptString);
             }
 
-            return ret.ToString();
+            var dvValue = GetDvValue(dvBuilder.ToString());
+
+            ret = GetCryptString(dvValue, CryptMethodEnum.Aes);
+
+            return ret;
         }
 
-        private static string GetCryptString(string cadena, object[] attr)
+        private static CryptMethodEnum GetCryptMethod(object[] attr)
         {
-            var ret = cadena;
-
-            var crypt = false;
-            var cryptMethod = CryptMethodEnum.Base64;
+            var ret = CryptMethodEnum.None;
 
             if (attr.Length > 0)
             {
-                crypt = true;
-                
-                if (((CryptMethodAttribute)attr[0]).CryptMethod == CryptMethodEnum.Base64)
+                switch (((CryptMethodAttribute)attr[0]).CryptMethod)
                 {
-                    cryptMethod = CryptMethodEnum.Base64;
+                    case CryptMethodEnum.Base64:
+                        ret = CryptMethodEnum.Base64;
+                        break;
+
+                    case CryptMethodEnum.Aes:
+                        ret = CryptMethodEnum.Aes;
+                        break;
+
+                    case CryptMethodEnum.Sha1:
+                        ret = CryptMethodEnum.Sha1;
+                        break;
                 }
-
-                if (((CryptMethodAttribute)attr[0]).CryptMethod == CryptMethodEnum.Md5)
-                {
-                    cryptMethod = CryptMethodEnum.Md5;
-                }
             }
 
-            if (!crypt)
+            return ret;
+        }
+
+        private static string GetDvValue(string dvString)
+        {
+            var asciiBytes = Encoding.ASCII.GetBytes(dvString);
+            var sum = 0;
+            var pos = 1;
+            foreach (var b in asciiBytes)
             {
-                ret = cadena;
+                sum += (b * pos);
+                pos++;
             }
 
-            if (crypt && cryptMethod == CryptMethodEnum.Base64)
-            {
-                ret = HashHelper.Base64Encode(cadena, McbaSettings.Salt);
-            }
+            return sum.ToString();
+        }
 
-            if (crypt && cryptMethod == CryptMethodEnum.Md5)
+        private static string GetCryptString(string cadena, CryptMethodEnum cryptMethod)
+        {
+            var ret = cadena;
+
+            switch (cryptMethod)
             {
-                ret = HashHelper.Crypt(cadena, McbaSettings.Salt);
+                case CryptMethodEnum.None:
+                    ret = cadena;
+                    break;
+
+                case CryptMethodEnum.Base64:
+                    ret = HashHelper.Base64Encode(cadena);
+                    break;
+
+                case CryptMethodEnum.Aes:
+                    ret = HashHelper.Encrypt(cadena, McbaSettings.Key, McbaSettings.Salt);
+                    break;
+
+                case CryptMethodEnum.Sha1:
+                    ret = HashHelper.Crypt(cadena, McbaSettings.Salt);
+                    break;
             }
 
             return ret;

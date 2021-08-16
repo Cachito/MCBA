@@ -18,7 +18,24 @@ namespace Mcba.UI
 
             using (var splash = new Splash())
             {
+                splash.ShowDialog();
                 dr = splash.DialogResult;
+            }
+
+            if (dr != DialogResult.OK)
+            {
+                Environment.Exit(1);
+            }
+
+            using (var login = new Login())
+            {
+                login.ShowDialog();
+                dr = login.DialogResult;
+            }
+
+            if (dr != DialogResult.OK)
+            {
+                Environment.Exit(2);
             }
 
             if (dr == DialogResult.OK)
