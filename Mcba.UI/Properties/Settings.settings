@@ -2,8 +2,8 @@
 <SettingsFile xmlns="http://schemas.microsoft.com/VisualStudio/2004/01/settings" CurrentProfile="(Default)" GeneratedClassNamespace="Mcba.UI.Properties" GeneratedClassName="Settings">
   <Profiles />
   <Settings>
-    <Setting Name="Data" Type="System.String" Scope="User">
-      <Value Profile="(Default)">RGF0YS5qc29uQ2FjaG8=</Value>
+    <Setting Name="Data" Type="System.String" Scope="Application">
+      <Value Profile="(Default)">RABhAHQAYQAuAGoAcwBvAG4A</Value>
     </Setting>
   </Settings>
 </SettingsFile>

@@ -52,7 +52,7 @@ namespace Mcba.Seguridad
 
             var dvValue = GetDvValue(dvBuilder.ToString());
 
-            ret = GetCryptString(dvValue, CryptMethodEnum.Md5);
+            ret = GetCryptString(dvValue, CryptMethodEnum.Aes);
 
             return ret;
         }
@@ -63,14 +63,19 @@ namespace Mcba.Seguridad
 
             if (attr.Length > 0)
             {
-                if (((CryptMethodAttribute) attr[0]).CryptMethod == CryptMethodEnum.Base64)
+                switch (((CryptMethodAttribute)attr[0]).CryptMethod)
                 {
-                    ret = CryptMethodEnum.Base64;
-                }
+                    case CryptMethodEnum.Base64:
+                        ret = CryptMethodEnum.Base64;
+                        break;
 
-                if (((CryptMethodAttribute) attr[0]).CryptMethod == CryptMethodEnum.Md5)
-                {
-                    ret = CryptMethodEnum.Md5;
+                    case CryptMethodEnum.Aes:
+                        ret = CryptMethodEnum.Aes;
+                        break;
+
+                    case CryptMethodEnum.Sha1:
+                        ret = CryptMethodEnum.Sha1;
+                        break;
                 }
             }
 
@@ -81,10 +86,11 @@ namespace Mcba.Seguridad
         {
             var asciiBytes = Encoding.ASCII.GetBytes(dvString);
             var sum = 0;
-
-            foreach (byte b in asciiBytes)
+            var pos = 1;
+            foreach (var b in asciiBytes)
             {
-                sum += b;
+                sum += (b * pos);
+                pos++;
             }
 
             return sum.ToString();
@@ -101,10 +107,14 @@ namespace Mcba.Seguridad
                     break;
 
                 case CryptMethodEnum.Base64:
-                    ret = HashHelper.Base64Encode(cadena, McbaSettings.Salt);
+                    ret = HashHelper.Base64Encode(cadena);
                     break;
 
-                case CryptMethodEnum.Md5:
+                case CryptMethodEnum.Aes:
+                    ret = HashHelper.Encrypt(cadena, McbaSettings.Key, McbaSettings.Salt);
+                    break;
+
+                case CryptMethodEnum.Sha1:
                     ret = HashHelper.Crypt(cadena, McbaSettings.Salt);
                     break;
             }

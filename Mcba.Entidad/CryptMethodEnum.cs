@@ -3,7 +3,8 @@
     public enum CryptMethodEnum
     {
         None,
-        Md5,
-        Base64
+        Base64,
+        Sha1,
+        Aes
     }
 }

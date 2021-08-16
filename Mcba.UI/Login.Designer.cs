@@ -31,18 +31,18 @@ namespace Mcba.UI
         {
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(Login));
             this.gbData = new System.Windows.Forms.GroupBox();
-            this.pbLogo = new System.Windows.Forms.PictureBox();
-            this.label1 = new System.Windows.Forms.Label();
-            this.txtUsuario = new System.Windows.Forms.TextBox();
-            this.txtPassword = new System.Windows.Forms.TextBox();
-            this.label2 = new System.Windows.Forms.Label();
+            this.comboBox1 = new System.Windows.Forms.ComboBox();
+            this.label4 = new System.Windows.Forms.Label();
+            this.button1 = new System.Windows.Forms.Button();
+            this.btnCancel = new System.Windows.Forms.Button();
+            this.btnOk = new System.Windows.Forms.Button();
             this.txtEmail = new System.Windows.Forms.TextBox();
             this.label3 = new System.Windows.Forms.Label();
-            this.btnOk = new System.Windows.Forms.Button();
-            this.btnCancel = new System.Windows.Forms.Button();
-            this.button1 = new System.Windows.Forms.Button();
-            this.label4 = new System.Windows.Forms.Label();
-            this.comboBox1 = new System.Windows.Forms.ComboBox();
+            this.txtPassword = new System.Windows.Forms.TextBox();
+            this.label2 = new System.Windows.Forms.Label();
+            this.txtUsuario = new System.Windows.Forms.TextBox();
+            this.label1 = new System.Windows.Forms.Label();
+            this.pbLogo = new System.Windows.Forms.PictureBox();
             this.gbData.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.pbLogo)).BeginInit();
             this.SuspendLayout();
@@ -66,47 +66,50 @@ namespace Mcba.UI
             this.gbData.TabIndex = 0;
             this.gbData.TabStop = false;
             // 
-            // pbLogo
+            // comboBox1
             // 
-            this.pbLogo.Image = global::Mcba.UI.Properties.Resources.bsa;
-            this.pbLogo.Location = new System.Drawing.Point(12, 19);
-            this.pbLogo.Name = "pbLogo";
-            this.pbLogo.Size = new System.Drawing.Size(222, 229);
-            this.pbLogo.SizeMode = System.Windows.Forms.PictureBoxSizeMode.AutoSize;
-            this.pbLogo.TabIndex = 1;
-            this.pbLogo.TabStop = false;
+            this.comboBox1.FormattingEnabled = true;
+            this.comboBox1.Location = new System.Drawing.Point(89, 146);
+            this.comboBox1.Name = "comboBox1";
+            this.comboBox1.Size = new System.Drawing.Size(206, 21);
+            this.comboBox1.TabIndex = 10;
             // 
-            // label1
+            // label4
             // 
-            this.label1.Location = new System.Drawing.Point(15, 16);
-            this.label1.Name = "label1";
-            this.label1.Size = new System.Drawing.Size(68, 23);
-            this.label1.TabIndex = 0;
-            this.label1.Text = "Usuario";
-            this.label1.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
+            this.label4.Location = new System.Drawing.Point(15, 145);
+            this.label4.Name = "label4";
+            this.label4.Size = new System.Drawing.Size(68, 23);
+            this.label4.TabIndex = 9;
+            this.label4.Text = "Idioma";
+            this.label4.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
             // 
-            // txtUsuario
+            // button1
             // 
-            this.txtUsuario.Location = new System.Drawing.Point(89, 17);
-            this.txtUsuario.Name = "txtUsuario";
-            this.txtUsuario.Size = new System.Drawing.Size(206, 20);
-            this.txtUsuario.TabIndex = 1;
+            this.button1.Location = new System.Drawing.Point(220, 190);
+            this.button1.Name = "button1";
+            this.button1.Size = new System.Drawing.Size(75, 42);
+            this.button1.TabIndex = 8;
+            this.button1.Text = "Recuperar Contaseña";
+            this.button1.UseVisualStyleBackColor = true;
             // 
-            // txtPassword
+            // btnCancel
             // 
-            this.txtPassword.Location = new System.Drawing.Point(89, 60);
-            this.txtPassword.Name = "txtPassword";
-            this.txtPassword.Size = new System.Drawing.Size(206, 20);
-            this.txtPassword.TabIndex = 3;
+            this.btnCancel.Location = new System.Drawing.Point(119, 190);
+            this.btnCancel.Name = "btnCancel";
+            this.btnCancel.Size = new System.Drawing.Size(75, 42);
+            this.btnCancel.TabIndex = 7;
+            this.btnCancel.Text = "Cancelar";
+            this.btnCancel.UseVisualStyleBackColor = true;
+            this.btnCancel.Click += new System.EventHandler(this.btnCancel_Click);
             // 
-            // label2
+            // btnOk
             // 
-            this.label2.Location = new System.Drawing.Point(15, 59);
-            this.label2.Name = "label2";
-            this.label2.Size = new System.Drawing.Size(68, 23);
-            this.label2.TabIndex = 2;
-            this.label2.Text = "Contaseña";
-            this.label2.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
+            this.btnOk.Location = new System.Drawing.Point(15, 188);
+            this.btnOk.Name = "btnOk";
+            this.btnOk.Size = new System.Drawing.Size(75, 42);
+            this.btnOk.TabIndex = 6;
+            this.btnOk.Text = "Ok";
+            this.btnOk.UseVisualStyleBackColor = true;
             // 
             // txtEmail
             // 
@@ -125,49 +128,47 @@ namespace Mcba.UI
             this.label3.Text = "Email";
             this.label3.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
             // 
-            // btnOk
+            // txtPassword
             // 
-            this.btnOk.Location = new System.Drawing.Point(15, 188);
-            this.btnOk.Name = "btnOk";
-            this.btnOk.Size = new System.Drawing.Size(75, 42);
-            this.btnOk.TabIndex = 6;
-            this.btnOk.Text = "Ok";
-            this.btnOk.UseVisualStyleBackColor = true;
+            this.txtPassword.Location = new System.Drawing.Point(89, 60);
+            this.txtPassword.Name = "txtPassword";
+            this.txtPassword.Size = new System.Drawing.Size(206, 20);
+            this.txtPassword.TabIndex = 3;
             // 
-            // btnCancel
+            // label2
             // 
-            this.btnCancel.Location = new System.Drawing.Point(119, 190);
-            this.btnCancel.Name = "btnCancel";
-            this.btnCancel.Size = new System.Drawing.Size(75, 42);
-            this.btnCancel.TabIndex = 7;
-            this.btnCancel.Text = "Cancelar";
-            this.btnCancel.UseVisualStyleBackColor = true;
+            this.label2.Location = new System.Drawing.Point(15, 59);
+            this.label2.Name = "label2";
+            this.label2.Size = new System.Drawing.Size(68, 23);
+            this.label2.TabIndex = 2;
+            this.label2.Text = "Contaseña";
+            this.label2.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
             // 
-            // button1
+            // txtUsuario
             // 
-            this.button1.Location = new System.Drawing.Point(220, 190);
-            this.button1.Name = "button1";
-            this.button1.Size = new System.Drawing.Size(75, 42);
-            this.button1.TabIndex = 8;
-            this.button1.Text = "Recuperar Contaseña";
-            this.button1.UseVisualStyleBackColor = true;
+            this.txtUsuario.Location = new System.Drawing.Point(89, 17);
+            this.txtUsuario.Name = "txtUsuario";
+            this.txtUsuario.Size = new System.Drawing.Size(206, 20);
+            this.txtUsuario.TabIndex = 1;
             // 
-            // label4
+            // label1
             // 
-            this.label4.Location = new System.Drawing.Point(15, 145);
-            this.label4.Name = "label4";
-            this.label4.Size = new System.Drawing.Size(68, 23);
-            this.label4.TabIndex = 9;
-            this.label4.Text = "Idioma";
-            this.label4.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
+            this.label1.Location = new System.Drawing.Point(15, 16);
+            this.label1.Name = "label1";
+            this.label1.Size = new System.Drawing.Size(68, 23);
+            this.label1.TabIndex = 0;
+            this.label1.Text = "Usuario";
+            this.label1.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
             // 
-            // comboBox1
+            // pbLogo
             // 
-            this.comboBox1.FormattingEnabled = true;
-            this.comboBox1.Location = new System.Drawing.Point(89, 146);
-            this.comboBox1.Name = "comboBox1";
-            this.comboBox1.Size = new System.Drawing.Size(206, 21);
-            this.comboBox1.TabIndex = 10;
+            this.pbLogo.Image = global::Mcba.UI.Properties.Resources.bsa;
+            this.pbLogo.Location = new System.Drawing.Point(12, 19);
+            this.pbLogo.Name = "pbLogo";
+            this.pbLogo.Size = new System.Drawing.Size(222, 229);
+            this.pbLogo.SizeMode = System.Windows.Forms.PictureBoxSizeMode.AutoSize;
+            this.pbLogo.TabIndex = 1;
+            this.pbLogo.TabStop = false;
             // 
             // Login
             // 

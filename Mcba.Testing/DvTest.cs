@@ -1,4 +1,5 @@
 ﻿using Mcba.Entidad;
+using Mcba.Infraestruture.Settings;
 using Mcba.Seguridad;
 using NUnit.Framework;
 
@@ -21,6 +22,9 @@ namespace Mcba.Testing
                 Activo = true,
                 Intentos = 0
             };
+
+            McbaSettings.Key = "0909b1f91cbb4459acab466ae8f0eaf5";
+            McbaSettings.Salt = "LuisCarroTfi";
 
             var dvString = DvHelper<Usuario>.GetDvhString(u);
         }
