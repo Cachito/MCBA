@@ -4,6 +4,8 @@ using System.IO;
 using System.Threading;
 using Mcba.Seguridad;
 using System.Windows.Forms;
+using Mcba.Infraestruture;
+using Mcba.Infraestruture.Enums;
 using Mcba.Infraestruture.Settings;
 using Mcba.UI.Properties;
 using Newtonsoft.Json;
@@ -36,16 +38,15 @@ namespace Mcba.UI
                 Environment.Exit(1);
             }
 
+            var settings = SetSettings();
+
+            tsLabel.Text = Captions.GetCaption(McbaSettings.Language, Name, "CheckIntegridad");
+
+            // check integridad
             for (var i = 1; i <= 100; i++)
             {
                 Thread.Sleep(100);
-
-                worker.ReportProgress(i);
             }
-
-            var settings = SaveSettings();
-
-            // check integridad
 
             e.Result = settings;
         }
@@ -56,7 +57,7 @@ namespace Mcba.UI
             Close();
         }
 
-        private bool SaveSettings()
+        private bool SetSettings()
         {
             var fileName = HashHelper.Base64Decode(Settings.Default.Data);
             var encodedData = File.ReadAllText(Path.Combine(Application.StartupPath, fileName));
@@ -66,6 +67,7 @@ namespace Mcba.UI
             var mcbaSettings = JsonConvert.DeserializeObject<InstanceSettings>(jsonData);
 
             McbaSettings.MapSettings(mcbaSettings);
+            McbaSettings.Language = (LanguageEnum)Settings.Default.Language;
 
             return true;
         }
