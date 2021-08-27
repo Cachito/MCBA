@@ -40,7 +40,7 @@ namespace Mcba.UI
 
             var settings = SetSettings();
 
-            tsLabel.Text = Captions.GetCaption(McbaSettings.Language, Name, "CheckIntegridad");
+            tsLabel.Text = Captions.GetCaption((int)McbaSettings.Language, Name, "CheckIntegridad");
 
             // check integridad
             for (var i = 1; i <= 100; i++)

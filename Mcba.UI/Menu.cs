@@ -1,5 +1,9 @@
 ﻿using System;
+using System.Collections.Generic;
+using System.Linq;
 using System.Windows.Forms;
+using Mcba.Infraestruture;
+using Mcba.Infraestruture.Settings;
 
 namespace Mcba.UI
 {
@@ -8,6 +12,20 @@ namespace Mcba.UI
         public Menu()
         {
             InitializeComponent();
+        }
+
+        private void SetCaptions(int idLanguage)
+        {
+            var caps = Captions.GetCaptions(idLanguage, Name);
+
+            foreach (KeyValuePair<string, string> cap in caps)
+            {
+                var c = Controls.Find(cap.Key, true);
+                if (c.Any())
+                {
+                    c[0].Text = cap.Value;
+                }
+            }
         }
 
         private void tsmiSalir_Click(object sender, EventArgs e)
@@ -33,6 +51,17 @@ namespace Mcba.UI
             };
 
             frm.Show();
+        }
+
+        private void Menu_Load(object sender, EventArgs e)
+        {
+            Cursor = Cursors.WaitCursor;
+            Application.DoEvents();
+
+            SetCaptions((int)McbaSettings.Language);
+
+            Cursor = Cursors.Default;
+            Application.DoEvents();
         }
     }
 }

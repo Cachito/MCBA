@@ -52,7 +52,7 @@ namespace Mcba.Seguridad
 
             var dvValue = GetDvValue(dvBuilder.ToString());
 
-            ret = GetCryptString(dvValue, CryptMethodEnum.Aes);
+            ret = GetCryptString(dvValue, CryptMethodEnum.Sha1);
 
             return ret;
         }

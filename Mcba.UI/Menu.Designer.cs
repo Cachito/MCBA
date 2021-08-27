@@ -143,14 +143,14 @@
             // tsmiRemitentes
             // 
             this.tsmiRemitentes.Name = "tsmiRemitentes";
-            this.tsmiRemitentes.Size = new System.Drawing.Size(180, 22);
+            this.tsmiRemitentes.Size = new System.Drawing.Size(133, 22);
             this.tsmiRemitentes.Tag = "tsmiRemitentes";
             this.tsmiRemitentes.Text = "Remitentes";
             // 
             // tsmiVehiculos
             // 
             this.tsmiVehiculos.Name = "tsmiVehiculos";
-            this.tsmiVehiculos.Size = new System.Drawing.Size(180, 22);
+            this.tsmiVehiculos.Size = new System.Drawing.Size(133, 22);
             this.tsmiVehiculos.Tag = "tsmiVehiculos";
             this.tsmiVehiculos.Text = "Vehículos";
             this.tsmiVehiculos.Click += new System.EventHandler(this.tsmiVehiculos_Click);
@@ -158,7 +158,7 @@
             // tsmiChoferes
             // 
             this.tsmiChoferes.Name = "tsmiChoferes";
-            this.tsmiChoferes.Size = new System.Drawing.Size(180, 22);
+            this.tsmiChoferes.Size = new System.Drawing.Size(133, 22);
             this.tsmiChoferes.Tag = "tsmiChoferes";
             this.tsmiChoferes.Text = "Choferes";
             this.tsmiChoferes.Click += new System.EventHandler(this.tsmiChoferes_Click);
@@ -166,14 +166,14 @@
             // tsmiProductos
             // 
             this.tsmiProductos.Name = "tsmiProductos";
-            this.tsmiProductos.Size = new System.Drawing.Size(180, 22);
+            this.tsmiProductos.Size = new System.Drawing.Size(133, 22);
             this.tsmiProductos.Tag = "tsmiProductos";
             this.tsmiProductos.Text = "Productos";
             // 
             // tsmiClientes
             // 
             this.tsmiClientes.Name = "tsmiClientes";
-            this.tsmiClientes.Size = new System.Drawing.Size(180, 22);
+            this.tsmiClientes.Size = new System.Drawing.Size(133, 22);
             this.tsmiClientes.Tag = "tsmiClientes";
             this.tsmiClientes.Text = "Clientes";
             // 
@@ -191,21 +191,21 @@
             // tsmiStock
             // 
             this.tsmiStock.Name = "tsmiStock";
-            this.tsmiStock.Size = new System.Drawing.Size(180, 22);
+            this.tsmiStock.Size = new System.Drawing.Size(147, 22);
             this.tsmiStock.Tag = "tsmiStock";
             this.tsmiStock.Text = "Stock";
             // 
             // tsmiVentas
             // 
             this.tsmiVentas.Name = "tsmiVentas";
-            this.tsmiVentas.Size = new System.Drawing.Size(180, 22);
+            this.tsmiVentas.Size = new System.Drawing.Size(147, 22);
             this.tsmiVentas.Tag = "tsmiVentas";
             this.tsmiVentas.Text = "Ventas";
             // 
             // tsmiLiquidaciones
             // 
             this.tsmiLiquidaciones.Name = "tsmiLiquidaciones";
-            this.tsmiLiquidaciones.Size = new System.Drawing.Size(180, 22);
+            this.tsmiLiquidaciones.Size = new System.Drawing.Size(147, 22);
             this.tsmiLiquidaciones.Tag = "tsmiLiquidaciones";
             this.tsmiLiquidaciones.Text = "Liquidaciones";
             // 
@@ -263,6 +263,7 @@
             this.tsmiSalir.Size = new System.Drawing.Size(41, 20);
             this.tsmiSalir.Tag = "tsmiSalir";
             this.tsmiSalir.Text = "Salir";
+            this.tsmiSalir.Click += new System.EventHandler(this.tsmiSalir_Click);
             // 
             // Menu
             // 
@@ -277,6 +278,7 @@
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "Boungiorno SA";
             this.WindowState = System.Windows.Forms.FormWindowState.Maximized;
+            this.Load += new System.EventHandler(this.Menu_Load);
             this.menuStrip.ResumeLayout(false);
             this.menuStrip.PerformLayout();
             this.ResumeLayout(false);

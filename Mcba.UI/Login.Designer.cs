@@ -29,9 +29,10 @@ namespace Mcba.UI
         /// </summary>
         private void InitializeComponent()
         {
+            this.components = new System.ComponentModel.Container();
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(Login));
             this.gbData = new System.Windows.Forms.GroupBox();
-            this.comboBox1 = new System.Windows.Forms.ComboBox();
+            this.cmbLanguages = new System.Windows.Forms.ComboBox();
             this.lblIdioma = new System.Windows.Forms.Label();
             this.btnRecuperarContra = new System.Windows.Forms.Button();
             this.btnCancel = new System.Windows.Forms.Button();
@@ -43,13 +44,14 @@ namespace Mcba.UI
             this.txtUsuario = new System.Windows.Forms.TextBox();
             this.lblUsuario = new System.Windows.Forms.Label();
             this.pbLogo = new System.Windows.Forms.PictureBox();
+            this.timer = new System.Windows.Forms.Timer(this.components);
             this.gbData.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.pbLogo)).BeginInit();
             this.SuspendLayout();
             // 
             // gbData
             // 
-            this.gbData.Controls.Add(this.comboBox1);
+            this.gbData.Controls.Add(this.cmbLanguages);
             this.gbData.Controls.Add(this.lblIdioma);
             this.gbData.Controls.Add(this.btnRecuperarContra);
             this.gbData.Controls.Add(this.btnCancel);
@@ -66,13 +68,14 @@ namespace Mcba.UI
             this.gbData.TabIndex = 0;
             this.gbData.TabStop = false;
             // 
-            // comboBox1
+            // cmbLanguages
             // 
-            this.comboBox1.FormattingEnabled = true;
-            this.comboBox1.Location = new System.Drawing.Point(89, 146);
-            this.comboBox1.Name = "comboBox1";
-            this.comboBox1.Size = new System.Drawing.Size(206, 21);
-            this.comboBox1.TabIndex = 10;
+            this.cmbLanguages.FormattingEnabled = true;
+            this.cmbLanguages.Location = new System.Drawing.Point(89, 146);
+            this.cmbLanguages.Name = "cmbLanguages";
+            this.cmbLanguages.Size = new System.Drawing.Size(206, 21);
+            this.cmbLanguages.TabIndex = 10;
+            this.cmbLanguages.SelectedIndexChanged += new System.EventHandler(this.cmbLanguages_SelectedIndexChanged);
             // 
             // lblIdioma
             // 
@@ -114,6 +117,7 @@ namespace Mcba.UI
             this.btnOk.Tag = "btnOk";
             this.btnOk.Text = "Ok";
             this.btnOk.UseVisualStyleBackColor = true;
+            this.btnOk.Click += new System.EventHandler(this.btnOk_Click);
             // 
             // txtEmail
             // 
@@ -137,6 +141,7 @@ namespace Mcba.UI
             // 
             this.txtPassword.Location = new System.Drawing.Point(89, 60);
             this.txtPassword.Name = "txtPassword";
+            this.txtPassword.PasswordChar = '☺';
             this.txtPassword.Size = new System.Drawing.Size(206, 20);
             this.txtPassword.TabIndex = 3;
             // 
@@ -156,6 +161,8 @@ namespace Mcba.UI
             this.txtUsuario.Name = "txtUsuario";
             this.txtUsuario.Size = new System.Drawing.Size(206, 20);
             this.txtUsuario.TabIndex = 1;
+            this.txtUsuario.KeyDown += new System.Windows.Forms.KeyEventHandler(this.txtUsuario_KeyDown);
+            this.txtUsuario.KeyUp += new System.Windows.Forms.KeyEventHandler(this.txtUsuario_KeyUp);
             // 
             // lblUsuario
             // 
@@ -176,6 +183,11 @@ namespace Mcba.UI
             this.pbLogo.SizeMode = System.Windows.Forms.PictureBoxSizeMode.AutoSize;
             this.pbLogo.TabIndex = 1;
             this.pbLogo.TabStop = false;
+            // 
+            // timer
+            // 
+            this.timer.Interval = 500;
+            this.timer.Tick += new System.EventHandler(this.timer_Tick);
             // 
             // Login
             // 
@@ -211,7 +223,8 @@ namespace Mcba.UI
         private System.Windows.Forms.TextBox txtUsuario;
         private System.Windows.Forms.Label lblUsuario;
         private System.Windows.Forms.PictureBox pbLogo;
-        private System.Windows.Forms.ComboBox comboBox1;
+        private System.Windows.Forms.ComboBox cmbLanguages;
         private System.Windows.Forms.Label lblIdioma;
+        private System.Windows.Forms.Timer timer;
     }
 }

@@ -44,12 +44,14 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="CaptionDal.cs" />
+    <Compile Include="LanguageDal.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="Properties\Settings.Designer.cs">
       <AutoGen>True</AutoGen>
       <DesignTimeSharedInput>True</DesignTimeSharedInput>
       <DependentUpon>Settings.settings</DependentUpon>
     </Compile>
+    <Compile Include="UserDal.cs" />
   </ItemGroup>
   <ItemGroup>
     <None Include="packages.config" />
@@ -62,6 +64,10 @@
     <ProjectReference Include="..\Mcba.Data\Mcba.Data.csproj">
       <Project>{99aaa7fe-502f-4b27-a9a2-849a19329441}</Project>
       <Name>Mcba.Data</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\Mcba.Entidad\Mcba.Entidad.csproj">
+      <Project>{4514EA8D-D83A-4F2B-9985-56A8AA964E78}</Project>
+      <Name>Mcba.Entidad</Name>
     </ProjectReference>
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />

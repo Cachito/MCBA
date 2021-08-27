@@ -23,6 +23,14 @@ namespace Mcba.Testing
         }
 
         [Test, Explicit("Solo manual")]
+        public void TestSha1()
+        {
+            var text = "Administrador";
+
+            var hash = HashHelper.Crypt(text, SALT_SISTEMA);
+        }
+
+        [Test, Explicit("Solo manual")]
         public void TestAes()
         {
             var text = "frase a encriptar";

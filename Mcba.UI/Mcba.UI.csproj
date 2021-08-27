@@ -416,6 +416,14 @@
     <Content Include="Resources\tick-sign-32.png" />
   </ItemGroup>
   <ItemGroup>
+    <ProjectReference Include="..\Mcba.Bll\Mcba.Bll.csproj">
+      <Project>{679F2183-3674-4AEA-90A7-6641E8010F07}</Project>
+      <Name>Mcba.Bll</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\Mcba.Entidad\Mcba.Entidad.csproj">
+      <Project>{4514EA8D-D83A-4F2B-9985-56A8AA964E78}</Project>
+      <Name>Mcba.Entidad</Name>
+    </ProjectReference>
     <ProjectReference Include="..\Mcba.Infraestruture\Mcba.Infraestruture.csproj">
       <Project>{4ecff366-c27e-46db-a040-eab954c32149}</Project>
       <Name>Mcba.Infraestruture</Name>
