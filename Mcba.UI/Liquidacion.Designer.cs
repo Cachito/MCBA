@@ -48,25 +48,25 @@
             this.txtComiaionRemitente = new System.Windows.Forms.TextBox();
             this.txtComisionProducto = new System.Windows.Forms.TextBox();
             this.textBox3 = new System.Windows.Forms.TextBox();
-            this.label14 = new System.Windows.Forms.Label();
+            this.lblAPagar = new System.Windows.Forms.Label();
             this.textBox2 = new System.Windows.Forms.TextBox();
-            this.label13 = new System.Windows.Forms.Label();
+            this.lblComision = new System.Windows.Forms.Label();
             this.textBox1 = new System.Windows.Forms.TextBox();
-            this.label12 = new System.Windows.Forms.Label();
+            this.lblTotalVentas = new System.Windows.Forms.Label();
             this.txtActaDecomiso = new System.Windows.Forms.TextBox();
-            this.label11 = new System.Windows.Forms.Label();
+            this.lblActa = new System.Windows.Forms.Label();
             this.txtCantidadDecomiso = new System.Windows.Forms.TextBox();
-            this.label10 = new System.Windows.Forms.Label();
+            this.lblDecomiso = new System.Windows.Forms.Label();
             this.txtCantidadVenta = new System.Windows.Forms.TextBox();
-            this.label1 = new System.Windows.Forms.Label();
+            this.lblVenta = new System.Windows.Forms.Label();
             this.txtProducto = new System.Windows.Forms.TextBox();
             this.txtGuia = new System.Windows.Forms.TextBox();
             this.cmbRemitentes = new System.Windows.Forms.ComboBox();
-            this.label8 = new System.Windows.Forms.Label();
-            this.label7 = new System.Windows.Forms.Label();
+            this.lblFecha = new System.Windows.Forms.Label();
+            this.lblLote = new System.Windows.Forms.Label();
             this.cmbUnidad = new System.Windows.Forms.ComboBox();
-            this.label3 = new System.Windows.Forms.Label();
-            this.label2 = new System.Windows.Forms.Label();
+            this.lblProducto = new System.Windows.Forms.Label();
+            this.lblRemitente = new System.Windows.Forms.Label();
             this.dgvLiquidacion = new System.Windows.Forms.DataGridView();
             this.tsSock.SuspendLayout();
             this.gbData.SuspendLayout();
@@ -98,7 +98,8 @@
             this.tsbSalir.ImageTransparentColor = System.Drawing.Color.Magenta;
             this.tsbSalir.Name = "tsbSalir";
             this.tsbSalir.Size = new System.Drawing.Size(23, 22);
-            this.tsbSalir.Text = "toolStripButton1";
+            this.tsbSalir.Tag = "tsbSalir";
+            this.tsbSalir.Text = "Salir";
             this.tsbSalir.Click += new System.EventHandler(this.tsbSalir_Click);
             // 
             // tsbNew
@@ -108,7 +109,8 @@
             this.tsbNew.ImageTransparentColor = System.Drawing.Color.Magenta;
             this.tsbNew.Name = "tsbNew";
             this.tsbNew.Size = new System.Drawing.Size(23, 22);
-            this.tsbNew.Text = "toolStripButton1";
+            this.tsbNew.Tag = "tsbNew";
+            this.tsbNew.Text = "Nuevo";
             this.tsbNew.Click += new System.EventHandler(this.tsbNew_Click);
             // 
             // tsbDelete
@@ -118,7 +120,8 @@
             this.tsbDelete.ImageTransparentColor = System.Drawing.Color.Magenta;
             this.tsbDelete.Name = "tsbDelete";
             this.tsbDelete.Size = new System.Drawing.Size(23, 22);
-            this.tsbDelete.Text = "toolStripButton1";
+            this.tsbDelete.Tag = "tsbDelete";
+            this.tsbDelete.Text = "Eliminar";
             // 
             // tsbEdit
             // 
@@ -127,7 +130,8 @@
             this.tsbEdit.ImageTransparentColor = System.Drawing.Color.Magenta;
             this.tsbEdit.Name = "tsbEdit";
             this.tsbEdit.Size = new System.Drawing.Size(23, 22);
-            this.tsbEdit.Text = "toolStripButton1";
+            this.tsbEdit.Tag = "tsbEdit";
+            this.tsbEdit.Text = "Editar";
             this.tsbEdit.Click += new System.EventHandler(this.tsbEdit_Click);
             // 
             // tsbSave
@@ -137,7 +141,8 @@
             this.tsbSave.ImageTransparentColor = System.Drawing.Color.Magenta;
             this.tsbSave.Name = "tsbSave";
             this.tsbSave.Size = new System.Drawing.Size(23, 22);
-            this.tsbSave.Text = "toolStripButton1";
+            this.tsbSave.Tag = "tsbSave";
+            this.tsbSave.Text = "Guardar";
             this.tsbSave.Click += new System.EventHandler(this.tsbSave_Click);
             // 
             // tsbPrint
@@ -147,7 +152,8 @@
             this.tsbPrint.ImageTransparentColor = System.Drawing.Color.Magenta;
             this.tsbPrint.Name = "tsbPrint";
             this.tsbPrint.Size = new System.Drawing.Size(23, 22);
-            this.tsbPrint.Text = "toolStripButton1";
+            this.tsbPrint.Tag = "tsbPrint";
+            this.tsbPrint.Text = "Imprimir";
             // 
             // tsbBuscar
             // 
@@ -156,32 +162,33 @@
             this.tsbBuscar.ImageTransparentColor = System.Drawing.Color.Magenta;
             this.tsbBuscar.Name = "tsbBuscar";
             this.tsbBuscar.Size = new System.Drawing.Size(23, 22);
-            this.tsbBuscar.Text = "toolStripButton1";
+            this.tsbBuscar.Tag = "tsbBuscar";
+            this.tsbBuscar.Text = "Buecar";
             // 
             // gbData
             // 
             this.gbData.Controls.Add(this.gbPrecios);
             this.gbData.Controls.Add(this.gbComisiones);
             this.gbData.Controls.Add(this.textBox3);
-            this.gbData.Controls.Add(this.label14);
+            this.gbData.Controls.Add(this.lblAPagar);
             this.gbData.Controls.Add(this.textBox2);
-            this.gbData.Controls.Add(this.label13);
+            this.gbData.Controls.Add(this.lblComision);
             this.gbData.Controls.Add(this.textBox1);
-            this.gbData.Controls.Add(this.label12);
+            this.gbData.Controls.Add(this.lblTotalVentas);
             this.gbData.Controls.Add(this.txtActaDecomiso);
-            this.gbData.Controls.Add(this.label11);
+            this.gbData.Controls.Add(this.lblActa);
             this.gbData.Controls.Add(this.txtCantidadDecomiso);
-            this.gbData.Controls.Add(this.label10);
+            this.gbData.Controls.Add(this.lblDecomiso);
             this.gbData.Controls.Add(this.txtCantidadVenta);
-            this.gbData.Controls.Add(this.label1);
+            this.gbData.Controls.Add(this.lblVenta);
             this.gbData.Controls.Add(this.txtProducto);
             this.gbData.Controls.Add(this.txtGuia);
             this.gbData.Controls.Add(this.cmbRemitentes);
-            this.gbData.Controls.Add(this.label8);
-            this.gbData.Controls.Add(this.label7);
+            this.gbData.Controls.Add(this.lblFecha);
+            this.gbData.Controls.Add(this.lblLote);
             this.gbData.Controls.Add(this.cmbUnidad);
-            this.gbData.Controls.Add(this.label3);
-            this.gbData.Controls.Add(this.label2);
+            this.gbData.Controls.Add(this.lblProducto);
+            this.gbData.Controls.Add(this.lblRemitente);
             this.gbData.Location = new System.Drawing.Point(12, 28);
             this.gbData.Name = "gbData";
             this.gbData.Size = new System.Drawing.Size(708, 240);
@@ -199,6 +206,7 @@
             this.gbPrecios.Size = new System.Drawing.Size(181, 85);
             this.gbPrecios.TabIndex = 48;
             this.gbPrecios.TabStop = false;
+            this.gbPrecios.Tag = "gbPrecios";
             this.gbPrecios.Text = "Precio";
             // 
             // rbPrecioPlaza
@@ -209,6 +217,7 @@
             this.rbPrecioPlaza.Size = new System.Drawing.Size(76, 17);
             this.rbPrecioPlaza.TabIndex = 50;
             this.rbPrecioPlaza.TabStop = true;
+            this.rbPrecioPlaza.Tag = "rbPrecioPlaza";
             this.rbPrecioPlaza.Text = "Plaza";
             this.rbPrecioPlaza.UseVisualStyleBackColor = true;
             // 
@@ -220,6 +229,7 @@
             this.rbPrecioPromedio.Size = new System.Drawing.Size(76, 17);
             this.rbPrecioPromedio.TabIndex = 49;
             this.rbPrecioPromedio.TabStop = true;
+            this.rbPrecioPromedio.Tag = "rbPrecioPromedio";
             this.rbPrecioPromedio.Text = "Promedio";
             this.rbPrecioPromedio.UseVisualStyleBackColor = true;
             // 
@@ -249,6 +259,7 @@
             this.gbComisiones.Size = new System.Drawing.Size(202, 85);
             this.gbComisiones.TabIndex = 47;
             this.gbComisiones.TabStop = false;
+            this.gbComisiones.Tag = "gbComisiones";
             this.gbComisiones.Text = "Comisión";
             // 
             // rbComisionRemitente
@@ -259,6 +270,7 @@
             this.rbComisionRemitente.Size = new System.Drawing.Size(77, 17);
             this.rbComisionRemitente.TabIndex = 50;
             this.rbComisionRemitente.TabStop = true;
+            this.rbComisionRemitente.Tag = "rbComisionRemitente";
             this.rbComisionRemitente.Text = "Remitente";
             this.rbComisionRemitente.UseVisualStyleBackColor = true;
             // 
@@ -270,6 +282,7 @@
             this.rbComisionProducto.Size = new System.Drawing.Size(77, 17);
             this.rbComisionProducto.TabIndex = 49;
             this.rbComisionProducto.TabStop = true;
+            this.rbComisionProducto.Tag = "rbComisionProducto";
             this.rbComisionProducto.Text = "Producto";
             this.rbComisionProducto.UseVisualStyleBackColor = true;
             // 
@@ -297,14 +310,15 @@
             this.textBox3.Size = new System.Drawing.Size(91, 20);
             this.textBox3.TabIndex = 44;
             // 
-            // label14
+            // lblAPagar
             // 
-            this.label14.Location = new System.Drawing.Point(514, 202);
-            this.label14.Name = "label14";
-            this.label14.Size = new System.Drawing.Size(83, 20);
-            this.label14.TabIndex = 43;
-            this.label14.Text = "A Pagar";
-            this.label14.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
+            this.lblAPagar.Location = new System.Drawing.Point(514, 202);
+            this.lblAPagar.Name = "lblAPagar";
+            this.lblAPagar.Size = new System.Drawing.Size(83, 20);
+            this.lblAPagar.TabIndex = 43;
+            this.lblAPagar.Tag = "lblAPagar";
+            this.lblAPagar.Text = "A Pagar";
+            this.lblAPagar.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
             // 
             // textBox2
             // 
@@ -314,14 +328,15 @@
             this.textBox2.Size = new System.Drawing.Size(113, 20);
             this.textBox2.TabIndex = 42;
             // 
-            // label13
+            // lblComision
             // 
-            this.label13.Location = new System.Drawing.Point(255, 201);
-            this.label13.Name = "label13";
-            this.label13.Size = new System.Drawing.Size(83, 20);
-            this.label13.TabIndex = 41;
-            this.label13.Text = "Total Comisión";
-            this.label13.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
+            this.lblComision.Location = new System.Drawing.Point(255, 201);
+            this.lblComision.Name = "lblComision";
+            this.lblComision.Size = new System.Drawing.Size(83, 20);
+            this.lblComision.TabIndex = 41;
+            this.lblComision.Tag = "lblComision";
+            this.lblComision.Text = "Total Comisión";
+            this.lblComision.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
             // 
             // textBox1
             // 
@@ -331,14 +346,15 @@
             this.textBox1.Size = new System.Drawing.Size(159, 20);
             this.textBox1.TabIndex = 40;
             // 
-            // label12
+            // lblTotalVentas
             // 
-            this.label12.Location = new System.Drawing.Point(6, 202);
-            this.label12.Name = "label12";
-            this.label12.Size = new System.Drawing.Size(71, 20);
-            this.label12.TabIndex = 39;
-            this.label12.Text = "Total Ventas";
-            this.label12.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
+            this.lblTotalVentas.Location = new System.Drawing.Point(6, 202);
+            this.lblTotalVentas.Name = "lblTotalVentas";
+            this.lblTotalVentas.Size = new System.Drawing.Size(71, 20);
+            this.lblTotalVentas.TabIndex = 39;
+            this.lblTotalVentas.Tag = "lblTotalVentas";
+            this.lblTotalVentas.Text = "Total Ventas";
+            this.lblTotalVentas.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
             // 
             // txtActaDecomiso
             // 
@@ -347,14 +363,15 @@
             this.txtActaDecomiso.Size = new System.Drawing.Size(91, 20);
             this.txtActaDecomiso.TabIndex = 38;
             // 
-            // label11
+            // lblActa
             // 
-            this.label11.Location = new System.Drawing.Point(514, 162);
-            this.label11.Name = "label11";
-            this.label11.Size = new System.Drawing.Size(83, 20);
-            this.label11.TabIndex = 37;
-            this.label11.Text = "Acta Decomiso";
-            this.label11.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
+            this.lblActa.Location = new System.Drawing.Point(514, 162);
+            this.lblActa.Name = "lblActa";
+            this.lblActa.Size = new System.Drawing.Size(83, 20);
+            this.lblActa.TabIndex = 37;
+            this.lblActa.Tag = "lblActa";
+            this.lblActa.Text = "Acta Decomiso";
+            this.lblActa.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
             // 
             // txtCantidadDecomiso
             // 
@@ -363,14 +380,15 @@
             this.txtCantidadDecomiso.Size = new System.Drawing.Size(113, 20);
             this.txtCantidadDecomiso.TabIndex = 36;
             // 
-            // label10
+            // lblDecomiso
             // 
-            this.label10.Location = new System.Drawing.Point(255, 161);
-            this.label10.Name = "label10";
-            this.label10.Size = new System.Drawing.Size(83, 20);
-            this.label10.TabIndex = 35;
-            this.label10.Text = "Decomiso";
-            this.label10.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
+            this.lblDecomiso.Location = new System.Drawing.Point(255, 161);
+            this.lblDecomiso.Name = "lblDecomiso";
+            this.lblDecomiso.Size = new System.Drawing.Size(83, 20);
+            this.lblDecomiso.TabIndex = 35;
+            this.lblDecomiso.Tag = "lblDecomiso";
+            this.lblDecomiso.Text = "Decomiso";
+            this.lblDecomiso.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
             // 
             // txtCantidadVenta
             // 
@@ -380,14 +398,15 @@
             this.txtCantidadVenta.Size = new System.Drawing.Size(159, 20);
             this.txtCantidadVenta.TabIndex = 34;
             // 
-            // label1
+            // lblVenta
             // 
-            this.label1.Location = new System.Drawing.Point(6, 161);
-            this.label1.Name = "label1";
-            this.label1.Size = new System.Drawing.Size(61, 20);
-            this.label1.TabIndex = 33;
-            this.label1.Text = "Venta";
-            this.label1.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
+            this.lblVenta.Location = new System.Drawing.Point(6, 161);
+            this.lblVenta.Name = "lblVenta";
+            this.lblVenta.Size = new System.Drawing.Size(61, 20);
+            this.lblVenta.TabIndex = 33;
+            this.lblVenta.Tag = "lblVenta";
+            this.lblVenta.Text = "Venta";
+            this.lblVenta.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
             // 
             // txtProducto
             // 
@@ -415,23 +434,25 @@
             this.cmbRemitentes.Size = new System.Drawing.Size(159, 21);
             this.cmbRemitentes.TabIndex = 23;
             // 
-            // label8
+            // lblFecha
             // 
-            this.label8.Location = new System.Drawing.Point(514, 16);
-            this.label8.Name = "label8";
-            this.label8.Size = new System.Drawing.Size(83, 20);
-            this.label8.TabIndex = 15;
-            this.label8.Text = "Fecha";
-            this.label8.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
+            this.lblFecha.Location = new System.Drawing.Point(514, 16);
+            this.lblFecha.Name = "lblFecha";
+            this.lblFecha.Size = new System.Drawing.Size(83, 20);
+            this.lblFecha.TabIndex = 15;
+            this.lblFecha.Tag = "lblFecha";
+            this.lblFecha.Text = "Fecha";
+            this.lblFecha.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
             // 
-            // label7
+            // lblLote
             // 
-            this.label7.Location = new System.Drawing.Point(255, 16);
-            this.label7.Name = "label7";
-            this.label7.Size = new System.Drawing.Size(83, 20);
-            this.label7.TabIndex = 13;
-            this.label7.Text = "Lote";
-            this.label7.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
+            this.lblLote.Location = new System.Drawing.Point(255, 16);
+            this.lblLote.Name = "lblLote";
+            this.lblLote.Size = new System.Drawing.Size(83, 20);
+            this.lblLote.TabIndex = 13;
+            this.lblLote.Tag = "lblLote";
+            this.lblLote.Text = "Lote";
+            this.lblLote.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
             // 
             // cmbUnidad
             // 
@@ -441,23 +462,25 @@
             this.cmbUnidad.Size = new System.Drawing.Size(113, 21);
             this.cmbUnidad.TabIndex = 12;
             // 
-            // label3
+            // lblProducto
             // 
-            this.label3.Location = new System.Drawing.Point(6, 54);
-            this.label3.Name = "label3";
-            this.label3.Size = new System.Drawing.Size(61, 20);
-            this.label3.TabIndex = 4;
-            this.label3.Text = "Producto";
-            this.label3.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
+            this.lblProducto.Location = new System.Drawing.Point(6, 54);
+            this.lblProducto.Name = "lblProducto";
+            this.lblProducto.Size = new System.Drawing.Size(61, 20);
+            this.lblProducto.TabIndex = 4;
+            this.lblProducto.Tag = "lblProducto";
+            this.lblProducto.Text = "Producto";
+            this.lblProducto.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
             // 
-            // label2
+            // lblRemitente
             // 
-            this.label2.Location = new System.Drawing.Point(6, 16);
-            this.label2.Name = "label2";
-            this.label2.Size = new System.Drawing.Size(61, 20);
-            this.label2.TabIndex = 2;
-            this.label2.Text = "Remitente";
-            this.label2.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
+            this.lblRemitente.Location = new System.Drawing.Point(6, 16);
+            this.lblRemitente.Name = "lblRemitente";
+            this.lblRemitente.Size = new System.Drawing.Size(61, 20);
+            this.lblRemitente.TabIndex = 2;
+            this.lblRemitente.Tag = "lblRemitente";
+            this.lblRemitente.Text = "Remitente";
+            this.lblRemitente.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
             // 
             // dgvLiquidacion
             // 
@@ -501,16 +524,16 @@
         private System.Windows.Forms.ToolStrip tsSock;
         private System.Windows.Forms.GroupBox gbData;
         private System.Windows.Forms.DataGridView dgvLiquidacion;
-        private System.Windows.Forms.Label label3;
-        private System.Windows.Forms.Label label2;
+        private System.Windows.Forms.Label lblProducto;
+        private System.Windows.Forms.Label lblRemitente;
         private System.Windows.Forms.ToolStripButton tsbSalir;
         private System.Windows.Forms.ToolStripButton tsbNew;
         private System.Windows.Forms.ToolStripButton tsbSave;
         private System.Windows.Forms.ToolStripButton tsbEdit;
         private System.Windows.Forms.ToolStripButton tsbDelete;
         private System.Windows.Forms.ComboBox cmbUnidad;
-        private System.Windows.Forms.Label label8;
-        private System.Windows.Forms.Label label7;
+        private System.Windows.Forms.Label lblFecha;
+        private System.Windows.Forms.Label lblLote;
         private System.Windows.Forms.ComboBox cmbRemitentes;
         private System.Windows.Forms.TextBox txtGuia;
         private System.Windows.Forms.ToolStripButton tsbPrint;
@@ -526,17 +549,17 @@
         private System.Windows.Forms.TextBox txtComiaionRemitente;
         private System.Windows.Forms.TextBox txtComisionProducto;
         private System.Windows.Forms.TextBox textBox3;
-        private System.Windows.Forms.Label label14;
+        private System.Windows.Forms.Label lblAPagar;
         private System.Windows.Forms.TextBox textBox2;
-        private System.Windows.Forms.Label label13;
+        private System.Windows.Forms.Label lblComision;
         private System.Windows.Forms.TextBox textBox1;
-        private System.Windows.Forms.Label label12;
+        private System.Windows.Forms.Label lblTotalVentas;
         private System.Windows.Forms.TextBox txtActaDecomiso;
-        private System.Windows.Forms.Label label11;
+        private System.Windows.Forms.Label lblActa;
         private System.Windows.Forms.TextBox txtCantidadDecomiso;
-        private System.Windows.Forms.Label label10;
+        private System.Windows.Forms.Label lblDecomiso;
         private System.Windows.Forms.TextBox txtCantidadVenta;
-        private System.Windows.Forms.Label label1;
+        private System.Windows.Forms.Label lblVenta;
         private System.Windows.Forms.ToolStripButton tsbBuscar;
     }
 }

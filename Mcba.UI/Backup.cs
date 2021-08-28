@@ -2,6 +2,7 @@
 using System;
 using System.Text;
 using System.Windows.Forms;
+using Mcba.Infraestruture.Helpers;
 using Mcba.Infraestruture.Settings;
 
 namespace Mcba.UI
@@ -32,12 +33,20 @@ namespace Mcba.UI
 
         private void tsbSave_Click(object sender, EventArgs e)
         {
+            SetCaptions();
             Save();
         }
 
         private void Backup_Load(object sender, EventArgs e)
         {
+
             LoadGrid();
+        }
+
+        private void SetCaptions()
+        {
+            var caps = LanguageHelper.GetCaptions(Name);
+            LanguageHelper.SetCaptions(caps, this);
         }
 
         private void LoadGrid()
