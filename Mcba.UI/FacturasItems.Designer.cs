@@ -30,19 +30,19 @@
         {
             this.tsFacturasItems = new System.Windows.Forms.ToolStrip();
             this.tsbSalir = new System.Windows.Forms.ToolStripButton();
-            this.tsbNew = new System.Windows.Forms.ToolStripButton();
+            this.tsbOk = new System.Windows.Forms.ToolStripButton();
             this.txtComision = new System.Windows.Forms.TextBox();
-            this.label4 = new System.Windows.Forms.Label();
+            this.lblUnitario = new System.Windows.Forms.Label();
             this.txtCantidad = new System.Windows.Forms.TextBox();
-            this.label3 = new System.Windows.Forms.Label();
+            this.lblCantidad = new System.Windows.Forms.Label();
             this.txtDescripcion = new System.Windows.Forms.TextBox();
-            this.label2 = new System.Windows.Forms.Label();
-            this.label1 = new System.Windows.Forms.Label();
+            this.lblDescripcion = new System.Windows.Forms.Label();
+            this.lblLote = new System.Windows.Forms.Label();
             this.txtLote = new System.Windows.Forms.TextBox();
             this.txtTotal = new System.Windows.Forms.TextBox();
-            this.label5 = new System.Windows.Forms.Label();
+            this.lblTotal = new System.Windows.Forms.Label();
             this.txtUnidad = new System.Windows.Forms.TextBox();
-            this.label6 = new System.Windows.Forms.Label();
+            this.lblUnidad = new System.Windows.Forms.Label();
             this.tsFacturasItems.SuspendLayout();
             this.SuspendLayout();
             // 
@@ -50,7 +50,7 @@
             // 
             this.tsFacturasItems.Items.AddRange(new System.Windows.Forms.ToolStripItem[] {
             this.tsbSalir,
-            this.tsbNew});
+            this.tsbOk});
             this.tsFacturasItems.Location = new System.Drawing.Point(0, 0);
             this.tsFacturasItems.Name = "tsFacturasItems";
             this.tsFacturasItems.Size = new System.Drawing.Size(274, 25);
@@ -64,18 +64,20 @@
             this.tsbSalir.ImageTransparentColor = System.Drawing.Color.Magenta;
             this.tsbSalir.Name = "tsbSalir";
             this.tsbSalir.Size = new System.Drawing.Size(23, 22);
-            this.tsbSalir.Text = "toolStripButton1";
+            this.tsbSalir.Tag = "tsbSalir";
+            this.tsbSalir.Text = "Salir";
             this.tsbSalir.Click += new System.EventHandler(this.tsbSalir_Click);
             // 
-            // tsbNew
+            // tsbOk
             // 
-            this.tsbNew.DisplayStyle = System.Windows.Forms.ToolStripItemDisplayStyle.Image;
-            this.tsbNew.Image = global::Mcba.UI.Properties.Resources.tick_sign_32;
-            this.tsbNew.ImageTransparentColor = System.Drawing.Color.Magenta;
-            this.tsbNew.Name = "tsbNew";
-            this.tsbNew.Size = new System.Drawing.Size(23, 22);
-            this.tsbNew.Text = "toolStripButton1";
-            this.tsbNew.Click += new System.EventHandler(this.tsbNew_Click);
+            this.tsbOk.DisplayStyle = System.Windows.Forms.ToolStripItemDisplayStyle.Image;
+            this.tsbOk.Image = global::Mcba.UI.Properties.Resources.tick_sign_32;
+            this.tsbOk.ImageTransparentColor = System.Drawing.Color.Magenta;
+            this.tsbOk.Name = "tsbOk";
+            this.tsbOk.Size = new System.Drawing.Size(23, 22);
+            this.tsbOk.Tag = "tsbOk";
+            this.tsbOk.Text = "Ok";
+            this.tsbOk.Click += new System.EventHandler(this.tsbNew_Click);
             // 
             // txtComision
             // 
@@ -84,14 +86,15 @@
             this.txtComision.Size = new System.Drawing.Size(177, 20);
             this.txtComision.TabIndex = 15;
             // 
-            // label4
+            // lblUnitario
             // 
-            this.label4.Location = new System.Drawing.Point(9, 216);
-            this.label4.Name = "label4";
-            this.label4.Size = new System.Drawing.Size(70, 20);
-            this.label4.TabIndex = 14;
-            this.label4.Text = "Unitario";
-            this.label4.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
+            this.lblUnitario.Location = new System.Drawing.Point(9, 216);
+            this.lblUnitario.Name = "lblUnitario";
+            this.lblUnitario.Size = new System.Drawing.Size(70, 20);
+            this.lblUnitario.TabIndex = 14;
+            this.lblUnitario.Tag = "lblUnitario";
+            this.lblUnitario.Text = "Unitario";
+            this.lblUnitario.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
             // 
             // txtCantidad
             // 
@@ -100,14 +103,15 @@
             this.txtCantidad.Size = new System.Drawing.Size(177, 20);
             this.txtCantidad.TabIndex = 13;
             // 
-            // label3
+            // lblCantidad
             // 
-            this.label3.Location = new System.Drawing.Point(9, 182);
-            this.label3.Name = "label3";
-            this.label3.Size = new System.Drawing.Size(70, 20);
-            this.label3.TabIndex = 12;
-            this.label3.Text = "Cantidad";
-            this.label3.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
+            this.lblCantidad.Location = new System.Drawing.Point(9, 182);
+            this.lblCantidad.Name = "lblCantidad";
+            this.lblCantidad.Size = new System.Drawing.Size(70, 20);
+            this.lblCantidad.TabIndex = 12;
+            this.lblCantidad.Tag = "lblCantidad";
+            this.lblCantidad.Text = "Cantidad";
+            this.lblCantidad.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
             // 
             // txtDescripcion
             // 
@@ -119,23 +123,25 @@
             this.txtDescripcion.Size = new System.Drawing.Size(177, 57);
             this.txtDescripcion.TabIndex = 11;
             // 
-            // label2
+            // lblDescripcion
             // 
-            this.label2.Location = new System.Drawing.Point(9, 76);
-            this.label2.Name = "label2";
-            this.label2.Size = new System.Drawing.Size(70, 20);
-            this.label2.TabIndex = 10;
-            this.label2.Text = "Descripción";
-            this.label2.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
+            this.lblDescripcion.Location = new System.Drawing.Point(9, 76);
+            this.lblDescripcion.Name = "lblDescripcion";
+            this.lblDescripcion.Size = new System.Drawing.Size(70, 20);
+            this.lblDescripcion.TabIndex = 10;
+            this.lblDescripcion.Tag = "lblDescripcion";
+            this.lblDescripcion.Text = "Descripción";
+            this.lblDescripcion.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
             // 
-            // label1
+            // lblLote
             // 
-            this.label1.Location = new System.Drawing.Point(9, 42);
-            this.label1.Name = "label1";
-            this.label1.Size = new System.Drawing.Size(70, 20);
-            this.label1.TabIndex = 8;
-            this.label1.Text = "Lote";
-            this.label1.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
+            this.lblLote.Location = new System.Drawing.Point(9, 42);
+            this.lblLote.Name = "lblLote";
+            this.lblLote.Size = new System.Drawing.Size(70, 20);
+            this.lblLote.TabIndex = 8;
+            this.lblLote.Tag = "lblLote";
+            this.lblLote.Text = "Lote";
+            this.lblLote.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
             // 
             // txtLote
             // 
@@ -151,15 +157,16 @@
             this.txtTotal.Size = new System.Drawing.Size(177, 20);
             this.txtTotal.TabIndex = 18;
             // 
-            // label5
+            // lblTotal
             // 
-            this.label5.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label5.Location = new System.Drawing.Point(9, 250);
-            this.label5.Name = "label5";
-            this.label5.Size = new System.Drawing.Size(70, 20);
-            this.label5.TabIndex = 17;
-            this.label5.Text = "Total";
-            this.label5.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
+            this.lblTotal.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.lblTotal.Location = new System.Drawing.Point(9, 250);
+            this.lblTotal.Name = "lblTotal";
+            this.lblTotal.Size = new System.Drawing.Size(70, 20);
+            this.lblTotal.TabIndex = 17;
+            this.lblTotal.Tag = "lblTotal";
+            this.lblTotal.Text = "Total";
+            this.lblTotal.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
             // 
             // txtUnidad
             // 
@@ -170,14 +177,15 @@
             this.txtUnidad.Size = new System.Drawing.Size(177, 20);
             this.txtUnidad.TabIndex = 20;
             // 
-            // label6
+            // lblUnidad
             // 
-            this.label6.Location = new System.Drawing.Point(9, 148);
-            this.label6.Name = "label6";
-            this.label6.Size = new System.Drawing.Size(70, 20);
-            this.label6.TabIndex = 19;
-            this.label6.Text = "Unidad";
-            this.label6.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
+            this.lblUnidad.Location = new System.Drawing.Point(9, 148);
+            this.lblUnidad.Name = "lblUnidad";
+            this.lblUnidad.Size = new System.Drawing.Size(70, 20);
+            this.lblUnidad.TabIndex = 19;
+            this.lblUnidad.Tag = "lblUnidad";
+            this.lblUnidad.Text = "Unidad";
+            this.lblUnidad.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
             // 
             // FacturasItems
             // 
@@ -186,17 +194,17 @@
             this.ClientSize = new System.Drawing.Size(274, 282);
             this.ControlBox = false;
             this.Controls.Add(this.txtUnidad);
-            this.Controls.Add(this.label6);
+            this.Controls.Add(this.lblUnidad);
             this.Controls.Add(this.txtTotal);
-            this.Controls.Add(this.label5);
+            this.Controls.Add(this.lblTotal);
             this.Controls.Add(this.txtLote);
             this.Controls.Add(this.txtComision);
-            this.Controls.Add(this.label4);
+            this.Controls.Add(this.lblUnitario);
             this.Controls.Add(this.txtCantidad);
-            this.Controls.Add(this.label3);
+            this.Controls.Add(this.lblCantidad);
             this.Controls.Add(this.txtDescripcion);
-            this.Controls.Add(this.label2);
-            this.Controls.Add(this.label1);
+            this.Controls.Add(this.lblDescripcion);
+            this.Controls.Add(this.lblLote);
             this.Controls.Add(this.tsFacturasItems);
             this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.FixedDialog;
             this.Name = "FacturasItems";
@@ -214,18 +222,18 @@
 
         private System.Windows.Forms.ToolStrip tsFacturasItems;
         private System.Windows.Forms.ToolStripButton tsbSalir;
-        private System.Windows.Forms.ToolStripButton tsbNew;
+        private System.Windows.Forms.ToolStripButton tsbOk;
         private System.Windows.Forms.TextBox txtComision;
-        private System.Windows.Forms.Label label4;
+        private System.Windows.Forms.Label lblUnitario;
         private System.Windows.Forms.TextBox txtCantidad;
-        private System.Windows.Forms.Label label3;
+        private System.Windows.Forms.Label lblCantidad;
         private System.Windows.Forms.TextBox txtDescripcion;
-        private System.Windows.Forms.Label label2;
-        private System.Windows.Forms.Label label1;
+        private System.Windows.Forms.Label lblDescripcion;
+        private System.Windows.Forms.Label lblLote;
         private System.Windows.Forms.TextBox txtLote;
         private System.Windows.Forms.TextBox txtTotal;
-        private System.Windows.Forms.Label label5;
+        private System.Windows.Forms.Label lblTotal;
         private System.Windows.Forms.TextBox txtUnidad;
-        private System.Windows.Forms.Label label6;
+        private System.Windows.Forms.Label lblUnidad;
     }
 }

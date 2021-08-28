@@ -47,6 +47,8 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="Enums\LanguageEnum.cs" />
+    <Compile Include="Helpers\LanguageHelper.cs" />
     <Compile Include="Settings\InstanceSettings.cs" />
     <Compile Include="Settings\McbaSettings.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
@@ -55,5 +57,16 @@
   <ItemGroup>
     <None Include="packages.config" />
   </ItemGroup>
+  <ItemGroup>
+    <ProjectReference Include="..\Mcba.Dal\Mcba.Dal.csproj">
+      <Project>{fe857b11-b218-47b1-9005-2f0abcb54b8c}</Project>
+      <Name>Mcba.Dal</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\Mcba.Data\Mcba.Data.csproj">
+      <Project>{99aaa7fe-502f-4b27-a9a2-849a19329441}</Project>
+      <Name>Mcba.Data</Name>
+    </ProjectReference>
+  </ItemGroup>
+  <ItemGroup />
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>

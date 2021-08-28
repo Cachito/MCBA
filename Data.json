@@ -1,5 +1,6 @@
 {
 	"Key": "0909b1f91cbb4459acab466ae8f0eaf5",
 	"Salt": "LuisCarroTfi",
-	"CnnString": "Integrated Security=SSPI;Persist Security Info=False;Initial Catalog=Mcba;Data Source=DESKTOP-M95JCSK\\SQLEXPRESS;"
+	"CnnString": "Integrated Security=SSPI;Persist Security Info=False;Initial Catalog=Mcba;Data Source=DESKTOP-M95JCSK\\SQLEXPRESS;",
+	"MessageTitle": "Boungiorno S.A."
 }

@@ -34,27 +34,27 @@
             this.tsbDelete = new System.Windows.Forms.ToolStripButton();
             this.tsbSave = new System.Windows.Forms.ToolStripButton();
             this.tsbPrint = new System.Windows.Forms.ToolStripButton();
-            this.tsbSearch = new System.Windows.Forms.ToolStripButton();
+            this.tsbBuscar = new System.Windows.Forms.ToolStripButton();
             this.gbDataCliente = new System.Windows.Forms.GroupBox();
             this.txtTotal = new System.Windows.Forms.TextBox();
-            this.label7 = new System.Windows.Forms.Label();
+            this.lblTotal = new System.Windows.Forms.Label();
             this.cmbCliente = new System.Windows.Forms.ComboBox();
-            this.label4 = new System.Windows.Forms.Label();
+            this.lblCliente = new System.Windows.Forms.Label();
             this.txtDomicilio = new System.Windows.Forms.TextBox();
-            this.label9 = new System.Windows.Forms.Label();
+            this.lblDomicilio = new System.Windows.Forms.Label();
             this.txtCuit = new System.Windows.Forms.TextBox();
-            this.label6 = new System.Windows.Forms.Label();
+            this.lblCuit = new System.Windows.Forms.Label();
             this.txtRazónSocial = new System.Windows.Forms.TextBox();
-            this.label2 = new System.Windows.Forms.Label();
+            this.lblRazonSocial = new System.Windows.Forms.Label();
             this.gbData = new System.Windows.Forms.GroupBox();
             this.textBox2 = new System.Windows.Forms.TextBox();
-            this.label8 = new System.Windows.Forms.Label();
+            this.lblFecha = new System.Windows.Forms.Label();
             this.txtNumero = new System.Windows.Forms.TextBox();
-            this.txtFecha = new System.Windows.Forms.Label();
+            this.lblNumero = new System.Windows.Forms.Label();
             this.txtLetra = new System.Windows.Forms.TextBox();
-            this.label5 = new System.Windows.Forms.Label();
+            this.lblLetra = new System.Windows.Forms.Label();
             this.txtPuntoDeVenta = new System.Windows.Forms.TextBox();
-            this.label1 = new System.Windows.Forms.Label();
+            this.lblPtoVenta = new System.Windows.Forms.Label();
             this.gbDataItems = new System.Windows.Forms.GroupBox();
             this.tsItems = new System.Windows.Forms.ToolStrip();
             this.toolStripButton2 = new System.Windows.Forms.ToolStripButton();
@@ -77,7 +77,7 @@
             this.tsbDelete,
             this.tsbSave,
             this.tsbPrint,
-            this.tsbSearch});
+            this.tsbBuscar});
             this.tsHeader.Location = new System.Drawing.Point(0, 0);
             this.tsHeader.Name = "tsHeader";
             this.tsHeader.Size = new System.Drawing.Size(750, 25);
@@ -91,7 +91,8 @@
             this.tsbSalir.ImageTransparentColor = System.Drawing.Color.Magenta;
             this.tsbSalir.Name = "tsbSalir";
             this.tsbSalir.Size = new System.Drawing.Size(23, 22);
-            this.tsbSalir.Text = "toolStripButton1";
+            this.tsbSalir.Tag = "tsbSalir";
+            this.tsbSalir.Text = "Salir";
             this.tsbSalir.Click += new System.EventHandler(this.tsbSalir_Click);
             // 
             // tsbNew
@@ -101,7 +102,8 @@
             this.tsbNew.ImageTransparentColor = System.Drawing.Color.Magenta;
             this.tsbNew.Name = "tsbNew";
             this.tsbNew.Size = new System.Drawing.Size(23, 22);
-            this.tsbNew.Text = "toolStripButton1";
+            this.tsbNew.Tag = "tsbNew";
+            this.tsbNew.Text = "Nuevo";
             this.tsbNew.Click += new System.EventHandler(this.tsbNew_Click);
             // 
             // tsbDelete
@@ -111,7 +113,8 @@
             this.tsbDelete.ImageTransparentColor = System.Drawing.Color.Magenta;
             this.tsbDelete.Name = "tsbDelete";
             this.tsbDelete.Size = new System.Drawing.Size(23, 22);
-            this.tsbDelete.Text = "toolStripButton1";
+            this.tsbDelete.Tag = "tsbDelete";
+            this.tsbDelete.Text = "Eliminar";
             // 
             // tsbSave
             // 
@@ -120,7 +123,8 @@
             this.tsbSave.ImageTransparentColor = System.Drawing.Color.Magenta;
             this.tsbSave.Name = "tsbSave";
             this.tsbSave.Size = new System.Drawing.Size(23, 22);
-            this.tsbSave.Text = "toolStripButton1";
+            this.tsbSave.Tag = "tsbSave";
+            this.tsbSave.Text = "Guardar";
             this.tsbSave.Click += new System.EventHandler(this.tsbSave_Click);
             // 
             // tsbPrint
@@ -130,29 +134,31 @@
             this.tsbPrint.ImageTransparentColor = System.Drawing.Color.Magenta;
             this.tsbPrint.Name = "tsbPrint";
             this.tsbPrint.Size = new System.Drawing.Size(23, 22);
-            this.tsbPrint.Text = "toolStripButton1";
+            this.tsbPrint.Tag = "tsbPrint";
+            this.tsbPrint.Text = "Imprimir";
             // 
-            // tsbSearch
+            // tsbBuscar
             // 
-            this.tsbSearch.DisplayStyle = System.Windows.Forms.ToolStripItemDisplayStyle.Image;
-            this.tsbSearch.Image = global::Mcba.UI.Properties.Resources.IconBuscar;
-            this.tsbSearch.ImageTransparentColor = System.Drawing.Color.Magenta;
-            this.tsbSearch.Name = "tsbSearch";
-            this.tsbSearch.Size = new System.Drawing.Size(23, 22);
-            this.tsbSearch.Text = "toolStripButton1";
+            this.tsbBuscar.DisplayStyle = System.Windows.Forms.ToolStripItemDisplayStyle.Image;
+            this.tsbBuscar.Image = global::Mcba.UI.Properties.Resources.IconBuscar;
+            this.tsbBuscar.ImageTransparentColor = System.Drawing.Color.Magenta;
+            this.tsbBuscar.Name = "tsbBuscar";
+            this.tsbBuscar.Size = new System.Drawing.Size(23, 22);
+            this.tsbBuscar.Tag = "tsbBuscar";
+            this.tsbBuscar.Text = "Buscar";
             // 
             // gbDataCliente
             // 
             this.gbDataCliente.Controls.Add(this.txtTotal);
-            this.gbDataCliente.Controls.Add(this.label7);
+            this.gbDataCliente.Controls.Add(this.lblTotal);
             this.gbDataCliente.Controls.Add(this.cmbCliente);
-            this.gbDataCliente.Controls.Add(this.label4);
+            this.gbDataCliente.Controls.Add(this.lblCliente);
             this.gbDataCliente.Controls.Add(this.txtDomicilio);
-            this.gbDataCliente.Controls.Add(this.label9);
+            this.gbDataCliente.Controls.Add(this.lblDomicilio);
             this.gbDataCliente.Controls.Add(this.txtCuit);
-            this.gbDataCliente.Controls.Add(this.label6);
+            this.gbDataCliente.Controls.Add(this.lblCuit);
             this.gbDataCliente.Controls.Add(this.txtRazónSocial);
-            this.gbDataCliente.Controls.Add(this.label2);
+            this.gbDataCliente.Controls.Add(this.lblRazonSocial);
             this.gbDataCliente.Location = new System.Drawing.Point(12, 81);
             this.gbDataCliente.Name = "gbDataCliente";
             this.gbDataCliente.Size = new System.Drawing.Size(729, 123);
@@ -168,15 +174,16 @@
             this.txtTotal.Size = new System.Drawing.Size(90, 20);
             this.txtTotal.TabIndex = 26;
             // 
-            // label7
+            // lblTotal
             // 
-            this.label7.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label7.Location = new System.Drawing.Point(567, 16);
-            this.label7.Name = "label7";
-            this.label7.Size = new System.Drawing.Size(52, 20);
-            this.label7.TabIndex = 25;
-            this.label7.Text = "Total";
-            this.label7.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
+            this.lblTotal.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.lblTotal.Location = new System.Drawing.Point(567, 16);
+            this.lblTotal.Name = "lblTotal";
+            this.lblTotal.Size = new System.Drawing.Size(52, 20);
+            this.lblTotal.TabIndex = 25;
+            this.lblTotal.Tag = "lblTotal";
+            this.lblTotal.Text = "Total";
+            this.lblTotal.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
             // 
             // cmbCliente
             // 
@@ -186,14 +193,15 @@
             this.cmbCliente.Size = new System.Drawing.Size(189, 21);
             this.cmbCliente.TabIndex = 24;
             // 
-            // label4
+            // lblCliente
             // 
-            this.label4.Location = new System.Drawing.Point(6, 16);
-            this.label4.Name = "label4";
-            this.label4.Size = new System.Drawing.Size(73, 20);
-            this.label4.TabIndex = 23;
-            this.label4.Text = "Cliente";
-            this.label4.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
+            this.lblCliente.Location = new System.Drawing.Point(6, 16);
+            this.lblCliente.Name = "lblCliente";
+            this.lblCliente.Size = new System.Drawing.Size(73, 20);
+            this.lblCliente.TabIndex = 23;
+            this.lblCliente.Tag = "lblCliente";
+            this.lblCliente.Text = "Cliente";
+            this.lblCliente.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
             // 
             // txtDomicilio
             // 
@@ -204,14 +212,15 @@
             this.txtDomicilio.Size = new System.Drawing.Size(177, 54);
             this.txtDomicilio.TabIndex = 18;
             // 
-            // label9
+            // lblDomicilio
             // 
-            this.label9.Location = new System.Drawing.Point(293, 50);
-            this.label9.Name = "label9";
-            this.label9.Size = new System.Drawing.Size(65, 20);
-            this.label9.TabIndex = 17;
-            this.label9.Text = "Domicilio";
-            this.label9.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
+            this.lblDomicilio.Location = new System.Drawing.Point(293, 50);
+            this.lblDomicilio.Name = "lblDomicilio";
+            this.lblDomicilio.Size = new System.Drawing.Size(65, 20);
+            this.lblDomicilio.TabIndex = 17;
+            this.lblDomicilio.Tag = "lblDomicilio";
+            this.lblDomicilio.Text = "Domicilio";
+            this.lblDomicilio.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
             // 
             // txtCuit
             // 
@@ -221,14 +230,15 @@
             this.txtCuit.Size = new System.Drawing.Size(177, 20);
             this.txtCuit.TabIndex = 7;
             // 
-            // label6
+            // lblCuit
             // 
-            this.label6.Location = new System.Drawing.Point(293, 16);
-            this.label6.Name = "label6";
-            this.label6.Size = new System.Drawing.Size(65, 20);
-            this.label6.TabIndex = 6;
-            this.label6.Text = "CUIT";
-            this.label6.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
+            this.lblCuit.Location = new System.Drawing.Point(293, 16);
+            this.lblCuit.Name = "lblCuit";
+            this.lblCuit.Size = new System.Drawing.Size(65, 20);
+            this.lblCuit.TabIndex = 6;
+            this.lblCuit.Tag = "lblCuit";
+            this.lblCuit.Text = "CUIT";
+            this.lblCuit.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
             // 
             // txtRazónSocial
             // 
@@ -239,25 +249,26 @@
             this.txtRazónSocial.Size = new System.Drawing.Size(189, 53);
             this.txtRazónSocial.TabIndex = 3;
             // 
-            // label2
+            // lblRazonSocial
             // 
-            this.label2.Location = new System.Drawing.Point(6, 50);
-            this.label2.Name = "label2";
-            this.label2.Size = new System.Drawing.Size(73, 20);
-            this.label2.TabIndex = 2;
-            this.label2.Text = "Razón Social";
-            this.label2.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
+            this.lblRazonSocial.Location = new System.Drawing.Point(6, 50);
+            this.lblRazonSocial.Name = "lblRazonSocial";
+            this.lblRazonSocial.Size = new System.Drawing.Size(73, 20);
+            this.lblRazonSocial.TabIndex = 2;
+            this.lblRazonSocial.Tag = "lblRazonSocial";
+            this.lblRazonSocial.Text = "Razón Social";
+            this.lblRazonSocial.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
             // 
             // gbData
             // 
             this.gbData.Controls.Add(this.textBox2);
-            this.gbData.Controls.Add(this.label8);
+            this.gbData.Controls.Add(this.lblFecha);
             this.gbData.Controls.Add(this.txtNumero);
-            this.gbData.Controls.Add(this.txtFecha);
+            this.gbData.Controls.Add(this.lblNumero);
             this.gbData.Controls.Add(this.txtLetra);
-            this.gbData.Controls.Add(this.label5);
+            this.gbData.Controls.Add(this.lblLetra);
             this.gbData.Controls.Add(this.txtPuntoDeVenta);
-            this.gbData.Controls.Add(this.label1);
+            this.gbData.Controls.Add(this.lblPtoVenta);
             this.gbData.Location = new System.Drawing.Point(12, 31);
             this.gbData.Name = "gbData";
             this.gbData.Size = new System.Drawing.Size(729, 44);
@@ -272,14 +283,15 @@
             this.textBox2.TabIndex = 11;
             this.textBox2.TextAlign = System.Windows.Forms.HorizontalAlignment.Right;
             // 
-            // label8
+            // lblFecha
             // 
-            this.label8.Location = new System.Drawing.Point(407, 16);
-            this.label8.Name = "label8";
-            this.label8.Size = new System.Drawing.Size(52, 20);
-            this.label8.TabIndex = 10;
-            this.label8.Text = "Fecha";
-            this.label8.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
+            this.lblFecha.Location = new System.Drawing.Point(407, 16);
+            this.lblFecha.Name = "lblFecha";
+            this.lblFecha.Size = new System.Drawing.Size(52, 20);
+            this.lblFecha.TabIndex = 10;
+            this.lblFecha.Tag = "lblFecha";
+            this.lblFecha.Text = "Fecha";
+            this.lblFecha.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
             // 
             // txtNumero
             // 
@@ -290,14 +302,15 @@
             this.txtNumero.TabIndex = 9;
             this.txtNumero.TextAlign = System.Windows.Forms.HorizontalAlignment.Right;
             // 
-            // txtFecha
+            // lblNumero
             // 
-            this.txtFecha.Location = new System.Drawing.Point(254, 16);
-            this.txtFecha.Name = "txtFecha";
-            this.txtFecha.Size = new System.Drawing.Size(52, 20);
-            this.txtFecha.TabIndex = 8;
-            this.txtFecha.Text = "Número";
-            this.txtFecha.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
+            this.lblNumero.Location = new System.Drawing.Point(254, 16);
+            this.lblNumero.Name = "lblNumero";
+            this.lblNumero.Size = new System.Drawing.Size(52, 20);
+            this.lblNumero.TabIndex = 8;
+            this.lblNumero.Tag = "lblNumero";
+            this.lblNumero.Text = "Número";
+            this.lblNumero.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
             // 
             // txtLetra
             // 
@@ -308,14 +321,15 @@
             this.txtLetra.TabIndex = 7;
             this.txtLetra.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
             // 
-            // label5
+            // lblLetra
             // 
-            this.label5.Location = new System.Drawing.Point(147, 16);
-            this.label5.Name = "label5";
-            this.label5.Size = new System.Drawing.Size(40, 20);
-            this.label5.TabIndex = 6;
-            this.label5.Text = "Letra";
-            this.label5.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
+            this.lblLetra.Location = new System.Drawing.Point(147, 16);
+            this.lblLetra.Name = "lblLetra";
+            this.lblLetra.Size = new System.Drawing.Size(40, 20);
+            this.lblLetra.TabIndex = 6;
+            this.lblLetra.Tag = "lblLetra";
+            this.lblLetra.Text = "Letra";
+            this.lblLetra.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
             // 
             // txtPuntoDeVenta
             // 
@@ -327,14 +341,15 @@
             this.txtPuntoDeVenta.Text = "0001";
             this.txtPuntoDeVenta.TextAlign = System.Windows.Forms.HorizontalAlignment.Right;
             // 
-            // label1
+            // lblPtoVenta
             // 
-            this.label1.Location = new System.Drawing.Point(6, 16);
-            this.label1.Name = "label1";
-            this.label1.Size = new System.Drawing.Size(73, 20);
-            this.label1.TabIndex = 4;
-            this.label1.Text = "Pto. de Venta";
-            this.label1.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
+            this.lblPtoVenta.Location = new System.Drawing.Point(6, 16);
+            this.lblPtoVenta.Name = "lblPtoVenta";
+            this.lblPtoVenta.Size = new System.Drawing.Size(73, 20);
+            this.lblPtoVenta.TabIndex = 4;
+            this.lblPtoVenta.Tag = "lblPtoVenta";
+            this.lblPtoVenta.Text = "Pto. de Venta";
+            this.lblPtoVenta.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
             // 
             // gbDataItems
             // 
@@ -430,26 +445,26 @@
         private System.Windows.Forms.ToolStrip tsHeader;
         private System.Windows.Forms.GroupBox gbDataCliente;
         private System.Windows.Forms.TextBox txtRazónSocial;
-        private System.Windows.Forms.Label label2;
+        private System.Windows.Forms.Label lblRazonSocial;
         private System.Windows.Forms.ToolStripButton tsbSalir;
         private System.Windows.Forms.ToolStripButton tsbNew;
         private System.Windows.Forms.ToolStripButton tsbSave;
         private System.Windows.Forms.ToolStripButton tsbDelete;
         private System.Windows.Forms.TextBox txtCuit;
-        private System.Windows.Forms.Label label6;
+        private System.Windows.Forms.Label lblCuit;
         private System.Windows.Forms.TextBox txtDomicilio;
-        private System.Windows.Forms.Label label9;
+        private System.Windows.Forms.Label lblDomicilio;
         private System.Windows.Forms.TextBox txtTotal;
-        private System.Windows.Forms.Label label7;
+        private System.Windows.Forms.Label lblTotal;
         private System.Windows.Forms.ComboBox cmbCliente;
-        private System.Windows.Forms.Label label4;
+        private System.Windows.Forms.Label lblCliente;
         private System.Windows.Forms.GroupBox gbData;
         private System.Windows.Forms.TextBox txtNumero;
-        private System.Windows.Forms.Label txtFecha;
+        private System.Windows.Forms.Label lblNumero;
         private System.Windows.Forms.TextBox txtLetra;
-        private System.Windows.Forms.Label label5;
+        private System.Windows.Forms.Label lblLetra;
         private System.Windows.Forms.TextBox txtPuntoDeVenta;
-        private System.Windows.Forms.Label label1;
+        private System.Windows.Forms.Label lblPtoVenta;
         private System.Windows.Forms.GroupBox gbDataItems;
         private System.Windows.Forms.DataGridView dgvFacturas;
         private System.Windows.Forms.ToolStrip tsItems;
@@ -457,8 +472,8 @@
         private System.Windows.Forms.ToolStripButton toolStripButton3;
         private System.Windows.Forms.ToolStripButton tsbEdit;
         private System.Windows.Forms.TextBox textBox2;
-        private System.Windows.Forms.Label label8;
-        private System.Windows.Forms.ToolStripButton tsbSearch;
+        private System.Windows.Forms.Label lblFecha;
+        private System.Windows.Forms.ToolStripButton tsbBuscar;
         private System.Windows.Forms.ToolStripButton tsbPrint;
     }
 }

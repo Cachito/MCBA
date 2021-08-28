@@ -11,8 +11,9 @@ namespace Mcba.Testing
         [Test, Explicit("Solo manual")]
         public void GetDv()
         {
-            var u = new Usuario
+            var u = new User
             {
+                Id = 3,
                 Nombre = "Usuario",
                 Apellido = "Default",
                 Login = "Administrador",
@@ -26,7 +27,7 @@ namespace Mcba.Testing
             McbaSettings.Key = "0909b1f91cbb4459acab466ae8f0eaf5";
             McbaSettings.Salt = "LuisCarroTfi";
 
-            var dvString = DvHelper<Usuario>.GetDvhString(u);
+            var dvString = DvHelper<User>.GetDvhString(u);
         }
     }
 }
