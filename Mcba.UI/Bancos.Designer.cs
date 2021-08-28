@@ -85,9 +85,10 @@
             // label2
             // 
             this.label2.Location = new System.Drawing.Point(6, 46);
-            this.label2.Name = "label2";
+            this.label2.Name = "lblDescripcion";
             this.label2.Size = new System.Drawing.Size(73, 20);
             this.label2.TabIndex = 2;
+            this.label2.Tag = "lblDescripcion";
             this.label2.Text = "Descripción";
             this.label2.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
             // 
@@ -103,9 +104,10 @@
             // label1
             // 
             this.label1.Location = new System.Drawing.Point(6, 13);
-            this.label1.Name = "label1";
+            this.label1.Name = "lblId";
             this.label1.Size = new System.Drawing.Size(73, 20);
             this.label1.TabIndex = 0;
+            this.label1.Tag = "lblId";
             this.label1.Text = "Id";
             this.label1.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
             // 
@@ -126,7 +128,8 @@
             this.tsbSalir.ImageTransparentColor = System.Drawing.Color.Magenta;
             this.tsbSalir.Name = "tsbSalir";
             this.tsbSalir.Size = new System.Drawing.Size(23, 22);
-            this.tsbSalir.Text = "toolStripButton1";
+            this.tsbSalir.Tag = "tsbSalir";
+            this.tsbSalir.Text = "Salir";
             this.tsbSalir.Click += new System.EventHandler(this.tsbSalir_Click);
             // 
             // tsbNew
@@ -136,7 +139,8 @@
             this.tsbNew.ImageTransparentColor = System.Drawing.Color.Magenta;
             this.tsbNew.Name = "tsbNew";
             this.tsbNew.Size = new System.Drawing.Size(23, 22);
-            this.tsbNew.Text = "toolStripButton1";
+            this.tsbSalir.Tag = "tsbNew";
+            this.tsbSalir.Text = "Nuevo";
             this.tsbNew.Click += new System.EventHandler(this.tsbNew_Click);
             // 
             // tsbDelete
@@ -146,6 +150,8 @@
             this.tsbDelete.ImageTransparentColor = System.Drawing.Color.Magenta;
             this.tsbDelete.Name = "tsbDelete";
             this.tsbDelete.Size = new System.Drawing.Size(23, 22);
+            this.tsbSalir.Tag = "tsbDelete";
+            this.tsbSalir.Text = "Eliminar";
             this.tsbDelete.Text = "toolStripButton1";
             // 
             // tsbEdit
@@ -155,7 +161,8 @@
             this.tsbEdit.ImageTransparentColor = System.Drawing.Color.Magenta;
             this.tsbEdit.Name = "tsbEdit";
             this.tsbEdit.Size = new System.Drawing.Size(23, 22);
-            this.tsbEdit.Text = "toolStripButton1";
+            this.tsbSalir.Tag = "tsbEdit";
+            this.tsbSalir.Text = "Editar";
             this.tsbEdit.Click += new System.EventHandler(this.tsbEdit_Click);
             // 
             // tsbSave
@@ -165,7 +172,8 @@
             this.tsbSave.ImageTransparentColor = System.Drawing.Color.Magenta;
             this.tsbSave.Name = "tsbSave";
             this.tsbSave.Size = new System.Drawing.Size(23, 22);
-            this.tsbSave.Text = "toolStripButton1";
+            this.tsbSalir.Tag = "tsbSave";
+            this.tsbSalir.Text = "Guardar";
             this.tsbSave.Click += new System.EventHandler(this.tsbSave_Click);
             // 
             // tsbFind
@@ -175,7 +183,8 @@
             this.tsbFind.ImageTransparentColor = System.Drawing.Color.Magenta;
             this.tsbFind.Name = "tsbFind";
             this.tsbFind.Size = new System.Drawing.Size(23, 22);
-            this.tsbFind.Text = "toolStripButton1";
+            this.tsbSalir.Tag = "tsbFind";
+            this.tsbSalir.Text = "Buscar";
             // 
             // tsbPrint
             // 
@@ -184,7 +193,8 @@
             this.tsbPrint.ImageTransparentColor = System.Drawing.Color.Magenta;
             this.tsbPrint.Name = "tsbPrint";
             this.tsbPrint.Size = new System.Drawing.Size(23, 22);
-            this.tsbPrint.Text = "toolStripButton1";
+            this.tsbSalir.Tag = "tsbPrint";
+            this.tsbSalir.Text = "Imprimir";
             // 
             // Bancos
             // 

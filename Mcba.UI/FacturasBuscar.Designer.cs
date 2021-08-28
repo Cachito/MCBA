@@ -30,14 +30,14 @@
         {
             this.tsFacturasBuscar = new System.Windows.Forms.ToolStrip();
             this.tsbSalir = new System.Windows.Forms.ToolStripButton();
-            this.tsbNew = new System.Windows.Forms.ToolStripButton();
+            this.tsbOk = new System.Windows.Forms.ToolStripButton();
             this.txtFecha = new System.Windows.Forms.TextBox();
-            this.label4 = new System.Windows.Forms.Label();
+            this.lblFecha = new System.Windows.Forms.Label();
             this.txtNumero = new System.Windows.Forms.TextBox();
-            this.label3 = new System.Windows.Forms.Label();
-            this.label1 = new System.Windows.Forms.Label();
+            this.lblNumero = new System.Windows.Forms.Label();
+            this.lblLetra = new System.Windows.Forms.Label();
             this.txtLetra = new System.Windows.Forms.TextBox();
-            this.label6 = new System.Windows.Forms.Label();
+            this.lblCliente = new System.Windows.Forms.Label();
             this.cmbCliente = new System.Windows.Forms.ComboBox();
             this.dgvFacturas = new System.Windows.Forms.DataGridView();
             this.tsFacturasBuscar.SuspendLayout();
@@ -48,7 +48,7 @@
             // 
             this.tsFacturasBuscar.Items.AddRange(new System.Windows.Forms.ToolStripItem[] {
             this.tsbSalir,
-            this.tsbNew});
+            this.tsbOk});
             this.tsFacturasBuscar.Location = new System.Drawing.Point(0, 0);
             this.tsFacturasBuscar.Name = "tsFacturasBuscar";
             this.tsFacturasBuscar.Size = new System.Drawing.Size(667, 25);
@@ -62,18 +62,20 @@
             this.tsbSalir.ImageTransparentColor = System.Drawing.Color.Magenta;
             this.tsbSalir.Name = "tsbSalir";
             this.tsbSalir.Size = new System.Drawing.Size(23, 22);
-            this.tsbSalir.Text = "toolStripButton1";
+            this.tsbSalir.Tag = "tsbSalir";
+            this.tsbSalir.Text = "Salir";
             this.tsbSalir.Click += new System.EventHandler(this.tsbSalir_Click);
             // 
-            // tsbNew
+            // tsbOk
             // 
-            this.tsbNew.DisplayStyle = System.Windows.Forms.ToolStripItemDisplayStyle.Image;
-            this.tsbNew.Image = global::Mcba.UI.Properties.Resources.tick_sign_32;
-            this.tsbNew.ImageTransparentColor = System.Drawing.Color.Magenta;
-            this.tsbNew.Name = "tsbNew";
-            this.tsbNew.Size = new System.Drawing.Size(23, 22);
-            this.tsbNew.Text = "toolStripButton1";
-            this.tsbNew.Click += new System.EventHandler(this.tsbNew_Click);
+            this.tsbOk.DisplayStyle = System.Windows.Forms.ToolStripItemDisplayStyle.Image;
+            this.tsbOk.Image = global::Mcba.UI.Properties.Resources.tick_sign_32;
+            this.tsbOk.ImageTransparentColor = System.Drawing.Color.Magenta;
+            this.tsbOk.Name = "tsbOk";
+            this.tsbOk.Size = new System.Drawing.Size(23, 22);
+            this.tsbOk.Tag = "tsbOk";
+            this.tsbOk.Text = "Ok";
+            this.tsbOk.Click += new System.EventHandler(this.tsbNew_Click);
             // 
             // txtFecha
             // 
@@ -82,14 +84,15 @@
             this.txtFecha.Size = new System.Drawing.Size(177, 20);
             this.txtFecha.TabIndex = 15;
             // 
-            // label4
+            // lblFecha
             // 
-            this.label4.Location = new System.Drawing.Point(258, 46);
-            this.label4.Name = "label4";
-            this.label4.Size = new System.Drawing.Size(46, 20);
-            this.label4.TabIndex = 14;
-            this.label4.Text = "Fecha";
-            this.label4.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
+            this.lblFecha.Location = new System.Drawing.Point(258, 46);
+            this.lblFecha.Name = "lblFecha";
+            this.lblFecha.Size = new System.Drawing.Size(46, 20);
+            this.lblFecha.TabIndex = 14;
+            this.lblFecha.Tag = "lblFecha";
+            this.lblFecha.Text = "Fecha";
+            this.lblFecha.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
             // 
             // txtNumero
             // 
@@ -98,23 +101,25 @@
             this.txtNumero.Size = new System.Drawing.Size(177, 20);
             this.txtNumero.TabIndex = 13;
             // 
-            // label3
+            // lblNumero
             // 
-            this.label3.Location = new System.Drawing.Point(258, 86);
-            this.label3.Name = "label3";
-            this.label3.Size = new System.Drawing.Size(46, 20);
-            this.label3.TabIndex = 12;
-            this.label3.Text = "Número";
-            this.label3.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
+            this.lblNumero.Location = new System.Drawing.Point(258, 86);
+            this.lblNumero.Name = "lblNumero";
+            this.lblNumero.Size = new System.Drawing.Size(46, 20);
+            this.lblNumero.TabIndex = 12;
+            this.lblNumero.Tag = "lblNumero";
+            this.lblNumero.Text = "Número";
+            this.lblNumero.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
             // 
-            // label1
+            // lblLetra
             // 
-            this.label1.Location = new System.Drawing.Point(9, 86);
-            this.label1.Name = "label1";
-            this.label1.Size = new System.Drawing.Size(46, 20);
-            this.label1.TabIndex = 8;
-            this.label1.Text = "Letra";
-            this.label1.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
+            this.lblLetra.Location = new System.Drawing.Point(9, 86);
+            this.lblLetra.Name = "lblLetra";
+            this.lblLetra.Size = new System.Drawing.Size(46, 20);
+            this.lblLetra.TabIndex = 8;
+            this.lblLetra.Tag = "lblLetra";
+            this.lblLetra.Text = "Letra";
+            this.lblLetra.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
             // 
             // txtLetra
             // 
@@ -123,14 +128,15 @@
             this.txtLetra.Size = new System.Drawing.Size(177, 20);
             this.txtLetra.TabIndex = 16;
             // 
-            // label6
+            // lblCliente
             // 
-            this.label6.Location = new System.Drawing.Point(9, 46);
-            this.label6.Name = "label6";
-            this.label6.Size = new System.Drawing.Size(46, 20);
-            this.label6.TabIndex = 19;
-            this.label6.Text = "Cliente";
-            this.label6.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
+            this.lblCliente.Location = new System.Drawing.Point(9, 46);
+            this.lblCliente.Name = "lblCliente";
+            this.lblCliente.Size = new System.Drawing.Size(46, 20);
+            this.lblCliente.TabIndex = 19;
+            this.lblCliente.Tag = "lblCliente";
+            this.lblCliente.Text = "Cliente";
+            this.lblCliente.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
             // 
             // cmbCliente
             // 
@@ -158,13 +164,13 @@
             this.ControlBox = false;
             this.Controls.Add(this.dgvFacturas);
             this.Controls.Add(this.cmbCliente);
-            this.Controls.Add(this.label6);
+            this.Controls.Add(this.lblCliente);
             this.Controls.Add(this.txtLetra);
             this.Controls.Add(this.txtFecha);
-            this.Controls.Add(this.label4);
+            this.Controls.Add(this.lblFecha);
             this.Controls.Add(this.txtNumero);
-            this.Controls.Add(this.label3);
-            this.Controls.Add(this.label1);
+            this.Controls.Add(this.lblNumero);
+            this.Controls.Add(this.lblLetra);
             this.Controls.Add(this.tsFacturasBuscar);
             this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.FixedDialog;
             this.Name = "FacturasBuscar";
@@ -183,14 +189,14 @@
 
         private System.Windows.Forms.ToolStrip tsFacturasBuscar;
         private System.Windows.Forms.ToolStripButton tsbSalir;
-        private System.Windows.Forms.ToolStripButton tsbNew;
+        private System.Windows.Forms.ToolStripButton tsbOk;
         private System.Windows.Forms.TextBox txtFecha;
-        private System.Windows.Forms.Label label4;
+        private System.Windows.Forms.Label lblFecha;
         private System.Windows.Forms.TextBox txtNumero;
-        private System.Windows.Forms.Label label3;
-        private System.Windows.Forms.Label label1;
+        private System.Windows.Forms.Label lblNumero;
+        private System.Windows.Forms.Label lblLetra;
         private System.Windows.Forms.TextBox txtLetra;
-        private System.Windows.Forms.Label label6;
+        private System.Windows.Forms.Label lblCliente;
         private System.Windows.Forms.ComboBox cmbCliente;
         private System.Windows.Forms.DataGridView dgvFacturas;
     }

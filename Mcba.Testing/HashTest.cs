@@ -33,7 +33,7 @@ namespace Mcba.Testing
         [Test, Explicit("Solo manual")]
         public void TestAes()
         {
-            var text = "frase a encriptar";
+            var text = "{\"Key\":\"0909b1f91cbb4459acab466ae8f0eaf5\",\"Salt\":\"LuisCarroTfi\",\"CnnString\":\"Integrated Security=SSPI;Persist Security Info False;Initial Catalog=Mcba;Data Source=DESKTOP-M95JCSK\\\\SQLEXPRESS;\",\"MessageTitle\":\"Boungiorno S.A.\"}";
 
             var hash1 = HashHelper.Encrypt(text, KEY_SISTEMA, SALT_SISTEMA);
             var original = HashHelper.Decrypt(hash1, KEY_SISTEMA, SALT_SISTEMA);
@@ -45,7 +45,7 @@ namespace Mcba.Testing
         public void GetBase64()
         {
             var fileName =  "Data.json";
-            var fileText= "{\"Key\":\"0909b1f91cbb4459acab466ae8f0eaf5\",\"Salt\":\"LuisCarroTfi\",\"CnnString\":\"Integrated Security=SSPI;Persist Security Info=False;Initial Catalog=Mcba;Data Source=DESKTOP-M95JCSK\\\\SQLEXPRESS;\"}";
+            var fileText= "{\"Key\":\"0909b1f91cbb4459acab466ae8f0eaf5\",\"Salt\":\"LuisCarroTfi\",\"CnnString\":\"Integrated Security=SSPI;Persist Security Info=False;Initial Catalog=Mcba;Data Source=DESKTOP-M95JCSK\\\\SQLEXPRESS;\",\"MessageTitle\":\"Boungiorno S.A.\"}"; 
 
             var hashName = HashHelper.Base64Encode(fileName);
             var decodeName = HashHelper.Base64Decode(hashName);

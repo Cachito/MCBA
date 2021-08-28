@@ -47,8 +47,8 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="Captions.cs" />
     <Compile Include="Enums\LanguageEnum.cs" />
+    <Compile Include="Helpers\LanguageHelper.cs" />
     <Compile Include="Settings\InstanceSettings.cs" />
     <Compile Include="Settings\McbaSettings.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
@@ -67,5 +67,6 @@
       <Name>Mcba.Data</Name>
     </ProjectReference>
   </ItemGroup>
+  <ItemGroup />
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>

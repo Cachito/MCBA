@@ -1,5 +1,4 @@
-﻿
-namespace Mcba.UI
+﻿namespace Mcba.UI
 {
     partial class ViewBase
     {
@@ -29,15 +28,17 @@ namespace Mcba.UI
         /// </summary>
         private void InitializeComponent()
         {
-            this.toolBar = new System.Windows.Forms.ToolStrip();
-            this.tsbSalir = new System.Windows.Forms.ToolStripButton();
-            this.tsbNew = new System.Windows.Forms.ToolStripButton();
-            this.tsbDelete = new System.Windows.Forms.ToolStripButton();
-            this.tsbEdit = new System.Windows.Forms.ToolStripButton();
-            this.tsbSave = new System.Windows.Forms.ToolStripButton();
-            this.tsbFind = new System.Windows.Forms.ToolStripButton();
-            this.tsbPrint = new System.Windows.Forms.ToolStripButton();
+            System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(ViewBase));
+            this.toolBar = new Mcba.UI.Controls.McbaToolStrip();
+            this.tsbSalir = new Mcba.UI.Controls.McbaToolStripButton();
+            this.tsbNew = new Mcba.UI.Controls.McbaToolStripButton();
+            this.tsbDelete = new Mcba.UI.Controls.McbaToolStripButton();
+            this.tsbEdit = new Mcba.UI.Controls.McbaToolStripButton();
+            this.tsbSave = new Mcba.UI.Controls.McbaToolStripButton();
+            this.tsbFind = new Mcba.UI.Controls.McbaToolStripButton();
+            this.tsbPrint = new Mcba.UI.Controls.McbaToolStripButton();
             this.dataGridView = new System.Windows.Forms.DataGridView();
+            this.toolStripButton1 = new System.Windows.Forms.ToolStripButton();
             this.toolBar.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.dataGridView)).BeginInit();
             this.SuspendLayout();
@@ -51,7 +52,8 @@ namespace Mcba.UI
             this.tsbEdit,
             this.tsbSave,
             this.tsbFind,
-            this.tsbPrint});
+            this.tsbPrint,
+            this.toolStripButton1});
             this.toolBar.Location = new System.Drawing.Point(0, 0);
             this.toolBar.Name = "toolBar";
             this.toolBar.Size = new System.Drawing.Size(613, 25);
@@ -65,7 +67,8 @@ namespace Mcba.UI
             this.tsbSalir.ImageTransparentColor = System.Drawing.Color.Magenta;
             this.tsbSalir.Name = "tsbSalir";
             this.tsbSalir.Size = new System.Drawing.Size(23, 22);
-            this.tsbSalir.Text = "toolStripButton1";
+            this.tsbSalir.Tag = "tsbSalir";
+            this.tsbSalir.Text = "Salir";
             // 
             // tsbNew
             // 
@@ -74,7 +77,8 @@ namespace Mcba.UI
             this.tsbNew.ImageTransparentColor = System.Drawing.Color.Magenta;
             this.tsbNew.Name = "tsbNew";
             this.tsbNew.Size = new System.Drawing.Size(23, 22);
-            this.tsbNew.Text = "toolStripButton1";
+            this.tsbNew.Tag = "tsbNew";
+            this.tsbNew.Text = "Nuevo";
             // 
             // tsbDelete
             // 
@@ -83,7 +87,8 @@ namespace Mcba.UI
             this.tsbDelete.ImageTransparentColor = System.Drawing.Color.Magenta;
             this.tsbDelete.Name = "tsbDelete";
             this.tsbDelete.Size = new System.Drawing.Size(23, 22);
-            this.tsbDelete.Text = "toolStripButton1";
+            this.tsbDelete.Tag = "tsbDelete";
+            this.tsbDelete.Text = "Eliminar";
             // 
             // tsbEdit
             // 
@@ -92,7 +97,8 @@ namespace Mcba.UI
             this.tsbEdit.ImageTransparentColor = System.Drawing.Color.Magenta;
             this.tsbEdit.Name = "tsbEdit";
             this.tsbEdit.Size = new System.Drawing.Size(23, 22);
-            this.tsbEdit.Text = "toolStripButton1";
+            this.tsbEdit.Tag = "tsbEdit";
+            this.tsbEdit.Text = "Editar";
             // 
             // tsbSave
             // 
@@ -101,7 +107,8 @@ namespace Mcba.UI
             this.tsbSave.ImageTransparentColor = System.Drawing.Color.Magenta;
             this.tsbSave.Name = "tsbSave";
             this.tsbSave.Size = new System.Drawing.Size(23, 22);
-            this.tsbSave.Text = "toolStripButton1";
+            this.tsbSave.Tag = "tsbSave";
+            this.tsbSave.Text = "Guardar";
             // 
             // tsbFind
             // 
@@ -110,7 +117,8 @@ namespace Mcba.UI
             this.tsbFind.ImageTransparentColor = System.Drawing.Color.Magenta;
             this.tsbFind.Name = "tsbFind";
             this.tsbFind.Size = new System.Drawing.Size(23, 22);
-            this.tsbFind.Text = "toolStripButton1";
+            this.tsbFind.Tag = "tsbFind";
+            this.tsbFind.Text = "Buscar";
             // 
             // tsbPrint
             // 
@@ -119,7 +127,8 @@ namespace Mcba.UI
             this.tsbPrint.ImageTransparentColor = System.Drawing.Color.Magenta;
             this.tsbPrint.Name = "tsbPrint";
             this.tsbPrint.Size = new System.Drawing.Size(23, 22);
-            this.tsbPrint.Text = "toolStripButton1";
+            this.tsbPrint.Tag = "tsbPrint";
+            this.tsbPrint.Text = "tsbPrintImprimir";
             // 
             // dataGridView
             // 
@@ -127,10 +136,19 @@ namespace Mcba.UI
             this.dataGridView.AllowUserToDeleteRows = false;
             this.dataGridView.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
             this.dataGridView.Dock = System.Windows.Forms.DockStyle.Bottom;
-            this.dataGridView.Location = new System.Drawing.Point(0, 170);
+            this.dataGridView.Location = new System.Drawing.Point(0, 150);
             this.dataGridView.Name = "dataGridView";
-            this.dataGridView.Size = new System.Drawing.Size(613, 262);
+            this.dataGridView.Size = new System.Drawing.Size(613, 282);
             this.dataGridView.TabIndex = 3;
+            // 
+            // toolStripButton1
+            // 
+            this.toolStripButton1.DisplayStyle = System.Windows.Forms.ToolStripItemDisplayStyle.Image;
+            this.toolStripButton1.Image = ((System.Drawing.Image)(resources.GetObject("toolStripButton1.Image")));
+            this.toolStripButton1.ImageTransparentColor = System.Drawing.Color.Magenta;
+            this.toolStripButton1.Name = "toolStripButton1";
+            this.toolStripButton1.Size = new System.Drawing.Size(23, 22);
+            this.toolStripButton1.Text = "toolStripButton1";
             // 
             // ViewBase
             // 
@@ -144,7 +162,6 @@ namespace Mcba.UI
             this.Name = "ViewBase";
             this.Text = "ViewBase";
             this.toolBar.ResumeLayout(false);
-            this.toolBar.PerformLayout();
             ((System.ComponentModel.ISupportInitialize)(this.dataGridView)).EndInit();
             this.ResumeLayout(false);
             this.PerformLayout();
@@ -153,14 +170,15 @@ namespace Mcba.UI
 
         #endregion
 
-        private System.Windows.Forms.ToolStrip toolBar;
-        private System.Windows.Forms.ToolStripButton tsbSalir;
-        private System.Windows.Forms.ToolStripButton tsbNew;
-        private System.Windows.Forms.ToolStripButton tsbDelete;
-        private System.Windows.Forms.ToolStripButton tsbEdit;
-        private System.Windows.Forms.ToolStripButton tsbSave;
-        private System.Windows.Forms.ToolStripButton tsbFind;
-        private System.Windows.Forms.ToolStripButton tsbPrint;
-        private System.Windows.Forms.DataGridView dataGridView;
+        protected Mcba.UI.Controls.McbaToolStrip toolBar;
+        protected Mcba.UI.Controls.McbaToolStripButton tsbSalir;
+        protected Mcba.UI.Controls.McbaToolStripButton tsbNew;
+        protected Mcba.UI.Controls.McbaToolStripButton tsbDelete;
+        protected Mcba.UI.Controls.McbaToolStripButton tsbEdit;
+        protected Mcba.UI.Controls.McbaToolStripButton tsbSave;
+        protected Mcba.UI.Controls.McbaToolStripButton tsbFind;
+        protected Mcba.UI.Controls.McbaToolStripButton tsbPrint;
+        protected System.Windows.Forms.DataGridView dataGridView;
+        private System.Windows.Forms.ToolStripButton toolStripButton1;
     }
 }

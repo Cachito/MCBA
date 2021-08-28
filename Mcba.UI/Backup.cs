@@ -2,6 +2,7 @@
 using System;
 using System.Text;
 using System.Windows.Forms;
+using Mcba.Infraestruture.Settings;
 
 namespace Mcba.UI
 {
@@ -62,7 +63,7 @@ namespace Mcba.UI
 
         private void ControlsEnabled(bool enable)
         {
-            this.ShowMessage("Proceso de backup finalizado", "MCBA Backup");
+            this.ShowMessage("Proceso de backup finalizado", McbaSettings.MessageTitle);
         }
 
         private void Save()

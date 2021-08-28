@@ -31,16 +31,16 @@
             this.tsCambioPassword = new System.Windows.Forms.ToolStrip();
             this.tsbSalir = new System.Windows.Forms.ToolStripButton();
             this.tsbSave = new System.Windows.Forms.ToolStripButton();
+            this.tsbRestaurar = new System.Windows.Forms.ToolStripButton();
             this.gbData = new System.Windows.Forms.GroupBox();
             this.txtRepiteNueva = new System.Windows.Forms.TextBox();
-            this.label4 = new System.Windows.Forms.Label();
+            this.lblRepetir = new System.Windows.Forms.Label();
             this.txtNueva = new System.Windows.Forms.TextBox();
-            this.label3 = new System.Windows.Forms.Label();
+            this.lblContraNueva = new System.Windows.Forms.Label();
             this.txtActual = new System.Windows.Forms.TextBox();
-            this.label2 = new System.Windows.Forms.Label();
+            this.lblContraActual = new System.Windows.Forms.Label();
             this.txtUsuario = new System.Windows.Forms.TextBox();
-            this.label1 = new System.Windows.Forms.Label();
-            this.tsbRestaurar = new System.Windows.Forms.ToolStripButton();
+            this.lblUsuario = new System.Windows.Forms.Label();
             this.tsCambioPassword.SuspendLayout();
             this.gbData.SuspendLayout();
             this.SuspendLayout();
@@ -48,10 +48,9 @@
             // tsCambioPassword
             // 
             this.tsCambioPassword.Items.AddRange(new System.Windows.Forms.ToolStripItem[] {
-                this.tsbSalir,
-                this.tsbSave,
-                this.tsbRestaurar
-            });
+            this.tsbSalir,
+            this.tsbSave,
+            this.tsbRestaurar});
             this.tsCambioPassword.Location = new System.Drawing.Point(0, 0);
             this.tsCambioPassword.Name = "tsCambioPassword";
             this.tsCambioPassword.Size = new System.Drawing.Size(358, 25);
@@ -64,7 +63,8 @@
             this.tsbSalir.ImageTransparentColor = System.Drawing.Color.Magenta;
             this.tsbSalir.Name = "tsbSalir";
             this.tsbSalir.Size = new System.Drawing.Size(23, 22);
-            this.tsbSalir.Text = "toolStripButton1";
+            this.tsbSalir.Tag = "tsbSalir";
+            this.tsbSalir.Text = "Salir";
             this.tsbSalir.Click += new System.EventHandler(this.tsbSalir_Click);
             // 
             // tsbSave
@@ -74,19 +74,31 @@
             this.tsbSave.ImageTransparentColor = System.Drawing.Color.Magenta;
             this.tsbSave.Name = "tsbSave";
             this.tsbSave.Size = new System.Drawing.Size(23, 22);
-            this.tsbSave.Text = "toolStripButton1";
+            this.tsbSave.Tag = "tsbSave";
+            this.tsbSave.Text = "Guardar";
             this.tsbSave.Click += new System.EventHandler(this.tsbSave_Click);
+            // 
+            // tsbRestaurar
+            // 
+            this.tsbRestaurar.DisplayStyle = System.Windows.Forms.ToolStripItemDisplayStyle.Image;
+            this.tsbRestaurar.Image = global::Mcba.UI.Properties.Resources.Restore_Password_48;
+            this.tsbRestaurar.ImageTransparentColor = System.Drawing.Color.Magenta;
+            this.tsbRestaurar.Name = "tsbRestaurar";
+            this.tsbRestaurar.Size = new System.Drawing.Size(23, 22);
+            this.tsbRestaurar.Tag = "tsbRestaurar";
+            this.tsbRestaurar.Text = "Restaurar";
+            this.tsbRestaurar.Click += new System.EventHandler(this.tsbRestaurar_Click);
             // 
             // gbData
             // 
             this.gbData.Controls.Add(this.txtRepiteNueva);
-            this.gbData.Controls.Add(this.label4);
+            this.gbData.Controls.Add(this.lblRepetir);
             this.gbData.Controls.Add(this.txtNueva);
-            this.gbData.Controls.Add(this.label3);
+            this.gbData.Controls.Add(this.lblContraNueva);
             this.gbData.Controls.Add(this.txtActual);
-            this.gbData.Controls.Add(this.label2);
+            this.gbData.Controls.Add(this.lblContraActual);
             this.gbData.Controls.Add(this.txtUsuario);
-            this.gbData.Controls.Add(this.label1);
+            this.gbData.Controls.Add(this.lblUsuario);
             this.gbData.Location = new System.Drawing.Point(12, 28);
             this.gbData.Name = "gbData";
             this.gbData.Size = new System.Drawing.Size(335, 157);
@@ -102,14 +114,15 @@
             this.txtRepiteNueva.Size = new System.Drawing.Size(168, 20);
             this.txtRepiteNueva.TabIndex = 7;
             // 
-            // label4
+            // lblRepetir
             // 
-            this.label4.Location = new System.Drawing.Point(6, 122);
-            this.label4.Name = "label4";
-            this.label4.Size = new System.Drawing.Size(139, 20);
-            this.label4.TabIndex = 6;
-            this.label4.Text = "Repetir Contraseña Nueva";
-            this.label4.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
+            this.lblRepetir.Location = new System.Drawing.Point(6, 122);
+            this.lblRepetir.Name = "lblRepetir";
+            this.lblRepetir.Size = new System.Drawing.Size(139, 20);
+            this.lblRepetir.TabIndex = 6;
+            this.lblRepetir.Tag = "lblRepetir";
+            this.lblRepetir.Text = "Repetir Contraseña Nueva";
+            this.lblRepetir.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
             // 
             // txtNueva
             // 
@@ -120,14 +133,15 @@
             this.txtNueva.Size = new System.Drawing.Size(168, 20);
             this.txtNueva.TabIndex = 5;
             // 
-            // label3
+            // lblContraNueva
             // 
-            this.label3.Location = new System.Drawing.Point(6, 86);
-            this.label3.Name = "label3";
-            this.label3.Size = new System.Drawing.Size(139, 20);
-            this.label3.TabIndex = 4;
-            this.label3.Text = "Contraseña Nueva";
-            this.label3.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
+            this.lblContraNueva.Location = new System.Drawing.Point(6, 86);
+            this.lblContraNueva.Name = "lblContraNueva";
+            this.lblContraNueva.Size = new System.Drawing.Size(139, 20);
+            this.lblContraNueva.TabIndex = 4;
+            this.lblContraNueva.Tag = "lblContraNueva";
+            this.lblContraNueva.Text = "Contraseña Nueva";
+            this.lblContraNueva.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
             // 
             // txtActual
             // 
@@ -138,14 +152,15 @@
             this.txtActual.Size = new System.Drawing.Size(168, 20);
             this.txtActual.TabIndex = 3;
             // 
-            // label2
+            // lblContraActual
             // 
-            this.label2.Location = new System.Drawing.Point(6, 50);
-            this.label2.Name = "label2";
-            this.label2.Size = new System.Drawing.Size(139, 20);
-            this.label2.TabIndex = 2;
-            this.label2.Text = "Contraseña Actual";
-            this.label2.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
+            this.lblContraActual.Location = new System.Drawing.Point(6, 50);
+            this.lblContraActual.Name = "lblContraActual";
+            this.lblContraActual.Size = new System.Drawing.Size(139, 20);
+            this.lblContraActual.TabIndex = 2;
+            this.lblContraActual.Tag = "lblContraActual";
+            this.lblContraActual.Text = "Contraseña Actual";
+            this.lblContraActual.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
             // 
             // txtUsuario
             // 
@@ -156,24 +171,15 @@
             this.txtUsuario.Size = new System.Drawing.Size(168, 20);
             this.txtUsuario.TabIndex = 1;
             // 
-            // label1
+            // lblUsuario
             // 
-            this.label1.Location = new System.Drawing.Point(6, 14);
-            this.label1.Name = "label1";
-            this.label1.Size = new System.Drawing.Size(139, 20);
-            this.label1.TabIndex = 0;
-            this.label1.Text = "Usuario";
-            this.label1.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
-            // 
-            // tsbRestaurar
-            // 
-            this.tsbRestaurar.DisplayStyle = System.Windows.Forms.ToolStripItemDisplayStyle.Image;
-            this.tsbRestaurar.Image = global::Mcba.UI.Properties.Resources.Restore_Password_48;
-            this.tsbRestaurar.ImageTransparentColor = System.Drawing.Color.Magenta;
-            this.tsbRestaurar.Name = "tsbRestaurar";
-            this.tsbRestaurar.Size = new System.Drawing.Size(23, 22);
-            this.tsbRestaurar.Text = "Restaurar";
-            this.tsbRestaurar.Click += new System.EventHandler(this.tsbRestaurar_Click);
+            this.lblUsuario.Location = new System.Drawing.Point(6, 14);
+            this.lblUsuario.Name = "lblUsuario";
+            this.lblUsuario.Size = new System.Drawing.Size(139, 20);
+            this.lblUsuario.TabIndex = 0;
+            this.lblUsuario.Tag = "lblUsuario";
+            this.lblUsuario.Text = "Usuario";
+            this.lblUsuario.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
             // 
             // CambioPassword
             // 
@@ -202,15 +208,15 @@
         private System.Windows.Forms.ToolStrip tsCambioPassword;
         private System.Windows.Forms.GroupBox gbData;
         private System.Windows.Forms.TextBox txtUsuario;
-        private System.Windows.Forms.Label label1;
+        private System.Windows.Forms.Label lblUsuario;
         private System.Windows.Forms.TextBox txtActual;
-        private System.Windows.Forms.Label label2;
+        private System.Windows.Forms.Label lblContraActual;
         private System.Windows.Forms.ToolStripButton tsbSalir;
         private System.Windows.Forms.ToolStripButton tsbSave;
         private System.Windows.Forms.TextBox txtRepiteNueva;
-        private System.Windows.Forms.Label label4;
+        private System.Windows.Forms.Label lblRepetir;
         private System.Windows.Forms.TextBox txtNueva;
-        private System.Windows.Forms.Label label3;
+        private System.Windows.Forms.Label lblContraNueva;
         private System.Windows.Forms.ToolStripButton tsbRestaurar;
     }
 }

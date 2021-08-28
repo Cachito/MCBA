@@ -6,6 +6,7 @@ using Mcba.Seguridad;
 using System.Windows.Forms;
 using Mcba.Infraestruture;
 using Mcba.Infraestruture.Enums;
+using Mcba.Infraestruture.Helpers;
 using Mcba.Infraestruture.Settings;
 using Mcba.UI.Properties;
 using Newtonsoft.Json;
@@ -40,7 +41,7 @@ namespace Mcba.UI
 
             var settings = SetSettings();
 
-            tsLabel.Text = Captions.GetCaption((int)McbaSettings.Language, Name, "CheckIntegridad");
+            LanguageHelper.SetCaption(tsLabel, Name, "CheckIntegridad");
 
             // check integridad
             for (var i = 1; i <= 100; i++)

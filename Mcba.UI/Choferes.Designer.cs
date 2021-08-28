@@ -36,15 +36,15 @@
             this.tsbSave = new System.Windows.Forms.ToolStripButton();
             this.gbData = new System.Windows.Forms.GroupBox();
             this.cmbRemitentes = new System.Windows.Forms.ComboBox();
-            this.label5 = new System.Windows.Forms.Label();
+            this.lblRemitente = new System.Windows.Forms.Label();
             this.txtDni = new System.Windows.Forms.TextBox();
-            this.label6 = new System.Windows.Forms.Label();
+            this.lblDni = new System.Windows.Forms.Label();
             this.txtApellido = new System.Windows.Forms.TextBox();
-            this.label3 = new System.Windows.Forms.Label();
+            this.lblApellido = new System.Windows.Forms.Label();
             this.txtNombre = new System.Windows.Forms.TextBox();
-            this.label2 = new System.Windows.Forms.Label();
+            this.lblNombre = new System.Windows.Forms.Label();
             this.txtId = new System.Windows.Forms.TextBox();
-            this.label1 = new System.Windows.Forms.Label();
+            this.lblId = new System.Windows.Forms.Label();
             this.dgvChoferes = new System.Windows.Forms.DataGridView();
             this.tsChoferes.SuspendLayout();
             this.gbData.SuspendLayout();
@@ -72,6 +72,7 @@
             this.tsbSalir.ImageTransparentColor = System.Drawing.Color.Magenta;
             this.tsbSalir.Name = "tsbSalir";
             this.tsbSalir.Size = new System.Drawing.Size(23, 22);
+            this.tsbSalir.Tag = "tsbSalir";
             this.tsbSalir.Text = "toolStripButton1";
             this.tsbSalir.Click += new System.EventHandler(this.tsbSalir_Click);
             // 
@@ -82,6 +83,7 @@
             this.tsbNew.ImageTransparentColor = System.Drawing.Color.Magenta;
             this.tsbNew.Name = "tsbNew";
             this.tsbNew.Size = new System.Drawing.Size(23, 22);
+            this.tsbNew.Tag = "tsbNew";
             this.tsbNew.Text = "toolStripButton1";
             this.tsbNew.Click += new System.EventHandler(this.tsbNew_Click);
             // 
@@ -92,6 +94,7 @@
             this.tsbDelete.ImageTransparentColor = System.Drawing.Color.Magenta;
             this.tsbDelete.Name = "tsbDelete";
             this.tsbDelete.Size = new System.Drawing.Size(23, 22);
+            this.tsbDelete.Tag = "tsbDelete";
             this.tsbDelete.Text = "toolStripButton1";
             // 
             // tsbEdit
@@ -101,7 +104,8 @@
             this.tsbEdit.ImageTransparentColor = System.Drawing.Color.Magenta;
             this.tsbEdit.Name = "tsbEdit";
             this.tsbEdit.Size = new System.Drawing.Size(23, 22);
-            this.tsbEdit.Text = "toolStripButton1";
+            this.tsbEdit.Tag = "tsbEdit";
+            this.tsbEdit.Text = "Editar";
             this.tsbEdit.Click += new System.EventHandler(this.tsbEdit_Click);
             // 
             // tsbSave
@@ -111,21 +115,22 @@
             this.tsbSave.ImageTransparentColor = System.Drawing.Color.Magenta;
             this.tsbSave.Name = "tsbSave";
             this.tsbSave.Size = new System.Drawing.Size(23, 22);
-            this.tsbSave.Text = "toolStripButton1";
+            this.tsbSave.Tag = "tsbSave";
+            this.tsbSave.Text = "Guardar";
             this.tsbSave.Click += new System.EventHandler(this.tsbSave_Click);
             // 
             // gbData
             // 
             this.gbData.Controls.Add(this.cmbRemitentes);
-            this.gbData.Controls.Add(this.label5);
+            this.gbData.Controls.Add(this.lblRemitente);
             this.gbData.Controls.Add(this.txtDni);
-            this.gbData.Controls.Add(this.label6);
+            this.gbData.Controls.Add(this.lblDni);
             this.gbData.Controls.Add(this.txtApellido);
-            this.gbData.Controls.Add(this.label3);
+            this.gbData.Controls.Add(this.lblApellido);
             this.gbData.Controls.Add(this.txtNombre);
-            this.gbData.Controls.Add(this.label2);
+            this.gbData.Controls.Add(this.lblNombre);
             this.gbData.Controls.Add(this.txtId);
-            this.gbData.Controls.Add(this.label1);
+            this.gbData.Controls.Add(this.lblId);
             this.gbData.Location = new System.Drawing.Point(12, 28);
             this.gbData.Name = "gbData";
             this.gbData.Size = new System.Drawing.Size(541, 108);
@@ -140,14 +145,15 @@
             this.cmbRemitentes.Size = new System.Drawing.Size(168, 21);
             this.cmbRemitentes.TabIndex = 12;
             // 
-            // label5
+            // lblRemitente
             // 
-            this.label5.Location = new System.Drawing.Point(265, 77);
-            this.label5.Name = "label5";
-            this.label5.Size = new System.Drawing.Size(86, 20);
-            this.label5.TabIndex = 8;
-            this.label5.Text = "Remitente";
-            this.label5.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
+            this.lblRemitente.Location = new System.Drawing.Point(265, 77);
+            this.lblRemitente.Name = "lblRemitente";
+            this.lblRemitente.Size = new System.Drawing.Size(86, 20);
+            this.lblRemitente.TabIndex = 8;
+            this.lblRemitente.Tag = "lblRemitente";
+            this.lblRemitente.Text = "Remitente";
+            this.lblRemitente.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
             // 
             // txtDni
             // 
@@ -156,14 +162,15 @@
             this.txtDni.Size = new System.Drawing.Size(168, 20);
             this.txtDni.TabIndex = 7;
             // 
-            // label6
+            // lblDni
             // 
-            this.label6.Location = new System.Drawing.Point(265, 44);
-            this.label6.Name = "label6";
-            this.label6.Size = new System.Drawing.Size(86, 20);
-            this.label6.TabIndex = 6;
-            this.label6.Text = "DNI";
-            this.label6.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
+            this.lblDni.Location = new System.Drawing.Point(265, 44);
+            this.lblDni.Name = "lblDni";
+            this.lblDni.Size = new System.Drawing.Size(86, 20);
+            this.lblDni.TabIndex = 6;
+            this.lblDni.Tag = "lblDni";
+            this.lblDni.Text = "DNI";
+            this.lblDni.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
             // 
             // txtApellido
             // 
@@ -172,14 +179,15 @@
             this.txtApellido.Size = new System.Drawing.Size(168, 20);
             this.txtApellido.TabIndex = 5;
             // 
-            // label3
+            // lblApellido
             // 
-            this.label3.Location = new System.Drawing.Point(6, 77);
-            this.label3.Name = "label3";
-            this.label3.Size = new System.Drawing.Size(73, 20);
-            this.label3.TabIndex = 4;
-            this.label3.Text = "Apellido";
-            this.label3.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
+            this.lblApellido.Location = new System.Drawing.Point(6, 77);
+            this.lblApellido.Name = "lblApellido";
+            this.lblApellido.Size = new System.Drawing.Size(73, 20);
+            this.lblApellido.TabIndex = 4;
+            this.lblApellido.Tag = "lblApellido";
+            this.lblApellido.Text = "Apellido";
+            this.lblApellido.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
             // 
             // txtNombre
             // 
@@ -188,14 +196,15 @@
             this.txtNombre.Size = new System.Drawing.Size(168, 20);
             this.txtNombre.TabIndex = 3;
             // 
-            // label2
+            // lblNombre
             // 
-            this.label2.Location = new System.Drawing.Point(6, 44);
-            this.label2.Name = "label2";
-            this.label2.Size = new System.Drawing.Size(73, 20);
-            this.label2.TabIndex = 2;
-            this.label2.Text = "Nombre";
-            this.label2.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
+            this.lblNombre.Location = new System.Drawing.Point(6, 44);
+            this.lblNombre.Name = "lblNombre";
+            this.lblNombre.Size = new System.Drawing.Size(73, 20);
+            this.lblNombre.TabIndex = 2;
+            this.lblNombre.Tag = "lblNombre";
+            this.lblNombre.Text = "Nombre";
+            this.lblNombre.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
             // 
             // txtId
             // 
@@ -206,14 +215,15 @@
             this.txtId.Size = new System.Drawing.Size(168, 20);
             this.txtId.TabIndex = 1;
             // 
-            // label1
+            // lblId
             // 
-            this.label1.Location = new System.Drawing.Point(6, 13);
-            this.label1.Name = "label1";
-            this.label1.Size = new System.Drawing.Size(73, 20);
-            this.label1.TabIndex = 0;
-            this.label1.Text = "Id";
-            this.label1.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
+            this.lblId.Location = new System.Drawing.Point(6, 13);
+            this.lblId.Name = "lblId";
+            this.lblId.Size = new System.Drawing.Size(73, 20);
+            this.lblId.TabIndex = 0;
+            this.lblId.Tag = "lblId";
+            this.lblId.Text = "Id";
+            this.lblId.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
             // 
             // dgvChoferes
             // 
@@ -254,10 +264,10 @@
         private System.Windows.Forms.GroupBox gbData;
         private System.Windows.Forms.DataGridView dgvChoferes;
         private System.Windows.Forms.TextBox txtId;
-        private System.Windows.Forms.Label label1;
-        private System.Windows.Forms.Label label3;
+        private System.Windows.Forms.Label lblId;
+        private System.Windows.Forms.Label lblApellido;
         private System.Windows.Forms.TextBox txtNombre;
-        private System.Windows.Forms.Label label2;
+        private System.Windows.Forms.Label lblNombre;
         private System.Windows.Forms.ToolStripButton tsbSalir;
         private System.Windows.Forms.ToolStripButton tsbNew;
         private System.Windows.Forms.ToolStripButton tsbSave;
@@ -265,8 +275,8 @@
         private System.Windows.Forms.ToolStripButton tsbDelete;
         private System.Windows.Forms.TextBox txtApellido;
         private System.Windows.Forms.ComboBox cmbRemitentes;
-        private System.Windows.Forms.Label label5;
+        private System.Windows.Forms.Label lblRemitente;
         private System.Windows.Forms.TextBox txtDni;
-        private System.Windows.Forms.Label label6;
+        private System.Windows.Forms.Label lblDni;
     }
 }

@@ -5,6 +5,7 @@ using System.Windows.Forms;
 using Mcba.Bll;
 using Mcba.Infraestruture;
 using Mcba.Infraestruture.Enums;
+using Mcba.Infraestruture.Helpers;
 using Mcba.Infraestruture.Settings;
 
 namespace Mcba.UI
@@ -26,7 +27,7 @@ namespace Mcba.UI
             Cursor = Cursors.WaitCursor;
             Application.DoEvents();
             
-            SetCaptions((int)McbaSettings.Language);
+            SetCaptions();
 
             cmbLanguages.SelectedIndexChanged -= cmbLanguages_SelectedIndexChanged;
             LoadLanguages();
@@ -47,18 +48,10 @@ namespace Mcba.UI
             cmbLanguages.SelectedValue = (int)McbaSettings.Language;
         }
 
-        private void SetCaptions(int idLanguage)
+        private void SetCaptions()
         {
-            var caps = Captions.GetCaptions(idLanguage, Name);
-
-            foreach (KeyValuePair<string, string> cap in caps)
-            {
-                var c = Controls.Find(cap.Key, true);
-                if (c.Any())
-                {
-                    c[0].Text = cap.Value;
-                }
-            }
+            var caps = LanguageHelper.GetCaptions(Name);
+            LanguageHelper.SetCaptions(caps, this);
         }
 
         private void CheckMail()
@@ -85,6 +78,10 @@ namespace Mcba.UI
                 DialogResult = DialogResult.OK;
                 Close();
             }
+            else
+            {
+                this.ShowMessage("Usuario o clave incorrecta.", McbaSettings.MessageTitle);
+            }
         }
 
         private void cmbLanguages_SelectedIndexChanged(object sender, EventArgs e)
@@ -95,7 +92,7 @@ namespace Mcba.UI
             }
 
             McbaSettings.Language = (LanguageEnum) (int) cmbLanguages.SelectedValue;
-            SetCaptions((int)cmbLanguages.SelectedValue);
+            SetCaptions();
         }
 
         private void timer_Tick(object sender, EventArgs e)

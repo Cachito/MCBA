@@ -1,12 +1,13 @@
 ﻿using System;
 using System.Text;
 using System.Windows.Forms;
+using Mcba.Infraestruture.Helpers;
 
 namespace Mcba.UI
 {
     public partial class CondicionesIva : Form
     {
-        private int idChofer { set; get; }
+        private int idCondicion { set; get; }
 
         public CondicionesIva()
         {
@@ -35,7 +36,14 @@ namespace Mcba.UI
 
         private void CondicionesIva_Load(object sender, EventArgs e)
         {
+            SetCaptions();
             LoadGrid();
+        }
+
+        private void SetCaptions()
+        {
+            var caps = LanguageHelper.GetCaptions(Name);
+            LanguageHelper.SetCaptions(caps, this);
         }
 
         private void LoadGrid()
@@ -56,7 +64,7 @@ namespace Mcba.UI
 
         private void Clean()
         {
-            idChofer = 0;
+            idCondicion = 0;
             txtId.Text = string.Empty;
             txtDescripcion.Text = string.Empty;
         }

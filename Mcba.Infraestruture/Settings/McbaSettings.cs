@@ -8,6 +8,7 @@ namespace Mcba.Infraestruture.Settings
         public static string Salt { set; get; }
         public static string CnnString { set; get; }
         public static LanguageEnum Language { set; get; }
+        public static string MessageTitle { set; get; }
 
         public static void MapSettings(InstanceSettings settings)
         {
@@ -15,6 +16,7 @@ namespace Mcba.Infraestruture.Settings
             Salt = settings.Salt;
             CnnString = settings.CnnString;
             Language = settings.Language;
+            MessageTitle = settings.MessageTitle;
         }
     }
 }

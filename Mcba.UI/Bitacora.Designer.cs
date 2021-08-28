@@ -30,17 +30,17 @@
         {
             this.tsBitacora = new System.Windows.Forms.ToolStrip();
             this.tsbSalir = new System.Windows.Forms.ToolStripButton();
-            this.tsbNew = new System.Windows.Forms.ToolStripButton();
-            this.tsbDelete = new System.Windows.Forms.ToolStripButton();
+            this.tsbFind = new System.Windows.Forms.ToolStripButton();
+            this.tsbPrint = new System.Windows.Forms.ToolStripButton();
             this.gbData = new System.Windows.Forms.GroupBox();
             this.cmbCriticidad = new System.Windows.Forms.ComboBox();
             this.dateTimePicker1 = new System.Windows.Forms.DateTimePicker();
             this.dtpDesde = new System.Windows.Forms.DateTimePicker();
             this.cmbUsuarios = new System.Windows.Forms.ComboBox();
-            this.label6 = new System.Windows.Forms.Label();
-            this.label3 = new System.Windows.Forms.Label();
-            this.label2 = new System.Windows.Forms.Label();
-            this.label1 = new System.Windows.Forms.Label();
+            this.lblHasha = new System.Windows.Forms.Label();
+            this.lblCriticidad = new System.Windows.Forms.Label();
+            this.lblDesde = new System.Windows.Forms.Label();
+            this.lblUsuario = new System.Windows.Forms.Label();
             this.dgvBitacora = new System.Windows.Forms.DataGridView();
             this.tsBitacora.SuspendLayout();
             this.gbData.SuspendLayout();
@@ -51,8 +51,8 @@
             // 
             this.tsBitacora.Items.AddRange(new System.Windows.Forms.ToolStripItem[] {
             this.tsbSalir,
-            this.tsbNew,
-            this.tsbDelete});
+            this.tsbFind,
+            this.tsbPrint});
             this.tsBitacora.Location = new System.Drawing.Point(0, 0);
             this.tsBitacora.Name = "tsBitacora";
             this.tsBitacora.Size = new System.Drawing.Size(820, 25);
@@ -66,27 +66,30 @@
             this.tsbSalir.ImageTransparentColor = System.Drawing.Color.Magenta;
             this.tsbSalir.Name = "tsbSalir";
             this.tsbSalir.Size = new System.Drawing.Size(23, 22);
-            this.tsbSalir.Text = "toolStripButton1";
+            this.tsbSalir.Tag = "tsbSalir";
+            this.tsbSalir.Text = "Salir";
             this.tsbSalir.Click += new System.EventHandler(this.tsbSalir_Click);
             // 
-            // tsbNew
+            // tsbFind
             // 
-            this.tsbNew.DisplayStyle = System.Windows.Forms.ToolStripItemDisplayStyle.Image;
-            this.tsbNew.Image = global::Mcba.UI.Properties.Resources.IconBuscar;
-            this.tsbNew.ImageTransparentColor = System.Drawing.Color.Magenta;
-            this.tsbNew.Name = "tsbNew";
-            this.tsbNew.Size = new System.Drawing.Size(23, 22);
-            this.tsbNew.Text = "toolStripButton1";
-            this.tsbNew.Click += new System.EventHandler(this.tsbNew_Click);
+            this.tsbFind.DisplayStyle = System.Windows.Forms.ToolStripItemDisplayStyle.Image;
+            this.tsbFind.Image = global::Mcba.UI.Properties.Resources.IconBuscar;
+            this.tsbFind.ImageTransparentColor = System.Drawing.Color.Magenta;
+            this.tsbFind.Name = "tsbFind";
+            this.tsbFind.Size = new System.Drawing.Size(23, 22);
+            this.tsbFind.Tag = "tsbFind";
+            this.tsbFind.Text = "Buscar";
+            this.tsbFind.Click += new System.EventHandler(this.tsbNew_Click);
             // 
-            // tsbDelete
+            // tsbPrint
             // 
-            this.tsbDelete.DisplayStyle = System.Windows.Forms.ToolStripItemDisplayStyle.Image;
-            this.tsbDelete.Image = global::Mcba.UI.Properties.Resources.printerBlack;
-            this.tsbDelete.ImageTransparentColor = System.Drawing.Color.Magenta;
-            this.tsbDelete.Name = "tsbDelete";
-            this.tsbDelete.Size = new System.Drawing.Size(23, 22);
-            this.tsbDelete.Text = "toolStripButton1";
+            this.tsbPrint.DisplayStyle = System.Windows.Forms.ToolStripItemDisplayStyle.Image;
+            this.tsbPrint.Image = global::Mcba.UI.Properties.Resources.printerBlack;
+            this.tsbPrint.ImageTransparentColor = System.Drawing.Color.Magenta;
+            this.tsbPrint.Name = "tsbPrint";
+            this.tsbPrint.Size = new System.Drawing.Size(23, 22);
+            this.tsbPrint.Tag = "tsbPrint";
+            this.tsbPrint.Text = "Imprimir";
             // 
             // gbData
             // 
@@ -94,10 +97,10 @@
             this.gbData.Controls.Add(this.dateTimePicker1);
             this.gbData.Controls.Add(this.dtpDesde);
             this.gbData.Controls.Add(this.cmbUsuarios);
-            this.gbData.Controls.Add(this.label6);
-            this.gbData.Controls.Add(this.label3);
-            this.gbData.Controls.Add(this.label2);
-            this.gbData.Controls.Add(this.label1);
+            this.gbData.Controls.Add(this.lblHasha);
+            this.gbData.Controls.Add(this.lblCriticidad);
+            this.gbData.Controls.Add(this.lblDesde);
+            this.gbData.Controls.Add(this.lblUsuario);
             this.gbData.Location = new System.Drawing.Point(12, 28);
             this.gbData.Name = "gbData";
             this.gbData.Size = new System.Drawing.Size(451, 77);
@@ -140,41 +143,45 @@
             this.cmbUsuarios.Size = new System.Drawing.Size(168, 21);
             this.cmbUsuarios.TabIndex = 12;
             // 
-            // label6
+            // lblHasha
             // 
-            this.label6.Location = new System.Drawing.Point(265, 44);
-            this.label6.Name = "label6";
-            this.label6.Size = new System.Drawing.Size(86, 20);
-            this.label6.TabIndex = 6;
-            this.label6.Text = "Fecha Hasta";
-            this.label6.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
+            this.lblHasha.Location = new System.Drawing.Point(265, 44);
+            this.lblHasha.Name = "lblHasha";
+            this.lblHasha.Size = new System.Drawing.Size(86, 20);
+            this.lblHasha.TabIndex = 6;
+            this.lblHasha.Tag = "lblHasha";
+            this.lblHasha.Text = "Fecha Hasta";
+            this.lblHasha.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
             // 
-            // label3
+            // lblCriticidad
             // 
-            this.label3.Location = new System.Drawing.Point(6, 44);
-            this.label3.Name = "label3";
-            this.label3.Size = new System.Drawing.Size(73, 20);
-            this.label3.TabIndex = 4;
-            this.label3.Text = "Criticidad";
-            this.label3.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
+            this.lblCriticidad.Location = new System.Drawing.Point(6, 44);
+            this.lblCriticidad.Name = "lblCriticidad";
+            this.lblCriticidad.Size = new System.Drawing.Size(73, 20);
+            this.lblCriticidad.TabIndex = 4;
+            this.lblCriticidad.Tag = "lblCriticidad";
+            this.lblCriticidad.Text = "Criticidad";
+            this.lblCriticidad.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
             // 
-            // label2
+            // lblDesde
             // 
-            this.label2.Location = new System.Drawing.Point(265, 13);
-            this.label2.Name = "label2";
-            this.label2.Size = new System.Drawing.Size(73, 20);
-            this.label2.TabIndex = 2;
-            this.label2.Text = "Fecha Desde";
-            this.label2.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
+            this.lblDesde.Location = new System.Drawing.Point(265, 13);
+            this.lblDesde.Name = "lblDesde";
+            this.lblDesde.Size = new System.Drawing.Size(73, 20);
+            this.lblDesde.TabIndex = 2;
+            this.lblDesde.Tag = "lblDesde";
+            this.lblDesde.Text = "Fecha Desde";
+            this.lblDesde.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
             // 
-            // label1
+            // lblUsuario
             // 
-            this.label1.Location = new System.Drawing.Point(6, 13);
-            this.label1.Name = "label1";
-            this.label1.Size = new System.Drawing.Size(73, 20);
-            this.label1.TabIndex = 0;
-            this.label1.Text = "Usuario";
-            this.label1.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
+            this.lblUsuario.Location = new System.Drawing.Point(6, 13);
+            this.lblUsuario.Name = "lblUsuario";
+            this.lblUsuario.Size = new System.Drawing.Size(73, 20);
+            this.lblUsuario.TabIndex = 0;
+            this.lblUsuario.Tag = "lblUsuario";
+            this.lblUsuario.Text = "Usuario";
+            this.lblUsuario.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
             // 
             // dgvBitacora
             // 
@@ -213,14 +220,14 @@
         private System.Windows.Forms.ToolStrip tsBitacora;
         private System.Windows.Forms.GroupBox gbData;
         private System.Windows.Forms.DataGridView dgvBitacora;
-        private System.Windows.Forms.Label label1;
-        private System.Windows.Forms.Label label3;
-        private System.Windows.Forms.Label label2;
+        private System.Windows.Forms.Label lblUsuario;
+        private System.Windows.Forms.Label lblCriticidad;
+        private System.Windows.Forms.Label lblDesde;
         private System.Windows.Forms.ToolStripButton tsbSalir;
-        private System.Windows.Forms.ToolStripButton tsbNew;
-        private System.Windows.Forms.ToolStripButton tsbDelete;
+        private System.Windows.Forms.ToolStripButton tsbFind;
+        private System.Windows.Forms.ToolStripButton tsbPrint;
         private System.Windows.Forms.ComboBox cmbUsuarios;
-        private System.Windows.Forms.Label label6;
+        private System.Windows.Forms.Label lblHasha;
         private System.Windows.Forms.DateTimePicker dateTimePicker1;
         private System.Windows.Forms.DateTimePicker dtpDesde;
         private System.Windows.Forms.ComboBox cmbCriticidad;
