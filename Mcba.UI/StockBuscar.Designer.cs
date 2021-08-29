@@ -104,6 +104,7 @@ namespace Mcba.UI
             this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.FixedToolWindow;
             this.Name = "StockBuscar";
             this.Text = "Filtros Stock";
+            this.Load += new System.EventHandler(this.StockBuscar_Load);
             this.ResumeLayout(false);
 
         }

@@ -175,6 +175,7 @@
             this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.FixedDialog;
             this.Name = "FacturasBuscar";
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterParent;
+            this.Tag = "FacturasBuscar";
             this.Text = "Buscar Factrua";
             this.Load += new System.EventHandler(this.FacturasBuscar_Load);
             this.tsFacturasBuscar.ResumeLayout(false);

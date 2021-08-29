@@ -192,6 +192,7 @@
             this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.FixedSingle;
             this.Name = "CambioPassword";
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterParent;
+            this.Tag = "CambioPassword";
             this.Text = "CambioPassword";
             this.Load += new System.EventHandler(this.CambioPassword_Load);
             this.tsCambioPassword.ResumeLayout(false);

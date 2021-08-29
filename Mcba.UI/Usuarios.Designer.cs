@@ -36,15 +36,15 @@
             this.tsbSave = new System.Windows.Forms.ToolStripButton();
             this.gbData = new System.Windows.Forms.GroupBox();
             this.cmbIdiomas = new System.Windows.Forms.ComboBox();
-            this.label5 = new System.Windows.Forms.Label();
+            this.lblIdioma = new System.Windows.Forms.Label();
             this.txtPassword1 = new System.Windows.Forms.TextBox();
-            this.label6 = new System.Windows.Forms.Label();
+            this.lblContra1 = new System.Windows.Forms.Label();
             this.txtPassword2 = new System.Windows.Forms.TextBox();
-            this.label3 = new System.Windows.Forms.Label();
+            this.lblContra2 = new System.Windows.Forms.Label();
             this.txtUsuario = new System.Windows.Forms.TextBox();
-            this.label2 = new System.Windows.Forms.Label();
+            this.lblUsuario = new System.Windows.Forms.Label();
             this.txtId = new System.Windows.Forms.TextBox();
-            this.label1 = new System.Windows.Forms.Label();
+            this.lblId = new System.Windows.Forms.Label();
             this.dgvUsuarios = new System.Windows.Forms.DataGridView();
             this.tsUsuarios.SuspendLayout();
             this.gbData.SuspendLayout();
@@ -72,6 +72,7 @@
             this.tsbSalir.ImageTransparentColor = System.Drawing.Color.Magenta;
             this.tsbSalir.Name = "tsbSalir";
             this.tsbSalir.Size = new System.Drawing.Size(23, 22);
+            this.tsbSalir.Tag = "tsbSalir";
             this.tsbSalir.Text = "toolStripButton1";
             this.tsbSalir.Click += new System.EventHandler(this.tsbSalir_Click);
             // 
@@ -82,6 +83,7 @@
             this.tsbNew.ImageTransparentColor = System.Drawing.Color.Magenta;
             this.tsbNew.Name = "tsbNew";
             this.tsbNew.Size = new System.Drawing.Size(23, 22);
+            this.tsbNew.Tag = "tsbNew";
             this.tsbNew.Text = "toolStripButton1";
             this.tsbNew.Click += new System.EventHandler(this.tsbNew_Click);
             // 
@@ -92,6 +94,7 @@
             this.tsbDelete.ImageTransparentColor = System.Drawing.Color.Magenta;
             this.tsbDelete.Name = "tsbDelete";
             this.tsbDelete.Size = new System.Drawing.Size(23, 22);
+            this.tsbDelete.Tag = "tsbDelete";
             this.tsbDelete.Text = "toolStripButton1";
             // 
             // tsbEdit
@@ -101,6 +104,7 @@
             this.tsbEdit.ImageTransparentColor = System.Drawing.Color.Magenta;
             this.tsbEdit.Name = "tsbEdit";
             this.tsbEdit.Size = new System.Drawing.Size(23, 22);
+            this.tsbEdit.Tag = "tsbEdit";
             this.tsbEdit.Text = "toolStripButton1";
             this.tsbEdit.Click += new System.EventHandler(this.tsbEdit_Click);
             // 
@@ -111,21 +115,22 @@
             this.tsbSave.ImageTransparentColor = System.Drawing.Color.Magenta;
             this.tsbSave.Name = "tsbSave";
             this.tsbSave.Size = new System.Drawing.Size(23, 22);
+            this.tsbSave.Tag = "tsbSave";
             this.tsbSave.Text = "toolStripButton1";
             this.tsbSave.Click += new System.EventHandler(this.tsbSave_Click);
             // 
             // gbData
             // 
             this.gbData.Controls.Add(this.cmbIdiomas);
-            this.gbData.Controls.Add(this.label5);
+            this.gbData.Controls.Add(this.lblIdioma);
             this.gbData.Controls.Add(this.txtPassword1);
-            this.gbData.Controls.Add(this.label6);
+            this.gbData.Controls.Add(this.lblContra1);
             this.gbData.Controls.Add(this.txtPassword2);
-            this.gbData.Controls.Add(this.label3);
+            this.gbData.Controls.Add(this.lblContra2);
             this.gbData.Controls.Add(this.txtUsuario);
-            this.gbData.Controls.Add(this.label2);
+            this.gbData.Controls.Add(this.lblUsuario);
             this.gbData.Controls.Add(this.txtId);
-            this.gbData.Controls.Add(this.label1);
+            this.gbData.Controls.Add(this.lblId);
             this.gbData.Location = new System.Drawing.Point(12, 28);
             this.gbData.Name = "gbData";
             this.gbData.Size = new System.Drawing.Size(541, 108);
@@ -140,14 +145,15 @@
             this.cmbIdiomas.Size = new System.Drawing.Size(168, 21);
             this.cmbIdiomas.TabIndex = 12;
             // 
-            // label5
+            // lblIdioma
             // 
-            this.label5.Location = new System.Drawing.Point(6, 77);
-            this.label5.Name = "label5";
-            this.label5.Size = new System.Drawing.Size(73, 20);
-            this.label5.TabIndex = 8;
-            this.label5.Text = "Idioma";
-            this.label5.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
+            this.lblIdioma.Location = new System.Drawing.Point(6, 77);
+            this.lblIdioma.Name = "lblIdioma";
+            this.lblIdioma.Size = new System.Drawing.Size(73, 20);
+            this.lblIdioma.TabIndex = 8;
+            this.lblIdioma.Tag = "lblIdioma";
+            this.lblIdioma.Text = "Idioma";
+            this.lblIdioma.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
             // 
             // txtPassword1
             // 
@@ -156,14 +162,15 @@
             this.txtPassword1.Size = new System.Drawing.Size(168, 20);
             this.txtPassword1.TabIndex = 7;
             // 
-            // label6
+            // lblContra1
             // 
-            this.label6.Location = new System.Drawing.Point(265, 44);
-            this.label6.Name = "label6";
-            this.label6.Size = new System.Drawing.Size(73, 20);
-            this.label6.TabIndex = 6;
-            this.label6.Text = "Contraseña";
-            this.label6.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
+            this.lblContra1.Location = new System.Drawing.Point(265, 44);
+            this.lblContra1.Name = "lblContra1";
+            this.lblContra1.Size = new System.Drawing.Size(73, 20);
+            this.lblContra1.TabIndex = 6;
+            this.lblContra1.Tag = "lblContra1";
+            this.lblContra1.Text = "Contraseña";
+            this.lblContra1.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
             // 
             // txtPassword2
             // 
@@ -172,14 +179,15 @@
             this.txtPassword2.Size = new System.Drawing.Size(168, 20);
             this.txtPassword2.TabIndex = 5;
             // 
-            // label3
+            // lblContra2
             // 
-            this.label3.Location = new System.Drawing.Point(265, 77);
-            this.label3.Name = "label3";
-            this.label3.Size = new System.Drawing.Size(73, 20);
-            this.label3.TabIndex = 4;
-            this.label3.Text = "Contraseña";
-            this.label3.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
+            this.lblContra2.Location = new System.Drawing.Point(265, 77);
+            this.lblContra2.Name = "lblContra2";
+            this.lblContra2.Size = new System.Drawing.Size(73, 20);
+            this.lblContra2.TabIndex = 4;
+            this.lblContra2.Tag = "lblContra2";
+            this.lblContra2.Text = "Contraseña";
+            this.lblContra2.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
             // 
             // txtUsuario
             // 
@@ -188,14 +196,15 @@
             this.txtUsuario.Size = new System.Drawing.Size(168, 20);
             this.txtUsuario.TabIndex = 3;
             // 
-            // label2
+            // lblUsuario
             // 
-            this.label2.Location = new System.Drawing.Point(6, 44);
-            this.label2.Name = "label2";
-            this.label2.Size = new System.Drawing.Size(73, 20);
-            this.label2.TabIndex = 2;
-            this.label2.Text = "Usuario";
-            this.label2.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
+            this.lblUsuario.Location = new System.Drawing.Point(6, 44);
+            this.lblUsuario.Name = "lblUsuario";
+            this.lblUsuario.Size = new System.Drawing.Size(73, 20);
+            this.lblUsuario.TabIndex = 2;
+            this.lblUsuario.Tag = "lblUsuario";
+            this.lblUsuario.Text = "Usuario";
+            this.lblUsuario.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
             // 
             // txtId
             // 
@@ -206,14 +215,15 @@
             this.txtId.Size = new System.Drawing.Size(168, 20);
             this.txtId.TabIndex = 1;
             // 
-            // label1
+            // lblId
             // 
-            this.label1.Location = new System.Drawing.Point(6, 13);
-            this.label1.Name = "label1";
-            this.label1.Size = new System.Drawing.Size(73, 20);
-            this.label1.TabIndex = 0;
-            this.label1.Text = "Id";
-            this.label1.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
+            this.lblId.Location = new System.Drawing.Point(6, 13);
+            this.lblId.Name = "lblId";
+            this.lblId.Size = new System.Drawing.Size(73, 20);
+            this.lblId.TabIndex = 0;
+            this.lblId.Tag = "lblId";
+            this.lblId.Text = "Id";
+            this.lblId.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
             // 
             // dgvUsuarios
             // 
@@ -236,6 +246,7 @@
             this.Controls.Add(this.tsUsuarios);
             this.Name = "Usuarios";
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterParent;
+            this.Tag = "Usuarios";
             this.Text = "Usuarios";
             this.Load += new System.EventHandler(this.Usuarios_Load);
             this.tsUsuarios.ResumeLayout(false);
@@ -254,10 +265,10 @@
         private System.Windows.Forms.GroupBox gbData;
         private System.Windows.Forms.DataGridView dgvUsuarios;
         private System.Windows.Forms.TextBox txtId;
-        private System.Windows.Forms.Label label1;
-        private System.Windows.Forms.Label label3;
+        private System.Windows.Forms.Label lblId;
+        private System.Windows.Forms.Label lblContra2;
         private System.Windows.Forms.TextBox txtUsuario;
-        private System.Windows.Forms.Label label2;
+        private System.Windows.Forms.Label lblUsuario;
         private System.Windows.Forms.ToolStripButton tsbSalir;
         private System.Windows.Forms.ToolStripButton tsbNew;
         private System.Windows.Forms.ToolStripButton tsbSave;
@@ -265,8 +276,8 @@
         private System.Windows.Forms.ToolStripButton tsbDelete;
         private System.Windows.Forms.TextBox txtPassword2;
         private System.Windows.Forms.ComboBox cmbIdiomas;
-        private System.Windows.Forms.Label label5;
+        private System.Windows.Forms.Label lblIdioma;
         private System.Windows.Forms.TextBox txtPassword1;
-        private System.Windows.Forms.Label label6;
+        private System.Windows.Forms.Label lblContra1;
     }
 }

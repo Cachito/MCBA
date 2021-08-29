@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Windows.Forms;
+using Mcba.Infraestruture.Helpers;
 
 namespace Mcba.UI
 {
@@ -21,8 +22,14 @@ namespace Mcba.UI
 
         private void ReporteCaja_Load(object sender, EventArgs e)
         {
-
+            SetCaptions();
             this.reportViewer.RefreshReport();
+        }
+
+        private void SetCaptions()
+        {
+            var caps = LanguageHelper.GetCaptions(Name);
+            LanguageHelper.SetCaptions(caps, this);
         }
     }
 }

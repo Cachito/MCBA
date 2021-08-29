@@ -36,27 +36,27 @@
             this.tsbSave = new System.Windows.Forms.ToolStripButton();
             this.gbData = new System.Windows.Forms.GroupBox();
             this.cmbProvincias = new System.Windows.Forms.ComboBox();
-            this.label10 = new System.Windows.Forms.Label();
+            this.lblProvincia = new System.Windows.Forms.Label();
             this.cmbLocalidad = new System.Windows.Forms.ComboBox();
-            this.label11 = new System.Windows.Forms.Label();
+            this.lblLocalidad = new System.Windows.Forms.Label();
             this.txtDomicilio = new System.Windows.Forms.TextBox();
-            this.label9 = new System.Windows.Forms.Label();
+            this.lblDomicilio = new System.Windows.Forms.Label();
             this.cmbPosicion = new System.Windows.Forms.ComboBox();
-            this.label8 = new System.Windows.Forms.Label();
+            this.lblCondicion = new System.Windows.Forms.Label();
             this.cmbTipoCuenta = new System.Windows.Forms.ComboBox();
-            this.label7 = new System.Windows.Forms.Label();
+            this.lblTipoCuenta = new System.Windows.Forms.Label();
             this.cmbBancos = new System.Windows.Forms.ComboBox();
             this.txtLocalidad = new System.Windows.Forms.TextBox();
-            this.label4 = new System.Windows.Forms.Label();
-            this.label5 = new System.Windows.Forms.Label();
+            this.lblCuenta = new System.Windows.Forms.Label();
+            this.lblBanco = new System.Windows.Forms.Label();
             this.txtCuit = new System.Windows.Forms.TextBox();
-            this.label6 = new System.Windows.Forms.Label();
+            this.lblCuit = new System.Windows.Forms.Label();
             this.txtApellido = new System.Windows.Forms.TextBox();
-            this.label3 = new System.Windows.Forms.Label();
+            this.lblApellido = new System.Windows.Forms.Label();
             this.txtNombre = new System.Windows.Forms.TextBox();
-            this.label2 = new System.Windows.Forms.Label();
+            this.lblNombre = new System.Windows.Forms.Label();
             this.txtId = new System.Windows.Forms.TextBox();
-            this.label1 = new System.Windows.Forms.Label();
+            this.lblId = new System.Windows.Forms.Label();
             this.dgvRemitentes = new System.Windows.Forms.DataGridView();
             this.gbComisiones = new System.Windows.Forms.GroupBox();
             this.tsComisiones = new System.Windows.Forms.ToolStrip();
@@ -93,7 +93,8 @@
             this.tsbSalir.ImageTransparentColor = System.Drawing.Color.Magenta;
             this.tsbSalir.Name = "tsbSalir";
             this.tsbSalir.Size = new System.Drawing.Size(23, 22);
-            this.tsbSalir.Text = "toolStripButton1";
+            this.tsbSalir.Tag = "tsbSalir";
+            this.tsbSalir.Text = "Salir";
             this.tsbSalir.Click += new System.EventHandler(this.tsbSalir_Click);
             // 
             // tsbNew
@@ -103,7 +104,8 @@
             this.tsbNew.ImageTransparentColor = System.Drawing.Color.Magenta;
             this.tsbNew.Name = "tsbNew";
             this.tsbNew.Size = new System.Drawing.Size(23, 22);
-            this.tsbNew.Text = "toolStripButton1";
+            this.tsbNew.Tag = "tsbNew";
+            this.tsbNew.Text = "Nuevo";
             this.tsbNew.Click += new System.EventHandler(this.tsbNew_Click);
             // 
             // tsbDelete
@@ -113,7 +115,8 @@
             this.tsbDelete.ImageTransparentColor = System.Drawing.Color.Magenta;
             this.tsbDelete.Name = "tsbDelete";
             this.tsbDelete.Size = new System.Drawing.Size(23, 22);
-            this.tsbDelete.Text = "toolStripButton1";
+            this.tsbDelete.Tag = "tsbDelete";
+            this.tsbDelete.Text = "Elimiar";
             // 
             // tsbEdit
             // 
@@ -122,7 +125,8 @@
             this.tsbEdit.ImageTransparentColor = System.Drawing.Color.Magenta;
             this.tsbEdit.Name = "tsbEdit";
             this.tsbEdit.Size = new System.Drawing.Size(23, 22);
-            this.tsbEdit.Text = "toolStripButton1";
+            this.tsbEdit.Tag = "tsbEdit";
+            this.tsbEdit.Text = "Editar";
             this.tsbEdit.Click += new System.EventHandler(this.tsbEdit_Click);
             // 
             // tsbSave
@@ -132,33 +136,34 @@
             this.tsbSave.ImageTransparentColor = System.Drawing.Color.Magenta;
             this.tsbSave.Name = "tsbSave";
             this.tsbSave.Size = new System.Drawing.Size(23, 22);
-            this.tsbSave.Text = "toolStripButton1";
+            this.tsbSave.Tag = "tsbSave";
+            this.tsbSave.Text = "Guardar";
             this.tsbSave.Click += new System.EventHandler(this.tsbSave_Click);
             // 
             // gbData
             // 
             this.gbData.Controls.Add(this.cmbProvincias);
-            this.gbData.Controls.Add(this.label10);
+            this.gbData.Controls.Add(this.lblProvincia);
             this.gbData.Controls.Add(this.cmbLocalidad);
-            this.gbData.Controls.Add(this.label11);
+            this.gbData.Controls.Add(this.lblLocalidad);
             this.gbData.Controls.Add(this.txtDomicilio);
-            this.gbData.Controls.Add(this.label9);
+            this.gbData.Controls.Add(this.lblDomicilio);
             this.gbData.Controls.Add(this.cmbPosicion);
-            this.gbData.Controls.Add(this.label8);
+            this.gbData.Controls.Add(this.lblCondicion);
             this.gbData.Controls.Add(this.cmbTipoCuenta);
-            this.gbData.Controls.Add(this.label7);
+            this.gbData.Controls.Add(this.lblTipoCuenta);
             this.gbData.Controls.Add(this.cmbBancos);
             this.gbData.Controls.Add(this.txtLocalidad);
-            this.gbData.Controls.Add(this.label4);
-            this.gbData.Controls.Add(this.label5);
+            this.gbData.Controls.Add(this.lblCuenta);
+            this.gbData.Controls.Add(this.lblBanco);
             this.gbData.Controls.Add(this.txtCuit);
-            this.gbData.Controls.Add(this.label6);
+            this.gbData.Controls.Add(this.lblCuit);
             this.gbData.Controls.Add(this.txtApellido);
-            this.gbData.Controls.Add(this.label3);
+            this.gbData.Controls.Add(this.lblApellido);
             this.gbData.Controls.Add(this.txtNombre);
-            this.gbData.Controls.Add(this.label2);
+            this.gbData.Controls.Add(this.lblNombre);
             this.gbData.Controls.Add(this.txtId);
-            this.gbData.Controls.Add(this.label1);
+            this.gbData.Controls.Add(this.lblId);
             this.gbData.Location = new System.Drawing.Point(12, 28);
             this.gbData.Name = "gbData";
             this.gbData.Size = new System.Drawing.Size(789, 175);
@@ -173,14 +178,15 @@
             this.cmbProvincias.Size = new System.Drawing.Size(167, 21);
             this.cmbProvincias.TabIndex = 22;
             // 
-            // label10
+            // lblProvincia
             // 
-            this.label10.Location = new System.Drawing.Point(264, 145);
-            this.label10.Name = "label10";
-            this.label10.Size = new System.Drawing.Size(86, 20);
-            this.label10.TabIndex = 21;
-            this.label10.Text = "Provincia";
-            this.label10.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
+            this.lblProvincia.Location = new System.Drawing.Point(264, 145);
+            this.lblProvincia.Name = "lblProvincia";
+            this.lblProvincia.Size = new System.Drawing.Size(86, 20);
+            this.lblProvincia.TabIndex = 21;
+            this.lblProvincia.Tag = "lblProvincia";
+            this.lblProvincia.Text = "Provincia";
+            this.lblProvincia.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
             // 
             // cmbLocalidad
             // 
@@ -190,14 +196,15 @@
             this.cmbLocalidad.Size = new System.Drawing.Size(167, 21);
             this.cmbLocalidad.TabIndex = 20;
             // 
-            // label11
+            // lblLocalidad
             // 
-            this.label11.Location = new System.Drawing.Point(536, 145);
-            this.label11.Name = "label11";
-            this.label11.Size = new System.Drawing.Size(73, 20);
-            this.label11.TabIndex = 19;
-            this.label11.Text = "Localidad";
-            this.label11.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
+            this.lblLocalidad.Location = new System.Drawing.Point(536, 145);
+            this.lblLocalidad.Name = "lblLocalidad";
+            this.lblLocalidad.Size = new System.Drawing.Size(73, 20);
+            this.lblLocalidad.TabIndex = 19;
+            this.lblLocalidad.Tag = "lblLocalidad";
+            this.lblLocalidad.Text = "Localidad";
+            this.lblLocalidad.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
             // 
             // txtDomicilio
             // 
@@ -207,31 +214,33 @@
             this.txtDomicilio.Size = new System.Drawing.Size(168, 86);
             this.txtDomicilio.TabIndex = 18;
             // 
-            // label9
+            // lblDomicilio
             // 
-            this.label9.Location = new System.Drawing.Point(536, 46);
-            this.label9.Name = "label9";
-            this.label9.Size = new System.Drawing.Size(73, 20);
-            this.label9.TabIndex = 17;
-            this.label9.Text = "Domicilio";
-            this.label9.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
+            this.lblDomicilio.Location = new System.Drawing.Point(536, 46);
+            this.lblDomicilio.Name = "lblDomicilio";
+            this.lblDomicilio.Size = new System.Drawing.Size(73, 20);
+            this.lblDomicilio.TabIndex = 17;
+            this.lblDomicilio.Tag = "lblDomicilio";
+            this.lblDomicilio.Text = "Domicilio";
+            this.lblDomicilio.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
             // 
             // cmbPosicion
             // 
             this.cmbPosicion.FormattingEnabled = true;
-            this.cmbPosicion.Location = new System.Drawing.Point(86, 145);
+            this.cmbPosicion.Location = new System.Drawing.Point(101, 145);
             this.cmbPosicion.Name = "cmbPosicion";
-            this.cmbPosicion.Size = new System.Drawing.Size(167, 21);
+            this.cmbPosicion.Size = new System.Drawing.Size(152, 21);
             this.cmbPosicion.TabIndex = 16;
             // 
-            // label8
+            // lblCondicion
             // 
-            this.label8.Location = new System.Drawing.Point(6, 145);
-            this.label8.Name = "label8";
-            this.label8.Size = new System.Drawing.Size(73, 20);
-            this.label8.TabIndex = 15;
-            this.label8.Text = "Consicion IVA";
-            this.label8.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
+            this.lblCondicion.Location = new System.Drawing.Point(6, 145);
+            this.lblCondicion.Name = "lblCondicion";
+            this.lblCondicion.Size = new System.Drawing.Size(89, 20);
+            this.lblCondicion.TabIndex = 15;
+            this.lblCondicion.Tag = "lblCondicion";
+            this.lblCondicion.Text = "Condición de IVA";
+            this.lblCondicion.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
             // 
             // cmbTipoCuenta
             // 
@@ -241,14 +250,15 @@
             this.cmbTipoCuenta.Size = new System.Drawing.Size(167, 21);
             this.cmbTipoCuenta.TabIndex = 14;
             // 
-            // label7
+            // lblTipoCuenta
             // 
-            this.label7.Location = new System.Drawing.Point(264, 112);
-            this.label7.Name = "label7";
-            this.label7.Size = new System.Drawing.Size(86, 20);
-            this.label7.TabIndex = 13;
-            this.label7.Text = "Tipo Cuenta";
-            this.label7.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
+            this.lblTipoCuenta.Location = new System.Drawing.Point(264, 112);
+            this.lblTipoCuenta.Name = "lblTipoCuenta";
+            this.lblTipoCuenta.Size = new System.Drawing.Size(86, 20);
+            this.lblTipoCuenta.TabIndex = 13;
+            this.lblTipoCuenta.Tag = "lblTipoCuenta";
+            this.lblTipoCuenta.Text = "Tipo de Cuenta";
+            this.lblTipoCuenta.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
             // 
             // cmbBancos
             // 
@@ -265,88 +275,94 @@
             this.txtLocalidad.Size = new System.Drawing.Size(168, 20);
             this.txtLocalidad.TabIndex = 11;
             // 
-            // label4
+            // lblCuenta
             // 
-            this.label4.Location = new System.Drawing.Point(264, 78);
-            this.label4.Name = "label4";
-            this.label4.Size = new System.Drawing.Size(86, 20);
-            this.label4.TabIndex = 10;
-            this.label4.Text = "Cuenta Banco";
-            this.label4.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
+            this.lblCuenta.Location = new System.Drawing.Point(264, 78);
+            this.lblCuenta.Name = "lblCuenta";
+            this.lblCuenta.Size = new System.Drawing.Size(86, 20);
+            this.lblCuenta.TabIndex = 10;
+            this.lblCuenta.Tag = "lblCuenta";
+            this.lblCuenta.Text = "Cuenta Banco";
+            this.lblCuenta.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
             // 
-            // label5
+            // lblBanco
             // 
-            this.label5.Location = new System.Drawing.Point(264, 46);
-            this.label5.Name = "label5";
-            this.label5.Size = new System.Drawing.Size(86, 20);
-            this.label5.TabIndex = 8;
-            this.label5.Text = "Banco";
-            this.label5.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
+            this.lblBanco.Location = new System.Drawing.Point(264, 46);
+            this.lblBanco.Name = "lblBanco";
+            this.lblBanco.Size = new System.Drawing.Size(86, 20);
+            this.lblBanco.TabIndex = 8;
+            this.lblBanco.Tag = "lblBanco";
+            this.lblBanco.Text = "Banco";
+            this.lblBanco.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
             // 
             // txtCuit
             // 
-            this.txtCuit.Location = new System.Drawing.Point(85, 112);
+            this.txtCuit.Location = new System.Drawing.Point(100, 112);
             this.txtCuit.Name = "txtCuit";
-            this.txtCuit.Size = new System.Drawing.Size(168, 20);
+            this.txtCuit.Size = new System.Drawing.Size(153, 20);
             this.txtCuit.TabIndex = 7;
             // 
-            // label6
+            // lblCuit
             // 
-            this.label6.Location = new System.Drawing.Point(6, 112);
-            this.label6.Name = "label6";
-            this.label6.Size = new System.Drawing.Size(73, 20);
-            this.label6.TabIndex = 6;
-            this.label6.Text = "CUIT";
-            this.label6.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
+            this.lblCuit.Location = new System.Drawing.Point(6, 112);
+            this.lblCuit.Name = "lblCuit";
+            this.lblCuit.Size = new System.Drawing.Size(89, 20);
+            this.lblCuit.TabIndex = 6;
+            this.lblCuit.Tag = "lblCuit";
+            this.lblCuit.Text = "CUIT";
+            this.lblCuit.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
             // 
             // txtApellido
             // 
-            this.txtApellido.Location = new System.Drawing.Point(85, 79);
+            this.txtApellido.Location = new System.Drawing.Point(100, 79);
             this.txtApellido.Name = "txtApellido";
-            this.txtApellido.Size = new System.Drawing.Size(168, 20);
+            this.txtApellido.Size = new System.Drawing.Size(153, 20);
             this.txtApellido.TabIndex = 5;
             // 
-            // label3
+            // lblApellido
             // 
-            this.label3.Location = new System.Drawing.Point(6, 79);
-            this.label3.Name = "label3";
-            this.label3.Size = new System.Drawing.Size(73, 20);
-            this.label3.TabIndex = 4;
-            this.label3.Text = "Apellido";
-            this.label3.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
+            this.lblApellido.Location = new System.Drawing.Point(6, 79);
+            this.lblApellido.Name = "lblApellido";
+            this.lblApellido.Size = new System.Drawing.Size(89, 20);
+            this.lblApellido.TabIndex = 4;
+            this.lblApellido.Tag = "lblApellido";
+            this.lblApellido.Text = "Apellido";
+            this.lblApellido.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
             // 
             // txtNombre
             // 
-            this.txtNombre.Location = new System.Drawing.Point(85, 46);
+            this.txtNombre.Location = new System.Drawing.Point(100, 46);
             this.txtNombre.Name = "txtNombre";
-            this.txtNombre.Size = new System.Drawing.Size(168, 20);
+            this.txtNombre.Size = new System.Drawing.Size(153, 20);
             this.txtNombre.TabIndex = 1;
             // 
-            // label2
+            // lblNombre
             // 
-            this.label2.Location = new System.Drawing.Point(6, 46);
-            this.label2.Name = "label2";
-            this.label2.Size = new System.Drawing.Size(73, 20);
-            this.label2.TabIndex = 2;
-            this.label2.Text = "Nombre";
-            this.label2.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
+            this.lblNombre.Location = new System.Drawing.Point(6, 46);
+            this.lblNombre.Name = "lblNombre";
+            this.lblNombre.Size = new System.Drawing.Size(89, 20);
+            this.lblNombre.TabIndex = 2;
+            this.lblNombre.Tag = "lblNombre";
+            this.lblNombre.Text = "Nombre";
+            this.lblNombre.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
             // 
             // txtId
             // 
-            this.txtId.Location = new System.Drawing.Point(85, 13);
+            this.txtId.Location = new System.Drawing.Point(100, 13);
             this.txtId.Name = "txtId";
             this.txtId.ReadOnly = true;
-            this.txtId.Size = new System.Drawing.Size(168, 20);
+            this.txtId.Size = new System.Drawing.Size(153, 20);
             this.txtId.TabIndex = 0;
             // 
-            // label1
+            // lblId
             // 
-            this.label1.Location = new System.Drawing.Point(6, 13);
-            this.label1.Name = "label1";
-            this.label1.Size = new System.Drawing.Size(73, 20);
-            this.label1.TabIndex = 0;
-            this.label1.Text = "Id";
-            this.label1.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
+            this.lblId.Location = new System.Drawing.Point(6, 13);
+            this.lblId.Name = "lblId";
+            this.lblId.Size = new System.Drawing.Size(89, 20);
+            this.lblId.TabIndex = 0;
+            this.lblId.Tag = "lblId";
+            this.lblId.Text = "Id";
+            this.lblId.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
             // 
             // dgvRemitentes
             // 
@@ -367,6 +383,7 @@
             this.gbComisiones.Size = new System.Drawing.Size(244, 229);
             this.gbComisiones.TabIndex = 3;
             this.gbComisiones.TabStop = false;
+            this.gbComisiones.Tag = "gbComisiones";
             this.gbComisiones.Text = "Comisiones";
             // 
             // tsComisiones
@@ -388,7 +405,8 @@
             this.tsbNewComision.ImageTransparentColor = System.Drawing.Color.Magenta;
             this.tsbNewComision.Name = "tsbNewComision";
             this.tsbNewComision.Size = new System.Drawing.Size(23, 22);
-            this.tsbNewComision.Text = "toolStripButton1";
+            this.tsbNewComision.Tag = "tsbNewComision";
+            this.tsbNewComision.Text = "Nueva";
             // 
             // tsbDeleteComision
             // 
@@ -397,7 +415,8 @@
             this.tsbDeleteComision.ImageTransparentColor = System.Drawing.Color.Magenta;
             this.tsbDeleteComision.Name = "tsbDeleteComision";
             this.tsbDeleteComision.Size = new System.Drawing.Size(23, 22);
-            this.tsbDeleteComision.Text = "toolStripButton1";
+            this.tsbDeleteComision.Tag = "tsbDeleteComision";
+            this.tsbDeleteComision.Text = "Eliminar";
             // 
             // tsbEditComision
             // 
@@ -406,7 +425,8 @@
             this.tsbEditComision.ImageTransparentColor = System.Drawing.Color.Magenta;
             this.tsbEditComision.Name = "tsbEditComision";
             this.tsbEditComision.Size = new System.Drawing.Size(23, 22);
-            this.tsbEditComision.Text = "toolStripButton1";
+            this.tsbEditComision.Tag = "tsbEditComision";
+            this.tsbEditComision.Text = "Editar";
             // 
             // dataGridView1
             // 
@@ -430,6 +450,7 @@
             this.Controls.Add(this.tsRemitentes);
             this.Name = "Remitentes";
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterParent;
+            this.Tag = "Remitentes";
             this.Text = "Remitentes";
             this.Load += new System.EventHandler(this.Remitentes_Load);
             this.tsRemitentes.ResumeLayout(false);
@@ -453,10 +474,10 @@
         private System.Windows.Forms.GroupBox gbData;
         private System.Windows.Forms.DataGridView dgvRemitentes;
         private System.Windows.Forms.TextBox txtId;
-        private System.Windows.Forms.Label label1;
-        private System.Windows.Forms.Label label3;
+        private System.Windows.Forms.Label lblId;
+        private System.Windows.Forms.Label lblApellido;
         private System.Windows.Forms.TextBox txtNombre;
-        private System.Windows.Forms.Label label2;
+        private System.Windows.Forms.Label lblNombre;
         private System.Windows.Forms.ToolStripButton tsbSalir;
         private System.Windows.Forms.ToolStripButton tsbNew;
         private System.Windows.Forms.ToolStripButton tsbSave;
@@ -465,20 +486,20 @@
         private System.Windows.Forms.TextBox txtApellido;
         private System.Windows.Forms.ComboBox cmbBancos;
         private System.Windows.Forms.TextBox txtLocalidad;
-        private System.Windows.Forms.Label label4;
-        private System.Windows.Forms.Label label5;
+        private System.Windows.Forms.Label lblCuenta;
+        private System.Windows.Forms.Label lblBanco;
         private System.Windows.Forms.TextBox txtCuit;
-        private System.Windows.Forms.Label label6;
+        private System.Windows.Forms.Label lblCuit;
         private System.Windows.Forms.ComboBox cmbPosicion;
-        private System.Windows.Forms.Label label8;
+        private System.Windows.Forms.Label lblCondicion;
         private System.Windows.Forms.ComboBox cmbTipoCuenta;
-        private System.Windows.Forms.Label label7;
+        private System.Windows.Forms.Label lblTipoCuenta;
         private System.Windows.Forms.ComboBox cmbProvincias;
-        private System.Windows.Forms.Label label10;
+        private System.Windows.Forms.Label lblProvincia;
         private System.Windows.Forms.ComboBox cmbLocalidad;
-        private System.Windows.Forms.Label label11;
+        private System.Windows.Forms.Label lblLocalidad;
         private System.Windows.Forms.TextBox txtDomicilio;
-        private System.Windows.Forms.Label label9;
+        private System.Windows.Forms.Label lblDomicilio;
         private System.Windows.Forms.GroupBox gbComisiones;
         private System.Windows.Forms.DataGridView dataGridView1;
         private System.Windows.Forms.ToolStrip tsComisiones;

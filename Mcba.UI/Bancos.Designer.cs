@@ -207,6 +207,7 @@
             this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.FixedSingle;
             this.Name = "Bancos";
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterParent;
+            this.Tag = "Bancos";
             this.Text = "Bancos";
             this.Load += new System.EventHandler(this.Bancos_Load);
             this.tsBancos.ResumeLayout(false);

@@ -30,12 +30,12 @@
         {
             this.tsRemitenteComisiones = new System.Windows.Forms.ToolStrip();
             this.tsbSalir = new System.Windows.Forms.ToolStripButton();
-            this.tsbNew = new System.Windows.Forms.ToolStripButton();
-            this.label1 = new System.Windows.Forms.Label();
+            this.tsbOk = new System.Windows.Forms.ToolStripButton();
+            this.lblRemitente = new System.Windows.Forms.Label();
             this.txtRemitente = new System.Windows.Forms.TextBox();
             this.txtComision = new System.Windows.Forms.TextBox();
-            this.label6 = new System.Windows.Forms.Label();
-            this.label2 = new System.Windows.Forms.Label();
+            this.lblComision = new System.Windows.Forms.Label();
+            this.lblProducto = new System.Windows.Forms.Label();
             this.cmbProductos = new System.Windows.Forms.ComboBox();
             this.tsRemitenteComisiones.SuspendLayout();
             this.SuspendLayout();
@@ -44,7 +44,7 @@
             // 
             this.tsRemitenteComisiones.Items.AddRange(new System.Windows.Forms.ToolStripItem[] {
             this.tsbSalir,
-            this.tsbNew});
+            this.tsbOk});
             this.tsRemitenteComisiones.Location = new System.Drawing.Point(0, 0);
             this.tsRemitenteComisiones.Name = "tsRemitenteComisiones";
             this.tsRemitenteComisiones.Size = new System.Drawing.Size(274, 25);
@@ -58,27 +58,30 @@
             this.tsbSalir.ImageTransparentColor = System.Drawing.Color.Magenta;
             this.tsbSalir.Name = "tsbSalir";
             this.tsbSalir.Size = new System.Drawing.Size(23, 22);
-            this.tsbSalir.Text = "toolStripButton1";
+            this.tsbSalir.Tag = "tsbSalir";
+            this.tsbSalir.Text = "Salir";
             this.tsbSalir.Click += new System.EventHandler(this.tsbSalir_Click);
             // 
-            // tsbNew
+            // tsbOk
             // 
-            this.tsbNew.DisplayStyle = System.Windows.Forms.ToolStripItemDisplayStyle.Image;
-            this.tsbNew.Image = global::Mcba.UI.Properties.Resources.tick_sign_32;
-            this.tsbNew.ImageTransparentColor = System.Drawing.Color.Magenta;
-            this.tsbNew.Name = "tsbNew";
-            this.tsbNew.Size = new System.Drawing.Size(23, 22);
-            this.tsbNew.Text = "toolStripButton1";
-            this.tsbNew.Click += new System.EventHandler(this.tsbNew_Click);
+            this.tsbOk.DisplayStyle = System.Windows.Forms.ToolStripItemDisplayStyle.Image;
+            this.tsbOk.Image = global::Mcba.UI.Properties.Resources.tick_sign_32;
+            this.tsbOk.ImageTransparentColor = System.Drawing.Color.Magenta;
+            this.tsbOk.Name = "tsbOk";
+            this.tsbOk.Size = new System.Drawing.Size(23, 22);
+            this.tsbOk.Tag = "tsbOk";
+            this.tsbOk.Text = "Ok";
+            this.tsbOk.Click += new System.EventHandler(this.tsbNew_Click);
             // 
-            // label1
+            // lblRemitente
             // 
-            this.label1.Location = new System.Drawing.Point(9, 42);
-            this.label1.Name = "label1";
-            this.label1.Size = new System.Drawing.Size(70, 20);
-            this.label1.TabIndex = 8;
-            this.label1.Text = "Remitente";
-            this.label1.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
+            this.lblRemitente.Location = new System.Drawing.Point(9, 42);
+            this.lblRemitente.Name = "lblRemitente";
+            this.lblRemitente.Size = new System.Drawing.Size(70, 20);
+            this.lblRemitente.TabIndex = 8;
+            this.lblRemitente.Tag = "lblRemitente";
+            this.lblRemitente.Text = "Remitente";
+            this.lblRemitente.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
             // 
             // txtRemitente
             // 
@@ -95,23 +98,25 @@
             this.txtComision.Size = new System.Drawing.Size(177, 20);
             this.txtComision.TabIndex = 20;
             // 
-            // label6
+            // lblComision
             // 
-            this.label6.Location = new System.Drawing.Point(9, 124);
-            this.label6.Name = "label6";
-            this.label6.Size = new System.Drawing.Size(70, 20);
-            this.label6.TabIndex = 19;
-            this.label6.Text = "Comisión";
-            this.label6.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
+            this.lblComision.Location = new System.Drawing.Point(9, 124);
+            this.lblComision.Name = "lblComision";
+            this.lblComision.Size = new System.Drawing.Size(70, 20);
+            this.lblComision.TabIndex = 19;
+            this.lblComision.Tag = "lblComision";
+            this.lblComision.Text = "Comisión";
+            this.lblComision.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
             // 
-            // label2
+            // lblProducto
             // 
-            this.label2.Location = new System.Drawing.Point(9, 83);
-            this.label2.Name = "label2";
-            this.label2.Size = new System.Drawing.Size(70, 20);
-            this.label2.TabIndex = 21;
-            this.label2.Text = "Producto";
-            this.label2.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
+            this.lblProducto.Location = new System.Drawing.Point(9, 83);
+            this.lblProducto.Name = "lblProducto";
+            this.lblProducto.Size = new System.Drawing.Size(70, 20);
+            this.lblProducto.TabIndex = 21;
+            this.lblProducto.Tag = "lblProducto";
+            this.lblProducto.Text = "Producto";
+            this.lblProducto.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
             // 
             // cmbProductos
             // 
@@ -128,15 +133,16 @@
             this.ClientSize = new System.Drawing.Size(274, 175);
             this.ControlBox = false;
             this.Controls.Add(this.cmbProductos);
-            this.Controls.Add(this.label2);
+            this.Controls.Add(this.lblProducto);
             this.Controls.Add(this.txtComision);
-            this.Controls.Add(this.label6);
+            this.Controls.Add(this.lblComision);
             this.Controls.Add(this.txtRemitente);
-            this.Controls.Add(this.label1);
+            this.Controls.Add(this.lblRemitente);
             this.Controls.Add(this.tsRemitenteComisiones);
             this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.FixedDialog;
             this.Name = "RemitenteComisiones";
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterParent;
+            this.Tag = "RemitenteComisiones";
             this.Text = "Comisiones";
             this.Load += new System.EventHandler(this.RemitenteComisiones_Load);
             this.tsRemitenteComisiones.ResumeLayout(false);
@@ -150,12 +156,12 @@
 
         private System.Windows.Forms.ToolStrip tsRemitenteComisiones;
         private System.Windows.Forms.ToolStripButton tsbSalir;
-        private System.Windows.Forms.ToolStripButton tsbNew;
-        private System.Windows.Forms.Label label1;
+        private System.Windows.Forms.ToolStripButton tsbOk;
+        private System.Windows.Forms.Label lblRemitente;
         private System.Windows.Forms.TextBox txtRemitente;
         private System.Windows.Forms.TextBox txtComision;
-        private System.Windows.Forms.Label label6;
-        private System.Windows.Forms.Label label2;
+        private System.Windows.Forms.Label lblComision;
+        private System.Windows.Forms.Label lblProducto;
         private System.Windows.Forms.ComboBox cmbProductos;
     }
 }

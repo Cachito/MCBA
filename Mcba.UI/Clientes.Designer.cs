@@ -385,6 +385,7 @@
             this.Controls.Add(this.tsClientes);
             this.Name = "Clientes";
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterParent;
+            this.Tag = "Clientes";
             this.Text = "Clientes";
             this.Load += new System.EventHandler(this.Clientes_Load);
             this.tsClientes.ResumeLayout(false);

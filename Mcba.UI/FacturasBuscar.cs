@@ -40,7 +40,6 @@ namespace Mcba.UI
             LoadGrid();
         }
 
-
         private void SetCaptions()
         {
             var caps = LanguageHelper.GetCaptions(Name);

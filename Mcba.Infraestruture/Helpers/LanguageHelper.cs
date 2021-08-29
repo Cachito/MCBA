@@ -20,6 +20,11 @@ namespace Mcba.Infraestruture.Helpers
 
         public static void SetCaptions(Dictionary<string, string> captions, Form form)
         {
+            if(form.Tag != null && captions.TryGetValue(form.Tag.ToString(), out var title))
+            {
+                form.Text = title;
+            }
+
             foreach (Control control in form.Controls)
             {
                 if (control.Tag != null && captions.TryGetValue(control.Tag.ToString(), out var caption))
@@ -72,6 +77,11 @@ namespace Mcba.Infraestruture.Helpers
                 if (control is MenuStrip menuStrip)
                 {
                     SetCaptions(captions, menuStrip);
+                }
+
+                if (control is ToolStrip toolStrip)
+                {
+                    SetCaptions(captions, toolStrip);
                 }
             }
         }

@@ -36,15 +36,15 @@
             this.tsbSave = new System.Windows.Forms.ToolStripButton();
             this.gbData = new System.Windows.Forms.GroupBox();
             this.txtIva = new System.Windows.Forms.TextBox();
-            this.label5 = new System.Windows.Forms.Label();
+            this.lblIva = new System.Windows.Forms.Label();
             this.txtComision = new System.Windows.Forms.TextBox();
-            this.label4 = new System.Windows.Forms.Label();
+            this.lblComision = new System.Windows.Forms.Label();
             this.txtVariedad = new System.Windows.Forms.TextBox();
-            this.label3 = new System.Windows.Forms.Label();
+            this.lblVariedad = new System.Windows.Forms.Label();
             this.txtDescripcion = new System.Windows.Forms.TextBox();
-            this.label2 = new System.Windows.Forms.Label();
+            this.lblDescripcion = new System.Windows.Forms.Label();
             this.txtId = new System.Windows.Forms.TextBox();
-            this.label1 = new System.Windows.Forms.Label();
+            this.lblId = new System.Windows.Forms.Label();
             this.dgvProductos = new System.Windows.Forms.DataGridView();
             this.tsProductos.SuspendLayout();
             this.gbData.SuspendLayout();
@@ -72,7 +72,8 @@
             this.tsbSalir.ImageTransparentColor = System.Drawing.Color.Magenta;
             this.tsbSalir.Name = "tsbSalir";
             this.tsbSalir.Size = new System.Drawing.Size(23, 22);
-            this.tsbSalir.Text = "toolStripButton1";
+            this.tsbSalir.Tag = "tsbSalir";
+            this.tsbSalir.Text = "Salir";
             this.tsbSalir.Click += new System.EventHandler(this.tsbSalir_Click);
             // 
             // tsbNew
@@ -82,7 +83,8 @@
             this.tsbNew.ImageTransparentColor = System.Drawing.Color.Magenta;
             this.tsbNew.Name = "tsbNew";
             this.tsbNew.Size = new System.Drawing.Size(23, 22);
-            this.tsbNew.Text = "toolStripButton1";
+            this.tsbNew.Tag = "tsbNew";
+            this.tsbNew.Text = "Nuevo";
             this.tsbNew.Click += new System.EventHandler(this.tsbNew_Click);
             // 
             // tsbDelete
@@ -92,7 +94,8 @@
             this.tsbDelete.ImageTransparentColor = System.Drawing.Color.Magenta;
             this.tsbDelete.Name = "tsbDelete";
             this.tsbDelete.Size = new System.Drawing.Size(23, 22);
-            this.tsbDelete.Text = "toolStripButton1";
+            this.tsbDelete.Tag = "tsbDelete";
+            this.tsbDelete.Text = "Eliminar";
             // 
             // tsbEdit
             // 
@@ -101,7 +104,8 @@
             this.tsbEdit.ImageTransparentColor = System.Drawing.Color.Magenta;
             this.tsbEdit.Name = "tsbEdit";
             this.tsbEdit.Size = new System.Drawing.Size(23, 22);
-            this.tsbEdit.Text = "toolStripButton1";
+            this.tsbEdit.Tag = "tsbEdit";
+            this.tsbEdit.Text = "Editar";
             this.tsbEdit.Click += new System.EventHandler(this.tsbEdit_Click);
             // 
             // tsbSave
@@ -111,21 +115,22 @@
             this.tsbSave.ImageTransparentColor = System.Drawing.Color.Magenta;
             this.tsbSave.Name = "tsbSave";
             this.tsbSave.Size = new System.Drawing.Size(23, 22);
-            this.tsbSave.Text = "toolStripButton1";
+            this.tsbSave.Tag = "tsbSave";
+            this.tsbSave.Text = "Guardar";
             this.tsbSave.Click += new System.EventHandler(this.tsbSave_Click);
             // 
             // gbData
             // 
             this.gbData.Controls.Add(this.txtIva);
-            this.gbData.Controls.Add(this.label5);
+            this.gbData.Controls.Add(this.lblIva);
             this.gbData.Controls.Add(this.txtComision);
-            this.gbData.Controls.Add(this.label4);
+            this.gbData.Controls.Add(this.lblComision);
             this.gbData.Controls.Add(this.txtVariedad);
-            this.gbData.Controls.Add(this.label3);
+            this.gbData.Controls.Add(this.lblVariedad);
             this.gbData.Controls.Add(this.txtDescripcion);
-            this.gbData.Controls.Add(this.label2);
+            this.gbData.Controls.Add(this.lblDescripcion);
             this.gbData.Controls.Add(this.txtId);
-            this.gbData.Controls.Add(this.label1);
+            this.gbData.Controls.Add(this.lblId);
             this.gbData.Location = new System.Drawing.Point(12, 28);
             this.gbData.Name = "gbData";
             this.gbData.Size = new System.Drawing.Size(611, 108);
@@ -139,14 +144,15 @@
             this.txtIva.Size = new System.Drawing.Size(177, 20);
             this.txtIva.TabIndex = 9;
             // 
-            // label5
+            // lblIva
             // 
-            this.label5.Location = new System.Drawing.Point(304, 76);
-            this.label5.Name = "label5";
-            this.label5.Size = new System.Drawing.Size(100, 20);
-            this.label5.TabIndex = 8;
-            this.label5.Text = "IVA (%)";
-            this.label5.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
+            this.lblIva.Location = new System.Drawing.Point(304, 76);
+            this.lblIva.Name = "lblIva";
+            this.lblIva.Size = new System.Drawing.Size(100, 20);
+            this.lblIva.TabIndex = 8;
+            this.lblIva.Tag = "lblIva";
+            this.lblIva.Text = "IVA (%)";
+            this.lblIva.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
             // 
             // txtComision
             // 
@@ -155,14 +161,15 @@
             this.txtComision.Size = new System.Drawing.Size(177, 20);
             this.txtComision.TabIndex = 7;
             // 
-            // label4
+            // lblComision
             // 
-            this.label4.Location = new System.Drawing.Point(304, 43);
-            this.label4.Name = "label4";
-            this.label4.Size = new System.Drawing.Size(100, 20);
-            this.label4.TabIndex = 6;
-            this.label4.Text = "Comisión (%)";
-            this.label4.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
+            this.lblComision.Location = new System.Drawing.Point(304, 43);
+            this.lblComision.Name = "lblComision";
+            this.lblComision.Size = new System.Drawing.Size(100, 20);
+            this.lblComision.TabIndex = 6;
+            this.lblComision.Tag = "lblComision";
+            this.lblComision.Text = "Comisión (%)";
+            this.lblComision.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
             // 
             // txtVariedad
             // 
@@ -171,14 +178,15 @@
             this.txtVariedad.Size = new System.Drawing.Size(177, 20);
             this.txtVariedad.TabIndex = 5;
             // 
-            // label3
+            // lblVariedad
             // 
-            this.label3.Location = new System.Drawing.Point(6, 77);
-            this.label3.Name = "label3";
-            this.label3.Size = new System.Drawing.Size(100, 20);
-            this.label3.TabIndex = 4;
-            this.label3.Text = "Variedad";
-            this.label3.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
+            this.lblVariedad.Location = new System.Drawing.Point(6, 77);
+            this.lblVariedad.Name = "lblVariedad";
+            this.lblVariedad.Size = new System.Drawing.Size(100, 20);
+            this.lblVariedad.TabIndex = 4;
+            this.lblVariedad.Tag = "lblVariedad";
+            this.lblVariedad.Text = "Variedad";
+            this.lblVariedad.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
             // 
             // txtDescripcion
             // 
@@ -187,14 +195,15 @@
             this.txtDescripcion.Size = new System.Drawing.Size(177, 20);
             this.txtDescripcion.TabIndex = 3;
             // 
-            // label2
+            // lblDescripcion
             // 
-            this.label2.Location = new System.Drawing.Point(6, 44);
-            this.label2.Name = "label2";
-            this.label2.Size = new System.Drawing.Size(100, 20);
-            this.label2.TabIndex = 2;
-            this.label2.Text = "Descripción";
-            this.label2.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
+            this.lblDescripcion.Location = new System.Drawing.Point(6, 44);
+            this.lblDescripcion.Name = "lblDescripcion";
+            this.lblDescripcion.Size = new System.Drawing.Size(100, 20);
+            this.lblDescripcion.TabIndex = 2;
+            this.lblDescripcion.Tag = "lblDescripcion";
+            this.lblDescripcion.Text = "Descripción";
+            this.lblDescripcion.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
             // 
             // txtId
             // 
@@ -205,14 +214,15 @@
             this.txtId.Size = new System.Drawing.Size(177, 20);
             this.txtId.TabIndex = 1;
             // 
-            // label1
+            // lblId
             // 
-            this.label1.Location = new System.Drawing.Point(6, 13);
-            this.label1.Name = "label1";
-            this.label1.Size = new System.Drawing.Size(100, 20);
-            this.label1.TabIndex = 0;
-            this.label1.Text = "Id";
-            this.label1.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
+            this.lblId.Location = new System.Drawing.Point(6, 13);
+            this.lblId.Name = "lblId";
+            this.lblId.Size = new System.Drawing.Size(100, 20);
+            this.lblId.TabIndex = 0;
+            this.lblId.Tag = "lblId";
+            this.lblId.Text = "Id";
+            this.lblId.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
             // 
             // dgvProductos
             // 
@@ -235,6 +245,7 @@
             this.Controls.Add(this.tsProductos);
             this.Name = "Productos";
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterParent;
+            this.Tag = "Productos";
             this.Text = "Productos";
             this.Load += new System.EventHandler(this.Productos_Load);
             this.tsProductos.ResumeLayout(false);
@@ -253,10 +264,10 @@
         private System.Windows.Forms.GroupBox gbData;
         private System.Windows.Forms.DataGridView dgvProductos;
         private System.Windows.Forms.TextBox txtId;
-        private System.Windows.Forms.Label label1;
-        private System.Windows.Forms.Label label3;
+        private System.Windows.Forms.Label lblId;
+        private System.Windows.Forms.Label lblVariedad;
         private System.Windows.Forms.TextBox txtDescripcion;
-        private System.Windows.Forms.Label label2;
+        private System.Windows.Forms.Label lblDescripcion;
         private System.Windows.Forms.ToolStripButton tsbSalir;
         private System.Windows.Forms.ToolStripButton tsbNew;
         private System.Windows.Forms.ToolStripButton tsbSave;
@@ -264,8 +275,8 @@
         private System.Windows.Forms.ToolStripButton tsbDelete;
         private System.Windows.Forms.TextBox txtVariedad;
         private System.Windows.Forms.TextBox txtComision;
-        private System.Windows.Forms.Label label4;
+        private System.Windows.Forms.Label lblComision;
         private System.Windows.Forms.TextBox txtIva;
-        private System.Windows.Forms.Label label5;
+        private System.Windows.Forms.Label lblIva;
     }
 }

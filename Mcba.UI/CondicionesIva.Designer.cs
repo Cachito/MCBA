@@ -254,6 +254,7 @@
             this.Controls.Add(this.tsCondicionesIva);
             this.Name = "CondicionesIva";
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterParent;
+            this.Tag = "CondicionesIva";
             this.Text = "Condiciones IVA";
             this.Load += new System.EventHandler(this.CondicionesIva_Load);
             this.tsCondicionesIva.ResumeLayout(false);

@@ -246,6 +246,7 @@
             this.Controls.Add(this.tsChoferes);
             this.Name = "Choferes";
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterParent;
+            this.Tag = "Choferes";
             this.Text = "Choferes";
             this.Load += new System.EventHandler(this.Choferes_Load);
             this.tsChoferes.ResumeLayout(false);
