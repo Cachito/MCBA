@@ -1,6 +1,7 @@
 ﻿using System;
 using System.Text;
 using System.Windows.Forms;
+using Mcba.Infraestruture.Helpers;
 
 namespace Mcba.UI
 {
@@ -35,7 +36,14 @@ namespace Mcba.UI
 
         private void RemitenteComisiones_Load(object sender, EventArgs e)
         {
+            SetCaptions();
             LoadGrid();
+        }
+
+        private void SetCaptions()
+        {
+            var caps = LanguageHelper.GetCaptions(Name);
+            LanguageHelper.SetCaptions(caps, this);
         }
 
         private void LoadGrid()

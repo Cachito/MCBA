@@ -204,6 +204,7 @@
             this.Controls.Add(this.tsLocalidades);
             this.Name = "Localidades";
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterParent;
+            this.Tag = "Localidades";
             this.Text = "Localidades";
             this.Load += new System.EventHandler(this.Localidades_Load);
             this.tsLocalidades.ResumeLayout(false);

@@ -32,10 +32,10 @@ namespace Mcba.UI
             this.reportViewer = new Microsoft.Reporting.WinForms.ReportViewer();
             this.tsReporteCaja = new System.Windows.Forms.ToolStrip();
             this.tsbSalir = new System.Windows.Forms.ToolStripButton();
-            this.tsbNew = new System.Windows.Forms.ToolStripButton();
+            this.tsbProcesar = new System.Windows.Forms.ToolStripButton();
             this.groupBox = new System.Windows.Forms.GroupBox();
-            this.label3 = new System.Windows.Forms.Label();
             this.dateTimePicker1 = new System.Windows.Forms.DateTimePicker();
+            this.lblFecha = new System.Windows.Forms.Label();
             this.tsReporteCaja.SuspendLayout();
             this.groupBox.SuspendLayout();
             this.SuspendLayout();
@@ -54,7 +54,7 @@ namespace Mcba.UI
             // 
             this.tsReporteCaja.Items.AddRange(new System.Windows.Forms.ToolStripItem[] {
             this.tsbSalir,
-            this.tsbNew});
+            this.tsbProcesar});
             this.tsReporteCaja.Location = new System.Drawing.Point(0, 0);
             this.tsReporteCaja.Name = "tsReporteCaja";
             this.tsReporteCaja.Size = new System.Drawing.Size(654, 25);
@@ -68,35 +68,28 @@ namespace Mcba.UI
             this.tsbSalir.ImageTransparentColor = System.Drawing.Color.Magenta;
             this.tsbSalir.Name = "tsbSalir";
             this.tsbSalir.Size = new System.Drawing.Size(23, 22);
-            this.tsbSalir.Text = "toolStripButton1";
+            this.tsbSalir.Tag = "tsbSalir";
+            this.tsbSalir.Text = "Salir";
             // 
-            // tsbNew
+            // tsbProcesar
             // 
-            this.tsbNew.DisplayStyle = System.Windows.Forms.ToolStripItemDisplayStyle.Image;
-            this.tsbNew.Image = global::Mcba.UI.Properties.Resources.iconOrdenProduccion16;
-            this.tsbNew.ImageTransparentColor = System.Drawing.Color.Magenta;
-            this.tsbNew.Name = "tsbNew";
-            this.tsbNew.Size = new System.Drawing.Size(23, 22);
-            this.tsbNew.Text = "toolStripButton1";
+            this.tsbProcesar.DisplayStyle = System.Windows.Forms.ToolStripItemDisplayStyle.Image;
+            this.tsbProcesar.Image = global::Mcba.UI.Properties.Resources.iconOrdenProduccion16;
+            this.tsbProcesar.ImageTransparentColor = System.Drawing.Color.Magenta;
+            this.tsbProcesar.Name = "tsbProcesar";
+            this.tsbProcesar.Size = new System.Drawing.Size(23, 22);
+            this.tsbProcesar.Tag = "tsbProcesar";
+            this.tsbProcesar.Text = "Procesar";
             // 
             // groupBox
             // 
             this.groupBox.Controls.Add(this.dateTimePicker1);
-            this.groupBox.Controls.Add(this.label3);
+            this.groupBox.Controls.Add(this.lblFecha);
             this.groupBox.Location = new System.Drawing.Point(12, 28);
             this.groupBox.Name = "groupBox";
             this.groupBox.Size = new System.Drawing.Size(188, 52);
             this.groupBox.TabIndex = 3;
             this.groupBox.TabStop = false;
-            // 
-            // label3
-            // 
-            this.label3.Location = new System.Drawing.Point(15, 16);
-            this.label3.Name = "label3";
-            this.label3.Size = new System.Drawing.Size(45, 20);
-            this.label3.TabIndex = 5;
-            this.label3.Text = "Fecha";
-            this.label3.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
             // 
             // dateTimePicker1
             // 
@@ -106,6 +99,16 @@ namespace Mcba.UI
             this.dateTimePicker1.Name = "dateTimePicker1";
             this.dateTimePicker1.Size = new System.Drawing.Size(82, 20);
             this.dateTimePicker1.TabIndex = 6;
+            // 
+            // lblFecha
+            // 
+            this.lblFecha.Location = new System.Drawing.Point(15, 16);
+            this.lblFecha.Name = "lblFecha";
+            this.lblFecha.Size = new System.Drawing.Size(45, 20);
+            this.lblFecha.TabIndex = 5;
+            this.lblFecha.Tag = "lblFecha";
+            this.lblFecha.Text = "Fecha";
+            this.lblFecha.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
             // 
             // ReporteCaja
             // 
@@ -117,6 +120,7 @@ namespace Mcba.UI
             this.Controls.Add(this.reportViewer);
             this.Name = "ReporteCaja";
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
+            this.Tag = "ReporteCaja";
             this.Text = "Reporte de Caja";
             this.Load += new System.EventHandler(this.ReporteCaja_Load);
             this.tsReporteCaja.ResumeLayout(false);
@@ -131,9 +135,9 @@ namespace Mcba.UI
         private Microsoft.Reporting.WinForms.ReportViewer reportViewer;
         private System.Windows.Forms.ToolStrip tsReporteCaja;
         private System.Windows.Forms.ToolStripButton tsbSalir;
-        private System.Windows.Forms.ToolStripButton tsbNew;
+        private System.Windows.Forms.ToolStripButton tsbProcesar;
         private System.Windows.Forms.GroupBox groupBox;
         private System.Windows.Forms.DateTimePicker dateTimePicker1;
-        private System.Windows.Forms.Label label3;
+        private System.Windows.Forms.Label lblFecha;
     }
 }

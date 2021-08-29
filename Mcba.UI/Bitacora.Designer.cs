@@ -204,6 +204,7 @@
             this.Controls.Add(this.tsBitacora);
             this.Name = "Bitacora";
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterParent;
+            this.Tag = "Bitacora";
             this.Text = "Bitacora";
             this.Load += new System.EventHandler(this.Bitacora_Load);
             this.tsBitacora.ResumeLayout(false);

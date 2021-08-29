@@ -182,6 +182,7 @@
             this.Controls.Add(this.tsProvincias);
             this.Name = "Provincias";
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterParent;
+            this.Tag = "Provincias";
             this.Text = "Provincias";
             this.Load += new System.EventHandler(this.Provincias_Load);
             this.tsProvincias.ResumeLayout(false);

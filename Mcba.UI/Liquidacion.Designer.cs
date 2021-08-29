@@ -503,6 +503,7 @@
             this.Controls.Add(this.tsSock);
             this.Name = "Liquidacion";
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterParent;
+            this.Tag = "Liquidacion";
             this.Text = "Liquidacion";
             this.Load += new System.EventHandler(this.Liquidacion_Load);
             this.tsSock.ResumeLayout(false);

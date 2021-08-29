@@ -209,6 +209,7 @@
             this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.FixedDialog;
             this.Name = "FacturasItems";
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterParent;
+            this.Tag = "FacturasItems";
             this.Text = "Ítem";
             this.Load += new System.EventHandler(this.FacturasItems_Load);
             this.tsFacturasItems.ResumeLayout(false);

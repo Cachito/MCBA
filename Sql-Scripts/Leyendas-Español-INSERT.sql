@@ -104,6 +104,9 @@ INSERT INTO Leyendas(IdIdioma, Modulo, Tag, Leyenda)
 
 -- Condiciones de IVA
 INSERT INTO Leyendas(IdIdioma, Modulo, Tag, Leyenda)
+    VALUES(1, 'CondicionesIva', 'CondicionesIva', 'Condiciones de IVA')
+
+INSERT INTO Leyendas(IdIdioma, Modulo, Tag, Leyenda)
     VALUES(1, 'CondicionesIva', 'lblId', 'Id')
 
 INSERT INTO Leyendas(IdIdioma, Modulo, Tag, Leyenda)
@@ -135,6 +138,9 @@ INSERT INTO Leyendas(IdIdioma, Modulo, Tag, Leyenda)
     
 -- Bancos
 INSERT INTO Leyendas(IdIdioma, Modulo, Tag, Leyenda)
+    VALUES(1, 'Bancos', 'Bancos', 'Bancos')
+
+INSERT INTO Leyendas(IdIdioma, Modulo, Tag, Leyenda)
     VALUES(1, 'Bancos', 'lblId', 'Id')
 
 INSERT INTO Leyendas(IdIdioma, Modulo, Tag, Leyenda)
@@ -163,6 +169,9 @@ INSERT INTO Leyendas(IdIdioma, Modulo, Tag, Leyenda)
 
 -- Bitácora
 INSERT INTO Leyendas(IdIdioma, Modulo, Tag, Leyenda)
+    VALUES(1, 'Bitacora', 'Bitacora', 'Bitácora')
+
+INSERT INTO Leyendas(IdIdioma, Modulo, Tag, Leyenda)
     VALUES(1, 'Bitacora', 'lblUsuario', 'Usuario')
 
 INSERT INTO Leyendas(IdIdioma, Modulo, Tag, Leyenda)
@@ -185,6 +194,9 @@ INSERT INTO Leyendas(IdIdioma, Modulo, Tag, Leyenda)
 
 -- CambioPassword
 INSERT INTO Leyendas(IdIdioma, Modulo, Tag, Leyenda)
+    VALUES(1, 'CambioPassword', 'CambioPassword', 'Cambio de Password')
+
+INSERT INTO Leyendas(IdIdioma, Modulo, Tag, Leyenda)
     VALUES(1, 'CambioPassword', 'lblUsuario', 'Usuario')
 
 INSERT INTO Leyendas(IdIdioma, Modulo, Tag, Leyenda)
@@ -206,6 +218,9 @@ INSERT INTO Leyendas(IdIdioma, Modulo, Tag, Leyenda)
     VALUES(1, 'CambioPassword', 'tsbRestaurar', 'Restaurar')			
 
 -- Choferes
+INSERT INTO Leyendas(IdIdioma, Modulo, Tag, Leyenda)
+    VALUES(1, 'Choferes', 'Choferes', 'Choferes')
+
 INSERT INTO Leyendas(IdIdioma, Modulo, Tag, Leyenda)
     VALUES(1, 'Choferes', 'lblId', 'Id')
 
@@ -237,6 +252,9 @@ INSERT INTO Leyendas(IdIdioma, Modulo, Tag, Leyenda)
     VALUES(1, 'Choferes', 'tsbSave', 'Guardar')
 		
 -- Clientes
+INSERT INTO Leyendas(IdIdioma, Modulo, Tag, Leyenda)
+    VALUES(1, 'Clientes', 'Clientes', 'Clientes')
+
 INSERT INTO Leyendas(IdIdioma, Modulo, Tag, Leyenda)
     VALUES(1, 'Clientes', 'lblId', 'Id')
 
@@ -287,6 +305,9 @@ INSERT INTO Leyendas(IdIdioma, Modulo, Tag, Leyenda)
 
 -- Facturas
 INSERT INTO Leyendas(IdIdioma, Modulo, Tag, Leyenda)
+    VALUES(1, 'Facturas', 'Facturas', 'Facturas')
+
+INSERT INTO Leyendas(IdIdioma, Modulo, Tag, Leyenda)
     VALUES(1, 'Facturas', 'lblPtoVenta', 'Pto. de Venta')
 
 INSERT INTO Leyendas(IdIdioma, Modulo, Tag, Leyenda)
@@ -331,7 +352,19 @@ INSERT INTO Leyendas(IdIdioma, Modulo, Tag, Leyenda)
 INSERT INTO Leyendas(IdIdioma, Modulo, Tag, Leyenda)
     VALUES(1, 'Facturas', 'tsbBuscar', 'Buscar')
 
+INSERT INTO Leyendas(IdIdioma, Modulo, Tag, Leyenda)
+    VALUES(1, 'Facturas', 'tsbNewItem', 'Nuevo')
+
+INSERT INTO Leyendas(IdIdioma, Modulo, Tag, Leyenda)
+    VALUES(1, 'Facturas', 'tsbDeleteItem', 'Eliminar')
+
+INSERT INTO Leyendas(IdIdioma, Modulo, Tag, Leyenda)
+    VALUES(1, 'Facturas', 'tsbEditItem', 'Editar')
+
 -- FacturasItems
+INSERT INTO Leyendas(IdIdioma, Modulo, Tag, Leyenda)
+    VALUES(1, 'FacturasItems', 'FacturasItems', 'Ítem')
+
 INSERT INTO Leyendas(IdIdioma, Modulo, Tag, Leyenda)
     VALUES(1, 'FacturasItems', 'lblLote', 'Lote')
 
@@ -358,6 +391,9 @@ INSERT INTO Leyendas(IdIdioma, Modulo, Tag, Leyenda)
 
 -- FacturasBuscar
 INSERT INTO Leyendas(IdIdioma, Modulo, Tag, Leyenda)
+    VALUES(1, 'FacturasBuscar', 'FacturasBuscar', 'Buscar Factura')
+
+INSERT INTO Leyendas(IdIdioma, Modulo, Tag, Leyenda)
     VALUES(1, 'FacturasBuscar', 'lblCliente', 'Cliente')
 
 INSERT INTO Leyendas(IdIdioma, Modulo, Tag, Leyenda)
@@ -376,6 +412,9 @@ INSERT INTO Leyendas(IdIdioma, Modulo, Tag, Leyenda)
     VALUES(1, 'FacturasBuscar', 'tsbOk', 'Ok')
 
 -- Liquidacion
+INSERT INTO Leyendas(IdIdioma, Modulo, Tag, Leyenda)
+    VALUES(1, 'Liquidacion', 'Liquidacion', 'Liquidación')
+
 INSERT INTO Leyendas(IdIdioma, Modulo, Tag, Leyenda)
     VALUES(1, 'Liquidacion', 'lblRemitente', 'Remitente')
 
@@ -447,6 +486,9 @@ INSERT INTO Leyendas(IdIdioma, Modulo, Tag, Leyenda)
 
 -- Localidades
 INSERT INTO Leyendas(IdIdioma, Modulo, Tag, Leyenda)
+    VALUES(1, 'Localidades', 'Localidades', 'Localidades')
+
+INSERT INTO Leyendas(IdIdioma, Modulo, Tag, Leyenda)
     VALUES(1, 'Localidades', 'lblId', 'Id')
 
 INSERT INTO Leyendas(IdIdioma, Modulo, Tag, Leyenda)
@@ -472,6 +514,9 @@ INSERT INTO Leyendas(IdIdioma, Modulo, Tag, Leyenda)
 
 -- Provincias
 INSERT INTO Leyendas(IdIdioma, Modulo, Tag, Leyenda)
+    VALUES(1, 'Provincias', 'Provincias', 'Provincias')
+
+INSERT INTO Leyendas(IdIdioma, Modulo, Tag, Leyenda)
     VALUES(1, 'Provincias', 'lblId', 'Id')
 
 INSERT INTO Leyendas(IdIdioma, Modulo, Tag, Leyenda)
@@ -491,4 +536,215 @@ INSERT INTO Leyendas(IdIdioma, Modulo, Tag, Leyenda)
 
 INSERT INTO Leyendas(IdIdioma, Modulo, Tag, Leyenda)
     VALUES(1, 'Provincias', 'tsbSave', 'Guardar')
+
+-- Productos
+INSERT INTO Leyendas(IdIdioma, Modulo, Tag, Leyenda)
+    VALUES(1, 'Productos', 'Productos', 'Productos')
 	
+INSERT INTO Leyendas(IdIdioma, Modulo, Tag, Leyenda)
+    VALUES(1, 'Productos', 'lblId', 'Id')
+
+INSERT INTO Leyendas(IdIdioma, Modulo, Tag, Leyenda)
+    VALUES(1, 'Productos', 'lblDescripcion', 'Descripción')
+	
+INSERT INTO Leyendas(IdIdioma, Modulo, Tag, Leyenda)
+    VALUES(1, 'Productos', 'lblVariedad', 'Variedad')	
+	
+INSERT INTO Leyendas(IdIdioma, Modulo, Tag, Leyenda)
+    VALUES(1, 'Productos', 'lblComision', 'Comisión (%)')
+	
+INSERT INTO Leyendas(IdIdioma, Modulo, Tag, Leyenda)
+    VALUES(1, 'Productos', 'lblIva', 'IVA (%)')	
+
+INSERT INTO Leyendas(IdIdioma, Modulo, Tag, Leyenda)
+    VALUES(1, 'Productos', 'tsbSalir', 'Salir')
+
+INSERT INTO Leyendas(IdIdioma, Modulo, Tag, Leyenda)
+    VALUES(1, 'Productos', 'tsbNew', 'Nuevo')
+	
+INSERT INTO Leyendas(IdIdioma, Modulo, Tag, Leyenda)
+    VALUES(1, 'Productos', 'tsbDelete', 'Eliminar')
+	
+INSERT INTO Leyendas(IdIdioma, Modulo, Tag, Leyenda)
+    VALUES(1, 'Productos', 'tsbEdit', 'Editar')
+
+INSERT INTO Leyendas(IdIdioma, Modulo, Tag, Leyenda)
+    VALUES(1, 'Productos', 'tsbSave', 'Guardar')
+
+-- RemitenteComisiones
+INSERT INTO Leyendas(IdIdioma, Modulo, Tag, Leyenda)
+    VALUES(1, 'RemitenteComisiones', 'RemitenteComisiones', 'Comisiones')
+	
+INSERT INTO Leyendas(IdIdioma, Modulo, Tag, Leyenda)
+    VALUES(1, 'RemitenteComisiones', 'lblRemitente', 'Remitente')
+
+INSERT INTO Leyendas(IdIdioma, Modulo, Tag, Leyenda)
+    VALUES(1, 'RemitenteComisiones', 'lblProducto', 'Producto')
+	
+INSERT INTO Leyendas(IdIdioma, Modulo, Tag, Leyenda)
+    VALUES(1, 'RemitenteComisiones', 'lblComision', 'Comisión (%)')	
+	
+INSERT INTO Leyendas(IdIdioma, Modulo, Tag, Leyenda)
+    VALUES(1, 'RemitenteComisiones', 'tsbSalir', 'Salir')
+
+INSERT INTO Leyendas(IdIdioma, Modulo, Tag, Leyenda)
+    VALUES(1, 'RemitenteComisiones', 'tsbOk', 'Ok')
+
+-- Remitentes
+INSERT INTO Leyendas(IdIdioma, Modulo, Tag, Leyenda)
+    VALUES(1, 'Remitentes', 'Remitentes', 'Remitentes')
+
+INSERT INTO Leyendas(IdIdioma, Modulo, Tag, Leyenda)
+    VALUES(1, 'Remitentes', 'lblId', 'Id')
+
+INSERT INTO Leyendas(IdIdioma, Modulo, Tag, Leyenda)
+    VALUES(1, 'Remitentes', 'lblNombre', 'Nombre')
+
+INSERT INTO Leyendas(IdIdioma, Modulo, Tag, Leyenda)
+    VALUES(1, 'Remitentes', 'lblApellido', 'Apellido')	
+	    
+INSERT INTO Leyendas(IdIdioma, Modulo, Tag, Leyenda)
+    VALUES(1, 'Remitentes', 'lblCuit', 'CUIT')
+
+INSERT INTO Leyendas(IdIdioma, Modulo, Tag, Leyenda)
+    VALUES(1, 'Remitentes', 'lblCondicion', 'Condicion de IVA')
+
+INSERT INTO Leyendas(IdIdioma, Modulo, Tag, Leyenda)
+    VALUES(1, 'Remitentes', 'lblBanco', 'Banco')
+	
+INSERT INTO Leyendas(IdIdioma, Modulo, Tag, Leyenda)
+    VALUES(1, 'Remitentes', 'lblCuenta', 'Cuenta Banco')
+
+INSERT INTO Leyendas(IdIdioma, Modulo, Tag, Leyenda)
+    VALUES(1, 'Remitentes', 'lblTipoCuenta', 'Tipo de Cuenta')
+
+INSERT INTO Leyendas(IdIdioma, Modulo, Tag, Leyenda)
+    VALUES(1, 'Remitentes', 'lblProvincia', 'Provincia')	
+	
+INSERT INTO Leyendas(IdIdioma, Modulo, Tag, Leyenda)
+    VALUES(1, 'Remitentes', 'lblDomicilio', 'Domicilio')	
+		
+INSERT INTO Leyendas(IdIdioma, Modulo, Tag, Leyenda)
+    VALUES(1, 'Remitentes', 'lblLocalidad', 'Localidad')		
+
+INSERT INTO Leyendas(IdIdioma, Modulo, Tag, Leyenda)
+    VALUES(1, 'Remitentes', 'tsbSalir', 'Salir')
+
+INSERT INTO Leyendas(IdIdioma, Modulo, Tag, Leyenda)
+    VALUES(1, 'Remitentes', 'tsbNew', 'Nuevo')
+
+INSERT INTO Leyendas(IdIdioma, Modulo, Tag, Leyenda)
+    VALUES(1, 'Remitentes', 'tsbDelete', 'Eliminar')
+
+INSERT INTO Leyendas(IdIdioma, Modulo, Tag, Leyenda)
+    VALUES(1, 'Remitentes', 'tsbEdit', 'Editar')
+
+INSERT INTO Leyendas(IdIdioma, Modulo, Tag, Leyenda)
+    VALUES(1, 'Remitentes', 'tsbSave', 'Guardar')
+		
+INSERT INTO Leyendas(IdIdioma, Modulo, Tag, Leyenda)
+    VALUES(1, 'Remitentes', 'tsbNewComision', 'Nuevo')
+
+INSERT INTO Leyendas(IdIdioma, Modulo, Tag, Leyenda)
+    VALUES(1, 'Remitentes', 'tsbDeleteComision', 'Eliminar')
+
+INSERT INTO Leyendas(IdIdioma, Modulo, Tag, Leyenda)
+    VALUES(1, 'Remitentes', 'tsbEditComision', 'Editar')
+
+-- ReporteCaja
+INSERT INTO Leyendas(IdIdioma, Modulo, Tag, Leyenda)
+    VALUES(1, 'ReporteCaja', 'ReporteCaja', 'Reporte de Caja')
+
+INSERT INTO Leyendas(IdIdioma, Modulo, Tag, Leyenda)
+    VALUES(1, 'ReporteCaja', 'lblFecha', 'Fecha')
+
+INSERT INTO Leyendas(IdIdioma, Modulo, Tag, Leyenda)
+    VALUES(1, 'ReporteCaja', 'tsbSalir', 'Salir')
+
+INSERT INTO Leyendas(IdIdioma, Modulo, Tag, Leyenda)
+    VALUES(1, 'ReporteCaja', 'tsbProcesar', 'Procesar')
+
+-- Usuarios
+INSERT INTO Leyendas(IdIdioma, Modulo, Tag, Leyenda)
+    VALUES(1, 'Usuarios', 'Usuarios', 'Usuarios')
+	
+INSERT INTO Leyendas(IdIdioma, Modulo, Tag, Leyenda)
+    VALUES(1, 'Usuarios', 'lblId', 'Id')
+
+INSERT INTO Leyendas(IdIdioma, Modulo, Tag, Leyenda)
+    VALUES(1, 'Usuarios', 'lblUsuario', 'Usuario')
+	
+INSERT INTO Leyendas(IdIdioma, Modulo, Tag, Leyenda)
+    VALUES(1, 'Usuarios', 'lblIdioma', 'Idioma')	
+	
+INSERT INTO Leyendas(IdIdioma, Modulo, Tag, Leyenda)
+    VALUES(1, 'Usuarios', 'lblContra1', 'Contraseña')
+	
+INSERT INTO Leyendas(IdIdioma, Modulo, Tag, Leyenda)
+    VALUES(1, 'Usuarios', 'lblContra2', 'Contraseña')	
+
+INSERT INTO Leyendas(IdIdioma, Modulo, Tag, Leyenda)
+    VALUES(1, 'Usuarios', 'tsbSalir', 'Salir')
+
+INSERT INTO Leyendas(IdIdioma, Modulo, Tag, Leyenda)
+    VALUES(1, 'Usuarios', 'tsbNew', 'Nuevo')
+	
+INSERT INTO Leyendas(IdIdioma, Modulo, Tag, Leyenda)
+    VALUES(1, 'Usuarios', 'tsbDelete', 'Eliminar')
+	
+INSERT INTO Leyendas(IdIdioma, Modulo, Tag, Leyenda)
+    VALUES(1, 'Usuarios', 'tsbEdit', 'Editar')
+
+INSERT INTO Leyendas(IdIdioma, Modulo, Tag, Leyenda)
+    VALUES(1, 'Usuarios', 'tsbSave', 'Guardar')
+
+-- Unidades
+INSERT INTO Leyendas(IdIdioma, Modulo, Tag, Leyenda)
+    VALUES(1, 'Unidades', 'Unidades', 'Unidades')
+	
+INSERT INTO Leyendas(IdIdioma, Modulo, Tag, Leyenda)
+    VALUES(1, 'Unidades', 'lblId', 'Id')
+
+INSERT INTO Leyendas(IdIdioma, Modulo, Tag, Leyenda)
+    VALUES(1, 'Unidades', 'lblDescripcion', 'Descripción')
+	
+INSERT INTO Leyendas(IdIdioma, Modulo, Tag, Leyenda)
+    VALUES(1, 'Unidades', 'tsbSalir', 'Salir')
+
+INSERT INTO Leyendas(IdIdioma, Modulo, Tag, Leyenda)
+    VALUES(1, 'Unidades', 'tsbNew', 'Nuevo')
+	
+INSERT INTO Leyendas(IdIdioma, Modulo, Tag, Leyenda)
+    VALUES(1, 'Unidades', 'tsbDelete', 'Eliminar')
+	
+INSERT INTO Leyendas(IdIdioma, Modulo, Tag, Leyenda)
+    VALUES(1, 'Unidades', 'tsbEdit', 'Editar')
+
+INSERT INTO Leyendas(IdIdioma, Modulo, Tag, Leyenda)
+    VALUES(1, 'Unidades', 'tsbSave', 'Guardar')
+
+-- TiposCuenta
+INSERT INTO Leyendas(IdIdioma, Modulo, Tag, Leyenda)
+    VALUES(1, 'TiposCuenta', 'TiposCuenta', 'Tipos de Cuenta')
+	
+INSERT INTO Leyendas(IdIdioma, Modulo, Tag, Leyenda)
+    VALUES(1, 'TiposCuenta', 'lblId', 'Id')
+
+INSERT INTO Leyendas(IdIdioma, Modulo, Tag, Leyenda)
+    VALUES(1, 'TiposCuenta', 'lblDescripcion', 'Descripción')
+	
+INSERT INTO Leyendas(IdIdioma, Modulo, Tag, Leyenda)
+    VALUES(1, 'TiposCuenta', 'tsbSalir', 'Salir')
+
+INSERT INTO Leyendas(IdIdioma, Modulo, Tag, Leyenda)
+    VALUES(1, 'TiposCuenta', 'tsbNew', 'Nuevo')
+	
+INSERT INTO Leyendas(IdIdioma, Modulo, Tag, Leyenda)
+    VALUES(1, 'TiposCuenta', 'tsbDelete', 'Eliminar')
+	
+INSERT INTO Leyendas(IdIdioma, Modulo, Tag, Leyenda)
+    VALUES(1, 'TiposCuenta', 'tsbEdit', 'Editar')
+
+INSERT INTO Leyendas(IdIdioma, Modulo, Tag, Leyenda)
+    VALUES(1, 'TiposCuenta', 'tsbSave', 'Guardar')
+

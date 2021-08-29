@@ -57,9 +57,9 @@
             this.lblPtoVenta = new System.Windows.Forms.Label();
             this.gbDataItems = new System.Windows.Forms.GroupBox();
             this.tsItems = new System.Windows.Forms.ToolStrip();
-            this.toolStripButton2 = new System.Windows.Forms.ToolStripButton();
-            this.toolStripButton3 = new System.Windows.Forms.ToolStripButton();
-            this.tsbEdit = new System.Windows.Forms.ToolStripButton();
+            this.tsbNewItem = new System.Windows.Forms.ToolStripButton();
+            this.tsbDeleteItem = new System.Windows.Forms.ToolStripButton();
+            this.tsbEditItem = new System.Windows.Forms.ToolStripButton();
             this.dgvFacturas = new System.Windows.Forms.DataGridView();
             this.tsHeader.SuspendLayout();
             this.gbDataCliente.SuspendLayout();
@@ -364,41 +364,44 @@
             // tsItems
             // 
             this.tsItems.Items.AddRange(new System.Windows.Forms.ToolStripItem[] {
-            this.toolStripButton2,
-            this.toolStripButton3,
-            this.tsbEdit});
+            this.tsbNewItem,
+            this.tsbDeleteItem,
+            this.tsbEditItem});
             this.tsItems.Location = new System.Drawing.Point(3, 16);
             this.tsItems.Name = "tsItems";
             this.tsItems.Size = new System.Drawing.Size(723, 25);
             this.tsItems.TabIndex = 4;
             this.tsItems.Text = "toolStrip2";
             // 
-            // toolStripButton2
+            // tsbNewItem
             // 
-            this.toolStripButton2.DisplayStyle = System.Windows.Forms.ToolStripItemDisplayStyle.Image;
-            this.toolStripButton2.Image = global::Mcba.UI.Properties.Resources.iconNew;
-            this.toolStripButton2.ImageTransparentColor = System.Drawing.Color.Magenta;
-            this.toolStripButton2.Name = "toolStripButton2";
-            this.toolStripButton2.Size = new System.Drawing.Size(23, 22);
-            this.toolStripButton2.Text = "toolStripButton1";
+            this.tsbNewItem.DisplayStyle = System.Windows.Forms.ToolStripItemDisplayStyle.Image;
+            this.tsbNewItem.Image = global::Mcba.UI.Properties.Resources.iconNew;
+            this.tsbNewItem.ImageTransparentColor = System.Drawing.Color.Magenta;
+            this.tsbNewItem.Name = "tsbNewItem";
+            this.tsbNewItem.Size = new System.Drawing.Size(23, 22);
+            this.tsbNewItem.Tag = "tsbNewItem";
+            this.tsbNewItem.Text = "tsbNewItem";
             // 
-            // toolStripButton3
+            // tsbDeleteItem
             // 
-            this.toolStripButton3.DisplayStyle = System.Windows.Forms.ToolStripItemDisplayStyle.Image;
-            this.toolStripButton3.Image = global::Mcba.UI.Properties.Resources.iconDelete;
-            this.toolStripButton3.ImageTransparentColor = System.Drawing.Color.Magenta;
-            this.toolStripButton3.Name = "toolStripButton3";
-            this.toolStripButton3.Size = new System.Drawing.Size(23, 22);
-            this.toolStripButton3.Text = "toolStripButton1";
+            this.tsbDeleteItem.DisplayStyle = System.Windows.Forms.ToolStripItemDisplayStyle.Image;
+            this.tsbDeleteItem.Image = global::Mcba.UI.Properties.Resources.iconDelete;
+            this.tsbDeleteItem.ImageTransparentColor = System.Drawing.Color.Magenta;
+            this.tsbDeleteItem.Name = "tsbDeleteItem";
+            this.tsbDeleteItem.Size = new System.Drawing.Size(23, 22);
+            this.tsbDeleteItem.Tag = "tsbDeleteItem";
+            this.tsbDeleteItem.Text = "tsbDeleteItem";
             // 
-            // tsbEdit
+            // tsbEditItem
             // 
-            this.tsbEdit.DisplayStyle = System.Windows.Forms.ToolStripItemDisplayStyle.Image;
-            this.tsbEdit.Image = global::Mcba.UI.Properties.Resources.iconEditar;
-            this.tsbEdit.ImageTransparentColor = System.Drawing.Color.Magenta;
-            this.tsbEdit.Name = "tsbEdit";
-            this.tsbEdit.Size = new System.Drawing.Size(23, 22);
-            this.tsbEdit.Text = "toolStripButton1";
+            this.tsbEditItem.DisplayStyle = System.Windows.Forms.ToolStripItemDisplayStyle.Image;
+            this.tsbEditItem.Image = global::Mcba.UI.Properties.Resources.iconEditar;
+            this.tsbEditItem.ImageTransparentColor = System.Drawing.Color.Magenta;
+            this.tsbEditItem.Name = "tsbEditItem";
+            this.tsbEditItem.Size = new System.Drawing.Size(23, 22);
+            this.tsbEditItem.Tag = "tsbEditItem";
+            this.tsbEditItem.Text = "tsbEditItem";
             // 
             // dgvFacturas
             // 
@@ -422,6 +425,7 @@
             this.Controls.Add(this.tsHeader);
             this.Name = "Facturas";
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterParent;
+            this.Tag = "Facturas";
             this.Text = "Facturas";
             this.Load += new System.EventHandler(this.Facturas_Load);
             this.tsHeader.ResumeLayout(false);
@@ -468,9 +472,9 @@
         private System.Windows.Forms.GroupBox gbDataItems;
         private System.Windows.Forms.DataGridView dgvFacturas;
         private System.Windows.Forms.ToolStrip tsItems;
-        private System.Windows.Forms.ToolStripButton toolStripButton2;
-        private System.Windows.Forms.ToolStripButton toolStripButton3;
-        private System.Windows.Forms.ToolStripButton tsbEdit;
+        private System.Windows.Forms.ToolStripButton tsbNewItem;
+        private System.Windows.Forms.ToolStripButton tsbDeleteItem;
+        private System.Windows.Forms.ToolStripButton tsbEditItem;
         private System.Windows.Forms.TextBox textBox2;
         private System.Windows.Forms.Label lblFecha;
         private System.Windows.Forms.ToolStripButton tsbBuscar;
