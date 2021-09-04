@@ -244,6 +244,7 @@
             this.Controls.Add(this.dgvUsuarios);
             this.Controls.Add(this.gbData);
             this.Controls.Add(this.tsUsuarios);
+            this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.FixedSingle;
             this.Name = "Usuarios";
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterParent;
             this.Tag = "Usuarios";

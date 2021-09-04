@@ -1,12 +1,11 @@
-﻿using System;
-using System.Collections.Generic;
+﻿using System.Collections.Generic;
 using System.Linq;
 using Dapper;
 using Mcba.Data;
 
 namespace Mcba.Dal
 {
-    public class CaptionDal : DataAccess
+    public class CaptionDal
     {
         private const string QRY_CAPTION = @"
             SELECT Leyenda
@@ -23,15 +22,19 @@ namespace Mcba.Dal
                 AND Modulo = @Modulo
             ";
 
-        public CaptionDal(string connectionString) : base(connectionString)
+        private readonly string connectionString;
+
+        public CaptionDal(string connectionString)
         {
+            this.connectionString = connectionString;
         }
+
 
         public string GetCaption(int idLanguage, string module, string tag)
         {
             string ret;
 
-            using (var db = GetOpenConnection())
+            using (var db = new DataAccess(connectionString).GetOpenConnection())
             {
                 ret = db.Query<string>(QRY_CAPTION, new {IdIdioma = idLanguage, Modulo = module, Tag = tag})
                     .FirstOrDefault();
@@ -44,7 +47,7 @@ namespace Mcba.Dal
         {
             var ret = new Dictionary<string, string>();
 
-            using (var db = GetOpenConnection())
+            using (var db = new DataAccess(connectionString).GetOpenConnection())
             {
                 ret = db.Query(QRY_MODULE_CAPTIONS, new {IdIdioma = idLanguage, Modulo = module}).ToDictionary(
                     row => (string) row.Tag,

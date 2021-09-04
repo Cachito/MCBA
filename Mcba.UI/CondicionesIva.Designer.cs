@@ -252,6 +252,7 @@
             this.Controls.Add(this.dgvCondicionesIva);
             this.Controls.Add(this.gbData);
             this.Controls.Add(this.tsCondicionesIva);
+            this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.FixedSingle;
             this.Name = "CondicionesIva";
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterParent;
             this.Tag = "CondicionesIva";

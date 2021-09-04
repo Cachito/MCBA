@@ -180,6 +180,7 @@
             this.Controls.Add(this.dgvProvincias);
             this.Controls.Add(this.gbData);
             this.Controls.Add(this.tsProvincias);
+            this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.FixedSingle;
             this.Name = "Provincias";
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterParent;
             this.Tag = "Provincias";

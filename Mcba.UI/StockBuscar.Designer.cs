@@ -29,27 +29,30 @@ namespace Mcba.UI
         /// </summary>
         private void InitializeComponent()
         {
-            this.label1 = new System.Windows.Forms.Label();
+            this.lblRemitente = new System.Windows.Forms.Label();
             this.comboBox1 = new System.Windows.Forms.ComboBox();
             this.comboBox2 = new System.Windows.Forms.ComboBox();
-            this.label2 = new System.Windows.Forms.Label();
-            this.btnOk = new System.Windows.Forms.Button();
-            this.btnCancel = new System.Windows.Forms.Button();
+            this.lblProducto = new System.Windows.Forms.Label();
+            this.tsFacturasBuscar = new System.Windows.Forms.ToolStrip();
+            this.tsbSalir = new System.Windows.Forms.ToolStripButton();
+            this.tsbOk = new System.Windows.Forms.ToolStripButton();
+            this.tsFacturasBuscar.SuspendLayout();
             this.SuspendLayout();
             // 
-            // label1
+            // lblRemitente
             // 
-            this.label1.Location = new System.Drawing.Point(30, 28);
-            this.label1.Name = "label1";
-            this.label1.Size = new System.Drawing.Size(70, 23);
-            this.label1.TabIndex = 0;
-            this.label1.Text = "Remitente";
-            this.label1.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
+            this.lblRemitente.Location = new System.Drawing.Point(30, 55);
+            this.lblRemitente.Name = "lblRemitente";
+            this.lblRemitente.Size = new System.Drawing.Size(70, 23);
+            this.lblRemitente.TabIndex = 0;
+            this.lblRemitente.Tag = "lblRemitente";
+            this.lblRemitente.Text = "Remitente";
+            this.lblRemitente.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
             // 
             // comboBox1
             // 
             this.comboBox1.FormattingEnabled = true;
-            this.comboBox1.Location = new System.Drawing.Point(106, 30);
+            this.comboBox1.Location = new System.Drawing.Point(106, 57);
             this.comboBox1.Name = "comboBox1";
             this.comboBox1.Size = new System.Drawing.Size(121, 21);
             this.comboBox1.TabIndex = 1;
@@ -57,37 +60,51 @@ namespace Mcba.UI
             // comboBox2
             // 
             this.comboBox2.FormattingEnabled = true;
-            this.comboBox2.Location = new System.Drawing.Point(106, 67);
+            this.comboBox2.Location = new System.Drawing.Point(106, 94);
             this.comboBox2.Name = "comboBox2";
             this.comboBox2.Size = new System.Drawing.Size(121, 21);
             this.comboBox2.TabIndex = 3;
             // 
-            // label2
+            // lblProducto
             // 
-            this.label2.Location = new System.Drawing.Point(30, 65);
-            this.label2.Name = "label2";
-            this.label2.Size = new System.Drawing.Size(70, 23);
-            this.label2.TabIndex = 2;
-            this.label2.Text = "Producto";
-            this.label2.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
+            this.lblProducto.Location = new System.Drawing.Point(30, 92);
+            this.lblProducto.Name = "lblProducto";
+            this.lblProducto.Size = new System.Drawing.Size(70, 23);
+            this.lblProducto.TabIndex = 2;
+            this.lblProducto.Tag = "lblProducto";
+            this.lblProducto.Text = "Producto";
+            this.lblProducto.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
             // 
-            // btnOk
+            // tsFacturasBuscar
             // 
-            this.btnOk.Location = new System.Drawing.Point(33, 136);
-            this.btnOk.Name = "btnOk";
-            this.btnOk.Size = new System.Drawing.Size(75, 23);
-            this.btnOk.TabIndex = 4;
-            this.btnOk.Text = "Ok";
-            this.btnOk.UseVisualStyleBackColor = true;
+            this.tsFacturasBuscar.Items.AddRange(new System.Windows.Forms.ToolStripItem[] {
+            this.tsbSalir,
+            this.tsbOk});
+            this.tsFacturasBuscar.Location = new System.Drawing.Point(0, 0);
+            this.tsFacturasBuscar.Name = "tsFacturasBuscar";
+            this.tsFacturasBuscar.Size = new System.Drawing.Size(257, 25);
+            this.tsFacturasBuscar.TabIndex = 6;
+            this.tsFacturasBuscar.Text = "toolStrip1";
             // 
-            // btnCancel
+            // tsbSalir
             // 
-            this.btnCancel.Location = new System.Drawing.Point(152, 136);
-            this.btnCancel.Name = "btnCancel";
-            this.btnCancel.Size = new System.Drawing.Size(75, 23);
-            this.btnCancel.TabIndex = 5;
-            this.btnCancel.Text = "Cancelar";
-            this.btnCancel.UseVisualStyleBackColor = true;
+            this.tsbSalir.DisplayStyle = System.Windows.Forms.ToolStripItemDisplayStyle.Image;
+            this.tsbSalir.Image = global::Mcba.UI.Properties.Resources.iconOut;
+            this.tsbSalir.ImageTransparentColor = System.Drawing.Color.Magenta;
+            this.tsbSalir.Name = "tsbSalir";
+            this.tsbSalir.Size = new System.Drawing.Size(23, 22);
+            this.tsbSalir.Tag = "tsbSalir";
+            this.tsbSalir.Text = "Salir";
+            // 
+            // tsbOk
+            // 
+            this.tsbOk.DisplayStyle = System.Windows.Forms.ToolStripItemDisplayStyle.Image;
+            this.tsbOk.Image = global::Mcba.UI.Properties.Resources.tick_sign_32;
+            this.tsbOk.ImageTransparentColor = System.Drawing.Color.Magenta;
+            this.tsbOk.Name = "tsbOk";
+            this.tsbOk.Size = new System.Drawing.Size(23, 22);
+            this.tsbOk.Tag = "tsbOk";
+            this.tsbOk.Text = "Ok";
             // 
             // StockBuscar
             // 
@@ -95,27 +112,31 @@ namespace Mcba.UI
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(257, 182);
             this.ControlBox = false;
-            this.Controls.Add(this.btnCancel);
-            this.Controls.Add(this.btnOk);
+            this.Controls.Add(this.tsFacturasBuscar);
             this.Controls.Add(this.comboBox2);
-            this.Controls.Add(this.label2);
+            this.Controls.Add(this.lblProducto);
             this.Controls.Add(this.comboBox1);
-            this.Controls.Add(this.label1);
-            this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.FixedToolWindow;
+            this.Controls.Add(this.lblRemitente);
+            this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.FixedDialog;
             this.Name = "StockBuscar";
+            this.Tag = "StockBuscar";
             this.Text = "Filtros Stock";
             this.Load += new System.EventHandler(this.StockBuscar_Load);
+            this.tsFacturasBuscar.ResumeLayout(false);
+            this.tsFacturasBuscar.PerformLayout();
             this.ResumeLayout(false);
+            this.PerformLayout();
 
         }
 
         #endregion
 
-        private System.Windows.Forms.Label label1;
+        private System.Windows.Forms.Label lblRemitente;
         private System.Windows.Forms.ComboBox comboBox1;
         private System.Windows.Forms.ComboBox comboBox2;
-        private System.Windows.Forms.Label label2;
-        private System.Windows.Forms.Button btnOk;
-        private System.Windows.Forms.Button btnCancel;
+        private System.Windows.Forms.Label lblProducto;
+        private System.Windows.Forms.ToolStrip tsFacturasBuscar;
+        private System.Windows.Forms.ToolStripButton tsbSalir;
+        private System.Windows.Forms.ToolStripButton tsbOk;
     }
 }

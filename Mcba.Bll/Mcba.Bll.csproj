@@ -33,6 +33,7 @@
   <ItemGroup>
     <Reference Include="System" />
     <Reference Include="System.Core" />
+    <Reference Include="System.Web" />
     <Reference Include="System.Xml.Linq" />
     <Reference Include="System.Data.DataSetExtensions" />
     <Reference Include="Microsoft.CSharp" />
@@ -48,10 +49,6 @@
     <ProjectReference Include="..\Mcba.Dal\Mcba.Dal.csproj">
       <Project>{FE857B11-B218-47B1-9005-2F0ABCB54B8C}</Project>
       <Name>Mcba.Dal</Name>
-    </ProjectReference>
-    <ProjectReference Include="..\Mcba.Data\Mcba.Data.csproj">
-      <Project>{99AAA7FE-502F-4B27-A9A2-849A19329441}</Project>
-      <Name>Mcba.Data</Name>
     </ProjectReference>
     <ProjectReference Include="..\Mcba.Entidad\Mcba.Entidad.csproj">
       <Project>{4514EA8D-D83A-4F2B-9985-56A8AA964E78}</Project>

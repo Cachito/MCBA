@@ -180,6 +180,7 @@
             this.Controls.Add(this.dgvUnidades);
             this.Controls.Add(this.gbData);
             this.Controls.Add(this.tsUnidades);
+            this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.FixedSingle;
             this.Name = "Unidades";
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterParent;
             this.Tag = "Unidades";

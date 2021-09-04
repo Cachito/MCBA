@@ -257,6 +257,7 @@
             this.Controls.Add(this.cmbFamilias);
             this.Controls.Add(this.lblObjeto);
             this.Controls.Add(this.tsPermisos);
+            this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.FixedSingle;
             this.Name = "Permisos";
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterParent;
             this.Text = "Permisos Base";

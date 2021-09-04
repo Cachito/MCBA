@@ -501,6 +501,7 @@
             this.Controls.Add(this.dgvLiquidacion);
             this.Controls.Add(this.gbData);
             this.Controls.Add(this.tsSock);
+            this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.FixedSingle;
             this.Name = "Liquidacion";
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterParent;
             this.Tag = "Liquidacion";

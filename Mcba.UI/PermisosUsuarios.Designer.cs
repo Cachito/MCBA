@@ -29,17 +29,17 @@
         private void InitializeComponent()
         {
             this.tsSeguridad = new System.Windows.Forms.ToolStrip();
+            this.tsbSalir = new System.Windows.Forms.ToolStripButton();
+            this.tsbSave = new System.Windows.Forms.ToolStripButton();
             this.label1 = new System.Windows.Forms.Label();
             this.cmbUsuarios = new System.Windows.Forms.ComboBox();
             this.gbFamilias = new System.Windows.Forms.GroupBox();
+            this.btnRemoveFamilia = new System.Windows.Forms.Button();
+            this.btnAddFamilia = new System.Windows.Forms.Button();
+            this.label3 = new System.Windows.Forms.Label();
+            this.label2 = new System.Windows.Forms.Label();
             this.DgvFamiliasAsignadas = new System.Windows.Forms.DataGridView();
             this.dvgFamilias = new System.Windows.Forms.DataGridView();
-            this.label2 = new System.Windows.Forms.Label();
-            this.label3 = new System.Windows.Forms.Label();
-            this.tsbSalir = new System.Windows.Forms.ToolStripButton();
-            this.tsbSave = new System.Windows.Forms.ToolStripButton();
-            this.btnAddFamilia = new System.Windows.Forms.Button();
-            this.btnRemoveFamilia = new System.Windows.Forms.Button();
             this.gbPatentes = new System.Windows.Forms.GroupBox();
             this.button1 = new System.Windows.Forms.Button();
             this.button2 = new System.Windows.Forms.Button();
@@ -66,6 +66,26 @@
             this.tsSeguridad.Size = new System.Drawing.Size(734, 25);
             this.tsSeguridad.TabIndex = 0;
             this.tsSeguridad.Text = "toolStrip1";
+            // 
+            // tsbSalir
+            // 
+            this.tsbSalir.DisplayStyle = System.Windows.Forms.ToolStripItemDisplayStyle.Image;
+            this.tsbSalir.Image = global::Mcba.UI.Properties.Resources.iconOut;
+            this.tsbSalir.ImageTransparentColor = System.Drawing.Color.Magenta;
+            this.tsbSalir.Name = "tsbSalir";
+            this.tsbSalir.Size = new System.Drawing.Size(23, 22);
+            this.tsbSalir.Text = "toolStripButton1";
+            this.tsbSalir.Click += new System.EventHandler(this.tsbSalir_Click);
+            // 
+            // tsbSave
+            // 
+            this.tsbSave.DisplayStyle = System.Windows.Forms.ToolStripItemDisplayStyle.Image;
+            this.tsbSave.Image = global::Mcba.UI.Properties.Resources.iconSave;
+            this.tsbSave.ImageTransparentColor = System.Drawing.Color.Magenta;
+            this.tsbSave.Name = "tsbSave";
+            this.tsbSave.Size = new System.Drawing.Size(23, 22);
+            this.tsbSave.Text = "toolStripButton1";
+            this.tsbSave.Click += new System.EventHandler(this.tsbSave_Click);
             // 
             // label1
             // 
@@ -99,6 +119,42 @@
             this.gbFamilias.TabStop = false;
             this.gbFamilias.Text = "Familias";
             // 
+            // btnRemoveFamilia
+            // 
+            this.btnRemoveFamilia.Image = global::Mcba.UI.Properties.Resources.iconArrowRedLeft;
+            this.btnRemoveFamilia.Location = new System.Drawing.Point(337, 163);
+            this.btnRemoveFamilia.Name = "btnRemoveFamilia";
+            this.btnRemoveFamilia.Size = new System.Drawing.Size(40, 40);
+            this.btnRemoveFamilia.TabIndex = 9;
+            this.btnRemoveFamilia.UseVisualStyleBackColor = true;
+            // 
+            // btnAddFamilia
+            // 
+            this.btnAddFamilia.Image = global::Mcba.UI.Properties.Resources.iconArrowRight;
+            this.btnAddFamilia.Location = new System.Drawing.Point(337, 77);
+            this.btnAddFamilia.Name = "btnAddFamilia";
+            this.btnAddFamilia.Size = new System.Drawing.Size(40, 40);
+            this.btnAddFamilia.TabIndex = 8;
+            this.btnAddFamilia.UseVisualStyleBackColor = true;
+            // 
+            // label3
+            // 
+            this.label3.Location = new System.Drawing.Point(389, 16);
+            this.label3.Name = "label3";
+            this.label3.Size = new System.Drawing.Size(70, 23);
+            this.label3.TabIndex = 7;
+            this.label3.Text = "Asignadas";
+            this.label3.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
+            // 
+            // label2
+            // 
+            this.label2.Location = new System.Drawing.Point(6, 16);
+            this.label2.Name = "label2";
+            this.label2.Size = new System.Drawing.Size(70, 23);
+            this.label2.TabIndex = 6;
+            this.label2.Text = "Disponibles";
+            this.label2.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
+            // 
             // DgvFamiliasAsignadas
             // 
             this.DgvFamiliasAsignadas.AllowUserToAddRows = false;
@@ -118,62 +174,6 @@
             this.dvgFamilias.Name = "dvgFamilias";
             this.dvgFamilias.Size = new System.Drawing.Size(316, 191);
             this.dvgFamilias.TabIndex = 4;
-            // 
-            // label2
-            // 
-            this.label2.Location = new System.Drawing.Point(6, 16);
-            this.label2.Name = "label2";
-            this.label2.Size = new System.Drawing.Size(70, 23);
-            this.label2.TabIndex = 6;
-            this.label2.Text = "Disponibles";
-            this.label2.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
-            // 
-            // label3
-            // 
-            this.label3.Location = new System.Drawing.Point(389, 16);
-            this.label3.Name = "label3";
-            this.label3.Size = new System.Drawing.Size(70, 23);
-            this.label3.TabIndex = 7;
-            this.label3.Text = "Asignadas";
-            this.label3.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
-            // 
-            // tsbSalir
-            // 
-            this.tsbSalir.DisplayStyle = System.Windows.Forms.ToolStripItemDisplayStyle.Image;
-            this.tsbSalir.Image = global::Mcba.UI.Properties.Resources.iconOut;
-            this.tsbSalir.ImageTransparentColor = System.Drawing.Color.Magenta;
-            this.tsbSalir.Name = "tsbSalir";
-            this.tsbSalir.Size = new System.Drawing.Size(23, 22);
-            this.tsbSalir.Text = "toolStripButton1";
-            this.tsbSalir.Click += new System.EventHandler(this.tsbSalir_Click);
-            // 
-            // tsbSave
-            // 
-            this.tsbSave.DisplayStyle = System.Windows.Forms.ToolStripItemDisplayStyle.Image;
-            this.tsbSave.Image = global::Mcba.UI.Properties.Resources.iconSave;
-            this.tsbSave.ImageTransparentColor = System.Drawing.Color.Magenta;
-            this.tsbSave.Name = "tsbSave";
-            this.tsbSave.Size = new System.Drawing.Size(23, 22);
-            this.tsbSave.Text = "toolStripButton1";
-            this.tsbSave.Click += new System.EventHandler(this.tsbSave_Click);
-            // 
-            // btnAddFamilia
-            // 
-            this.btnAddFamilia.Image = global::Mcba.UI.Properties.Resources.iconArrowRight;
-            this.btnAddFamilia.Location = new System.Drawing.Point(337, 77);
-            this.btnAddFamilia.Name = "btnAddFamilia";
-            this.btnAddFamilia.Size = new System.Drawing.Size(40, 40);
-            this.btnAddFamilia.TabIndex = 8;
-            this.btnAddFamilia.UseVisualStyleBackColor = true;
-            // 
-            // btnRemoveFamilia
-            // 
-            this.btnRemoveFamilia.Image = global::Mcba.UI.Properties.Resources.iconArrowRedLeft;
-            this.btnRemoveFamilia.Location = new System.Drawing.Point(337, 163);
-            this.btnRemoveFamilia.Name = "btnRemoveFamilia";
-            this.btnRemoveFamilia.Size = new System.Drawing.Size(40, 40);
-            this.btnRemoveFamilia.TabIndex = 9;
-            this.btnRemoveFamilia.UseVisualStyleBackColor = true;
             // 
             // gbPatentes
             // 
@@ -257,6 +257,7 @@
             this.Controls.Add(this.cmbUsuarios);
             this.Controls.Add(this.label1);
             this.Controls.Add(this.tsSeguridad);
+            this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.FixedSingle;
             this.Name = "PermisosUsuarios";
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterParent;
             this.Text = "Permisos Usuarios";

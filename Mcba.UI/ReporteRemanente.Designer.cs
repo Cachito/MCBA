@@ -115,6 +115,7 @@ namespace Mcba.UI
             this.Controls.Add(this.groupBox);
             this.Controls.Add(this.tsReporteRemanente);
             this.Controls.Add(this.reportViewer);
+            this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.FixedSingle;
             this.Name = "ReporteRemanente";
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "Reporte de Remanente";

@@ -448,6 +448,7 @@
             this.Controls.Add(this.dgvRemitentes);
             this.Controls.Add(this.gbData);
             this.Controls.Add(this.tsRemitentes);
+            this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.FixedSingle;
             this.Name = "Remitentes";
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterParent;
             this.Tag = "Remitentes";

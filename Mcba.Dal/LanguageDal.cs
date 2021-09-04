@@ -5,7 +5,7 @@ using Mcba.Entidad;
 
 namespace Mcba.Dal
 {
-    public class LanguageDal : DataAccess
+    public class LanguageDal
     {
         private const string QRY_LANGUAGES = @"
             SELECT 
@@ -15,15 +15,18 @@ namespace Mcba.Dal
             ORDER BY Descripcion
             ";
 
-        public LanguageDal(string connectionString) : base(connectionString)
+        private readonly string connectionString;
+
+        public LanguageDal(string connectionString)
         {
+            this.connectionString = connectionString;
         }
 
         public IEnumerable<Language> GetLanguages()
         {
             IEnumerable<Language> ret;
 
-            using (var db = GetOpenConnection())
+            using (var db = new DataAccess(connectionString).GetOpenConnection())
             {
                 ret = db.Query<Language>(QRY_LANGUAGES);
             }

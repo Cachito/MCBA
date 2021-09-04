@@ -96,6 +96,7 @@ namespace Mcba.UI
             this.btnRecuperarContra.Tag = "btnRecuperarContra";
             this.btnRecuperarContra.Text = "Recuperar Contaseña";
             this.btnRecuperarContra.UseVisualStyleBackColor = true;
+            this.btnRecuperarContra.Click += new System.EventHandler(this.btnRecuperarContra_Click);
             // 
             // btnCancel
             // 
@@ -142,7 +143,7 @@ namespace Mcba.UI
             // 
             this.txtPassword.Location = new System.Drawing.Point(89, 60);
             this.txtPassword.Name = "txtPassword";
-            this.txtPassword.PasswordChar = '☺';
+            this.txtPassword.PasswordChar = '*';
             this.txtPassword.Size = new System.Drawing.Size(206, 20);
             this.txtPassword.TabIndex = 3;
             // 
