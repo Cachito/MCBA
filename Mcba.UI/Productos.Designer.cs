@@ -243,6 +243,7 @@
             this.Controls.Add(this.dgvProductos);
             this.Controls.Add(this.gbData);
             this.Controls.Add(this.tsProductos);
+            this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.FixedSingle;
             this.Name = "Productos";
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterParent;
             this.Tag = "Productos";

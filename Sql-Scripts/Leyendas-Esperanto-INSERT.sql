@@ -29,6 +29,30 @@ INSERT INTO Leyendas(IdIdioma, Modulo, Tag, Leyenda)
 INSERT INTO Leyendas(IdIdioma, Modulo, Tag, Leyenda)
     VALUES(2, 'Login', 'btnRecuperarContra', 'Rekuperu Pasvorton')
 
+INSERT INTO Leyendas(IdIdioma, Modulo, Tag, Leyenda)
+    VALUES(1, 'Login', 'UsuarioBloqueado', 'Uzanto blokita')
+   
+INSERT INTO Leyendas(IdIdioma, Modulo, Tag, Leyenda)
+    VALUES(2, 'Login', 'LoginIncorrecto', 'Malĝusta uzantnomo aŭ pasvorto.')
+
+INSERT INTO Leyendas(IdIdioma, Modulo, Tag, Leyenda)
+    VALUES(2, 'Login', 'RestoreWarning', 'Se vi daŭrigos, via pasvorto estos rekomencigita kaj retpoŝto estos sendita al {0}.{1}Ĉu vi certas?')
+
+INSERT INTO Leyendas(IdIdioma, Modulo, Tag, Leyenda)
+    VALUES(2, 'Login', 'MailWarning', 'La indikita uzanto ne havas asignitan retpoŝtadreson.')
+
+INSERT INTO Leyendas(IdIdioma, Modulo, Tag, Leyenda)
+    VALUES(2, 'Login', 'RestoreBody', 'La nova pasvorto estas sendita al vi: "{0}" (Sen la citaĵoj).{1}Ne dividu ĉi tiun retpoŝton.')
+
+INSERT INTO Leyendas(IdIdioma, Modulo, Tag, Leyenda)
+    VALUES(2, 'Login', 'RestoreSubject', 'Buongiorno S. A.')
+
+INSERT INTO Leyendas(IdIdioma, Modulo, Tag, Leyenda)
+    VALUES(2, 'Login', 'RestoreSent', 'La poŝto estis sendita.')
+
+INSERT INTO Leyendas(IdIdioma, Modulo, Tag, Leyenda)
+    VALUES(2, 'Login', 'RestoreSaved', 'La poŝto estis konservita en {0}.')
+
 -- Menu
 INSERT INTO Leyendas(IdIdioma, Modulo, Tag, Leyenda)
     VALUES(2, 'Menu', 'tsmiMaestros', 'Majstraj')
@@ -748,4 +772,70 @@ INSERT INTO Leyendas(IdIdioma, Modulo, Tag, Leyenda)
 INSERT INTO Leyendas(IdIdioma, Modulo, Tag, Leyenda)
     VALUES(2, 'TiposCuenta', 'tsbSave', 'Konservu')
 
+-- Stock
+INSERT INTO Leyendas(IdIdioma, Modulo, Tag, Leyenda)
+    VALUES(2, 'Stock', 'Stock', 'Provizo')
+	
+INSERT INTO Leyendas(IdIdioma, Modulo, Tag, Leyenda)
+    VALUES(2, 'Stock', 'lblLote', 'Lot')
 
+INSERT INTO Leyendas(IdIdioma, Modulo, Tag, Leyenda)
+    VALUES(2, 'Stock', 'lblRemitente', 'Sendinto')
+	
+INSERT INTO Leyendas(IdIdioma, Modulo, Tag, Leyenda)
+    VALUES(2, 'Stock', 'lblProducto', 'Produkto')
+
+INSERT INTO Leyendas(IdIdioma, Modulo, Tag, Leyenda)
+    VALUES(2, 'Stock', 'lblOrigen', 'Origino')
+	
+INSERT INTO Leyendas(IdIdioma, Modulo, Tag, Leyenda)
+    VALUES(2, 'Stock', 'lblFecha', 'Dato')
+
+INSERT INTO Leyendas(IdIdioma, Modulo, Tag, Leyenda)
+    VALUES(2, 'Stock', 'lblUnidad', 'Unueco')
+	
+INSERT INTO Leyendas(IdIdioma, Modulo, Tag, Leyenda)
+    VALUES(2, 'Stock', 'lblCantidad', 'Kvanto')
+
+INSERT INTO Leyendas(IdIdioma, Modulo, Tag, Leyenda)
+    VALUES(2, 'Stock', 'lblGuia', 'Transp. Gvidilo')
+
+INSERT INTO Leyendas(IdIdioma, Modulo, Tag, Leyenda)
+    VALUES(2, 'Stock', 'lblChofer', 'Ŝoforo')
+	
+INSERT INTO Leyendas(IdIdioma, Modulo, Tag, Leyenda)
+    VALUES(2, 'Stock', 'tsbSalir', 'Eliri')
+
+INSERT INTO Leyendas(IdIdioma, Modulo, Tag, Leyenda)
+    VALUES(2, 'Stock', 'tsbNew', 'Nova')
+	
+INSERT INTO Leyendas(IdIdioma, Modulo, Tag, Leyenda)
+    VALUES(2, 'Stock', 'tsbDelete', 'Forigi')
+	
+INSERT INTO Leyendas(IdIdioma, Modulo, Tag, Leyenda)
+    VALUES(2, 'Stock', 'tsbEdit', 'Redaktu')
+
+INSERT INTO Leyendas(IdIdioma, Modulo, Tag, Leyenda)
+    VALUES(2, 'Stock', 'tsbSave', 'Konservu')
+	
+INSERT INTO Leyendas(IdIdioma, Modulo, Tag, Leyenda)
+    VALUES(2, 'Stock', 'tsbBuscar', 'Serĉi')
+	
+INSERT INTO Leyendas(IdIdioma, Modulo, Tag, Leyenda)
+    VALUES(2, 'Stock', 'tsbPrint', 'Presi')	
+
+-- StockBuscar
+INSERT INTO Leyendas(IdIdioma, Modulo, Tag, Leyenda)
+    VALUES(2, 'StockBuscar', 'StockBuscar', 'Akciaj Filtriloj')
+	
+INSERT INTO Leyendas(IdIdioma, Modulo, Tag, Leyenda)
+    VALUES(2, 'StockBuscar', 'lblRemitente', 'Sendinto')
+	
+INSERT INTO Leyendas(IdIdioma, Modulo, Tag, Leyenda)
+    VALUES(2, 'StockBuscar', 'lblProducto', 'Produkto')
+
+INSERT INTO Leyendas(IdIdioma, Modulo, Tag, Leyenda)
+    VALUES(2, 'StockBuscar', 'tsbSalir', 'Eliri')
+
+INSERT INTO Leyendas(IdIdioma, Modulo, Tag, Leyenda)
+    VALUES(2, 'StockBuscar', 'tsbOk', 'Bone')

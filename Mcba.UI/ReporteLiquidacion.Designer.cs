@@ -73,6 +73,7 @@ namespace Mcba.UI
             this.ClientSize = new System.Drawing.Size(715, 611);
             this.Controls.Add(this.tsReporteLiquidacion);
             this.Controls.Add(this.reportViewer);
+            this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.FixedSingle;
             this.Name = "ReporteLiquidacion";
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "Liquidación";

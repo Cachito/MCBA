@@ -244,6 +244,7 @@
             this.Controls.Add(this.dgvChoferes);
             this.Controls.Add(this.gbData);
             this.Controls.Add(this.tsChoferes);
+            this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.FixedSingle;
             this.Name = "Choferes";
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterParent;
             this.Tag = "Choferes";

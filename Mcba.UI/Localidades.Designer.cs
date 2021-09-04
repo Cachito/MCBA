@@ -202,6 +202,7 @@
             this.Controls.Add(this.dgvLocalidades);
             this.Controls.Add(this.gbData);
             this.Controls.Add(this.tsLocalidades);
+            this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.FixedSingle;
             this.Name = "Localidades";
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterParent;
             this.Tag = "Localidades";

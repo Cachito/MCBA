@@ -180,6 +180,7 @@
             this.Controls.Add(this.dgvTiposCuenta);
             this.Controls.Add(this.gbData);
             this.Controls.Add(this.tsTiposCuenta);
+            this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.FixedSingle;
             this.Name = "TiposCuenta";
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterParent;
             this.Tag = "TiposCuenta";

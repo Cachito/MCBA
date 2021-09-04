@@ -12,6 +12,8 @@ namespace Mcba.UI
 {
     public partial class Login : Form
     {
+        private Dictionary<string, string> captions = new Dictionary<string, string>();
+
         public Login()
         {
             InitializeComponent();
@@ -50,8 +52,8 @@ namespace Mcba.UI
 
         private void SetCaptions()
         {
-            var caps = LanguageHelper.GetCaptions(Name);
-            LanguageHelper.SetCaptions(caps, this);
+            captions = LanguageHelper.GetCaptions(Name);
+            LanguageHelper.SetCaptions(captions, this);
         }
 
         private void CheckMail()
@@ -60,9 +62,27 @@ namespace Mcba.UI
             Application.DoEvents();
 
             var mcbaBll = new UserBll();
-            var email = mcbaBll.GetEmailByLogin(txtUsuario.Text);
+            var fullEmail = mcbaBll.GetEmailByLogin(txtUsuario.Text);
 
-            txtEmail.Text = email;
+            if (string.IsNullOrWhiteSpace(fullEmail))
+            {
+                txtEmail.Text = string.Empty;
+                Cursor = Cursors.Default;
+                Application.DoEvents();
+                return;
+            }
+
+            var emailArr = fullEmail.Split('@');
+
+            var email = emailArr[0];
+            var emailLength = email.Length;
+
+            var showEmail = email.Substring(0, 2);
+            var showChars = new string('*', emailLength - 2);
+
+            var emailText = $"{showEmail}{showChars}@{emailArr[1]}";
+
+            txtEmail.Text = emailText;
 
             Cursor = Cursors.Default;
             Application.DoEvents();
@@ -70,8 +90,17 @@ namespace Mcba.UI
 
         private void CheckUser()
         {
-            var mcbaBll = new UserBll();
-            var ok = mcbaBll.UserOk(txtUsuario.Text, txtPassword.Text);
+            var userBll = new UserBll();
+            var attempCount = userBll.GetAttemps(txtUsuario.Text);
+
+            if (attempCount >= McbaSettings.MaxLoginAttemps)
+            {
+                captions.TryGetValue("UsuarioBloqueado", out var caption);
+                this.ShowMessage(caption, McbaSettings.MessageTitle, MessageBoxButtons.OK, MessageBoxIcon.Information);
+                return;
+            }
+
+            var ok = userBll.UserOk(txtUsuario.Text, txtPassword.Text);
 
             if (ok)
             {
@@ -80,8 +109,53 @@ namespace Mcba.UI
             }
             else
             {
-                this.ShowMessage("Usuario o clave incorrecta.", McbaSettings.MessageTitle);
+                captions.TryGetValue("LoginIncorrecto", out var caption);
+                this.ShowMessage(caption, McbaSettings.MessageTitle, MessageBoxButtons.OK, MessageBoxIcon.Information);
             }
+        }
+
+        private void RestorePassword()
+        {
+            CheckMail();
+            if (string.IsNullOrWhiteSpace(txtEmail.Text))
+            {
+                captions.TryGetValue("MailWarning", out var mailCaption);
+                this.ShowMessage(string.Format(mailCaption, txtEmail.Text, Environment.NewLine),
+                    McbaSettings.MessageTitle, MessageBoxButtons.OK,
+                    MessageBoxIcon.Exclamation);
+                return;
+            }
+
+            captions.TryGetValue("RestoreWarning", out var restoreCaption);
+            var ok = this.ShowMessage(string.Format(restoreCaption, txtEmail.Text, Environment.NewLine), McbaSettings.MessageTitle, MessageBoxButtons.YesNo,
+                MessageBoxIcon.Question);
+            if (ok != DialogResult.Yes)
+            {
+                return;
+            }
+
+            var userBll = new UserBll();
+            var newPassword = userBll.RestorePassword(txtUsuario.Text);
+
+            var userEmail = userBll.GetEmailByLogin(txtUsuario.Text);
+
+            captions.TryGetValue("RestoreSubject", out var restoreSubject);
+            captions.TryGetValue("RestoreBody", out var restoreBody);
+            var send = MailHelper.SendNewPassword(userEmail, restoreSubject,
+                string.Format(restoreBody, newPassword, Environment.NewLine));
+
+            if (send)
+            {
+                captions.TryGetValue("RestoreSent", out var restoreSent);
+                this.ShowMessage(restoreSent, McbaSettings.MessageTitle);
+                return;
+            }
+
+            MailHelper.SaveNewPassword(userEmail, restoreSubject,
+                string.Format(restoreBody, newPassword, Environment.NewLine));
+
+            captions.TryGetValue("RestoreSaved", out var restoreSaved);
+            this.ShowMessage(string.Format(restoreSaved, McbaSettings.TempFolder), McbaSettings.MessageTitle);
         }
 
         private void cmbLanguages_SelectedIndexChanged(object sender, EventArgs e)
@@ -114,6 +188,11 @@ namespace Mcba.UI
         private void btnOk_Click(object sender, EventArgs e)
         {
             CheckUser();
+        }
+
+        private void btnRecuperarContra_Click(object sender, EventArgs e)
+        {
+            RestorePassword();
         }
     }
 }

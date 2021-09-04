@@ -46,7 +46,7 @@ namespace Mcba.UI
             // check integridad
             for (var i = 1; i <= 100; i++)
             {
-                Thread.Sleep(100);
+                Thread.Sleep(5);
             }
 
             e.Result = settings;

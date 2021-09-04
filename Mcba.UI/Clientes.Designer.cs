@@ -383,6 +383,7 @@
             this.Controls.Add(this.dgvClientes);
             this.Controls.Add(this.gbData);
             this.Controls.Add(this.tsClientes);
+            this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.FixedSingle;
             this.Name = "Clientes";
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterParent;
             this.Tag = "Clientes";

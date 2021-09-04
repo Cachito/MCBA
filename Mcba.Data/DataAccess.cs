@@ -5,16 +5,16 @@ using System.Data.SqlClient;
 
 namespace Mcba.Data
 {
-    public abstract class DataAccess
+    public class DataAccess
     {
         private readonly string connectionString;
 
-        protected DataAccess(string connectionString)
+        public DataAccess(string connectionString)
         {
             this.connectionString = connectionString;
         }
 
-        protected IDbConnection GetOpenConnection()
+        public IDbConnection GetOpenConnection()
         {
             var db = new SqlConnection(connectionString);
 
@@ -23,10 +23,7 @@ namespace Mcba.Data
                 .Or<SqlException>()
                 .Retry(3);
 
-            retryPolicy.Execute(() =>
-            {
-                db.Open();
-            });
+            retryPolicy.Execute(() => { db.Open(); });
 
             return db;
         }

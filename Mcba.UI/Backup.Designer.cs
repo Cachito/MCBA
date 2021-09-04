@@ -183,6 +183,7 @@
             this.Controls.Add(this.dgvBackup);
             this.Controls.Add(this.gbData);
             this.Controls.Add(this.tsBackup);
+            this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.FixedSingle;
             this.Name = "Backup";
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterParent;
             this.Text = "Backup";

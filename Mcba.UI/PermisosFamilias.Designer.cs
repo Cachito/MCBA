@@ -246,7 +246,7 @@
             this.dgvPatentes.Size = new System.Drawing.Size(316, 191);
             this.dgvPatentes.TabIndex = 4;
             // 
-            // PermisosPatentes
+            // PermisosFamilias
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
@@ -257,7 +257,8 @@
             this.Controls.Add(this.cmbFamilias);
             this.Controls.Add(this.label1);
             this.Controls.Add(this.tsSeguridad);
-            this.Name = "PermisosPatentes";
+            this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.FixedSingle;
+            this.Name = "PermisosFamilias";
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterParent;
             this.Text = "Permisos Familias";
             this.Load += new System.EventHandler(this.Seguridad_Load);

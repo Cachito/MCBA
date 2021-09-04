@@ -423,6 +423,7 @@
             this.Controls.Add(this.gbData);
             this.Controls.Add(this.gbDataCliente);
             this.Controls.Add(this.tsHeader);
+            this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.FixedSingle;
             this.Name = "Facturas";
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterParent;
             this.Tag = "Facturas";
