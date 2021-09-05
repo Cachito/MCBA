@@ -1,12 +1,11 @@
-﻿using System;
-using System.Collections.Generic;
+﻿using System.Collections.Generic;
 using System.Windows.Forms;
 using Mcba.Dal;
 using Mcba.Infraestruture.Settings;
 
-namespace Mcba.Infraestruture.Helpers
+namespace Mcba.Bll.Helpers
 {
-    public static class LanguageHelper
+    public static class CaptionHelper
     {
         public static string GetCaption(string module, string tag)
         {

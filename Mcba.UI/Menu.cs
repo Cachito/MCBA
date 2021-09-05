@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 using System.Linq;
 using System.Windows.Forms;
+using Mcba.Bll.Helpers;
 using Mcba.Infraestruture;
 using Mcba.Infraestruture.Helpers;
 using Mcba.Infraestruture.Settings;
@@ -17,8 +18,8 @@ namespace Mcba.UI
 
         private void SetCaptions()
         {
-            var caps = LanguageHelper.GetCaptions(Name);
-            LanguageHelper.SetCaptions(caps, this);
+            var caps = CaptionHelper.GetCaptions(Name);
+            CaptionHelper.SetCaptions(caps, this);
         }
 
         private void tsmiSalir_Click(object sender, EventArgs e)

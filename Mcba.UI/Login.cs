@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Windows.Forms;
 using Mcba.Bll;
+using Mcba.Bll.Helpers;
 using Mcba.Infraestruture;
 using Mcba.Infraestruture.Enums;
 using Mcba.Infraestruture.Helpers;
@@ -52,8 +53,8 @@ namespace Mcba.UI
 
         private void SetCaptions()
         {
-            captions = LanguageHelper.GetCaptions(Name);
-            LanguageHelper.SetCaptions(captions, this);
+            captions = CaptionHelper.GetCaptions(Name);
+            CaptionHelper.SetCaptions(captions, this);
         }
 
         private void CheckMail()

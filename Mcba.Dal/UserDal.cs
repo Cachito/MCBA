@@ -1,8 +1,10 @@
 ﻿using System;
+using System.Collections.Generic;
 using System.Linq;
 using Dapper;
 using Mcba.Data;
 using Mcba.Entidad;
+using Mcba.Seguridad;
 
 namespace Mcba.Dal
 {
@@ -53,6 +55,21 @@ namespace Mcba.Dal
             WHERE Login = @Login
             ";
 
+        private const string QRY_GET_ALL_USERS = @"
+            SELECT 
+                Id
+                , Nombre
+                , Apellido
+                , Login
+                , Password
+                , Email
+                , IdIdioma
+                , Activo 
+                , Intentos
+                , DV
+            FROM Usuario
+            ";
+
         private const string QRY_GET_USER_BY_LOGIN = @"
             SELECT 
                 Id
@@ -81,7 +98,7 @@ namespace Mcba.Dal
             this.connectionString = connectionString;
         }
 
-        public void UpdateDv(string login, string dvString)
+        public void UpdateDvh(string login, string dvString)
         {
             using (var db = new DataAccess(connectionString).GetOpenConnection())
             {
@@ -134,7 +151,35 @@ namespace Mcba.Dal
         {
             using (var db = new DataAccess(connectionString).GetOpenConnection())
             {
-                db.Execute(QRY_RESTORE_BY_LOGIN, new {Login = login, Password = password});
+                using (var tr = db.BeginTransaction())
+                {
+                    try
+                    {
+                        db.Execute(QRY_RESTORE_BY_LOGIN, new {Login = login, Password = password});
+                        var changeUser = GetUserByLogin(login);
+                        var dvhString = DvhHelper<User>.GetDvhString(changeUser, out var _);
+                        db.Execute(QRY_UPDATE_DV_BY_LOGIN, new {Dv = dvhString, Login = login});
+                        
+                        var users = db.Query<User>(QRY_GET_ALL_USERS);
+                        long dvvTotal = 0;
+                        foreach (var user in users)
+                        {
+                            DvhHelper<User>.GetDvhString(user, out var dvhValue);
+                            dvvTotal += dvhValue;
+                        }
+
+                        var dvvString = DvValue.GetDvValue(dvvTotal.ToString());
+
+                        new IntegrityDal(connectionString).UpdateIntegryty("Usuario", db, tr);
+
+                        tr.Commit();
+                    }
+                    catch
+                    {
+                        tr.Rollback();
+                        throw;
+                    }
+                }
             }
         }
 
@@ -143,6 +188,14 @@ namespace Mcba.Dal
             using (var db = new DataAccess(connectionString).GetOpenConnection())
             {
                 return db.Query<User>(QRY_GET_USER_BY_LOGIN, new {Login = login}).FirstOrDefault();
+            }
+        }
+
+        public IEnumerable<User> GetAll()
+        {
+            using (var db = new DataAccess(connectionString).GetOpenConnection())
+            {
+                return db.Query<User>(QRY_GET_ALL_USERS);
             }
         }
     }

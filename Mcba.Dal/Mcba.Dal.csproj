@@ -44,6 +44,7 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="CaptionDal.cs" />
+    <Compile Include="IntegrityDal.cs" />
     <Compile Include="LanguageDal.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="Properties\Settings.Designer.cs">
@@ -68,6 +69,10 @@
     <ProjectReference Include="..\Mcba.Entidad\Mcba.Entidad.csproj">
       <Project>{4514EA8D-D83A-4F2B-9985-56A8AA964E78}</Project>
       <Name>Mcba.Entidad</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\Mcba.Seguridad\Mcba.Seguridad.csproj">
+      <Project>{11206FAB-8ABA-4683-BB18-D9230E0EE88D}</Project>
+      <Name>Mcba.Seguridad</Name>
     </ProjectReference>
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />

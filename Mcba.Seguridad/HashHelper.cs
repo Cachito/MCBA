@@ -2,11 +2,39 @@
 using System.IO;
 using System.Security.Cryptography;
 using System.Text;
+using Mcba.Entidad;
+using Mcba.Infraestruture.Settings;
 
 namespace Mcba.Seguridad
 {
     public static class HashHelper
     {
+        public static string GetCryptString(string cadena, CryptMethodEnum cryptMethod)
+        {
+            var ret = cadena;
+
+            switch (cryptMethod)
+            {
+                case CryptMethodEnum.None:
+                    ret = cadena;
+                    break;
+
+                case CryptMethodEnum.Base64:
+                    ret = HashHelper.Base64Encode(cadena);
+                    break;
+
+                case CryptMethodEnum.Aes:
+                    ret = HashHelper.Encrypt(cadena, McbaSettings.Key, McbaSettings.Salt);
+                    break;
+
+                case CryptMethodEnum.Sha1:
+                    ret = HashHelper.Crypt(cadena, McbaSettings.Salt);
+                    break;
+            }
+
+            return ret;
+        }
+
         public static string Crypt(string text, string salt)
         {
             var hasher = new SHA1CryptoServiceProvider();

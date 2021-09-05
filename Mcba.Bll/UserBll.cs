@@ -1,5 +1,4 @@
-﻿using System;
-using System.Web.Security;
+﻿using System.Web.Security;
 using Mcba.Dal;
 using Mcba.Entidad;
 using Mcba.Infraestruture.Settings;
@@ -54,12 +53,6 @@ namespace Mcba.Bll
 
             var userDal = new UserDal(McbaSettings.CnnString);
             userDal.RestorePassword(cryptLogin, cryptPass);
-
-            var user = userDal.GetUserByLogin(cryptLogin);
-
-            var dvString = DvHelper<User>.GetDvhString(user);
-
-            userDal.UpdateDv(user.Login, dvString);
 
             return randomPass;
         }
