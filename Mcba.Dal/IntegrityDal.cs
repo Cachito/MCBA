@@ -16,6 +16,12 @@ namespace Mcba.Dal
             FROM Integridad
             ";
 
+        private const string QRY_UPDATE_INTEGRITY = @"
+            UPDATE Integridad SET
+                DV = @Dv
+            WHERE Tabla = @Tabla
+            ";
+
         private readonly string connectionString;
 
         public IntegrityDal(string connectionString)
@@ -31,9 +37,9 @@ namespace Mcba.Dal
             }
         }
 
-        public void UpdateIntegryty(string usuario, IDbConnection db, IDbTransaction tr)
+        public static void UpdateIntegryty(string tabla, string dvvString, IDbConnection db, IDbTransaction tr)
         {
-            
+            db.Execute(QRY_UPDATE_INTEGRITY, new {Dv = dvvString, Tabla = tabla}, transaction: tr);
         }
     }
 }

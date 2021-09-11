@@ -18,5 +18,6 @@ namespace Mcba.Infraestruture.Settings
         public bool EmailSsl { set; get; }
         public string EmailPass { set; get; }
         public string TempFolder { set; get; }
+        public int DataPagination { set; get; }
     }
 }

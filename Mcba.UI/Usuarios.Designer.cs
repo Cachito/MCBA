@@ -28,27 +28,35 @@
         /// </summary>
         private void InitializeComponent()
         {
+            this.components = new System.ComponentModel.Container();
             this.tsUsuarios = new System.Windows.Forms.ToolStrip();
             this.tsbSalir = new System.Windows.Forms.ToolStripButton();
             this.tsbNew = new System.Windows.Forms.ToolStripButton();
             this.tsbDelete = new System.Windows.Forms.ToolStripButton();
             this.tsbEdit = new System.Windows.Forms.ToolStripButton();
             this.tsbSave = new System.Windows.Forms.ToolStripButton();
+            this.tsbPrint = new System.Windows.Forms.ToolStripButton();
+            this.tsbBuscar = new System.Windows.Forms.ToolStripButton();
+            this.tsbRestaurar = new System.Windows.Forms.ToolStripButton();
             this.gbData = new System.Windows.Forms.GroupBox();
+            this.txtEmail = new System.Windows.Forms.TextBox();
+            this.lblEmail = new System.Windows.Forms.Label();
+            this.txtApellido = new System.Windows.Forms.TextBox();
+            this.lblApellido = new System.Windows.Forms.Label();
+            this.txtNombre = new System.Windows.Forms.TextBox();
+            this.lblNombre = new System.Windows.Forms.Label();
             this.cmbIdiomas = new System.Windows.Forms.ComboBox();
             this.lblIdioma = new System.Windows.Forms.Label();
-            this.txtPassword1 = new System.Windows.Forms.TextBox();
-            this.lblContra1 = new System.Windows.Forms.Label();
-            this.txtPassword2 = new System.Windows.Forms.TextBox();
-            this.lblContra2 = new System.Windows.Forms.Label();
             this.txtUsuario = new System.Windows.Forms.TextBox();
             this.lblUsuario = new System.Windows.Forms.Label();
             this.txtId = new System.Windows.Forms.TextBox();
             this.lblId = new System.Windows.Forms.Label();
             this.dgvUsuarios = new System.Windows.Forms.DataGridView();
+            this.errorProvider = new System.Windows.Forms.ErrorProvider(this.components);
             this.tsUsuarios.SuspendLayout();
             this.gbData.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.dgvUsuarios)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.errorProvider)).BeginInit();
             this.SuspendLayout();
             // 
             // tsUsuarios
@@ -58,7 +66,10 @@
             this.tsbNew,
             this.tsbDelete,
             this.tsbEdit,
-            this.tsbSave});
+            this.tsbSave,
+            this.tsbPrint,
+            this.tsbBuscar,
+            this.tsbRestaurar});
             this.tsUsuarios.Location = new System.Drawing.Point(0, 0);
             this.tsUsuarios.Name = "tsUsuarios";
             this.tsUsuarios.Size = new System.Drawing.Size(564, 25);
@@ -119,35 +130,125 @@
             this.tsbSave.Text = "toolStripButton1";
             this.tsbSave.Click += new System.EventHandler(this.tsbSave_Click);
             // 
+            // tsbPrint
+            // 
+            this.tsbPrint.DisplayStyle = System.Windows.Forms.ToolStripItemDisplayStyle.Image;
+            this.tsbPrint.Image = global::Mcba.UI.Properties.Resources.printerBlack;
+            this.tsbPrint.ImageTransparentColor = System.Drawing.Color.Magenta;
+            this.tsbPrint.Name = "tsbPrint";
+            this.tsbPrint.Size = new System.Drawing.Size(23, 22);
+            this.tsbPrint.Tag = "tsbPrint";
+            this.tsbPrint.Text = "Imprimir";
+            // 
+            // tsbBuscar
+            // 
+            this.tsbBuscar.BackColor = System.Drawing.SystemColors.Control;
+            this.tsbBuscar.CheckOnClick = true;
+            this.tsbBuscar.DisplayStyle = System.Windows.Forms.ToolStripItemDisplayStyle.Image;
+            this.tsbBuscar.Image = global::Mcba.UI.Properties.Resources.IconBuscar;
+            this.tsbBuscar.ImageTransparentColor = System.Drawing.Color.Magenta;
+            this.tsbBuscar.Name = "tsbBuscar";
+            this.tsbBuscar.Size = new System.Drawing.Size(23, 22);
+            this.tsbBuscar.Tag = "tsbBuscar";
+            this.tsbBuscar.Text = "Buscar";
+            // 
+            // tsbRestaurar
+            // 
+            this.tsbRestaurar.DisplayStyle = System.Windows.Forms.ToolStripItemDisplayStyle.Image;
+            this.tsbRestaurar.Image = global::Mcba.UI.Properties.Resources.Restore_Password_48;
+            this.tsbRestaurar.ImageTransparentColor = System.Drawing.Color.Magenta;
+            this.tsbRestaurar.Name = "tsbRestaurar";
+            this.tsbRestaurar.Size = new System.Drawing.Size(23, 22);
+            this.tsbRestaurar.Tag = "tsbRestaurar";
+            this.tsbRestaurar.Text = "Restaurar Contraseña";
+            this.tsbRestaurar.Click += new System.EventHandler(this.tsbRestaurar_Click);
+            // 
             // gbData
             // 
+            this.gbData.Controls.Add(this.txtEmail);
+            this.gbData.Controls.Add(this.lblEmail);
+            this.gbData.Controls.Add(this.txtApellido);
+            this.gbData.Controls.Add(this.lblApellido);
+            this.gbData.Controls.Add(this.txtNombre);
+            this.gbData.Controls.Add(this.lblNombre);
             this.gbData.Controls.Add(this.cmbIdiomas);
             this.gbData.Controls.Add(this.lblIdioma);
-            this.gbData.Controls.Add(this.txtPassword1);
-            this.gbData.Controls.Add(this.lblContra1);
-            this.gbData.Controls.Add(this.txtPassword2);
-            this.gbData.Controls.Add(this.lblContra2);
             this.gbData.Controls.Add(this.txtUsuario);
             this.gbData.Controls.Add(this.lblUsuario);
             this.gbData.Controls.Add(this.txtId);
             this.gbData.Controls.Add(this.lblId);
             this.gbData.Location = new System.Drawing.Point(12, 28);
             this.gbData.Name = "gbData";
-            this.gbData.Size = new System.Drawing.Size(541, 108);
+            this.gbData.Size = new System.Drawing.Size(541, 97);
             this.gbData.TabIndex = 1;
             this.gbData.TabStop = false;
             // 
+            // txtEmail
+            // 
+            this.txtEmail.Enabled = false;
+            this.txtEmail.Location = new System.Drawing.Point(344, 13);
+            this.txtEmail.Name = "txtEmail";
+            this.txtEmail.Size = new System.Drawing.Size(168, 20);
+            this.txtEmail.TabIndex = 18;
+            // 
+            // lblEmail
+            // 
+            this.lblEmail.Location = new System.Drawing.Point(265, 13);
+            this.lblEmail.Name = "lblEmail";
+            this.lblEmail.Size = new System.Drawing.Size(73, 20);
+            this.lblEmail.TabIndex = 17;
+            this.lblEmail.Tag = "lblEmail";
+            this.lblEmail.Text = "Email";
+            this.lblEmail.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
+            // 
+            // txtApellido
+            // 
+            this.txtApellido.Enabled = false;
+            this.txtApellido.Location = new System.Drawing.Point(344, 39);
+            this.txtApellido.Name = "txtApellido";
+            this.txtApellido.Size = new System.Drawing.Size(168, 20);
+            this.txtApellido.TabIndex = 16;
+            // 
+            // lblApellido
+            // 
+            this.lblApellido.Location = new System.Drawing.Point(265, 39);
+            this.lblApellido.Name = "lblApellido";
+            this.lblApellido.Size = new System.Drawing.Size(73, 20);
+            this.lblApellido.TabIndex = 15;
+            this.lblApellido.Tag = "lblApellido";
+            this.lblApellido.Text = "Apellido";
+            this.lblApellido.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
+            // 
+            // txtNombre
+            // 
+            this.txtNombre.Enabled = false;
+            this.txtNombre.Location = new System.Drawing.Point(85, 39);
+            this.txtNombre.Name = "txtNombre";
+            this.txtNombre.Size = new System.Drawing.Size(168, 20);
+            this.txtNombre.TabIndex = 14;
+            // 
+            // lblNombre
+            // 
+            this.lblNombre.Location = new System.Drawing.Point(6, 39);
+            this.lblNombre.Name = "lblNombre";
+            this.lblNombre.Size = new System.Drawing.Size(73, 20);
+            this.lblNombre.TabIndex = 13;
+            this.lblNombre.Tag = "lblNombre";
+            this.lblNombre.Text = "Nombre";
+            this.lblNombre.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
+            // 
             // cmbIdiomas
             // 
+            this.cmbIdiomas.Enabled = false;
             this.cmbIdiomas.FormattingEnabled = true;
-            this.cmbIdiomas.Location = new System.Drawing.Point(85, 77);
+            this.cmbIdiomas.Location = new System.Drawing.Point(344, 66);
             this.cmbIdiomas.Name = "cmbIdiomas";
             this.cmbIdiomas.Size = new System.Drawing.Size(168, 21);
             this.cmbIdiomas.TabIndex = 12;
             // 
             // lblIdioma
             // 
-            this.lblIdioma.Location = new System.Drawing.Point(6, 77);
+            this.lblIdioma.Location = new System.Drawing.Point(265, 66);
             this.lblIdioma.Name = "lblIdioma";
             this.lblIdioma.Size = new System.Drawing.Size(73, 20);
             this.lblIdioma.TabIndex = 8;
@@ -155,50 +256,17 @@
             this.lblIdioma.Text = "Idioma";
             this.lblIdioma.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
             // 
-            // txtPassword1
-            // 
-            this.txtPassword1.Location = new System.Drawing.Point(344, 44);
-            this.txtPassword1.Name = "txtPassword1";
-            this.txtPassword1.Size = new System.Drawing.Size(168, 20);
-            this.txtPassword1.TabIndex = 7;
-            // 
-            // lblContra1
-            // 
-            this.lblContra1.Location = new System.Drawing.Point(265, 44);
-            this.lblContra1.Name = "lblContra1";
-            this.lblContra1.Size = new System.Drawing.Size(73, 20);
-            this.lblContra1.TabIndex = 6;
-            this.lblContra1.Tag = "lblContra1";
-            this.lblContra1.Text = "Contraseña";
-            this.lblContra1.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
-            // 
-            // txtPassword2
-            // 
-            this.txtPassword2.Location = new System.Drawing.Point(344, 77);
-            this.txtPassword2.Name = "txtPassword2";
-            this.txtPassword2.Size = new System.Drawing.Size(168, 20);
-            this.txtPassword2.TabIndex = 5;
-            // 
-            // lblContra2
-            // 
-            this.lblContra2.Location = new System.Drawing.Point(265, 77);
-            this.lblContra2.Name = "lblContra2";
-            this.lblContra2.Size = new System.Drawing.Size(73, 20);
-            this.lblContra2.TabIndex = 4;
-            this.lblContra2.Tag = "lblContra2";
-            this.lblContra2.Text = "Contraseña";
-            this.lblContra2.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
-            // 
             // txtUsuario
             // 
-            this.txtUsuario.Location = new System.Drawing.Point(85, 44);
+            this.txtUsuario.Enabled = false;
+            this.txtUsuario.Location = new System.Drawing.Point(85, 65);
             this.txtUsuario.Name = "txtUsuario";
             this.txtUsuario.Size = new System.Drawing.Size(168, 20);
             this.txtUsuario.TabIndex = 3;
             // 
             // lblUsuario
             // 
-            this.lblUsuario.Location = new System.Drawing.Point(6, 44);
+            this.lblUsuario.Location = new System.Drawing.Point(6, 65);
             this.lblUsuario.Name = "lblUsuario";
             this.lblUsuario.Size = new System.Drawing.Size(73, 20);
             this.lblUsuario.TabIndex = 2;
@@ -230,10 +298,17 @@
             this.dgvUsuarios.AllowUserToAddRows = false;
             this.dgvUsuarios.AllowUserToDeleteRows = false;
             this.dgvUsuarios.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
-            this.dgvUsuarios.Location = new System.Drawing.Point(12, 142);
+            this.dgvUsuarios.EditMode = System.Windows.Forms.DataGridViewEditMode.EditProgrammatically;
+            this.dgvUsuarios.Location = new System.Drawing.Point(12, 131);
             this.dgvUsuarios.Name = "dgvUsuarios";
-            this.dgvUsuarios.Size = new System.Drawing.Size(541, 296);
+            this.dgvUsuarios.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect;
+            this.dgvUsuarios.Size = new System.Drawing.Size(541, 307);
             this.dgvUsuarios.TabIndex = 2;
+            this.dgvUsuarios.CellClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.dgvUsuarios_CellClick);
+            // 
+            // errorProvider
+            // 
+            this.errorProvider.ContainerControl = this;
             // 
             // Usuarios
             // 
@@ -255,6 +330,7 @@
             this.gbData.ResumeLayout(false);
             this.gbData.PerformLayout();
             ((System.ComponentModel.ISupportInitialize)(this.dgvUsuarios)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.errorProvider)).EndInit();
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -267,7 +343,6 @@
         private System.Windows.Forms.DataGridView dgvUsuarios;
         private System.Windows.Forms.TextBox txtId;
         private System.Windows.Forms.Label lblId;
-        private System.Windows.Forms.Label lblContra2;
         private System.Windows.Forms.TextBox txtUsuario;
         private System.Windows.Forms.Label lblUsuario;
         private System.Windows.Forms.ToolStripButton tsbSalir;
@@ -275,10 +350,17 @@
         private System.Windows.Forms.ToolStripButton tsbSave;
         private System.Windows.Forms.ToolStripButton tsbEdit;
         private System.Windows.Forms.ToolStripButton tsbDelete;
-        private System.Windows.Forms.TextBox txtPassword2;
         private System.Windows.Forms.ComboBox cmbIdiomas;
         private System.Windows.Forms.Label lblIdioma;
-        private System.Windows.Forms.TextBox txtPassword1;
-        private System.Windows.Forms.Label lblContra1;
+        private System.Windows.Forms.ToolStripButton tsbPrint;
+        private System.Windows.Forms.ToolStripButton tsbBuscar;
+        private System.Windows.Forms.TextBox txtApellido;
+        private System.Windows.Forms.Label lblApellido;
+        private System.Windows.Forms.TextBox txtNombre;
+        private System.Windows.Forms.Label lblNombre;
+        private System.Windows.Forms.TextBox txtEmail;
+        private System.Windows.Forms.Label lblEmail;
+        private System.Windows.Forms.ErrorProvider errorProvider;
+        private System.Windows.Forms.ToolStripButton tsbRestaurar;
     }
 }

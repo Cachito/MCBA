@@ -1,6 +1,8 @@
-﻿using System.Web.Security;
+﻿using System.Collections.Generic;
+using System.Web.Security;
 using Mcba.Dal;
 using Mcba.Entidad;
+using Mcba.Entidad.Dto;
 using Mcba.Infraestruture.Settings;
 using Mcba.Seguridad;
 
@@ -55,6 +57,37 @@ namespace Mcba.Bll
             userDal.RestorePassword(cryptLogin, cryptPass);
 
             return randomPass;
+        }
+
+        public IEnumerable<UserDto> Get(int page)
+        {
+            return new UserDal(McbaSettings.CnnString).GetAll(page);
+        }
+
+        public User GetUser(int id)
+        {
+            return new UserDal(McbaSettings.CnnString).GetUserById(id);
+        }
+
+        public bool Save(User user, bool changeLogin, out string newPassword)
+        {
+            newPassword = string.Empty;
+
+            if (user.Id == 0 || changeLogin)
+            {
+                user.Login = HashHelper.Crypt(user.Login, McbaSettings.Salt);
+            }
+
+            if (user.Id == 0)
+            {
+                newPassword =
+                    Membership.GeneratePassword(McbaSettings.RandomPassLength, McbaSettings.NumberOfNonAlphanumericCharacters);
+                user.Password = HashHelper.Crypt(newPassword, McbaSettings.Salt);
+            }
+
+            var userDal = new UserDal(McbaSettings.CnnString);
+
+            return userDal.Save(user);
         }
     }
 }

@@ -142,7 +142,7 @@ namespace Mcba.UI
 
             captions.TryGetValue("RestoreSubject", out var restoreSubject);
             captions.TryGetValue("RestoreBody", out var restoreBody);
-            var send = MailHelper.SendNewPassword(userEmail, restoreSubject,
+            var send = MailHelper.SendMail(userEmail, restoreSubject,
                 string.Format(restoreBody, newPassword, Environment.NewLine));
 
             if (send)

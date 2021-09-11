@@ -8,7 +8,7 @@ namespace Mcba.Infraestruture.Helpers
 {
     public static class MailHelper
     {
-        public static bool SendNewPassword(string email, string subject, string body)
+        public static bool SendMail(string email, string subject, string body)
         {
             try
             {
