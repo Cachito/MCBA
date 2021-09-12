@@ -19,6 +19,7 @@ namespace Mcba.Infraestruture.Settings
         public static string EmailPass { set; get; }
         public static string TempFolder { set; get; }
         public static int DataPagination { set; get; }
+        public static string SinTraduccion { set; get; }
 
         public static void MapSettings(InstanceSettings settings)
         {
@@ -37,6 +38,7 @@ namespace Mcba.Infraestruture.Settings
             EmailPass = settings.EmailPass;
             TempFolder = settings.TempFolder;
             DataPagination = settings.DataPagination;
+            SinTraduccion = settings.SinTraduccion;
         }
     }
 }

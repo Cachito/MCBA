@@ -19,5 +19,6 @@ namespace Mcba.Infraestruture.Settings
         public string EmailPass { set; get; }
         public string TempFolder { set; get; }
         public int DataPagination { set; get; }
+        public string SinTraduccion { set; get; }
     }
 }

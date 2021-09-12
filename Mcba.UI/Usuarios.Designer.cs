@@ -47,8 +47,6 @@
             this.lblNombre = new System.Windows.Forms.Label();
             this.cmbIdiomas = new System.Windows.Forms.ComboBox();
             this.lblIdioma = new System.Windows.Forms.Label();
-            this.txtUsuario = new System.Windows.Forms.TextBox();
-            this.lblUsuario = new System.Windows.Forms.Label();
             this.txtId = new System.Windows.Forms.TextBox();
             this.lblId = new System.Windows.Forms.Label();
             this.dgvUsuarios = new System.Windows.Forms.DataGridView();
@@ -173,8 +171,6 @@
             this.gbData.Controls.Add(this.lblNombre);
             this.gbData.Controls.Add(this.cmbIdiomas);
             this.gbData.Controls.Add(this.lblIdioma);
-            this.gbData.Controls.Add(this.txtUsuario);
-            this.gbData.Controls.Add(this.lblUsuario);
             this.gbData.Controls.Add(this.txtId);
             this.gbData.Controls.Add(this.lblId);
             this.gbData.Location = new System.Drawing.Point(12, 28);
@@ -241,38 +237,20 @@
             // 
             this.cmbIdiomas.Enabled = false;
             this.cmbIdiomas.FormattingEnabled = true;
-            this.cmbIdiomas.Location = new System.Drawing.Point(344, 66);
+            this.cmbIdiomas.Location = new System.Drawing.Point(85, 66);
             this.cmbIdiomas.Name = "cmbIdiomas";
             this.cmbIdiomas.Size = new System.Drawing.Size(168, 21);
             this.cmbIdiomas.TabIndex = 12;
             // 
             // lblIdioma
             // 
-            this.lblIdioma.Location = new System.Drawing.Point(265, 66);
+            this.lblIdioma.Location = new System.Drawing.Point(6, 66);
             this.lblIdioma.Name = "lblIdioma";
             this.lblIdioma.Size = new System.Drawing.Size(73, 20);
             this.lblIdioma.TabIndex = 8;
             this.lblIdioma.Tag = "lblIdioma";
             this.lblIdioma.Text = "Idioma";
             this.lblIdioma.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
-            // 
-            // txtUsuario
-            // 
-            this.txtUsuario.Enabled = false;
-            this.txtUsuario.Location = new System.Drawing.Point(85, 65);
-            this.txtUsuario.Name = "txtUsuario";
-            this.txtUsuario.Size = new System.Drawing.Size(168, 20);
-            this.txtUsuario.TabIndex = 3;
-            // 
-            // lblUsuario
-            // 
-            this.lblUsuario.Location = new System.Drawing.Point(6, 65);
-            this.lblUsuario.Name = "lblUsuario";
-            this.lblUsuario.Size = new System.Drawing.Size(73, 20);
-            this.lblUsuario.TabIndex = 2;
-            this.lblUsuario.Tag = "lblUsuario";
-            this.lblUsuario.Text = "Usuario";
-            this.lblUsuario.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
             // 
             // txtId
             // 
@@ -343,8 +321,6 @@
         private System.Windows.Forms.DataGridView dgvUsuarios;
         private System.Windows.Forms.TextBox txtId;
         private System.Windows.Forms.Label lblId;
-        private System.Windows.Forms.TextBox txtUsuario;
-        private System.Windows.Forms.Label lblUsuario;
         private System.Windows.Forms.ToolStripButton tsbSalir;
         private System.Windows.Forms.ToolStripButton tsbNew;
         private System.Windows.Forms.ToolStripButton tsbSave;

@@ -12,5 +12,6 @@
 	"EmailSsl": true,
 	"EmailPass": "Jav13r1n",
 	"TempFolder": "C:\\TMP",
-	"DataPagination": 50
+	"DataPagination": 50,
+	"SinTraduccion": "No hay traducción disponible"
 }

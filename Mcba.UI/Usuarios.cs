@@ -15,6 +15,7 @@ namespace Mcba.UI
         private Dictionary<string, string> captions = new Dictionary<string, string>();
 
         private int IdUsuario { set; get; }
+        private string Login { set; get; }
         private int GridPage { set; get; }
 
         public Usuarios()
@@ -67,14 +68,14 @@ namespace Mcba.UI
             if (string.IsNullOrWhiteSpace(txtEmail.Text))
             {
                 captions.TryGetValue("MailWarning", out var mailCaption);
-                this.ShowMessage(string.Format(mailCaption, txtEmail.Text, Environment.NewLine),
+                this.ShowMessage(string.Format(mailCaption ?? McbaSettings.SinTraduccion, txtEmail.Text, Environment.NewLine),
                     McbaSettings.MessageTitle, MessageBoxButtons.OK,
                     MessageBoxIcon.Exclamation);
                 return;
             }
 
             captions.TryGetValue("RestoreWarning", out var restoreCaption);
-            var ok = this.ShowMessage(string.Format(restoreCaption, txtEmail.Text, Environment.NewLine), McbaSettings.MessageTitle, MessageBoxButtons.YesNo,
+            var ok = this.ShowMessage(string.Format(restoreCaption ?? McbaSettings.SinTraduccion, txtEmail.Text, Environment.NewLine), McbaSettings.MessageTitle, MessageBoxButtons.YesNo,
                 MessageBoxIcon.Question);
             if (ok != DialogResult.Yes)
             {
@@ -82,14 +83,14 @@ namespace Mcba.UI
             }
 
             var userBll = new UserBll();
-            var newPassword = userBll.RestorePassword(txtUsuario.Text);
+            var newPassword = userBll.RestorePassword(Login);
 
-            var userEmail = userBll.GetEmailByLogin(txtUsuario.Text);
+            var userEmail = userBll.GetEmailByLogin(Login);
 
             captions.TryGetValue("RestoreSubject", out var restoreSubject);
             captions.TryGetValue("RestoreBody", out var restoreBody);
             var send = MailHelper.SendMail(userEmail, restoreSubject,
-                string.Format(restoreBody, newPassword, Environment.NewLine));
+                string.Format(restoreBody ?? McbaSettings.SinTraduccion, newPassword, Environment.NewLine));
 
             if (send)
             {
@@ -99,10 +100,10 @@ namespace Mcba.UI
             }
 
             MailHelper.SaveNewPassword(userEmail, restoreSubject,
-                string.Format(restoreBody, newPassword, Environment.NewLine));
+                string.Format(restoreBody ?? McbaSettings.SinTraduccion, newPassword, Environment.NewLine));
 
             captions.TryGetValue("RestoreSaved", out var restoreSaved);
-            this.ShowMessage(string.Format(restoreSaved, McbaSettings.TempFolder), McbaSettings.MessageTitle);
+            this.ShowMessage(string.Format(restoreSaved ?? McbaSettings.SinTraduccion, McbaSettings.TempFolder), McbaSettings.MessageTitle);
         }
 
         private void SetCaptions()
@@ -113,7 +114,7 @@ namespace Mcba.UI
 
         private void LoadGrid()
         {
-            var usersPage = new UserBll().Get(GridPage);
+            var usersPage = new UserBll().Get(GridPage * McbaSettings.DataPagination);
             dgvUsuarios.DataSource = null;
             dgvUsuarios.DataSource = usersPage;
         }
@@ -146,13 +147,11 @@ namespace Mcba.UI
             txtEmail.Text = string.Empty;
             txtNombre.Text = string.Empty;
             txtApellido.Text = string.Empty;
-            txtUsuario.Text = string.Empty;
             cmbIdiomas.SelectedIndex = -1;
         }
 
         private void ControlsEnabled(bool enable)
         {
-            txtUsuario.Enabled = enable;
             txtEmail.Enabled = enable;
             txtNombre.Enabled = enable;
             txtApellido.Enabled = enable;
@@ -166,14 +165,12 @@ namespace Mcba.UI
                 return;
             }
 
-            var changeLogin = false;
-
             User user;
             if (IdUsuario == 0)
             {
                 user = new User
                 {
-                    Login = txtUsuario.Text,
+                    Login = Login
                 };
             }
             else
@@ -182,17 +179,11 @@ namespace Mcba.UI
                 if (user == null)
                 {
                     captions.TryGetValue("NoEncontrado", out var caption);
-                    this.ShowMessage(string.Format(caption, Environment.NewLine));
+                    this.ShowMessage(string.Format(caption ?? McbaSettings.SinTraduccion, Environment.NewLine));
                     Clean();
                     LoadGrid();
 
                     return;
-                }
-
-                changeLogin = !string.IsNullOrWhiteSpace(txtUsuario.Text);
-                if (changeLogin)
-                {
-                    user.Login = txtUsuario.Text;
                 }
             }
 
@@ -203,11 +194,11 @@ namespace Mcba.UI
 
             var userBll = new UserBll();
 
-            var ok = userBll.Save(user, changeLogin, out var newPassword);
+            var ok = userBll.Save(user, out var newPassword);
             if (!ok)
             {
                 captions.TryGetValue("ErrorAlGuardar", out var caption);
-                this.ShowMessage(string.Format(caption, Environment.NewLine));
+                this.ShowMessage(string.Format(caption ?? McbaSettings.SinTraduccion, Environment.NewLine));
             }
 
             if (ok && user.Id == 0)
@@ -215,7 +206,7 @@ namespace Mcba.UI
                 captions.TryGetValue("RestoreSubject", out var restoreSubject);
                 captions.TryGetValue("RestoreBody", out var restoreBody);
                 var send = MailHelper.SendMail(user.Email, restoreSubject,
-                    string.Format(restoreBody, user.Login, newPassword, Environment.NewLine));
+                    string.Format(restoreBody ?? McbaSettings.SinTraduccion, user.Login, newPassword, Environment.NewLine));
 
                 if (send)
                 {
@@ -225,25 +216,39 @@ namespace Mcba.UI
                 }
 
                 MailHelper.SaveNewPassword(user.Email, restoreSubject,
-                    string.Format(restoreBody, newPassword, Environment.NewLine));
+                    string.Format(restoreBody ?? McbaSettings.SinTraduccion, newPassword, Environment.NewLine));
 
                 captions.TryGetValue("RestoreSaved", out var restoreSaved);
-                this.ShowMessage(string.Format(restoreSaved, McbaSettings.TempFolder), McbaSettings.MessageTitle);
+                this.ShowMessage(string.Format(restoreSaved ?? McbaSettings.SinTraduccion, McbaSettings.TempFolder), McbaSettings.MessageTitle);
             }
 
             LoadGrid();
         }
 
+        private bool SetUsername()
+        {
+            if (string.IsNullOrWhiteSpace(txtNombre.Text) || string.IsNullOrWhiteSpace(txtApellido.Text))
+            {
+                return false;
+            }
+
+            var nombres = txtNombre.Text.Split(new[] { ' ' }, StringSplitOptions.RemoveEmptyEntries);
+            var nombre = string.Empty;
+            foreach (var n in nombres)
+            {
+                nombre = $"{nombre}{n.Substring(0, 1)}";
+            }
+
+            var apellido = txtApellido.Text.Split(new[] {' '}, StringSplitOptions.RemoveEmptyEntries)[0];
+
+            Login = $"{nombre}{apellido}".ToLower();
+
+            return true;
+        }
+
         private bool Valida()
         {
             var ret = true;
-
-            if (IdUsuario == 0 && txtUsuario.Text == string.Empty)
-            {
-                captions.TryGetValue("FaltaUsuario", out var caption);
-                errorProvider.SetError(txtUsuario, caption);
-                ret = false;
-            }
 
             if (txtNombre.Text == string.Empty)
             {
@@ -258,6 +263,13 @@ namespace Mcba.UI
                 errorProvider.SetError(txtApellido, caption);
                 ret = false;
             }
+
+            if (IdUsuario == 0 && !SetUsername())
+            {
+                ret = false;
+            }
+
+
 
             if (txtEmail.Text == string.Empty)
             {
@@ -293,11 +305,12 @@ namespace Mcba.UI
             if (user == null)
             {
                 captions.TryGetValue("NoEncontrado", out var caption);
-                this.ShowMessage(string.Format(caption, Environment.NewLine));
+                this.ShowMessage(string.Format(caption ?? McbaSettings.SinTraduccion, Environment.NewLine));
                 return;
             }
 
             IdUsuario = userId;
+            Login = user.Login;
             txtId.Text = user.Id.ToString();
             txtEmail.Text = user.Email;
             txtNombre.Text = user.Nombre;

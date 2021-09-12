@@ -59,9 +59,9 @@ namespace Mcba.Bll
             return randomPass;
         }
 
-        public IEnumerable<UserDto> Get(int page)
+        public IEnumerable<UserDto> Get(int offsetRows)
         {
-            return new UserDal(McbaSettings.CnnString).GetAll(page);
+            return new UserDal(McbaSettings.CnnString).GetAll(offsetRows);
         }
 
         public User GetUser(int id)
@@ -69,17 +69,14 @@ namespace Mcba.Bll
             return new UserDal(McbaSettings.CnnString).GetUserById(id);
         }
 
-        public bool Save(User user, bool changeLogin, out string newPassword)
+        public bool Save(User user, out string newPassword)
         {
             newPassword = string.Empty;
 
-            if (user.Id == 0 || changeLogin)
-            {
-                user.Login = HashHelper.Crypt(user.Login, McbaSettings.Salt);
-            }
-
             if (user.Id == 0)
             {
+                user.Login = HashHelper.Crypt(user.Login, McbaSettings.Salt);
+
                 newPassword =
                     Membership.GeneratePassword(McbaSettings.RandomPassLength, McbaSettings.NumberOfNonAlphanumericCharacters);
                 user.Password = HashHelper.Crypt(newPassword, McbaSettings.Salt);

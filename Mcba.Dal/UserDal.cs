@@ -114,7 +114,7 @@ namespace Mcba.Dal
                 , Apellido
             FROM Usuario
             ORDER BY Nombre
-            OFFSET @Page ROWS
+            OFFSET @OffsetRows ROWS
             ";
 
         private const string QRY_INSERT_USER = @"
@@ -241,11 +241,11 @@ namespace Mcba.Dal
             }
         }
 
-        public IEnumerable<UserDto> GetAll(int page)
+        public IEnumerable<UserDto> GetAll(int offsetRows)
         {
             using (var db = new DataAccess(connectionString).GetOpenConnection())
             {
-                return db.Query<UserDto>(QRY_GET_ALL_USERS_BY_PAGE, new {Page = page});
+                return db.Query<UserDto>(QRY_GET_ALL_USERS_BY_PAGE, new { OffsetRows = offsetRows });
             }
         }
 
