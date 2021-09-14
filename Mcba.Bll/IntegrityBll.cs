@@ -1,6 +1,7 @@
 ﻿using System;
 using Mcba.Dal;
 using Mcba.Entidad;
+using Mcba.Entidad.Enums;
 using Mcba.Infraestruture.Settings;
 using Mcba.Seguridad;
 
@@ -42,7 +43,7 @@ namespace Mcba.Bll
             long dvTableValue = 0;
             foreach (var user in users)
             {
-                var dvString = DvhHelper<User>.GetDvhString(user, out var dvValue);
+                var dvString = DvhCalculator<User>.GetDvhString(user, out var dvValue);
                 dvTableValue += dvValue;
                 if (dvString != user.DV)
                 {
@@ -50,7 +51,7 @@ namespace Mcba.Bll
                 }
             }
 
-            var userDvv = HashHelper.GetCryptString(dvTableValue.ToString(), CryptMethodEnum.Sha1);
+            var userDvv = HashCalculator.GetCryptString(dvTableValue.ToString(), CryptMethodEnum.Sha1);
 
             if (userDvv != dvv)
             {

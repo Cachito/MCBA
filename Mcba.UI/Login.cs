@@ -152,7 +152,7 @@ namespace Mcba.UI
                 return;
             }
 
-            MailHelper.SaveNewPassword(userEmail, restoreSubject,
+            MailHelper.SaveToFile(userEmail, restoreSubject,
                 string.Format(restoreBody, newPassword, Environment.NewLine));
 
             captions.TryGetValue("RestoreSaved", out var restoreSaved);

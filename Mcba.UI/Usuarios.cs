@@ -99,7 +99,7 @@ namespace Mcba.UI
                 return;
             }
 
-            MailHelper.SaveNewPassword(userEmail, restoreSubject,
+            MailHelper.SaveToFile(userEmail, restoreSubject,
                 string.Format(restoreBody ?? McbaSettings.SinTraduccion, newPassword, Environment.NewLine));
 
             captions.TryGetValue("RestoreSaved", out var restoreSaved);
@@ -137,6 +137,7 @@ namespace Mcba.UI
         private void New()
         {
             Clean();
+            chkActivo.Checked = true;
             ControlsEnabled(true);
         }
 
@@ -147,6 +148,7 @@ namespace Mcba.UI
             txtEmail.Text = string.Empty;
             txtNombre.Text = string.Empty;
             txtApellido.Text = string.Empty;
+            chkActivo.Checked = false;
             cmbIdiomas.SelectedIndex = -1;
         }
 
@@ -156,6 +158,7 @@ namespace Mcba.UI
             txtNombre.Enabled = enable;
             txtApellido.Enabled = enable;
             cmbIdiomas.Enabled = enable;
+            chkActivo.Enabled = enable && IdUsuario != 0;
         }
 
         private void Save()
@@ -191,6 +194,7 @@ namespace Mcba.UI
             user.Apellido = txtApellido.Text;
             user.IdIdioma = (int) cmbIdiomas.SelectedValue;
             user.Email = txtEmail.Text;
+            user.Activo= chkActivo.Checked;
 
             var userBll = new UserBll();
 
@@ -205,17 +209,20 @@ namespace Mcba.UI
             {
                 captions.TryGetValue("RestoreSubject", out var restoreSubject);
                 captions.TryGetValue("RestoreBody", out var restoreBody);
-                var send = MailHelper.SendMail(user.Email, restoreSubject,
-                    string.Format(restoreBody ?? McbaSettings.SinTraduccion, user.Login, newPassword, Environment.NewLine));
 
-                if (send)
-                {
-                    captions.TryGetValue("RestoreSent", out var restoreSent);
-                    this.ShowMessage(restoreSent, McbaSettings.MessageTitle);
-                    return;
-                }
+                #region EnvioMail                
+                //var send = MailHelper.SendMail(user.Email, restoreSubject,
+                //    string.Format(restoreBody ?? McbaSettings.SinTraduccion, user.Login, newPassword, Environment.NewLine));
 
-                MailHelper.SaveNewPassword(user.Email, restoreSubject,
+                //if (send)
+                //{
+                //    captions.TryGetValue("RestoreSent", out var restoreSent);
+                //    this.ShowMessage(restoreSent, McbaSettings.MessageTitle);
+                //    return;
+                //}
+                #endregion
+
+                MailHelper.SaveToFile(user.Email, restoreSubject,
                     string.Format(restoreBody ?? McbaSettings.SinTraduccion, newPassword, Environment.NewLine));
 
                 captions.TryGetValue("RestoreSaved", out var restoreSaved);
@@ -223,27 +230,6 @@ namespace Mcba.UI
             }
 
             LoadGrid();
-        }
-
-        private bool SetUsername()
-        {
-            if (string.IsNullOrWhiteSpace(txtNombre.Text) || string.IsNullOrWhiteSpace(txtApellido.Text))
-            {
-                return false;
-            }
-
-            var nombres = txtNombre.Text.Split(new[] { ' ' }, StringSplitOptions.RemoveEmptyEntries);
-            var nombre = string.Empty;
-            foreach (var n in nombres)
-            {
-                nombre = $"{nombre}{n.Substring(0, 1)}";
-            }
-
-            var apellido = txtApellido.Text.Split(new[] {' '}, StringSplitOptions.RemoveEmptyEntries)[0];
-
-            Login = $"{nombre}{apellido}".ToLower();
-
-            return true;
         }
 
         private bool Valida()
@@ -264,12 +250,14 @@ namespace Mcba.UI
                 ret = false;
             }
 
-            if (IdUsuario == 0 && !SetUsername())
+            if (IdUsuario == 0 )
             {
-                ret = false;
+                Login = UserNameGenerator.GetUsername(txtNombre.Text, txtApellido.Text);
+                if (string.IsNullOrWhiteSpace(Login))
+                {
+                    ret = false;
+                }
             }
-
-
 
             if (txtEmail.Text == string.Empty)
             {
@@ -316,6 +304,7 @@ namespace Mcba.UI
             txtNombre.Text = user.Nombre;
             txtApellido.Text = user.Apellido;
             cmbIdiomas.SelectedValue = user.IdIdioma;
+            chkActivo.Checked = user.Activo;
         }
     }
 }

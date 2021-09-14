@@ -1,4 +1,4 @@
-﻿namespace Mcba.Entidad
+﻿namespace Mcba.Entidad.Enums
 {
     public enum CryptMethodEnum
     {

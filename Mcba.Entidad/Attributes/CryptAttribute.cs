@@ -1,4 +1,5 @@
 ﻿using System;
+using Mcba.Entidad.Enums;
 
 namespace Mcba.Entidad.Attributes
 {

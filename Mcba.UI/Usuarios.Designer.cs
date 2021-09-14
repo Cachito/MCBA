@@ -51,6 +51,7 @@
             this.lblId = new System.Windows.Forms.Label();
             this.dgvUsuarios = new System.Windows.Forms.DataGridView();
             this.errorProvider = new System.Windows.Forms.ErrorProvider(this.components);
+            this.chkActivo = new System.Windows.Forms.CheckBox();
             this.tsUsuarios.SuspendLayout();
             this.gbData.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.dgvUsuarios)).BeginInit();
@@ -99,6 +100,7 @@
             // tsbDelete
             // 
             this.tsbDelete.DisplayStyle = System.Windows.Forms.ToolStripItemDisplayStyle.Image;
+            this.tsbDelete.Enabled = false;
             this.tsbDelete.Image = global::Mcba.UI.Properties.Resources.iconDelete;
             this.tsbDelete.ImageTransparentColor = System.Drawing.Color.Magenta;
             this.tsbDelete.Name = "tsbDelete";
@@ -163,6 +165,7 @@
             // 
             // gbData
             // 
+            this.gbData.Controls.Add(this.chkActivo);
             this.gbData.Controls.Add(this.txtEmail);
             this.gbData.Controls.Add(this.lblEmail);
             this.gbData.Controls.Add(this.txtApellido);
@@ -288,6 +291,17 @@
             // 
             this.errorProvider.ContainerControl = this;
             // 
+            // chkActivo
+            // 
+            this.chkActivo.CheckAlign = System.Drawing.ContentAlignment.MiddleRight;
+            this.chkActivo.Location = new System.Drawing.Point(268, 66);
+            this.chkActivo.Name = "chkActivo";
+            this.chkActivo.Size = new System.Drawing.Size(92, 20);
+            this.chkActivo.TabIndex = 19;
+            this.chkActivo.Tag = "chkActivo";
+            this.chkActivo.Text = "chkActivo";
+            this.chkActivo.UseVisualStyleBackColor = true;
+            // 
             // Usuarios
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
@@ -338,5 +352,6 @@
         private System.Windows.Forms.Label lblEmail;
         private System.Windows.Forms.ErrorProvider errorProvider;
         private System.Windows.Forms.ToolStripButton tsbRestaurar;
+        private System.Windows.Forms.CheckBox chkActivo;
     }
 }

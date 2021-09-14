@@ -12,7 +12,7 @@ namespace Mcba.Bll
     {
         public string GetEmailByLogin(string login)
         {
-            var cryptLogin = HashHelper.Crypt(login, McbaSettings.Salt);
+            var cryptLogin = HashCalculator.Crypt(login, McbaSettings.Salt);
 
             return new UserDal(McbaSettings.CnnString).GetEmailByLogin(cryptLogin);
         }
@@ -21,8 +21,8 @@ namespace Mcba.Bll
         {
             var ret = false;
 
-            var cryptLogin = HashHelper.Crypt(login, McbaSettings.Salt);
-            var cryptPass = HashHelper.Crypt(password, McbaSettings.Salt);
+            var cryptLogin = HashCalculator.Crypt(login, McbaSettings.Salt);
+            var cryptPass = HashCalculator.Crypt(password, McbaSettings.Salt);
 
             var userDal = new UserDal(McbaSettings.CnnString);
 
@@ -38,7 +38,7 @@ namespace Mcba.Bll
 
         public int GetAttemps(string login)
         {
-            var cryptLogin = HashHelper.Crypt(login, McbaSettings.Salt);
+            var cryptLogin = HashCalculator.Crypt(login, McbaSettings.Salt);
 
             var userDal = new UserDal(McbaSettings.CnnString);
 
@@ -50,8 +50,8 @@ namespace Mcba.Bll
             var randomPass =
                 Membership.GeneratePassword(McbaSettings.RandomPassLength, McbaSettings.NumberOfNonAlphanumericCharacters);
 
-            var cryptLogin = HashHelper.Crypt(login, McbaSettings.Salt);
-            var cryptPass = HashHelper.Crypt(randomPass, McbaSettings.Salt);
+            var cryptLogin = HashCalculator.Crypt(login, McbaSettings.Salt);
+            var cryptPass = HashCalculator.Crypt(randomPass, McbaSettings.Salt);
 
             var userDal = new UserDal(McbaSettings.CnnString);
             userDal.RestorePassword(cryptLogin, cryptPass);
@@ -75,11 +75,11 @@ namespace Mcba.Bll
 
             if (user.Id == 0)
             {
-                user.Login = HashHelper.Crypt(user.Login, McbaSettings.Salt);
+                user.Login = HashCalculator.Crypt(user.Login, McbaSettings.Salt);
 
                 newPassword =
                     Membership.GeneratePassword(McbaSettings.RandomPassLength, McbaSettings.NumberOfNonAlphanumericCharacters);
-                user.Password = HashHelper.Crypt(newPassword, McbaSettings.Salt);
+                user.Password = HashCalculator.Crypt(newPassword, McbaSettings.Salt);
             }
 
             var userDal = new UserDal(McbaSettings.CnnString);

@@ -717,6 +717,9 @@ INSERT INTO Leyendas(IdIdioma, Modulo, Tag, Leyenda)
     VALUES(1, 'Usuarios', 'lblContra2', 'Contraseña')	
 
 INSERT INTO Leyendas(IdIdioma, Modulo, Tag, Leyenda)
+    VALUES(1, 'Usuarios', 'chkActivo', 'Activo')	
+
+INSERT INTO Leyendas(IdIdioma, Modulo, Tag, Leyenda)
     VALUES(1, 'Usuarios', 'tsbSalir', 'Salir')
 
 INSERT INTO Leyendas(IdIdioma, Modulo, Tag, Leyenda)

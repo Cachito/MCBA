@@ -1,15 +1,15 @@
 ﻿using System;
 using System.Text;
-using Mcba.Entidad;
 using Mcba.Entidad.Attributes;
+using Mcba.Entidad.Enums;
 
 namespace Mcba.Seguridad
 {
-    public static class DvhHelper<T>
+    public static class DvhCalculator<T>
     {
         public static string GetDvhString(T instancia, out long dvValue)
         {
-            var ret = string.Empty;
+            string ret;
 
             var dvhString = new StringBuilder();
 
@@ -48,14 +48,14 @@ namespace Mcba.Seguridad
                         break;
                 }
 
-                var cryptString = HashHelper.GetCryptString(stringValue, cryptMethod);
+                var cryptString = HashCalculator.GetCryptString(stringValue, cryptMethod);
 
                 dvhString.Append(cryptString);
             }
 
             dvValue = DvValue.GetDvValue(dvhString.ToString());
 
-            ret = HashHelper.GetCryptString(dvValue.ToString(), CryptMethodEnum.Sha1);
+            ret = HashCalculator.GetCryptString(dvValue.ToString(), CryptMethodEnum.Sha1);
 
             return ret;
         }

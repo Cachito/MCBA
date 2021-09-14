@@ -28,7 +28,7 @@ namespace Mcba.Testing
             McbaSettings.Key = "0909b1f91cbb4459acab466ae8f0eaf5";
             McbaSettings.Salt = "LuisCarroTfi";
 
-            var dvString = DvhHelper<User>.GetDvhString(u, out var _);
+            var dvString = DvhCalculator<User>.GetDvhString(u, out var _);
         }
     }
 }

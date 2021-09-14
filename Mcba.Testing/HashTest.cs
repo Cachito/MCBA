@@ -16,8 +16,8 @@ namespace Mcba.Testing
                 "encriptar es cambiar el aspecto de un mensaje para que no lo entienda alguien que no es el receptor. lo mismo que cifrar. dos técnicas reversibles y no reversibles. reversibles: simétricos y asimétricos. simétrico: usa la misma clave o semilla para encriptar o desencriptar. (word, winrar). asimétrico: las claves o semillas son distintas. (clave pública y clave privada). se usa en la transmisión y mensajes por internet, por ejemplo.";
             var shortText = "encriptar";
 
-            var longHash = HashHelper.Crypt(longText, SALT_SISTEMA);
-            var shortHash = HashHelper.Crypt(shortText, SALT_SISTEMA);
+            var longHash = HashCalculator.Crypt(longText, SALT_SISTEMA);
+            var shortHash = HashCalculator.Crypt(shortText, SALT_SISTEMA);
 
             Assert.AreEqual(longHash.Length, shortHash.Length);
         }
@@ -27,7 +27,7 @@ namespace Mcba.Testing
         {
             var text = "Administrador";
 
-            var hash = HashHelper.Crypt(text, SALT_SISTEMA);
+            var hash = HashCalculator.Crypt(text, SALT_SISTEMA);
         }
 
         [Test, Explicit("Solo manual")]
@@ -35,8 +35,8 @@ namespace Mcba.Testing
         {
             var text = "{\"Key\":\"0909b1f91cbb4459acab466ae8f0eaf5\",\"Salt\":\"LuisCarroTfi\",\"CnnString\":\"Integrated Security=SSPI;Persist Security Info False;Initial Catalog=Mcba;Data Source=DESKTOP-M95JCSK\\\\SQLEXPRESS;\",\"MessageTitle\":\"Boungiorno S.A.\"}";
 
-            var hash1 = HashHelper.Encrypt(text, KEY_SISTEMA, SALT_SISTEMA);
-            var original = HashHelper.Decrypt(hash1, KEY_SISTEMA, SALT_SISTEMA);
+            var hash1 = HashCalculator.Encrypt(text, KEY_SISTEMA, SALT_SISTEMA);
+            var original = HashCalculator.Decrypt(hash1, KEY_SISTEMA, SALT_SISTEMA);
 
             Assert.AreEqual(text, original);
         }
@@ -47,11 +47,11 @@ namespace Mcba.Testing
             var fileName =  "Data.json";
             var fileText= "{\"Key\":\"0909b1f91cbb4459acab466ae8f0eaf5\",\"Salt\":\"LuisCarroTfi\",\"CnnString\":\"Integrated Security=SSPI;Persist Security Info=False;Initial Catalog=Mcba;Data Source=DESKTOP-M95JCSK\\\\SQLEXPRESS;\",\"MessageTitle\":\"Boungiorno S.A.\",\"MaxLoginAttemps\":3,\"RandomPassLength\":10,\"NumberOfNonAlphanumericCharacters\":3,\"EmailFrom\":\"luis.carro@gmail.com\",\"EmailPort\":587,\"EmailHost\":\"smtp.gmail.com\",\"EmailSsl\":true,\"EmailPass\":\"Jav13r1n\",\"TempFolder\":\"C:\\\\TMP\",\"DataPagination\":50,\"SinTraduccion\":\"No hay traducción disponible\"}";
 
-            var hashName = HashHelper.Base64Encode(fileName);
-            var decodeName = HashHelper.Base64Decode(hashName);
+            var hashName = HashCalculator.Base64Encode(fileName);
+            var decodeName = HashCalculator.Base64Decode(hashName);
 
-            var hashText = HashHelper.Base64Encode(fileText);
-            var decodeText = HashHelper.Base64Decode(hashText);
+            var hashText = HashCalculator.Base64Encode(fileText);
+            var decodeText = HashCalculator.Base64Decode(hashText);
         }
     }
 }

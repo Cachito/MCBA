@@ -2,12 +2,12 @@
 using System.IO;
 using System.Security.Cryptography;
 using System.Text;
-using Mcba.Entidad;
+using Mcba.Entidad.Enums;
 using Mcba.Infraestruture.Settings;
 
 namespace Mcba.Seguridad
 {
-    public static class HashHelper
+    public static class HashCalculator
     {
         public static string GetCryptString(string cadena, CryptMethodEnum cryptMethod)
         {
@@ -20,15 +20,15 @@ namespace Mcba.Seguridad
                     break;
 
                 case CryptMethodEnum.Base64:
-                    ret = HashHelper.Base64Encode(cadena);
+                    ret = HashCalculator.Base64Encode(cadena);
                     break;
 
                 case CryptMethodEnum.Aes:
-                    ret = HashHelper.Encrypt(cadena, McbaSettings.Key, McbaSettings.Salt);
+                    ret = HashCalculator.Encrypt(cadena, McbaSettings.Key, McbaSettings.Salt);
                     break;
 
                 case CryptMethodEnum.Sha1:
-                    ret = HashHelper.Crypt(cadena, McbaSettings.Salt);
+                    ret = HashCalculator.Crypt(cadena, McbaSettings.Salt);
                     break;
             }
 
@@ -115,7 +115,6 @@ namespace Mcba.Seguridad
         public static string Base64Decode(string text)
         {
             var decryted = Convert.FromBase64String(text);
-            //result = System.Text.Encoding.Unicode.GetString(decryted, 0, decryted.ToArray().Length);
             var result = Encoding.Unicode.GetString(decryted);
             return result;
         }

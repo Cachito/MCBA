@@ -59,10 +59,10 @@ namespace Mcba.UI
 
         private bool SetSettings()
         {
-            var fileName = HashHelper.Base64Decode(Settings.Default.Data);
+            var fileName = HashCalculator.Base64Decode(Settings.Default.Data);
             var encodedData = File.ReadAllText(Path.Combine(Application.StartupPath, fileName));
 
-            var jsonData = HashHelper.Base64Decode(encodedData);
+            var jsonData = HashCalculator.Base64Decode(encodedData);
 
             var mcbaSettings = JsonConvert.DeserializeObject<InstanceSettings>(jsonData);
 
