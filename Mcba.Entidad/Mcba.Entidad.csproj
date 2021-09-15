@@ -41,7 +41,9 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="Attributes\CryptAttribute.cs" />
-    <Compile Include="CryptMethodEnum.cs" />
+    <Compile Include="Enums\CryptMethodEnum.cs" />
+    <Compile Include="Dto\UserDto.cs" />
+    <Compile Include="Integrity.cs" />
     <Compile Include="Language.cs" />
     <Compile Include="User.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />

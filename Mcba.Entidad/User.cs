@@ -1,4 +1,7 @@
-﻿namespace Mcba.Entidad
+﻿using Mcba.Entidad.Attributes;
+using Mcba.Entidad.Enums;
+
+namespace Mcba.Entidad
 {
     public class User 
     {
@@ -11,5 +14,7 @@
         public int IdIdioma { set; get; }
         public bool Activo { set; get; }
         public int Intentos { set; get; }
+        [CryptMethod(CryptMethodEnum.Ignore)]
+        public string DV { set; get; }
     }
 }

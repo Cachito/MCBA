@@ -4,6 +4,8 @@ using System.IO;
 using System.Threading;
 using Mcba.Seguridad;
 using System.Windows.Forms;
+using Mcba.Bll;
+using Mcba.Bll.Helpers;
 using Mcba.Infraestruture;
 using Mcba.Infraestruture.Enums;
 using Mcba.Infraestruture.Helpers;
@@ -41,15 +43,12 @@ namespace Mcba.UI
 
             var settings = SetSettings();
 
-            LanguageHelper.SetCaption(tsLabel, Name, "CheckIntegridad");
+            CaptionHelper.SetCaption(tsLabel, Name, "CheckIntegridad");
 
             // check integridad
-            for (var i = 1; i <= 100; i++)
-            {
-                Thread.Sleep(5);
-            }
+            var integrityOk = IntegrityBll.CheckIntegrity();
 
-            e.Result = settings;
+            e.Result = settings && integrityOk;
         }
 
         private void bgWorker_RunWorkerCompleted(object sender, RunWorkerCompletedEventArgs e)
@@ -60,10 +59,10 @@ namespace Mcba.UI
 
         private bool SetSettings()
         {
-            var fileName = HashHelper.Base64Decode(Settings.Default.Data);
+            var fileName = HashCalculator.Base64Decode(Settings.Default.Data);
             var encodedData = File.ReadAllText(Path.Combine(Application.StartupPath, fileName));
 
-            var jsonData = HashHelper.Base64Decode(encodedData);
+            var jsonData = HashCalculator.Base64Decode(encodedData);
 
             var mcbaSettings = JsonConvert.DeserializeObject<InstanceSettings>(jsonData);
 

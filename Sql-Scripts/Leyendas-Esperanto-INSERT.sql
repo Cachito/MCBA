@@ -696,6 +696,15 @@ INSERT INTO Leyendas(IdIdioma, Modulo, Tag, Leyenda)
     VALUES(2, 'Usuarios', 'lblId', 'Id')
 
 INSERT INTO Leyendas(IdIdioma, Modulo, Tag, Leyenda)
+    VALUES(2, 'Usuarios', 'lblNombre', 'Nomo')
+
+INSERT INTO Leyendas(IdIdioma, Modulo, Tag, Leyenda)
+    VALUES(2, 'Usuarios', 'lblApellido', 'Fam. nomo')
+
+INSERT INTO Leyendas(IdIdioma, Modulo, Tag, Leyenda)
+    VALUES(2, 'Usuarios', 'lblEmail', 'Retpoŝto')
+
+INSERT INTO Leyendas(IdIdioma, Modulo, Tag, Leyenda)
     VALUES(2, 'Usuarios', 'lblUsuario', 'Uzanto')
 	
 INSERT INTO Leyendas(IdIdioma, Modulo, Tag, Leyenda)
@@ -706,6 +715,9 @@ INSERT INTO Leyendas(IdIdioma, Modulo, Tag, Leyenda)
 	
 INSERT INTO Leyendas(IdIdioma, Modulo, Tag, Leyenda)
     VALUES(2, 'Usuarios', 'lblContra2', 'Pasvorto')	
+
+INSERT INTO Leyendas(IdIdioma, Modulo, Tag, Leyenda)
+    VALUES(2, 'Usuarios', 'chkActivo', 'Aktiva')	
 
 INSERT INTO Leyendas(IdIdioma, Modulo, Tag, Leyenda)
     VALUES(2, 'Usuarios', 'tsbSalir', 'Eliri')
@@ -721,6 +733,81 @@ INSERT INTO Leyendas(IdIdioma, Modulo, Tag, Leyenda)
 
 INSERT INTO Leyendas(IdIdioma, Modulo, Tag, Leyenda)
     VALUES(2, 'Usuarios', 'tsbSave', 'Konservu')
+
+INSERT INTO Leyendas(IdIdioma, Modulo, Tag, Leyenda)
+    VALUES(2, 'Usuarios', 'tsbPrint', 'Presi')
+
+INSERT INTO Leyendas(IdIdioma, Modulo, Tag, Leyenda)
+    VALUES(2, 'Usuarios', 'tsbBuscar', 'Serĉi')
+
+INSERT INTO Leyendas(IdIdioma, Modulo, Tag, Leyenda)
+    VALUES(2, 'Usuarios', 'tsbFiltro', 'Filtrilo')
+
+INSERT INTO Leyendas(IdIdioma, Modulo, Tag, Leyenda)
+    VALUES(2, 'Usuarios', 'FaltaUsuario', 'Vi devas eniri uzanton.')
+	
+INSERT INTO Leyendas(IdIdioma, Modulo, Tag, Leyenda)
+    VALUES(2, 'Usuarios', 'FaltaNombre', 'Vi devas enigi nomon.')	
+	
+INSERT INTO Leyendas(IdIdioma, Modulo, Tag, Leyenda)
+    VALUES(2, 'Usuarios', 'FaltaApellido', 'Vi devas enigi familian nomon.')
+	
+INSERT INTO Leyendas(IdIdioma, Modulo, Tag, Leyenda)
+    VALUES(2, 'Usuarios', 'FaltaEmail', 'Vi devas enigi retpoŝton.')
+	
+INSERT INTO Leyendas(IdIdioma, Modulo, Tag, Leyenda)
+    VALUES(2, 'Usuarios', 'FaltaPassword', 'Vi devas enigi pasvorton.')
+	
+INSERT INTO Leyendas(IdIdioma, Modulo, Tag, Leyenda)
+    VALUES(2, 'Usuarios', 'FaltaConfirmar', 'Vi devas konfirmi pasvorton.')	
+	
+INSERT INTO Leyendas(IdIdioma, Modulo, Tag, Leyenda)
+    VALUES(2, 'Usuarios', 'PasswordDistinto', 'La eniritaj pasvortoj estas malsamaj.')
+	
+INSERT INTO Leyendas(IdIdioma, Modulo, Tag, Leyenda)
+    VALUES(2, 'Usuarios', 'FaltaIdioma', 'Vi devas elekti lingvon.')
+	
+INSERT INTO Leyendas(IdIdioma, Modulo, Tag, Leyenda)
+    VALUES(2, 'Usuarios', 'RevisarErrores', 'Bonvolu revizii la indikitajn numerojn.')	
+
+INSERT INTO Leyendas(IdIdioma, Modulo, Tag, Leyenda)
+    VALUES(2, 'Usuarios', 'NoEncontrado', 'La uzanto ne estas trovita.{0}Bonvolu kontakti la administranton.')
+
+INSERT INTO Leyendas(IdIdioma, Modulo, Tag, Leyenda)
+    VALUES(2, 'Usuarios', 'ErrorAlGuardar', 'La ŝanĝoj ne povis esti konservitaj.{0}Bonvolu kontakti la administranton.')
+
+INSERT INTO Leyendas(IdIdioma, Modulo, Tag, Leyenda)
+    VALUES(2, 'Usuarios', 'NewUserSubject', 'Buongiorno S. A.')
+
+INSERT INTO Leyendas(IdIdioma, Modulo, Tag, Leyenda)
+    VALUES(2, 'Usuarios', 'NewUserBody', 'Viaj atestiloj estas senditaj al vi: uzanto: {0}; pasvorto: {1}.{2} Ne dividu ĉi tiun retpoŝton.')
+
+INSERT INTO Leyendas(IdIdioma, Modulo, Tag, Leyenda)
+    VALUES(2, 'Usuarios', 'NewUserSent', 'La poŝto estis sendita.')
+
+INSERT INTO Leyendas(IdIdioma, Modulo, Tag, Leyenda)
+    VALUES(2, 'Usuarios', 'NewUserSaved', 'La poŝto estis konservita en {0}.')
+
+INSERT INTO Leyendas(IdIdioma, Modulo, Tag, Leyenda)
+    VALUES(2, 'Usuarios', 'MailWarning', 'La uzanto ne havas asignitan retpoŝtan adreson.')
+
+INSERT INTO Leyendas(IdIdioma, Modulo, Tag, Leyenda)
+    VALUES(2, 'Usuarios', 'RestoreWarning', 'Se vi daŭrigos, via pasvorto estos restarigita kaj retpoŝto estos sendita al {0}.{1} Ĉu vi certas? ')
+
+INSERT INTO Leyendas(IdIdioma, Modulo, Tag, Leyenda)
+    VALUES(2, 'Usuarios', 'RestoreSubject', 'Buongiorno S. A.')
+	
+INSERT INTO Leyendas(IdIdioma, Modulo, Tag, Leyenda)
+    VALUES(2, 'Usuarios', 'RestoreBody', 'La nova ŝlosilo estas sendita al vi: "{0}" (Sen citiloj).{1} Ne dividu ĉi tiun retpoŝton.')
+
+INSERT INTO Leyendas(IdIdioma, Modulo, Tag, Leyenda)
+    VALUES(2, 'Usuarios', 'RestoreSent', 'La poŝto estis sendita.')
+
+INSERT INTO Leyendas(IdIdioma, Modulo, Tag, Leyenda)
+    VALUES(2, 'Usuarios', 'RestoreSaved', 'La poŝto estis konservita en {0}.')
+
+INSERT INTO Leyendas(IdIdioma, Modulo, Tag, Leyenda)
+    VALUES(2, 'Usuarios', 'EmailExistente', 'La retpoŝto enigita jam ekzistas.')
 
 -- Unidades
 INSERT INTO Leyendas(IdIdioma, Modulo, Tag, Leyenda)

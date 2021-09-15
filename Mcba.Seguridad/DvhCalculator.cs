@@ -1,18 +1,17 @@
 ﻿using System;
 using System.Text;
-using Mcba.Entidad;
 using Mcba.Entidad.Attributes;
-using Mcba.Infraestruture.Settings;
+using Mcba.Entidad.Enums;
 
 namespace Mcba.Seguridad
 {
-    public static class DvHelper<T>
+    public static class DvhCalculator<T>
     {
-        public static string GetDvhString(T instancia)
+        public static string GetDvhString(T instancia, out long dvValue)
         {
-            var ret = string.Empty;
+            string ret;
 
-            var dvBuilder = new StringBuilder();
+            var dvhString = new StringBuilder();
 
             var props = instancia.GetType().GetProperties();
 
@@ -20,6 +19,12 @@ namespace Mcba.Seguridad
             {
                 var value = props[i].GetValue(instancia, null);
                 var attr = props[i].GetCustomAttributes(typeof(CryptMethodAttribute), false);
+
+                var cryptMethod = GetCryptMethod(attr);
+                if (cryptMethod == CryptMethodEnum.Ignore)
+                {
+                    continue;
+                }
 
                 string stringValue;
                 switch (props[i].PropertyType.Name)
@@ -43,16 +48,14 @@ namespace Mcba.Seguridad
                         break;
                 }
 
-                var cryptMethod = GetCryptMethod(attr);
+                var cryptString = HashCalculator.GetCryptString(stringValue, cryptMethod);
 
-                var cryptString = GetCryptString(stringValue, cryptMethod);
-
-                dvBuilder.Append(cryptString);
+                dvhString.Append(cryptString);
             }
 
-            var dvValue = GetDvValue(dvBuilder.ToString());
+            dvValue = DvValue.GetDvValue(dvhString.ToString());
 
-            ret = GetCryptString(dvValue, CryptMethodEnum.Sha1);
+            ret = HashCalculator.GetCryptString(dvValue.ToString(), CryptMethodEnum.Sha1);
 
             return ret;
         }
@@ -76,47 +79,11 @@ namespace Mcba.Seguridad
                     case CryptMethodEnum.Sha1:
                         ret = CryptMethodEnum.Sha1;
                         break;
+
+                    case CryptMethodEnum.Ignore:
+                        ret = CryptMethodEnum.Ignore;
+                        break;
                 }
-            }
-
-            return ret;
-        }
-
-        private static string GetDvValue(string dvString)
-        {
-            var asciiBytes = Encoding.ASCII.GetBytes(dvString);
-            var sum = 0;
-            var pos = 1;
-            foreach (var b in asciiBytes)
-            {
-                sum += (b * pos);
-                pos++;
-            }
-
-            return sum.ToString();
-        }
-
-        private static string GetCryptString(string cadena, CryptMethodEnum cryptMethod)
-        {
-            var ret = cadena;
-
-            switch (cryptMethod)
-            {
-                case CryptMethodEnum.None:
-                    ret = cadena;
-                    break;
-
-                case CryptMethodEnum.Base64:
-                    ret = HashHelper.Base64Encode(cadena);
-                    break;
-
-                case CryptMethodEnum.Aes:
-                    ret = HashHelper.Encrypt(cadena, McbaSettings.Key, McbaSettings.Salt);
-                    break;
-
-                case CryptMethodEnum.Sha1:
-                    ret = HashHelper.Crypt(cadena, McbaSettings.Salt);
-                    break;
             }
 
             return ret;

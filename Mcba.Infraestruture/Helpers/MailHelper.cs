@@ -1,6 +1,5 @@
 ﻿using System;
 using System.IO;
-using System.Net;
 using System.Net.Mail;
 using Mcba.Infraestruture.Settings;
 
@@ -8,7 +7,7 @@ namespace Mcba.Infraestruture.Helpers
 {
     public static class MailHelper
     {
-        public static bool SendNewPassword(string email, string subject, string body)
+        public static bool SendMail(string email, string subject, string body)
         {
             try
             {
@@ -39,7 +38,7 @@ namespace Mcba.Infraestruture.Helpers
             }
         }
 
-        public static void SaveNewPassword(string email, string subject, string body)
+        public static void SaveToFile(string email, string subject, string body)
         {
             string[] lines =
             {

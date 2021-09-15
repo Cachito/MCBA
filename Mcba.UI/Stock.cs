@@ -1,7 +1,7 @@
 ﻿using System;
 using System.Text;
 using System.Windows.Forms;
-using Mcba.Infraestruture.Helpers;
+using Mcba.Bll.Helpers;
 
 namespace Mcba.UI
 {
@@ -42,8 +42,8 @@ namespace Mcba.UI
 
         private void SetCaptions()
         {
-            var caps = LanguageHelper.GetCaptions(Name);
-            LanguageHelper.SetCaptions(caps, this);
+            var caps = CaptionHelper.GetCaptions(Name);
+            CaptionHelper.SetCaptions(caps, this);
         }
 
         private void LoadGrid()

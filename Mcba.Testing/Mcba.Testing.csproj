@@ -53,11 +53,16 @@
     <Compile Include="DvTest.cs" />
     <Compile Include="HashTest.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="UserTest.cs" />
   </ItemGroup>
   <ItemGroup>
     <None Include="packages.config" />
   </ItemGroup>
   <ItemGroup>
+    <ProjectReference Include="..\Mcba.Bll\Mcba.Bll.csproj">
+      <Project>{679F2183-3674-4AEA-90A7-6641E8010F07}</Project>
+      <Name>Mcba.Bll</Name>
+    </ProjectReference>
     <ProjectReference Include="..\Mcba.Entidad\Mcba.Entidad.csproj">
       <Project>{4514ea8d-d83a-4f2b-9985-56a8aa964e78}</Project>
       <Name>Mcba.Entidad</Name>

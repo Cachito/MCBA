@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Windows.Forms;
 using Mcba.Bll;
+using Mcba.Bll.Helpers;
 using Mcba.Infraestruture;
 using Mcba.Infraestruture.Enums;
 using Mcba.Infraestruture.Helpers;
@@ -52,8 +53,8 @@ namespace Mcba.UI
 
         private void SetCaptions()
         {
-            captions = LanguageHelper.GetCaptions(Name);
-            LanguageHelper.SetCaptions(captions, this);
+            captions = CaptionHelper.GetCaptions(Name);
+            CaptionHelper.SetCaptions(captions, this);
         }
 
         private void CheckMail()
@@ -141,7 +142,7 @@ namespace Mcba.UI
 
             captions.TryGetValue("RestoreSubject", out var restoreSubject);
             captions.TryGetValue("RestoreBody", out var restoreBody);
-            var send = MailHelper.SendNewPassword(userEmail, restoreSubject,
+            var send = MailHelper.SendMail(userEmail, restoreSubject,
                 string.Format(restoreBody, newPassword, Environment.NewLine));
 
             if (send)
@@ -151,7 +152,7 @@ namespace Mcba.UI
                 return;
             }
 
-            MailHelper.SaveNewPassword(userEmail, restoreSubject,
+            MailHelper.SaveToFile(userEmail, restoreSubject,
                 string.Format(restoreBody, newPassword, Environment.NewLine));
 
             captions.TryGetValue("RestoreSaved", out var restoreSaved);

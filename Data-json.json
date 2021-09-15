@@ -11,5 +11,7 @@
 	"EmailHost": "smtp.gmail.com",
 	"EmailSsl": true,
 	"EmailPass": "Jav13r1n",
-	"TempFolder": "C:\\TMP"
+	"TempFolder": "C:\\TMP",
+	"DataPagination": 50,
+	"SinTraduccion": "No hay traducción disponible"
 }

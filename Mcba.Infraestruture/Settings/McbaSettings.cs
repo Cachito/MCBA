@@ -18,6 +18,8 @@ namespace Mcba.Infraestruture.Settings
         public static bool EmailSsl { set; get; }
         public static string EmailPass { set; get; }
         public static string TempFolder { set; get; }
+        public static int DataPagination { set; get; }
+        public static string SinTraduccion { set; get; }
 
         public static void MapSettings(InstanceSettings settings)
         {
@@ -35,6 +37,8 @@ namespace Mcba.Infraestruture.Settings
             EmailSsl = settings.EmailSsl;
             EmailPass = settings.EmailPass;
             TempFolder = settings.TempFolder;
+            DataPagination = settings.DataPagination;
+            SinTraduccion = settings.SinTraduccion;
         }
     }
 }
