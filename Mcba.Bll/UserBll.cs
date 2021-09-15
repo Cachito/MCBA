@@ -86,5 +86,12 @@ namespace Mcba.Bll
 
             return userDal.Save(user);
         }
+
+        public bool EmailExist(string email)
+        {
+            var userDal = new UserDal(McbaSettings.CnnString);
+
+            return userDal.EmailExist(email);
+        }
     }
 }

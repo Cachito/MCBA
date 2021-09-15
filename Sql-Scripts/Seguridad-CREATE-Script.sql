@@ -136,6 +136,9 @@ CREATE TABLE [Usuario]
 )
 GO
 
+ALTER TABLE [Usuario]
+    ADD CONSTRAINT DF_Usuario_Dv DEFAULT 0 FOR DV
+
 CREATE TABLE [UsuarioPermiso]
 (
 	[IdUsuario] INT NOT NULL,

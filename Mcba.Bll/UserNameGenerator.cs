@@ -24,13 +24,22 @@ namespace Mcba.Bll
                 var loop = 1;
                 var userName = GenerateLogin(name, surname, loop);
 
+//#if DEBUG
+//                Random r = new Random();
+//                int rInt = r.Next(0, 100);
+//                while (loop < rInt)
+//                {
+//                    loop++;
+//                    userName = GenerateLogin(name, surname, loop);
+//                }
+//#else
                 while (userDal.LoginExists(userName))
                 {
                     loop++;
 
                     GenerateLogin(name, surname, loop);
                 }
-                
+//#endif                
                 return userName;
             }
             catch
@@ -41,7 +50,7 @@ namespace Mcba.Bll
 
         private static string GenerateLogin(string name, string surname, int loop)
         {
-            var names = Regex.Replace(name, @"s", "");
+            var names = Regex.Replace(name, @"\s", "");
             var surnames = surname.Split(new[] {' '}, StringSplitOptions.RemoveEmptyEntries);
 
             if (loop > names.Length)
@@ -53,7 +62,8 @@ namespace Mcba.Bll
             var userNameStart = names.Substring(0, loop);
             var userNameEnd = surnames[0];
 
-            return $"{userNameStart}{userNameEnd}{(suffix > 0 ? suffix.ToString("000") : string.Empty)}".ToLower();
+            var ret = $"{userNameStart}{userNameEnd}{(suffix > 0 ? suffix.ToString("000") : string.Empty)}".ToLower();
+            return ret;
         }
     }
 }

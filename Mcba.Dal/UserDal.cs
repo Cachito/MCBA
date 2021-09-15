@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Data;
 using System.Linq;
 using Dapper;
 using Mcba.Data;
@@ -119,8 +120,8 @@ namespace Mcba.Dal
             ";
 
         private const string QRY_INSERT_USER = @"
-            INSERT INTO Usuario(Nombre, Apellido, Login, Password, Email, IdIdioma, Activo, Intentos)
-                VALUES(@Nombre, @Apellido, @Login, @Password, @Email, @IdIdioma, @Activo, 0)
+            INSERT INTO Usuario(Nombre, Apellido, Login, Password, Email, IdIdioma, Activo, Intentos, DV)
+                VALUES(@Nombre, @Apellido, @Login, @Password, @Email, @IdIdioma, @Activo, 0, 0)
             ";
 
         private const string QRY_UPDATE_USER = @"
@@ -132,6 +133,12 @@ namespace Mcba.Dal
                 , IdIdioma = @IdIdioma
                 , Activo = @Activo
             WHERE Id = @Id
+            ";
+
+        private const string QRY_EMAIL_EXISTS = @"
+            SELECT TOP 1 1
+            FROM Usuario
+            WHERE Email = @Email
             ";
 
         private readonly string connectionString;
@@ -235,6 +242,11 @@ namespace Mcba.Dal
             }
         }
 
+        public User GetUserByLogin(string login, IDbConnection db, IDbTransaction tr)
+        {
+            return db.Query<User>(QRY_GET_USER_BY_LOGIN, new {Login = login}, transaction: tr).FirstOrDefault();
+        }
+
         public IEnumerable<User> GetAll()
         {
             using (var db = new DataAccess(connectionString).GetOpenConnection())
@@ -277,12 +289,13 @@ namespace Mcba.Dal
                                     Nombre = user.Nombre, Apellido = user.Apellido, Login = user.Login,
                                     Password = user.Password, Email = user.Email, IdIdioma = user.IdIdioma,
                                     Activo = user.Activo
-                                });
-                            var newUser = GetUserByLogin(user.Login);
+                                }, transaction: tr);
+                            var newUser = GetUserByLogin(user.Login, db, tr);
                             var dvhString = DvhCalculator<User>.GetDvhString(newUser, out _);
-                            db.Execute(QRY_UPDATE_DV_BY_LOGIN, new {Dv = dvhString, Login = newUser.Login});
+                            db.Execute(QRY_UPDATE_DV_BY_LOGIN, new {Dv = dvhString, Login = newUser.Login},
+                                transaction: tr);
 
-                            var users = db.Query<User>(QRY_GET_ALL_USERS);
+                            var users = db.Query<User>(QRY_GET_ALL_USERS, transaction: tr);
                             long dvvTotal = 0;
                             foreach (var u in users)
                             {
@@ -356,6 +369,15 @@ namespace Mcba.Dal
         public bool LoginExists(string login)
         {
             return GetUserByLogin(login) != null;
+        }
+
+        public bool EmailExist(string email)
+        {
+            using (var db = new DataAccess(connectionString).GetOpenConnection())
+            {
+                var ret = db.ExecuteScalar<int>(QRY_EMAIL_EXISTS, new { Email = email });
+                return ret == 1;
+            }
         }
     }
 }

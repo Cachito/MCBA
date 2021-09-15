@@ -40,18 +40,19 @@ namespace Mcba.Bll
             var userDal = new UserDal(McbaSettings.CnnString);
 
             var users = userDal.GetAll();
-            long dvTableValue = 0;
+            long dvvTotal = 0;
             foreach (var user in users)
             {
-                var dvString = DvhCalculator<User>.GetDvhString(user, out var dvValue);
-                dvTableValue += dvValue;
-                if (dvString != user.DV)
+                var dvhString = DvhCalculator<User>.GetDvhString(user, out var dvhValue);
+                dvvTotal += dvhValue;
+                if (dvhString != user.DV)
                 {
                     return false;
                 }
             }
 
-            var userDvv = HashCalculator.GetCryptString(dvTableValue.ToString(), CryptMethodEnum.Sha1);
+            var dvvValue = DvValue.GetDvValue(dvvTotal.ToString());
+            var userDvv = HashCalculator.GetCryptString(dvvValue.ToString(), CryptMethodEnum.Sha1);
 
             if (userDvv != dvv)
             {

@@ -780,7 +780,7 @@ INSERT INTO Leyendas(IdIdioma, Modulo, Tag, Leyenda)
     VALUES(1, 'Usuarios', 'NewUserSubject', 'Buongiorno S. A.')
 
 INSERT INTO Leyendas(IdIdioma, Modulo, Tag, Leyenda)
-    VALUES(1, 'Usuarios', 'NewUserBody', 'Se le envían sus credenciales de usuario: {0}/{1}.{2}No comparta este correo.')
+    VALUES(1, 'Usuarios', 'NewUserBody', 'Se le envían sus credenciales: usuario: {0}; password: {1}.{2}No comparta este correo.')
 
 INSERT INTO Leyendas(IdIdioma, Modulo, Tag, Leyenda)
     VALUES(1, 'Usuarios', 'NewUserSent', 'Se ha enviado el correo.')
@@ -805,6 +805,9 @@ INSERT INTO Leyendas(IdIdioma, Modulo, Tag, Leyenda)
 
 INSERT INTO Leyendas(IdIdioma, Modulo, Tag, Leyenda)
     VALUES(1, 'Usuarios', 'RestoreSaved', 'Se ha guardado el correo en {0}.')
+
+INSERT INTO Leyendas(IdIdioma, Modulo, Tag, Leyenda)
+    VALUES(1, 'Usuarios', 'EmailExistente', 'El email ingresado ya existe.')
 
 -- Unidades
 INSERT INTO Leyendas(IdIdioma, Modulo, Tag, Leyenda)

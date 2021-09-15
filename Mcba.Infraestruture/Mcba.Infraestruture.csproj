@@ -48,6 +48,7 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="Enums\ToolbarStatusEnum.cs" />
     <Compile Include="Enums\LanguageEnum.cs" />
     <Compile Include="Helpers\MailHelper.cs" />
     <Compile Include="Settings\InstanceSettings.cs" />

@@ -5,6 +5,7 @@ using Mcba.Bll;
 using Mcba.Bll.Helpers;
 using Mcba.Entidad;
 using Mcba.Infraestruture;
+using Mcba.Infraestruture.Enums;
 using Mcba.Infraestruture.Helpers;
 using Mcba.Infraestruture.Settings;
 
@@ -207,25 +208,25 @@ namespace Mcba.UI
 
             if (ok && user.Id == 0)
             {
-                captions.TryGetValue("RestoreSubject", out var restoreSubject);
-                captions.TryGetValue("RestoreBody", out var restoreBody);
+                captions.TryGetValue("NewUserSubject", out var newUserSubject);
+                captions.TryGetValue("NewUserBody", out var newUserBody);
 
                 #region EnvioMail                
-                //var send = MailHelper.SendMail(user.Email, restoreSubject,
+                //var send = MailHelper.SendMail(user.Email, newUserSubject,
                 //    string.Format(restoreBody ?? McbaSettings.SinTraduccion, user.Login, newPassword, Environment.NewLine));
 
                 //if (send)
                 //{
-                //    captions.TryGetValue("RestoreSent", out var restoreSent);
-                //    this.ShowMessage(restoreSent, McbaSettings.MessageTitle);
+                //    captions.TryGetValue("NewUserSent", out var newUserSent);
+                //    this.ShowMessage(newUserSent, McbaSettings.MessageTitle);
                 //    return;
                 //}
                 #endregion
 
-                MailHelper.SaveToFile(user.Email, restoreSubject,
-                    string.Format(restoreBody ?? McbaSettings.SinTraduccion, newPassword, Environment.NewLine));
+                MailHelper.SaveToFile(user.Email, newUserSubject,
+                    string.Format(newUserBody ?? McbaSettings.SinTraduccion, Login, newPassword, Environment.NewLine));
 
-                captions.TryGetValue("RestoreSaved", out var restoreSaved);
+                captions.TryGetValue("NewUserSaved", out var restoreSaved);
                 this.ShowMessage(string.Format(restoreSaved ?? McbaSettings.SinTraduccion, McbaSettings.TempFolder), McbaSettings.MessageTitle);
             }
 
@@ -262,6 +263,13 @@ namespace Mcba.UI
             if (txtEmail.Text == string.Empty)
             {
                 captions.TryGetValue("FaltaEmail", out var caption);
+                errorProvider.SetError(txtEmail, caption);
+                ret = false;
+            }
+
+            if (new UserBll().EmailExist(txtEmail.Text))
+            {
+                captions.TryGetValue("EmailExistente", out var caption);
                 errorProvider.SetError(txtEmail, caption);
                 ret = false;
             }

@@ -39,6 +39,7 @@
             this.tsbBuscar = new System.Windows.Forms.ToolStripButton();
             this.tsbRestaurar = new System.Windows.Forms.ToolStripButton();
             this.gbData = new System.Windows.Forms.GroupBox();
+            this.chkActivo = new System.Windows.Forms.CheckBox();
             this.txtEmail = new System.Windows.Forms.TextBox();
             this.lblEmail = new System.Windows.Forms.Label();
             this.txtApellido = new System.Windows.Forms.TextBox();
@@ -51,7 +52,6 @@
             this.lblId = new System.Windows.Forms.Label();
             this.dgvUsuarios = new System.Windows.Forms.DataGridView();
             this.errorProvider = new System.Windows.Forms.ErrorProvider(this.components);
-            this.chkActivo = new System.Windows.Forms.CheckBox();
             this.tsUsuarios.SuspendLayout();
             this.gbData.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.dgvUsuarios)).BeginInit();
@@ -72,7 +72,7 @@
             this.tsUsuarios.Location = new System.Drawing.Point(0, 0);
             this.tsUsuarios.Name = "tsUsuarios";
             this.tsUsuarios.Size = new System.Drawing.Size(564, 25);
-            this.tsUsuarios.TabIndex = 0;
+            this.tsUsuarios.TabIndex = 5;
             this.tsUsuarios.Text = "toolStrip1";
             // 
             // tsbSalir
@@ -182,13 +182,24 @@
             this.gbData.TabIndex = 1;
             this.gbData.TabStop = false;
             // 
+            // chkActivo
+            // 
+            this.chkActivo.CheckAlign = System.Drawing.ContentAlignment.MiddleRight;
+            this.chkActivo.Location = new System.Drawing.Point(268, 66);
+            this.chkActivo.Name = "chkActivo";
+            this.chkActivo.Size = new System.Drawing.Size(92, 20);
+            this.chkActivo.TabIndex = 4;
+            this.chkActivo.Tag = "chkActivo";
+            this.chkActivo.Text = "chkActivo";
+            this.chkActivo.UseVisualStyleBackColor = true;
+            // 
             // txtEmail
             // 
             this.txtEmail.Enabled = false;
             this.txtEmail.Location = new System.Drawing.Point(344, 13);
             this.txtEmail.Name = "txtEmail";
             this.txtEmail.Size = new System.Drawing.Size(168, 20);
-            this.txtEmail.TabIndex = 18;
+            this.txtEmail.TabIndex = 0;
             // 
             // lblEmail
             // 
@@ -206,7 +217,7 @@
             this.txtApellido.Location = new System.Drawing.Point(344, 39);
             this.txtApellido.Name = "txtApellido";
             this.txtApellido.Size = new System.Drawing.Size(168, 20);
-            this.txtApellido.TabIndex = 16;
+            this.txtApellido.TabIndex = 2;
             // 
             // lblApellido
             // 
@@ -224,7 +235,7 @@
             this.txtNombre.Location = new System.Drawing.Point(85, 39);
             this.txtNombre.Name = "txtNombre";
             this.txtNombre.Size = new System.Drawing.Size(168, 20);
-            this.txtNombre.TabIndex = 14;
+            this.txtNombre.TabIndex = 1;
             // 
             // lblNombre
             // 
@@ -243,7 +254,7 @@
             this.cmbIdiomas.Location = new System.Drawing.Point(85, 66);
             this.cmbIdiomas.Name = "cmbIdiomas";
             this.cmbIdiomas.Size = new System.Drawing.Size(168, 21);
-            this.cmbIdiomas.TabIndex = 12;
+            this.cmbIdiomas.TabIndex = 3;
             // 
             // lblIdioma
             // 
@@ -262,7 +273,7 @@
             this.txtId.Name = "txtId";
             this.txtId.ReadOnly = true;
             this.txtId.Size = new System.Drawing.Size(168, 20);
-            this.txtId.TabIndex = 1;
+            this.txtId.TabIndex = 7;
             // 
             // lblId
             // 
@@ -284,23 +295,12 @@
             this.dgvUsuarios.Name = "dgvUsuarios";
             this.dgvUsuarios.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect;
             this.dgvUsuarios.Size = new System.Drawing.Size(541, 307);
-            this.dgvUsuarios.TabIndex = 2;
+            this.dgvUsuarios.TabIndex = 6;
             this.dgvUsuarios.CellClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.dgvUsuarios_CellClick);
             // 
             // errorProvider
             // 
             this.errorProvider.ContainerControl = this;
-            // 
-            // chkActivo
-            // 
-            this.chkActivo.CheckAlign = System.Drawing.ContentAlignment.MiddleRight;
-            this.chkActivo.Location = new System.Drawing.Point(268, 66);
-            this.chkActivo.Name = "chkActivo";
-            this.chkActivo.Size = new System.Drawing.Size(92, 20);
-            this.chkActivo.TabIndex = 19;
-            this.chkActivo.Tag = "chkActivo";
-            this.chkActivo.Text = "chkActivo";
-            this.chkActivo.UseVisualStyleBackColor = true;
             // 
             // Usuarios
             // 

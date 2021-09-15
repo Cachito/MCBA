@@ -780,7 +780,7 @@ INSERT INTO Leyendas(IdIdioma, Modulo, Tag, Leyenda)
     VALUES(2, 'Usuarios', 'NewUserSubject', 'Buongiorno S. A.')
 
 INSERT INTO Leyendas(IdIdioma, Modulo, Tag, Leyenda)
-    VALUES(2, 'Usuarios', 'NewUserBody', 'Viaj atestiloj de uzanto estas senditaj al vi: {0}/{1}.{2}Bonvolu ne dividi ĉi tiun retpoŝton.')
+    VALUES(2, 'Usuarios', 'NewUserBody', 'Viaj atestiloj estas senditaj al vi: uzanto: {0}; pasvorto: {1}.{2} Ne dividu ĉi tiun retpoŝton.')
 
 INSERT INTO Leyendas(IdIdioma, Modulo, Tag, Leyenda)
     VALUES(2, 'Usuarios', 'NewUserSent', 'La poŝto estis sendita.')
@@ -805,6 +805,9 @@ INSERT INTO Leyendas(IdIdioma, Modulo, Tag, Leyenda)
 
 INSERT INTO Leyendas(IdIdioma, Modulo, Tag, Leyenda)
     VALUES(2, 'Usuarios', 'RestoreSaved', 'La poŝto estis konservita en {0}.')
+
+INSERT INTO Leyendas(IdIdioma, Modulo, Tag, Leyenda)
+    VALUES(2, 'Usuarios', 'EmailExistente', 'La retpoŝto enigita jam ekzistas.')
 
 -- Unidades
 INSERT INTO Leyendas(IdIdioma, Modulo, Tag, Leyenda)
