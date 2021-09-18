@@ -114,9 +114,12 @@ namespace Mcba.Dal
                 Id
                 , Nombre
                 , Apellido
+                , Email
+                , Activo
             FROM Usuario
             ORDER BY Nombre
-            OFFSET @OffsetRows ROWS
+            OFFSET @Skip ROWS
+            FETCH NEXT @Take ROWS ONLY
             ";
 
         private const string QRY_INSERT_USER = @"
@@ -128,7 +131,6 @@ namespace Mcba.Dal
             UPDATE Usuario SET 
                 Nombre = @Nombre
                 , Apellido = @Apellido
-                , Login = @Login
                 , Email = @Email
                 , IdIdioma = @IdIdioma
                 , Activo = @Activo
@@ -139,6 +141,12 @@ namespace Mcba.Dal
             SELECT TOP 1 1
             FROM Usuario
             WHERE Email = @Email
+                AND Id <> @IdUsuario
+            ";
+
+        private const string QRY_USERS_COUNT = @"
+            SELECT COUNT(Id)
+            FROM Usuario
             ";
 
         private readonly string connectionString;
@@ -255,11 +263,11 @@ namespace Mcba.Dal
             }
         }
 
-        public IEnumerable<UserDto> GetAll(int offsetRows)
+        public IEnumerable<UserDto> GetAll(int page, int take)
         {
             using (var db = new DataAccess(connectionString).GetOpenConnection())
             {
-                return db.Query<UserDto>(QRY_GET_ALL_USERS_BY_PAGE, new { OffsetRows = offsetRows });
+                return db.Query<UserDto>(QRY_GET_ALL_USERS_BY_PAGE, new {Skip = page * take, Take = take});
             }
         }
 
@@ -330,15 +338,15 @@ namespace Mcba.Dal
                             var ok = db.Execute(QRY_UPDATE_USER,
                                 new
                                 {
-                                    Nombre = user.Nombre, Apellido = user.Apellido, Login = user.Login,
-                                    Email = user.Email, IdIdioma = user.IdIdioma
-                                });
+                                    Nombre = user.Nombre, Apellido = user.Apellido, Email = user.Email, IdIdioma = user.IdIdioma,
+                                    Activo = user.Activo, Id = user.Id
+                                }, transaction: tr);
 
-                            var upadteUser = GetUserByLogin(user.Login);
-                            var dvhString = DvhCalculator<User>.GetDvhString(upadteUser, out _);
-                            db.Execute(QRY_UPDATE_DV_BY_LOGIN, new {Dv = dvhString, Login = upadteUser.Login});
+                            var updatedUser = GetUserByLogin(user.Login, db, tr);
+                            var dvhString = DvhCalculator<User>.GetDvhString(updatedUser, out _);
+                            db.Execute(QRY_UPDATE_DV_BY_LOGIN, new {Dv = dvhString, Login = updatedUser.Login}, transaction:tr);
 
-                            var users = db.Query<User>(QRY_GET_ALL_USERS);
+                            var users = db.Query<User>(QRY_GET_ALL_USERS, transaction: tr);
                             long dvvTotal = 0;
                             foreach (var u in users)
                             {
@@ -371,12 +379,21 @@ namespace Mcba.Dal
             return GetUserByLogin(login) != null;
         }
 
-        public bool EmailExist(string email)
+        public bool EmailExist(string email, int idUsuario)
         {
             using (var db = new DataAccess(connectionString).GetOpenConnection())
             {
-                var ret = db.ExecuteScalar<int>(QRY_EMAIL_EXISTS, new { Email = email });
+                var ret = db.ExecuteScalar<int>(QRY_EMAIL_EXISTS, new {Email = email, IdUsuario = idUsuario});
                 return ret == 1;
+            }
+        }
+
+        public int GetUsersCount()
+        {
+            using (var db = new DataAccess(connectionString).GetOpenConnection())
+            {
+                var ret = db.ExecuteScalar<int>(QRY_USERS_COUNT);
+                return ret;
             }
         }
     }

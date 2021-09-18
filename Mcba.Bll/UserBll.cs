@@ -59,9 +59,9 @@ namespace Mcba.Bll
             return randomPass;
         }
 
-        public IEnumerable<UserDto> Get(int offsetRows)
+        public IEnumerable<UserDto> GetPage(int page)
         {
-            return new UserDal(McbaSettings.CnnString).GetAll(offsetRows);
+            return new UserDal(McbaSettings.CnnString).GetAll(page, McbaSettings.DataPagination);
         }
 
         public User GetUser(int id)
@@ -87,11 +87,16 @@ namespace Mcba.Bll
             return userDal.Save(user);
         }
 
-        public bool EmailExist(string email)
+        public bool EmailExist(string email, int idUsuario)
         {
             var userDal = new UserDal(McbaSettings.CnnString);
 
-            return userDal.EmailExist(email);
+            return userDal.EmailExist(email, idUsuario);
+        }
+
+        public int GetUsersCount()
+        {
+            return new UserDal(McbaSettings.CnnString).GetUsersCount();
         }
     }
 }

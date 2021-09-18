@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 using System.Windows.Forms;
 using Mcba.Infraestruture.Enums;
+using Mcba.Infraestruture.Settings;
 
 namespace Mcba.UI
 {
@@ -12,9 +13,9 @@ namespace Mcba.UI
             set => tsbSalir.Enabled = value;
         }
 
-        private bool CleanEnabled
+        private bool UndoEnabled
         {
-            set => tsbClean.Enabled = value;
+            set => tsbUndo.Enabled = value;
         }
 
         private bool NewEnabled
@@ -66,6 +67,14 @@ namespace Mcba.UI
         {
             set => tsbRestorePass.Visible = value;
         }
+
+        protected internal bool DeleteVisible
+        {
+            set => tsbDelete.Visible = value;
+        }
+
+        protected internal int GridPage { set; get; }
+        protected internal int DataRowsCount { set; get; }
 
         public ViewBase()
         {
@@ -127,14 +136,19 @@ namespace Mcba.UI
             RestorePass();
         }
 
-        private void tsbClean_Click(object sender, EventArgs e)
+        private void tsbUndo_Click(object sender, EventArgs e)
         {
-            Clean();
+            Undo();
         }
 
         protected internal virtual void Salir()
         {
             SetToolbarStatus(ToolbarStatusEnum.None);
+        }
+
+        protected internal virtual void Undo()
+        {
+            
         }
 
         protected internal virtual void New()
@@ -154,7 +168,7 @@ namespace Mcba.UI
 
         protected internal virtual void Save()
         {
-            SetToolbarStatus(ToolbarStatusEnum.Save);
+            SetToolbarStatus(ToolbarStatusEnum.None);
         }
 
         protected internal virtual void Print()
@@ -187,11 +201,6 @@ namespace Mcba.UI
             SetToolbarStatus(ToolbarStatusEnum.Default);
         }
 
-        protected internal void SetCaptions(Dictionary<string, string> captions)
-        {
-
-        }
-
         protected void SetToolbarStatus(ToolbarStatusEnum status)
         {
             switch (status)
@@ -202,6 +211,14 @@ namespace Mcba.UI
 
                 case ToolbarStatusEnum.Default:
                     SetToolbarDefault();
+                    break;
+
+                case ToolbarStatusEnum.Delete:
+                    SetToolbarDelete();
+                    break;
+
+                case ToolbarStatusEnum.Edit:
+                    SetToolbarEdit();
                     break;
 
                 case ToolbarStatusEnum.None:
@@ -220,14 +237,14 @@ namespace Mcba.UI
         private void SetToolbarDefault()
         {
             SalirEnabled = true;
-            CleanEnabled = false;
+            UndoEnabled = false;
             NewEnabled = true;
             DeleteEnabled = true;
             EditEnabled = true;
             SaveEnabled = false;
             BuscarEnabled = true;
-            PreviousEnabled = true;
-            NextEnabled = true;
+            PreviousEnabled = GridPage > 0;
+            NextEnabled = DataRowsCount >= (GridPage == 0 ? 1 : GridPage) * McbaSettings.DataPagination; ;
             PrintEnabled = true;
             RestorePassEnabled = true;
         }
@@ -235,7 +252,7 @@ namespace Mcba.UI
         private void SetToolbarNone()
         {
             SalirEnabled = false;
-            CleanEnabled = false;
+            UndoEnabled = false;
             NewEnabled = false;
             DeleteEnabled = false;
             EditEnabled = false;
@@ -250,7 +267,7 @@ namespace Mcba.UI
         private void SetToolbarAll()
         {
             SalirEnabled = true;
-            CleanEnabled = true;
+            UndoEnabled = true;
             NewEnabled = true;
             DeleteEnabled = true;
             EditEnabled = true;
@@ -264,12 +281,42 @@ namespace Mcba.UI
 
         private void SetToolbarNew()
         {
-            SalirEnabled = false;
-            CleanEnabled = true;
+            SalirEnabled = true;
+            UndoEnabled = true;
             NewEnabled = false;
             DeleteEnabled = false;
             EditEnabled = false;
             SaveEnabled = true;
+            BuscarEnabled = false;
+            PreviousEnabled = GridPage > 0;
+            NextEnabled = DataRowsCount >= (GridPage == 0 ? 1 : GridPage) * McbaSettings.DataPagination; ;
+            PrintEnabled = false;
+            RestorePassEnabled = false;
+        }
+
+        private void SetToolbarEdit()
+        {
+            SalirEnabled = false;
+            UndoEnabled = true;
+            NewEnabled = false;
+            DeleteEnabled = false;
+            EditEnabled = false;
+            SaveEnabled = true;
+            BuscarEnabled = true;
+            PreviousEnabled = GridPage > 0;
+            NextEnabled = DataRowsCount >= (GridPage == 0 ? 1 : GridPage) * McbaSettings.DataPagination; ;
+            PrintEnabled = false;
+            RestorePassEnabled = false;
+        }
+
+        private void SetToolbarDelete()
+        {
+            SalirEnabled = false;
+            UndoEnabled = false;
+            NewEnabled = false;
+            DeleteEnabled = false;
+            EditEnabled = false;
+            SaveEnabled = false;
             BuscarEnabled = false;
             PreviousEnabled = false;
             NextEnabled = false;

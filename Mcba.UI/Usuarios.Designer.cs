@@ -182,6 +182,7 @@
             this.dgvUsuarios.Size = new System.Drawing.Size(541, 307);
             this.dgvUsuarios.TabIndex = 6;
             this.dgvUsuarios.CellClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.dgvUsuarios_CellClick);
+            this.dgvUsuarios.DataBindingComplete += new System.Windows.Forms.DataGridViewBindingCompleteEventHandler(this.dgvUsuarios_DataBindingComplete);
             // 
             // errorProvider
             // 

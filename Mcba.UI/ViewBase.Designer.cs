@@ -30,7 +30,7 @@
         {
             this.Toolbar = new System.Windows.Forms.ToolStrip();
             this.tsbSalir = new System.Windows.Forms.ToolStripButton();
-            this.tsbClean = new System.Windows.Forms.ToolStripButton();
+            this.tsbUndo = new System.Windows.Forms.ToolStripButton();
             this.tsbNew = new System.Windows.Forms.ToolStripButton();
             this.tsbDelete = new System.Windows.Forms.ToolStripButton();
             this.tsbEdit = new System.Windows.Forms.ToolStripButton();
@@ -47,7 +47,7 @@
             // 
             this.Toolbar.Items.AddRange(new System.Windows.Forms.ToolStripItem[] {
             this.tsbSalir,
-            this.tsbClean,
+            this.tsbUndo,
             this.tsbNew,
             this.tsbDelete,
             this.tsbEdit,
@@ -74,16 +74,16 @@
             this.tsbSalir.Text = "toolStripButton1";
             this.tsbSalir.Click += new System.EventHandler(this.tsbSalir_Click);
             // 
-            // tsbClean
+            // tsbUndo
             // 
-            this.tsbClean.DisplayStyle = System.Windows.Forms.ToolStripItemDisplayStyle.Image;
-            this.tsbClean.Image = global::Mcba.UI.Properties.Resources.iconClear;
-            this.tsbClean.ImageTransparentColor = System.Drawing.Color.Magenta;
-            this.tsbClean.Name = "tsbClean";
-            this.tsbClean.Size = new System.Drawing.Size(23, 22);
-            this.tsbClean.Tag = "tsbClean";
-            this.tsbClean.Text = "tsbClean";
-            this.tsbClean.Click += new System.EventHandler(this.tsbClean_Click);
+            this.tsbUndo.DisplayStyle = System.Windows.Forms.ToolStripItemDisplayStyle.Image;
+            this.tsbUndo.Image = global::Mcba.UI.Properties.Resources.Undo;
+            this.tsbUndo.ImageTransparentColor = System.Drawing.Color.Magenta;
+            this.tsbUndo.Name = "tsbUndo";
+            this.tsbUndo.Size = new System.Drawing.Size(23, 22);
+            this.tsbUndo.Tag = "tsbUndo";
+            this.tsbUndo.Text = "tsbUndo";
+            this.tsbUndo.Click += new System.EventHandler(this.tsbUndo_Click);
             // 
             // tsbNew
             // 
@@ -183,7 +183,7 @@
             this.tsbRestorePass.Name = "tsbRestorePass";
             this.tsbRestorePass.Size = new System.Drawing.Size(23, 22);
             this.tsbRestorePass.Tag = "tsbRestorePass";
-            this.tsbRestorePass.Text = "Restaurar Contraseña";
+            this.tsbRestorePass.Text = "tsbRestorePass";
             this.tsbRestorePass.Visible = false;
             this.tsbRestorePass.Click += new System.EventHandler(this.tsbRestaurar_Click);
             // 
@@ -217,6 +217,6 @@
         private System.Windows.Forms.ToolStripButton tsbRestorePass;
         private System.Windows.Forms.ToolStripButton tsbPrevious;
         private System.Windows.Forms.ToolStripButton tsbNext;
-        private System.Windows.Forms.ToolStripButton tsbClean;
+        private System.Windows.Forms.ToolStripButton tsbUndo;
     }
 }
