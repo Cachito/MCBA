@@ -28,37 +28,40 @@
         /// </summary>
         private void InitializeComponent()
         {
-            System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(ViewBase));
-            this.toolBar = new Mcba.UI.Controls.McbaToolStrip();
-            this.tsbSalir = new Mcba.UI.Controls.McbaToolStripButton();
-            this.tsbNew = new Mcba.UI.Controls.McbaToolStripButton();
-            this.tsbDelete = new Mcba.UI.Controls.McbaToolStripButton();
-            this.tsbEdit = new Mcba.UI.Controls.McbaToolStripButton();
-            this.tsbSave = new Mcba.UI.Controls.McbaToolStripButton();
-            this.tsbFind = new Mcba.UI.Controls.McbaToolStripButton();
-            this.tsbPrint = new Mcba.UI.Controls.McbaToolStripButton();
-            this.dataGridView = new System.Windows.Forms.DataGridView();
-            this.toolStripButton1 = new System.Windows.Forms.ToolStripButton();
-            this.toolBar.SuspendLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.dataGridView)).BeginInit();
+            this.Toolbar = new System.Windows.Forms.ToolStrip();
+            this.tsbSalir = new System.Windows.Forms.ToolStripButton();
+            this.tsbClean = new System.Windows.Forms.ToolStripButton();
+            this.tsbNew = new System.Windows.Forms.ToolStripButton();
+            this.tsbDelete = new System.Windows.Forms.ToolStripButton();
+            this.tsbEdit = new System.Windows.Forms.ToolStripButton();
+            this.tsbSave = new System.Windows.Forms.ToolStripButton();
+            this.tsbPrint = new System.Windows.Forms.ToolStripButton();
+            this.tsbBuscar = new System.Windows.Forms.ToolStripButton();
+            this.tsbPrevious = new System.Windows.Forms.ToolStripButton();
+            this.tsbNext = new System.Windows.Forms.ToolStripButton();
+            this.tsbRestorePass = new System.Windows.Forms.ToolStripButton();
+            this.Toolbar.SuspendLayout();
             this.SuspendLayout();
             // 
-            // toolBar
+            // Toolbar
             // 
-            this.toolBar.Items.AddRange(new System.Windows.Forms.ToolStripItem[] {
+            this.Toolbar.Items.AddRange(new System.Windows.Forms.ToolStripItem[] {
             this.tsbSalir,
+            this.tsbClean,
             this.tsbNew,
             this.tsbDelete,
             this.tsbEdit,
             this.tsbSave,
-            this.tsbFind,
             this.tsbPrint,
-            this.toolStripButton1});
-            this.toolBar.Location = new System.Drawing.Point(0, 0);
-            this.toolBar.Name = "toolBar";
-            this.toolBar.Size = new System.Drawing.Size(613, 25);
-            this.toolBar.TabIndex = 1;
-            this.toolBar.Text = "toolStrip1";
+            this.tsbBuscar,
+            this.tsbPrevious,
+            this.tsbNext,
+            this.tsbRestorePass});
+            this.Toolbar.Location = new System.Drawing.Point(0, 0);
+            this.Toolbar.Name = "Toolbar";
+            this.Toolbar.Size = new System.Drawing.Size(613, 25);
+            this.Toolbar.TabIndex = 6;
+            this.Toolbar.Text = "toolStrip1";
             // 
             // tsbSalir
             // 
@@ -68,7 +71,19 @@
             this.tsbSalir.Name = "tsbSalir";
             this.tsbSalir.Size = new System.Drawing.Size(23, 22);
             this.tsbSalir.Tag = "tsbSalir";
-            this.tsbSalir.Text = "Salir";
+            this.tsbSalir.Text = "toolStripButton1";
+            this.tsbSalir.Click += new System.EventHandler(this.tsbSalir_Click);
+            // 
+            // tsbClean
+            // 
+            this.tsbClean.DisplayStyle = System.Windows.Forms.ToolStripItemDisplayStyle.Image;
+            this.tsbClean.Image = global::Mcba.UI.Properties.Resources.iconClear;
+            this.tsbClean.ImageTransparentColor = System.Drawing.Color.Magenta;
+            this.tsbClean.Name = "tsbClean";
+            this.tsbClean.Size = new System.Drawing.Size(23, 22);
+            this.tsbClean.Tag = "tsbClean";
+            this.tsbClean.Text = "tsbClean";
+            this.tsbClean.Click += new System.EventHandler(this.tsbClean_Click);
             // 
             // tsbNew
             // 
@@ -78,7 +93,8 @@
             this.tsbNew.Name = "tsbNew";
             this.tsbNew.Size = new System.Drawing.Size(23, 22);
             this.tsbNew.Tag = "tsbNew";
-            this.tsbNew.Text = "Nuevo";
+            this.tsbNew.Text = "tsbNew";
+            this.tsbNew.Click += new System.EventHandler(this.tsbNew_Click);
             // 
             // tsbDelete
             // 
@@ -88,7 +104,8 @@
             this.tsbDelete.Name = "tsbDelete";
             this.tsbDelete.Size = new System.Drawing.Size(23, 22);
             this.tsbDelete.Tag = "tsbDelete";
-            this.tsbDelete.Text = "Eliminar";
+            this.tsbDelete.Text = "toolStripButton1";
+            this.tsbDelete.Click += new System.EventHandler(this.tsbDelete_Click);
             // 
             // tsbEdit
             // 
@@ -98,7 +115,8 @@
             this.tsbEdit.Name = "tsbEdit";
             this.tsbEdit.Size = new System.Drawing.Size(23, 22);
             this.tsbEdit.Tag = "tsbEdit";
-            this.tsbEdit.Text = "Editar";
+            this.tsbEdit.Text = "toolStripButton1";
+            this.tsbEdit.Click += new System.EventHandler(this.tsbEdit_Click);
             // 
             // tsbSave
             // 
@@ -108,17 +126,8 @@
             this.tsbSave.Name = "tsbSave";
             this.tsbSave.Size = new System.Drawing.Size(23, 22);
             this.tsbSave.Tag = "tsbSave";
-            this.tsbSave.Text = "Guardar";
-            // 
-            // tsbFind
-            // 
-            this.tsbFind.DisplayStyle = System.Windows.Forms.ToolStripItemDisplayStyle.Image;
-            this.tsbFind.Image = global::Mcba.UI.Properties.Resources.IconBuscar;
-            this.tsbFind.ImageTransparentColor = System.Drawing.Color.Magenta;
-            this.tsbFind.Name = "tsbFind";
-            this.tsbFind.Size = new System.Drawing.Size(23, 22);
-            this.tsbFind.Tag = "tsbFind";
-            this.tsbFind.Text = "Buscar";
+            this.tsbSave.Text = "toolStripButton1";
+            this.tsbSave.Click += new System.EventHandler(this.tsbSave_Click);
             // 
             // tsbPrint
             // 
@@ -128,27 +137,55 @@
             this.tsbPrint.Name = "tsbPrint";
             this.tsbPrint.Size = new System.Drawing.Size(23, 22);
             this.tsbPrint.Tag = "tsbPrint";
-            this.tsbPrint.Text = "tsbPrintImprimir";
+            this.tsbPrint.Text = "Imprimir";
+            this.tsbPrint.Click += new System.EventHandler(this.tsbPrint_Click);
             // 
-            // dataGridView
+            // tsbBuscar
             // 
-            this.dataGridView.AllowUserToAddRows = false;
-            this.dataGridView.AllowUserToDeleteRows = false;
-            this.dataGridView.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
-            this.dataGridView.Dock = System.Windows.Forms.DockStyle.Bottom;
-            this.dataGridView.Location = new System.Drawing.Point(0, 150);
-            this.dataGridView.Name = "dataGridView";
-            this.dataGridView.Size = new System.Drawing.Size(613, 282);
-            this.dataGridView.TabIndex = 3;
+            this.tsbBuscar.BackColor = System.Drawing.SystemColors.Control;
+            this.tsbBuscar.CheckOnClick = true;
+            this.tsbBuscar.DisplayStyle = System.Windows.Forms.ToolStripItemDisplayStyle.Image;
+            this.tsbBuscar.Image = global::Mcba.UI.Properties.Resources.IconBuscar;
+            this.tsbBuscar.ImageTransparentColor = System.Drawing.Color.Magenta;
+            this.tsbBuscar.Name = "tsbBuscar";
+            this.tsbBuscar.Size = new System.Drawing.Size(23, 22);
+            this.tsbBuscar.Tag = "tsbBuscar";
+            this.tsbBuscar.Text = "Find";
+            this.tsbBuscar.Click += new System.EventHandler(this.tsbBuscar_Click);
             // 
-            // toolStripButton1
+            // tsbPrevious
             // 
-            this.toolStripButton1.DisplayStyle = System.Windows.Forms.ToolStripItemDisplayStyle.Image;
-            this.toolStripButton1.Image = ((System.Drawing.Image)(resources.GetObject("toolStripButton1.Image")));
-            this.toolStripButton1.ImageTransparentColor = System.Drawing.Color.Magenta;
-            this.toolStripButton1.Name = "toolStripButton1";
-            this.toolStripButton1.Size = new System.Drawing.Size(23, 22);
-            this.toolStripButton1.Text = "toolStripButton1";
+            this.tsbPrevious.DisplayStyle = System.Windows.Forms.ToolStripItemDisplayStyle.Image;
+            this.tsbPrevious.Image = global::Mcba.UI.Properties.Resources.iconArrowLeft;
+            this.tsbPrevious.ImageTransparentColor = System.Drawing.Color.Magenta;
+            this.tsbPrevious.Name = "tsbPrevious";
+            this.tsbPrevious.Size = new System.Drawing.Size(23, 22);
+            this.tsbPrevious.Tag = "tsbPrevious";
+            this.tsbPrevious.Text = "tsbPrevious";
+            this.tsbPrevious.Click += new System.EventHandler(this.tsbLeft_Click);
+            // 
+            // tsbNext
+            // 
+            this.tsbNext.DisplayStyle = System.Windows.Forms.ToolStripItemDisplayStyle.Image;
+            this.tsbNext.Image = global::Mcba.UI.Properties.Resources.iconArrowRight;
+            this.tsbNext.ImageTransparentColor = System.Drawing.Color.Magenta;
+            this.tsbNext.Name = "tsbNext";
+            this.tsbNext.Size = new System.Drawing.Size(23, 22);
+            this.tsbNext.Tag = "tsbNext";
+            this.tsbNext.Text = "tsbNext";
+            this.tsbNext.Click += new System.EventHandler(this.tsbRight_Click);
+            // 
+            // tsbRestorePass
+            // 
+            this.tsbRestorePass.DisplayStyle = System.Windows.Forms.ToolStripItemDisplayStyle.Image;
+            this.tsbRestorePass.Image = global::Mcba.UI.Properties.Resources.Restore_Password_48;
+            this.tsbRestorePass.ImageTransparentColor = System.Drawing.Color.Magenta;
+            this.tsbRestorePass.Name = "tsbRestorePass";
+            this.tsbRestorePass.Size = new System.Drawing.Size(23, 22);
+            this.tsbRestorePass.Tag = "tsbRestorePass";
+            this.tsbRestorePass.Text = "Restaurar Contraseña";
+            this.tsbRestorePass.Visible = false;
+            this.tsbRestorePass.Click += new System.EventHandler(this.tsbRestaurar_Click);
             // 
             // ViewBase
             // 
@@ -156,29 +193,30 @@
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(613, 432);
             this.ControlBox = false;
-            this.Controls.Add(this.dataGridView);
-            this.Controls.Add(this.toolBar);
+            this.Controls.Add(this.Toolbar);
             this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.FixedSingle;
             this.Name = "ViewBase";
             this.Text = "ViewBase";
-            this.toolBar.ResumeLayout(false);
-            ((System.ComponentModel.ISupportInitialize)(this.dataGridView)).EndInit();
+            this.Load += new System.EventHandler(this.ViewBase_Load);
+            this.Toolbar.ResumeLayout(false);
+            this.Toolbar.PerformLayout();
             this.ResumeLayout(false);
             this.PerformLayout();
 
         }
 
         #endregion
-
-        protected Mcba.UI.Controls.McbaToolStrip toolBar;
-        protected Mcba.UI.Controls.McbaToolStripButton tsbSalir;
-        protected Mcba.UI.Controls.McbaToolStripButton tsbNew;
-        protected Mcba.UI.Controls.McbaToolStripButton tsbDelete;
-        protected Mcba.UI.Controls.McbaToolStripButton tsbEdit;
-        protected Mcba.UI.Controls.McbaToolStripButton tsbSave;
-        protected Mcba.UI.Controls.McbaToolStripButton tsbFind;
-        protected Mcba.UI.Controls.McbaToolStripButton tsbPrint;
-        protected System.Windows.Forms.DataGridView dataGridView;
-        private System.Windows.Forms.ToolStripButton toolStripButton1;
+        private System.Windows.Forms.ToolStrip Toolbar;
+        private System.Windows.Forms.ToolStripButton tsbSalir;
+        private System.Windows.Forms.ToolStripButton tsbNew;
+        private System.Windows.Forms.ToolStripButton tsbDelete;
+        private System.Windows.Forms.ToolStripButton tsbEdit;
+        private System.Windows.Forms.ToolStripButton tsbSave;
+        private System.Windows.Forms.ToolStripButton tsbPrint;
+        private System.Windows.Forms.ToolStripButton tsbBuscar;
+        private System.Windows.Forms.ToolStripButton tsbRestorePass;
+        private System.Windows.Forms.ToolStripButton tsbPrevious;
+        private System.Windows.Forms.ToolStripButton tsbNext;
+        private System.Windows.Forms.ToolStripButton tsbClean;
     }
 }

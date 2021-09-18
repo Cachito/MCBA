@@ -113,9 +113,6 @@
     <Compile Include="CondicionesIva.Designer.cs">
       <DependentUpon>CondicionesIva.cs</DependentUpon>
     </Compile>
-    <Compile Include="Controls\McbaToolStripButton.cs">
-      <SubType>Component</SubType>
-    </Compile>
     <Compile Include="Facturas.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -151,9 +148,6 @@
     </Compile>
     <Compile Include="Login.Designer.cs">
       <DependentUpon>Login.cs</DependentUpon>
-    </Compile>
-    <Compile Include="Controls\McbsToolStrip.cs">
-      <SubType>Component</SubType>
     </Compile>
     <Compile Include="Menu.cs">
       <SubType>Form</SubType>
@@ -392,6 +386,7 @@
   <ItemGroup>
     <None Include="Resources\Logo2.png" />
     <None Include="Resources\bsa.ico" />
+    <None Include="Resources\iconArrowLeft.png" />
     <Content Include="SqlServerTypes\readme.htm" />
     <Content Include="SqlServerTypes\x64\msvcr120.dll">
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>

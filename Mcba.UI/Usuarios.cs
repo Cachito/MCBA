@@ -11,7 +11,7 @@ using Mcba.Infraestruture.Settings;
 
 namespace Mcba.UI
 {
-    public partial class Usuarios : Form
+    public partial class Usuarios : ViewBase
     {
         private Dictionary<string, string> captions = new Dictionary<string, string>();
 
@@ -24,29 +24,24 @@ namespace Mcba.UI
             InitializeComponent();
         }
 
-        private void tsbSalir_Click(object sender, EventArgs e)
+        protected internal override void Salir()
         {
+            base.Salir();
             Close();
         }
 
-        private void tsbNew_Click(object sender, EventArgs e)
+        protected internal override void New()
         {
-            New();
-        }
-
-        private void tsbEdit_Click(object sender, EventArgs e)
-        {
-            Edit();
-        }
-
-        private void tsbSave_Click(object sender, EventArgs e)
-        {
-            Save();
+            base.New();
+            Clean();
+            chkActivo.Checked = true;
+            SetToolbarStatus(ToolbarStatusEnum.New);
         }
 
         private void Usuarios_Load(object sender, EventArgs e)
         {
             GridPage = 0;
+            RestorePassVisible = true;
             SetCaptions();
             LoadIdiomas();
             LoadGrid();
@@ -64,8 +59,10 @@ namespace Mcba.UI
             SetUser(id);
         }
 
-        private void tsbRestaurar_Click(object sender, EventArgs e)
+        protected internal override void RestorePass()
         {
+            base.RestorePass();
+
             if (string.IsNullOrWhiteSpace(txtEmail.Text))
             {
                 captions.TryGetValue("MailWarning", out var mailCaption);
@@ -111,6 +108,7 @@ namespace Mcba.UI
         {
             captions = CaptionHelper.GetCaptions(Name);
             CaptionHelper.SetCaptions(captions, this);
+            //SetCaptions(captions);
         }
 
         private void LoadGrid()
@@ -130,20 +128,22 @@ namespace Mcba.UI
             cmbIdiomas.SelectedIndex = -1;
         }
 
-        private void Edit()
+        protected internal override void Edit()
         {
-            ControlsEnabled(true);
+            base.Edit();
         }
 
-        private void New()
-        {
-            Clean();
-            chkActivo.Checked = true;
-            ControlsEnabled(true);
-        }
+        //private void New()
+        //{
+        //    Clean();
+        //    chkActivo.Checked = true;
+        //    ControlsEnabled(true);
+        //}
 
-        private void Clean()
+        protected internal override void Clean()
         {
+            base.Clean();
+
             IdUsuario = 0;
             txtId.Text = string.Empty;
             txtEmail.Text = string.Empty;
@@ -153,17 +153,19 @@ namespace Mcba.UI
             cmbIdiomas.SelectedIndex = -1;
         }
 
-        private void ControlsEnabled(bool enable)
-        {
-            txtEmail.Enabled = enable;
-            txtNombre.Enabled = enable;
-            txtApellido.Enabled = enable;
-            cmbIdiomas.Enabled = enable;
-            chkActivo.Enabled = enable && IdUsuario != 0;
-        }
+        //private void ControlsEnabled(bool enable)
+        //{
+        //    txtEmail.Enabled = enable;
+        //    txtNombre.Enabled = enable;
+        //    txtApellido.Enabled = enable;
+        //    cmbIdiomas.Enabled = enable;
+        //    chkActivo.Enabled = enable && IdUsuario != 0;
+        //}
 
-        private void Save()
+        protected internal override void Save()
         {
+            base.Save();
+
             if (!Valida())
             {
                 return;
@@ -293,7 +295,7 @@ namespace Mcba.UI
         private void SetUser(string id)
         {
             errorProvider.Clear();
-            ControlsEnabled(false);
+            SetToolbarStatus(ToolbarStatusEnum.None);
 
             var userId = int.Parse(id);
             var user = new UserBll().GetUser(userId);
@@ -313,6 +315,8 @@ namespace Mcba.UI
             txtApellido.Text = user.Apellido;
             cmbIdiomas.SelectedValue = user.IdIdioma;
             chkActivo.Checked = user.Activo;
+
+            SetToolbarStatus(ToolbarStatusEnum.Default);
         }
     }
 }
