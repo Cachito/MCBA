@@ -1,14 +1,11 @@
 ﻿using System;
 using System.ComponentModel;
 using System.IO;
-using System.Threading;
 using Mcba.Seguridad;
 using System.Windows.Forms;
 using Mcba.Bll;
 using Mcba.Bll.Helpers;
-using Mcba.Infraestruture;
 using Mcba.Infraestruture.Enums;
-using Mcba.Infraestruture.Helpers;
 using Mcba.Infraestruture.Settings;
 using Mcba.UI.Properties;
 using Newtonsoft.Json;

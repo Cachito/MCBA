@@ -218,15 +218,18 @@ namespace Mcba.UI
 
             captions.TryGetValue("RestoreSubject", out var restoreSubject);
             captions.TryGetValue("RestoreBody", out var restoreBody);
-            var send = MailHelper.SendMail(userEmail, restoreSubject,
-                string.Format(restoreBody ?? McbaSettings.SinTraduccion, newPassword, Environment.NewLine));
 
-            if (send)
-            {
-                captions.TryGetValue("RestoreSent", out var restoreSent);
-                this.ShowMessage(restoreSent, McbaSettings.MessageTitle);
-                return;
-            }
+            #region EnvioMail
+            //var send = MailHelper.SendMail(userEmail, restoreSubject,
+            //    string.Format(restoreBody ?? McbaSettings.SinTraduccion, newPassword, Environment.NewLine));
+
+            //if (send)
+            //{
+            //    captions.TryGetValue("RestoreSent", out var restoreSent);
+            //    this.ShowMessage(restoreSent, McbaSettings.MessageTitle);
+            //    return;
+            //}
+            #endregion
 
             MailHelper.SaveToFile(userEmail, restoreSubject,
                 string.Format(restoreBody ?? McbaSettings.SinTraduccion, newPassword, Environment.NewLine));

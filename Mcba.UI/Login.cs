@@ -8,12 +8,15 @@ using Mcba.Infraestruture;
 using Mcba.Infraestruture.Enums;
 using Mcba.Infraestruture.Helpers;
 using Mcba.Infraestruture.Settings;
+using Mcba.Seguridad;
 
 namespace Mcba.UI
 {
     public partial class Login : Form
     {
         private Dictionary<string, string> captions = new Dictionary<string, string>();
+
+        internal UserLogged UserLoggedIn { set; get; }
 
         public Login()
         {
@@ -105,6 +108,7 @@ namespace Mcba.UI
 
             if (ok)
             {
+                UserLoggedIn = userBll.LogUser(txtUsuario.Text);
                 DialogResult = DialogResult.OK;
                 Close();
             }
@@ -142,18 +146,21 @@ namespace Mcba.UI
 
             captions.TryGetValue("RestoreSubject", out var restoreSubject);
             captions.TryGetValue("RestoreBody", out var restoreBody);
-            var send = MailHelper.SendMail(userEmail, restoreSubject,
-                string.Format(restoreBody, newPassword, Environment.NewLine));
 
-            if (send)
-            {
-                captions.TryGetValue("RestoreSent", out var restoreSent);
-                this.ShowMessage(restoreSent, McbaSettings.MessageTitle);
-                return;
-            }
+            #region EnvioMail
+            //var send = MailHelper.SendMail(userEmail, restoreSubject,
+            //    string.Format(restoreBody, txtUsuario.Text, newPassword, Environment.NewLine));
+
+            //if (send)
+            //{
+            //    captions.TryGetValue("RestoreSent", out var restoreSent);
+            //    this.ShowMessage(restoreSent, McbaSettings.MessageTitle);
+            //    return;
+            //}
+            #endregion
 
             MailHelper.SaveToFile(userEmail, restoreSubject,
-                string.Format(restoreBody, newPassword, Environment.NewLine));
+                string.Format(restoreBody, txtUsuario.Text, newPassword, Environment.NewLine));
 
             captions.TryGetValue("RestoreSaved", out var restoreSaved);
             this.ShowMessage(string.Format(restoreSaved, McbaSettings.TempFolder), McbaSettings.MessageTitle);

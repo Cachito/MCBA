@@ -69,6 +69,13 @@ namespace Mcba.Bll
             return new UserDal(McbaSettings.CnnString).GetUserById(id);
         }
 
+        public UserLogged LogUser(string login)
+        {
+            var cryptLogin = HashCalculator.Crypt(login, McbaSettings.Salt);
+
+            return new UserDal(McbaSettings.CnnString).LogUser(cryptLogin);
+        }
+
         public bool Save(User user, out string newPassword)
         {
             newPassword = string.Empty;

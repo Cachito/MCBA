@@ -28,6 +28,7 @@ namespace Mcba.Dal
                     Login = @Login
                     AND Password = @Password
                     AND Intentos < @MaxIntentos
+                    AND Activo = 1
                 )
             BEGIN
                 SELECT 1
@@ -193,7 +194,22 @@ namespace Mcba.Dal
         {
             using (var db = new DataAccess(connectionString).GetOpenConnection())
             {
-                db.Execute(QRY_UPDATE_ATTEMP_BY_LOGIN, new {Login = login});
+                using (var tr = db.BeginTransaction())
+                {
+                    try
+                    {
+                        db.Execute(QRY_UPDATE_ATTEMP_BY_LOGIN, new {Login = login}, transaction: tr);
+
+                        UpdateIntegrityByLogin(login, db, tr);
+
+                        tr.Commit();
+                    }
+                    catch
+                    {
+                        tr.Rollback();
+                        throw;
+                    }
+                }
             }
         }
 
@@ -213,23 +229,9 @@ namespace Mcba.Dal
                 {
                     try
                     {
-                        db.Execute(QRY_RESTORE_BY_LOGIN, new {Login = login, Password = password});
-                        var changeUser = GetUserByLogin(login);
-                        var dvhString = DvhCalculator<User>.GetDvhString(changeUser, out var _);
-                        db.Execute(QRY_UPDATE_DV_BY_LOGIN, new {Dv = dvhString, Login = login});
+                        db.Execute(QRY_RESTORE_BY_LOGIN, new {Login = login, Password = password}, tr);
 
-                        var users = db.Query<User>(QRY_GET_ALL_USERS);
-                        long dvvTotal = 0;
-                        foreach (var user in users)
-                        {
-                            DvhCalculator<User>.GetDvhString(user, out var dvhValue);
-                            dvvTotal += dvhValue;
-                        }
-
-                        var dvvValue = DvValue.GetDvValue(dvvTotal.ToString());
-                        var dvvString = HashCalculator.GetCryptString(dvvValue.ToString(), CryptMethodEnum.Sha1);
-
-                        IntegrityDal.UpdateIntegryty("Usuario", dvvString, db, tr);
+                        UpdateIntegrityByLogin(login, db, tr);
 
                         tr.Commit();
                     }
@@ -252,7 +254,7 @@ namespace Mcba.Dal
 
         public User GetUserByLogin(string login, IDbConnection db, IDbTransaction tr)
         {
-            return db.Query<User>(QRY_GET_USER_BY_LOGIN, new {Login = login}, transaction: tr).FirstOrDefault();
+            return db.Query<User>(QRY_GET_USER_BY_LOGIN, new {Login = login}, tr).FirstOrDefault();
         }
 
         public IEnumerable<User> GetAll()
@@ -298,22 +300,8 @@ namespace Mcba.Dal
                                     Password = user.Password, Email = user.Email, IdIdioma = user.IdIdioma,
                                     Activo = user.Activo
                                 }, transaction: tr);
-                            var newUser = GetUserByLogin(user.Login, db, tr);
-                            var dvhString = DvhCalculator<User>.GetDvhString(newUser, out _);
-                            db.Execute(QRY_UPDATE_DV_BY_LOGIN, new {Dv = dvhString, Login = newUser.Login},
-                                transaction: tr);
 
-                            var users = db.Query<User>(QRY_GET_ALL_USERS, transaction: tr);
-                            long dvvTotal = 0;
-                            foreach (var u in users)
-                            {
-                                DvhCalculator<User>.GetDvhString(u, out var dvhValue);
-                                dvvTotal += dvhValue;
-                            }
-
-                            var dvvValue = DvValue.GetDvValue(dvvTotal.ToString());
-                            var dvvString = HashCalculator.GetCryptString(dvvValue.ToString(), CryptMethodEnum.Sha1);
-                            IntegrityDal.UpdateIntegryty("Usuario", dvvString, db, tr);
+                            UpdateIntegrityByLogin(user.Login, db, tr);
 
                             tr.Commit();
 
@@ -340,23 +328,9 @@ namespace Mcba.Dal
                                 {
                                     Nombre = user.Nombre, Apellido = user.Apellido, Email = user.Email, IdIdioma = user.IdIdioma,
                                     Activo = user.Activo, Id = user.Id
-                                }, transaction: tr);
+                                }, tr);
 
-                            var updatedUser = GetUserByLogin(user.Login, db, tr);
-                            var dvhString = DvhCalculator<User>.GetDvhString(updatedUser, out _);
-                            db.Execute(QRY_UPDATE_DV_BY_LOGIN, new {Dv = dvhString, Login = updatedUser.Login}, transaction:tr);
-
-                            var users = db.Query<User>(QRY_GET_ALL_USERS, transaction: tr);
-                            long dvvTotal = 0;
-                            foreach (var u in users)
-                            {
-                                DvhCalculator<User>.GetDvhString(u, out var dvhValue);
-                                dvvTotal += dvhValue;
-                            }
-
-                            var dvvValue = DvValue.GetDvValue(dvvTotal.ToString());
-                            var dvvString = HashCalculator.GetCryptString(dvvValue.ToString(), CryptMethodEnum.Sha1);
-                            IntegrityDal.UpdateIntegryty("Usuario", dvvString, db, tr);
+                            UpdateIntegrityByLogin(user.Login, db, tr);
 
                             ret = ok > 0;
 
@@ -395,6 +369,39 @@ namespace Mcba.Dal
                 var ret = db.ExecuteScalar<int>(QRY_USERS_COUNT);
                 return ret;
             }
+        }
+
+        private void UpdateIntegrityByLogin(string login, IDbConnection db, IDbTransaction tr)
+        {
+            var changedUser = GetUserByLogin(login,db, tr);
+            var dvhString = DvhCalculator<User>.GetDvhString(changedUser, out _);
+            db.Execute(QRY_UPDATE_DV_BY_LOGIN, new { Dv = dvhString, Login = login }, tr);
+
+            var users = db.Query<User>(QRY_GET_ALL_USERS, transaction: tr);
+            long dvvTotal = 0;
+            foreach (var user in users)
+            {
+                DvhCalculator<User>.GetDvhString(user, out var dvhValue);
+                dvvTotal += dvhValue;
+            }
+
+            var dvvValue = DvValue.GetDvValue(dvvTotal.ToString());
+            var dvvString = HashCalculator.GetCryptString(dvvValue.ToString(), CryptMethodEnum.Sha1);
+
+            IntegrityDal.UpdateIntegryty("Usuario", dvvString, db, tr);
+        }
+
+        public UserLogged LogUser(string cryptLogin)
+        {
+            var user = GetUserByLogin(cryptLogin);
+            return new UserLogged
+            {
+                Apellido = user.Apellido,
+                Email = user.Email,
+                Id = user.Id,
+                IdIdioma = user.IdIdioma,
+                Nombre = user.Nombre
+            };
         }
     }
 }

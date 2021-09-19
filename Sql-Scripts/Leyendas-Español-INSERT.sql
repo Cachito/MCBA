@@ -45,7 +45,7 @@ INSERT INTO Leyendas(IdIdioma, Modulo, Tag, Leyenda)
     VALUES(1, 'Login', 'RestoreSubject', 'Buongiorno S. A.')
 
 INSERT INTO Leyendas(IdIdioma, Modulo, Tag, Leyenda)
-    VALUES(1, 'Login', 'RestoreBody', 'Se le envía la clave nueva: "{0}" (Sin las comillas).{1}No comparta este correo.')
+    VALUES(1, 'Login', 'RestoreBody', '{0}: Se le envía la clave nueva: "{1}" (Sin las comillas).{2}No comparta este correo.')
 
 INSERT INTO Leyendas(IdIdioma, Modulo, Tag, Leyenda)
     VALUES(1, 'Login', 'RestoreSent', 'Se ha enviado el correo.')
@@ -54,6 +54,9 @@ INSERT INTO Leyendas(IdIdioma, Modulo, Tag, Leyenda)
     VALUES(1, 'Login', 'RestoreSaved', 'Se ha guardado el correo en {0}.')
 
 -- Menu
+INSERT INTO Leyendas(IdIdioma, Modulo, Tag, Leyenda)
+    VALUES(1, 'Menu', 'Menu', '{0} - Usuario: {1} {2}')
+
 INSERT INTO Leyendas(IdIdioma, Modulo, Tag, Leyenda)
     VALUES(1, 'Menu', 'tsmiMaestros', 'Maestros')
 
@@ -921,7 +924,7 @@ INSERT INTO Leyendas(IdIdioma, Modulo, Tag, Leyenda)
     VALUES(1, 'Usuarios', 'RestoreSubject', 'Buongiorno S. A.')
 	
 INSERT INTO Leyendas(IdIdioma, Modulo, Tag, Leyenda)
-    VALUES(1, 'Usuarios', 'RestoreBody', 'Se le envía la clave nueva: "{0}" (Sin las comillas).{1}No comparta este correo.')
+    VALUES(1, 'Usuarios', 'RestoreBody', '{0}: Se le envía la clave nueva: "{1}" (Sin las comillas).{2}No comparta este correo.')
 
 INSERT INTO Leyendas(IdIdioma, Modulo, Tag, Leyenda)
     VALUES(1, 'Usuarios', 'RestoreSent', 'Se ha enviado el correo.')

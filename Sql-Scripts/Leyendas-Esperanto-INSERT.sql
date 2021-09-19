@@ -42,7 +42,7 @@ INSERT INTO Leyendas(IdIdioma, Modulo, Tag, Leyenda)
     VALUES(2, 'Login', 'MailWarning', 'La indikita uzanto ne havas asignitan retpoŝtadreson.')
 
 INSERT INTO Leyendas(IdIdioma, Modulo, Tag, Leyenda)
-    VALUES(2, 'Login', 'RestoreBody', 'La nova pasvorto estas sendita al vi: "{0}" (Sen la citaĵoj).{1}Ne dividu ĉi tiun retpoŝton.')
+    VALUES(2, 'Login', 'RestoreBody', '{0}: La nova pasvorto estas sendita al vi: "{1}" (Sen la citaĵoj).{2}Ne dividu ĉi tiun retpoŝton.')
 
 INSERT INTO Leyendas(IdIdioma, Modulo, Tag, Leyenda)
     VALUES(2, 'Login', 'RestoreSubject', 'Buongiorno S. A.')
@@ -54,6 +54,9 @@ INSERT INTO Leyendas(IdIdioma, Modulo, Tag, Leyenda)
     VALUES(2, 'Login', 'RestoreSaved', 'La poŝto estis konservita en {0}.')
 
 -- Menu
+INSERT INTO Leyendas(IdIdioma, Modulo, Tag, Leyenda)
+    VALUES(2, 'Menu', 'Menu', '{0} - Uzanto.: {1} {2}')
+
 INSERT INTO Leyendas(IdIdioma, Modulo, Tag, Leyenda)
     VALUES(2, 'Menu', 'tsmiMaestros', 'Majstraj')
 
@@ -921,7 +924,7 @@ INSERT INTO Leyendas(IdIdioma, Modulo, Tag, Leyenda)
     VALUES(2, 'Usuarios', 'RestoreSubject', 'Buongiorno S. A.')
 	
 INSERT INTO Leyendas(IdIdioma, Modulo, Tag, Leyenda)
-    VALUES(2, 'Usuarios', 'RestoreBody', 'La nova ŝlosilo estas sendita al vi: "{0}" (Sen citiloj).{1} Ne dividu ĉi tiun retpoŝton.')
+    VALUES(2, 'Usuarios', 'RestoreBody', '{0}: La nova ŝlosilo estas sendita al vi: "{1}" (Sen citiloj).{2}Ne dividu ĉi tiun retpoŝton.')
 
 INSERT INTO Leyendas(IdIdioma, Modulo, Tag, Leyenda)
     VALUES(2, 'Usuarios', 'RestoreSent', 'La poŝto estis sendita.')

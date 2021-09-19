@@ -39,7 +39,7 @@ namespace Mcba.Dal
 
         public static void UpdateIntegryty(string tabla, string dvvString, IDbConnection db, IDbTransaction tr)
         {
-            db.Execute(QRY_UPDATE_INTEGRITY, new {Dv = dvvString, Tabla = tabla}, transaction: tr);
+            db.Execute(QRY_UPDATE_INTEGRITY, new {Dv = dvvString, Tabla = tabla}, tr);
         }
     }
 }
