@@ -27,8 +27,9 @@ namespace Mcba.Bll
             var userDal = new UserDal(McbaSettings.CnnString);
 
             ret = userDal.UserOk(cryptLogin, cryptPass, McbaSettings.MaxLoginAttemps);
+            var user = userDal.GetUserByLogin(cryptLogin);
 
-            if (!ret)
+            if (!ret && user != null)
             {
                 userDal.UpdateFailedAttempt(cryptLogin);
             }
@@ -69,7 +70,7 @@ namespace Mcba.Bll
             return new UserDal(McbaSettings.CnnString).GetUserById(id);
         }
 
-        public UserLogged LogUser(string login)
+        public User LogUser(string login)
         {
             var cryptLogin = HashCalculator.Crypt(login, McbaSettings.Salt);
 

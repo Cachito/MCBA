@@ -150,6 +150,22 @@ namespace Mcba.Dal
             FROM Usuario
             ";
 
+        private const string QRY_LOG_USER_BY_LOGIN = @"
+            UPDATE Usuario SET 
+                Intentos = 0
+            OUTPUT
+                inserted.Id
+                , inserted.Nombre
+                , inserted.Apellido
+                , inserted.Login
+                , inserted.Password
+                , inserted.Email
+                , inserted.IdIdioma
+                , inserted.Activo 
+                , inserted.Intentos
+            WHERE Login = @Login
+            ";
+
         private readonly string connectionString;
 
         public UserDal(string connectionString)
@@ -157,13 +173,13 @@ namespace Mcba.Dal
             this.connectionString = connectionString;
         }
 
-        public void UpdateDvh(string login, string dvString)
-        {
-            using (var db = new DataAccess(connectionString).GetOpenConnection())
-            {
-                db.Execute(QRY_UPDATE_DV_BY_LOGIN, new {Dv = dvString, Login = login});
-            }
-        }
+        //public void UpdateDvh(string login, string dvString)
+        //{
+        //    using (var db = new DataAccess(connectionString).GetOpenConnection())
+        //    {
+        //        db.Execute(QRY_UPDATE_DV_BY_LOGIN, new {Dv = dvString, Login = login});
+        //    }
+        //}
 
         public string GetEmailByLogin(string login)
         {
@@ -219,6 +235,11 @@ namespace Mcba.Dal
             {
                 return db.ExecuteScalar<int>(QRY_GET_ATTEMP_BY_LOGIN, new {Login = login});
             }
+        }
+
+        public int GetAttemps(string login, IDbConnection db, IDbTransaction tr)
+        {
+            return db.ExecuteScalar<int>(QRY_GET_ATTEMP_BY_LOGIN, new {Login = login}, tr);
         }
 
         public void RestorePassword(string login, string password)
@@ -326,7 +347,8 @@ namespace Mcba.Dal
                             var ok = db.Execute(QRY_UPDATE_USER,
                                 new
                                 {
-                                    Nombre = user.Nombre, Apellido = user.Apellido, Email = user.Email, IdIdioma = user.IdIdioma,
+                                    Nombre = user.Nombre, Apellido = user.Apellido, Email = user.Email,
+                                    IdIdioma = user.IdIdioma,
                                     Activo = user.Activo, Id = user.Id
                                 }, tr);
 
@@ -371,11 +393,47 @@ namespace Mcba.Dal
             }
         }
 
+        public User LogUser(string login)
+        {
+            using (var db = new DataAccess(connectionString).GetOpenConnection())
+            {
+                using (var tr = db.BeginTransaction())
+                {
+                    try
+                    {
+                        var attemps = GetAttemps(login, db, tr);
+                        var user = db.Query<User>(QRY_LOG_USER_BY_LOGIN, new {Login = login}, tr).FirstOrDefault();
+
+                        if (attemps != user.Intentos)
+                        {
+                            UpdateIntegrityByLogin(login, db, tr);
+                        }
+
+                        tr.Commit();
+
+                        return new User
+                        {
+                            Apellido = user.Apellido,
+                            Email = user.Email,
+                            Id = user.Id,
+                            IdIdioma = user.IdIdioma,
+                            Nombre = user.Nombre
+                        };
+                    }
+                    catch
+                    {
+                        tr.Rollback();
+                        throw;
+                    }
+                }
+            }
+        }
+
         private void UpdateIntegrityByLogin(string login, IDbConnection db, IDbTransaction tr)
         {
-            var changedUser = GetUserByLogin(login,db, tr);
+            var changedUser = GetUserByLogin(login, db, tr);
             var dvhString = DvhCalculator<User>.GetDvhString(changedUser, out _);
-            db.Execute(QRY_UPDATE_DV_BY_LOGIN, new { Dv = dvhString, Login = login }, tr);
+            db.Execute(QRY_UPDATE_DV_BY_LOGIN, new {Dv = dvhString, Login = login}, tr);
 
             var users = db.Query<User>(QRY_GET_ALL_USERS, transaction: tr);
             long dvvTotal = 0;
@@ -389,19 +447,6 @@ namespace Mcba.Dal
             var dvvString = HashCalculator.GetCryptString(dvvValue.ToString(), CryptMethodEnum.Sha1);
 
             IntegrityDal.UpdateIntegryty("Usuario", dvvString, db, tr);
-        }
-
-        public UserLogged LogUser(string cryptLogin)
-        {
-            var user = GetUserByLogin(cryptLogin);
-            return new UserLogged
-            {
-                Apellido = user.Apellido,
-                Email = user.Email,
-                Id = user.Id,
-                IdIdioma = user.IdIdioma,
-                Nombre = user.Nombre
-            };
         }
     }
 }

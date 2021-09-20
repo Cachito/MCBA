@@ -151,6 +151,7 @@
             this.tsbBuscar.Size = new System.Drawing.Size(23, 22);
             this.tsbBuscar.Tag = "tsbBuscar";
             this.tsbBuscar.Text = "Find";
+            this.tsbBuscar.CheckedChanged += new System.EventHandler(this.tsbBuscar_CheckedChanged);
             this.tsbBuscar.Click += new System.EventHandler(this.tsbBuscar_Click);
             // 
             // tsbPrevious

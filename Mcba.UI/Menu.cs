@@ -9,11 +9,8 @@ namespace Mcba.UI
 {
     public partial class Menu : Form
     {
-        internal UserLogged UserLoggedIn { set; get; }
-
-        public Menu(UserLogged userLoggedIn)
+        public Menu()
         {
-            UserLoggedIn = userLoggedIn;
             InitializeComponent();
         }
 
@@ -23,8 +20,8 @@ namespace Mcba.UI
             CaptionHelper.SetCaptions(caps, this);
 
             caps.TryGetValue(Name, out var caption);
-            Text = string.Format(caption ?? McbaSettings.SinTraduccion, McbaSettings.MessageTitle, UserLoggedIn.Nombre,
-                UserLoggedIn.Apellido);
+            Text = string.Format(caption ?? McbaSettings.SinTraduccion, McbaSettings.MessageTitle, UserLogged.Nombre,
+                UserLogged.Apellido);
         }
 
         private void tsmiSalir_Click(object sender, EventArgs e)

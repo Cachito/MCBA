@@ -114,7 +114,7 @@ namespace Mcba.UI
                 }
             }
 
-            if (chkActivo.Checked != user.Activo)
+            if (IdUsuario != 0 && chkActivo.Checked != user.Activo)
             {
                 string caption;
                 if (chkActivo.Checked)
@@ -177,6 +177,20 @@ namespace Mcba.UI
 
             LoadGrid();
             SetUser();
+        }
+
+        protected internal override void Find(bool btnChecked)
+        {
+            base.Find(btnChecked);
+
+            if (btnChecked)
+            {
+                // pedir y poner filtro
+            }
+            else
+            {
+                // quitar filtro
+            }
         }
 
         private void dgvUsuarios_CellClick(object sender, DataGridViewCellEventArgs e)

@@ -118,7 +118,15 @@ namespace Mcba.UI
 
         private void tsbBuscar_Click(object sender, EventArgs e)
         {
-            Find();
+            //Find();
+        }
+
+        private void tsbBuscar_CheckedChanged(object sender, EventArgs e)
+        {
+            if (sender is ToolStripButton btn && btn.Name == "tsbBuscar")
+            {
+                Find(btn.Checked);
+            }
         }
 
         private void tsbLeft_Click(object sender, EventArgs e)
@@ -176,7 +184,7 @@ namespace Mcba.UI
             SetToolbarStatus(ToolbarStatusEnum.Print);
         }
 
-        protected internal virtual void Find()
+        protected internal virtual void Find(bool btnChecked)
         {
             SetToolbarStatus(ToolbarStatusEnum.Find);
         }

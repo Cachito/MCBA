@@ -28,16 +28,10 @@ namespace Mcba.UI
                 Environment.Exit(1);
             }
 
-            UserLogged userLoggedIn = null;
-
             using (var login = new Login())
             {
                 login.ShowDialog();
                 dr = login.DialogResult;
-                if (dr == DialogResult.OK)
-                {
-                    userLoggedIn = login.UserLoggedIn;
-                }
             }
 
             if (dr != DialogResult.OK)
@@ -47,7 +41,7 @@ namespace Mcba.UI
 
             if (dr == DialogResult.OK)
             {
-                Application.Run(new Menu(userLoggedIn));
+                Application.Run(new Menu());
             }
         }
     }

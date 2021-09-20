@@ -1,11 +1,11 @@
 ﻿namespace Mcba.Seguridad
 {
-    public class UserLogged
+    public static class UserLogged
     {
-        public int Id { set; get; }
-        public string Nombre { set; get; }
-        public string Apellido { set; get; }
-        public string Email { set; get; }
-        public int IdIdioma { set; get; }
+        public static int Id { set; get; }
+        public static string Nombre { set; get; }
+        public static string Apellido { set; get; }
+        public static string Email { set; get; }
+        public static int IdIdioma { set; get; }
     }
 }

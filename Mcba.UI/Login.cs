@@ -16,8 +16,6 @@ namespace Mcba.UI
     {
         private Dictionary<string, string> captions = new Dictionary<string, string>();
 
-        internal UserLogged UserLoggedIn { set; get; }
-
         public Login()
         {
             InitializeComponent();
@@ -108,7 +106,14 @@ namespace Mcba.UI
 
             if (ok)
             {
-                UserLoggedIn = userBll.LogUser(txtUsuario.Text);
+                var user = userBll.LogUser(txtUsuario.Text);
+
+                UserLogged.Apellido = user.Apellido;
+                UserLogged.Email = user.Email;
+                UserLogged.Id = user.Id;
+                UserLogged.IdIdioma = user.IdIdioma;
+                UserLogged.Nombre = user.Nombre;
+
                 DialogResult = DialogResult.OK;
                 Close();
             }
