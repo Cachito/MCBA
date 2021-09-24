@@ -7,6 +7,13 @@
         Edit,
         Save,
         Print,
-        Find
+        Find,
+        First,
+        Last,
+        RestorePass,
+        Clean,
+        None,
+        All,
+        Default
     }
 }

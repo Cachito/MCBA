@@ -1,11 +1,9 @@
 ﻿using System;
-using System.Collections.Generic;
-using System.Linq;
+using System.Reflection;
 using System.Windows.Forms;
 using Mcba.Bll.Helpers;
-using Mcba.Infraestruture;
-using Mcba.Infraestruture.Helpers;
 using Mcba.Infraestruture.Settings;
+using Mcba.Seguridad;
 
 namespace Mcba.UI
 {
@@ -20,6 +18,10 @@ namespace Mcba.UI
         {
             var caps = CaptionHelper.GetCaptions(Name);
             CaptionHelper.SetCaptions(caps, this);
+
+            caps.TryGetValue(Name, out var caption);
+            Text = string.Format(caption ?? McbaSettings.SinTraduccion, McbaSettings.MessageTitle, UserLogged.Nombre,
+                UserLogged.Apellido);
         }
 
         private void tsmiSalir_Click(object sender, EventArgs e)

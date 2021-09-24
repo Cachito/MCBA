@@ -30,7 +30,7 @@ INSERT INTO Leyendas(IdIdioma, Modulo, Tag, Leyenda)
     VALUES(2, 'Login', 'btnRecuperarContra', 'Rekuperu Pasvorton')
 
 INSERT INTO Leyendas(IdIdioma, Modulo, Tag, Leyenda)
-    VALUES(1, 'Login', 'UsuarioBloqueado', 'Uzanto blokita')
+    VALUES(2, 'Login', 'UsuarioBloqueado', 'Uzanto blokita')
    
 INSERT INTO Leyendas(IdIdioma, Modulo, Tag, Leyenda)
     VALUES(2, 'Login', 'LoginIncorrecto', 'Malĝusta uzantnomo aŭ pasvorto.')
@@ -42,7 +42,7 @@ INSERT INTO Leyendas(IdIdioma, Modulo, Tag, Leyenda)
     VALUES(2, 'Login', 'MailWarning', 'La indikita uzanto ne havas asignitan retpoŝtadreson.')
 
 INSERT INTO Leyendas(IdIdioma, Modulo, Tag, Leyenda)
-    VALUES(2, 'Login', 'RestoreBody', 'La nova pasvorto estas sendita al vi: "{0}" (Sen la citaĵoj).{1}Ne dividu ĉi tiun retpoŝton.')
+    VALUES(2, 'Login', 'RestoreBody', '{0}: La nova pasvorto estas sendita al vi: "{1}" (Sen la citaĵoj).{2}Ne dividu ĉi tiun retpoŝton.')
 
 INSERT INTO Leyendas(IdIdioma, Modulo, Tag, Leyenda)
     VALUES(2, 'Login', 'RestoreSubject', 'Buongiorno S. A.')
@@ -54,6 +54,9 @@ INSERT INTO Leyendas(IdIdioma, Modulo, Tag, Leyenda)
     VALUES(2, 'Login', 'RestoreSaved', 'La poŝto estis konservita en {0}.')
 
 -- Menu
+INSERT INTO Leyendas(IdIdioma, Modulo, Tag, Leyenda)
+    VALUES(2, 'Menu', 'Menu', '{0} - Uzanto.: {1} {2}')
+
 INSERT INTO Leyendas(IdIdioma, Modulo, Tag, Leyenda)
     VALUES(2, 'Menu', 'tsmiMaestros', 'Majstraj')
 
@@ -126,6 +129,19 @@ INSERT INTO Leyendas(IdIdioma, Modulo, Tag, Leyenda)
 INSERT INTO Leyendas(IdIdioma, Modulo, Tag, Leyenda)
     VALUES(2, 'Menu', 'tsmiSalir', 'Eliri')
 
+-- Busqueda
+INSERT INTO Leyendas(IdIdioma, Modulo, Tag, Leyenda)
+    VALUES(2, 'Busqueda', 'Busqueda', 'Serĉu - {0}')
+
+INSERT INTO Leyendas(IdIdioma, Modulo, Tag, Leyenda)
+    VALUES(2, 'Busqueda', 'tsbOk', 'Bone')
+
+INSERT INTO Leyendas(IdIdioma, Modulo, Tag, Leyenda)
+    VALUES(2, 'Busqueda', 'tsbSalir', 'Eliri')
+
+INSERT INTO Leyendas(IdIdioma, Modulo, Tag, Leyenda)
+    VALUES(2, 'Busqueda', 'lblBusqueda', 'Enigu tekston por serĉi en {0}.')
+
 -- Condiciones de IVA
 INSERT INTO Leyendas(IdIdioma, Modulo, Tag, Leyenda)
     VALUES(2, 'CondicionesIva', 'CondicionesIva', 'Kondiĉoj pri VAT')
@@ -159,6 +175,21 @@ INSERT INTO Leyendas(IdIdioma, Modulo, Tag, Leyenda)
 
 INSERT INTO Leyendas(IdIdioma, Modulo, Tag, Leyenda)
     VALUES(2, 'CondicionesIva', 'tsbSalir', 'Eliri')
+
+INSERT INTO Leyendas(IdIdioma, Modulo, Tag, Leyenda)
+    VALUES(2, 'CondicionesIva', 'tsbUndo', 'Malfari')
+
+INSERT INTO Leyendas(IdIdioma, Modulo, Tag, Leyenda)
+    VALUES(2, 'CondicionesIva', 'tsbPrint', 'Presi')
+
+INSERT INTO Leyendas(IdIdioma, Modulo, Tag, Leyenda)
+    VALUES(2, 'CondicionesIva', 'tsbBuscar', 'Serĉi')
+	
+INSERT INTO Leyendas(IdIdioma, Modulo, Tag, Leyenda)
+    VALUES(2, 'CondicionesIva', 'tsbPrevious', 'Antaŭa paĝo')
+
+INSERT INTO Leyendas(IdIdioma, Modulo, Tag, Leyenda)
+    VALUES(2, 'CondicionesIva', 'tsbNext', 'Sekva paĝo')	
     
 -- Bancos
 INSERT INTO Leyendas(IdIdioma, Modulo, Tag, Leyenda)
@@ -189,7 +220,16 @@ INSERT INTO Leyendas(IdIdioma, Modulo, Tag, Leyenda)
     VALUES(2, 'Bancos', 'tsbBuscar', 'Serĉi')	
     
 INSERT INTO Leyendas(IdIdioma, Modulo, Tag, Leyenda)
-    VALUES(2, 'Bancos', 'tsbImprimir', 'Presi')		
+    VALUES(2, 'Bancos', 'tsbPrint', 'Presi')		
+
+INSERT INTO Leyendas(IdIdioma, Modulo, Tag, Leyenda)
+    VALUES(2, 'Bancos', 'tsbUndo', 'Malfari')
+
+INSERT INTO Leyendas(IdIdioma, Modulo, Tag, Leyenda)
+    VALUES(2, 'Bancos', 'tsbPrevious', 'Antaŭa paĝo')
+
+INSERT INTO Leyendas(IdIdioma, Modulo, Tag, Leyenda)
+    VALUES(2, 'Bancos', 'tsbNext', 'Sekva paĝo')
 
 -- Bitácora
 INSERT INTO Leyendas(IdIdioma, Modulo, Tag, Leyenda)
@@ -274,6 +314,21 @@ INSERT INTO Leyendas(IdIdioma, Modulo, Tag, Leyenda)
 
 INSERT INTO Leyendas(IdIdioma, Modulo, Tag, Leyenda)
     VALUES(2, 'Choferes', 'tsbSave', 'Konservu')
+
+INSERT INTO Leyendas(IdIdioma, Modulo, Tag, Leyenda)
+    VALUES(2, 'Choferes', 'tsbUndo', 'Malfari')
+
+INSERT INTO Leyendas(IdIdioma, Modulo, Tag, Leyenda)
+    VALUES(2, 'Choferes', 'tsbPrevious', 'Antaŭa paĝo')
+
+INSERT INTO Leyendas(IdIdioma, Modulo, Tag, Leyenda)
+    VALUES(2, 'Choferes', 'tsbNext', 'Sekva paĝo')
+	
+INSERT INTO Leyendas(IdIdioma, Modulo, Tag, Leyenda)
+    VALUES(2, 'Choferes', 'tsbPrint', 'Presi')
+
+INSERT INTO Leyendas(IdIdioma, Modulo, Tag, Leyenda)
+    VALUES(2, 'Choferes', 'tsbBuscar', 'Serĉi')	
 		
 -- Clientes
 INSERT INTO Leyendas(IdIdioma, Modulo, Tag, Leyenda)
@@ -318,6 +373,21 @@ INSERT INTO Leyendas(IdIdioma, Modulo, Tag, Leyenda)
 INSERT INTO Leyendas(IdIdioma, Modulo, Tag, Leyenda)
     VALUES(2, 'Clientes', 'tsbSave', 'Konservu')
 		
+INSERT INTO Leyendas(IdIdioma, Modulo, Tag, Leyenda)
+    VALUES(2, 'Clientes', 'tsbUndo', 'Malfari')
+
+INSERT INTO Leyendas(IdIdioma, Modulo, Tag, Leyenda)
+    VALUES(2, 'Clientes', 'tsbPrevious', 'Antaŭa paĝo')
+
+INSERT INTO Leyendas(IdIdioma, Modulo, Tag, Leyenda)
+    VALUES(2, 'Clientes', 'tsbNext', 'Sekva paĝo')
+	
+INSERT INTO Leyendas(IdIdioma, Modulo, Tag, Leyenda)
+    VALUES(2, 'Clientes', 'tsbPrint', 'Presi')
+
+INSERT INTO Leyendas(IdIdioma, Modulo, Tag, Leyenda)
+    VALUES(2, 'Clientes', 'tsbBuscar', 'Serĉi')	
+
 INSERT INTO Leyendas(IdIdioma, Modulo, Tag, Leyenda)
     VALUES(2, 'Clientes', 'tsbNewTelefono', 'Nova')
 
@@ -375,6 +445,15 @@ INSERT INTO Leyendas(IdIdioma, Modulo, Tag, Leyenda)
 
 INSERT INTO Leyendas(IdIdioma, Modulo, Tag, Leyenda)
     VALUES(2, 'Facturas', 'tsbBuscar', 'Serĉi')
+
+INSERT INTO Leyendas(IdIdioma, Modulo, Tag, Leyenda)
+    VALUES(2, 'Facturas', 'tsbUndo', 'Malfari')
+
+INSERT INTO Leyendas(IdIdioma, Modulo, Tag, Leyenda)
+    VALUES(2, 'Facturas', 'tsbPrevious', 'Antaŭa paĝo')
+
+INSERT INTO Leyendas(IdIdioma, Modulo, Tag, Leyenda)
+    VALUES(2, 'Facturas', 'tsbNext', 'Sekva paĝo')
 
 INSERT INTO Leyendas(IdIdioma, Modulo, Tag, Leyenda)
     VALUES(2, 'Facturas', 'tsbNewItem', 'Nova')
@@ -536,6 +615,21 @@ INSERT INTO Leyendas(IdIdioma, Modulo, Tag, Leyenda)
 INSERT INTO Leyendas(IdIdioma, Modulo, Tag, Leyenda)
     VALUES(2, 'Localidades', 'tsbSave', 'Konservu')	
 
+INSERT INTO Leyendas(IdIdioma, Modulo, Tag, Leyenda)
+    VALUES(2, 'Localidades', 'tsbUndo', 'Malfari')
+
+INSERT INTO Leyendas(IdIdioma, Modulo, Tag, Leyenda)
+    VALUES(2, 'Localidades', 'tsbPrevious', 'Antaŭa paĝo')
+
+INSERT INTO Leyendas(IdIdioma, Modulo, Tag, Leyenda)
+    VALUES(2, 'Localidades', 'tsbNext', 'Sekva paĝo')
+	
+INSERT INTO Leyendas(IdIdioma, Modulo, Tag, Leyenda)
+    VALUES(2, 'Localidades', 'tsbPrint', 'Presi')
+
+INSERT INTO Leyendas(IdIdioma, Modulo, Tag, Leyenda)
+    VALUES(2, 'Localidades', 'tsbBuscar', 'Serĉi')	
+
 -- Provincias
 INSERT INTO Leyendas(IdIdioma, Modulo, Tag, Leyenda)
     VALUES(2, 'Provincias', 'Provincias', 'Provincoj')
@@ -560,6 +654,21 @@ INSERT INTO Leyendas(IdIdioma, Modulo, Tag, Leyenda)
 
 INSERT INTO Leyendas(IdIdioma, Modulo, Tag, Leyenda)
     VALUES(2, 'Provincias', 'tsbSave', 'Konservu')
+
+INSERT INTO Leyendas(IdIdioma, Modulo, Tag, Leyenda)
+    VALUES(2, 'Provincias', 'tsbUndo', 'Malfari')
+
+INSERT INTO Leyendas(IdIdioma, Modulo, Tag, Leyenda)
+    VALUES(2, 'Provincias', 'tsbPrevious', 'Antaŭa paĝo')
+
+INSERT INTO Leyendas(IdIdioma, Modulo, Tag, Leyenda)
+    VALUES(2, 'Provincias', 'tsbNext', 'Sekva paĝo')
+	
+INSERT INTO Leyendas(IdIdioma, Modulo, Tag, Leyenda)
+    VALUES(2, 'Provincias', 'tsbPrint', 'Presi')
+
+INSERT INTO Leyendas(IdIdioma, Modulo, Tag, Leyenda)
+    VALUES(2, 'Provincias', 'tsbBuscar', 'Serĉi')	
 
 -- Productos
 INSERT INTO Leyendas(IdIdioma, Modulo, Tag, Leyenda)
@@ -594,6 +703,21 @@ INSERT INTO Leyendas(IdIdioma, Modulo, Tag, Leyenda)
 
 INSERT INTO Leyendas(IdIdioma, Modulo, Tag, Leyenda)
     VALUES(2, 'Productos', 'tsbSave', 'Konservu')
+
+INSERT INTO Leyendas(IdIdioma, Modulo, Tag, Leyenda)
+    VALUES(2, 'Productos', 'tsbUndo', 'Malfari')
+
+INSERT INTO Leyendas(IdIdioma, Modulo, Tag, Leyenda)
+    VALUES(2, 'Productos', 'tsbPrevious', 'Antaŭa paĝo')
+
+INSERT INTO Leyendas(IdIdioma, Modulo, Tag, Leyenda)
+    VALUES(2, 'Productos', 'tsbNext', 'Sekva paĝo')
+	
+INSERT INTO Leyendas(IdIdioma, Modulo, Tag, Leyenda)
+    VALUES(2, 'Productos', 'tsbPrint', 'Presi')
+
+INSERT INTO Leyendas(IdIdioma, Modulo, Tag, Leyenda)
+    VALUES(2, 'Productos', 'tsbBuscar', 'Serĉi')
 
 -- RemitenteComisiones
 INSERT INTO Leyendas(IdIdioma, Modulo, Tag, Leyenda)
@@ -675,6 +799,21 @@ INSERT INTO Leyendas(IdIdioma, Modulo, Tag, Leyenda)
 INSERT INTO Leyendas(IdIdioma, Modulo, Tag, Leyenda)
     VALUES(2, 'Remitentes', 'tsbEditComision', 'Redaktu')
 
+INSERT INTO Leyendas(IdIdioma, Modulo, Tag, Leyenda)
+    VALUES(2, 'Remitentes', 'tsbUndo', 'Malfari')
+
+INSERT INTO Leyendas(IdIdioma, Modulo, Tag, Leyenda)
+    VALUES(2, 'Remitentes', 'tsbPrevious', 'Antaŭa paĝo')
+
+INSERT INTO Leyendas(IdIdioma, Modulo, Tag, Leyenda)
+    VALUES(2, 'Remitentes', 'tsbNext', 'Sekva paĝo')
+	
+INSERT INTO Leyendas(IdIdioma, Modulo, Tag, Leyenda)
+    VALUES(2, 'Remitentes', 'tsbPrint', 'Presi')
+
+INSERT INTO Leyendas(IdIdioma, Modulo, Tag, Leyenda)
+    VALUES(2, 'Remitentes', 'tsbBuscar', 'Serĉi')	
+
 -- ReporteCaja
 INSERT INTO Leyendas(IdIdioma, Modulo, Tag, Leyenda)
     VALUES(2, 'ReporteCaja', 'ReporteCaja', 'Monraporto')
@@ -741,7 +880,7 @@ INSERT INTO Leyendas(IdIdioma, Modulo, Tag, Leyenda)
     VALUES(2, 'Usuarios', 'tsbBuscar', 'Serĉi')
 
 INSERT INTO Leyendas(IdIdioma, Modulo, Tag, Leyenda)
-    VALUES(2, 'Usuarios', 'tsbFiltro', 'Filtrilo')
+    VALUES(2, 'Usuarios', 'tsbRestorePass', 'Restarigi Pasvorton')
 
 INSERT INTO Leyendas(IdIdioma, Modulo, Tag, Leyenda)
     VALUES(2, 'Usuarios', 'FaltaUsuario', 'Vi devas eniri uzanton.')
@@ -798,7 +937,7 @@ INSERT INTO Leyendas(IdIdioma, Modulo, Tag, Leyenda)
     VALUES(2, 'Usuarios', 'RestoreSubject', 'Buongiorno S. A.')
 	
 INSERT INTO Leyendas(IdIdioma, Modulo, Tag, Leyenda)
-    VALUES(2, 'Usuarios', 'RestoreBody', 'La nova ŝlosilo estas sendita al vi: "{0}" (Sen citiloj).{1} Ne dividu ĉi tiun retpoŝton.')
+    VALUES(2, 'Usuarios', 'RestoreBody', '{0}: La nova ŝlosilo estas sendita al vi: "{1}" (Sen citiloj).{2}Ne dividu ĉi tiun retpoŝton.')
 
 INSERT INTO Leyendas(IdIdioma, Modulo, Tag, Leyenda)
     VALUES(2, 'Usuarios', 'RestoreSent', 'La poŝto estis sendita.')
@@ -808,6 +947,12 @@ INSERT INTO Leyendas(IdIdioma, Modulo, Tag, Leyenda)
 
 INSERT INTO Leyendas(IdIdioma, Modulo, Tag, Leyenda)
     VALUES(2, 'Usuarios', 'EmailExistente', 'La retpoŝto enigita jam ekzistas.')
+
+INSERT INTO Leyendas(IdIdioma, Modulo, Tag, Leyenda)
+    VALUES(2, 'Usuarios', 'Activar', 'Vi reaktivigos neaktivan uzanton.{0}Ĉu vi certas?')
+
+INSERT INTO Leyendas(IdIdioma, Modulo, Tag, Leyenda)
+    VALUES(2, 'Usuarios', 'Desactivar', 'Vi malaktivigas uzanton.{0}Viaj transakcioj ne perdiĝos, sed vi ne povos ensaluti reen en la sistemo.{0}Ĉu vi certas?')
 
 -- Unidades
 INSERT INTO Leyendas(IdIdioma, Modulo, Tag, Leyenda)
@@ -834,6 +979,21 @@ INSERT INTO Leyendas(IdIdioma, Modulo, Tag, Leyenda)
 INSERT INTO Leyendas(IdIdioma, Modulo, Tag, Leyenda)
     VALUES(2, 'Unidades', 'tsbSave', 'Konservu')
 
+INSERT INTO Leyendas(IdIdioma, Modulo, Tag, Leyenda)
+    VALUES(2, 'Unidades', 'tsbUndo', 'Malfari')
+
+INSERT INTO Leyendas(IdIdioma, Modulo, Tag, Leyenda)
+    VALUES(2, 'Unidades', 'tsbPrevious', 'Antaŭa paĝo')
+
+INSERT INTO Leyendas(IdIdioma, Modulo, Tag, Leyenda)
+    VALUES(2, 'Unidades', 'tsbNext', 'Sekva paĝo')	
+
+INSERT INTO Leyendas(IdIdioma, Modulo, Tag, Leyenda)
+    VALUES(2, 'Unidades', 'tsbPrint', 'Presi')
+
+INSERT INTO Leyendas(IdIdioma, Modulo, Tag, Leyenda)
+    VALUES(2, 'Unidades', 'tsbBuscar', 'Serĉi')
+
 -- TiposCuenta
 INSERT INTO Leyendas(IdIdioma, Modulo, Tag, Leyenda)
     VALUES(2, 'TiposCuenta', 'TiposCuenta', 'Kontaj Tipoj')
@@ -858,6 +1018,21 @@ INSERT INTO Leyendas(IdIdioma, Modulo, Tag, Leyenda)
 
 INSERT INTO Leyendas(IdIdioma, Modulo, Tag, Leyenda)
     VALUES(2, 'TiposCuenta', 'tsbSave', 'Konservu')
+
+INSERT INTO Leyendas(IdIdioma, Modulo, Tag, Leyenda)
+    VALUES(2, 'TiposCuenta', 'tsbUndo', 'Malfari')
+
+INSERT INTO Leyendas(IdIdioma, Modulo, Tag, Leyenda)
+    VALUES(2, 'TiposCuenta', 'tsbPrevious', 'Antaŭa paĝo')
+
+INSERT INTO Leyendas(IdIdioma, Modulo, Tag, Leyenda)
+    VALUES(2, 'TiposCuenta', 'tsbNext', 'Sekva paĝo')
+	
+INSERT INTO Leyendas(IdIdioma, Modulo, Tag, Leyenda)
+    VALUES(2, 'TiposCuenta', 'tsbPrint', 'Presi')
+
+INSERT INTO Leyendas(IdIdioma, Modulo, Tag, Leyenda)
+    VALUES(2, 'TiposCuenta', 'tsbBuscar', 'Serĉi')	
 
 -- Stock
 INSERT INTO Leyendas(IdIdioma, Modulo, Tag, Leyenda)
@@ -910,6 +1085,15 @@ INSERT INTO Leyendas(IdIdioma, Modulo, Tag, Leyenda)
 	
 INSERT INTO Leyendas(IdIdioma, Modulo, Tag, Leyenda)
     VALUES(2, 'Stock', 'tsbPrint', 'Presi')	
+
+INSERT INTO Leyendas(IdIdioma, Modulo, Tag, Leyenda)
+    VALUES(2, 'Stock', 'tsbUndo', 'Malfari')
+
+INSERT INTO Leyendas(IdIdioma, Modulo, Tag, Leyenda)
+    VALUES(2, 'Stock', 'tsbPrevious', 'Antaŭa paĝo')
+
+INSERT INTO Leyendas(IdIdioma, Modulo, Tag, Leyenda)
+    VALUES(2, 'Stock', 'tsbNext', 'Sekva paĝo')
 
 -- StockBuscar
 INSERT INTO Leyendas(IdIdioma, Modulo, Tag, Leyenda)

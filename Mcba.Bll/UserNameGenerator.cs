@@ -2,6 +2,7 @@
 using System.Text.RegularExpressions;
 using Mcba.Dal;
 using Mcba.Infraestruture.Settings;
+using Mcba.Seguridad;
 
 namespace Mcba.Bll
 {
@@ -23,6 +24,7 @@ namespace Mcba.Bll
             {
                 var loop = 1;
                 var userName = GenerateLogin(name, surname, loop);
+                var cryptUsername = HashCalculator.Crypt(userName, McbaSettings.Salt);
 
 //#if DEBUG
 //                Random r = new Random();
@@ -31,13 +33,15 @@ namespace Mcba.Bll
 //                {
 //                    loop++;
 //                    userName = GenerateLogin(name, surname, loop);
+//                    var cryptUsername = HashCalculator.Crypt(userName, McbaSettings.Salt);
 //                }
 //#else
-                while (userDal.LoginExists(userName))
+                while (userDal.LoginExists(cryptUsername))
                 {
                     loop++;
 
                     GenerateLogin(name, surname, loop);
+                    cryptUsername = HashCalculator.Crypt(userName, McbaSettings.Salt);
                 }
 //#endif                
                 return userName;

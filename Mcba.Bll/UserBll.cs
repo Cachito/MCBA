@@ -1,4 +1,5 @@
-﻿using System.Collections.Generic;
+﻿using System;
+using System.Collections.Generic;
 using System.Web.Security;
 using Mcba.Dal;
 using Mcba.Entidad;
@@ -27,8 +28,9 @@ namespace Mcba.Bll
             var userDal = new UserDal(McbaSettings.CnnString);
 
             ret = userDal.UserOk(cryptLogin, cryptPass, McbaSettings.MaxLoginAttemps);
+            var user = userDal.GetUserByLogin(cryptLogin);
 
-            if (!ret)
+            if (!ret && user != null)
             {
                 userDal.UpdateFailedAttempt(cryptLogin);
             }
@@ -59,14 +61,21 @@ namespace Mcba.Bll
             return randomPass;
         }
 
-        public IEnumerable<UserDto> Get(int offsetRows)
+        public IEnumerable<UserDto> GetPage(int page)
         {
-            return new UserDal(McbaSettings.CnnString).GetAll(offsetRows);
+            return new UserDal(McbaSettings.CnnString).GetAll(page, McbaSettings.DataPagination);
         }
 
         public User GetUser(int id)
         {
             return new UserDal(McbaSettings.CnnString).GetUserById(id);
+        }
+
+        public User LogUser(string login)
+        {
+            var cryptLogin = HashCalculator.Crypt(login, McbaSettings.Salt);
+
+            return new UserDal(McbaSettings.CnnString).LogUser(cryptLogin);
         }
 
         public bool Save(User user, out string newPassword)
@@ -87,11 +96,21 @@ namespace Mcba.Bll
             return userDal.Save(user);
         }
 
-        public bool EmailExist(string email)
+        public bool EmailExist(string email, int idUsuario)
         {
             var userDal = new UserDal(McbaSettings.CnnString);
 
-            return userDal.EmailExist(email);
+            return userDal.EmailExist(email, idUsuario);
+        }
+
+        public int GetUsersCount()
+        {
+            return new UserDal(McbaSettings.CnnString).GetUsersCount();
+        }
+
+        public IEnumerable<UserDto> FindPage(string searchText, int page)
+        {
+            return new UserDal(McbaSettings.CnnString).FindPage(searchText, page, McbaSettings.DataPagination);
         }
     }
 }

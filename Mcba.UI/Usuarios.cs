@@ -1,5 +1,7 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Drawing;
+using System.Net.Mail;
 using System.Windows.Forms;
 using Mcba.Bll;
 using Mcba.Bll.Helpers;
@@ -11,139 +13,53 @@ using Mcba.Infraestruture.Settings;
 
 namespace Mcba.UI
 {
-    public partial class Usuarios : Form
+    public partial class Usuarios : ViewBase
     {
         private Dictionary<string, string> captions = new Dictionary<string, string>();
 
         private int IdUsuario { set; get; }
         private string Login { set; get; }
-        private int GridPage { set; get; }
+        private int GridRow { set; get; }
+
+        private const int COL_ID = 0;
+        private const int COL_ACTIVE = 4;
 
         public Usuarios()
         {
             InitializeComponent();
         }
 
-        private void tsbSalir_Click(object sender, EventArgs e)
-        {
-            Close();
-        }
-
-        private void tsbNew_Click(object sender, EventArgs e)
-        {
-            New();
-        }
-
-        private void tsbEdit_Click(object sender, EventArgs e)
-        {
-            Edit();
-        }
-
-        private void tsbSave_Click(object sender, EventArgs e)
-        {
-            Save();
-        }
-
         private void Usuarios_Load(object sender, EventArgs e)
         {
+            RestorePassVisible = true;
+            DeleteVisible = false;
             GridPage = 0;
+            GridRow = 0;
+            DataRowsCount = new UserBll().GetUsersCount();
             SetCaptions();
             LoadIdiomas();
             LoadGrid();
+            SetUser();
         }
 
-        private void dgvUsuarios_CellClick(object sender, DataGridViewCellEventArgs e)
+        protected internal override void Salir()
         {
-            if (e.RowIndex < 0)
-            {
-                return;
-            }
-
-            var row = dgvUsuarios.Rows[e.RowIndex];
-            var id = row.Cells[0].Value.ToString();
-            SetUser(id);
+            base.Salir();
+            Close();
         }
 
-        private void tsbRestaurar_Click(object sender, EventArgs e)
+        protected internal override void Undo()
         {
-            if (string.IsNullOrWhiteSpace(txtEmail.Text))
-            {
-                captions.TryGetValue("MailWarning", out var mailCaption);
-                this.ShowMessage(string.Format(mailCaption ?? McbaSettings.SinTraduccion, txtEmail.Text, Environment.NewLine),
-                    McbaSettings.MessageTitle, MessageBoxButtons.OK,
-                    MessageBoxIcon.Exclamation);
-                return;
-            }
+            base.Undo();
 
-            captions.TryGetValue("RestoreWarning", out var restoreCaption);
-            var ok = this.ShowMessage(string.Format(restoreCaption ?? McbaSettings.SinTraduccion, txtEmail.Text, Environment.NewLine), McbaSettings.MessageTitle, MessageBoxButtons.YesNo,
-                MessageBoxIcon.Question);
-            if (ok != DialogResult.Yes)
-            {
-                return;
-            }
-
-            var userBll = new UserBll();
-            var newPassword = userBll.RestorePassword(Login);
-
-            var userEmail = userBll.GetEmailByLogin(Login);
-
-            captions.TryGetValue("RestoreSubject", out var restoreSubject);
-            captions.TryGetValue("RestoreBody", out var restoreBody);
-            var send = MailHelper.SendMail(userEmail, restoreSubject,
-                string.Format(restoreBody ?? McbaSettings.SinTraduccion, newPassword, Environment.NewLine));
-
-            if (send)
-            {
-                captions.TryGetValue("RestoreSent", out var restoreSent);
-                this.ShowMessage(restoreSent, McbaSettings.MessageTitle);
-                return;
-            }
-
-            MailHelper.SaveToFile(userEmail, restoreSubject,
-                string.Format(restoreBody ?? McbaSettings.SinTraduccion, newPassword, Environment.NewLine));
-
-            captions.TryGetValue("RestoreSaved", out var restoreSaved);
-            this.ShowMessage(string.Format(restoreSaved ?? McbaSettings.SinTraduccion, McbaSettings.TempFolder), McbaSettings.MessageTitle);
+            ControlsEnabled(false);
+            SetUser();
         }
 
-        private void SetCaptions()
+        protected internal override void Clean()
         {
-            captions = CaptionHelper.GetCaptions(Name);
-            CaptionHelper.SetCaptions(captions, this);
-        }
+            base.Clean();
 
-        private void LoadGrid()
-        {
-            var usersPage = new UserBll().Get(GridPage * McbaSettings.DataPagination);
-            dgvUsuarios.DataSource = null;
-            dgvUsuarios.DataSource = usersPage;
-        }
-
-        private void LoadIdiomas()
-        {
-            IEnumerable<Language> idiomas = new LanguageBll().GetLanguages();
-            cmbIdiomas.DataSource = null;
-            cmbIdiomas.DataSource = idiomas;
-            cmbIdiomas.ValueMember = "Id";
-            cmbIdiomas.DisplayMember = "Descripcion";
-            cmbIdiomas.SelectedIndex = -1;
-        }
-
-        private void Edit()
-        {
-            ControlsEnabled(true);
-        }
-
-        private void New()
-        {
-            Clean();
-            chkActivo.Checked = true;
-            ControlsEnabled(true);
-        }
-
-        private void Clean()
-        {
             IdUsuario = 0;
             txtId.Text = string.Empty;
             txtEmail.Text = string.Empty;
@@ -153,17 +69,25 @@ namespace Mcba.UI
             cmbIdiomas.SelectedIndex = -1;
         }
 
-        private void ControlsEnabled(bool enable)
+        protected internal override void New()
         {
-            txtEmail.Enabled = enable;
-            txtNombre.Enabled = enable;
-            txtApellido.Enabled = enable;
-            cmbIdiomas.Enabled = enable;
-            chkActivo.Enabled = enable && IdUsuario != 0;
+            base.New();
+            Clean();
+            ControlsEnabled(true);
+            chkActivo.Checked = true;
+            SetToolbarStatus(ToolbarStatusEnum.New);
         }
 
-        private void Save()
+        protected internal override void Edit()
         {
+            base.Edit();
+            ControlsEnabled(true);
+        }
+
+        protected internal override void Save()
+        {
+            base.Save();
+
             if (!Valida())
             {
                 return;
@@ -184,7 +108,29 @@ namespace Mcba.UI
                 {
                     captions.TryGetValue("NoEncontrado", out var caption);
                     this.ShowMessage(string.Format(caption ?? McbaSettings.SinTraduccion, Environment.NewLine));
-                    Clean();
+                    Undo();
+                    LoadGrid();
+
+                    return;
+                }
+            }
+
+            if (IdUsuario != 0 && chkActivo.Checked != user.Activo)
+            {
+                string caption;
+                if (chkActivo.Checked)
+                {
+                    captions.TryGetValue("Activar", out caption);
+                }
+                else
+                {
+                    captions.TryGetValue("Desactivar", out caption);
+                }
+
+                var dr = this.ShowMessage(string.Format(caption ?? McbaSettings.SinTraduccion, Environment.NewLine), McbaSettings.MessageTitle, MessageBoxButtons.YesNo, MessageBoxIcon.Question, MessageBoxDefaultButton.Button2);
+                if (dr != DialogResult.Yes)
+                {
+                    Undo();
                     LoadGrid();
 
                     return;
@@ -193,9 +139,9 @@ namespace Mcba.UI
 
             user.Nombre = txtNombre.Text;
             user.Apellido = txtApellido.Text;
-            user.IdIdioma = (int) cmbIdiomas.SelectedValue;
+            user.IdIdioma = (int)cmbIdiomas.SelectedValue;
             user.Email = txtEmail.Text;
-            user.Activo= chkActivo.Checked;
+            user.Activo = chkActivo.Checked;
 
             var userBll = new UserBll();
 
@@ -231,6 +177,143 @@ namespace Mcba.UI
             }
 
             LoadGrid();
+            SetUser();
+        }
+
+        protected internal override void Find(bool btnChecked)
+        {
+            base.Find(btnChecked);
+
+            if (btnChecked)
+            {
+                Find();
+            }
+            else
+            {
+                LoadGrid();
+            }
+        }
+
+        private void Find()
+        {
+            var searchText = string.Empty;
+
+            using (var findFrm = new Busqueda {Titulo = Text})
+            {
+                if (findFrm.ShowDialog() != DialogResult.OK)
+                {
+
+                    LoadGrid();
+                    return;
+                }
+
+                searchText = findFrm.TextoBuscado;
+            }
+
+            GridPage = 0;
+            var result = new UserBll().FindPage(searchText, GridPage);
+
+            dgvUsuarios.DataSource = null;
+            dgvUsuarios.DataSource = result;
+
+            dgvUsuarios.Columns[COL_ID].Visible = false;
+            dgvUsuarios.Columns[COL_ACTIVE].Visible = false;
+        }
+
+        private void dgvUsuarios_CellClick(object sender, DataGridViewCellEventArgs e)
+        {
+            if (e.RowIndex < 0)
+            {
+                return;
+            }
+
+            GridRow = e.RowIndex;
+            SetUser();
+        }
+
+        protected internal override void RestorePass()
+        {
+            base.RestorePass();
+
+            if (string.IsNullOrWhiteSpace(txtEmail.Text))
+            {
+                captions.TryGetValue("MailWarning", out var mailCaption);
+                this.ShowMessage(string.Format(mailCaption ?? McbaSettings.SinTraduccion, txtEmail.Text, Environment.NewLine),
+                    McbaSettings.MessageTitle, MessageBoxButtons.OK,
+                    MessageBoxIcon.Exclamation);
+                return;
+            }
+
+            captions.TryGetValue("RestoreWarning", out var restoreCaption);
+            var ok = this.ShowMessage(string.Format(restoreCaption ?? McbaSettings.SinTraduccion, txtEmail.Text, Environment.NewLine), McbaSettings.MessageTitle, MessageBoxButtons.YesNo,
+                MessageBoxIcon.Question);
+            if (ok != DialogResult.Yes)
+            {
+                return;
+            }
+
+            var userBll = new UserBll();
+            var newPassword = userBll.RestorePassword(Login);
+
+            var userEmail = userBll.GetEmailByLogin(Login);
+
+            captions.TryGetValue("RestoreSubject", out var restoreSubject);
+            captions.TryGetValue("RestoreBody", out var restoreBody);
+
+            #region EnvioMail
+            //var send = MailHelper.SendMail(userEmail, restoreSubject,
+            //    string.Format(restoreBody ?? McbaSettings.SinTraduccion, newPassword, Environment.NewLine));
+
+            //if (send)
+            //{
+            //    captions.TryGetValue("RestoreSent", out var restoreSent);
+            //    this.ShowMessage(restoreSent, McbaSettings.MessageTitle);
+            //    return;
+            //}
+            #endregion
+
+            MailHelper.SaveToFile(userEmail, restoreSubject,
+                string.Format(restoreBody ?? McbaSettings.SinTraduccion, newPassword, Environment.NewLine));
+
+            captions.TryGetValue("RestoreSaved", out var restoreSaved);
+            this.ShowMessage(string.Format(restoreSaved ?? McbaSettings.SinTraduccion, McbaSettings.TempFolder), McbaSettings.MessageTitle);
+        }
+
+        private void SetCaptions()
+        {
+            captions = CaptionHelper.GetCaptions(Name);
+            CaptionHelper.SetCaptions(captions, this);
+        }
+
+        private void LoadGrid()
+        {
+            var usersPage = new UserBll().GetPage(GridPage);
+            dgvUsuarios.DataSource = null;
+            dgvUsuarios.DataSource = usersPage;
+
+            dgvUsuarios.Columns[COL_ID].Visible = false;
+            dgvUsuarios.Columns[COL_ACTIVE].Visible = false;
+
+            SetToolbarStatus(ToolbarStatusEnum.Default);
+        }
+
+        private void LoadIdiomas()
+        {
+            IEnumerable<Language> idiomas = new LanguageBll().GetLanguages();
+            cmbIdiomas.DataSource = null;
+            cmbIdiomas.DataSource = idiomas;
+            cmbIdiomas.ValueMember = "Id";
+            cmbIdiomas.DisplayMember = "Descripcion";
+            cmbIdiomas.SelectedIndex = -1;
+        }
+
+        private void ControlsEnabled(bool enable)
+        {
+            txtEmail.Enabled = enable;
+            txtNombre.Enabled = enable;
+            txtApellido.Enabled = enable;
+            cmbIdiomas.Enabled = enable;
+            chkActivo.Enabled = enable && IdUsuario != 0;
         }
 
         private bool Valida()
@@ -251,7 +334,7 @@ namespace Mcba.UI
                 ret = false;
             }
 
-            if (IdUsuario == 0 )
+            if (IdUsuario == 0)
             {
                 Login = UserNameGenerator.GetUsername(txtNombre.Text, txtApellido.Text);
                 if (string.IsNullOrWhiteSpace(Login))
@@ -267,7 +350,7 @@ namespace Mcba.UI
                 ret = false;
             }
 
-            if (new UserBll().EmailExist(txtEmail.Text))
+            if (new UserBll().EmailExist(txtEmail.Text, IdUsuario))
             {
                 captions.TryGetValue("EmailExistente", out var caption);
                 errorProvider.SetError(txtEmail, caption);
@@ -290,11 +373,17 @@ namespace Mcba.UI
             return ret;
         }
 
-        private void SetUser(string id)
+        private void SetUser()
         {
             errorProvider.Clear();
+
+            SetToolbarStatus(ToolbarStatusEnum.None);
             ControlsEnabled(false);
 
+            var row = dgvUsuarios.Rows[GridRow];
+            var id = row.Cells[0].Value.ToString();
+            ControlsEnabled(false);
+            
             var userId = int.Parse(id);
             var user = new UserBll().GetUser(userId);
 
@@ -313,6 +402,17 @@ namespace Mcba.UI
             txtApellido.Text = user.Apellido;
             cmbIdiomas.SelectedValue = user.IdIdioma;
             chkActivo.Checked = user.Activo;
+
+            SetToolbarStatus(ToolbarStatusEnum.Default);
+        }
+
+        private void dgvUsuarios_DataBindingComplete(object sender, DataGridViewBindingCompleteEventArgs e)
+        {
+            foreach (DataGridViewRow row in dgvUsuarios.Rows)
+            {
+                row.DefaultCellStyle.BackColor = (bool)row.Cells[COL_ACTIVE].Value ? SystemColors.Window : Color.Red;
+                row.DefaultCellStyle.ForeColor = (bool)row.Cells[COL_ACTIVE].Value ? SystemColors.ControlText : Color.White;
+            }
         }
     }
 }
