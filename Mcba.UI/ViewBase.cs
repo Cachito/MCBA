@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Net.Mail;
 using System.Windows.Forms;
 using Mcba.Infraestruture.Enums;
 using Mcba.Infraestruture.Settings;
@@ -41,6 +42,11 @@ namespace Mcba.UI
         private bool BuscarEnabled
         {
             set => tsbBuscar.Enabled = value;
+        }
+
+        private bool BuscarChecked
+        {
+            set => tsbBuscar.Checked = value;
         }
 
         private bool PreviousEnabled
@@ -186,6 +192,7 @@ namespace Mcba.UI
 
         protected internal virtual void Find(bool btnChecked)
         {
+            tsbBuscar.Image = btnChecked ? Properties.Resources.IconNoBuscar : Properties.Resources.IconBuscar;
             SetToolbarStatus(ToolbarStatusEnum.Find);
         }
 
@@ -229,6 +236,10 @@ namespace Mcba.UI
                     SetToolbarEdit();
                     break;
 
+                case ToolbarStatusEnum.Find:
+                    SetToolbarFind();
+                    break;
+
                 case ToolbarStatusEnum.None:
                     SetToolbarNone();
                     break;
@@ -242,8 +253,25 @@ namespace Mcba.UI
             }
         }
 
+        private void SetToolbarFind()
+        {
+            SalirEnabled = true;
+            UndoEnabled = false;
+            NewEnabled = false;
+            DeleteEnabled = true;
+            EditEnabled = true;
+            SaveEnabled = false;
+            BuscarEnabled = true;
+            PreviousEnabled = GridPage > 0;
+            NextEnabled = DataRowsCount >= (GridPage == 0 ? 1 : GridPage) * McbaSettings.DataPagination;
+            PrintEnabled = true;
+            RestorePassEnabled = true;
+        }
+
         private void SetToolbarDefault()
         {
+            Detach();
+
             SalirEnabled = true;
             UndoEnabled = false;
             NewEnabled = true;
@@ -251,10 +279,23 @@ namespace Mcba.UI
             EditEnabled = true;
             SaveEnabled = false;
             BuscarEnabled = true;
+            BuscarChecked = false;
             PreviousEnabled = GridPage > 0;
-            NextEnabled = DataRowsCount >= (GridPage == 0 ? 1 : GridPage) * McbaSettings.DataPagination; ;
+            NextEnabled = DataRowsCount >= (GridPage == 0 ? 1 : GridPage) * McbaSettings.DataPagination;
             PrintEnabled = true;
             RestorePassEnabled = true;
+
+            Attach();
+        }
+
+        private void Attach()
+        {
+            tsbBuscar.CheckedChanged += tsbBuscar_CheckedChanged;
+        }
+
+        private void Detach()
+        {
+            tsbBuscar.CheckedChanged -= tsbBuscar_CheckedChanged;
         }
 
         private void SetToolbarNone()

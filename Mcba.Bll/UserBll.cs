@@ -1,4 +1,5 @@
-﻿using System.Collections.Generic;
+﻿using System;
+using System.Collections.Generic;
 using System.Web.Security;
 using Mcba.Dal;
 using Mcba.Entidad;
@@ -105,6 +106,11 @@ namespace Mcba.Bll
         public int GetUsersCount()
         {
             return new UserDal(McbaSettings.CnnString).GetUsersCount();
+        }
+
+        public IEnumerable<UserDto> FindPage(string searchText, int page)
+        {
+            return new UserDal(McbaSettings.CnnString).FindPage(searchText, page, McbaSettings.DataPagination);
         }
     }
 }

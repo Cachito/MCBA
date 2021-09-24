@@ -1,6 +1,7 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Drawing;
+using System.Net.Mail;
 using System.Windows.Forms;
 using Mcba.Bll;
 using Mcba.Bll.Helpers;
@@ -185,12 +186,38 @@ namespace Mcba.UI
 
             if (btnChecked)
             {
-                // pedir y poner filtro
+                Find();
             }
             else
             {
-                // quitar filtro
+                LoadGrid();
             }
+        }
+
+        private void Find()
+        {
+            var searchText = string.Empty;
+
+            using (var findFrm = new Busqueda {Titulo = Text})
+            {
+                if (findFrm.ShowDialog() != DialogResult.OK)
+                {
+
+                    LoadGrid();
+                    return;
+                }
+
+                searchText = findFrm.TextoBuscado;
+            }
+
+            GridPage = 0;
+            var result = new UserBll().FindPage(searchText, GridPage);
+
+            dgvUsuarios.DataSource = null;
+            dgvUsuarios.DataSource = result;
+
+            dgvUsuarios.Columns[COL_ID].Visible = false;
+            dgvUsuarios.Columns[COL_ACTIVE].Visible = false;
         }
 
         private void dgvUsuarios_CellClick(object sender, DataGridViewCellEventArgs e)

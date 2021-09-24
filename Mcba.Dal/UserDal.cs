@@ -166,6 +166,22 @@ namespace Mcba.Dal
             WHERE Login = @Login
             ";
 
+        private const string QRY_FIND_USERS_BY_PAGE = @"
+            SELECT 
+                Id
+                , Nombre
+                , Apellido
+                , Email
+                , Activo
+            FROM Usuario
+            WHERE Nombre LIKE @Nombre
+                OR Apellido LIKE @Apellido
+                OR Email LIKE @Email
+            ORDER BY Nombre
+            OFFSET @Skip ROWS
+            FETCH NEXT @Take ROWS ONLY
+            ";
+
         private readonly string connectionString;
 
         public UserDal(string connectionString)
@@ -447,6 +463,19 @@ namespace Mcba.Dal
             var dvvString = HashCalculator.GetCryptString(dvvValue.ToString(), CryptMethodEnum.Sha1);
 
             IntegrityDal.UpdateIntegryty("Usuario", dvvString, db, tr);
+        }
+
+        public IEnumerable<UserDto> FindPage(string searchText, int page, int take)
+        {
+            using (var db = new DataAccess(connectionString).GetOpenConnection())
+            {
+                var nombre = $"%{searchText}%";
+                var apellido = $"%{searchText}%";
+                var email = $"%{searchText}%";
+
+                return db.Query<UserDto>(QRY_FIND_USERS_BY_PAGE,
+                    new {Nombre = nombre, Apellido = apellido, Email = email, Skip = page * take, Take = take});
+            }
         }
     }
 }
