@@ -1,6 +1,7 @@
 ﻿using System;
 using System.Reflection;
 using System.Windows.Forms;
+using Mcba.Bll;
 using Mcba.Bll.Helpers;
 using Mcba.Infraestruture.Settings;
 using Mcba.Seguridad;

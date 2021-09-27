@@ -20,15 +20,15 @@ namespace Mcba.Seguridad
                     break;
 
                 case CryptMethodEnum.Base64:
-                    ret = HashCalculator.Base64Encode(cadena);
+                    ret = Base64Encode(cadena);
                     break;
 
                 case CryptMethodEnum.Aes:
-                    ret = HashCalculator.Encrypt(cadena, McbaSettings.Key, McbaSettings.Salt);
+                    ret = Encrypt(cadena, McbaSettings.Key, McbaSettings.Salt);
                     break;
 
                 case CryptMethodEnum.Sha1:
-                    ret = HashCalculator.Crypt(cadena, McbaSettings.Salt);
+                    ret = Crypt(cadena, McbaSettings.Salt);
                     break;
             }
 

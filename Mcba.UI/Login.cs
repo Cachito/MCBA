@@ -108,6 +108,7 @@ namespace Mcba.UI
             {
                 var user = userBll.LogUser(txtUsuario.Text);
 
+                UserLogged.Login = txtUsuario.Text;
                 UserLogged.Apellido = user.Apellido;
                 UserLogged.Email = user.Email;
                 UserLogged.Id = user.Id;
