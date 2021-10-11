@@ -4,6 +4,7 @@ using System.Text;
 using System.Windows.Forms;
 using Mcba.Bll;
 using Mcba.Bll.Helpers;
+using Mcba.Entidad;
 using Mcba.Infraestruture;
 using Mcba.Infraestruture.Settings;
 
@@ -11,6 +12,7 @@ namespace Mcba.UI
 {
     public partial class CambioPassword : Form
     {
+        public User UserChange { set; get; }
         private UserLogged userLogged;
         private Dictionary<string, string> captions = new Dictionary<string, string>();
 
@@ -32,7 +34,7 @@ namespace Mcba.UI
         private void CambioPassword_Load(object sender, EventArgs e)
         {
             userLogged = UserLogged.GetInstance();
-            txtUsuario.Text = $"{userLogged.Nombre} {userLogged.Apellido}";
+            txtUsuario.Text = $"{UserChange.Nombre} {UserChange.Apellido}";
             SetCaptions();
         }
 
@@ -57,11 +59,19 @@ namespace Mcba.UI
             }
 
             var userBll = new UserBll();
-            userBll.SaveNewPassword(userLogged.Login, txtNueva.Text);
+            userBll.SaveNewPassword(UserChange.Id, txtNueva.Text);
 
             captions.TryGetValue("PasswordChanged", out var caption);
-            this.ShowMessage(string.Format(caption ?? McbaSettings.SinTraduccion, Environment.NewLine), McbaSettings.MessageTitle, MessageBoxButtons.OK, MessageBoxIcon.Information);
-            Application.Exit();
+            this.ShowMessage(string.Format(caption ?? McbaSettings.SinTraduccion, $"{UserChange.Nombre} {UserChange.Apellido}"), McbaSettings.MessageTitle, MessageBoxButtons.OK, MessageBoxIcon.Information);
+
+            if (userLogged.Id == UserChange.Id)
+            {
+                captions.TryGetValue("CloseSystem", out var closeSystem);
+                this.ShowMessage(closeSystem, McbaSettings.MessageTitle, MessageBoxButtons.OK, MessageBoxIcon.Information);
+                Application.Exit();
+            }
+
+            Close();
         }
 
         private bool Valida()
@@ -107,18 +117,24 @@ namespace Mcba.UI
             try
             {
                 var userBll = new UserBll();
-                ret = userBll.CheckPassword(userLogged.Id, txtActual.Text);
+                ret = userBll.CheckPassword(UserChange.Id, txtActual.Text);
 
                 if (!ret)
                 {
-                    var attemps = userBll.GetAttemps(userLogged.Id);
+                    var attemps = userBll.GetAttemps(UserChange.Id);
 
                     if (attemps >= 3)
                     {
                         captions.TryGetValue("UserBlocked", out var caption);
-                        this.ShowMessage(string.Format(caption ?? McbaSettings.SinTraduccion, Environment.NewLine),
+                        this.ShowMessage(string.Format(caption ?? McbaSettings.SinTraduccion, $"{UserChange.Nombre} {UserChange.Apellido}"),
                             McbaSettings.MessageTitle, MessageBoxButtons.OK, MessageBoxIcon.Stop);
-                        Application.Exit();
+
+                        if (userLogged.Id == UserChange.Id)
+                        {
+                            captions.TryGetValue("CloseSystem", out var closeSystem);
+                            this.ShowMessage(closeSystem, McbaSettings.MessageTitle, MessageBoxButtons.OK, MessageBoxIcon.Information);
+                            Application.Exit();
+                        }
                     }
                 }
             }

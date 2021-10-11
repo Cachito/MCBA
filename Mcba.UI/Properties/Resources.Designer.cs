@@ -83,6 +83,16 @@ namespace Mcba.UI.Properties {
         /// <summary>
         ///   Looks up a localized resource of type System.Drawing.Bitmap.
         /// </summary>
+        internal static System.Drawing.Bitmap change_password_48 {
+            get {
+                object obj = ResourceManager.GetObject("change_password_48", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized resource of type System.Drawing.Bitmap.
+        /// </summary>
         internal static System.Drawing.Bitmap filtro28 {
             get {
                 object obj = ResourceManager.GetObject("filtro28", resourceCulture);

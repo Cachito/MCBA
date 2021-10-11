@@ -54,12 +54,11 @@ namespace Mcba.Bll
             return userDal.GetAttemps(idUsuario);
         }
 
-        public void SaveNewPassword(string login, string password)
+        public void SaveNewPassword(int idUsuario, string password)
         {
             var userDal = new UserDal(McbaSettings.CnnString);
-            var cryptLogin = HashCalculator.Crypt(login, McbaSettings.Salt);
             var cryptPass = HashCalculator.Crypt(password, McbaSettings.Salt);
-            userDal.SaveNewPassword(cryptLogin, cryptPass);
+            userDal.SaveNewPassword(idUsuario, cryptPass);
         }
 
         public string RestorePassword(string login)

@@ -178,7 +178,7 @@
             this.Controls.Add(this.tsCambioPassword);
             this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.FixedSingle;
             this.Name = "CambioPassword";
-            this.StartPosition = System.Windows.Forms.FormStartPosition.CenterParent;
+            this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Tag = "CambioPassword";
             this.Text = "CambioPassword";
             this.Load += new System.EventHandler(this.CambioPassword_Load);

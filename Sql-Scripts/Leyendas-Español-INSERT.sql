@@ -294,10 +294,13 @@ INSERT INTO Leyendas(IdIdioma, Modulo, Tag, Leyenda)
     VALUES(1, 'CambioPassword', 'ErrorCheckPassword', 'Se produjo un error al comprobar la contraseña.')	
 
 INSERT INTO Leyendas(IdIdioma, Modulo, Tag, Leyenda)
-    VALUES(1, 'CambioPassword', 'UserBlocked', 'Su usuario ha sido bloqueado.{0}El sistema se cerrará.')	
+    VALUES(1, 'CambioPassword', 'UserBlocked', 'El usuario {0} ha sido bloqueado.')	
 
 INSERT INTO Leyendas(IdIdioma, Modulo, Tag, Leyenda)
-    VALUES(1, 'CambioPassword', 'PasswordChanged', 'Se cambió su contraseña.{0}El sistema se cerrará.')	
+    VALUES(1, 'CambioPassword', 'PasswordChanged', 'Se cambió la contraseña de usuario {0}.')	
+
+INSERT INTO Leyendas(IdIdioma, Modulo, Tag, Leyenda)
+    VALUES(1, 'CambioPassword', 'CloseSystem', 'El sistema se cerrará.')	
 
 -- Choferes
 INSERT INTO Leyendas(IdIdioma, Modulo, Tag, Leyenda)
@@ -899,6 +902,9 @@ INSERT INTO Leyendas(IdIdioma, Modulo, Tag, Leyenda)
 
 INSERT INTO Leyendas(IdIdioma, Modulo, Tag, Leyenda)
     VALUES(1, 'Usuarios', 'tsbRestorePass', 'Restaurar Contraseña')
+
+INSERT INTO Leyendas(IdIdioma, Modulo, Tag, Leyenda)
+    VALUES(1, 'Usuarios', 'tsbChangePass', 'Cambiar Contraseña')
 
 INSERT INTO Leyendas(IdIdioma, Modulo, Tag, Leyenda)
     VALUES(1, 'Usuarios', 'FaltaUsuario', 'Debe ingresar usuario.')

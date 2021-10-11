@@ -1,7 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Drawing;
-using System.Net.Mail;
 using System.Windows.Forms;
 using Mcba.Bll;
 using Mcba.Bll.Helpers;
@@ -32,6 +31,7 @@ namespace Mcba.UI
         private void Usuarios_Load(object sender, EventArgs e)
         {
             RestorePassVisible = true;
+            ChangePassVisible = true;
             DeleteVisible = false;
             GridPage = 0;
             GridRow = 0;
@@ -229,6 +229,30 @@ namespace Mcba.UI
 
             GridRow = e.RowIndex;
             SetUser();
+        }
+
+        protected internal override void ChangePass()
+        {
+            base.ChangePass();
+
+            var userBll = new UserBll();
+            var userChange = userBll.GetUser(IdUsuario);
+
+            var frm = new CambioPassword();
+
+            if (OpenFormsHelper.CheckIfFormIsOpen(frm.Name))
+            {
+                var frmExist = OpenFormsHelper.GetOpened(frm.Name);
+                frmExist.Dispose();
+            }
+
+            frm = new CambioPassword
+            {
+                UserChange = userChange
+            };
+
+            frm.ShowDialog();
+            frm.BringToFront();
         }
 
         protected internal override void RestorePass()

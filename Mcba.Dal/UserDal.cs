@@ -117,10 +117,10 @@ namespace Mcba.Dal
             WHERE Login = @Login
             ";
 
-        private const string QRY_UPDATE_PASSWORD_BY_LOGIN = @"
+        private const string QRY_UPDATE_PASSWORD_BY_ID = @"
             UPDATE Usuario SET
                 Password = @Password
-            WHERE Login = @Login
+            WHERE Id = @Id
             ";
 
         private const string QRY_GET_ALL_USERS_BY_PAGE = @"
@@ -302,7 +302,7 @@ namespace Mcba.Dal
             }
         }
 
-        public void SaveNewPassword(string login, string password)
+        public void SaveNewPassword(int idUsuario, string password)
         {
             using (var db = new DataAccess(connectionString).GetOpenConnection())
             {
@@ -310,7 +310,9 @@ namespace Mcba.Dal
                 {
                     try
                     {
-                        db.Execute(QRY_UPDATE_PASSWORD_BY_LOGIN, new { Login = login, Password = password }, tr);
+                        db.Execute(QRY_UPDATE_PASSWORD_BY_ID, new { Id = idUsuario, Password = password }, tr);
+
+                        var login = GetUserById(idUsuario, db, tr).Login;
 
                         UpdateIntegrityByLogin(login, db, tr);
 
@@ -360,6 +362,11 @@ namespace Mcba.Dal
             {
                 return db.Query<User>(QRY_GET_USER_BY_ID, new {Id = id}).FirstOrDefault();
             }
+        }
+
+        private User GetUserById(int idUsuario, IDbConnection db, IDbTransaction tr)
+        {
+            return db.Query<User>(QRY_GET_USER_BY_ID, new {Id = idUsuario}, transaction: tr).FirstOrDefault();
         }
 
         public bool Save(User user)

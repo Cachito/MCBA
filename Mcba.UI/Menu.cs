@@ -1,9 +1,9 @@
 ﻿using System;
-using System.Collections.Generic;
 using System.Linq;
 using System.Windows.Forms;
 using Mcba.Bll;
 using Mcba.Bll.Helpers;
+using Mcba.Infraestruture.Helpers;
 using Mcba.Infraestruture.Settings;
 
 namespace Mcba.UI
@@ -185,9 +185,9 @@ namespace Mcba.UI
                 MdiParent = this
             };
 
-            if (CheckIfFormIsOpen(frm.Name))
+            if (OpenFormsHelper.CheckIfFormIsOpen(frm.Name))
             {
-                frm = (Usuarios) Application.OpenForms.Cast<Form>().FirstOrDefault(x => x.Name == frm.Name);
+                frm = (Usuarios)Application.OpenForms.Cast<Form>().FirstOrDefault(x => x.Name == frm.Name);
             }
 
             frm.Show();
@@ -226,33 +226,25 @@ namespace Mcba.UI
 
         private void tsmiCambioContra_Click(object sender, EventArgs e)
         {
-            var frm = new CambioPassword {MdiParent = this};
+            var userBll = new UserBll();
+            var userChange = userBll.GetUser(userLogged.Id);
 
-            if (CheckIfFormIsOpen(frm.Name))
+            var frm = new CambioPassword();
+
+            if (OpenFormsHelper.CheckIfFormIsOpen(frm.Name))
             {
-                frm = (CambioPassword) Application.OpenForms.Cast<Form>().FirstOrDefault(x => x.Name == frm.Name);
+                var frmExists = OpenFormsHelper.GetOpened(frm.Name);
+                frmExists.Dispose();
             }
+
+            frm = new CambioPassword
+            {
+                MdiParent = this,
+                UserChange = userChange
+            };
 
             frm.Show();
             frm.BringToFront();
-        }
-
-        private bool CheckIfFormIsOpen(string formName)
-        {
-
-            //FormCollection fc = Application.OpenForms;
-            //foreach (Form frm in fc)
-            //{
-            //    if (frm.Name == formname)
-            //    {
-            //        return true;
-            //    }
-            //}
-            //return false;
-
-            var formOpen = Application.OpenForms.Cast<Form>().Any(form => form.Name == formName);
-
-            return formOpen;
         }
     }
 }
