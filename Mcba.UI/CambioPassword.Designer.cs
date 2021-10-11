@@ -31,7 +31,6 @@
             this.tsCambioPassword = new System.Windows.Forms.ToolStrip();
             this.tsbSalir = new System.Windows.Forms.ToolStripButton();
             this.tsbSave = new System.Windows.Forms.ToolStripButton();
-            this.tsbRestaurar = new System.Windows.Forms.ToolStripButton();
             this.gbData = new System.Windows.Forms.GroupBox();
             this.txtRepiteNueva = new System.Windows.Forms.TextBox();
             this.lblRepetir = new System.Windows.Forms.Label();
@@ -49,8 +48,7 @@
             // 
             this.tsCambioPassword.Items.AddRange(new System.Windows.Forms.ToolStripItem[] {
             this.tsbSalir,
-            this.tsbSave,
-            this.tsbRestaurar});
+            this.tsbSave});
             this.tsCambioPassword.Location = new System.Drawing.Point(0, 0);
             this.tsCambioPassword.Name = "tsCambioPassword";
             this.tsCambioPassword.Size = new System.Drawing.Size(358, 25);
@@ -77,17 +75,6 @@
             this.tsbSave.Tag = "tsbSave";
             this.tsbSave.Text = "Guardar";
             this.tsbSave.Click += new System.EventHandler(this.tsbSave_Click);
-            // 
-            // tsbRestaurar
-            // 
-            this.tsbRestaurar.DisplayStyle = System.Windows.Forms.ToolStripItemDisplayStyle.Image;
-            this.tsbRestaurar.Image = global::Mcba.UI.Properties.Resources.Restore_Password_48;
-            this.tsbRestaurar.ImageTransparentColor = System.Drawing.Color.Magenta;
-            this.tsbRestaurar.Name = "tsbRestaurar";
-            this.tsbRestaurar.Size = new System.Drawing.Size(23, 22);
-            this.tsbRestaurar.Tag = "tsbRestaurar";
-            this.tsbRestaurar.Text = "Restaurar";
-            this.tsbRestaurar.Click += new System.EventHandler(this.tsbRestaurar_Click);
             // 
             // gbData
             // 
@@ -218,6 +205,5 @@
         private System.Windows.Forms.Label lblRepetir;
         private System.Windows.Forms.TextBox txtNueva;
         private System.Windows.Forms.Label lblContraNueva;
-        private System.Windows.Forms.ToolStripButton tsbRestaurar;
     }
 }

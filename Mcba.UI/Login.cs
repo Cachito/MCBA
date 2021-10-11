@@ -107,13 +107,14 @@ namespace Mcba.UI
             if (ok)
             {
                 var user = userBll.LogUser(txtUsuario.Text);
+                var userLogged = UserLogged.GetInstance();
 
-                UserLogged.Login = txtUsuario.Text;
-                UserLogged.Apellido = user.Apellido;
-                UserLogged.Email = user.Email;
-                UserLogged.Id = user.Id;
-                UserLogged.IdIdioma = user.IdIdioma;
-                UserLogged.Nombre = user.Nombre;
+                userLogged.Login = txtUsuario.Text;
+                userLogged.Apellido = user.Apellido;
+                userLogged.Email = user.Email;
+                userLogged.Id = user.Id;
+                userLogged.IdIdioma = user.IdIdioma;
+                userLogged.Nombre = user.Nombre;
 
                 DialogResult = DialogResult.OK;
                 Close();

@@ -1,4 +1,5 @@
-﻿using System.Collections.Generic;
+﻿using System;
+using System.Collections.Generic;
 using System.Web.Security;
 using Mcba.Dal;
 using Mcba.Entidad;
@@ -44,6 +45,21 @@ namespace Mcba.Bll
             var userDal = new UserDal(McbaSettings.CnnString);
 
             return userDal.GetAttemps(cryptLogin);
+        }
+
+        public int GetAttemps(int idUsuario)
+        {
+            var userDal = new UserDal(McbaSettings.CnnString);
+
+            return userDal.GetAttemps(idUsuario);
+        }
+
+        public void SaveNewPassword(string login, string password)
+        {
+            var userDal = new UserDal(McbaSettings.CnnString);
+            var cryptLogin = HashCalculator.Crypt(login, McbaSettings.Salt);
+            var cryptPass = HashCalculator.Crypt(password, McbaSettings.Salt);
+            userDal.SaveNewPassword(cryptLogin, cryptPass);
         }
 
         public string RestorePassword(string login)
@@ -93,6 +109,25 @@ namespace Mcba.Bll
             var userDal = new UserDal(McbaSettings.CnnString);
 
             return userDal.Save(user);
+        }
+
+        public bool CheckPassword(int idUsuario, string password)
+        {
+            var ret = false;
+
+            var userDal = new UserDal(McbaSettings.CnnString);
+            var crypPass = HashCalculator.Crypt(password, McbaSettings.Salt);
+            var actualUser = userDal.GetUserById(idUsuario);
+            var actualPass = actualUser.Password;
+
+            ret = actualPass == crypPass;
+
+            if (!ret)
+            {
+                userDal.UpdateFailedAttempt(actualUser.Login);
+            }
+
+            return ret;
         }
 
         public bool EmailExist(string email, int idUsuario)

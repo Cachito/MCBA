@@ -279,7 +279,25 @@ INSERT INTO Leyendas(IdIdioma, Modulo, Tag, Leyenda)
     VALUES(2, 'CambioPassword', 'tsbSave', 'Konservu')	
     
 INSERT INTO Leyendas(IdIdioma, Modulo, Tag, Leyenda)
-    VALUES(2, 'CambioPassword', 'tsbRestaurar', 'Restaŭri')			
+    VALUES(2, 'CambioPassword', 'ClaveActual', 'Vi devas enigi la nunan pasvorton.')	
+
+INSERT INTO Leyendas(IdIdioma, Modulo, Tag, Leyenda)
+    VALUES(2, 'CambioPassword', 'ClaveNueva', 'Vi devas enigi novan pasvorton.')	
+
+INSERT INTO Leyendas(IdIdioma, Modulo, Tag, Leyenda)
+    VALUES(2, 'CambioPassword', 'ClaveIncorrecta', 'La nuna pasvorto enmetita estas malĝusta.')	
+
+INSERT INTO Leyendas(IdIdioma, Modulo, Tag, Leyenda)
+    VALUES(2, 'CambioPassword', 'ClaveDistinta', 'La eniritaj pasvortoj ne samas.')	
+    
+INSERT INTO Leyendas(IdIdioma, Modulo, Tag, Leyenda)
+    VALUES(2, 'CambioPassword', 'ErrorCheckPassword', 'Eraro okazis dum kontrolado de la pasvorto.')	
+
+INSERT INTO Leyendas(IdIdioma, Modulo, Tag, Leyenda)
+    VALUES(2, 'CambioPassword', 'UserBlocked', 'Via uzanto estas blokita.{0}La sistemo estos fermita.')	
+
+INSERT INTO Leyendas(IdIdioma, Modulo, Tag, Leyenda)
+    VALUES(2, 'CambioPassword', 'PasswordChanged', 'Via pasvorto estis ŝanĝita.{0}La sistemo haltos.')	
 
 -- Choferes
 INSERT INTO Leyendas(IdIdioma, Modulo, Tag, Leyenda)
