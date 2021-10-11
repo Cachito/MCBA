@@ -1,6 +1,4 @@
 ﻿using System;
-using System.Collections.Generic;
-using System.Net.Mail;
 using System.Windows.Forms;
 using Mcba.Infraestruture.Enums;
 using Mcba.Infraestruture.Settings;
@@ -72,6 +70,16 @@ namespace Mcba.UI
         protected internal bool RestorePassVisible
         {
             set => tsbRestorePass.Visible = value;
+        }
+
+        private bool ChangePassEnabled
+        {
+            set => tsbChangePass.Enabled = value;
+        }
+
+        protected internal bool ChangePassVisible
+        {
+            set => tsbChangePass.Visible = value;
         }
 
         protected internal bool DeleteVisible
@@ -150,6 +158,11 @@ namespace Mcba.UI
             RestorePass();
         }
 
+        private void tsbChangePass_Click(object sender, EventArgs e)
+        {
+            ChangePass();
+        }
+
         private void tsbUndo_Click(object sender, EventArgs e)
         {
             Undo();
@@ -211,6 +224,11 @@ namespace Mcba.UI
             SetToolbarStatus(ToolbarStatusEnum.RestorePass);
         }
 
+        protected internal virtual void ChangePass()
+        {
+            SetToolbarStatus(ToolbarStatusEnum.RestorePass);
+        }
+
         protected internal virtual void Clean()
         {
             SetToolbarStatus(ToolbarStatusEnum.Default);
@@ -266,6 +284,7 @@ namespace Mcba.UI
             NextEnabled = DataRowsCount >= (GridPage == 0 ? 1 : GridPage) * McbaSettings.DataPagination;
             PrintEnabled = true;
             RestorePassEnabled = true;
+            ChangePassEnabled = true;
         }
 
         private void SetToolbarDefault()
@@ -284,6 +303,7 @@ namespace Mcba.UI
             NextEnabled = DataRowsCount >= (GridPage == 0 ? 1 : GridPage) * McbaSettings.DataPagination;
             PrintEnabled = true;
             RestorePassEnabled = true;
+            ChangePassEnabled = true;
 
             Attach();
         }
@@ -311,6 +331,7 @@ namespace Mcba.UI
             NextEnabled = false;
             PrintEnabled = false;
             RestorePassEnabled = false;
+            ChangePassEnabled = false;
         }
 
         private void SetToolbarAll()
@@ -326,6 +347,7 @@ namespace Mcba.UI
             NextEnabled = true;
             PrintEnabled = true;
             RestorePassEnabled = true;
+            ChangePassEnabled = true;
         }
 
         private void SetToolbarNew()
@@ -341,6 +363,7 @@ namespace Mcba.UI
             NextEnabled = DataRowsCount >= (GridPage == 0 ? 1 : GridPage) * McbaSettings.DataPagination; ;
             PrintEnabled = false;
             RestorePassEnabled = false;
+            ChangePassEnabled = false;
         }
 
         private void SetToolbarEdit()
@@ -356,6 +379,7 @@ namespace Mcba.UI
             NextEnabled = DataRowsCount >= (GridPage == 0 ? 1 : GridPage) * McbaSettings.DataPagination; ;
             PrintEnabled = false;
             RestorePassEnabled = false;
+            ChangePassEnabled = false;
         }
 
         private void SetToolbarDelete()
@@ -371,11 +395,11 @@ namespace Mcba.UI
             NextEnabled = false;
             PrintEnabled = false;
             RestorePassEnabled = false;
+            ChangePassEnabled = false;
         }
 
         protected internal virtual void LoadView()
         {
-
 
         }
     }

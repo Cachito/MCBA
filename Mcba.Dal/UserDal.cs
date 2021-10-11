@@ -59,6 +59,13 @@ namespace Mcba.Dal
             WHERE Login = @Login
             ";
 
+        private const string QRY_GET_ATTEMP_BY_ID = @"
+            SELECT 
+                Intentos
+            FROM Usuario
+            WHERE Id = @Id
+            ";
+
         private const string QRY_GET_ALL_USERS = @"
             SELECT 
                 Id
@@ -108,6 +115,12 @@ namespace Mcba.Dal
             UPDATE Usuario SET
                 DV = @Dv
             WHERE Login = @Login
+            ";
+
+        private const string QRY_UPDATE_PASSWORD_BY_ID = @"
+            UPDATE Usuario SET
+                Password = @Password
+            WHERE Id = @Id
             ";
 
         private const string QRY_GET_ALL_USERS_BY_PAGE = @"
@@ -253,6 +266,14 @@ namespace Mcba.Dal
             }
         }
 
+        public int GetAttemps(int idUsuario)
+        {
+            using (var db = new DataAccess(connectionString).GetOpenConnection())
+            {
+                return db.ExecuteScalar<int>(QRY_GET_ATTEMP_BY_ID, new { Id = idUsuario});
+            }
+        }
+
         public int GetAttemps(string login, IDbConnection db, IDbTransaction tr)
         {
             return db.ExecuteScalar<int>(QRY_GET_ATTEMP_BY_LOGIN, new {Login = login}, tr);
@@ -267,6 +288,31 @@ namespace Mcba.Dal
                     try
                     {
                         db.Execute(QRY_RESTORE_BY_LOGIN, new {Login = login, Password = password}, tr);
+
+                        UpdateIntegrityByLogin(login, db, tr);
+
+                        tr.Commit();
+                    }
+                    catch
+                    {
+                        tr.Rollback();
+                        throw;
+                    }
+                }
+            }
+        }
+
+        public void SaveNewPassword(int idUsuario, string password)
+        {
+            using (var db = new DataAccess(connectionString).GetOpenConnection())
+            {
+                using (var tr = db.BeginTransaction())
+                {
+                    try
+                    {
+                        db.Execute(QRY_UPDATE_PASSWORD_BY_ID, new { Id = idUsuario, Password = password }, tr);
+
+                        var login = GetUserById(idUsuario, db, tr).Login;
 
                         UpdateIntegrityByLogin(login, db, tr);
 
@@ -316,6 +362,11 @@ namespace Mcba.Dal
             {
                 return db.Query<User>(QRY_GET_USER_BY_ID, new {Id = id}).FirstOrDefault();
             }
+        }
+
+        private User GetUserById(int idUsuario, IDbConnection db, IDbTransaction tr)
+        {
+            return db.Query<User>(QRY_GET_USER_BY_ID, new {Id = idUsuario}, transaction: tr).FirstOrDefault();
         }
 
         public bool Save(User user)

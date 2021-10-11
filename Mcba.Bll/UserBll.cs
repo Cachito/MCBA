@@ -47,6 +47,20 @@ namespace Mcba.Bll
             return userDal.GetAttemps(cryptLogin);
         }
 
+        public int GetAttemps(int idUsuario)
+        {
+            var userDal = new UserDal(McbaSettings.CnnString);
+
+            return userDal.GetAttemps(idUsuario);
+        }
+
+        public void SaveNewPassword(int idUsuario, string password)
+        {
+            var userDal = new UserDal(McbaSettings.CnnString);
+            var cryptPass = HashCalculator.Crypt(password, McbaSettings.Salt);
+            userDal.SaveNewPassword(idUsuario, cryptPass);
+        }
+
         public string RestorePassword(string login)
         {
             var randomPass =
@@ -94,6 +108,25 @@ namespace Mcba.Bll
             var userDal = new UserDal(McbaSettings.CnnString);
 
             return userDal.Save(user);
+        }
+
+        public bool CheckPassword(int idUsuario, string password)
+        {
+            var ret = false;
+
+            var userDal = new UserDal(McbaSettings.CnnString);
+            var crypPass = HashCalculator.Crypt(password, McbaSettings.Salt);
+            var actualUser = userDal.GetUserById(idUsuario);
+            var actualPass = actualUser.Password;
+
+            ret = actualPass == crypPass;
+
+            if (!ret)
+            {
+                userDal.UpdateFailedAttempt(actualUser.Login);
+            }
+
+            return ret;
         }
 
         public bool EmailExist(string email, int idUsuario)

@@ -40,6 +40,7 @@
             this.tsbPrevious = new System.Windows.Forms.ToolStripButton();
             this.tsbNext = new System.Windows.Forms.ToolStripButton();
             this.tsbRestorePass = new System.Windows.Forms.ToolStripButton();
+            this.tsbChangePass = new System.Windows.Forms.ToolStripButton();
             this.Toolbar.SuspendLayout();
             this.SuspendLayout();
             // 
@@ -56,7 +57,8 @@
             this.tsbBuscar,
             this.tsbPrevious,
             this.tsbNext,
-            this.tsbRestorePass});
+            this.tsbRestorePass,
+            this.tsbChangePass});
             this.Toolbar.Location = new System.Drawing.Point(0, 0);
             this.Toolbar.Name = "Toolbar";
             this.Toolbar.Size = new System.Drawing.Size(613, 25);
@@ -188,6 +190,18 @@
             this.tsbRestorePass.Visible = false;
             this.tsbRestorePass.Click += new System.EventHandler(this.tsbRestaurar_Click);
             // 
+            // tsbChangePass
+            // 
+            this.tsbChangePass.DisplayStyle = System.Windows.Forms.ToolStripItemDisplayStyle.Image;
+            this.tsbChangePass.Image = global::Mcba.UI.Properties.Resources.change_password_48;
+            this.tsbChangePass.ImageTransparentColor = System.Drawing.Color.Magenta;
+            this.tsbChangePass.Name = "tsbChangePass";
+            this.tsbChangePass.Size = new System.Drawing.Size(23, 22);
+            this.tsbChangePass.Tag = "tsbChangePass";
+            this.tsbChangePass.Text = "tsbChangePass";
+            this.tsbChangePass.Visible = false;
+            this.tsbChangePass.Click += new System.EventHandler(this.tsbChangePass_Click);
+            // 
             // ViewBase
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
@@ -219,5 +233,6 @@
         private System.Windows.Forms.ToolStripButton tsbPrevious;
         private System.Windows.Forms.ToolStripButton tsbNext;
         private System.Windows.Forms.ToolStripButton tsbUndo;
+        private System.Windows.Forms.ToolStripButton tsbChangePass;
     }
 }

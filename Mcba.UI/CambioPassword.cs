@@ -1,14 +1,20 @@
 ﻿using System;
+using System.Collections.Generic;
 using System.Text;
 using System.Windows.Forms;
+using Mcba.Bll;
 using Mcba.Bll.Helpers;
-using Mcba.Infraestruture.Helpers;
+using Mcba.Entidad;
+using Mcba.Infraestruture;
+using Mcba.Infraestruture.Settings;
 
 namespace Mcba.UI
 {
     public partial class CambioPassword : Form
     {
-        private int idChofer { set; get; }
+        public User UserChange { set; get; }
+        private UserLogged userLogged;
+        private Dictionary<string, string> captions = new Dictionary<string, string>();
 
         public CambioPassword()
         {
@@ -20,16 +26,6 @@ namespace Mcba.UI
             Close();
         }
 
-        private void tsbNew_Click(object sender, EventArgs e)
-        {
-            New();
-        }
-
-        private void tsbEdit_Click(object sender, EventArgs e)
-        {
-            Edit();
-        }
-
         private void tsbSave_Click(object sender, EventArgs e)
         {
             Save();
@@ -37,43 +33,15 @@ namespace Mcba.UI
 
         private void CambioPassword_Load(object sender, EventArgs e)
         {
+            userLogged = UserLogged.GetInstance();
+            txtUsuario.Text = $"{UserChange.Nombre} {UserChange.Apellido}";
             SetCaptions();
-            LoadGrid();
         }
 
         private void SetCaptions()
         {
-            var caps = CaptionHelper.GetCaptions(Name);
-            CaptionHelper.SetCaptions(caps, this);
-        }
-
-        private void LoadGrid()
-        {
-
-        }
-
-        private void Edit()
-        {
-            ControlsEnabled(true);
-        }
-
-        private void New()
-        {
-            ControlsEnabled(true);
-            Clean();
-        }
-
-        private void Clean()
-        {
-            idChofer = 0;
-            txtUsuario.Text = string.Empty;
-            txtActual.Text = string.Empty;
-        }
-
-        private void ControlsEnabled(bool enable)
-        {
-            txtUsuario.Enabled = enable;
-            txtActual.Enabled = enable;
+            captions = CaptionHelper.GetCaptions(Name);
+            CaptionHelper.SetCaptions(captions, this);
         }
 
         private void Save()
@@ -83,9 +51,27 @@ namespace Mcba.UI
                 return;
             }
 
-            int.TryParse(txtActual.Text, out var dni);
+            if (!CheckUser())
+            {
+                captions.TryGetValue("ClaveIncorrecta", out var claveIncorrecta);
+                this.ShowMessage($"{claveIncorrecta}{Environment.NewLine}", McbaSettings.MessageTitle, MessageBoxButtons.OK, MessageBoxIcon.Exclamation);
+                return;
+            }
 
-            LoadGrid();
+            var userBll = new UserBll();
+            userBll.SaveNewPassword(UserChange.Id, txtNueva.Text);
+
+            captions.TryGetValue("PasswordChanged", out var caption);
+            this.ShowMessage(string.Format(caption ?? McbaSettings.SinTraduccion, $"{UserChange.Nombre} {UserChange.Apellido}"), McbaSettings.MessageTitle, MessageBoxButtons.OK, MessageBoxIcon.Information);
+
+            if (userLogged.Id == UserChange.Id)
+            {
+                captions.TryGetValue("CloseSystem", out var closeSystem);
+                this.ShowMessage(closeSystem, McbaSettings.MessageTitle, MessageBoxButtons.OK, MessageBoxIcon.Information);
+                Application.Exit();
+            }
+
+            Close();
         }
 
         private bool Valida()
@@ -95,31 +81,70 @@ namespace Mcba.UI
 
             if (txtActual.Text == string.Empty)
             {
-                mess.Append("Debe ingreasr DNI.");
+                captions.TryGetValue("ClaveActual", out var claveActual);
+                mess.Append($"{claveActual}{Environment.NewLine}");
                 ret = false;
             }
 
-            if (!int.TryParse(txtActual.Text, out var _))
+            if (txtNueva.Text == string.Empty || txtRepiteNueva.Text == string.Empty)
             {
-                mess.Append("Valor para DNI no válido.");
+                captions.TryGetValue("ClaveNueva", out var claveNueva);
+                mess.Append($"{claveNueva}{Environment.NewLine}");
                 ret = false;
             }
 
-            if (txtUsuario.Text == string.Empty)
+            if (!string.Equals(txtNueva.Text.Trim().ToLower(), txtRepiteNueva.Text.Trim().ToLower(),
+                StringComparison.Ordinal))
             {
-                mess.Append("Debe ingreasr Nombre.");
+                captions.TryGetValue("ClaveDistinta", out var claveDistinta);
+                mess.Append($"{claveDistinta}{Environment.NewLine}");
                 ret = false;
+            }
+
+            if (!ret)
+            {
+                this.ShowMessage(mess.ToString(), McbaSettings.MessageTitle, MessageBoxButtons.OK,
+                    MessageBoxIcon.Exclamation);
             }
 
             return ret;
         }
 
-        private void tsbRestaurar_Click(object sender, EventArgs e)
+        private bool CheckUser()
         {
-            MessageBox.Show(
-                $"Esta acción restaurará su clave y enviará una nueva por correo.{Environment.NewLine}El sistema se cerrará y debe vovler a ingresar con la clave nueva.{Environment.NewLine}¿Está seguro?",
-                "Boungiorno S.A.", MessageBoxButtons.YesNo, MessageBoxIcon.Exclamation,
-                MessageBoxDefaultButton.Button2);
+            var ret = false;
+
+            try
+            {
+                var userBll = new UserBll();
+                ret = userBll.CheckPassword(UserChange.Id, txtActual.Text);
+
+                if (!ret)
+                {
+                    var attemps = userBll.GetAttemps(UserChange.Id);
+
+                    if (attemps >= 3)
+                    {
+                        captions.TryGetValue("UserBlocked", out var caption);
+                        this.ShowMessage(string.Format(caption ?? McbaSettings.SinTraduccion, $"{UserChange.Nombre} {UserChange.Apellido}"),
+                            McbaSettings.MessageTitle, MessageBoxButtons.OK, MessageBoxIcon.Stop);
+
+                        if (userLogged.Id == UserChange.Id)
+                        {
+                            captions.TryGetValue("CloseSystem", out var closeSystem);
+                            this.ShowMessage(closeSystem, McbaSettings.MessageTitle, MessageBoxButtons.OK, MessageBoxIcon.Information);
+                            Application.Exit();
+                        }
+                    }
+                }
+            }
+            catch (Exception ex)
+            {
+                captions.TryGetValue("ErrorCheckPassword", out var caption);
+                this.ShowMessage($"{caption}{Environment.NewLine}{ex.Message}", McbaSettings.MessageTitle, MessageBoxButtons.OK, MessageBoxIcon.Exclamation);
+            }
+
+            return ret;
         }
     }
 }

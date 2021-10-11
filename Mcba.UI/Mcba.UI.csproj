@@ -398,6 +398,7 @@
     <None Include="Resources\iconArrowLeft.png" />
     <None Include="Resources\Undo.png" />
     <None Include="Resources\IconNoBuscar.jpg" />
+    <None Include="Resources\change-password-48.png" />
     <Content Include="SqlServerTypes\readme.htm" />
     <Content Include="SqlServerTypes\x64\msvcr120.dll">
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>

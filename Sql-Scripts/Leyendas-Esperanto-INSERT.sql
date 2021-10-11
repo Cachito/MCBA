@@ -279,7 +279,28 @@ INSERT INTO Leyendas(IdIdioma, Modulo, Tag, Leyenda)
     VALUES(2, 'CambioPassword', 'tsbSave', 'Konservu')	
     
 INSERT INTO Leyendas(IdIdioma, Modulo, Tag, Leyenda)
-    VALUES(2, 'CambioPassword', 'tsbRestaurar', 'Restaŭri')			
+    VALUES(2, 'CambioPassword', 'ClaveActual', 'Vi devas enigi la nunan pasvorton.')	
+
+INSERT INTO Leyendas(IdIdioma, Modulo, Tag, Leyenda)
+    VALUES(2, 'CambioPassword', 'ClaveNueva', 'Vi devas enigi novan pasvorton.')	
+
+INSERT INTO Leyendas(IdIdioma, Modulo, Tag, Leyenda)
+    VALUES(2, 'CambioPassword', 'ClaveIncorrecta', 'La nuna pasvorto enmetita estas malĝusta.')	
+
+INSERT INTO Leyendas(IdIdioma, Modulo, Tag, Leyenda)
+    VALUES(2, 'CambioPassword', 'ClaveDistinta', 'La eniritaj pasvortoj ne samas.')	
+    
+INSERT INTO Leyendas(IdIdioma, Modulo, Tag, Leyenda)
+    VALUES(2, 'CambioPassword', 'ErrorCheckPassword', 'Eraro okazis dum kontrolado de la pasvorto.')	
+
+INSERT INTO Leyendas(IdIdioma, Modulo, Tag, Leyenda)
+    VALUES(2, 'CambioPassword', 'UserBlocked', 'Uzanto {0} estis blokita.')	
+
+INSERT INTO Leyendas(IdIdioma, Modulo, Tag, Leyenda)
+    VALUES(2, 'CambioPassword', 'PasswordChanged', 'Uzanta pasvorto {0} estis ŝanĝita.')	
+
+INSERT INTO Leyendas(IdIdioma, Modulo, Tag, Leyenda)
+    VALUES(2, 'CambioPassword', 'CloseSystem', 'La sistemo haltos.')	
 
 -- Choferes
 INSERT INTO Leyendas(IdIdioma, Modulo, Tag, Leyenda)
@@ -881,6 +902,9 @@ INSERT INTO Leyendas(IdIdioma, Modulo, Tag, Leyenda)
 
 INSERT INTO Leyendas(IdIdioma, Modulo, Tag, Leyenda)
     VALUES(2, 'Usuarios', 'tsbRestorePass', 'Restarigi Pasvorton')
+
+INSERT INTO Leyendas(IdIdioma, Modulo, Tag, Leyenda)
+    VALUES(2, 'Usuarios', 'tsbChangePass', 'Ŝanĝi Pasvorton')
 
 INSERT INTO Leyendas(IdIdioma, Modulo, Tag, Leyenda)
     VALUES(2, 'Usuarios', 'FaltaUsuario', 'Vi devas eniri uzanton.')

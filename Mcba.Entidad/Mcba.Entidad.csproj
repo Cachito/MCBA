@@ -41,6 +41,7 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="Attributes\CryptAttribute.cs" />
+    <Compile Include="Bitacora.cs" />
     <Compile Include="Enums\CryptMethodEnum.cs" />
     <Compile Include="Dto\UserDto.cs" />
     <Compile Include="Integrity.cs" />

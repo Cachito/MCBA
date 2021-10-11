@@ -43,6 +43,7 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="BitacoraDal.cs" />
     <Compile Include="CaptionDal.cs" />
     <Compile Include="IntegrityDal.cs" />
     <Compile Include="LanguageDal.cs" />
