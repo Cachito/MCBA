@@ -43,7 +43,7 @@ namespace Mcba.UI
             CaptionHelper.SetCaption(tsLabel, Name, "CheckIntegridad");
 
             // check integridad
-            var integrityOk = IntegrityBll.CheckIntegrity();
+            var integrityOk = IntegrityHelper.CheckIntegrity();
 
             e.Result = settings && integrityOk;
         }

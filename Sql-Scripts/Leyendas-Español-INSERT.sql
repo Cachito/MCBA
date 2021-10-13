@@ -118,6 +118,9 @@ INSERT INTO Leyendas(IdIdioma, Modulo, Tag, Leyenda)
     VALUES(1, 'Menu', 'tsmiPermisos', 'Permisos')
 
 INSERT INTO Leyendas(IdIdioma, Modulo, Tag, Leyenda)
+    VALUES(1, 'Menu', 'tsmiFamilias', 'Familias')
+
+INSERT INTO Leyendas(IdIdioma, Modulo, Tag, Leyenda)
     VALUES(1, 'Menu', 'tsmiBackup', 'Backup')
 
 INSERT INTO Leyendas(IdIdioma, Modulo, Tag, Leyenda)
@@ -230,6 +233,59 @@ INSERT INTO Leyendas(IdIdioma, Modulo, Tag, Leyenda)
 
 INSERT INTO Leyendas(IdIdioma, Modulo, Tag, Leyenda)
     VALUES(1, 'Bancos', 'tsbNext', 'Página Siguiente')	
+
+-- Familia
+INSERT INTO Leyendas(IdIdioma, Modulo, Tag, Leyenda)
+    VALUES(1, 'Familias', 'Familias', 'Familias')
+
+INSERT INTO Leyendas(IdIdioma, Modulo, Tag, Leyenda)
+    VALUES(1, 'Familias', 'lblId', 'Id')
+
+INSERT INTO Leyendas(IdIdioma, Modulo, Tag, Leyenda)
+    VALUES(1, 'Familias', 'lblNombre', 'Nombre')
+
+INSERT INTO Leyendas(IdIdioma, Modulo, Tag, Leyenda)
+    VALUES(1, 'Familias', 'chkActivo', 'Activo')
+	
+INSERT INTO Leyendas(IdIdioma, Modulo, Tag, Leyenda)
+    VALUES(1, 'Familias', 'tsbNew', 'Nuevo')
+
+INSERT INTO Leyendas(IdIdioma, Modulo, Tag, Leyenda)
+    VALUES(1, 'Familias', 'tsbDelete', 'Eliminar')
+
+INSERT INTO Leyendas(IdIdioma, Modulo, Tag, Leyenda)
+    VALUES(1, 'Familias', 'tsbEdit', 'Editar')
+
+INSERT INTO Leyendas(IdIdioma, Modulo, Tag, Leyenda)
+    VALUES(1, 'Familias', 'tsbSave', 'Guardar')
+
+INSERT INTO Leyendas(IdIdioma, Modulo, Tag, Leyenda)
+    VALUES(1, 'Familias', 'tsbSalir', 'Salir')
+	
+INSERT INTO Leyendas(IdIdioma, Modulo, Tag, Leyenda)
+    VALUES(1, 'Familias', 'tsbBuscar', 'Buscar')	
+    
+INSERT INTO Leyendas(IdIdioma, Modulo, Tag, Leyenda)
+    VALUES(1, 'Familias', 'tsbPrint', 'Imprimir')			    
+
+INSERT INTO Leyendas(IdIdioma, Modulo, Tag, Leyenda)
+    VALUES(1, 'Familias', 'tsbUndo', 'Deshacer')
+
+INSERT INTO Leyendas(IdIdioma, Modulo, Tag, Leyenda)
+    VALUES(1, 'Familias', 'tsbPrevious', 'Página Anterior')
+
+INSERT INTO Leyendas(IdIdioma, Modulo, Tag, Leyenda)
+    VALUES(1, 'Familias', 'tsbNext', 'Página Siguiente')	
+
+INSERT INTO Leyendas(IdIdioma, Modulo, Tag, Leyenda)
+    VALUES(1, 'Familias', 'FaltaNombre', 'Debe ingresar un nombre.{0}')	
+
+INSERT INTO Leyendas(IdIdioma, Modulo, Tag, Leyenda)
+    VALUES(1, 'Familias', 'ErrorAlGuardar', 'Hubo un error al guardar.{0}Por favor intente más tarde.')	
+
+INSERT INTO Leyendas(IdIdioma, Modulo, Tag, Leyenda)
+    VALUES(1, 'Familias', 'NoEncontrado', 'No se encuentra el registro buscado.{0}Por favor recargue la grilla')	
+
 
 -- Bitácora
 INSERT INTO Leyendas(IdIdioma, Modulo, Tag, Leyenda)

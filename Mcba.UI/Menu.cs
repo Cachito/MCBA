@@ -3,6 +3,7 @@ using System.Linq;
 using System.Windows.Forms;
 using Mcba.Bll;
 using Mcba.Bll.Helpers;
+using Mcba.Entidad.Dto;
 using Mcba.Infraestruture.Helpers;
 using Mcba.Infraestruture.Settings;
 
@@ -80,7 +81,7 @@ namespace Mcba.UI
 
         private void tsmiLocalidades_Click(object sender, EventArgs e)
         {
-            Localidades frm = new Localidades()
+            Localidades frm = new Localidades
             {
                 MdiParent = this
             };
@@ -90,7 +91,7 @@ namespace Mcba.UI
 
         private void tsmiBancos_Click(object sender, EventArgs e)
         {
-            Bancos frm = new Bancos()
+            Bancos frm = new Bancos
             {
                 MdiParent = this
             };
@@ -100,7 +101,7 @@ namespace Mcba.UI
 
         private void tsmiTiposCuenta_Click(object sender, EventArgs e)
         {
-            TiposCuenta frm = new TiposCuenta()
+            TiposCuenta frm = new TiposCuenta
             {
                 MdiParent = this
             };
@@ -110,7 +111,7 @@ namespace Mcba.UI
 
         private void tsmiUnidades_Click(object sender, EventArgs e)
         {
-            Unidades frm = new Unidades()
+            Unidades frm = new Unidades
             {
                 MdiParent = this
             };
@@ -120,7 +121,7 @@ namespace Mcba.UI
 
         private void tsmiRemitentes_Click(object sender, EventArgs e)
         {
-            Remitentes frm = new Remitentes()
+            Remitentes frm = new Remitentes
             {
                 MdiParent = this
             };
@@ -130,7 +131,7 @@ namespace Mcba.UI
 
         private void tsmiProductos_Click(object sender, EventArgs e)
         {
-            Productos frm = new Productos()
+            Productos frm = new Productos
             {
                 MdiParent = this
             };
@@ -140,7 +141,7 @@ namespace Mcba.UI
 
         private void tsmiClientes_Click(object sender, EventArgs e)
         {
-            Clientes frm = new Clientes()
+            Clientes frm = new Clientes
             {
                 MdiParent = this
             };
@@ -150,7 +151,7 @@ namespace Mcba.UI
 
         private void tsmiStock_Click(object sender, EventArgs e)
         {
-            Stock frm = new Stock()
+            Stock frm = new Stock
             {
                 MdiParent = this
             };
@@ -160,7 +161,7 @@ namespace Mcba.UI
 
         private void tsmiVentas_Click(object sender, EventArgs e)
         {
-            Facturas frm = new Facturas()
+            Facturas frm = new Facturas
             {
                 MdiParent = this
             };
@@ -170,7 +171,7 @@ namespace Mcba.UI
 
         private void tsmiLiquidaciones_Click(object sender, EventArgs e)
         {
-            Liquidacion frm = new Liquidacion()
+            Liquidacion frm = new Liquidacion
             {
                 MdiParent = this
             };
@@ -196,7 +197,7 @@ namespace Mcba.UI
 
         private void tsmiPermisos_Click(object sender, EventArgs e)
         {
-            Permisos frm = new Permisos()
+            Permisos frm = new Permisos
             {
                 MdiParent = this
             };
@@ -206,7 +207,7 @@ namespace Mcba.UI
 
         private void tsmiBackup_Click(object sender, EventArgs e)
         {
-            Backup frm = new Backup()
+            Backup frm = new Backup
             {
                 MdiParent = this
             };
@@ -216,7 +217,17 @@ namespace Mcba.UI
 
         private void tsmiBitacora_Click(object sender, EventArgs e)
         {
-            Bitacora frm = new Bitacora()
+            Bitacora frm = new Bitacora
+            {
+                MdiParent = this
+            };
+
+            frm.Show();
+        }
+
+        private void tsmiFamilias_Click(object sender, EventArgs e)
+        {
+            Familias frm = new Familias
             {
                 MdiParent = this
             };

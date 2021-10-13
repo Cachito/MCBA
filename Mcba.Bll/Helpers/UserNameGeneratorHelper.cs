@@ -4,9 +4,9 @@ using Mcba.Dal;
 using Mcba.Infraestruture.Settings;
 using Mcba.Seguridad;
 
-namespace Mcba.Bll
+namespace Mcba.Bll.Helpers
 {
-    public static class UserNameGenerator
+    public static class UserNameGeneratorHelper
     {
         private static int suffix;
 

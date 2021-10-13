@@ -4,6 +4,7 @@ using System.Linq;
 using System.Windows.Forms;
 using Mcba.Bll;
 using Mcba.Bll.Helpers;
+using Mcba.Entidad.Dto;
 using Mcba.Infraestruture;
 using Mcba.Infraestruture.Enums;
 using Mcba.Infraestruture.Helpers;

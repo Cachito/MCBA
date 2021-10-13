@@ -1,10 +1,12 @@
 ﻿using System.Collections.Generic;
 using System.Linq;
 
-namespace Mcba.Seguridad
+namespace Mcba.Entidad
 {
     public class Familia : Permiso
     {
+        public bool Activo { set; get; }
+
         private IList<Permiso> permisos;
 
         public Familia()
