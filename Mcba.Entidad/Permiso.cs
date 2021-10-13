@@ -1,18 +1,18 @@
 ﻿using System.Collections.Generic;
-using Mcba.Seguridad.Enums;
+using Mcba.Entidad.Enums;
 
-namespace Mcba.Seguridad
+namespace Mcba.Entidad
 {
     public abstract class Permiso
     {
-        public string Nombre { get; set; }
         public int Id { get; set; }
+        public string Nombre { get; set; }
+        public TipoPermisoEnum TipoPermiso { get; set; }
+        public CriticidadEnum Criticidad { get; set; }
 
         public abstract IList<Permiso> Permisos { get; }
         public abstract void AgregarPermiso(Permiso permiso);
         public abstract void QuitarPermisos();
-        public TipoPermisoEnum TipoPermiso { get; set; }
-        public CriticidadEnum Criticidad { get; set; }
 
         public override string ToString()
         {

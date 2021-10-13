@@ -118,6 +118,9 @@ INSERT INTO Leyendas(IdIdioma, Modulo, Tag, Leyenda)
     VALUES(2, 'Menu', 'tsmiPermisos', 'Permesoj')
 
 INSERT INTO Leyendas(IdIdioma, Modulo, Tag, Leyenda)
+    VALUES(2, 'Menu', 'tsmiFamilias', 'Familioj')
+
+INSERT INTO Leyendas(IdIdioma, Modulo, Tag, Leyenda)
     VALUES(2, 'Menu', 'tsmiBackup', 'Rezerva')
 
 INSERT INTO Leyendas(IdIdioma, Modulo, Tag, Leyenda)
@@ -230,6 +233,58 @@ INSERT INTO Leyendas(IdIdioma, Modulo, Tag, Leyenda)
 
 INSERT INTO Leyendas(IdIdioma, Modulo, Tag, Leyenda)
     VALUES(2, 'Bancos', 'tsbNext', 'Sekva paĝo')
+
+-- Familias
+INSERT INTO Leyendas(IdIdioma, Modulo, Tag, Leyenda)
+    VALUES(2, 'Familias', 'Familias', 'Familioj')
+
+INSERT INTO Leyendas(IdIdioma, Modulo, Tag, Leyenda)
+    VALUES(2, 'Familias', 'lblId', 'Id')
+
+INSERT INTO Leyendas(IdIdioma, Modulo, Tag, Leyenda)
+    VALUES(2, 'Familias', 'lblNombre', 'Nomo')
+
+INSERT INTO Leyendas(IdIdioma, Modulo, Tag, Leyenda)
+    VALUES(2, 'Familias', 'chkActivo', 'Aktiva')
+	
+INSERT INTO Leyendas(IdIdioma, Modulo, Tag, Leyenda)
+    VALUES(2, 'Familias', 'tsbNew', 'Nova')
+
+INSERT INTO Leyendas(IdIdioma, Modulo, Tag, Leyenda)
+    VALUES(2, 'Familias', 'tsbDelete', 'Forigi')
+
+INSERT INTO Leyendas(IdIdioma, Modulo, Tag, Leyenda)
+    VALUES(2, 'Familias', 'tsbEdit', 'Redaktu')
+
+INSERT INTO Leyendas(IdIdioma, Modulo, Tag, Leyenda)
+    VALUES(2, 'Familias', 'tsbSave', 'Konservu')
+
+INSERT INTO Leyendas(IdIdioma, Modulo, Tag, Leyenda)
+    VALUES(2, 'Familias', 'tsbSalir', 'Eliri')
+	
+INSERT INTO Leyendas(IdIdioma, Modulo, Tag, Leyenda)
+    VALUES(2, 'Familias', 'tsbBuscar', 'Serĉi')	
+    
+INSERT INTO Leyendas(IdIdioma, Modulo, Tag, Leyenda)
+    VALUES(2, 'Familias', 'tsbPrint', 'Presi')		
+
+INSERT INTO Leyendas(IdIdioma, Modulo, Tag, Leyenda)
+    VALUES(2, 'Familias', 'tsbUndo', 'Malfari')
+
+INSERT INTO Leyendas(IdIdioma, Modulo, Tag, Leyenda)
+    VALUES(2, 'Familias', 'tsbPrevious', 'Antaŭa paĝo')
+
+INSERT INTO Leyendas(IdIdioma, Modulo, Tag, Leyenda)
+    VALUES(2, 'Familias', 'tsbNext', 'Sekva paĝo')
+
+INSERT INTO Leyendas(IdIdioma, Modulo, Tag, Leyenda)
+    VALUES(2, 'Familias', 'FaltaNombre', 'Vi devas enigi nomon.{0}')	
+
+INSERT INTO Leyendas(IdIdioma, Modulo, Tag, Leyenda)
+    VALUES(2, 'Familias', 'ErrorAlGuardar', 'Estis eraro konservante.{0}Bonvolu reprovi poste.')	
+
+INSERT INTO Leyendas(IdIdioma, Modulo, Tag, Leyenda)
+    VALUES(2, 'Familias', 'NoEncontrado', 'La serĉita registro ne troveblas.{0}Bonvolu reŝargi la kradon')	
 
 -- Bitácora
 INSERT INTO Leyendas(IdIdioma, Modulo, Tag, Leyenda)

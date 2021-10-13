@@ -1,4 +1,4 @@
-﻿namespace Mcba.Seguridad.Enums
+﻿namespace Mcba.Entidad.Enums
 {
     public enum CriticidadEnum
     {

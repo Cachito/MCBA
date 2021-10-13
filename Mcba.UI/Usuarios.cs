@@ -30,6 +30,13 @@ namespace Mcba.UI
 
         private void Usuarios_Load(object sender, EventArgs e)
         {
+            LoadView();
+        }
+
+        protected internal override void LoadView()
+        {
+            base.LoadView();
+
             RestorePassVisible = true;
             ChangePassVisible = true;
             DeleteVisible = false;
@@ -360,7 +367,7 @@ namespace Mcba.UI
 
             if (IdUsuario == 0)
             {
-                Login = UserNameGenerator.GetUsername(txtNombre.Text, txtApellido.Text);
+                Login = UserNameGeneratorHelper.GetUsername(txtNombre.Text, txtApellido.Text);
                 if (string.IsNullOrWhiteSpace(Login))
                 {
                     ret = false;

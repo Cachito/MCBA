@@ -54,6 +54,7 @@
             this.tsmiBitacora = new System.Windows.Forms.ToolStripMenuItem();
             this.tsmiCambioContra = new System.Windows.Forms.ToolStripMenuItem();
             this.tsmiSalir = new System.Windows.Forms.ToolStripMenuItem();
+            this.tsmiFamilias = new System.Windows.Forms.ToolStripMenuItem();
             this.menuStrip.SuspendLayout();
             this.SuspendLayout();
             // 
@@ -149,7 +150,7 @@
             // tsmiRemitentes
             // 
             this.tsmiRemitentes.Name = "tsmiRemitentes";
-            this.tsmiRemitentes.Size = new System.Drawing.Size(180, 22);
+            this.tsmiRemitentes.Size = new System.Drawing.Size(133, 22);
             this.tsmiRemitentes.Tag = "tsmiRemitentes";
             this.tsmiRemitentes.Text = "Remitentes";
             this.tsmiRemitentes.Click += new System.EventHandler(this.tsmiRemitentes_Click);
@@ -157,7 +158,7 @@
             // tsmiVehiculos
             // 
             this.tsmiVehiculos.Name = "tsmiVehiculos";
-            this.tsmiVehiculos.Size = new System.Drawing.Size(180, 22);
+            this.tsmiVehiculos.Size = new System.Drawing.Size(133, 22);
             this.tsmiVehiculos.Tag = "tsmiVehiculos";
             this.tsmiVehiculos.Text = "Vehículos";
             this.tsmiVehiculos.Click += new System.EventHandler(this.tsmiVehiculos_Click);
@@ -165,7 +166,7 @@
             // tsmiChoferes
             // 
             this.tsmiChoferes.Name = "tsmiChoferes";
-            this.tsmiChoferes.Size = new System.Drawing.Size(180, 22);
+            this.tsmiChoferes.Size = new System.Drawing.Size(133, 22);
             this.tsmiChoferes.Tag = "tsmiChoferes";
             this.tsmiChoferes.Text = "Choferes";
             this.tsmiChoferes.Click += new System.EventHandler(this.tsmiChoferes_Click);
@@ -173,7 +174,7 @@
             // tsmiProductos
             // 
             this.tsmiProductos.Name = "tsmiProductos";
-            this.tsmiProductos.Size = new System.Drawing.Size(180, 22);
+            this.tsmiProductos.Size = new System.Drawing.Size(133, 22);
             this.tsmiProductos.Tag = "tsmiProductos";
             this.tsmiProductos.Text = "Productos";
             this.tsmiProductos.Click += new System.EventHandler(this.tsmiProductos_Click);
@@ -181,7 +182,7 @@
             // tsmiClientes
             // 
             this.tsmiClientes.Name = "tsmiClientes";
-            this.tsmiClientes.Size = new System.Drawing.Size(180, 22);
+            this.tsmiClientes.Size = new System.Drawing.Size(133, 22);
             this.tsmiClientes.Tag = "tsmiClientes";
             this.tsmiClientes.Text = "Clientes";
             this.tsmiClientes.Click += new System.EventHandler(this.tsmiClientes_Click);
@@ -200,7 +201,7 @@
             // tsmiStock
             // 
             this.tsmiStock.Name = "tsmiStock";
-            this.tsmiStock.Size = new System.Drawing.Size(180, 22);
+            this.tsmiStock.Size = new System.Drawing.Size(147, 22);
             this.tsmiStock.Tag = "tsmiStock";
             this.tsmiStock.Text = "Stock";
             this.tsmiStock.Click += new System.EventHandler(this.tsmiStock_Click);
@@ -208,7 +209,7 @@
             // tsmiVentas
             // 
             this.tsmiVentas.Name = "tsmiVentas";
-            this.tsmiVentas.Size = new System.Drawing.Size(180, 22);
+            this.tsmiVentas.Size = new System.Drawing.Size(147, 22);
             this.tsmiVentas.Tag = "tsmiVentas";
             this.tsmiVentas.Text = "Ventas";
             this.tsmiVentas.Click += new System.EventHandler(this.tsmiVentas_Click);
@@ -216,7 +217,7 @@
             // tsmiLiquidaciones
             // 
             this.tsmiLiquidaciones.Name = "tsmiLiquidaciones";
-            this.tsmiLiquidaciones.Size = new System.Drawing.Size(180, 22);
+            this.tsmiLiquidaciones.Size = new System.Drawing.Size(147, 22);
             this.tsmiLiquidaciones.Tag = "tsmiLiquidaciones";
             this.tsmiLiquidaciones.Text = "Liquidaciones";
             this.tsmiLiquidaciones.Click += new System.EventHandler(this.tsmiLiquidaciones_Click);
@@ -225,6 +226,7 @@
             // 
             this.tsmiGestion.DropDownItems.AddRange(new System.Windows.Forms.ToolStripItem[] {
             this.tsmiUsuarios,
+            this.tsmiFamilias,
             this.tsmiPermisos,
             this.tsmiBackup,
             this.tsmiBitacora,
@@ -282,6 +284,14 @@
             this.tsmiSalir.Text = "Salir";
             this.tsmiSalir.Click += new System.EventHandler(this.tsmiSalir_Click);
             // 
+            // tsmiFamilias
+            // 
+            this.tsmiFamilias.Name = "tsmiFamilias";
+            this.tsmiFamilias.Size = new System.Drawing.Size(195, 22);
+            this.tsmiFamilias.Tag = "tsmiFamilias";
+            this.tsmiFamilias.Text = "Familias";
+            this.tsmiFamilias.Click += new System.EventHandler(this.tsmiFamilias_Click);
+            // 
             // Menu
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
@@ -330,5 +340,6 @@
         private System.Windows.Forms.ToolStripMenuItem tsmiBitacora;
         private System.Windows.Forms.ToolStripMenuItem tsmiCambioContra;
         private System.Windows.Forms.ToolStripMenuItem tsmiSalir;
+        private System.Windows.Forms.ToolStripMenuItem tsmiFamilias;
     }
 }

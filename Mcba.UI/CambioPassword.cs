@@ -5,6 +5,7 @@ using System.Windows.Forms;
 using Mcba.Bll;
 using Mcba.Bll.Helpers;
 using Mcba.Entidad;
+using Mcba.Entidad.Dto;
 using Mcba.Infraestruture;
 using Mcba.Infraestruture.Settings;
 

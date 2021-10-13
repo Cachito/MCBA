@@ -1,5 +1,5 @@
 ﻿using System.Linq;
-using Mcba.Bll;
+using Mcba.Bll.Helpers;
 using NUnit.Framework;
 
 namespace Mcba.Testing
@@ -29,7 +29,7 @@ namespace Mcba.Testing
 
             foreach (var user in userList)
             {
-                var userName = UserNameGenerator.GetUsername(user.Nombre, user.Apellido);
+                var userName = UserNameGeneratorHelper.GetUsername(user.Nombre, user.Apellido);
             }
         }
     }

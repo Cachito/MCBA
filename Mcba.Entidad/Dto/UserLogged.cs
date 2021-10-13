@@ -1,4 +1,6 @@
-﻿namespace Mcba.Bll
+﻿using System.Collections.Generic;
+
+namespace Mcba.Entidad.Dto
 {
     public class UserLogged
     {
@@ -6,6 +8,7 @@
 
         private UserLogged()
         {
+            Permisos = new List<Permiso>();
         }
 
         public static UserLogged GetInstance()
@@ -13,6 +16,7 @@
             return instance ?? (instance = new UserLogged());
         }
 
+        public List<Permiso> Permisos { set; get; }
         public int Id { set; get; }
         public string Nombre { set; get; }
         public string Apellido { set; get; }

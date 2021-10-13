@@ -1,13 +1,12 @@
-﻿using System;
-using Mcba.Dal;
+﻿using Mcba.Dal;
 using Mcba.Entidad;
 using Mcba.Entidad.Enums;
 using Mcba.Infraestruture.Settings;
 using Mcba.Seguridad;
 
-namespace Mcba.Bll
+namespace Mcba.Bll.Helpers
 {
-    public class IntegrityBll
+    public static class IntegrityHelper
     {
         public static bool CheckIntegrity()
         {

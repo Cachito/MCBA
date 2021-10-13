@@ -48,12 +48,7 @@
   <ItemGroup>
     <Compile Include="DvhCalculator.cs" />
     <Compile Include="DvValue.cs" />
-    <Compile Include="Enums\CriticidadEnum.cs" />
-    <Compile Include="Enums\TipoPermisoEnum.cs" />
-    <Compile Include="Familia.cs" />
     <Compile Include="HashCalculator.cs" />
-    <Compile Include="Patente.cs" />
-    <Compile Include="Permiso.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
   <ItemGroup>
@@ -68,6 +63,9 @@
   </ItemGroup>
   <ItemGroup>
     <None Include="packages.config" />
+  </ItemGroup>
+  <ItemGroup>
+    <Folder Include="Enums\" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>

@@ -137,6 +137,12 @@
     <Compile Include="FacturasItems.Designer.cs">
       <DependentUpon>FacturasItems.cs</DependentUpon>
     </Compile>
+    <Compile Include="Familias.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Familias.Designer.cs">
+      <DependentUpon>Familias.cs</DependentUpon>
+    </Compile>
     <Compile Include="Liquidacion.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -298,6 +304,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="FacturasItems.resx">
       <DependentUpon>FacturasItems.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Familias.resx">
+      <DependentUpon>Familias.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Liquidacion.resx">
       <DependentUpon>Liquidacion.cs</DependentUpon>
