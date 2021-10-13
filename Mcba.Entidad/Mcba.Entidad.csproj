@@ -42,6 +42,7 @@
   <ItemGroup>
     <Compile Include="Attributes\CryptAttribute.cs" />
     <Compile Include="Bitacora.cs" />
+    <Compile Include="Composite\Componente.cs" />
     <Compile Include="Dto\FamiliaDto.cs" />
     <Compile Include="Dto\UserLogged.cs" />
     <Compile Include="Enums\CriticidadEnum.cs" />

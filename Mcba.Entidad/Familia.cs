@@ -1,29 +1,32 @@
 ﻿using System.Collections.Generic;
-using System.Linq;
+using Mcba.Entidad.Composite;
 
 namespace Mcba.Entidad
 {
-    public class Familia : Permiso
+    public class Familia : Componente
     {
         public bool Activo { set; get; }
 
-        private IList<Permiso> permisos;
+        private List<Componente> Permisos { set; get; }
 
         public Familia()
         {
-            permisos = new List<Permiso>();
+            Permisos = new List<Componente>();
         }
 
-        public override IList<Permiso> Permisos => permisos.ToArray();
-
-        public override void QuitarPermisos()
+        public void ClearPermisos()
         {
-            permisos = new List<Permiso>();
+            Permisos = new List<Componente>();
         }
 
-        public override void AgregarPermiso(Permiso permiso)
+        public void Remove(Componente permiso)
         {
-            permisos.Add(permiso);
+            Permisos.Remove(permiso);
+        }
+
+        public void Add(Componente permiso)
+        {
+            Permisos.Add(permiso);
         }
     }
 }

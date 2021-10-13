@@ -195,9 +195,19 @@ namespace Mcba.UI
             frm.BringToFront();
         }
 
-        private void tsmiPermisos_Click(object sender, EventArgs e)
+        private void tsmiPermisosFamilias_Click(object sender, EventArgs e)
         {
-            Permisos frm = new Permisos
+            PermisosFamilias frm = new PermisosFamilias
+            {
+                MdiParent = this
+            };
+
+            frm.Show();
+        }
+
+        private void tsmiPermisosUsuarios_Click(object sender, EventArgs e)
+        {
+            PermisosUsuarios frm = new PermisosUsuarios
             {
                 MdiParent = this
             };

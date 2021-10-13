@@ -1,4 +1,5 @@
 ﻿using System.Collections.Generic;
+using Mcba.Entidad.Composite;
 
 namespace Mcba.Entidad.Dto
 {
@@ -8,7 +9,7 @@ namespace Mcba.Entidad.Dto
 
         private UserLogged()
         {
-            Permisos = new List<Permiso>();
+            Permisos = new List<Componente>();
         }
 
         public static UserLogged GetInstance()
@@ -16,7 +17,7 @@ namespace Mcba.Entidad.Dto
             return instance ?? (instance = new UserLogged());
         }
 
-        public List<Permiso> Permisos { set; get; }
+        public List<Componente> Permisos { set; get; }
         public int Id { set; get; }
         public string Nombre { set; get; }
         public string Apellido { set; get; }

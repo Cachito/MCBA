@@ -1,18 +1,10 @@
-﻿using System.Collections.Generic;
-using Mcba.Entidad.Attributes;
+﻿using Mcba.Entidad.Attributes;
 using Mcba.Entidad.Enums;
 
 namespace Mcba.Entidad
 {
     public class User 
     {
-        public User()
-        {
-            Permisos = new List<Permiso>();
-        }
-
-        [CryptMethod(CryptMethodEnum.Ignore)]
-        public List<Permiso> Permisos { set; get; }
         public int Id { set; get; }
         public string Nombre { set; get; }
         public string Apellido { set; get; }
