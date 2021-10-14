@@ -202,14 +202,6 @@ namespace Mcba.Dal
             this.connectionString = connectionString;
         }
 
-        //public void UpdateDvh(string login, string dvString)
-        //{
-        //    using (var db = new DataAccess(connectionString).GetOpenConnection())
-        //    {
-        //        db.Execute(QRY_UPDATE_DV_BY_LOGIN, new {Dv = dvString, Login = login});
-        //    }
-        //}
-
         public string GetEmailByLogin(string login)
         {
             string ret;
@@ -338,6 +330,27 @@ namespace Mcba.Dal
         public User GetUserByLogin(string login, IDbConnection db, IDbTransaction tr)
         {
             return db.Query<User>(QRY_GET_USER_BY_LOGIN, new {Login = login}, tr).FirstOrDefault();
+        }
+
+        public IEnumerable<User> GetAllInTransaction(IDbConnection db, IDbTransaction tr)
+        {
+            return db.Query<User>(QRY_GET_ALL_USERS, transaction: tr);
+        }
+
+        public IEnumerable<UserDto> GetByActivo(bool activo)
+        {
+            return GetAll()
+                .Where(x => x.Activo == activo)
+                .OrderBy(x => x.Apellido)
+                .Select(u => new UserDto
+                {
+                    Id = u.Id,
+                    Nombre = u.Nombre,
+                    Apellido = u.Apellido,
+                    Email = u.Email,
+                    Activo = u.Activo
+                })
+                .ToList();
         }
 
         public IEnumerable<User> GetAll()
@@ -514,6 +527,41 @@ namespace Mcba.Dal
             var dvvString = HashCalculator.GetCryptString(dvvValue.ToString(), CryptMethodEnum.Sha1);
 
             IntegrityDal.UpdateIntegryty("Usuario", dvvString, db, tr);
+        }
+
+        public bool RepareIntegrity()
+        {
+            using (var db = new DataAccess(connectionString).GetOpenConnection())
+            {
+                using (var tr = db.BeginTransaction())
+                {
+                    try
+                    {
+                        var users = GetAllInTransaction(db, tr);
+                        long dvvTotal = 0;
+                        foreach (var user in users)
+                        {
+                            var dvhString = DvhCalculator<User>.GetDvhString(user, out var dvhValue);
+                            db.Execute(QRY_UPDATE_DV_BY_LOGIN, new { Dv = dvhString, Login = user.Login }, tr);
+                            dvvTotal += dvhValue;
+                        }
+
+                        var dvvValue = DvValue.GetDvValue(dvvTotal.ToString());
+                        var dvvString = HashCalculator.GetCryptString(dvvValue.ToString(), CryptMethodEnum.Sha1);
+
+                        IntegrityDal.UpdateIntegryty("Usuario", dvvString, db, tr);
+
+                        tr.Commit();
+
+                        return true;
+                    }
+                    catch
+                    {
+                        tr.Rollback();
+                        throw;
+                    }
+                }
+            }
         }
 
         public IEnumerable<UserDto> FindPage(string searchText, int page, int take)

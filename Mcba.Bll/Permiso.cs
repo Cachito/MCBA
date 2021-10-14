@@ -1,11 +1,11 @@
-﻿using Mcba.Entidad.Composite;
+﻿using Mcba.Bll.Composite;
 using Mcba.Entidad.Enums;
 
-namespace Mcba.Entidad
+namespace Mcba.Bll
 {
     public abstract class Permiso : Componente
     {
-        public string Nombre { get; set; }
+        public string Modulo { get; set; }
         public TipoPermisoEnum TipoPermiso { get; set; }
         public CriticidadEnum Criticidad { get; set; }
 

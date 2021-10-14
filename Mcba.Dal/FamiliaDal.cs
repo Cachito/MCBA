@@ -1,7 +1,6 @@
 ﻿using Mcba.Data;
 using Dapper;
 using System.Linq;
-using Mcba.Entidad;
 using System.Collections.Generic;
 using Mcba.Entidad.Dto;
 
@@ -53,6 +52,36 @@ namespace Mcba.Dal
                 , Nombre
                 , Activo
             FROM Familia
+            ";
+
+        private const string QRY_FAMILIAS_DISPONIBLES_BY_USER = @"
+            SELECT 
+                Id
+                , Nombre
+                , Activo
+            FROM Familia
+            WHERE 
+                Activo = 1
+                AND Id NOT IN(
+                    SELECT IdFamilia
+                    FROM UsuarioFamilia
+                    WHERE IdUsuario = @IdUsuario
+                    )
+            ";
+
+        private const string QRY_FAMILIAS_ASIGNADAS_BY_USER = @"
+            SELECT 
+                Id
+                , Nombre
+                , Activo
+            FROM Familia
+            WHERE 
+                Activo = 1
+                AND Id IN(
+                    SELECT IdFamilia
+                    FROM UsuarioFamilia
+                    WHERE IdUsuario = @IdUsuario
+                    )
             ";
 
         private readonly string connectionString;
@@ -158,6 +187,22 @@ namespace Mcba.Dal
             using (var db = new DataAccess(connectionString).GetOpenConnection())
             {
                 return db.Query<FamiliaDto>(QRY_GET_ALL_FAMILIAS);
+            }
+        }
+
+        public IEnumerable<FamiliaDto> GetDisponibles(int userId)
+        {
+            using (var db = new DataAccess(connectionString).GetOpenConnection())
+            {
+                return db.Query<FamiliaDto>(QRY_FAMILIAS_DISPONIBLES_BY_USER, new { IdUsuario = userId });
+            }
+        }
+
+        public IEnumerable<FamiliaDto> GetAsignadas(int userId)
+        {
+            using (var db = new DataAccess(connectionString).GetOpenConnection())
+            {
+                return db.Query<FamiliaDto>(QRY_FAMILIAS_ASIGNADAS_BY_USER, new { IdUsuario = userId });
             }
         }
     }

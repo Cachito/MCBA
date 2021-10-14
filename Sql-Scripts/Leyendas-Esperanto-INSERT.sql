@@ -115,7 +115,10 @@ INSERT INTO Leyendas(IdIdioma, Modulo, Tag, Leyenda)
     VALUES(2, 'Menu', 'tsmiUsuarios', 'Uzantoj')
 
 INSERT INTO Leyendas(IdIdioma, Modulo, Tag, Leyenda)
-    VALUES(2, 'Menu', 'tsmiPermisos', 'Permesoj')
+    VALUES(2, 'Menu', 'tsmiPermisosUsuarios', 'Permesoj al Uzantoj')
+
+INSERT INTO Leyendas(IdIdioma, Modulo, Tag, Leyenda)
+    VALUES(2, 'Menu', 'tsmiPermisosFamilias', 'Familiaj Permesoj')
 
 INSERT INTO Leyendas(IdIdioma, Modulo, Tag, Leyenda)
     VALUES(2, 'Menu', 'tsmiFamilias', 'Familioj')
@@ -1189,3 +1192,40 @@ INSERT INTO Leyendas(IdIdioma, Modulo, Tag, Leyenda)
 
 INSERT INTO Leyendas(IdIdioma, Modulo, Tag, Leyenda)
     VALUES(2, 'StockBuscar', 'tsbOk', 'Bone')
+
+-- PermisosUsuarios
+INSERT INTO Leyendas(IdIdioma, Modulo, Tag, Leyenda)
+    VALUES(2, 'PermisosUsuarios', 'PermisosUsuarios', 'Permesoj al Uzantoj')
+	
+INSERT INTO Leyendas(IdIdioma, Modulo, Tag, Leyenda)
+	VALUES(2, 'PermisosUsuarios', 'tsbSalir', 'Eliri')
+
+INSERT INTO Leyendas(IdIdioma, Modulo, Tag, Leyenda)
+	VALUES(2, 'PermisosUsuarios', 'tsbSave', 'Konservu')
+
+INSERT INTO Leyendas(IdIdioma, Modulo, Tag, Leyenda)
+	VALUES(2, 'PermisosUsuarios', 'lblUsuario', 'Uzanto')
+
+INSERT INTO Leyendas(IdIdioma, Modulo, Tag, Leyenda)
+	VALUES(2, 'PermisosUsuarios', 'gbFamilias', 'Familioj')
+
+INSERT INTO Leyendas(IdIdioma, Modulo, Tag, Leyenda)
+	VALUES(2, 'PermisosUsuarios', 'lblDisponiblesF', 'Haveblaj Familioj')
+
+INSERT INTO Leyendas(IdIdioma, Modulo, Tag, Leyenda)
+	VALUES(2, 'PermisosUsuarios', 'lblAsignadasF', 'Asignitaj Familioj')
+
+INSERT INTO Leyendas(IdIdioma, Modulo, Tag, Leyenda)
+	VALUES(2, 'PermisosUsuarios', 'btnAddFamilia', '')
+
+INSERT INTO Leyendas(IdIdioma, Modulo, Tag, Leyenda)
+	VALUES(2, 'PermisosUsuarios', 'btnRemoveFamilia', '')
+
+INSERT INTO Leyendas(IdIdioma, Modulo, Tag, Leyenda)
+	VALUES(2, 'PermisosUsuarios', 'gbPermisos', 'Permesoj')
+
+INSERT INTO Leyendas(IdIdioma, Modulo, Tag, Leyenda)
+	VALUES(2, 'PermisosUsuarios', 'lblDisponiblesP', 'Haveblaj Permesoj')
+
+INSERT INTO Leyendas(IdIdioma, Modulo, Tag, Leyenda)
+	VALUES(2, 'PermisosUsuarios', 'lblAsignadasP', 'Atribuitaj Permesoj')

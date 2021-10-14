@@ -42,17 +42,14 @@
   <ItemGroup>
     <Compile Include="Attributes\CryptAttribute.cs" />
     <Compile Include="Bitacora.cs" />
-    <Compile Include="Composite\Componente.cs" />
     <Compile Include="Dto\FamiliaDto.cs" />
-    <Compile Include="Dto\UserLogged.cs" />
+    <Compile Include="Dto\PermisoDto.cs" />
     <Compile Include="Enums\CriticidadEnum.cs" />
     <Compile Include="Enums\CryptMethodEnum.cs" />
     <Compile Include="Dto\UserDto.cs" />
     <Compile Include="Enums\TipoPermisoEnum.cs" />
-    <Compile Include="Familia.cs" />
     <Compile Include="Integrity.cs" />
     <Compile Include="Language.cs" />
-    <Compile Include="Permiso.cs" />
     <Compile Include="User.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>

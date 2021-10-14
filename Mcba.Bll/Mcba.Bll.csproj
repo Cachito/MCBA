@@ -43,13 +43,18 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="BitacoraBll.cs" />
+    <Compile Include="Composite\Componente.cs" />
+    <Compile Include="Familia.cs" />
     <Compile Include="FamiliaBll.cs" />
     <Compile Include="Helpers\CaptionHelper.cs" />
     <Compile Include="Helpers\IntegrityHelper.cs" />
     <Compile Include="LanguagesBll.cs" />
+    <Compile Include="Permiso.cs" />
+    <Compile Include="PermisoBll.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="UserBll.cs" />
     <Compile Include="Helpers\UserNameGeneratorHelper.cs" />
+    <Compile Include="UserLogged.cs" />
   </ItemGroup>
   <ItemGroup>
     <ProjectReference Include="..\Mcba.Dal\Mcba.Dal.csproj">

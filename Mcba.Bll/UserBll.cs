@@ -1,4 +1,5 @@
-﻿using System.Collections.Generic;
+﻿using System;
+using System.Collections.Generic;
 using System.Web.Security;
 using Mcba.Dal;
 using Mcba.Entidad;
@@ -35,6 +36,11 @@ namespace Mcba.Bll
             }
 
             return ret;
+        }
+
+        public IEnumerable<UserDto> GetByActivo(bool activo)
+        {
+            return new UserDal(McbaSettings.CnnString).GetByActivo(activo);
         }
 
         public int GetAttemps(string login)

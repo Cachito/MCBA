@@ -1,6 +1,5 @@
 ﻿using System.Collections.Generic;
 using Mcba.Dal;
-using Mcba.Entidad;
 using Mcba.Entidad.Dto;
 using Mcba.Infraestruture.Settings;
 
@@ -33,6 +32,16 @@ namespace Mcba.Bll
         public IEnumerable<FamiliaDto> GetPage(int page)
         {
             return new FamiliaDal(McbaSettings.CnnString).GetAll(page, McbaSettings.DataPagination);
+        }
+
+        public IEnumerable<FamiliaDto> GetDisponibles(int userId)
+        {
+            return new FamiliaDal(McbaSettings.CnnString).GetDisponibles(userId);
+        }
+
+        public IEnumerable<FamiliaDto> GetAsignadas(int userId)
+        {
+            return new FamiliaDal(McbaSettings.CnnString).GetAsignadas(userId);
         }
     }
 }

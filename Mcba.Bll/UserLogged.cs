@@ -1,7 +1,7 @@
 ﻿using System.Collections.Generic;
-using Mcba.Entidad.Composite;
+using Mcba.Bll.Composite;
 
-namespace Mcba.Entidad.Dto
+namespace Mcba.Bll
 {
     public class UserLogged
     {

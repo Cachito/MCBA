@@ -1,4 +1,5 @@
-﻿using Mcba.Dal;
+﻿using System;
+using Mcba.Dal;
 using Mcba.Entidad;
 using Mcba.Entidad.Enums;
 using Mcba.Infraestruture.Settings;
@@ -59,6 +60,37 @@ namespace Mcba.Bll.Helpers
             }
 
             return true;
+        }
+
+        public static bool RepareIntegrity()
+        {
+            var ret = true;
+            var integrityDal = new IntegrityDal(McbaSettings.CnnString);
+
+            var tables = integrityDal.GetTables();
+            foreach (var table in tables)
+            {
+                ret &= Repare(table);
+            }
+
+            return ret;
+        }
+
+        private static bool Repare(Integrity table)
+        {
+            switch (table.Tabla.ToLower())
+            {
+                case "usuario":
+                    return RepareUser();
+
+                default:
+                    return true;
+            }
+        }
+
+        private static bool RepareUser()
+        {
+            return new UserDal(McbaSettings.CnnString).RepareIntegrity();
         }
     }
 }

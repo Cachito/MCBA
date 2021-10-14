@@ -115,7 +115,10 @@ INSERT INTO Leyendas(IdIdioma, Modulo, Tag, Leyenda)
     VALUES(1, 'Menu', 'tsmiUsuarios', 'Usuarios')
 
 INSERT INTO Leyendas(IdIdioma, Modulo, Tag, Leyenda)
-    VALUES(1, 'Menu', 'tsmiPermisos', 'Permisos')
+    VALUES(1, 'Menu', 'tsmiPermisosUsuarios', 'Permisos a Usuarios')
+
+INSERT INTO Leyendas(IdIdioma, Modulo, Tag, Leyenda)
+    VALUES(1, 'Menu', 'tsmiPermisosFamilias', 'Permisos a Familias')
 
 INSERT INTO Leyendas(IdIdioma, Modulo, Tag, Leyenda)
     VALUES(1, 'Menu', 'tsmiFamilias', 'Familias')
@@ -1190,3 +1193,41 @@ INSERT INTO Leyendas(IdIdioma, Modulo, Tag, Leyenda)
 
 INSERT INTO Leyendas(IdIdioma, Modulo, Tag, Leyenda)
     VALUES(1, 'StockBuscar', 'tsbOk', 'Ok')
+
+-- PermisosUsuarios
+INSERT INTO Leyendas(IdIdioma, Modulo, Tag, Leyenda)
+    VALUES(1, 'PermisosUsuarios', 'PermisosUsuarios', 'Permisos a Usuarios')
+	
+INSERT INTO Leyendas(IdIdioma, Modulo, Tag, Leyenda)
+	VALUES(1, 'PermisosUsuarios', 'tsbSalir', 'Salir')
+
+INSERT INTO Leyendas(IdIdioma, Modulo, Tag, Leyenda)
+	VALUES(1, 'PermisosUsuarios', 'tsbSave', 'Guardar')
+
+INSERT INTO Leyendas(IdIdioma, Modulo, Tag, Leyenda)
+	VALUES(1, 'PermisosUsuarios', 'lblUsuario', 'Usuario')
+
+INSERT INTO Leyendas(IdIdioma, Modulo, Tag, Leyenda)
+	VALUES(1, 'PermisosUsuarios', 'gbFamilias', 'Familias')
+
+INSERT INTO Leyendas(IdIdioma, Modulo, Tag, Leyenda)
+	VALUES(1, 'PermisosUsuarios', 'lblDisponiblesF', 'Familias Disponmibles')
+
+INSERT INTO Leyendas(IdIdioma, Modulo, Tag, Leyenda)
+	VALUES(1, 'PermisosUsuarios', 'lblAsignadasF', 'Familias Asignadas')
+
+INSERT INTO Leyendas(IdIdioma, Modulo, Tag, Leyenda)
+	VALUES(1, 'PermisosUsuarios', 'btnAddFamilia', '')
+
+INSERT INTO Leyendas(IdIdioma, Modulo, Tag, Leyenda)
+	VALUES(1, 'PermisosUsuarios', 'btnRemoveFamilia', '')
+
+INSERT INTO Leyendas(IdIdioma, Modulo, Tag, Leyenda)
+	VALUES(1, 'PermisosUsuarios', 'gbPermisos', 'Permisos')
+
+INSERT INTO Leyendas(IdIdioma, Modulo, Tag, Leyenda)
+	VALUES(1, 'PermisosUsuarios', 'lblDisponiblesP', 'Permisos Disponibles')
+
+INSERT INTO Leyendas(IdIdioma, Modulo, Tag, Leyenda)
+	VALUES(1, 'PermisosUsuarios', 'lblAsignadasP', 'Permisos Asignados')	
+
