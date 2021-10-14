@@ -11,5 +11,10 @@ namespace Mcba.Bll
         {
             return new PermisoDal(McbaSettings.CnnString).GetDisponibles(userId);
         }
+
+        public IEnumerable<PermisoDto> GetAsignados(int userId)
+        {
+            return new PermisoDal(McbaSettings.CnnString).GetAsignados(userId);
+        }
     }
 }

@@ -6,6 +6,7 @@ using System.Windows.Forms;
 using Mcba.Bll;
 using Mcba.Bll.Helpers;
 using Mcba.Entidad.Dto;
+using Mcba.Entidad.Enums;
 using Mcba.Infraestruture;
 using Mcba.Infraestruture.Settings;
 
@@ -101,9 +102,16 @@ namespace Mcba.UI
 
             foreach (var prop in props)
             {
-                var c = new DataGridViewTextBoxColumn() { HeaderText = prop.Name };
-                dgvPermisosAsignados.Columns.Add(c);
+                var ct = new DataGridViewTextBoxColumn { HeaderText = prop.Name };
+                dgvPermisosAsignados.Columns.Add(ct);
             }
+
+            var cb = new DataGridViewComboBoxColumn
+            {
+                HeaderText = "Tipo de Permiso",
+                DataSource = Enum.GetValues(typeof(TipoPermisoEnum))
+            };
+            dgvPermisosAsignados.Columns.Add(cb);
 
             foreach (var pd in result)
             {
@@ -203,6 +211,7 @@ namespace Mcba.UI
             }
 
             dgvPermisos.Columns[COL_ID_PERMISO].Visible = false;
+            dgvPermisos.Columns[COL_TIPO_PERMISO].Visible = false;
         }
 
         private void SetCaptions()

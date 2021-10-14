@@ -7,7 +7,8 @@ namespace Mcba.Entidad.Enums
     {
         None = 0,
         Read = 2,
-        Write = 4,
-        Print = 8
+        Create = 4,
+        Edit = 8,
+        Print = 16
     }
 }
