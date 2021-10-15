@@ -30,9 +30,39 @@ namespace Mcba.Bll.Helpers
                 case "usuario":
                     return CheckUser(table.DV);
 
+                case "usuariofamilia":
+                    return CheckUsuarioFamilia(table.DV);
+
                 default:
                     return true;
             }
+        }
+
+        private static bool CheckUsuarioFamilia(string dvv)
+        {
+            var familiaBll = new FamiliaBll();
+            var usuarioFamilias = familiaBll.GetUsuarioFamilias();
+
+            long dvvTotal = 0;
+            foreach (var uf in usuarioFamilias)
+            {
+                var dvhString = DvhCalculator<UsuarioFamilia>.GetDvhString(uf, out var dvhValue);
+                dvvTotal += dvhValue;
+                if (dvhString != uf.DV)
+                {
+                    return false;
+                }
+            }
+
+            var dvvValue = DvValue.GetDvValue(dvvTotal.ToString());
+            var usuarioFamiliaDvv = HashCalculator.GetCryptString(dvvValue.ToString(), CryptMethodEnum.Sha1);
+
+            if (usuarioFamiliaDvv != dvv)
+            {
+                return false;
+            }
+
+            return true;
         }
 
         private static bool CheckUser(string dvv)

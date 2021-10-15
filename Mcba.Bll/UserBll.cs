@@ -150,5 +150,15 @@ namespace Mcba.Bll
         {
             return new UserDal(McbaSettings.CnnString).FindPage(searchText, page, McbaSettings.DataPagination);
         }
+
+        public void AsignarFamilias(int userId, List<int> familias)
+        {
+            new UserDal(McbaSettings.CnnString).AsignarFamilias(userId, familias);
+        }
+
+        public void AsignarPermisos(int userId, Dictionary<int, int> permisos)
+        {
+            new UserDal(McbaSettings.CnnString).AsignarPermisos(userId, permisos);
+        }
     }
 }

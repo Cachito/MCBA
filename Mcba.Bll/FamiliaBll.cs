@@ -1,5 +1,6 @@
 ﻿using System.Collections.Generic;
 using Mcba.Dal;
+using Mcba.Entidad;
 using Mcba.Entidad.Dto;
 using Mcba.Infraestruture.Settings;
 
@@ -42,6 +43,11 @@ namespace Mcba.Bll
         public IEnumerable<FamiliaDto> GetAsignadas(int userId)
         {
             return new FamiliaDal(McbaSettings.CnnString).GetAsignadas(userId);
+        }
+
+        public IEnumerable<UsuarioFamilia> GetUsuarioFamilias()
+        {
+            return new FamiliaDal(McbaSettings.CnnString).GetUsuarioFamilias();
         }
     }
 }

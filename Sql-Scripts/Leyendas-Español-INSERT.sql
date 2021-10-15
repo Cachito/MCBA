@@ -1231,3 +1231,14 @@ INSERT INTO Leyendas(IdIdioma, Modulo, Tag, Leyenda)
 INSERT INTO Leyendas(IdIdioma, Modulo, Tag, Leyenda)
 	VALUES(1, 'PermisosUsuarios', 'lblAsignadasP', 'Permisos Asignados')	
 
+INSERT INTO Leyendas(IdIdioma, Modulo, Tag, Leyenda)
+	VALUES(1, 'PermisosUsuarios', 'SinUsuario', 'Debe seleccionar un usuario.')	
+    
+INSERT INTO Leyendas(IdIdioma, Modulo, Tag, Leyenda)
+	VALUES(1, 'PermisosUsuarios', 'SinSeleccion', 'Debe seleccionar alguna familia o algún permiso.')
+    
+INSERT INTO Leyendas(IdIdioma, Modulo, Tag, Leyenda)
+	VALUES(1, 'PermisosUsuarios', 'FaltaPermiso', 'Debe seleccionar tipo a todos los permisos asignados.')
+    
+INSERT INTO Leyendas(IdIdioma, Modulo, Tag, Leyenda)
+	VALUES(1, 'PermisosUsuarios', 'ErrorAlGuardar', 'No se guardaron los cambios.{0}{1}')

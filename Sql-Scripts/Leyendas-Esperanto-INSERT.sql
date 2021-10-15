@@ -1229,3 +1229,15 @@ INSERT INTO Leyendas(IdIdioma, Modulo, Tag, Leyenda)
 
 INSERT INTO Leyendas(IdIdioma, Modulo, Tag, Leyenda)
 	VALUES(2, 'PermisosUsuarios', 'lblAsignadasP', 'Atribuitaj Permesoj')
+
+INSERT INTO Leyendas(IdIdioma, Modulo, Tag, Leyenda)
+	VALUES(2, 'PermisosUsuarios', 'SinUsuario', 'Vi devas elekti uzanton.')
+
+INSERT INTO Leyendas(IdIdioma, Modulo, Tag, Leyenda)
+	VALUES(2, 'PermisosUsuarios', 'SinSeleccion', 'Vi devas elekti iun familion aŭ iun permeson.')	
+
+INSERT INTO Leyendas(IdIdioma, Modulo, Tag, Leyenda)
+	VALUES(2, 'PermisosUsuarios', 'FaltaPermiso', 'Vi devas elekti tajpi ĉiujn asignitajn permesojn.')
+
+INSERT INTO Leyendas(IdIdioma, Modulo, Tag, Leyenda)
+	VALUES(2, 'PermisosUsuarios', 'ErrorAlGuardar', 'La ŝanĝoj ne estis konservitaj.{0}{1}')

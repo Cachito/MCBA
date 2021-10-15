@@ -2,6 +2,8 @@
 using Dapper;
 using System.Linq;
 using System.Collections.Generic;
+using System.Data;
+using Mcba.Entidad;
 using Mcba.Entidad.Dto;
 
 namespace Mcba.Dal
@@ -82,6 +84,24 @@ namespace Mcba.Dal
                     FROM UsuarioFamilia
                     WHERE IdUsuario = @IdUsuario
                     )
+            ";
+
+        private const string QRY_USUARIO_FAMILIAS_BY_USER = @"
+            SELECT 
+                IdUsuario
+                , IdFamilia
+                , DV
+            FROM UsuarioFamilia
+            WHERE 
+                IdUsuario = @IdUsuario
+            ";
+
+        private const string QRY_USUARIO_FAMILIAS = @"
+            SELECT 
+                IdUsuario
+                , IdFamilia
+                , DV
+            FROM UsuarioFamilia
             ";
 
         private readonly string connectionString;
@@ -203,6 +223,19 @@ namespace Mcba.Dal
             using (var db = new DataAccess(connectionString).GetOpenConnection())
             {
                 return db.Query<FamiliaDto>(QRY_FAMILIAS_ASIGNADAS_BY_USER, new { IdUsuario = userId });
+            }
+        }
+
+        public IEnumerable<UsuarioFamilia> GetAsignadas(int userId, IDbConnection db, IDbTransaction tr)
+        {
+            return db.Query<UsuarioFamilia>(QRY_USUARIO_FAMILIAS_BY_USER, new {IdUsuario = userId}, transaction: tr);
+        }
+
+        public IEnumerable<UsuarioFamilia> GetUsuarioFamilias()
+        {
+            using (var db = new DataAccess(connectionString).GetOpenConnection())
+            {
+                return db.Query<UsuarioFamilia>(QRY_USUARIO_FAMILIAS);
             }
         }
     }

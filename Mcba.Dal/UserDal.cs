@@ -195,6 +195,23 @@ namespace Mcba.Dal
             FETCH NEXT @Take ROWS ONLY
             ";
 
+        private const string QRY_DELETE_ALL_FAMILIAS = @"
+            DELETE UsuarioFamilia
+            WHERE IdUsuario = @IdUsuario
+            ";
+
+        private const string QRY_ASIGNA_FAMILIA = @"
+            INSERT INTO UsuarioFamilia(IdUsuario, IdFamilia, DV)
+                VALUES(@IdUsuario, @IdFamilia, '')
+            ";
+
+        private const string QRY_UPDATE_USUARIO_FAMILIA_DV = @"
+            UPDATE UsuarioFamilia SET
+                DV = @Dv
+            WHERE IdUsuario = @IdUsuario
+                AND IdFamilia = @IdFamilia
+            ";
+
         private readonly string connectionString;
 
         public UserDal(string connectionString)
@@ -574,6 +591,59 @@ namespace Mcba.Dal
 
                 return db.Query<UserDto>(QRY_FIND_USERS_BY_PAGE,
                     new {Nombre = nombre, Apellido = apellido, Email = email, Skip = page * take, Take = take});
+            }
+        }
+
+        public void AsignarFamilias(int userId, List<int> familias)
+        {
+            using (var db = new DataAccess(connectionString).GetOpenConnection())
+            {
+                using (var tr = db.BeginTransaction())
+                {
+                    try
+                    {
+                        db.Execute(QRY_DELETE_ALL_FAMILIAS, new {IdUsuario = userId}, transaction: tr);
+
+                        foreach (var fId in familias)
+                        {
+                            db.Execute(QRY_ASIGNA_FAMILIA, new {IdUsuario = userId, IdFamilia = fId}, transaction: tr);
+                        }
+
+                        var disponibles = new FamiliaDal(connectionString).GetAsignadas(userId, db, tr);
+
+                        long dvvTotal = 0;
+                        foreach (var fd in disponibles)
+                        {
+                            var dvhString = DvhCalculator<UsuarioFamilia>.GetDvhString(fd, out var dvhValue);
+                            db.Execute(QRY_UPDATE_USUARIO_FAMILIA_DV,
+                                new {Dv = dvhString, IdUsuario = userId, IdFamilia = fd.IdFamilia}, tr);
+                            dvvTotal += dvhValue;
+                        }
+
+                        var dvvValue = DvValue.GetDvValue(dvvTotal.ToString());
+                        var dvvString = HashCalculator.GetCryptString(dvvValue.ToString(), CryptMethodEnum.Sha1);
+
+                        IntegrityDal.UpdateIntegryty("UsuarioFamilia", dvvString, db, tr);
+
+                        tr.Commit();
+                    }
+                    catch
+                    {
+                        tr.Rollback();
+                        throw;
+                    }
+                }
+            }
+        }
+
+        public void AsignarPermisos(int userId, Dictionary<int, int> permisos)
+        {
+            using (var db = new DataAccess(connectionString).GetOpenConnection())
+            {
+                using (var tr = db.BeginTransaction())
+                {
+
+                }
             }
         }
     }

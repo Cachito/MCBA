@@ -39,14 +39,23 @@
             this.lblAsignadasF = new System.Windows.Forms.Label();
             this.lblDisponiblesF = new System.Windows.Forms.Label();
             this.dgvFamiliasAsignadas = new System.Windows.Forms.DataGridView();
+            this.IdFa = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.NombreFa = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.dgvFamilias = new System.Windows.Forms.DataGridView();
+            this.IdFd = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.NombreFd = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.gbPermisos = new System.Windows.Forms.GroupBox();
             this.btnRemovePermiso = new System.Windows.Forms.Button();
             this.btnAddPermiso = new System.Windows.Forms.Button();
             this.lblAsignadasP = new System.Windows.Forms.Label();
             this.lblDisponiblesP = new System.Windows.Forms.Label();
             this.dgvPermisosAsignados = new System.Windows.Forms.DataGridView();
+            this.IdPa = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.NombrePa = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.TipoPermiso = new System.Windows.Forms.DataGridViewComboBoxColumn();
             this.dgvPermisos = new System.Windows.Forms.DataGridView();
+            this.IdPd = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.NombrePd = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.tsSeguridad.SuspendLayout();
             this.gbFamilias.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.dgvFamiliasAsignadas)).BeginInit();
@@ -133,6 +142,7 @@
             this.btnRemoveFamilia.TabIndex = 9;
             this.btnRemoveFamilia.Tag = "btnRemoveFamilia";
             this.btnRemoveFamilia.UseVisualStyleBackColor = true;
+            this.btnRemoveFamilia.Click += new System.EventHandler(this.btnRemoveFamilia_Click);
             // 
             // btnAddFamilia
             // 
@@ -143,6 +153,7 @@
             this.btnAddFamilia.TabIndex = 8;
             this.btnAddFamilia.Tag = "btnAddFamilia";
             this.btnAddFamilia.UseVisualStyleBackColor = true;
+            this.btnAddFamilia.Click += new System.EventHandler(this.btnAddFamilia_Click);
             // 
             // lblAsignadasF
             // 
@@ -170,11 +181,32 @@
             this.dgvFamiliasAsignadas.AllowUserToDeleteRows = false;
             this.dgvFamiliasAsignadas.AutoSizeColumnsMode = System.Windows.Forms.DataGridViewAutoSizeColumnsMode.AllCells;
             this.dgvFamiliasAsignadas.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
+            this.dgvFamiliasAsignadas.Columns.AddRange(new System.Windows.Forms.DataGridViewColumn[] {
+            this.IdFa,
+            this.NombreFa});
             this.dgvFamiliasAsignadas.EditMode = System.Windows.Forms.DataGridViewEditMode.EditProgrammatically;
             this.dgvFamiliasAsignadas.Location = new System.Drawing.Point(392, 42);
             this.dgvFamiliasAsignadas.Name = "dgvFamiliasAsignadas";
+            this.dgvFamiliasAsignadas.RowHeadersVisible = false;
+            this.dgvFamiliasAsignadas.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect;
             this.dgvFamiliasAsignadas.Size = new System.Drawing.Size(316, 191);
             this.dgvFamiliasAsignadas.TabIndex = 5;
+            // 
+            // IdFa
+            // 
+            this.IdFa.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.AllCells;
+            this.IdFa.HeaderText = "Id";
+            this.IdFa.Name = "IdFa";
+            this.IdFa.ReadOnly = true;
+            this.IdFa.Width = 41;
+            // 
+            // NombreFa
+            // 
+            this.NombreFa.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.AllCells;
+            this.NombreFa.HeaderText = "Nombre";
+            this.NombreFa.Name = "NombreFa";
+            this.NombreFa.ReadOnly = true;
+            this.NombreFa.Width = 69;
             // 
             // dgvFamilias
             // 
@@ -182,11 +214,32 @@
             this.dgvFamilias.AllowUserToDeleteRows = false;
             this.dgvFamilias.AutoSizeColumnsMode = System.Windows.Forms.DataGridViewAutoSizeColumnsMode.AllCells;
             this.dgvFamilias.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
+            this.dgvFamilias.Columns.AddRange(new System.Windows.Forms.DataGridViewColumn[] {
+            this.IdFd,
+            this.NombreFd});
             this.dgvFamilias.EditMode = System.Windows.Forms.DataGridViewEditMode.EditProgrammatically;
             this.dgvFamilias.Location = new System.Drawing.Point(6, 42);
             this.dgvFamilias.Name = "dgvFamilias";
+            this.dgvFamilias.RowHeadersVisible = false;
+            this.dgvFamilias.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect;
             this.dgvFamilias.Size = new System.Drawing.Size(316, 191);
             this.dgvFamilias.TabIndex = 4;
+            // 
+            // IdFd
+            // 
+            this.IdFd.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.AllCells;
+            this.IdFd.HeaderText = "Id";
+            this.IdFd.Name = "IdFd";
+            this.IdFd.ReadOnly = true;
+            this.IdFd.Width = 41;
+            // 
+            // NombreFd
+            // 
+            this.NombreFd.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.AllCells;
+            this.NombreFd.HeaderText = "Nombre";
+            this.NombreFd.Name = "NombreFd";
+            this.NombreFd.ReadOnly = true;
+            this.NombreFd.Width = 69;
             // 
             // gbPermisos
             // 
@@ -213,6 +266,7 @@
             this.btnRemovePermiso.TabIndex = 9;
             this.btnRemovePermiso.Tag = "btnRemovePermiso";
             this.btnRemovePermiso.UseVisualStyleBackColor = true;
+            this.btnRemovePermiso.Click += new System.EventHandler(this.btnRemovePermiso_Click);
             // 
             // btnAddPermiso
             // 
@@ -223,6 +277,7 @@
             this.btnAddPermiso.TabIndex = 8;
             this.btnAddPermiso.Tag = "btnAddPermiso";
             this.btnAddPermiso.UseVisualStyleBackColor = true;
+            this.btnAddPermiso.Click += new System.EventHandler(this.btnAddPermiso_Click);
             // 
             // lblAsignadasP
             // 
@@ -250,11 +305,43 @@
             this.dgvPermisosAsignados.AllowUserToDeleteRows = false;
             this.dgvPermisosAsignados.AutoSizeColumnsMode = System.Windows.Forms.DataGridViewAutoSizeColumnsMode.AllCells;
             this.dgvPermisosAsignados.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
-            this.dgvPermisosAsignados.EditMode = System.Windows.Forms.DataGridViewEditMode.EditProgrammatically;
+            this.dgvPermisosAsignados.Columns.AddRange(new System.Windows.Forms.DataGridViewColumn[] {
+            this.IdPa,
+            this.NombrePa,
+            this.TipoPermiso});
+            this.dgvPermisosAsignados.EditMode = System.Windows.Forms.DataGridViewEditMode.EditOnEnter;
             this.dgvPermisosAsignados.Location = new System.Drawing.Point(392, 42);
             this.dgvPermisosAsignados.Name = "dgvPermisosAsignados";
+            this.dgvPermisosAsignados.RowHeadersVisible = false;
+            this.dgvPermisosAsignados.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect;
             this.dgvPermisosAsignados.Size = new System.Drawing.Size(316, 191);
             this.dgvPermisosAsignados.TabIndex = 5;
+            this.dgvPermisosAsignados.CellValueChanged += new System.Windows.Forms.DataGridViewCellEventHandler(this.dgvPermisosAsignados_CellValueChanged);
+            this.dgvPermisosAsignados.CurrentCellDirtyStateChanged += new System.EventHandler(this.dgvPermisosAsignados_CurrentCellDirtyStateChanged);
+            // 
+            // IdPa
+            // 
+            this.IdPa.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.AllCells;
+            this.IdPa.HeaderText = "Id";
+            this.IdPa.Name = "IdPa";
+            this.IdPa.ReadOnly = true;
+            this.IdPa.Width = 41;
+            // 
+            // NombrePa
+            // 
+            this.NombrePa.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.AllCells;
+            this.NombrePa.HeaderText = "Nombre";
+            this.NombrePa.Name = "NombrePa";
+            this.NombrePa.ReadOnly = true;
+            this.NombrePa.Width = 69;
+            // 
+            // TipoPermiso
+            // 
+            this.TipoPermiso.AutoComplete = false;
+            this.TipoPermiso.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.AllCells;
+            this.TipoPermiso.HeaderText = "Tipo de Permiso";
+            this.TipoPermiso.Name = "TipoPermiso";
+            this.TipoPermiso.Width = 80;
             // 
             // dgvPermisos
             // 
@@ -262,11 +349,32 @@
             this.dgvPermisos.AllowUserToDeleteRows = false;
             this.dgvPermisos.AutoSizeColumnsMode = System.Windows.Forms.DataGridViewAutoSizeColumnsMode.AllCells;
             this.dgvPermisos.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
+            this.dgvPermisos.Columns.AddRange(new System.Windows.Forms.DataGridViewColumn[] {
+            this.IdPd,
+            this.NombrePd});
             this.dgvPermisos.EditMode = System.Windows.Forms.DataGridViewEditMode.EditProgrammatically;
             this.dgvPermisos.Location = new System.Drawing.Point(6, 42);
             this.dgvPermisos.Name = "dgvPermisos";
+            this.dgvPermisos.RowHeadersVisible = false;
+            this.dgvPermisos.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect;
             this.dgvPermisos.Size = new System.Drawing.Size(316, 191);
             this.dgvPermisos.TabIndex = 4;
+            // 
+            // IdPd
+            // 
+            this.IdPd.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.AllCells;
+            this.IdPd.HeaderText = "Id";
+            this.IdPd.Name = "IdPd";
+            this.IdPd.ReadOnly = true;
+            this.IdPd.Width = 41;
+            // 
+            // NombrePd
+            // 
+            this.NombrePd.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.AllCells;
+            this.NombrePd.HeaderText = "Nombre";
+            this.NombrePd.Name = "NombrePd";
+            this.NombrePd.ReadOnly = true;
+            this.NombrePd.Width = 69;
             // 
             // PermisosUsuarios
             // 
@@ -318,5 +426,14 @@
         private System.Windows.Forms.Label lblDisponiblesP;
         private System.Windows.Forms.DataGridView dgvPermisosAsignados;
         private System.Windows.Forms.DataGridView dgvPermisos;
+        private System.Windows.Forms.DataGridViewTextBoxColumn IdFa;
+        private System.Windows.Forms.DataGridViewTextBoxColumn NombreFa;
+        private System.Windows.Forms.DataGridViewTextBoxColumn IdFd;
+        private System.Windows.Forms.DataGridViewTextBoxColumn NombreFd;
+        private System.Windows.Forms.DataGridViewTextBoxColumn IdPa;
+        private System.Windows.Forms.DataGridViewTextBoxColumn NombrePa;
+        private System.Windows.Forms.DataGridViewComboBoxColumn TipoPermiso;
+        private System.Windows.Forms.DataGridViewTextBoxColumn IdPd;
+        private System.Windows.Forms.DataGridViewTextBoxColumn NombrePd;
     }
 }

@@ -14,13 +14,16 @@ namespace Mcba.UI
 {
     public partial class PermisosUsuarios : Form
     {
-        private const int COL_ID_PERMISO = 0;
-        private const int COL_NOMBRE_PERMISO = 1;
-        private const int COL_TIPO_PERMISO = 2;
+        private const string COL_ID_FAMILIA = "IdFd";
+        private const string COL_NOMBRE_FAMILIA = "NombreFd";
+        private const string COL_ID_FAMILIA_ASIGNADA = "IdFa";
+        private const string COL_NOMBRE_FAMILIA_ASIGNADA = "NombreFa";
 
-        private const int COL_ID_FAMILIA = 0;
-        private const int COL_NOMBRE_FAMILIA = 1;
-        private const int COL_ACTIVO_FAMILIA = 2;
+        private const string COL_ID_PERMISO = "IdPd";
+        private const string COL_NOMBRE_PERMISO = "NombrePd";
+        private const string COL_ID_PERMISO_ASIGNADO = "IdPa";
+        private const string COL_NOMBRE_PERMISO_ASIGNADO = "NombrePa";
+        private const string COL_TIPO_PERMISO_ASIGNADO = "TipoPermiso";
 
         private Dictionary<string, string> captions = new Dictionary<string, string>();
 
@@ -56,9 +59,136 @@ namespace Mcba.UI
 
             SetCaptions();
             LoadUsuarios();
+            SetGrids();
 
             Cursor = Cursors.Default;
             Application.DoEvents();
+        }
+
+        private void btnAddFamilia_Click(object sender, EventArgs e)
+        {
+            AddFamilia();
+        }
+
+        private void btnRemoveFamilia_Click(object sender, EventArgs e)
+        {
+            RemoveFamilia();
+        }
+
+        private void btnAddPermiso_Click(object sender, EventArgs e)
+        {
+            AddPermiso();
+        }
+
+        private void btnRemovePermiso_Click(object sender, EventArgs e)
+        {
+            RemovePermiso();
+        }
+
+        private void dgvPermisosAsignados_CurrentCellDirtyStateChanged(object sender, EventArgs e)
+        {
+            dgvPermisosAsignados.CommitEdit(DataGridViewDataErrorContexts.Commit);
+        }
+
+        private void dgvPermisosAsignados_CellValueChanged(object sender, DataGridViewCellEventArgs e)
+        {
+            if (e.RowIndex < 0)
+            {
+                return;
+            }
+
+            string comboboxSelectedValue = string.Empty;
+
+            if (dgvPermisosAsignados.Columns[e.ColumnIndex].GetType() == typeof(DataGridViewComboBoxColumn))
+            {
+                comboboxSelectedValue = dgvPermisosAsignados.Rows[e.RowIndex].Cells[e.ColumnIndex].Value.ToString();
+            }
+        }
+
+        private void SetGrids()
+        {
+            dgvFamilias.AutoGenerateColumns = false;
+            dgvFamiliasAsignadas.AutoGenerateColumns = false;
+
+            dgvPermisos.AutoGenerateColumns = false;
+            dgvPermisosAsignados.AutoGenerateColumns = false;
+
+            var cbc = dgvPermisosAsignados.Columns["TipoPermiso"] as DataGridViewComboBoxColumn;
+
+            cbc.DataSource = Enum.GetValues(typeof(TipoPermisoEnum)).Cast<TipoPermisoEnum>().Select(x => x.ToString()).ToList();
+
+            dgvFamilias.Columns[COL_ID_FAMILIA].Visible = false;
+            dgvFamiliasAsignadas.Columns[COL_ID_FAMILIA_ASIGNADA].Visible = false;
+            dgvPermisos.Columns[COL_ID_PERMISO].Visible = false;
+            dgvPermisosAsignados.Columns[COL_ID_PERMISO_ASIGNADO].Visible = false;
+        }
+
+        private void RemovePermiso()
+        {
+            if (dgvPermisosAsignados.SelectedRows.Count == 0)
+            {
+                return;
+            }
+
+            foreach (DataGridViewRow row in dgvPermisosAsignados.SelectedRows)
+            {
+                var id = Int32.Parse(row.Cells[COL_ID_PERMISO_ASIGNADO].Value.ToString());
+                var nombre = row.Cells[COL_NOMBRE_PERMISO_ASIGNADO].Value.ToString();
+
+                dgvPermisos.Rows.Add(id, nombre);
+                dgvPermisosAsignados.Rows.Remove(row);
+            }
+        }
+
+        private void RemoveFamilia()
+        {
+            if (dgvFamiliasAsignadas.SelectedRows.Count == 0)
+            {
+                return;
+            }
+
+            foreach (DataGridViewRow row in dgvFamiliasAsignadas.SelectedRows)
+            {
+                var id = Int32.Parse(row.Cells[COL_ID_FAMILIA_ASIGNADA].Value.ToString());
+                var nombre = row.Cells[COL_NOMBRE_FAMILIA_ASIGNADA].Value.ToString();
+
+                dgvFamilias.Rows.Add(id, nombre);
+                dgvFamiliasAsignadas.Rows.Remove(row);
+            }
+        }
+
+        private void AddPermiso()
+        {
+            if (dgvPermisos.SelectedRows.Count == 0)
+            {
+                return;
+            }
+
+            foreach (DataGridViewRow row in dgvPermisos.SelectedRows)
+            {
+                var id = Int32.Parse(row.Cells[COL_ID_PERMISO].Value.ToString());
+                var nombre = row.Cells[COL_NOMBRE_PERMISO].Value.ToString();
+
+                dgvPermisosAsignados.Rows.Add(id, nombre);
+                dgvPermisos.Rows.Remove(row);
+            }
+        }
+
+        private void AddFamilia()
+        {
+            if (dgvFamilias.SelectedRows.Count == 0)
+            {
+                return;
+            }
+
+            foreach (DataGridViewRow row in dgvFamilias.SelectedRows)
+            {
+                var id = Int32.Parse(row.Cells[COL_ID_FAMILIA].Value.ToString());
+                var nombre = row.Cells[COL_NOMBRE_FAMILIA].Value.ToString();
+
+                dgvFamiliasAsignadas.Rows.Add(id, nombre);
+                dgvFamilias.Rows.Remove(row);
+            }
         }
 
         private void LoadGrids(UserDto user)
@@ -67,6 +197,8 @@ namespace Mcba.UI
             {
                 Cursor = Cursors.WaitCursor;
                 Application.DoEvents();
+
+                CleanGrillas();
 
                 LoadFamiliasDisponibles(user.Id);
                 LoadPermisosDisponibles(user.Id);
@@ -81,106 +213,59 @@ namespace Mcba.UI
                 this.ShowMessage($"Error al cargar grillas.{Environment.NewLine}{ex.Message}",
                     McbaSettings.MessageTitle, MessageBoxButtons.OK, MessageBoxIcon.Error);
             }
+        }
 
+        private void CleanGrillas()
+        {
+            dgvFamilias.Rows.Clear();
+            dgvFamiliasAsignadas.Rows.Clear();
+            dgvPermisos.Rows.Clear();
+            dgvPermisosAsignados.Rows.Clear();
         }
 
         private void LoadPermisosAsignados(int userId)
         {
             IEnumerable<PermisoDto> result = new PermisoBll().GetAsignados(userId).ToList();
 
-            dgvPermisosAsignados.AutoGenerateColumns = false;
-            dgvPermisosAsignados.SelectionMode = DataGridViewSelectionMode.FullRowSelect;
-            dgvPermisosAsignados.Rows.Clear();
-            dgvPermisosAsignados.Columns.Clear();
-
             if (!result.Any())
             {
                 return;
             }
 
-            var props = typeof(PermisoDto).GetProperties();
-
-            foreach (var prop in props)
-            {
-                var ct = new DataGridViewTextBoxColumn { HeaderText = prop.Name };
-                dgvPermisosAsignados.Columns.Add(ct);
-            }
-
-            var cb = new DataGridViewComboBoxColumn
-            {
-                HeaderText = "Tipo de Permiso",
-                DataSource = Enum.GetValues(typeof(TipoPermisoEnum))
-            };
-            dgvPermisosAsignados.Columns.Add(cb);
-
             foreach (var pd in result)
             {
                 dgvPermisosAsignados.Rows.Add(pd.Id, pd.Nombre);
             }
-
-            dgvPermisosAsignados.Columns[COL_ID_PERMISO].Visible = false;
         }
 
         private void LoadFamiliasAsignadas(int userId)
         {
             IEnumerable<FamiliaDto> result = new FamiliaBll().GetAsignadas(userId).ToList();
 
-            dgvFamiliasAsignadas.AutoGenerateColumns = false;
-            dgvFamiliasAsignadas.SelectionMode = DataGridViewSelectionMode.FullRowSelect;
-            dgvFamiliasAsignadas.Rows.Clear();
-            dgvFamiliasAsignadas.Columns.Clear();
-
             if (!result.Any())
             {
                 return;
             }
 
-            var props = typeof(FamiliaDto).GetProperties();
-
-            foreach (var prop in props)
-            {
-                var c = new DataGridViewTextBoxColumn() { HeaderText = prop.Name };
-                dgvFamiliasAsignadas.Columns.Add(c);
-            }
-
             foreach (var pd in result)
             {
-                dgvFamilias.Rows.Add(pd.Id, pd.Nombre);
+                dgvFamiliasAsignadas.Rows.Add(pd.Id, pd.Nombre);
             }
-
-            dgvFamiliasAsignadas.Columns[COL_ID_FAMILIA].Visible = false;
-            dgvFamiliasAsignadas.Columns[COL_ACTIVO_FAMILIA].Visible = false;
         }
 
         private void LoadFamiliasDisponibles(int userId)
         {
             IEnumerable<FamiliaDto> result = new FamiliaBll().GetDisponibles(userId).ToList();
 
-            dgvFamilias.AutoGenerateColumns = false;
-            dgvFamilias.SelectionMode = DataGridViewSelectionMode.FullRowSelect;
-            dgvFamilias.Rows.Clear();
-            dgvFamilias.Columns.Clear();
-
             if (!result.Any())
             {
                 return;
-            }
-
-            var props = typeof(FamiliaDto).GetProperties();
-
-            foreach (var prop in props)
-            {
-                var c = new DataGridViewTextBoxColumn() { HeaderText = prop.Name };
-                dgvFamilias.Columns.Add(c);
             }
 
             foreach (var pd in result)
             {
                 dgvFamilias.Rows.Add(pd.Id, pd.Nombre);
             }
-
-            dgvFamilias.Columns[COL_ID_FAMILIA].Visible = false;
-            dgvFamilias.Columns[COL_ACTIVO_FAMILIA].Visible = false;
         }
 
         private void LoadPermisosDisponibles(int userId)
@@ -188,30 +273,16 @@ namespace Mcba.UI
             IEnumerable<PermisoDto> result = new PermisoBll().GetDisponibles(userId).ToList();
 
             dgvPermisos.AutoGenerateColumns = false;
-            dgvPermisos.SelectionMode = DataGridViewSelectionMode.FullRowSelect;
-            dgvPermisos.Rows.Clear();
-            dgvPermisos.Columns.Clear();
 
             if (!result.Any())
             {
                 return;
             }
-
-            var props = typeof(PermisoDto).GetProperties();
-
-            foreach (var prop in props)
-            {
-                var c = new DataGridViewTextBoxColumn() { HeaderText = prop.Name};
-                dgvPermisos.Columns.Add(c);
-            }
-
+            
             foreach (var pd in result)
             {
                 dgvPermisos.Rows.Add(pd.Id, pd.Nombre);
             }
-
-            dgvPermisos.Columns[COL_ID_PERMISO].Visible = false;
-            dgvPermisos.Columns[COL_TIPO_PERMISO].Visible = false;
         }
 
         private void SetCaptions()
@@ -251,16 +322,65 @@ namespace Mcba.UI
                 return;
             }
 
-            LoadUsuarios();
+            var user = cmbUsuarios.SelectedItem as UserDto;
+
+            var familias = new List<int>();
+            foreach (DataGridViewRow row in dgvFamiliasAsignadas.Rows)
+            {
+                familias.Add((int)row.Cells[COL_ID_FAMILIA_ASIGNADA].Value);
+            }
+
+            var permisos = new Dictionary<int, int>();
+            foreach (DataGridViewRow row in dgvPermisosAsignados.Rows)
+            {
+                permisos.Add((int)row.Cells[COL_ID_PERMISO_ASIGNADO].Value, (int)row.Cells[COL_TIPO_PERMISO_ASIGNADO].Value);
+            }
+
+            try
+            {
+                var userBll = new UserBll();
+                userBll.AsignarFamilias(user.Id, familias);
+                //userBll.AsignarPermisos(user.Id, permisos);
+
+                LoadGrids(user);
+            }
+            catch (Exception ex)
+            {
+                captions.TryGetValue("ErrorAlGuardar", out var caption);
+                this.ShowMessage(string.Format(caption ?? McbaSettings.SinTraduccion, Environment.NewLine, ex.Message));
+            }
         }
 
         private bool Valida()
         {
-            var ret = true;
-            var mess = new StringBuilder();
+            if (!(cmbUsuarios.SelectedItem is UserDto user))
+            {
+                captions.TryGetValue("SinUsuario", out var caption);
+                this.ShowMessage(string.Format(caption ?? McbaSettings.SinTraduccion, Environment.NewLine));
 
+                return false;
+            }
 
-            return ret;
+            if (dgvPermisosAsignados.Rows.Count == 0 || dgvFamiliasAsignadas.Rows.Count == 0)
+            {
+                captions.TryGetValue("SinSeleccion", out var caption);
+                this.ShowMessage(string.Format(caption ?? McbaSettings.SinTraduccion, Environment.NewLine));
+
+                return false;
+            }
+
+            foreach (DataGridViewRow row in dgvPermisosAsignados.Rows)
+            {
+                if (row.Cells[COL_TIPO_PERMISO_ASIGNADO].Value == null)
+                {
+                    captions.TryGetValue("FaltaPermiso", out var caption);
+                    this.ShowMessage(string.Format(caption ?? McbaSettings.SinTraduccion, Environment.NewLine));
+
+                    return false;
+                }
+            }
+
+            return true;
         }
     }
 }
