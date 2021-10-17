@@ -33,9 +33,39 @@ namespace Mcba.Bll.Helpers
                 case "usuariofamilia":
                     return CheckUsuarioFamilia(table.DV);
 
+                case "usuariopermiso":
+                    return CheckUsuarioPermiso(table.DV);
+
                 default:
                     return true;
             }
+        }
+
+        private static bool CheckUsuarioPermiso(string dvv)
+        {
+            var permisoBll = new PermisoBll();
+            var usuarioPermisos = permisoBll.GetUsuarioPermisos();
+
+            long dvvTotal = 0;
+            foreach (var up in usuarioPermisos)
+            {
+                var dvhString = DvhCalculator<UsuarioPermiso>.GetDvhString(up, out var dvhValue);
+                dvvTotal += dvhValue;
+                if (dvhString != up.DV)
+                {
+                    return false;
+                }
+            }
+
+            var dvvValue = DvValue.GetDvValue(dvvTotal.ToString());
+            var usuarioPermisoDvv = HashCalculator.GetCryptString(dvvValue.ToString(), CryptMethodEnum.Sha1);
+
+            if (usuarioPermisoDvv != dvv)
+            {
+                return false;
+            }
+
+            return true;
         }
 
         private static bool CheckUsuarioFamilia(string dvv)

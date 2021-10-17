@@ -1,6 +1,9 @@
-﻿using System.Collections.Generic;
+﻿using System;
+using System.Collections.Generic;
+using System.Data;
 using Dapper;
 using Mcba.Data;
+using Mcba.Entidad;
 using Mcba.Entidad.Dto;
 
 namespace Mcba.Dal
@@ -31,6 +34,26 @@ namespace Mcba.Dal
             WHERE UP.IdUsuario = @IdUsuario
             ";
 
+        private const string QRY_USUARIO_PERMISOS_BY_USER = @"
+            SELECT 
+                IdUsuario
+                , IdPermiso
+                , IdTipoPermiso
+                , DV
+            FROM UsuarioPermiso
+            WHERE 
+                IdUsuario = @IdUsuario
+            ";
+
+        private const string QRY_USUARIO_PERMISOS = @"
+            SELECT 
+                IdUsuario
+                , IdPermiso
+                , IdTipoPermiso
+                , DV
+            FROM UsuarioPermiso
+            ";
+
         private readonly string connectionString;
 
         public PermisoDal(string connectionString)
@@ -51,6 +74,19 @@ namespace Mcba.Dal
             using (var db = new DataAccess(connectionString).GetOpenConnection())
             {
                 return db.Query<PermisoDto>(QRY_PERMISOS_ASIGNADOS_BY_USER, new { IdUsuario = userId });
+            }
+        }
+
+        public IEnumerable<UsuarioPermiso> GetAsignados(int userId, IDbConnection db, IDbTransaction tr)
+        {
+            return db.Query<UsuarioPermiso>(QRY_USUARIO_PERMISOS_BY_USER, new { IdUsuario = userId }, transaction: tr);
+        }
+
+        public IEnumerable<UsuarioPermiso> GetUsuarioPermisos()
+        {
+            using (var db = new DataAccess(connectionString).GetOpenConnection())
+            {
+                return db.Query<UsuarioPermiso>(QRY_USUARIO_PERMISOS);
             }
         }
     }

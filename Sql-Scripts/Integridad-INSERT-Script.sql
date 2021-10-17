@@ -6,13 +6,13 @@
     Es decir, se encripta "0LuisCarro"
 */
 
-INSERT INTO Integridad(Tabla, DV) VALUES('Bitacora', '000102030405060708090a0b0c0d0e0f')
-INSERT INTO Integridad(Tabla, DV) VALUES('Integridad', '000102030405060708090a0b0c0d0e0f')
-INSERT INTO Integridad(Tabla, DV) VALUES('FamiliaPermiso', '000102030405060708090a0b0c0d0e0f')
-INSERT INTO Integridad(Tabla, DV) VALUES('Usuario', '000102030405060708090a0b0c0d0e0f')
-INSERT INTO Integridad(Tabla, DV) VALUES('UsuarioPermiso', '000102030405060708090a0b0c0d0e0f')
-INSERT INTO Integridad(Tabla, DV) VALUES('Factura', '000102030405060708090a0b0c0d0e0f')
-INSERT INTO Integridad(Tabla, DV) VALUES('FacturaItem', '000102030405060708090a0b0c0d0e0f')
-INSERT INTO Integridad(Tabla, DV) VALUES('Liquidacion', '000102030405060708090a0b0c0d0e0f')
-INSERT INTO Integridad(Tabla, DV) VALUES('Stock', '000102030405060708090a0b0c0d0e0f')
-INSERT INTO Integridad(Tabla, DV) VALUES('UsuarioFamilia', '000102030405060708090a0b0c0d0e0f')
+INSERT INTO Integridad(Tabla, DV) VALUES('Bitacora', 'OkgZMhsewUT7srpBQrL9wGs91/c=')
+--INSERT INTO Integridad(Tabla, DV) VALUES('Integridad', 'tjjVs/NtxEfY36LFzZlMbB2CXS0=')
+INSERT INTO Integridad(Tabla, DV) VALUES('FamiliaPermiso', 'OkgZMhsewUT7srpBQrL9wGs91/c=')
+INSERT INTO Integridad(Tabla, DV) VALUES('Usuario', 'OkgZMhsewUT7srpBQrL9wGs91/c=')
+INSERT INTO Integridad(Tabla, DV) VALUES('UsuarioPermiso', 'OkgZMhsewUT7srpBQrL9wGs91/c=')
+INSERT INTO Integridad(Tabla, DV) VALUES('Factura', 'OkgZMhsewUT7srpBQrL9wGs91/c=')
+INSERT INTO Integridad(Tabla, DV) VALUES('FacturaItem', 'OkgZMhsewUT7srpBQrL9wGs91/c=')
+INSERT INTO Integridad(Tabla, DV) VALUES('Liquidacion', 'OkgZMhsewUT7srpBQrL9wGs91/c=')
+INSERT INTO Integridad(Tabla, DV) VALUES('Stock', 'OkgZMhsewUT7srpBQrL9wGs91/c=')
+INSERT INTO Integridad(Tabla, DV) VALUES('UsuarioFamilia', 'OkgZMhsewUT7srpBQrL9wGs91/c=')

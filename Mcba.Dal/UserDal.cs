@@ -212,6 +212,33 @@ namespace Mcba.Dal
                 AND IdFamilia = @IdFamilia
             ";
 
+        private const string QRY_ASIGNA_PERMISO = @"
+            IF NOT EXISTS(
+                SELECT TOP 1 1 
+                FROM UsuarioPermiso
+                WHERE IdUsuario = @IdUsuario
+                    AND IdPermiso = @IdPermiso
+                )
+            BEGIN
+                INSERT INTO UsuarioPermiso(IdUsuario, IdPermiso, IdTipoPermiso, DV)
+                    VALUES(@IdUsuario, @IdPermiso, @IdTipoPermiso, '')
+            END
+            ELSE
+            BEGIN
+                UPDATE UsuarioPermiso SET 
+                    IdTipoPermiso = @IdTipoPermiso
+                WHERE IdUsuario = @IdUsuario
+                    AND IdPermiso = @IdPermiso
+            END
+            ";
+
+        private const string QRY_UPDATE_USUARIO_PERMISO_DV = @"
+            UPDATE UsuarioPermiso SET
+                DV = @Dv
+            WHERE IdUsuario = @IdUsuario
+                AND IdPermiso = @IdPermiso
+            ";
+
         private readonly string connectionString;
 
         public UserDal(string connectionString)
@@ -279,7 +306,7 @@ namespace Mcba.Dal
         {
             using (var db = new DataAccess(connectionString).GetOpenConnection())
             {
-                return db.ExecuteScalar<int>(QRY_GET_ATTEMP_BY_ID, new { Id = idUsuario});
+                return db.ExecuteScalar<int>(QRY_GET_ATTEMP_BY_ID, new {Id = idUsuario});
             }
         }
 
@@ -319,7 +346,7 @@ namespace Mcba.Dal
                 {
                     try
                     {
-                        db.Execute(QRY_UPDATE_PASSWORD_BY_ID, new { Id = idUsuario, Password = password }, tr);
+                        db.Execute(QRY_UPDATE_PASSWORD_BY_ID, new {Id = idUsuario, Password = password}, tr);
 
                         var login = GetUserById(idUsuario, db, tr).Login;
 
@@ -559,7 +586,7 @@ namespace Mcba.Dal
                         foreach (var user in users)
                         {
                             var dvhString = DvhCalculator<User>.GetDvhString(user, out var dvhValue);
-                            db.Execute(QRY_UPDATE_DV_BY_LOGIN, new { Dv = dvhString, Login = user.Login }, tr);
+                            db.Execute(QRY_UPDATE_DV_BY_LOGIN, new {Dv = dvhString, Login = user.Login}, tr);
                             dvvTotal += dvhValue;
                         }
 
@@ -609,14 +636,14 @@ namespace Mcba.Dal
                             db.Execute(QRY_ASIGNA_FAMILIA, new {IdUsuario = userId, IdFamilia = fId}, transaction: tr);
                         }
 
-                        var disponibles = new FamiliaDal(connectionString).GetAsignadas(userId, db, tr);
+                        var asignadas = new FamiliaDal(connectionString).GetAsignadas(userId, db, tr);
 
                         long dvvTotal = 0;
-                        foreach (var fd in disponibles)
+                        foreach (var fa in asignadas)
                         {
-                            var dvhString = DvhCalculator<UsuarioFamilia>.GetDvhString(fd, out var dvhValue);
+                            var dvhString = DvhCalculator<UsuarioFamilia>.GetDvhString(fa, out var dvhValue);
                             db.Execute(QRY_UPDATE_USUARIO_FAMILIA_DV,
-                                new {Dv = dvhString, IdUsuario = userId, IdFamilia = fd.IdFamilia}, tr);
+                                new {Dv = dvhString, IdUsuario = userId, IdFamilia = fa.IdFamilia}, tr);
                             dvvTotal += dvhValue;
                         }
 
@@ -642,7 +669,37 @@ namespace Mcba.Dal
             {
                 using (var tr = db.BeginTransaction())
                 {
+                    try
+                    {
+                        foreach (var p in permisos)
+                        {
+                            db.Execute(QRY_ASIGNA_PERMISO,
+                                new {IdUsuario = userId, IdPermiso = p.Key, IdTipoPermiso = p.Value}, transaction: tr);
+                        }
 
+                        var asignados = new PermisoDal(connectionString).GetAsignados(userId, db, tr);
+
+                        long dvvTotal = 0;
+                        foreach (var pa in asignados)
+                        {
+                            var dvhString = DvhCalculator<UsuarioPermiso>.GetDvhString(pa, out var dvhValue);
+                            db.Execute(QRY_UPDATE_USUARIO_PERMISO_DV,
+                                new {Dv = dvhString, IdUsuario = userId, IdPermiso = pa.IdPermiso}, tr);
+                            dvvTotal += dvhValue;
+                        }
+
+                        var dvvValue = DvValue.GetDvValue(dvvTotal.ToString());
+                        var dvvString = HashCalculator.GetCryptString(dvvValue.ToString(), CryptMethodEnum.Sha1);
+
+                        IntegrityDal.UpdateIntegryty("UsuarioPermiso", dvvString, db, tr);
+
+                        tr.Commit();
+                    }
+                    catch
+                    {
+                        tr.Rollback();
+                        throw;
+                    }
                 }
             }
         }

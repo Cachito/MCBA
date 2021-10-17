@@ -115,7 +115,7 @@ namespace Mcba.UI
 
             var cbc = dgvPermisosAsignados.Columns["TipoPermiso"] as DataGridViewComboBoxColumn;
 
-            cbc.DataSource = Enum.GetValues(typeof(TipoPermisoEnum)).Cast<TipoPermisoEnum>().Select(x => x.ToString()).ToList();
+            cbc.DataSource = Enum.GetNames(typeof(TipoPermisoEnum)); //Enum.GetValues(typeof(TipoPermisoEnum)).Cast<TipoPermisoEnum>().Select(x => x.ToString()).ToList();
 
             dgvFamilias.Columns[COL_ID_FAMILIA].Visible = false;
             dgvFamiliasAsignadas.Columns[COL_ID_FAMILIA_ASIGNADA].Visible = false;
@@ -333,14 +333,15 @@ namespace Mcba.UI
             var permisos = new Dictionary<int, int>();
             foreach (DataGridViewRow row in dgvPermisosAsignados.Rows)
             {
-                permisos.Add((int)row.Cells[COL_ID_PERMISO_ASIGNADO].Value, (int)row.Cells[COL_TIPO_PERMISO_ASIGNADO].Value);
+                var tipoPermiso = (TipoPermisoEnum)Enum.Parse(typeof(TipoPermisoEnum), row.Cells[COL_TIPO_PERMISO_ASIGNADO].Value.ToString());
+                permisos.Add((int)row.Cells[COL_ID_PERMISO_ASIGNADO].Value, (int)tipoPermiso);
             }
 
             try
             {
                 var userBll = new UserBll();
                 userBll.AsignarFamilias(user.Id, familias);
-                //userBll.AsignarPermisos(user.Id, permisos);
+                userBll.AsignarPermisos(user.Id, permisos);
 
                 LoadGrids(user);
             }
@@ -381,6 +382,11 @@ namespace Mcba.UI
             }
 
             return true;
+        }
+
+        private void dgvPermisosAsignados_DataError(object sender, DataGridViewDataErrorEventArgs e)
+        {
+            // solo para que no se produzca la excepción "El valor de DataGridViewComboBoxCell no es válido."
         }
     }
 }
