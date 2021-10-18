@@ -283,7 +283,7 @@ namespace Mcba.Dal
             SELECT 
                 Id
                 , Nombre
-                , [TipoPermiso] = 0
+                , [IdTipoPermiso] = 0
             FROM Permiso
             WHERE Id NOT IN(
                 SELECT IdPermiso

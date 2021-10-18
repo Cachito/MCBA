@@ -123,15 +123,14 @@ namespace Mcba.Dal
 
         private const string QRY_PERMISOS_DISPONIBLES_BY_FAMILIA = @"
             SELECT 
-                P.Id
-                , P.Nombre
-                , P.Modulo
-                , P.Criticidad
-                , UP.IdTipoPermiso
-            FROM Permiso P
-            WHERE FP.IdFamilia = @IdFamilia
-                AND P.Id NOT IN (
-                    SELECT PermisoId
+                Id
+                , Nombre
+                , Modulo
+                , Criticidad
+                , [IdTipoPermiso] = 0
+            FROM Permiso 
+            WHERE Id NOT IN (
+                    SELECT IdPermiso
                     FROM FamiliaPermiso
                     WHERE IdFamilia = @IdFamilia
                     )
@@ -160,9 +159,9 @@ namespace Mcba.Dal
             FROM Usuario
             WHERE Activo = 1
                 AND Id NOT IN(
-                SELECT UsuarioId
-                FROM UsuariosFamilia
-                WHERE FamiliaId = @FamiliaId
+                SELECT IdUsuario
+                FROM UsuarioFamilia
+                WHERE IdFamilia = @IdFamilia
                 )
             ";
 
