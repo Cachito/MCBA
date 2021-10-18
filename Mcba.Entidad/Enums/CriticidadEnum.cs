@@ -2,7 +2,7 @@
 {
     public enum CriticidadEnum
     {
-        Baja,
+        Baja = 1,
         Media,
         Alta
     }

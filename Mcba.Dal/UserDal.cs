@@ -1,5 +1,4 @@
-﻿using System;
-using System.Collections.Generic;
+﻿using System.Collections.Generic;
 using System.Data;
 using System.Linq;
 using Dapper;
@@ -195,20 +194,111 @@ namespace Mcba.Dal
             FETCH NEXT @Take ROWS ONLY
             ";
 
+        private const string QRY_DELETE_ALL_FAMILIAS = @"
+            DELETE UsuarioFamilia
+            WHERE IdUsuario = @IdUsuario
+            ";
+
+        private const string QRY_ASIGNA_FAMILIA = @"
+            INSERT INTO UsuarioFamilia(IdUsuario, IdFamilia, DV)
+                VALUES(@IdUsuario, @IdFamilia, '')
+            ";
+
+        private const string QRY_UPDATE_USUARIO_FAMILIA_DV = @"
+            UPDATE UsuarioFamilia SET
+                DV = @Dv
+            WHERE IdUsuario = @IdUsuario
+                AND IdFamilia = @IdFamilia
+            ";
+
+        private const string QRY_DELETE_ALL_PERMISOS = @"
+            DELETE UsuarioPermiso
+            WHERE IdUsuario = @IdUsuario
+            ";
+
+        private const string QRY_ASIGNA_PERMISO = @"
+            INSERT INTO UsuarioPermiso(IdUsuario, IdPermiso, IdTipoPermiso, DV)
+                VALUES(@IdUsuario, @IdPermiso, @IdTipoPermiso, '')
+            ";
+
+
+        private const string QRY_UPDATE_USUARIO_PERMISO_DV = @"
+            UPDATE UsuarioPermiso SET
+                DV = @Dv
+            WHERE IdUsuario = @IdUsuario
+                AND IdPermiso = @IdPermiso
+            ";
+
+
+        private const string QRY_USUARIO_PERMISOS_BY_USER = @"
+            SELECT 
+                IdUsuario
+                , IdPermiso
+                , IdTipoPermiso
+                , DV
+            FROM UsuarioPermiso
+            WHERE 
+                IdUsuario = @IdUsuario
+            ";
+
+        private const string QRY_PERMISOS_ASIGNADOS_BY_USER = @"
+            SELECT 
+                P.Id
+                , P.Nombre
+                , P.Modulo
+                , P.Criticidad
+                , UP.IdTipoPermiso
+            FROM Permiso P
+            JOIN UsuarioPermiso UP ON
+                P.Id = UP.IdPermiso
+            WHERE UP.IdUsuario = @IdUsuario
+            ";
+
+        private const string QRY_FAMILIAS_ASIGNADAS_BY_USER = @"
+            SELECT 
+                Id
+                , Nombre
+                , Activo
+            FROM Familia
+            WHERE 
+                Activo = 1
+                AND Id IN(
+                    SELECT IdFamilia
+                    FROM UsuarioFamilia
+                    WHERE IdUsuario = @IdUsuario
+                    )
+            ";
+
+        private const string QRY_USUARIO_FAMILIAS_BY_USER = @"
+            SELECT 
+                IdUsuario
+                , IdFamilia
+                , DV
+            FROM UsuarioFamilia
+            WHERE 
+                IdUsuario = @IdUsuario
+            ";
+
+        private const string QRY_PERMISOS_DISPONIBLES_BY_USER = @"
+            SELECT 
+                Id
+                , Nombre
+                , [IdTipoPermiso] = 0
+            FROM Permiso
+            WHERE Id NOT IN(
+                SELECT IdPermiso
+                FROM UsuarioPermiso
+                WHERE IdUsuario = @IdUsuario
+                )
+            ORDER BY Nombre
+            ";
+
         private readonly string connectionString;
 
         public UserDal(string connectionString)
         {
             this.connectionString = connectionString;
         }
-
-        //public void UpdateDvh(string login, string dvString)
-        //{
-        //    using (var db = new DataAccess(connectionString).GetOpenConnection())
-        //    {
-        //        db.Execute(QRY_UPDATE_DV_BY_LOGIN, new {Dv = dvString, Login = login});
-        //    }
-        //}
 
         public string GetEmailByLogin(string login)
         {
@@ -270,7 +360,7 @@ namespace Mcba.Dal
         {
             using (var db = new DataAccess(connectionString).GetOpenConnection())
             {
-                return db.ExecuteScalar<int>(QRY_GET_ATTEMP_BY_ID, new { Id = idUsuario});
+                return db.ExecuteScalar<int>(QRY_GET_ATTEMP_BY_ID, new {Id = idUsuario});
             }
         }
 
@@ -310,7 +400,7 @@ namespace Mcba.Dal
                 {
                     try
                     {
-                        db.Execute(QRY_UPDATE_PASSWORD_BY_ID, new { Id = idUsuario, Password = password }, tr);
+                        db.Execute(QRY_UPDATE_PASSWORD_BY_ID, new {Id = idUsuario, Password = password}, tr);
 
                         var login = GetUserById(idUsuario, db, tr).Login;
 
@@ -338,6 +428,27 @@ namespace Mcba.Dal
         public User GetUserByLogin(string login, IDbConnection db, IDbTransaction tr)
         {
             return db.Query<User>(QRY_GET_USER_BY_LOGIN, new {Login = login}, tr).FirstOrDefault();
+        }
+
+        public IEnumerable<User> GetAllInTransaction(IDbConnection db, IDbTransaction tr)
+        {
+            return db.Query<User>(QRY_GET_ALL_USERS, transaction: tr);
+        }
+
+        public IEnumerable<UserDto> GetByActivo(bool activo)
+        {
+            return GetAll()
+                .Where(x => x.Activo == activo)
+                .OrderBy(x => x.Apellido)
+                .Select(u => new UserDto
+                {
+                    Id = u.Id,
+                    Nombre = u.Nombre,
+                    Apellido = u.Apellido,
+                    Email = u.Email,
+                    Activo = u.Activo
+                })
+                .ToList();
         }
 
         public IEnumerable<User> GetAll()
@@ -516,6 +627,41 @@ namespace Mcba.Dal
             IntegrityDal.UpdateIntegryty("Usuario", dvvString, db, tr);
         }
 
+        public bool RepareIntegrity()
+        {
+            using (var db = new DataAccess(connectionString).GetOpenConnection())
+            {
+                using (var tr = db.BeginTransaction())
+                {
+                    try
+                    {
+                        var users = GetAllInTransaction(db, tr);
+                        long dvvTotal = 0;
+                        foreach (var user in users)
+                        {
+                            var dvhString = DvhCalculator<User>.GetDvhString(user, out var dvhValue);
+                            db.Execute(QRY_UPDATE_DV_BY_LOGIN, new {Dv = dvhString, Login = user.Login}, tr);
+                            dvvTotal += dvhValue;
+                        }
+
+                        var dvvValue = DvValue.GetDvValue(dvvTotal.ToString());
+                        var dvvString = HashCalculator.GetCryptString(dvvValue.ToString(), CryptMethodEnum.Sha1);
+
+                        IntegrityDal.UpdateIntegryty("Usuario", dvvString, db, tr);
+
+                        tr.Commit();
+
+                        return true;
+                    }
+                    catch
+                    {
+                        tr.Rollback();
+                        throw;
+                    }
+                }
+            }
+        }
+
         public IEnumerable<UserDto> FindPage(string searchText, int page, int take)
         {
             using (var db = new DataAccess(connectionString).GetOpenConnection())
@@ -526,6 +672,125 @@ namespace Mcba.Dal
 
                 return db.Query<UserDto>(QRY_FIND_USERS_BY_PAGE,
                     new {Nombre = nombre, Apellido = apellido, Email = email, Skip = page * take, Take = take});
+            }
+        }
+
+        public void AsignarFamilias(int userId, List<int> familias)
+        {
+            using (var db = new DataAccess(connectionString).GetOpenConnection())
+            {
+                using (var tr = db.BeginTransaction())
+                {
+                    try
+                    {
+                        db.Execute(QRY_DELETE_ALL_FAMILIAS, new {IdUsuario = userId}, transaction: tr);
+
+                        foreach (var fId in familias)
+                        {
+                            db.Execute(QRY_ASIGNA_FAMILIA, new {IdUsuario = userId, IdFamilia = fId}, transaction: tr);
+                        }
+
+                        var asignadas = new FamiliaDal(connectionString).GetUsuarioFamilias(db, tr);
+
+                        long dvvTotal = 0;
+                        foreach (var fa in asignadas)
+                        {
+                            var dvhString = DvhCalculator<UsuarioFamilia>.GetDvhString(fa, out var dvhValue);
+                            db.Execute(QRY_UPDATE_USUARIO_FAMILIA_DV,
+                                new {Dv = dvhString, IdUsuario = userId, IdFamilia = fa.IdFamilia}, tr);
+                            dvvTotal += dvhValue;
+                        }
+
+                        var dvvValue = DvValue.GetDvValue(dvvTotal.ToString());
+                        var dvvString = HashCalculator.GetCryptString(dvvValue.ToString(), CryptMethodEnum.Sha1);
+
+                        IntegrityDal.UpdateIntegryty("UsuarioFamilia", dvvString, db, tr);
+
+                        tr.Commit();
+                    }
+                    catch
+                    {
+                        tr.Rollback();
+                        throw;
+                    }
+                }
+            }
+        }
+
+        public void AsignarPermisos(int userId, Dictionary<int, int> permisos)
+        {
+            using (var db = new DataAccess(connectionString).GetOpenConnection())
+            {
+                using (var tr = db.BeginTransaction())
+                {
+                    try
+                    {
+                        db.Execute(QRY_DELETE_ALL_PERMISOS, new { IdUsuario = userId }, transaction: tr);
+
+                        foreach (var p in permisos)
+                        {
+                            db.Execute(QRY_ASIGNA_PERMISO,
+                                new {IdUsuario = userId, IdPermiso = p.Key, IdTipoPermiso = p.Value}, transaction: tr);
+                        }
+
+                        var asignados = new PermisoDal(connectionString).GetUsuarioPermisos(db, tr);
+
+                        long dvvTotal = 0;
+                        foreach (var pa in asignados)
+                        {
+                            var dvhString = DvhCalculator<UsuarioPermiso>.GetDvhString(pa, out var dvhValue);
+                            db.Execute(QRY_UPDATE_USUARIO_PERMISO_DV,
+                                new {Dv = dvhString, IdUsuario = userId, IdPermiso = pa.IdPermiso}, tr);
+                            dvvTotal += dvhValue;
+                        }
+
+                        var dvvValue = DvValue.GetDvValue(dvvTotal.ToString());
+                        var dvvString = HashCalculator.GetCryptString(dvvValue.ToString(), CryptMethodEnum.Sha1);
+
+                        IntegrityDal.UpdateIntegryty("UsuarioPermiso", dvvString, db, tr);
+
+                        tr.Commit();
+                    }
+                    catch
+                    {
+                        tr.Rollback();
+                        throw;
+                    }
+                }
+            }
+        }
+
+        public IEnumerable<PermisoDto> GetPermisos(int userId)
+        {
+            using (var db = new DataAccess(connectionString).GetOpenConnection())
+            {
+                return db.Query<PermisoDto>(QRY_PERMISOS_ASIGNADOS_BY_USER, new { IdUsuario = userId });
+            }
+        }
+
+        public IEnumerable<UsuarioPermiso> GetPermisos(int userId, IDbConnection db, IDbTransaction tr)
+        {
+            return db.Query<UsuarioPermiso>(QRY_USUARIO_PERMISOS_BY_USER, new { IdUsuario = userId }, transaction: tr);
+        }
+
+        public IEnumerable<FamiliaDto> GetFamilias(int userId)
+        {
+            using (var db = new DataAccess(connectionString).GetOpenConnection())
+            {
+                return db.Query<FamiliaDto>(QRY_FAMILIAS_ASIGNADAS_BY_USER, new { IdUsuario = userId });
+            }
+        }
+
+        public IEnumerable<UsuarioFamilia> GetFamilias(int userId, IDbConnection db, IDbTransaction tr)
+        {
+            return db.Query<UsuarioFamilia>(QRY_USUARIO_FAMILIAS_BY_USER, new { IdUsuario = userId }, transaction: tr);
+        }
+
+        public IEnumerable<PermisoDto> GetPermisosDisponibles(int userId)
+        {
+            using (var db = new DataAccess(connectionString).GetOpenConnection())
+            {
+                return db.Query<PermisoDto>(QRY_PERMISOS_DISPONIBLES_BY_USER, new { IdUsuario = userId });
             }
         }
     }

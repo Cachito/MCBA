@@ -1,4 +1,5 @@
-﻿using System.Collections.Generic;
+﻿using System;
+using System.Collections.Generic;
 using System.Web.Security;
 using Mcba.Dal;
 using Mcba.Entidad;
@@ -35,6 +36,11 @@ namespace Mcba.Bll
             }
 
             return ret;
+        }
+
+        public IEnumerable<UserDto> GetByActivo(bool activo)
+        {
+            return new UserDal(McbaSettings.CnnString).GetByActivo(activo);
         }
 
         public int GetAttemps(string login)
@@ -143,6 +149,31 @@ namespace Mcba.Bll
         public IEnumerable<UserDto> FindPage(string searchText, int page)
         {
             return new UserDal(McbaSettings.CnnString).FindPage(searchText, page, McbaSettings.DataPagination);
+        }
+
+        public void AsignarFamilias(int userId, List<int> familias)
+        {
+            new UserDal(McbaSettings.CnnString).AsignarFamilias(userId, familias);
+        }
+
+        public void AsignarPermisos(int userId, Dictionary<int, int> permisos)
+        {
+            new UserDal(McbaSettings.CnnString).AsignarPermisos(userId, permisos);
+        }
+
+        public IEnumerable<PermisoDto> GetPermisos(int userId)
+        {
+            return new UserDal(McbaSettings.CnnString).GetPermisos(userId);
+        }
+
+        public IEnumerable<FamiliaDto> GetFamilias(int userId)
+        {
+            return new UserDal(McbaSettings.CnnString).GetFamilias(userId);
+        }
+
+        public IEnumerable<PermisoDto> GetPermisosDisponibles(int userId)
+        {
+            return new UserDal(McbaSettings.CnnString).GetPermisosDisponibles(userId);
         }
     }
 }

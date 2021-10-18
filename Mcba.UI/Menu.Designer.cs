@@ -49,12 +49,13 @@
             this.tsmiLiquidaciones = new System.Windows.Forms.ToolStripMenuItem();
             this.tsmiGestion = new System.Windows.Forms.ToolStripMenuItem();
             this.tsmiUsuarios = new System.Windows.Forms.ToolStripMenuItem();
-            this.tsmiPermisos = new System.Windows.Forms.ToolStripMenuItem();
+            this.tsmiFamilias = new System.Windows.Forms.ToolStripMenuItem();
+            this.tsmiPermisosFamilias = new System.Windows.Forms.ToolStripMenuItem();
             this.tsmiBackup = new System.Windows.Forms.ToolStripMenuItem();
             this.tsmiBitacora = new System.Windows.Forms.ToolStripMenuItem();
             this.tsmiCambioContra = new System.Windows.Forms.ToolStripMenuItem();
             this.tsmiSalir = new System.Windows.Forms.ToolStripMenuItem();
-            this.tsmiFamilias = new System.Windows.Forms.ToolStripMenuItem();
+            this.tsmiPermisosUsuarios = new System.Windows.Forms.ToolStripMenuItem();
             this.menuStrip.SuspendLayout();
             this.SuspendLayout();
             // 
@@ -227,7 +228,8 @@
             this.tsmiGestion.DropDownItems.AddRange(new System.Windows.Forms.ToolStripItem[] {
             this.tsmiUsuarios,
             this.tsmiFamilias,
-            this.tsmiPermisos,
+            this.tsmiPermisosUsuarios,
+            this.tsmiPermisosFamilias,
             this.tsmiBackup,
             this.tsmiBitacora,
             this.tsmiCambioContra});
@@ -244,13 +246,21 @@
             this.tsmiUsuarios.Text = "Usuarios";
             this.tsmiUsuarios.Click += new System.EventHandler(this.tsmiUsuarios_Click);
             // 
-            // tsmiPermisos
+            // tsmiFamilias
             // 
-            this.tsmiPermisos.Name = "tsmiPermisos";
-            this.tsmiPermisos.Size = new System.Drawing.Size(195, 22);
-            this.tsmiPermisos.Tag = "tsmiPermisos";
-            this.tsmiPermisos.Text = "Permisos";
-            this.tsmiPermisos.Click += new System.EventHandler(this.tsmiPermisos_Click);
+            this.tsmiFamilias.Name = "tsmiFamilias";
+            this.tsmiFamilias.Size = new System.Drawing.Size(195, 22);
+            this.tsmiFamilias.Tag = "tsmiFamilias";
+            this.tsmiFamilias.Text = "Familias";
+            this.tsmiFamilias.Click += new System.EventHandler(this.tsmiFamilias_Click);
+            // 
+            // tsmiPermisosFamilias
+            // 
+            this.tsmiPermisosFamilias.Name = "tsmiPermisosFamilias";
+            this.tsmiPermisosFamilias.Size = new System.Drawing.Size(195, 22);
+            this.tsmiPermisosFamilias.Tag = "tsmiPermisosFamilias";
+            this.tsmiPermisosFamilias.Text = "Permisos Familias";
+            this.tsmiPermisosFamilias.Click += new System.EventHandler(this.tsmiPermisosFamilias_Click);
             // 
             // tsmiBackup
             // 
@@ -284,13 +294,13 @@
             this.tsmiSalir.Text = "Salir";
             this.tsmiSalir.Click += new System.EventHandler(this.tsmiSalir_Click);
             // 
-            // tsmiFamilias
+            // tsmiPermisosUsuarios
             // 
-            this.tsmiFamilias.Name = "tsmiFamilias";
-            this.tsmiFamilias.Size = new System.Drawing.Size(195, 22);
-            this.tsmiFamilias.Tag = "tsmiFamilias";
-            this.tsmiFamilias.Text = "Familias";
-            this.tsmiFamilias.Click += new System.EventHandler(this.tsmiFamilias_Click);
+            this.tsmiPermisosUsuarios.Name = "tsmiPermisosUsuarios";
+            this.tsmiPermisosUsuarios.Size = new System.Drawing.Size(195, 22);
+            this.tsmiPermisosUsuarios.Tag = "tsmiPermisosUsuarios";
+            this.tsmiPermisosUsuarios.Text = "Permisos Usuarios";
+            this.tsmiPermisosUsuarios.Click += new System.EventHandler(this.tsmiPermisosUsuarios_Click);
             // 
             // Menu
             // 
@@ -335,11 +345,12 @@
         private System.Windows.Forms.ToolStripMenuItem tsmiLiquidaciones;
         private System.Windows.Forms.ToolStripMenuItem tsmiGestion;
         private System.Windows.Forms.ToolStripMenuItem tsmiUsuarios;
-        private System.Windows.Forms.ToolStripMenuItem tsmiPermisos;
+        private System.Windows.Forms.ToolStripMenuItem tsmiPermisosFamilias;
         private System.Windows.Forms.ToolStripMenuItem tsmiBackup;
         private System.Windows.Forms.ToolStripMenuItem tsmiBitacora;
         private System.Windows.Forms.ToolStripMenuItem tsmiCambioContra;
         private System.Windows.Forms.ToolStripMenuItem tsmiSalir;
         private System.Windows.Forms.ToolStripMenuItem tsmiFamilias;
+        private System.Windows.Forms.ToolStripMenuItem tsmiPermisosUsuarios;
     }
 }

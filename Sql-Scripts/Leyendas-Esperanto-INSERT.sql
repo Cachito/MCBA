@@ -115,7 +115,10 @@ INSERT INTO Leyendas(IdIdioma, Modulo, Tag, Leyenda)
     VALUES(2, 'Menu', 'tsmiUsuarios', 'Uzantoj')
 
 INSERT INTO Leyendas(IdIdioma, Modulo, Tag, Leyenda)
-    VALUES(2, 'Menu', 'tsmiPermisos', 'Permesoj')
+    VALUES(2, 'Menu', 'tsmiPermisosUsuarios', 'Permesoj al Uzantoj')
+
+INSERT INTO Leyendas(IdIdioma, Modulo, Tag, Leyenda)
+    VALUES(2, 'Menu', 'tsmiPermisosFamilias', 'Familiaj Permesoj')
 
 INSERT INTO Leyendas(IdIdioma, Modulo, Tag, Leyenda)
     VALUES(2, 'Menu', 'tsmiFamilias', 'Familioj')
@@ -1189,3 +1192,101 @@ INSERT INTO Leyendas(IdIdioma, Modulo, Tag, Leyenda)
 
 INSERT INTO Leyendas(IdIdioma, Modulo, Tag, Leyenda)
     VALUES(2, 'StockBuscar', 'tsbOk', 'Bone')
+
+-- PermisosUsuarios
+INSERT INTO Leyendas(IdIdioma, Modulo, Tag, Leyenda)
+    VALUES(2, 'PermisosUsuarios', 'PermisosUsuarios', 'Permesoj al Uzantoj')
+	
+INSERT INTO Leyendas(IdIdioma, Modulo, Tag, Leyenda)
+	VALUES(2, 'PermisosUsuarios', 'tsbSalir', 'Eliri')
+
+INSERT INTO Leyendas(IdIdioma, Modulo, Tag, Leyenda)
+	VALUES(2, 'PermisosUsuarios', 'tsbSave', 'Konservu')
+
+INSERT INTO Leyendas(IdIdioma, Modulo, Tag, Leyenda)
+	VALUES(2, 'PermisosUsuarios', 'lblUsuario', 'Uzanto')
+
+INSERT INTO Leyendas(IdIdioma, Modulo, Tag, Leyenda)
+	VALUES(2, 'PermisosUsuarios', 'gbFamilias', 'Familioj')
+
+INSERT INTO Leyendas(IdIdioma, Modulo, Tag, Leyenda)
+	VALUES(2, 'PermisosUsuarios', 'lblDisponiblesF', 'Haveblaj Familioj')
+
+INSERT INTO Leyendas(IdIdioma, Modulo, Tag, Leyenda)
+	VALUES(2, 'PermisosUsuarios', 'lblAsignadasF', 'Asignitaj Familioj')
+
+INSERT INTO Leyendas(IdIdioma, Modulo, Tag, Leyenda)
+	VALUES(2, 'PermisosUsuarios', 'btnAddFamilia', '')
+
+INSERT INTO Leyendas(IdIdioma, Modulo, Tag, Leyenda)
+	VALUES(2, 'PermisosUsuarios', 'btnRemoveFamilia', '')
+
+INSERT INTO Leyendas(IdIdioma, Modulo, Tag, Leyenda)
+	VALUES(2, 'PermisosUsuarios', 'gbPermisos', 'Permesoj')
+
+INSERT INTO Leyendas(IdIdioma, Modulo, Tag, Leyenda)
+	VALUES(2, 'PermisosUsuarios', 'lblDisponiblesP', 'Haveblaj Permesoj')
+
+INSERT INTO Leyendas(IdIdioma, Modulo, Tag, Leyenda)
+	VALUES(2, 'PermisosUsuarios', 'lblAsignadasP', 'Atribuitaj Permesoj')
+
+INSERT INTO Leyendas(IdIdioma, Modulo, Tag, Leyenda)
+	VALUES(2, 'PermisosUsuarios', 'SinUsuario', 'Vi devas elekti uzanton.')
+
+INSERT INTO Leyendas(IdIdioma, Modulo, Tag, Leyenda)
+	VALUES(2, 'PermisosUsuarios', 'SinSeleccion', 'Vi devas elekti iun familion aŭ iun permeson.')	
+
+INSERT INTO Leyendas(IdIdioma, Modulo, Tag, Leyenda)
+	VALUES(2, 'PermisosUsuarios', 'FaltaPermiso', 'Vi devas elekti tajpi ĉiujn asignitajn permesojn.')
+
+INSERT INTO Leyendas(IdIdioma, Modulo, Tag, Leyenda)
+	VALUES(2, 'PermisosUsuarios', 'ErrorAlGuardar', 'La ŝanĝoj ne estis konservitaj.{0}{1}')
+
+-- PermisosFamilias
+INSERT INTO Leyendas(IdIdioma, Modulo, Tag, Leyenda)
+    VALUES(2, 'PermisosFamilias', 'PermisosFamilias', 'Familiaj Permesiloj')
+	
+INSERT INTO Leyendas(IdIdioma, Modulo, Tag, Leyenda)
+	VALUES(2, 'PermisosFamilias', 'tsbSalir', 'Eliri')
+
+INSERT INTO Leyendas(IdIdioma, Modulo, Tag, Leyenda)
+	VALUES(2, 'PermisosFamilias', 'tsbSave', 'Konservu')
+
+INSERT INTO Leyendas(IdIdioma, Modulo, Tag, Leyenda)
+	VALUES(2, 'PermisosFamilias', 'lblFamilia', 'Familio')
+
+INSERT INTO Leyendas(IdIdioma, Modulo, Tag, Leyenda)
+	VALUES(2, 'PermisosFamilias', 'gbUsuarios', 'Uzantoj')
+
+INSERT INTO Leyendas(IdIdioma, Modulo, Tag, Leyenda)
+	VALUES(2, 'PermisosFamilias', 'lblDisponiblesU', 'Haveblaj Uzantoj')
+
+INSERT INTO Leyendas(IdIdioma, Modulo, Tag, Leyenda)
+	VALUES(2, 'PermisosFamilias', 'lblAsignadosU', 'Asignitaj Uzantoj')
+
+INSERT INTO Leyendas(IdIdioma, Modulo, Tag, Leyenda)
+	VALUES(2, 'PermisosFamilias', 'btnAddUsuario', '')
+
+INSERT INTO Leyendas(IdIdioma, Modulo, Tag, Leyenda)
+	VALUES(2, 'PermisosFamilias', 'btnRemoveUsuario', '')
+
+INSERT INTO Leyendas(IdIdioma, Modulo, Tag, Leyenda)
+	VALUES(2, 'PermisosFamilias', 'gbPermisos', 'Permesoj')
+
+INSERT INTO Leyendas(IdIdioma, Modulo, Tag, Leyenda)
+	VALUES(2, 'PermisosFamilias', 'lblDisponiblesP', 'Haveblaj Permesoj')
+
+INSERT INTO Leyendas(IdIdioma, Modulo, Tag, Leyenda)
+	VALUES(2, 'PermisosFamilias', 'lblAsignadasP', 'Atribuitaj Permesoj')	
+
+INSERT INTO Leyendas(IdIdioma, Modulo, Tag, Leyenda)
+	VALUES(2, 'PermisosFamilias', 'SinFamilia', 'Vi devas elekti familion.')	
+    
+INSERT INTO Leyendas(IdIdioma, Modulo, Tag, Leyenda)
+	VALUES(2, 'PermisosFamilias', 'SinSeleccion', 'Vi devas elekti iun uzanton aŭ iun permeson.')
+    
+INSERT INTO Leyendas(IdIdioma, Modulo, Tag, Leyenda)
+	VALUES(2, 'PermisosFamilias', 'FaltaPermiso', 'Vi devas elekti tajpi ĉiujn asignitajn permesojn.')
+    
+INSERT INTO Leyendas(IdIdioma, Modulo, Tag, Leyenda)
+	VALUES(2, 'PermisosFamilias', 'ErrorAlGuardar', 'Ŝanĝoj ne estis konservitaj.{0}{2}')

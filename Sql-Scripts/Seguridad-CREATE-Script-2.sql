@@ -66,8 +66,8 @@ CREATE TABLE [Permiso]
 (
 	[Id] int IDENTITY(1, 1) NOT NULL,
 	[Nombre] varchar(255) NOT NULL,
-	[Criticidad] int NOT NULL,
-	[DV] varchar(32) NOT NULL
+    [Modulo] varchar(255) NOT NULL,
+	[Criticidad] int NOT NULL
 )
 GO
 

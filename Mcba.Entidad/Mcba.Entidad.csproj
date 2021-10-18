@@ -43,17 +43,19 @@
     <Compile Include="Attributes\CryptAttribute.cs" />
     <Compile Include="Bitacora.cs" />
     <Compile Include="Dto\FamiliaDto.cs" />
-    <Compile Include="Dto\UserLogged.cs" />
+    <Compile Include="Dto\PermisoDto.cs" />
+    <Compile Include="EnumExtensions.cs" />
     <Compile Include="Enums\CriticidadEnum.cs" />
     <Compile Include="Enums\CryptMethodEnum.cs" />
     <Compile Include="Dto\UserDto.cs" />
     <Compile Include="Enums\TipoPermisoEnum.cs" />
-    <Compile Include="Familia.cs" />
+    <Compile Include="FamiliaPermiso.cs" />
     <Compile Include="Integrity.cs" />
     <Compile Include="Language.cs" />
-    <Compile Include="Permiso.cs" />
     <Compile Include="User.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="UsuarioFamilia.cs" />
+    <Compile Include="UsuarioPermiso.cs" />
   </ItemGroup>
   <ItemGroup />
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />

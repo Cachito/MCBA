@@ -7,5 +7,6 @@
         public string Apellido { set; get; }
         public string Email { set; get; }
         public bool Activo { set; get; }
+        public string NombreCompleto => $"{Nombre} {Apellido}";
     }
 }

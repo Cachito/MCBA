@@ -5,9 +5,8 @@ namespace Mcba.Entidad.Enums
     [Flags]
     public enum TipoPermisoEnum
     {
-        None = 0,
-        Read = 2,
-        Write = 4,
-        Print = 8
+        SinAcceso = 0,
+        Consulta = 2,
+        Gestion = 4
     }
 }
