@@ -6,9 +6,7 @@ namespace Mcba.Entidad.Enums
     public enum TipoPermisoEnum
     {
         SinAcceso = 0,
-        Lectura = 2,
-        Impresion = 4,
-        Edicion = 8,
-        Creacion = 16,
+        Consulta = 2,
+        Gestion = 4
     }
 }

@@ -3,7 +3,7 @@ using Mcba.Entidad.Enums;
 
 namespace Mcba.Bll
 {
-    public abstract class Permiso : Componente
+    public class Permiso : Componente
     {
         public string Modulo { get; set; }
         public TipoPermisoEnum TipoPermiso { get; set; }

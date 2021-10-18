@@ -281,9 +281,9 @@
             // 
             // lblAsignadasP
             // 
-            this.lblAsignadasP.Location = new System.Drawing.Point(389, 16);
+            this.lblAsignadasP.Location = new System.Drawing.Point(392, 16);
             this.lblAsignadasP.Name = "lblAsignadasP";
-            this.lblAsignadasP.Size = new System.Drawing.Size(318, 23);
+            this.lblAsignadasP.Size = new System.Drawing.Size(315, 23);
             this.lblAsignadasP.TabIndex = 7;
             this.lblAsignadasP.Tag = "lblAsignadasP";
             this.lblAsignadasP.Text = "lblAsignadasP";
@@ -340,6 +340,7 @@
             // 
             this.TipoPermiso.AutoComplete = false;
             this.TipoPermiso.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.AllCells;
+            this.TipoPermiso.DataPropertyName = "Id";
             this.TipoPermiso.HeaderText = "Tipo de Permiso";
             this.TipoPermiso.Name = "TipoPermiso";
             this.TipoPermiso.Width = 80;
@@ -431,10 +432,10 @@
         private System.Windows.Forms.DataGridViewTextBoxColumn NombreFa;
         private System.Windows.Forms.DataGridViewTextBoxColumn IdFd;
         private System.Windows.Forms.DataGridViewTextBoxColumn NombreFd;
+        private System.Windows.Forms.DataGridViewTextBoxColumn IdPd;
+        private System.Windows.Forms.DataGridViewTextBoxColumn NombrePd;
         private System.Windows.Forms.DataGridViewTextBoxColumn IdPa;
         private System.Windows.Forms.DataGridViewTextBoxColumn NombrePa;
         private System.Windows.Forms.DataGridViewComboBoxColumn TipoPermiso;
-        private System.Windows.Forms.DataGridViewTextBoxColumn IdPd;
-        private System.Windows.Forms.DataGridViewTextBoxColumn NombrePd;
     }
 }

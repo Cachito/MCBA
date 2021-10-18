@@ -1242,3 +1242,52 @@ INSERT INTO Leyendas(IdIdioma, Modulo, Tag, Leyenda)
     
 INSERT INTO Leyendas(IdIdioma, Modulo, Tag, Leyenda)
 	VALUES(1, 'PermisosUsuarios', 'ErrorAlGuardar', 'No se guardaron los cambios.{0}{1}')
+
+-- PermisosFamilias
+INSERT INTO Leyendas(IdIdioma, Modulo, Tag, Leyenda)
+    VALUES(1, 'PermisosFamilias', 'PermisosFamilias', 'Permisos a Familias')
+	
+INSERT INTO Leyendas(IdIdioma, Modulo, Tag, Leyenda)
+	VALUES(1, 'PermisosFamilias', 'tsbSalir', 'Salir')
+
+INSERT INTO Leyendas(IdIdioma, Modulo, Tag, Leyenda)
+	VALUES(1, 'PermisosFamilias', 'tsbSave', 'Guardar')
+
+INSERT INTO Leyendas(IdIdioma, Modulo, Tag, Leyenda)
+	VALUES(1, 'PermisosFamilias', 'lblFamilia', 'Familia')
+
+INSERT INTO Leyendas(IdIdioma, Modulo, Tag, Leyenda)
+	VALUES(1, 'PermisosFamilias', 'gbUsuarios', 'Usuarios')
+
+INSERT INTO Leyendas(IdIdioma, Modulo, Tag, Leyenda)
+	VALUES(1, 'PermisosFamilias', 'lblDisponiblesU', 'Usuarios Disponmibles')
+
+INSERT INTO Leyendas(IdIdioma, Modulo, Tag, Leyenda)
+	VALUES(1, 'PermisosFamilias', 'lblAsignadosU', 'Usuarios Asignados')
+
+INSERT INTO Leyendas(IdIdioma, Modulo, Tag, Leyenda)
+	VALUES(1, 'PermisosFamilias', 'btnAddUsuario', '')
+
+INSERT INTO Leyendas(IdIdioma, Modulo, Tag, Leyenda)
+	VALUES(1, 'PermisosFamilias', 'btnRemoveUsuario', '')
+
+INSERT INTO Leyendas(IdIdioma, Modulo, Tag, Leyenda)
+	VALUES(1, 'PermisosFamilias', 'gbPermisos', 'Permisos')
+
+INSERT INTO Leyendas(IdIdioma, Modulo, Tag, Leyenda)
+	VALUES(1, 'PermisosFamilias', 'lblDisponiblesP', 'Permisos Disponibles')
+
+INSERT INTO Leyendas(IdIdioma, Modulo, Tag, Leyenda)
+	VALUES(1, 'PermisosFamilias', 'lblAsignadasP', 'Permisos Asignados')	
+
+INSERT INTO Leyendas(IdIdioma, Modulo, Tag, Leyenda)
+	VALUES(1, 'PermisosFamilias', 'SinFamilia', 'Debe seleccionar una familia.')	
+    
+INSERT INTO Leyendas(IdIdioma, Modulo, Tag, Leyenda)
+	VALUES(1, 'PermisosFamilias', 'SinSeleccion', 'Debe seleccionar alguna usuario o algún permiso.')
+    
+INSERT INTO Leyendas(IdIdioma, Modulo, Tag, Leyenda)
+	VALUES(1, 'PermisosFamilias', 'FaltaPermiso', 'Debe seleccionar tipo a todos los permisos asignados.')
+    
+INSERT INTO Leyendas(IdIdioma, Modulo, Tag, Leyenda)
+	VALUES(1, 'PermisosFamilias', 'ErrorAlGuardar', 'No se guardaron los cambios.{0}{1}')

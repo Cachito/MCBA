@@ -160,5 +160,20 @@ namespace Mcba.Bll
         {
             new UserDal(McbaSettings.CnnString).AsignarPermisos(userId, permisos);
         }
+
+        public IEnumerable<PermisoDto> GetPermisos(int userId)
+        {
+            return new UserDal(McbaSettings.CnnString).GetPermisos(userId);
+        }
+
+        public IEnumerable<FamiliaDto> GetFamilias(int userId)
+        {
+            return new UserDal(McbaSettings.CnnString).GetFamilias(userId);
+        }
+
+        public IEnumerable<PermisoDto> GetPermisosDisponibles(int userId)
+        {
+            return new UserDal(McbaSettings.CnnString).GetPermisosDisponibles(userId);
+        }
     }
 }

@@ -31,29 +31,38 @@
             this.tsSeguridad = new System.Windows.Forms.ToolStrip();
             this.tsbSalir = new System.Windows.Forms.ToolStripButton();
             this.tsbSave = new System.Windows.Forms.ToolStripButton();
-            this.label1 = new System.Windows.Forms.Label();
+            this.lblFamilia = new System.Windows.Forms.Label();
             this.cmbFamilias = new System.Windows.Forms.ComboBox();
-            this.gbFamilias = new System.Windows.Forms.GroupBox();
+            this.gbPermisos = new System.Windows.Forms.GroupBox();
             this.btnRemoveFamilia = new System.Windows.Forms.Button();
             this.btnAddFamilia = new System.Windows.Forms.Button();
-            this.label3 = new System.Windows.Forms.Label();
-            this.label2 = new System.Windows.Forms.Label();
-            this.DgvFamiliasAsignadas = new System.Windows.Forms.DataGridView();
-            this.dvgFamilias = new System.Windows.Forms.DataGridView();
-            this.gbPatentes = new System.Windows.Forms.GroupBox();
-            this.button1 = new System.Windows.Forms.Button();
-            this.button2 = new System.Windows.Forms.Button();
-            this.label4 = new System.Windows.Forms.Label();
-            this.label5 = new System.Windows.Forms.Label();
-            this.dgvPatentesAsignadas = new System.Windows.Forms.DataGridView();
-            this.dgvPatentes = new System.Windows.Forms.DataGridView();
+            this.lblAsignadosP = new System.Windows.Forms.Label();
+            this.lblDisponiblesP = new System.Windows.Forms.Label();
+            this.dgvPermisosAsignados = new System.Windows.Forms.DataGridView();
+            this.IdPa = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.NombrePa = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.TipoPermiso = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.dgvPermisos = new System.Windows.Forms.DataGridView();
+            this.IdPd = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.NombrePd = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.gbUsuarios = new System.Windows.Forms.GroupBox();
+            this.btnRemoveUsuario = new System.Windows.Forms.Button();
+            this.btnAddUsuario = new System.Windows.Forms.Button();
+            this.lblAsignadosU = new System.Windows.Forms.Label();
+            this.lblDisponiblesU = new System.Windows.Forms.Label();
+            this.dgvUsuariosAsignadas = new System.Windows.Forms.DataGridView();
+            this.IdFa = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.NombreFa = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.dgvUsuarios = new System.Windows.Forms.DataGridView();
+            this.IdUd = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.NombreUd = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.tsSeguridad.SuspendLayout();
-            this.gbFamilias.SuspendLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.DgvFamiliasAsignadas)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.dvgFamilias)).BeginInit();
-            this.gbPatentes.SuspendLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.dgvPatentesAsignadas)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.dgvPatentes)).BeginInit();
+            this.gbPermisos.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.dgvPermisosAsignados)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.dgvPermisos)).BeginInit();
+            this.gbUsuarios.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.dgvUsuariosAsignadas)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.dgvUsuarios)).BeginInit();
             this.SuspendLayout();
             // 
             // tsSeguridad
@@ -74,7 +83,8 @@
             this.tsbSalir.ImageTransparentColor = System.Drawing.Color.Magenta;
             this.tsbSalir.Name = "tsbSalir";
             this.tsbSalir.Size = new System.Drawing.Size(23, 22);
-            this.tsbSalir.Text = "toolStripButton1";
+            this.tsbSalir.Tag = "tsbSalir";
+            this.tsbSalir.Text = "tsbSalir";
             this.tsbSalir.Click += new System.EventHandler(this.tsbSalir_Click);
             // 
             // tsbSave
@@ -84,17 +94,19 @@
             this.tsbSave.ImageTransparentColor = System.Drawing.Color.Magenta;
             this.tsbSave.Name = "tsbSave";
             this.tsbSave.Size = new System.Drawing.Size(23, 22);
-            this.tsbSave.Text = "toolStripButton1";
+            this.tsbSave.Tag = "tsbSave";
+            this.tsbSave.Text = "tsbSave";
             this.tsbSave.Click += new System.EventHandler(this.tsbSave_Click);
             // 
-            // label1
+            // lblFamilia
             // 
-            this.label1.Location = new System.Drawing.Point(12, 27);
-            this.label1.Name = "label1";
-            this.label1.Size = new System.Drawing.Size(51, 23);
-            this.label1.TabIndex = 4;
-            this.label1.Text = "Familia";
-            this.label1.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
+            this.lblFamilia.Location = new System.Drawing.Point(12, 27);
+            this.lblFamilia.Name = "lblFamilia";
+            this.lblFamilia.Size = new System.Drawing.Size(51, 23);
+            this.lblFamilia.TabIndex = 4;
+            this.lblFamilia.Tag = "lblFamilia";
+            this.lblFamilia.Text = "lblFamilia";
+            this.lblFamilia.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
             // 
             // cmbFamilias
             // 
@@ -103,21 +115,23 @@
             this.cmbFamilias.Name = "cmbFamilias";
             this.cmbFamilias.Size = new System.Drawing.Size(268, 21);
             this.cmbFamilias.TabIndex = 5;
+            this.cmbFamilias.SelectedIndexChanged += new System.EventHandler(this.cmbFamilias_SelectedIndexChanged);
             // 
-            // gbFamilias
+            // gbPermisos
             // 
-            this.gbFamilias.Controls.Add(this.btnRemoveFamilia);
-            this.gbFamilias.Controls.Add(this.btnAddFamilia);
-            this.gbFamilias.Controls.Add(this.label3);
-            this.gbFamilias.Controls.Add(this.label2);
-            this.gbFamilias.Controls.Add(this.DgvFamiliasAsignadas);
-            this.gbFamilias.Controls.Add(this.dvgFamilias);
-            this.gbFamilias.Location = new System.Drawing.Point(15, 309);
-            this.gbFamilias.Name = "gbFamilias";
-            this.gbFamilias.Size = new System.Drawing.Size(714, 239);
-            this.gbFamilias.TabIndex = 6;
-            this.gbFamilias.TabStop = false;
-            this.gbFamilias.Text = "Familias";
+            this.gbPermisos.Controls.Add(this.btnRemoveFamilia);
+            this.gbPermisos.Controls.Add(this.btnAddFamilia);
+            this.gbPermisos.Controls.Add(this.lblAsignadosP);
+            this.gbPermisos.Controls.Add(this.lblDisponiblesP);
+            this.gbPermisos.Controls.Add(this.dgvPermisosAsignados);
+            this.gbPermisos.Controls.Add(this.dgvPermisos);
+            this.gbPermisos.Location = new System.Drawing.Point(15, 309);
+            this.gbPermisos.Name = "gbPermisos";
+            this.gbPermisos.Size = new System.Drawing.Size(714, 239);
+            this.gbPermisos.TabIndex = 6;
+            this.gbPermisos.TabStop = false;
+            this.gbPermisos.Tag = "gbPermisos";
+            this.gbPermisos.Text = "gbPermisos";
             // 
             // btnRemoveFamilia
             // 
@@ -127,6 +141,7 @@
             this.btnRemoveFamilia.Size = new System.Drawing.Size(40, 40);
             this.btnRemoveFamilia.TabIndex = 9;
             this.btnRemoveFamilia.UseVisualStyleBackColor = true;
+            this.btnRemoveFamilia.Click += new System.EventHandler(this.btnRemovePermiso_Click);
             // 
             // btnAddFamilia
             // 
@@ -136,115 +151,212 @@
             this.btnAddFamilia.Size = new System.Drawing.Size(40, 40);
             this.btnAddFamilia.TabIndex = 8;
             this.btnAddFamilia.UseVisualStyleBackColor = true;
+            this.btnAddFamilia.Click += new System.EventHandler(this.btnAddPermiso_Click);
             // 
-            // label3
+            // lblAsignadosP
             // 
-            this.label3.Location = new System.Drawing.Point(389, 16);
-            this.label3.Name = "label3";
-            this.label3.Size = new System.Drawing.Size(70, 23);
-            this.label3.TabIndex = 7;
-            this.label3.Text = "Asignadas";
-            this.label3.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
+            this.lblAsignadosP.Location = new System.Drawing.Point(392, 16);
+            this.lblAsignadosP.Name = "lblAsignadosP";
+            this.lblAsignadosP.Size = new System.Drawing.Size(315, 23);
+            this.lblAsignadosP.TabIndex = 7;
+            this.lblAsignadosP.Tag = "lblAsignadosP";
+            this.lblAsignadosP.Text = "lblAsignadosP";
+            this.lblAsignadosP.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
             // 
-            // label2
+            // lblDisponiblesP
             // 
-            this.label2.Location = new System.Drawing.Point(6, 16);
-            this.label2.Name = "label2";
-            this.label2.Size = new System.Drawing.Size(70, 23);
-            this.label2.TabIndex = 6;
-            this.label2.Text = "Disponibles";
-            this.label2.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
+            this.lblDisponiblesP.Location = new System.Drawing.Point(6, 16);
+            this.lblDisponiblesP.Name = "lblDisponiblesP";
+            this.lblDisponiblesP.Size = new System.Drawing.Size(316, 23);
+            this.lblDisponiblesP.TabIndex = 6;
+            this.lblDisponiblesP.Tag = "lblDisponiblesP";
+            this.lblDisponiblesP.Text = "lblDisponiblesP";
+            this.lblDisponiblesP.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
             // 
-            // DgvFamiliasAsignadas
+            // dgvPermisosAsignados
             // 
-            this.DgvFamiliasAsignadas.AllowUserToAddRows = false;
-            this.DgvFamiliasAsignadas.AllowUserToDeleteRows = false;
-            this.DgvFamiliasAsignadas.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
-            this.DgvFamiliasAsignadas.Location = new System.Drawing.Point(392, 42);
-            this.DgvFamiliasAsignadas.Name = "DgvFamiliasAsignadas";
-            this.DgvFamiliasAsignadas.Size = new System.Drawing.Size(316, 191);
-            this.DgvFamiliasAsignadas.TabIndex = 5;
+            this.dgvPermisosAsignados.AllowUserToAddRows = false;
+            this.dgvPermisosAsignados.AllowUserToDeleteRows = false;
+            this.dgvPermisosAsignados.AutoSizeColumnsMode = System.Windows.Forms.DataGridViewAutoSizeColumnsMode.AllCells;
+            this.dgvPermisosAsignados.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
+            this.dgvPermisosAsignados.Columns.AddRange(new System.Windows.Forms.DataGridViewColumn[] {
+            this.IdPa,
+            this.NombrePa,
+            this.TipoPermiso});
+            this.dgvPermisosAsignados.Location = new System.Drawing.Point(392, 42);
+            this.dgvPermisosAsignados.Name = "dgvPermisosAsignados";
+            this.dgvPermisosAsignados.RowHeadersVisible = false;
+            this.dgvPermisosAsignados.Size = new System.Drawing.Size(316, 191);
+            this.dgvPermisosAsignados.TabIndex = 5;
+            this.dgvPermisosAsignados.CellValueChanged += new System.Windows.Forms.DataGridViewCellEventHandler(this.dgvPermisosAsignados_CellValueChanged);
+            this.dgvPermisosAsignados.CurrentCellDirtyStateChanged += new System.EventHandler(this.dgvPermisosAsignados_CurrentCellDirtyStateChanged);
+            this.dgvPermisosAsignados.DataError += new System.Windows.Forms.DataGridViewDataErrorEventHandler(this.dgvPermisosAsignados_DataError);
             // 
-            // dvgFamilias
+            // IdPa
             // 
-            this.dvgFamilias.AllowUserToAddRows = false;
-            this.dvgFamilias.AllowUserToDeleteRows = false;
-            this.dvgFamilias.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
-            this.dvgFamilias.Location = new System.Drawing.Point(6, 42);
-            this.dvgFamilias.Name = "dvgFamilias";
-            this.dvgFamilias.Size = new System.Drawing.Size(316, 191);
-            this.dvgFamilias.TabIndex = 4;
+            this.IdPa.HeaderText = "Id";
+            this.IdPa.Name = "IdPa";
+            this.IdPa.ReadOnly = true;
+            this.IdPa.Width = 41;
             // 
-            // gbPatentes
+            // NombrePa
             // 
-            this.gbPatentes.Controls.Add(this.button1);
-            this.gbPatentes.Controls.Add(this.button2);
-            this.gbPatentes.Controls.Add(this.label4);
-            this.gbPatentes.Controls.Add(this.label5);
-            this.gbPatentes.Controls.Add(this.dgvPatentesAsignadas);
-            this.gbPatentes.Controls.Add(this.dgvPatentes);
-            this.gbPatentes.Location = new System.Drawing.Point(15, 55);
-            this.gbPatentes.Name = "gbPatentes";
-            this.gbPatentes.Size = new System.Drawing.Size(714, 239);
-            this.gbPatentes.TabIndex = 7;
-            this.gbPatentes.TabStop = false;
-            this.gbPatentes.Text = "Patentes";
+            this.NombrePa.HeaderText = "Nombre";
+            this.NombrePa.Name = "NombrePa";
+            this.NombrePa.ReadOnly = true;
+            this.NombrePa.Width = 69;
             // 
-            // button1
+            // TipoPermiso
             // 
-            this.button1.Image = global::Mcba.UI.Properties.Resources.iconArrowRedLeft;
-            this.button1.Location = new System.Drawing.Point(337, 163);
-            this.button1.Name = "button1";
-            this.button1.Size = new System.Drawing.Size(40, 40);
-            this.button1.TabIndex = 9;
-            this.button1.UseVisualStyleBackColor = true;
+            this.TipoPermiso.DataPropertyName = "Id";
+            this.TipoPermiso.HeaderText = "Tipo de Permiso";
+            this.TipoPermiso.Name = "TipoPermiso";
+            this.TipoPermiso.Width = 99;
             // 
-            // button2
+            // dgvPermisos
             // 
-            this.button2.Image = global::Mcba.UI.Properties.Resources.iconArrowRight;
-            this.button2.Location = new System.Drawing.Point(337, 77);
-            this.button2.Name = "button2";
-            this.button2.Size = new System.Drawing.Size(40, 40);
-            this.button2.TabIndex = 8;
-            this.button2.UseVisualStyleBackColor = true;
+            this.dgvPermisos.AllowUserToAddRows = false;
+            this.dgvPermisos.AllowUserToDeleteRows = false;
+            this.dgvPermisos.AutoSizeColumnsMode = System.Windows.Forms.DataGridViewAutoSizeColumnsMode.AllCells;
+            this.dgvPermisos.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
+            this.dgvPermisos.Columns.AddRange(new System.Windows.Forms.DataGridViewColumn[] {
+            this.IdPd,
+            this.NombrePd});
+            this.dgvPermisos.Location = new System.Drawing.Point(6, 42);
+            this.dgvPermisos.Name = "dgvPermisos";
+            this.dgvPermisos.RowHeadersVisible = false;
+            this.dgvPermisos.Size = new System.Drawing.Size(316, 191);
+            this.dgvPermisos.TabIndex = 4;
             // 
-            // label4
+            // IdPd
             // 
-            this.label4.Location = new System.Drawing.Point(389, 16);
-            this.label4.Name = "label4";
-            this.label4.Size = new System.Drawing.Size(70, 23);
-            this.label4.TabIndex = 7;
-            this.label4.Text = "Asignadas";
-            this.label4.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
+            this.IdPd.HeaderText = "Id";
+            this.IdPd.Name = "IdPd";
+            this.IdPd.ReadOnly = true;
+            this.IdPd.Width = 41;
             // 
-            // label5
+            // NombrePd
             // 
-            this.label5.Location = new System.Drawing.Point(6, 16);
-            this.label5.Name = "label5";
-            this.label5.Size = new System.Drawing.Size(70, 23);
-            this.label5.TabIndex = 6;
-            this.label5.Text = "Disponibles";
-            this.label5.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
+            this.NombrePd.HeaderText = "Nombre";
+            this.NombrePd.Name = "NombrePd";
+            this.NombrePd.ReadOnly = true;
+            this.NombrePd.Width = 69;
             // 
-            // dgvPatentesAsignadas
+            // gbUsuarios
             // 
-            this.dgvPatentesAsignadas.AllowUserToAddRows = false;
-            this.dgvPatentesAsignadas.AllowUserToDeleteRows = false;
-            this.dgvPatentesAsignadas.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
-            this.dgvPatentesAsignadas.Location = new System.Drawing.Point(392, 42);
-            this.dgvPatentesAsignadas.Name = "dgvPatentesAsignadas";
-            this.dgvPatentesAsignadas.Size = new System.Drawing.Size(316, 191);
-            this.dgvPatentesAsignadas.TabIndex = 5;
+            this.gbUsuarios.Controls.Add(this.btnRemoveUsuario);
+            this.gbUsuarios.Controls.Add(this.btnAddUsuario);
+            this.gbUsuarios.Controls.Add(this.lblAsignadosU);
+            this.gbUsuarios.Controls.Add(this.lblDisponiblesU);
+            this.gbUsuarios.Controls.Add(this.dgvUsuariosAsignadas);
+            this.gbUsuarios.Controls.Add(this.dgvUsuarios);
+            this.gbUsuarios.Location = new System.Drawing.Point(15, 55);
+            this.gbUsuarios.Name = "gbUsuarios";
+            this.gbUsuarios.Size = new System.Drawing.Size(714, 239);
+            this.gbUsuarios.TabIndex = 7;
+            this.gbUsuarios.TabStop = false;
+            this.gbUsuarios.Tag = "gbUsuarios";
+            this.gbUsuarios.Text = "gbUsuarios";
             // 
-            // dgvPatentes
+            // btnRemoveUsuario
             // 
-            this.dgvPatentes.AllowUserToAddRows = false;
-            this.dgvPatentes.AllowUserToDeleteRows = false;
-            this.dgvPatentes.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
-            this.dgvPatentes.Location = new System.Drawing.Point(6, 42);
-            this.dgvPatentes.Name = "dgvPatentes";
-            this.dgvPatentes.Size = new System.Drawing.Size(316, 191);
-            this.dgvPatentes.TabIndex = 4;
+            this.btnRemoveUsuario.Image = global::Mcba.UI.Properties.Resources.iconArrowRedLeft;
+            this.btnRemoveUsuario.Location = new System.Drawing.Point(337, 163);
+            this.btnRemoveUsuario.Name = "btnRemoveUsuario";
+            this.btnRemoveUsuario.Size = new System.Drawing.Size(40, 40);
+            this.btnRemoveUsuario.TabIndex = 9;
+            this.btnRemoveUsuario.Tag = "btnRemoveUsuario";
+            this.btnRemoveUsuario.UseVisualStyleBackColor = true;
+            this.btnRemoveUsuario.Click += new System.EventHandler(this.btnRemoveUsuario_Click);
+            // 
+            // btnAddUsuario
+            // 
+            this.btnAddUsuario.Image = global::Mcba.UI.Properties.Resources.iconArrowRight;
+            this.btnAddUsuario.Location = new System.Drawing.Point(337, 77);
+            this.btnAddUsuario.Name = "btnAddUsuario";
+            this.btnAddUsuario.Size = new System.Drawing.Size(40, 40);
+            this.btnAddUsuario.TabIndex = 8;
+            this.btnAddUsuario.Tag = "btnAddUsuario";
+            this.btnAddUsuario.UseVisualStyleBackColor = true;
+            this.btnAddUsuario.Click += new System.EventHandler(this.btnAddUsuario_Click);
+            // 
+            // lblAsignadosU
+            // 
+            this.lblAsignadosU.Location = new System.Drawing.Point(392, 16);
+            this.lblAsignadosU.Name = "lblAsignadosU";
+            this.lblAsignadosU.Size = new System.Drawing.Size(315, 23);
+            this.lblAsignadosU.TabIndex = 7;
+            this.lblAsignadosU.Tag = "lblAsignadosU";
+            this.lblAsignadosU.Text = "lblAsignadosU";
+            this.lblAsignadosU.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
+            // 
+            // lblDisponiblesU
+            // 
+            this.lblDisponiblesU.Location = new System.Drawing.Point(6, 16);
+            this.lblDisponiblesU.Name = "lblDisponiblesU";
+            this.lblDisponiblesU.Size = new System.Drawing.Size(316, 23);
+            this.lblDisponiblesU.TabIndex = 6;
+            this.lblDisponiblesU.Tag = "lblDisponiblesU";
+            this.lblDisponiblesU.Text = "lblDisponiblesU";
+            this.lblDisponiblesU.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
+            // 
+            // dgvUsuariosAsignadas
+            // 
+            this.dgvUsuariosAsignadas.AllowUserToAddRows = false;
+            this.dgvUsuariosAsignadas.AllowUserToDeleteRows = false;
+            this.dgvUsuariosAsignadas.AutoSizeColumnsMode = System.Windows.Forms.DataGridViewAutoSizeColumnsMode.AllCells;
+            this.dgvUsuariosAsignadas.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
+            this.dgvUsuariosAsignadas.Columns.AddRange(new System.Windows.Forms.DataGridViewColumn[] {
+            this.IdFa,
+            this.NombreFa});
+            this.dgvUsuariosAsignadas.Location = new System.Drawing.Point(392, 42);
+            this.dgvUsuariosAsignadas.Name = "dgvUsuariosAsignadas";
+            this.dgvUsuariosAsignadas.RowHeadersVisible = false;
+            this.dgvUsuariosAsignadas.Size = new System.Drawing.Size(316, 191);
+            this.dgvUsuariosAsignadas.TabIndex = 5;
+            // 
+            // IdFa
+            // 
+            this.IdFa.HeaderText = "Id";
+            this.IdFa.Name = "IdFa";
+            this.IdFa.ReadOnly = true;
+            this.IdFa.Width = 41;
+            // 
+            // NombreFa
+            // 
+            this.NombreFa.HeaderText = "Nombre";
+            this.NombreFa.Name = "NombreFa";
+            this.NombreFa.ReadOnly = true;
+            this.NombreFa.Width = 69;
+            // 
+            // dgvUsuarios
+            // 
+            this.dgvUsuarios.AllowUserToAddRows = false;
+            this.dgvUsuarios.AllowUserToDeleteRows = false;
+            this.dgvUsuarios.AutoSizeColumnsMode = System.Windows.Forms.DataGridViewAutoSizeColumnsMode.AllCells;
+            this.dgvUsuarios.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
+            this.dgvUsuarios.Columns.AddRange(new System.Windows.Forms.DataGridViewColumn[] {
+            this.IdUd,
+            this.NombreUd});
+            this.dgvUsuarios.Location = new System.Drawing.Point(6, 42);
+            this.dgvUsuarios.Name = "dgvUsuarios";
+            this.dgvUsuarios.RowHeadersVisible = false;
+            this.dgvUsuarios.Size = new System.Drawing.Size(316, 191);
+            this.dgvUsuarios.TabIndex = 4;
+            // 
+            // IdUd
+            // 
+            this.IdUd.HeaderText = "Id";
+            this.IdUd.Name = "IdUd";
+            this.IdUd.ReadOnly = true;
+            this.IdUd.Width = 41;
+            // 
+            // NombreUd
+            // 
+            this.NombreUd.HeaderText = "Nombre";
+            this.NombreUd.Name = "NombreUd";
+            this.NombreUd.ReadOnly = true;
+            this.NombreUd.Width = 69;
             // 
             // PermisosFamilias
             // 
@@ -252,24 +364,24 @@
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(734, 553);
             this.ControlBox = false;
-            this.Controls.Add(this.gbPatentes);
-            this.Controls.Add(this.gbFamilias);
+            this.Controls.Add(this.gbUsuarios);
+            this.Controls.Add(this.gbPermisos);
             this.Controls.Add(this.cmbFamilias);
-            this.Controls.Add(this.label1);
+            this.Controls.Add(this.lblFamilia);
             this.Controls.Add(this.tsSeguridad);
             this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.FixedSingle;
             this.Name = "PermisosFamilias";
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterParent;
             this.Text = "Permisos Familias";
-            this.Load += new System.EventHandler(this.Seguridad_Load);
+            this.Load += new System.EventHandler(this.PermisosFamilias_Load);
             this.tsSeguridad.ResumeLayout(false);
             this.tsSeguridad.PerformLayout();
-            this.gbFamilias.ResumeLayout(false);
-            ((System.ComponentModel.ISupportInitialize)(this.DgvFamiliasAsignadas)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.dvgFamilias)).EndInit();
-            this.gbPatentes.ResumeLayout(false);
-            ((System.ComponentModel.ISupportInitialize)(this.dgvPatentesAsignadas)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.dgvPatentes)).EndInit();
+            this.gbPermisos.ResumeLayout(false);
+            ((System.ComponentModel.ISupportInitialize)(this.dgvPermisosAsignados)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.dgvPermisos)).EndInit();
+            this.gbUsuarios.ResumeLayout(false);
+            ((System.ComponentModel.ISupportInitialize)(this.dgvUsuariosAsignadas)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.dgvUsuarios)).EndInit();
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -280,21 +392,30 @@
         private System.Windows.Forms.ToolStrip tsSeguridad;
         private System.Windows.Forms.ToolStripButton tsbSalir;
         private System.Windows.Forms.ToolStripButton tsbSave;
-        private System.Windows.Forms.Label label1;
+        private System.Windows.Forms.Label lblFamilia;
         private System.Windows.Forms.ComboBox cmbFamilias;
-        private System.Windows.Forms.GroupBox gbFamilias;
-        private System.Windows.Forms.Label label3;
-        private System.Windows.Forms.Label label2;
-        private System.Windows.Forms.DataGridView DgvFamiliasAsignadas;
-        private System.Windows.Forms.DataGridView dvgFamilias;
+        private System.Windows.Forms.GroupBox gbPermisos;
+        private System.Windows.Forms.Label lblAsignadosP;
+        private System.Windows.Forms.Label lblDisponiblesP;
+        private System.Windows.Forms.DataGridView dgvPermisosAsignados;
+        private System.Windows.Forms.DataGridView dgvPermisos;
         private System.Windows.Forms.Button btnRemoveFamilia;
         private System.Windows.Forms.Button btnAddFamilia;
-        private System.Windows.Forms.GroupBox gbPatentes;
-        private System.Windows.Forms.Button button1;
-        private System.Windows.Forms.Button button2;
-        private System.Windows.Forms.Label label4;
-        private System.Windows.Forms.Label label5;
-        private System.Windows.Forms.DataGridView dgvPatentesAsignadas;
-        private System.Windows.Forms.DataGridView dgvPatentes;
+        private System.Windows.Forms.GroupBox gbUsuarios;
+        private System.Windows.Forms.Button btnRemoveUsuario;
+        private System.Windows.Forms.Button btnAddUsuario;
+        private System.Windows.Forms.Label lblAsignadosU;
+        private System.Windows.Forms.Label lblDisponiblesU;
+        private System.Windows.Forms.DataGridView dgvUsuariosAsignadas;
+        private System.Windows.Forms.DataGridView dgvUsuarios;
+        private System.Windows.Forms.DataGridViewTextBoxColumn IdUd;
+        private System.Windows.Forms.DataGridViewTextBoxColumn NombreUd;
+        private System.Windows.Forms.DataGridViewTextBoxColumn IdFa;
+        private System.Windows.Forms.DataGridViewTextBoxColumn NombreFa;
+        private System.Windows.Forms.DataGridViewTextBoxColumn IdPd;
+        private System.Windows.Forms.DataGridViewTextBoxColumn NombrePd;
+        private System.Windows.Forms.DataGridViewTextBoxColumn IdPa;
+        private System.Windows.Forms.DataGridViewTextBoxColumn NombrePa;
+        private System.Windows.Forms.DataGridViewTextBoxColumn TipoPermiso;
     }
 }

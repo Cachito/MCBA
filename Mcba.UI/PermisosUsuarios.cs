@@ -1,10 +1,11 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Data;
 using System.Linq;
-using System.Text;
 using System.Windows.Forms;
 using Mcba.Bll;
 using Mcba.Bll.Helpers;
+using Mcba.Entidad;
 using Mcba.Entidad.Dto;
 using Mcba.Entidad.Enums;
 using Mcba.Infraestruture;
@@ -26,6 +27,7 @@ namespace Mcba.UI
         private const string COL_TIPO_PERMISO_ASIGNADO = "TipoPermiso";
 
         private Dictionary<string, string> captions = new Dictionary<string, string>();
+        private DataTable tipoPermisoSource;
 
         public PermisosUsuarios()
         {
@@ -59,10 +61,16 @@ namespace Mcba.UI
 
             SetCaptions();
             LoadUsuarios();
+            LoadTipoPermiso();
             SetGrids();
 
             Cursor = Cursors.Default;
             Application.DoEvents();
+        }
+
+        private void LoadTipoPermiso()
+        {
+            tipoPermisoSource = typeof(TipoPermisoEnum).EnumToDataTable();
         }
 
         private void btnAddFamilia_Click(object sender, EventArgs e)
@@ -83,6 +91,11 @@ namespace Mcba.UI
         private void btnRemovePermiso_Click(object sender, EventArgs e)
         {
             RemovePermiso();
+        }
+
+        private void dgvPermisosAsignados_DataError(object sender, DataGridViewDataErrorEventArgs e)
+        {
+            // solo para que no se produzca la excepción "El valor de DataGridViewComboBoxCell no es válido."
         }
 
         private void dgvPermisosAsignados_CurrentCellDirtyStateChanged(object sender, EventArgs e)
@@ -115,7 +128,11 @@ namespace Mcba.UI
 
             var cbc = dgvPermisosAsignados.Columns["TipoPermiso"] as DataGridViewComboBoxColumn;
 
-            cbc.DataSource = Enum.GetNames(typeof(TipoPermisoEnum)); //Enum.GetValues(typeof(TipoPermisoEnum)).Cast<TipoPermisoEnum>().Select(x => x.ToString()).ToList();
+            //cbc.DataSource = Enum.GetNames(typeof(TipoPermisoEnum)); //Enum.GetValues(typeof(TipoPermisoEnum)).Cast<TipoPermisoEnum>().Select(x => x.ToString()).ToList();
+            cbc.DataSource = tipoPermisoSource;
+            cbc.DisplayMember = "Desc";
+            cbc.ValueMember = "Id";
+            //cbc.ValueType = typeof(int);
 
             dgvFamilias.Columns[COL_ID_FAMILIA].Visible = false;
             dgvFamiliasAsignadas.Columns[COL_ID_FAMILIA_ASIGNADA].Visible = false;
@@ -169,7 +186,7 @@ namespace Mcba.UI
                 var id = Int32.Parse(row.Cells[COL_ID_PERMISO].Value.ToString());
                 var nombre = row.Cells[COL_NOMBRE_PERMISO].Value.ToString();
 
-                dgvPermisosAsignados.Rows.Add(id, nombre);
+                dgvPermisosAsignados.Rows.Add(id, nombre, (int)TipoPermisoEnum.SinAcceso);
                 dgvPermisos.Rows.Remove(row);
             }
         }
@@ -225,7 +242,7 @@ namespace Mcba.UI
 
         private void LoadPermisosAsignados(int userId)
         {
-            IEnumerable<PermisoDto> result = new PermisoBll().GetAsignados(userId).ToList();
+            IEnumerable<PermisoDto> result = new UserBll().GetPermisos(userId).ToList();
 
             if (!result.Any())
             {
@@ -234,13 +251,19 @@ namespace Mcba.UI
 
             foreach (var pd in result)
             {
+                var tipoPermiso = pd.IdTipoPermiso.ToString();
                 dgvPermisosAsignados.Rows.Add(pd.Id, pd.Nombre);
+
+                DataGridViewRow gridRow = dgvPermisosAsignados.Rows[dgvPermisosAsignados.Rows.Count - 1];
+                DataGridViewComboBoxCell rcbc = (gridRow.Cells[COL_TIPO_PERMISO_ASIGNADO] as DataGridViewComboBoxCell);
+                rcbc.Value = (int)pd.IdTipoPermiso;
+
             }
         }
 
         private void LoadFamiliasAsignadas(int userId)
         {
-            IEnumerable<FamiliaDto> result = new FamiliaBll().GetAsignadas(userId).ToList();
+            IEnumerable<FamiliaDto> result = new UserBll().GetFamilias(userId).ToList();
 
             if (!result.Any())
             {
@@ -270,7 +293,7 @@ namespace Mcba.UI
 
         private void LoadPermisosDisponibles(int userId)
         {
-            IEnumerable<PermisoDto> result = new PermisoBll().GetDisponibles(userId).ToList();
+            IEnumerable<PermisoDto> result = new UserBll().GetPermisosDisponibles(userId).ToList();
 
             dgvPermisos.AutoGenerateColumns = false;
 
@@ -382,11 +405,6 @@ namespace Mcba.UI
             }
 
             return true;
-        }
-
-        private void dgvPermisosAsignados_DataError(object sender, DataGridViewDataErrorEventArgs e)
-        {
-            // solo para que no se produzca la excepción "El valor de DataGridViewComboBoxCell no es válido."
         }
     }
 }

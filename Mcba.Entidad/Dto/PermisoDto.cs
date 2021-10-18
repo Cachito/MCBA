@@ -6,6 +6,8 @@ namespace Mcba.Entidad.Dto
     {
         public int Id { set; get; }
         public string Nombre { set; get; }
-        public TipoPermisoEnum TipoPermiso { set; get; }
+        public string Modulo { set; get; }
+        public CriticidadEnum Criticidad { set; get; }
+        public TipoPermisoEnum IdTipoPermiso { set; get; }
     }
 }

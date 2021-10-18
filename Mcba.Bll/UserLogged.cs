@@ -24,5 +24,35 @@ namespace Mcba.Bll
         public string Login { set; get; }
         public string Email { set; get; }
         public int IdIdioma { set; get; }
+
+        public void SetAuthorization()
+        {
+            var userBll = new UserBll();
+            var permisos = userBll.GetPermisos(Id);
+
+            foreach (var p in permisos)
+            {
+                Permisos.Add(new Permiso
+                {
+                    Id = p.Id,
+                    Nombre = p.Nombre,
+                    TipoPermiso = p.IdTipoPermiso,
+                    Criticidad = p.Criticidad,
+                    Modulo = p.Modulo,
+                    EsCompuesto = false
+                });
+            }
+
+            var familias = userBll.GetFamilias(Id);
+            foreach (var f in familias)
+            {
+                Permisos.Add(new Familia
+                {
+                    Id = f.Id,
+                    Nombre =  f.Nombre,
+                    EsCompuesto = true
+                });
+            }
+        }
     }
 }

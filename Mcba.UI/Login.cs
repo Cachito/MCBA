@@ -116,6 +116,7 @@ namespace Mcba.UI
                 userLogged.Id = user.Id;
                 userLogged.IdIdioma = user.IdIdioma;
                 userLogged.Nombre = user.Nombre;
+                userLogged.SetAuthorization();
 
                 DialogResult = DialogResult.OK;
                 Close();
