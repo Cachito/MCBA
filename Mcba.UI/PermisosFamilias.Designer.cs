@@ -39,6 +39,9 @@
             this.lblAsignadosP = new System.Windows.Forms.Label();
             this.lblDisponiblesP = new System.Windows.Forms.Label();
             this.dgvPermisosAsignados = new System.Windows.Forms.DataGridView();
+            this.IdPa = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.NombrePa = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.TipoPermiso = new System.Windows.Forms.DataGridViewComboBoxColumn();
             this.dgvPermisos = new System.Windows.Forms.DataGridView();
             this.IdPd = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.NombrePd = new System.Windows.Forms.DataGridViewTextBoxColumn();
@@ -48,14 +51,11 @@
             this.lblAsignadosU = new System.Windows.Forms.Label();
             this.lblDisponiblesU = new System.Windows.Forms.Label();
             this.dgvUsuariosAsignadas = new System.Windows.Forms.DataGridView();
+            this.IdUa = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.NombreUa = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.dgvUsuarios = new System.Windows.Forms.DataGridView();
             this.IdUd = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.NombreUd = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.IdPa = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.NombrePa = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.TipoPermiso = new System.Windows.Forms.DataGridViewComboBoxColumn();
-            this.IdUa = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.NombreUa = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.tsSeguridad.SuspendLayout();
             this.gbPermisos.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.dgvPermisosAsignados)).BeginInit();
@@ -186,11 +186,35 @@
             this.dgvPermisosAsignados.Location = new System.Drawing.Point(392, 42);
             this.dgvPermisosAsignados.Name = "dgvPermisosAsignados";
             this.dgvPermisosAsignados.RowHeadersVisible = false;
+            this.dgvPermisosAsignados.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect;
             this.dgvPermisosAsignados.Size = new System.Drawing.Size(316, 191);
             this.dgvPermisosAsignados.TabIndex = 5;
             this.dgvPermisosAsignados.CellValueChanged += new System.Windows.Forms.DataGridViewCellEventHandler(this.dgvPermisosAsignados_CellValueChanged);
             this.dgvPermisosAsignados.CurrentCellDirtyStateChanged += new System.EventHandler(this.dgvPermisosAsignados_CurrentCellDirtyStateChanged);
             this.dgvPermisosAsignados.DataError += new System.Windows.Forms.DataGridViewDataErrorEventHandler(this.dgvPermisosAsignados_DataError);
+            // 
+            // IdPa
+            // 
+            this.IdPa.HeaderText = "Id";
+            this.IdPa.Name = "IdPa";
+            this.IdPa.ReadOnly = true;
+            this.IdPa.Width = 41;
+            // 
+            // NombrePa
+            // 
+            this.NombrePa.HeaderText = "Nombre";
+            this.NombrePa.Name = "NombrePa";
+            this.NombrePa.ReadOnly = true;
+            this.NombrePa.Width = 69;
+            // 
+            // TipoPermiso
+            // 
+            this.TipoPermiso.DataPropertyName = "Id";
+            this.TipoPermiso.HeaderText = "Tipo de Permiso";
+            this.TipoPermiso.Name = "TipoPermiso";
+            this.TipoPermiso.Resizable = System.Windows.Forms.DataGridViewTriState.True;
+            this.TipoPermiso.SortMode = System.Windows.Forms.DataGridViewColumnSortMode.Automatic;
+            this.TipoPermiso.Width = 99;
             // 
             // dgvPermisos
             // 
@@ -204,6 +228,7 @@
             this.dgvPermisos.Location = new System.Drawing.Point(6, 42);
             this.dgvPermisos.Name = "dgvPermisos";
             this.dgvPermisos.RowHeadersVisible = false;
+            this.dgvPermisos.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect;
             this.dgvPermisos.Size = new System.Drawing.Size(316, 191);
             this.dgvPermisos.TabIndex = 4;
             // 
@@ -291,8 +316,23 @@
             this.dgvUsuariosAsignadas.Location = new System.Drawing.Point(392, 42);
             this.dgvUsuariosAsignadas.Name = "dgvUsuariosAsignadas";
             this.dgvUsuariosAsignadas.RowHeadersVisible = false;
+            this.dgvUsuariosAsignadas.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect;
             this.dgvUsuariosAsignadas.Size = new System.Drawing.Size(316, 191);
             this.dgvUsuariosAsignadas.TabIndex = 5;
+            // 
+            // IdUa
+            // 
+            this.IdUa.HeaderText = "Id";
+            this.IdUa.Name = "IdUa";
+            this.IdUa.ReadOnly = true;
+            this.IdUa.Width = 41;
+            // 
+            // NombreUa
+            // 
+            this.NombreUa.HeaderText = "Nombre";
+            this.NombreUa.Name = "NombreUa";
+            this.NombreUa.ReadOnly = true;
+            this.NombreUa.Width = 69;
             // 
             // dgvUsuarios
             // 
@@ -306,6 +346,7 @@
             this.dgvUsuarios.Location = new System.Drawing.Point(6, 42);
             this.dgvUsuarios.Name = "dgvUsuarios";
             this.dgvUsuarios.RowHeadersVisible = false;
+            this.dgvUsuarios.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect;
             this.dgvUsuarios.Size = new System.Drawing.Size(316, 191);
             this.dgvUsuarios.TabIndex = 4;
             // 
@@ -322,43 +363,6 @@
             this.NombreUd.Name = "NombreUd";
             this.NombreUd.ReadOnly = true;
             this.NombreUd.Width = 69;
-            // 
-            // IdPa
-            // 
-            this.IdPa.HeaderText = "Id";
-            this.IdPa.Name = "IdPa";
-            this.IdPa.ReadOnly = true;
-            this.IdPa.Width = 41;
-            // 
-            // NombrePa
-            // 
-            this.NombrePa.HeaderText = "Nombre";
-            this.NombrePa.Name = "NombrePa";
-            this.NombrePa.ReadOnly = true;
-            this.NombrePa.Width = 69;
-            // 
-            // TipoPermiso
-            // 
-            this.TipoPermiso.DataPropertyName = "Id";
-            this.TipoPermiso.HeaderText = "Tipo de Permiso";
-            this.TipoPermiso.Name = "TipoPermiso";
-            this.TipoPermiso.Resizable = System.Windows.Forms.DataGridViewTriState.True;
-            this.TipoPermiso.SortMode = System.Windows.Forms.DataGridViewColumnSortMode.Automatic;
-            this.TipoPermiso.Width = 99;
-            // 
-            // IdUa
-            // 
-            this.IdUa.HeaderText = "Id";
-            this.IdUa.Name = "IdUa";
-            this.IdUa.ReadOnly = true;
-            this.IdUa.Width = 41;
-            // 
-            // NombreUa
-            // 
-            this.NombreUa.HeaderText = "Nombre";
-            this.NombreUa.Name = "NombreUa";
-            this.NombreUa.ReadOnly = true;
-            this.NombreUa.Width = 69;
             // 
             // PermisosFamilias
             // 

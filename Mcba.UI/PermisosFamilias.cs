@@ -255,7 +255,6 @@ namespace Mcba.UI
                 DataGridViewRow gridRow = dgvPermisosAsignados.Rows[dgvPermisosAsignados.Rows.Count - 1];
                 DataGridViewComboBoxCell rcbc = (gridRow.Cells[COL_TIPO_PERMISO_ASIGNADO] as DataGridViewComboBoxCell);
                 rcbc.Value = (int)pd.IdTipoPermiso;
-
             }
         }
 
@@ -270,7 +269,7 @@ namespace Mcba.UI
 
             foreach (var pd in result)
             {
-                dgvUsuariosAsignadas.Rows.Add(pd.Id, pd.Nombre);
+                dgvUsuariosAsignadas.Rows.Add(pd.Id, pd.NombreCompleto);
             }
         }
 
@@ -285,7 +284,7 @@ namespace Mcba.UI
 
             foreach (var pd in result)
             {
-                dgvUsuarios.Rows.Add(pd.Id, pd.Nombre);
+                dgvUsuarios.Rows.Add(pd.Id, pd.NombreCompleto);
             }
         }
 

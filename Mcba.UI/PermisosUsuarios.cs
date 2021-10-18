@@ -128,11 +128,9 @@ namespace Mcba.UI
 
             var cbc = dgvPermisosAsignados.Columns["TipoPermiso"] as DataGridViewComboBoxColumn;
 
-            //cbc.DataSource = Enum.GetNames(typeof(TipoPermisoEnum)); //Enum.GetValues(typeof(TipoPermisoEnum)).Cast<TipoPermisoEnum>().Select(x => x.ToString()).ToList();
             cbc.DataSource = tipoPermisoSource;
             cbc.DisplayMember = "Desc";
             cbc.ValueMember = "Id";
-            //cbc.ValueType = typeof(int);
 
             dgvFamilias.Columns[COL_ID_FAMILIA].Visible = false;
             dgvFamiliasAsignadas.Columns[COL_ID_FAMILIA_ASIGNADA].Visible = false;
@@ -257,7 +255,6 @@ namespace Mcba.UI
                 DataGridViewRow gridRow = dgvPermisosAsignados.Rows[dgvPermisosAsignados.Rows.Count - 1];
                 DataGridViewComboBoxCell rcbc = (gridRow.Cells[COL_TIPO_PERMISO_ASIGNADO] as DataGridViewComboBoxCell);
                 rcbc.Value = (int)pd.IdTipoPermiso;
-
             }
         }
 

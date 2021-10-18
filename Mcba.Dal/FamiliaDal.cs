@@ -114,10 +114,10 @@ namespace Mcba.Dal
                 , P.Nombre
                 , P.Modulo
                 , P.Criticidad
-                , UP.IdTipoPermiso
+                , FP.IdTipoPermiso
             FROM Permiso P
             JOIN FamiliaPermiso FP ON
-                P.Id = PP.IdPermiso
+                P.Id = FP.IdPermiso
             WHERE FP.IdFamilia = @IdFamilia
             ";
 
@@ -143,9 +143,9 @@ namespace Mcba.Dal
                 , U.Apellido
                 , U.Email
                 , U.Activo
-            FROM Usuario
+            FROM Usuario U
             JOIN UsuarioFamilia UF ON
-                UF.IdUsuario = U.IdUsuario
+                UF.IdUsuario = U.Id
             WHERE UF.IdFamilia = @IdFamilia
             ";
 
