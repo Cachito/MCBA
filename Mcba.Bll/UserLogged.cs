@@ -1,5 +1,4 @@
-﻿using System;
-using System.Collections.Generic;
+﻿using System.Collections.Generic;
 using System.Linq;
 using System.Windows.Forms;
 using Mcba.Bll.Composite;
@@ -76,25 +75,18 @@ namespace Mcba.Bll
             }
         }
 
-        /// <summary>
-        /// Los permisos se aplican a manues y botones
-        /// </summary>
-        /// <param name="form"></param>
-        /// <param name="userLoggedPermisos"></param>
-        /// <param name="permisos"></param>
-        public static void SetPermissions(Form form, List<Componente> permisos)
+        public void SetPermissions(Form form)
         {
             foreach (Control control in form.Controls)
             {
                 if (control is MenuStrip menu)
                 {
-                    SetPermissions(menu, permisos);
+                    SetPermissions(menu);
                 }
-
             }
         }
 
-        private static void SetPermissions(MenuStrip menu, List<Componente> permisos)
+        public void SetPermissions(MenuStrip menu)
         {
             foreach (ToolStripMenuItem menuItem in menu.Items)
             {
@@ -102,7 +94,7 @@ namespace Mcba.Bll
 
                 if (menuItem.DropDownItems.Count > 0)
                 {
-                    SetPermissions(menuItem.DropDownItems, permisos);
+                    SetPermissions(menuItem.DropDownItems);
                 }
 
                 if (menuItem.DropDownItems.Cast<ToolStripMenuItem>().Any(dropItem => dropItem.Enabled))
@@ -117,14 +109,14 @@ namespace Mcba.Bll
 
                 if (acceso == TipoPermisoEnum.SinAcceso)
                 {
-                    acceso = GetAcceso(menuItem.Tag.ToString(), permisos);
+                    acceso = GetAcceso(menuItem.Tag.ToString(), Permisos);
                 }
 
                 menuItem.Enabled = acceso != TipoPermisoEnum.SinAcceso;
             }
         }
 
-        private static void SetPermissions(ToolStripItemCollection dropDownItems, List<Componente> permisos)
+        public void SetPermissions(ToolStripItemCollection dropDownItems)
         {
             foreach (ToolStripMenuItem menuItem in dropDownItems)
             {
@@ -132,7 +124,7 @@ namespace Mcba.Bll
 
                 if (menuItem.DropDownItems.Count > 0)
                 {
-                    SetPermissions(menuItem.DropDownItems, permisos);
+                    SetPermissions(menuItem.DropDownItems);
                 }
 
                 if (menuItem.DropDownItems.Cast<ToolStripMenuItem>().Any(dropItem => dropItem.Enabled))
@@ -142,20 +134,20 @@ namespace Mcba.Bll
 
                 if (acceso == TipoPermisoEnum.SinAcceso)
                 {
-                    acceso = GetAcceso(menuItem.Tag.ToString(), permisos);
+                    acceso = GetAcceso(menuItem.Tag.ToString());
                 }
 
                 menuItem.Enabled = acceso != TipoPermisoEnum.SinAcceso;
             }
         }
 
-        private static TipoPermisoEnum GetAcceso(string tag, List<Componente> permisos)
+        public TipoPermisoEnum GetAcceso(string modulo)
         {
             TipoPermisoEnum ret = TipoPermisoEnum.SinAcceso;
 
-            foreach (var p in permisos)
+            foreach (var p in Permisos)
             {
-                if (p is Permiso permiso && permiso.Modulo == tag)
+                if (p is Permiso permiso && permiso.Modulo == modulo)
                 {
                     ret = permiso.TipoPermiso;
                     break;
@@ -163,7 +155,28 @@ namespace Mcba.Bll
 
                 if (p is Familia familia)
                 {
-                    ret = GetAcceso(tag, familia.GetPermisos());
+                    ret = GetAcceso(modulo, familia.GetPermisos());
+                }
+            }
+
+            return ret;
+        }
+
+        public TipoPermisoEnum GetAcceso(string modulo, List<Componente> permisos)
+        {
+            TipoPermisoEnum ret = TipoPermisoEnum.SinAcceso;
+
+            foreach (var p in permisos)
+            {
+                if (p is Permiso permiso && permiso.Modulo == modulo)
+                {
+                    ret = permiso.TipoPermiso;
+                    break;
+                }
+
+                if (p is Familia familia)
+                {
+                    ret = GetAcceso(modulo, familia.GetPermisos());
                 }
             }
 

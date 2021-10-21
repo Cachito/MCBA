@@ -42,6 +42,7 @@ namespace Mcba.UI
             SetCaptions();
             LoadGrid();
             SetFamilia();
+            SetToolbarStatus(ToolbarStatusEnum.Default);
         }
 
         protected internal override void Salir()

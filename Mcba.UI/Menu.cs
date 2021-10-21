@@ -29,7 +29,7 @@ namespace Mcba.UI
 
         private void SetPermissions()
         {
-            UserLogged.SetPermissions(this, userLogged.Permisos);
+            userLogged.SetPermissions(this);
         }
 
         private void tsmiSalir_Click(object sender, EventArgs e)
