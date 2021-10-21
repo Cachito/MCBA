@@ -47,6 +47,7 @@
             this.pbLogo.SizeMode = System.Windows.Forms.PictureBoxSizeMode.StretchImage;
             this.pbLogo.TabIndex = 0;
             this.pbLogo.TabStop = false;
+            this.pbLogo.Tag = "pbLogo";
             // 
             // ssSplash
             // 
@@ -69,7 +70,7 @@
             // tsLabel
             // 
             this.tsLabel.Name = "tsLabel";
-            this.tsLabel.Size = new System.Drawing.Size(252, 17);
+            this.tsLabel.Size = new System.Drawing.Size(283, 17);
             this.tsLabel.Spring = true;
             // 
             // bgWorker

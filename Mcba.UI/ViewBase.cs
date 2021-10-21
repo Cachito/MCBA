@@ -1,5 +1,8 @@
 ﻿using System;
+using System.Linq;
 using System.Windows.Forms;
+using Mcba.Bll;
+using Mcba.Entidad.Enums;
 using Mcba.Infraestruture.Enums;
 using Mcba.Infraestruture.Settings;
 
@@ -7,6 +10,8 @@ namespace Mcba.UI
 {
     public partial class ViewBase : Form
     {
+        private readonly UserLogged userLogged = UserLogged.GetInstance();
+
         private bool SalirEnabled
         {
             set => tsbSalir.Enabled = value;
@@ -175,7 +180,7 @@ namespace Mcba.UI
 
         protected internal virtual void Undo()
         {
-            
+
         }
 
         protected internal virtual void New()
@@ -236,76 +241,52 @@ namespace Mcba.UI
 
         protected void SetToolbarStatus(ToolbarStatusEnum status)
         {
-            switch (status)
-            {
-                case ToolbarStatusEnum.New:
-                    SetToolbarNew();
-                    break;
-
-                case ToolbarStatusEnum.Default:
-                    SetToolbarDefault();
-                    break;
-
-                case ToolbarStatusEnum.Delete:
-                    SetToolbarDelete();
-                    break;
-
-                case ToolbarStatusEnum.Edit:
-                    SetToolbarEdit();
-                    break;
-
-                case ToolbarStatusEnum.Find:
-                    SetToolbarFind();
-                    break;
-
-                case ToolbarStatusEnum.None:
-                    SetToolbarNone();
-                    break;
-
-                case ToolbarStatusEnum.All:
-                    SetToolbarAll();
-                    break;
-
-                default:
-                    break;
-            }
-        }
-
-        private void SetToolbarFind()
-        {
-            SalirEnabled = true;
-            UndoEnabled = false;
-            NewEnabled = false;
-            DeleteEnabled = true;
-            EditEnabled = true;
-            SaveEnabled = false;
-            BuscarEnabled = true;
-            PreviousEnabled = GridPage > 0;
-            NextEnabled = DataRowsCount >= (GridPage == 0 ? 1 : GridPage) * McbaSettings.DataPagination;
-            PrintEnabled = true;
-            RestorePassEnabled = true;
-            ChangePassEnabled = true;
-        }
-
-        private void SetToolbarDefault()
-        {
             Detach();
 
-            SalirEnabled = true;
-            UndoEnabled = false;
-            NewEnabled = true;
-            DeleteEnabled = true;
-            EditEnabled = true;
-            SaveEnabled = false;
-            BuscarEnabled = true;
-            BuscarChecked = false;
-            PreviousEnabled = GridPage > 0;
-            NextEnabled = DataRowsCount >= (GridPage == 0 ? 1 : GridPage) * McbaSettings.DataPagination;
-            PrintEnabled = true;
-            RestorePassEnabled = true;
-            ChangePassEnabled = true;
+            TipoPermisoEnum acceso = userLogged.GetAcceso($"tsmi{Name}");
+
+            SalirEnabled = status != ToolbarStatusEnum.Edit;
+            UndoEnabled = status != ToolbarStatusEnum.Default && acceso == TipoPermisoEnum.Gestion;
+            NewEnabled = status == ToolbarStatusEnum.Default && acceso == TipoPermisoEnum.Gestion;
+            DeleteEnabled = (status == ToolbarStatusEnum.Default || status == ToolbarStatusEnum.Find) &&
+                            acceso == TipoPermisoEnum.Gestion;
+            EditEnabled = (status == ToolbarStatusEnum.Default || status == ToolbarStatusEnum.Find) &&
+                          acceso == TipoPermisoEnum.Gestion;
+            SaveEnabled = (status == ToolbarStatusEnum.New || status == ToolbarStatusEnum.Edit) &&
+                          acceso == TipoPermisoEnum.Gestion;
+            BuscarEnabled = (!(status == ToolbarStatusEnum.New || status == ToolbarStatusEnum.Delete)) &&
+                            (acceso == TipoPermisoEnum.Gestion || acceso == TipoPermisoEnum.Consulta);
+
+            if (status == ToolbarStatusEnum.Default)
+            {
+                BuscarChecked = false;
+            }
+
+            PreviousEnabled = (GridPage > 0 || status != ToolbarStatusEnum.Delete) &&
+                              (acceso == TipoPermisoEnum.Gestion || acceso == TipoPermisoEnum.Consulta);
+            NextEnabled =
+                ((DataRowsCount >= (GridPage == 0 ? 1 : GridPage) * McbaSettings.DataPagination) ||
+                 status != ToolbarStatusEnum.Delete) &&
+                (acceso == TipoPermisoEnum.Gestion || acceso == TipoPermisoEnum.Consulta);
+            PrintEnabled = (status == ToolbarStatusEnum.Default || status == ToolbarStatusEnum.Find) &&
+                           (acceso == TipoPermisoEnum.Gestion || acceso == TipoPermisoEnum.Consulta);
+            RestorePassEnabled = (status == ToolbarStatusEnum.Default || status == ToolbarStatusEnum.Find) && acceso ==
+                TipoPermisoEnum.Gestion;
+            ChangePassEnabled = (status == ToolbarStatusEnum.Default || status == ToolbarStatusEnum.Find) &&
+                                acceso == TipoPermisoEnum.Gestion;
 
             Attach();
+        }
+
+        private bool GetUndoEnabled(ToolbarStatusEnum status)
+        {
+            TipoPermisoEnum acceso = userLogged.GetAcceso(Name);
+            return status != ToolbarStatusEnum.Default && acceso == TipoPermisoEnum.Gestion;
+        }
+
+        private bool GetSalirEnabled(ToolbarStatusEnum status)
+        {
+            return status != ToolbarStatusEnum.Edit;
         }
 
         private void Attach()
@@ -316,86 +297,6 @@ namespace Mcba.UI
         private void Detach()
         {
             tsbBuscar.CheckedChanged -= tsbBuscar_CheckedChanged;
-        }
-
-        private void SetToolbarNone()
-        {
-            SalirEnabled = false;
-            UndoEnabled = false;
-            NewEnabled = false;
-            DeleteEnabled = false;
-            EditEnabled = false;
-            SaveEnabled = false;
-            BuscarEnabled = false;
-            PreviousEnabled = false;
-            NextEnabled = false;
-            PrintEnabled = false;
-            RestorePassEnabled = false;
-            ChangePassEnabled = false;
-        }
-
-        private void SetToolbarAll()
-        {
-            SalirEnabled = true;
-            UndoEnabled = true;
-            NewEnabled = true;
-            DeleteEnabled = true;
-            EditEnabled = true;
-            SaveEnabled = true;
-            BuscarEnabled = true;
-            PreviousEnabled = true;
-            NextEnabled = true;
-            PrintEnabled = true;
-            RestorePassEnabled = true;
-            ChangePassEnabled = true;
-        }
-
-        private void SetToolbarNew()
-        {
-            SalirEnabled = true;
-            UndoEnabled = true;
-            NewEnabled = false;
-            DeleteEnabled = false;
-            EditEnabled = false;
-            SaveEnabled = true;
-            BuscarEnabled = false;
-            PreviousEnabled = GridPage > 0;
-            NextEnabled = DataRowsCount >= (GridPage == 0 ? 1 : GridPage) * McbaSettings.DataPagination; ;
-            PrintEnabled = false;
-            RestorePassEnabled = false;
-            ChangePassEnabled = false;
-        }
-
-        private void SetToolbarEdit()
-        {
-            SalirEnabled = false;
-            UndoEnabled = true;
-            NewEnabled = false;
-            DeleteEnabled = false;
-            EditEnabled = false;
-            SaveEnabled = true;
-            BuscarEnabled = true;
-            PreviousEnabled = GridPage > 0;
-            NextEnabled = DataRowsCount >= (GridPage == 0 ? 1 : GridPage) * McbaSettings.DataPagination; ;
-            PrintEnabled = false;
-            RestorePassEnabled = false;
-            ChangePassEnabled = false;
-        }
-
-        private void SetToolbarDelete()
-        {
-            SalirEnabled = false;
-            UndoEnabled = false;
-            NewEnabled = false;
-            DeleteEnabled = false;
-            EditEnabled = false;
-            SaveEnabled = false;
-            BuscarEnabled = false;
-            PreviousEnabled = false;
-            NextEnabled = false;
-            PrintEnabled = false;
-            RestorePassEnabled = false;
-            ChangePassEnabled = false;
         }
 
         protected internal virtual void LoadView()

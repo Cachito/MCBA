@@ -624,7 +624,7 @@ namespace Mcba.Dal
             var dvvValue = DvValue.GetDvValue(dvvTotal.ToString());
             var dvvString = HashCalculator.GetCryptString(dvvValue.ToString(), CryptMethodEnum.Sha1);
 
-            IntegrityDal.UpdateIntegryty("Usuario", dvvString, db, tr);
+            IntegrityDal.UpdateIntegryty(TablaIntegridadEnum.Usuario, dvvString, db, tr);
         }
 
         public bool RepareIntegrity()
@@ -647,7 +647,7 @@ namespace Mcba.Dal
                         var dvvValue = DvValue.GetDvValue(dvvTotal.ToString());
                         var dvvString = HashCalculator.GetCryptString(dvvValue.ToString(), CryptMethodEnum.Sha1);
 
-                        IntegrityDal.UpdateIntegryty("Usuario", dvvString, db, tr);
+                        IntegrityDal.UpdateIntegryty(TablaIntegridadEnum.Usuario, dvvString, db, tr);
 
                         tr.Commit();
 
@@ -697,14 +697,14 @@ namespace Mcba.Dal
                         {
                             var dvhString = DvhCalculator<UsuarioFamilia>.GetDvhString(fa, out var dvhValue);
                             db.Execute(QRY_UPDATE_USUARIO_FAMILIA_DV,
-                                new {Dv = dvhString, IdUsuario = userId, IdFamilia = fa.IdFamilia}, tr);
+                                new {Dv = dvhString, IdUsuario = fa.IdUsuario, IdFamilia = fa.IdFamilia}, tr);
                             dvvTotal += dvhValue;
                         }
 
                         var dvvValue = DvValue.GetDvValue(dvvTotal.ToString());
                         var dvvString = HashCalculator.GetCryptString(dvvValue.ToString(), CryptMethodEnum.Sha1);
 
-                        IntegrityDal.UpdateIntegryty("UsuarioFamilia", dvvString, db, tr);
+                        IntegrityDal.UpdateIntegryty(TablaIntegridadEnum.UsuarioFamilia, dvvString, db, tr);
 
                         tr.Commit();
                     }
@@ -740,14 +740,14 @@ namespace Mcba.Dal
                         {
                             var dvhString = DvhCalculator<UsuarioPermiso>.GetDvhString(pa, out var dvhValue);
                             db.Execute(QRY_UPDATE_USUARIO_PERMISO_DV,
-                                new {Dv = dvhString, IdUsuario = userId, IdPermiso = pa.IdPermiso}, tr);
+                                new {Dv = dvhString, IdUsuario = pa.IdUsuario, IdPermiso = pa.IdPermiso}, tr);
                             dvvTotal += dvhValue;
                         }
 
                         var dvvValue = DvValue.GetDvValue(dvvTotal.ToString());
                         var dvvString = HashCalculator.GetCryptString(dvvValue.ToString(), CryptMethodEnum.Sha1);
 
-                        IntegrityDal.UpdateIntegryty("UsuarioPermiso", dvvString, db, tr);
+                        IntegrityDal.UpdateIntegryty(TablaIntegridadEnum.UsuarioPermiso, dvvString, db, tr);
 
                         tr.Commit();
                     }
