@@ -3,6 +3,7 @@ using System.Data;
 using Dapper;
 using Mcba.Data;
 using Mcba.Entidad;
+using Mcba.Entidad.Enums;
 
 namespace Mcba.Dal
 {
@@ -37,9 +38,9 @@ namespace Mcba.Dal
             }
         }
 
-        public static void UpdateIntegryty(string tabla, string dvvString, IDbConnection db, IDbTransaction tr)
+        public static void UpdateIntegryty(TablaIntegridadEnum tabla, string dvvString, IDbConnection db, IDbTransaction tr)
         {
-            db.Execute(QRY_UPDATE_INTEGRITY, new {Dv = dvvString, Tabla = tabla}, tr);
+            db.Execute(QRY_UPDATE_INTEGRITY, new {Dv = dvvString, Tabla = tabla.GetStringValue()}, tr);
         }
     }
 }

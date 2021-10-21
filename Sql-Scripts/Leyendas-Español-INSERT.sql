@@ -7,6 +7,9 @@ GO
 INSERT INTO Leyendas(IdIdioma, Modulo, Tag, Leyenda)
     VALUES(1, 'Splash', 'CheckIntegridad', 'Comprobando Integridad')
 
+INSERT INTO Leyendas(IdIdioma, Modulo, Tag, Leyenda)
+    VALUES(1, 'Splash', 'FailIntegridad', 'Hay un problema con la integridad de la base de datos.{0}Por favor contacte al administrador.')
+
 -- login
 INSERT INTO Leyendas(IdIdioma, Modulo, Tag, Leyenda)
     VALUES(1, 'Login', 'lblUsuario', 'Usuario')

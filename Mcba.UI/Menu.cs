@@ -3,7 +3,6 @@ using System.Linq;
 using System.Windows.Forms;
 using Mcba.Bll;
 using Mcba.Bll.Helpers;
-using Mcba.Entidad.Dto;
 using Mcba.Infraestruture.Helpers;
 using Mcba.Infraestruture.Settings;
 
@@ -26,6 +25,11 @@ namespace Mcba.UI
             caps.TryGetValue(Name, out var caption);
             Text = string.Format(caption ?? McbaSettings.SinTraduccion, McbaSettings.MessageTitle, userLogged.Nombre,
                 userLogged.Apellido);
+        }
+
+        private void SetPermissions()
+        {
+            UserLogged.SetPermissions(this, userLogged.Permisos);
         }
 
         private void tsmiSalir_Click(object sender, EventArgs e)
@@ -54,6 +58,7 @@ namespace Mcba.UI
             Application.DoEvents();
 
             SetCaptions();
+            SetPermissions();
 
             Cursor = Cursors.Default;
             Application.DoEvents();

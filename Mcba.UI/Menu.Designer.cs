@@ -50,12 +50,12 @@
             this.tsmiGestion = new System.Windows.Forms.ToolStripMenuItem();
             this.tsmiUsuarios = new System.Windows.Forms.ToolStripMenuItem();
             this.tsmiFamilias = new System.Windows.Forms.ToolStripMenuItem();
+            this.tsmiPermisosUsuarios = new System.Windows.Forms.ToolStripMenuItem();
             this.tsmiPermisosFamilias = new System.Windows.Forms.ToolStripMenuItem();
             this.tsmiBackup = new System.Windows.Forms.ToolStripMenuItem();
             this.tsmiBitacora = new System.Windows.Forms.ToolStripMenuItem();
             this.tsmiCambioContra = new System.Windows.Forms.ToolStripMenuItem();
             this.tsmiSalir = new System.Windows.Forms.ToolStripMenuItem();
-            this.tsmiPermisosUsuarios = new System.Windows.Forms.ToolStripMenuItem();
             this.menuStrip.SuspendLayout();
             this.SuspendLayout();
             // 
@@ -254,6 +254,14 @@
             this.tsmiFamilias.Text = "Familias";
             this.tsmiFamilias.Click += new System.EventHandler(this.tsmiFamilias_Click);
             // 
+            // tsmiPermisosUsuarios
+            // 
+            this.tsmiPermisosUsuarios.Name = "tsmiPermisosUsuarios";
+            this.tsmiPermisosUsuarios.Size = new System.Drawing.Size(195, 22);
+            this.tsmiPermisosUsuarios.Tag = "tsmiPermisosUsuarios";
+            this.tsmiPermisosUsuarios.Text = "Permisos Usuarios";
+            this.tsmiPermisosUsuarios.Click += new System.EventHandler(this.tsmiPermisosUsuarios_Click);
+            // 
             // tsmiPermisosFamilias
             // 
             this.tsmiPermisosFamilias.Name = "tsmiPermisosFamilias";
@@ -290,17 +298,9 @@
             // 
             this.tsmiSalir.Name = "tsmiSalir";
             this.tsmiSalir.Size = new System.Drawing.Size(41, 20);
-            this.tsmiSalir.Tag = "tsmiSalir";
+            this.tsmiSalir.Tag = "";
             this.tsmiSalir.Text = "Salir";
             this.tsmiSalir.Click += new System.EventHandler(this.tsmiSalir_Click);
-            // 
-            // tsmiPermisosUsuarios
-            // 
-            this.tsmiPermisosUsuarios.Name = "tsmiPermisosUsuarios";
-            this.tsmiPermisosUsuarios.Size = new System.Drawing.Size(195, 22);
-            this.tsmiPermisosUsuarios.Tag = "tsmiPermisosUsuarios";
-            this.tsmiPermisosUsuarios.Text = "Permisos Usuarios";
-            this.tsmiPermisosUsuarios.Click += new System.EventHandler(this.tsmiPermisosUsuarios_Click);
             // 
             // Menu
             // 

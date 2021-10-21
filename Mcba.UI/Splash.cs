@@ -1,9 +1,9 @@
 ﻿using System;
+using System.Collections.Generic;
 using System.ComponentModel;
 using System.IO;
 using Mcba.Seguridad;
 using System.Windows.Forms;
-using Mcba.Bll;
 using Mcba.Bll.Helpers;
 using Mcba.Infraestruture.Enums;
 using Mcba.Infraestruture.Settings;
@@ -50,6 +50,12 @@ namespace Mcba.UI
 
         private void bgWorker_RunWorkerCompleted(object sender, RunWorkerCompletedEventArgs e)
         {
+            if (!(bool)e.Result)
+            {
+                var msj = CaptionHelper.GetCaption(Name, "FailIntegridad");
+                MessageBox.Show(string.Format(msj, Environment.NewLine), McbaSettings.SinTraduccion, MessageBoxButtons.OK, MessageBoxIcon.Exclamation);
+            }
+
             DialogResult = (bool)e.Result ? DialogResult.OK : DialogResult.Cancel;
             Close();
         }

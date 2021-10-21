@@ -14,17 +14,22 @@ namespace Mcba.Bll
             Permisos = new List<Componente>();
         }
 
+        public List<Componente> GetPermisos()
+        {
+            return Permisos;
+        }
+
         public void ClearPermisos()
         {
             Permisos = new List<Componente>();
         }
 
-        public void Remove(Componente permiso)
+        public void RemovePermiso(Componente permiso)
         {
             Permisos.Remove(permiso);
         }
 
-        public void Add(Componente permiso)
+        public void AddPermiso(Componente permiso)
         {
             Permisos.Add(permiso);
         }
