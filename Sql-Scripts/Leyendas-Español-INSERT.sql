@@ -56,6 +56,9 @@ INSERT INTO Leyendas(IdIdioma, Modulo, Tag, Leyenda)
 INSERT INTO Leyendas(IdIdioma, Modulo, Tag, Leyenda)
     VALUES(1, 'Login', 'RestoreSaved', 'Se ha guardado el correo en {0}.')
 
+INSERT INTO Leyendas(IdIdioma, Modulo, Tag, Leyenda)
+    VALUES(1, 'Login', 'LoginFail', 'Login Incorrecto.')
+
 -- Menu
 INSERT INTO Leyendas(IdIdioma, Modulo, Tag, Leyenda)
     VALUES(1, 'Menu', 'Menu', '{0} - Usuario: {1} {2}')
@@ -130,7 +133,7 @@ INSERT INTO Leyendas(IdIdioma, Modulo, Tag, Leyenda)
     VALUES(1, 'Menu', 'tsmiBackup', 'Backup')
 
 INSERT INTO Leyendas(IdIdioma, Modulo, Tag, Leyenda)
-    VALUES(1, 'Menu', 'tsmiBitacora', 'Bitácora')
+    VALUES(1, 'Menu', 'tsmiBitacoras', 'Bitácora')
 
 INSERT INTO Leyendas(IdIdioma, Modulo, Tag, Leyenda)
     VALUES(1, 'Menu', 'tsmiCambioContra', 'Cambio de Contraseña')
@@ -295,28 +298,28 @@ INSERT INTO Leyendas(IdIdioma, Modulo, Tag, Leyenda)
 
 -- Bitácora
 INSERT INTO Leyendas(IdIdioma, Modulo, Tag, Leyenda)
-    VALUES(1, 'Bitacora', 'Bitacora', 'Bitácora')
+    VALUES(1, 'Bitacoras', 'Bitacora', 'Bitácora')
 
 INSERT INTO Leyendas(IdIdioma, Modulo, Tag, Leyenda)
-    VALUES(1, 'Bitacora', 'lblUsuario', 'Usuario')
+    VALUES(1, 'Bitacoras', 'lblUsuario', 'Usuario')
 
 INSERT INTO Leyendas(IdIdioma, Modulo, Tag, Leyenda)
-    VALUES(1, 'Bitacora', 'lblCriticidad', 'Criticidad')
+    VALUES(1, 'Bitacoras', 'lblCriticidad', 'Criticidad')
 
 INSERT INTO Leyendas(IdIdioma, Modulo, Tag, Leyenda)
-    VALUES(1, 'Bitacora', 'lblDesde', 'Fecha Desde')
+    VALUES(1, 'Bitacoras', 'lblDesde', 'Fecha Desde')
 
 INSERT INTO Leyendas(IdIdioma, Modulo, Tag, Leyenda)
-    VALUES(1, 'Bitacora', 'lblHasha', 'Fecha Hasha')
+    VALUES(1, 'Bitacoras', 'lblHasha', 'Fecha Hasha')
 
 INSERT INTO Leyendas(IdIdioma, Modulo, Tag, Leyenda)
-    VALUES(1, 'Bitacora', 'tsbSalir', 'Salir')
+    VALUES(1, 'Bitacoras', 'tsbSalir', 'Salir')
 	
 INSERT INTO Leyendas(IdIdioma, Modulo, Tag, Leyenda)
-    VALUES(1, 'Bitacora', 'tsbBuscar', 'Buscar')	
+    VALUES(1, 'Bitacoras', 'tsbBuscar', 'Buscar')	
     
 INSERT INTO Leyendas(IdIdioma, Modulo, Tag, Leyenda)
-    VALUES(1, 'Bitacora', 'tsbImprimir', 'Imprimir')			
+    VALUES(1, 'Bitacoras', 'tsbImprimir', 'Imprimir')			
 
 -- CambioPassword
 INSERT INTO Leyendas(IdIdioma, Modulo, Tag, Leyenda)

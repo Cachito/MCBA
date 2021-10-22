@@ -1,6 +1,6 @@
 ﻿namespace Mcba.UI
 {
-    partial class Bitacora
+    partial class Bitacoras
     {
         /// <summary>
         /// Required designer variable.

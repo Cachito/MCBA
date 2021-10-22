@@ -10,8 +10,7 @@ namespace Mcba.Entidad
         public DateTime FechaHora { set; get; }
         public string Patente { set; get; }
         public string Descripcion { set; get; }
-        public int Criticidad { set; get; }
-        [CryptMethod(CryptMethodEnum.Aes)]
+        public CriticidadEnum Criticidad { set; get; }
         public string Login { set; get; }
         [CryptMethod(CryptMethodEnum.Ignore)]
         public string DV { set; get; }

@@ -230,9 +230,9 @@ namespace Mcba.UI
             frm.Show();
         }
 
-        private void tsmiBitacora_Click(object sender, EventArgs e)
+        private void tsmiBitacoras_Click(object sender, EventArgs e)
         {
-            Bitacora frm = new Bitacora
+            Bitacoras frm = new Bitacoras
             {
                 MdiParent = this
             };

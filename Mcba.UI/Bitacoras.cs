@@ -6,11 +6,11 @@ using Mcba.Infraestruture.Helpers;
 
 namespace Mcba.UI
 {
-    public partial class Bitacora : Form
+    public partial class Bitacoras : Form
     {
         private int idChofer { set; get; }
 
-        public Bitacora()
+        public Bitacoras()
         {
             InitializeComponent();
         }

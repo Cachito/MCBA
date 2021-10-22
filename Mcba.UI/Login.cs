@@ -4,12 +4,12 @@ using System.Linq;
 using System.Windows.Forms;
 using Mcba.Bll;
 using Mcba.Bll.Helpers;
-using Mcba.Entidad.Dto;
+using Mcba.Entidad;
+using Mcba.Entidad.Enums;
 using Mcba.Infraestruture;
 using Mcba.Infraestruture.Enums;
 using Mcba.Infraestruture.Helpers;
 using Mcba.Infraestruture.Settings;
-using Mcba.Seguridad;
 
 namespace Mcba.UI
 {
@@ -110,7 +110,7 @@ namespace Mcba.UI
                 var user = userBll.LogUser(txtUsuario.Text);
                 var userLogged = UserLogged.GetInstance();
 
-                userLogged.Login = txtUsuario.Text;
+                userLogged.Login = user.Login;
                 userLogged.Apellido = user.Apellido;
                 userLogged.Email = user.Email;
                 userLogged.Id = user.Id;
