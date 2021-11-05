@@ -13,5 +13,7 @@
 	"EmailPass": "Jav13r1n",
 	"TempFolder": "C:\\TMP",
 	"DataPagination": 50,
-	"SinTraduccion": "No hay traducción disponible"
+	"SinTraduccion": "No hay traducción disponible",
+	"MasterCnnString": "Integrated Security=SSPI;Persist Security Info=False;Initial Catalog=master;Data Source=DESKTOP-M95JCSK\\SQLEXPRESS;",
+	"VolumenesBackup": 3,
 }

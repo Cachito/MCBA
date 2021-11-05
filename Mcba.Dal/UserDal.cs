@@ -603,7 +603,7 @@ namespace Mcba.Dal
                         var bitacora = new Bitacora
                         {
                             Login = user.Login,
-                            Criticidad = 3,
+                            Criticidad = CriticidadEnum.Alta,
                             Descripcion = HashCalculator.Encrypt("Ingreso al Sistema", McbaSettings.Key, McbaSettings.Salt),
                             FechaHora = DateTime.Now,
                             Patente = string.Empty

@@ -45,10 +45,10 @@ namespace Mcba.Testing
         public void GetBase64()
         {
             var fileName =  "Data.json";
-            var fileText= "{\"Key\":\"0909b1f91cbb4459acab466ae8f0eaf5\",\"Salt\":\"LuisCarroTfi\",\"CnnString\":\"Integrated Security=SSPI;Persist Security Info=False;Initial Catalog=Mcba;Data Source=DESKTOP-M95JCSK\\\\SQLEXPRESS;\",\"MessageTitle\":\"Boungiorno S.A.\",\"MaxLoginAttemps\":3,\"RandomPassLength\":10,\"NumberOfNonAlphanumericCharacters\":3,\"EmailFrom\":\"luis.carro@gmail.com\",\"EmailPort\":587,\"EmailHost\":\"smtp.gmail.com\",\"EmailSsl\":true,\"EmailPass\":\"Jav13r1n\",\"TempFolder\":\"C:\\\\TMP\",\"DataPagination\":50,\"SinTraduccion\":\"No hay traducción disponible\"}";
+            var fileText= "{\"Key\":\"0909b1f91cbb4459acab466ae8f0eaf5\",\"Salt\":\"LuisCarroTfi\",\"CnnString\":\"Integrated Security=SSPI;Persist Security Info=False;Initial Catalog=Mcba;Data Source=DESKTOP-M95JCSK\\\\SQLEXPRESS;\",\"MessageTitle\":\"Boungiorno S.A.\",\"MaxLoginAttemps\":3,\"RandomPassLength\":10,\"NumberOfNonAlphanumericCharacters\":3,\"EmailFrom\":\"luis.carro@gmail.com\",\"EmailPort\":587,\"EmailHost\":\"smtp.gmail.com\",\"EmailSsl\":true,\"EmailPass\":\"Jav13r1n\",\"TempFolder\":\"C:\\\\TMP\",\"DataPagination\":50,\"SinTraduccion\":\"No hay traducción disponible\",\"MasterCnnString\":\"Integrated Security=SSPI;Persist Security Info=False;Initial Catalog=master;Data Source=DESKTOP-M95JCSK\\\\SQLEXPRESS;\",\"VolumenesBackup\":2}";
 
-            var hashName = HashCalculator.Base64Encode(fileName);
-            var decodeName = HashCalculator.Base64Decode(hashName);
+            var hashFileName = HashCalculator.Base64Encode(fileName);
+            var decodeFileName = HashCalculator.Base64Decode(hashFileName);
 
             var hashText = HashCalculator.Base64Encode(fileText);
             var decodeText = HashCalculator.Base64Decode(hashText);
