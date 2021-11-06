@@ -332,6 +332,10 @@ INSERT INTO Leyendas(IdIdioma, Modulo, Tag, Leyenda)
 INSERT INTO Leyendas(IdIdioma, Modulo, Tag, Leyenda)
     VALUES(2, 'Bitacoras', 'LapsoInvalido', 'La enigita periodo estas nevalida.')
 
+-- ReporteBitacora
+INSERT INTO Leyendas(IdIdioma, Modulo, Tag, Leyenda)
+    VALUES(2, 'ReporteBitacora', 'ReporteBitacora', 'Raporto Bitacora')
+
 -- CambioPassword
 INSERT INTO Leyendas(IdIdioma, Modulo, Tag, Leyenda)
     VALUES(2, 'CambioPassword', 'CambioPassword', 'Pasvorta ŝanĝo')

@@ -1,6 +1,7 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Data;
+using System.Linq;
 using System.Windows.Forms;
 using Mcba.Bll;
 using Mcba.Bll.Helpers;
@@ -39,7 +40,10 @@ namespace Mcba.UI
 
         private void tsbPrint_Click(object sender, EventArgs e)
         {
-
+            if (Valida())
+            {
+                Imprimir();
+            }
         }
 
         private void Bitacora_Load(object sender, EventArgs e)
@@ -79,7 +83,7 @@ namespace Mcba.UI
             return true;
         }
 
-        private void Buscar()
+        private IEnumerable<BitacoraDto> GetData()
         {
             var usuario = cmbUsuarios.SelectedItem as UserDto;
             var criticidadRow = cmbCriticidad.SelectedItem as DataRowView;
@@ -88,7 +92,27 @@ namespace Mcba.UI
             var criticidad = (int)criticidadRow[CRITICIDAD_COL_ID];
 
             var bitacoraBll = new BitacoraBll();
-            var bitacoras = bitacoraBll.GetBitacoras(idUsuario, criticidad);
+            return bitacoraBll.GetBitacoras(idUsuario, criticidad);
+        }
+
+        private void Imprimir()
+        {
+            var bitacoras = GetData().ToList();
+
+            if (!bitacoras.Any())
+            {
+                return;
+            }
+
+            using (var frmRep = new ReporteBitacora {Data = bitacoras})
+            {
+                frmRep.ShowDialog();
+            }
+        }
+
+        private void Buscar()
+        {
+            var bitacoras = GetData();
 
             dgvBitacora.DataSource = null;
             dgvBitacora.DataSource = bitacoras;
