@@ -1,7 +1,10 @@
-﻿using System.Data;
+﻿using System;
+using System.Collections.Generic;
+using System.Data;
 using Dapper;
 using Mcba.Data;
 using Mcba.Entidad;
+using Mcba.Entidad.Dto;
 using Mcba.Entidad.Enums;
 using Mcba.Seguridad;
 
@@ -15,14 +18,48 @@ namespace Mcba.Dal
                 VALUES(@FechaHora, @Patente, @Descripcion, @Criticidad, @Login, '')
             ";
 
+        private const string QRY_GET_BITACORAS = @"
+            SELECT 
+                FechaHora
+                , Patente
+                , Descripcion
+                , Criticidad  
+                , Login
+                , DV
+            FROM Bitacora
+            ";
+
+        private const string QRY_GET_BITACORAS_BY_LOGIN_AND_CRIT = @"
+            SELECT 
+                FechaHora
+                , Patente
+                , Descripcion
+                , Criticidad  
+            FROM Bitacora    
+            WHERE 
+                Login = @Login
+                AND(
+                    @Criticidad = -1
+                    OR
+                    Criticidad = @Criticidad
+                )
+            ORDER BY FechaHora DESC
+            ";
+
         private const string QRY_UPDATE_DV_BY_ID = @"
             UPDATE Bitacora SET
                 DV = @Dv
             WHERE Id = @Id
             ";
 
-        private const string QRY_GET_BITACOTA_BY_ID = @"
-            SELECT FechaHora, Patente, Descripcion, Criticidad, Login, DV
+        private const string QRY_GET_BITACORA_BY_ID = @"
+            SELECT 
+                FechaHora
+                , Patente
+                , Descripcion
+                , Criticidad
+                , Login
+                , DV
             FROM Bitacora 
             WHERE Id = @Id
             ";
@@ -62,9 +99,38 @@ namespace Mcba.Dal
             UpdateIntegrity(idBitacora, db, tr);
         }
 
+        public IEnumerable<Bitacora> GetBitacoras()
+        {
+            using (var db = new DataAccess(connectionString).GetOpenConnection())
+            {
+                return db.Query<Bitacora>(QRY_GET_BITACORAS);
+            }
+        }
+
+        public IEnumerable<BitacoraDto> GetBitacoras(int idUsuario, int criticidad)
+        {
+            using (var db = new DataAccess(connectionString).GetOpenConnection())
+            {
+                using (var tr = db.BeginTransaction())
+                {
+                    try
+                    {
+                        var userDal = new UserDal(connectionString);
+                        var user = userDal.GetUserById(idUsuario, db, tr);
+
+                        return db.Query<BitacoraDto>(QRY_GET_BITACORAS_BY_LOGIN_AND_CRIT, new { Login = user.Login, Criticidad = criticidad}, transaction: tr);
+                    }
+                    finally
+                    {
+                        tr.Commit();
+                    }
+                }
+            }
+        }
+
         private Bitacora GetBitacora(int idBitacora, IDbConnection db, IDbTransaction tr)
         {
-            return db.QuerySingle<Bitacora>(QRY_GET_BITACOTA_BY_ID, new { Id = idBitacora }, transaction: tr);
+            return db.QuerySingle<Bitacora>(QRY_GET_BITACORA_BY_ID, new { Id = idBitacora }, transaction: tr);
         }
 
         private void UpdateIntegrity(int idBitacora, IDbConnection db, IDbTransaction tr)

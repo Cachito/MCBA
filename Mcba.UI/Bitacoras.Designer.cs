@@ -34,7 +34,7 @@
             this.tsbPrint = new System.Windows.Forms.ToolStripButton();
             this.gbData = new System.Windows.Forms.GroupBox();
             this.cmbCriticidad = new System.Windows.Forms.ComboBox();
-            this.dateTimePicker1 = new System.Windows.Forms.DateTimePicker();
+            this.dtpHasta = new System.Windows.Forms.DateTimePicker();
             this.dtpDesde = new System.Windows.Forms.DateTimePicker();
             this.cmbUsuarios = new System.Windows.Forms.ComboBox();
             this.lblHasha = new System.Windows.Forms.Label();
@@ -95,7 +95,7 @@
             // gbData
             // 
             this.gbData.Controls.Add(this.cmbCriticidad);
-            this.gbData.Controls.Add(this.dateTimePicker1);
+            this.gbData.Controls.Add(this.dtpHasta);
             this.gbData.Controls.Add(this.dtpDesde);
             this.gbData.Controls.Add(this.cmbUsuarios);
             this.gbData.Controls.Add(this.lblHasha);
@@ -111,20 +111,20 @@
             // cmbCriticidad
             // 
             this.cmbCriticidad.FormattingEnabled = true;
-            this.cmbCriticidad.Location = new System.Drawing.Point(85, 42);
+            this.cmbCriticidad.Location = new System.Drawing.Point(85, 44);
             this.cmbCriticidad.Name = "cmbCriticidad";
             this.cmbCriticidad.Size = new System.Drawing.Size(168, 21);
             this.cmbCriticidad.TabIndex = 15;
             // 
-            // dateTimePicker1
+            // dtpHasta
             // 
-            this.dateTimePicker1.CustomFormat = "dd/MM/yyyy";
-            this.dateTimePicker1.DropDownAlign = System.Windows.Forms.LeftRightAlignment.Right;
-            this.dateTimePicker1.Format = System.Windows.Forms.DateTimePickerFormat.Custom;
-            this.dateTimePicker1.Location = new System.Drawing.Point(357, 42);
-            this.dateTimePicker1.Name = "dateTimePicker1";
-            this.dateTimePicker1.Size = new System.Drawing.Size(79, 20);
-            this.dateTimePicker1.TabIndex = 14;
+            this.dtpHasta.CustomFormat = "dd/MM/yyyy";
+            this.dtpHasta.DropDownAlign = System.Windows.Forms.LeftRightAlignment.Right;
+            this.dtpHasta.Format = System.Windows.Forms.DateTimePickerFormat.Custom;
+            this.dtpHasta.Location = new System.Drawing.Point(357, 44);
+            this.dtpHasta.Name = "dtpHasta";
+            this.dtpHasta.Size = new System.Drawing.Size(79, 20);
+            this.dtpHasta.TabIndex = 14;
             // 
             // dtpDesde
             // 
@@ -231,7 +231,7 @@
         private System.Windows.Forms.ToolStripButton tsbPrint;
         private System.Windows.Forms.ComboBox cmbUsuarios;
         private System.Windows.Forms.Label lblHasha;
-        private System.Windows.Forms.DateTimePicker dateTimePicker1;
+        private System.Windows.Forms.DateTimePicker dtpHasta;
         private System.Windows.Forms.DateTimePicker dtpDesde;
         private System.Windows.Forms.ComboBox cmbCriticidad;
     }

@@ -323,6 +323,15 @@ INSERT INTO Leyendas(IdIdioma, Modulo, Tag, Leyenda)
 INSERT INTO Leyendas(IdIdioma, Modulo, Tag, Leyenda)
     VALUES(2, 'Bitacoras', 'tsbImprimir', 'Presi')			
 
+INSERT INTO Leyendas(IdIdioma, Modulo, Tag, Leyenda)
+    VALUES(2, 'Bitacoras', 'FaltaCriticidad', 'Vi devas elekti kritikecon.')
+
+INSERT INTO Leyendas(IdIdioma, Modulo, Tag, Leyenda)
+    VALUES(2, 'Bitacoras', 'FaltaUsuario', 'Vi devas elekti uzanton.')
+
+INSERT INTO Leyendas(IdIdioma, Modulo, Tag, Leyenda)
+    VALUES(2, 'Bitacoras', 'LapsoInvalido', 'La enigita periodo estas nevalida.')
+
 -- CambioPassword
 INSERT INTO Leyendas(IdIdioma, Modulo, Tag, Leyenda)
     VALUES(2, 'CambioPassword', 'CambioPassword', 'Pasvorta ŝanĝo')

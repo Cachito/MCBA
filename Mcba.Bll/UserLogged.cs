@@ -84,30 +84,6 @@ namespace Mcba.Bll
                 {
                     SetPermissions(menuStrip);
                 }
-
-                // la puta que te parió framework
-                if (!(control is MenuStrip menu) && control is ToolStrip toolStrip)
-                {
-                    SetPermissions(toolStrip);
-                }
-            }
-        }
-
-        private void SetPermissions(ToolStrip toolStrip)
-        {
-            foreach (ToolStripItem stripItem in toolStrip.Items)
-            {
-                if (string.IsNullOrWhiteSpace(stripItem.Tag.ToString()))
-                {
-                    continue;
-                }
-
-                if (stripItem.Tag != null)
-                {
-                    var acceso = GetPermiso(stripItem.Tag.ToString(), Permisos)?.TipoPermiso ?? TipoPermisoEnum.SinAcceso;
-                    stripItem.Enabled = acceso != TipoPermisoEnum.SinAcceso;
-
-                }
             }
         }
 

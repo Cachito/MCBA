@@ -36,9 +36,39 @@ namespace Mcba.Bll.Helpers
                 case "usuariopermiso":
                     return CheckUsuarioPermiso(table.DV);
 
+                case "bitacora":
+                    return CheckBitacora(table.DV);
+
                 default:
                     return true;
             }
+        }
+
+        private static bool CheckBitacora(string dvv)
+        {
+            var bitacoraBll = new BitacoraBll();
+            var bitacoras = bitacoraBll.GetBitacoras();
+
+            long dvvTotal = 0;
+            foreach (var bitacora in bitacoras)
+            {
+                var dvhString = DvhCalculator<Bitacora>.GetDvhString(bitacora, out var dvhValue);
+                dvvTotal += dvhValue;
+                if (dvhString != bitacora.DV)
+                {
+                    return false;
+                }
+            }
+
+            var dvvValue = DvValue.GetDvValue(dvvTotal.ToString());
+            var usuarioPermisoDvv = HashCalculator.GetCryptString(dvvValue.ToString(), CryptMethodEnum.Sha1);
+
+            if (usuarioPermisoDvv != dvv)
+            {
+                return false;
+            }
+
+            return true;
         }
 
         private static bool CheckUsuarioPermiso(string dvv)

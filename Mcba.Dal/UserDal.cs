@@ -488,7 +488,7 @@ namespace Mcba.Dal
             }
         }
 
-        private User GetUserById(int idUsuario, IDbConnection db, IDbTransaction tr)
+        internal User GetUserById(int idUsuario, IDbConnection db, IDbTransaction tr)
         {
             return db.Query<User>(QRY_GET_USER_BY_ID, new {Id = idUsuario}, transaction: tr).FirstOrDefault();
         }
@@ -584,7 +584,7 @@ namespace Mcba.Dal
             }
         }
 
-        public void UnLogUser(string login, string message)
+        public void LogOffUser(string login, string message)
         {
             using (var db = new DataAccess(connectionString).GetOpenConnection())
             {
@@ -595,7 +595,7 @@ namespace Mcba.Dal
                         var bitacora = new Bitacora
                         {
                             Login = login,
-                            Criticidad = CriticidadEnum.Alta,
+                            Criticidad = CriticidadEnum.Baja,
                             Descripcion = HashCalculator.Encrypt(message, McbaSettings.Key, McbaSettings.Salt),
                             FechaHora = DateTime.Now,
                             Patente = string.Empty
@@ -614,7 +614,7 @@ namespace Mcba.Dal
             }
         }
 
-        public User LogUser(string login, string message)
+        public User LogOnUser(string login, string message)
         {
             using (var db = new DataAccess(connectionString).GetOpenConnection())
             {
@@ -633,7 +633,7 @@ namespace Mcba.Dal
                         var bitacora = new Bitacora
                         {
                             Login = user.Login,
-                            Criticidad = CriticidadEnum.Alta,
+                            Criticidad = CriticidadEnum.Baja,
                             Descripcion = HashCalculator.Encrypt(message, McbaSettings.Key, McbaSettings.Salt),
                             FechaHora = DateTime.Now,
                             Patente = string.Empty

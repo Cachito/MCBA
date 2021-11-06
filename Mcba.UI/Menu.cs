@@ -282,7 +282,7 @@ namespace Mcba.UI
                 captions.TryGetValue("Salir", out var caption);
                 var userBll = new UserBll();
 
-                userBll.UnLogUser(userLogged.Login, $"{caption == McbaSettings.SinTraduccion} {e.CloseReason.ToString()}");
+                userBll.UnLogUser(userLogged.Login, $"{caption ?? McbaSettings.SinTraduccion} {e.CloseReason.ToString()}");
             }
             catch (Exception ex)
             {

@@ -325,7 +325,16 @@ INSERT INTO Leyendas(IdIdioma, Modulo, Tag, Leyenda)
     VALUES(1, 'Bitacoras', 'tsbBuscar', 'Buscar')	
     
 INSERT INTO Leyendas(IdIdioma, Modulo, Tag, Leyenda)
-    VALUES(1, 'Bitacoras', 'tsbImprimir', 'Imprimir')			
+    VALUES(1, 'Bitacoras', 'tsbImprimir', 'Imprimir')
+
+INSERT INTO Leyendas(IdIdioma, Modulo, Tag, Leyenda)
+    VALUES(1, 'Bitacoras', 'FaltaCriticidad', 'Debe seleccionar criticidad.')
+
+INSERT INTO Leyendas(IdIdioma, Modulo, Tag, Leyenda)
+    VALUES(1, 'Bitacoras', 'FaltaUsuario', 'Debe seleccionar usuario.')
+
+INSERT INTO Leyendas(IdIdioma, Modulo, Tag, Leyenda)
+    VALUES(1, 'Bitacoras', 'LapsoInvalido', 'El período ingresado no es válido.')
 
 -- CambioPassword
 INSERT INTO Leyendas(IdIdioma, Modulo, Tag, Leyenda)

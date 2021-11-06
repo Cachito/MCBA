@@ -43,6 +43,7 @@
     <Compile Include="Attributes\CryptAttribute.cs" />
     <Compile Include="Attributes\StringValueAttribute.cs" />
     <Compile Include="Bitacora.cs" />
+    <Compile Include="Dto\BitacoraDto.cs" />
     <Compile Include="Dto\FamiliaDto.cs" />
     <Compile Include="Dto\PermisoDto.cs" />
     <Compile Include="EnumExtensions.cs" />

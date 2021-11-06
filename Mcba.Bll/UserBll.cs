@@ -94,14 +94,14 @@ namespace Mcba.Bll
         {
             var cryptLogin = HashCalculator.Crypt(login, McbaSettings.Salt);
 
-            new UserDal(McbaSettings.CnnString).UnLogUser(cryptLogin, message);
+            new UserDal(McbaSettings.CnnString).LogOffUser(cryptLogin, message);
         }
 
         public User LogUser(string login, string message)
         {
             var cryptLogin = HashCalculator.Crypt(login, McbaSettings.Salt);
 
-            return new UserDal(McbaSettings.CnnString).LogUser(cryptLogin, message);
+            return new UserDal(McbaSettings.CnnString).LogOnUser(cryptLogin, message);
         }
 
         public bool Save(User user, out string newPassword)
