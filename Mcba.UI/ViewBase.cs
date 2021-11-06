@@ -1,5 +1,4 @@
 ﻿using System;
-using System.Linq;
 using System.Windows.Forms;
 using Mcba.Bll;
 using Mcba.Entidad.Enums;
@@ -243,19 +242,19 @@ namespace Mcba.UI
         {
             Detach();
 
-            TipoPermisoEnum acceso = userLogged.GetAcceso($"tsmi{Name}");
+            TipoPermisoEnum acceso = userLogged.GetPermiso($"tsmi{Name}").TipoPermiso;
 
             SalirEnabled = status != ToolbarStatusEnum.Edit;
-            UndoEnabled = status != ToolbarStatusEnum.Default && acceso == TipoPermisoEnum.Gestion;
-            NewEnabled = status == ToolbarStatusEnum.Default && acceso == TipoPermisoEnum.Gestion;
+            UndoEnabled = status != ToolbarStatusEnum.Default && (acceso & TipoPermisoEnum.Gestion) != 0;
+            NewEnabled = status == ToolbarStatusEnum.Default && (acceso & TipoPermisoEnum.Gestion) != 0;
             DeleteEnabled = (status == ToolbarStatusEnum.Default || status == ToolbarStatusEnum.Find) &&
-                            acceso == TipoPermisoEnum.Gestion;
+                            (acceso & TipoPermisoEnum.Gestion) != 0;
             EditEnabled = (status == ToolbarStatusEnum.Default || status == ToolbarStatusEnum.Find) &&
-                          acceso == TipoPermisoEnum.Gestion;
+                          (acceso & TipoPermisoEnum.Gestion) != 0;
             SaveEnabled = (status == ToolbarStatusEnum.New || status == ToolbarStatusEnum.Edit) &&
-                          acceso == TipoPermisoEnum.Gestion;
-            BuscarEnabled = (!(status == ToolbarStatusEnum.New || status == ToolbarStatusEnum.Delete)) &&
-                            (acceso == TipoPermisoEnum.Gestion || acceso == TipoPermisoEnum.Consulta);
+                          (acceso & TipoPermisoEnum.Gestion) != 0;
+            BuscarEnabled = !(status == ToolbarStatusEnum.New || status == ToolbarStatusEnum.Delete) &&
+                            ((acceso & TipoPermisoEnum.Gestion) != 0 || (acceso & TipoPermisoEnum.Consulta) != 0);
 
             if (status == ToolbarStatusEnum.Default)
             {
@@ -263,25 +262,25 @@ namespace Mcba.UI
             }
 
             PreviousEnabled = (GridPage > 0 || status != ToolbarStatusEnum.Delete) &&
-                              (acceso == TipoPermisoEnum.Gestion || acceso == TipoPermisoEnum.Consulta);
+                              ((acceso & TipoPermisoEnum.Gestion) != 0 || (acceso & TipoPermisoEnum.Consulta) != 0);
             NextEnabled =
                 ((DataRowsCount >= (GridPage == 0 ? 1 : GridPage) * McbaSettings.DataPagination) ||
                  status != ToolbarStatusEnum.Delete) &&
-                (acceso == TipoPermisoEnum.Gestion || acceso == TipoPermisoEnum.Consulta);
+                ((acceso & TipoPermisoEnum.Gestion) != 0 || (acceso & TipoPermisoEnum.Consulta) != 0);
             PrintEnabled = (status == ToolbarStatusEnum.Default || status == ToolbarStatusEnum.Find) &&
-                           (acceso == TipoPermisoEnum.Gestion || acceso == TipoPermisoEnum.Consulta);
-            RestorePassEnabled = (status == ToolbarStatusEnum.Default || status == ToolbarStatusEnum.Find) && acceso ==
-                TipoPermisoEnum.Gestion;
+                           ((acceso & TipoPermisoEnum.Gestion) != 0 || (acceso & TipoPermisoEnum.Consulta) != 0);
+            RestorePassEnabled = (status == ToolbarStatusEnum.Default || status == ToolbarStatusEnum.Find) &&
+                                 (acceso & TipoPermisoEnum.Gestion) != 0;
             ChangePassEnabled = (status == ToolbarStatusEnum.Default || status == ToolbarStatusEnum.Find) &&
-                                acceso == TipoPermisoEnum.Gestion;
+                                (acceso & TipoPermisoEnum.Gestion) != 0;
 
             Attach();
         }
 
         private bool GetUndoEnabled(ToolbarStatusEnum status)
         {
-            TipoPermisoEnum acceso = userLogged.GetAcceso(Name);
-            return status != ToolbarStatusEnum.Default && acceso == TipoPermisoEnum.Gestion;
+            TipoPermisoEnum acceso = userLogged.GetPermiso(Name).TipoPermiso;
+            return status != ToolbarStatusEnum.Default && (acceso & TipoPermisoEnum.Gestion) != 0;
         }
 
         private bool GetSalirEnabled(ToolbarStatusEnum status)

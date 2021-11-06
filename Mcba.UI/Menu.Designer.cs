@@ -53,7 +53,7 @@
             this.tsmiPermisosUsuarios = new System.Windows.Forms.ToolStripMenuItem();
             this.tsmiPermisosFamilias = new System.Windows.Forms.ToolStripMenuItem();
             this.tsmiBackup = new System.Windows.Forms.ToolStripMenuItem();
-            this.tsmiBitacora = new System.Windows.Forms.ToolStripMenuItem();
+            this.tsmiBitacoras = new System.Windows.Forms.ToolStripMenuItem();
             this.tsmiCambioContra = new System.Windows.Forms.ToolStripMenuItem();
             this.tsmiSalir = new System.Windows.Forms.ToolStripMenuItem();
             this.menuStrip.SuspendLayout();
@@ -231,7 +231,7 @@
             this.tsmiPermisosUsuarios,
             this.tsmiPermisosFamilias,
             this.tsmiBackup,
-            this.tsmiBitacora,
+            this.tsmiBitacoras,
             this.tsmiCambioContra});
             this.tsmiGestion.Name = "tsmiGestion";
             this.tsmiGestion.Size = new System.Drawing.Size(59, 20);
@@ -278,13 +278,13 @@
             this.tsmiBackup.Text = "Backup";
             this.tsmiBackup.Click += new System.EventHandler(this.tsmiBackup_Click);
             // 
-            // tsmiBitacora
+            // tsmiBitacoras
             // 
-            this.tsmiBitacora.Name = "tsmiBitacora";
-            this.tsmiBitacora.Size = new System.Drawing.Size(195, 22);
-            this.tsmiBitacora.Tag = "tsmiBitacora";
-            this.tsmiBitacora.Text = "Bitácora";
-            this.tsmiBitacora.Click += new System.EventHandler(this.tsmiBitacora_Click);
+            this.tsmiBitacoras.Name = "tsmiBitacoras";
+            this.tsmiBitacoras.Size = new System.Drawing.Size(195, 22);
+            this.tsmiBitacoras.Tag = "tsmiBitacoras";
+            this.tsmiBitacoras.Text = "Bitácora";
+            this.tsmiBitacoras.Click += new System.EventHandler(this.tsmiBitacoras_Click);
             // 
             // tsmiCambioContra
             // 
@@ -298,7 +298,7 @@
             // 
             this.tsmiSalir.Name = "tsmiSalir";
             this.tsmiSalir.Size = new System.Drawing.Size(41, 20);
-            this.tsmiSalir.Tag = "";
+            this.tsmiSalir.Tag = "tsmiSalir";
             this.tsmiSalir.Text = "Salir";
             this.tsmiSalir.Click += new System.EventHandler(this.tsmiSalir_Click);
             // 
@@ -315,6 +315,7 @@
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "Boungiorno SA";
             this.WindowState = System.Windows.Forms.FormWindowState.Maximized;
+            this.FormClosing += new System.Windows.Forms.FormClosingEventHandler(this.Menu_FormClosing);
             this.Load += new System.EventHandler(this.Menu_Load);
             this.menuStrip.ResumeLayout(false);
             this.menuStrip.PerformLayout();
@@ -347,7 +348,7 @@
         private System.Windows.Forms.ToolStripMenuItem tsmiUsuarios;
         private System.Windows.Forms.ToolStripMenuItem tsmiPermisosFamilias;
         private System.Windows.Forms.ToolStripMenuItem tsmiBackup;
-        private System.Windows.Forms.ToolStripMenuItem tsmiBitacora;
+        private System.Windows.Forms.ToolStripMenuItem tsmiBitacoras;
         private System.Windows.Forms.ToolStripMenuItem tsmiCambioContra;
         private System.Windows.Forms.ToolStripMenuItem tsmiSalir;
         private System.Windows.Forms.ToolStripMenuItem tsmiFamilias;

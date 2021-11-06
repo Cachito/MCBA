@@ -53,6 +53,12 @@ INSERT INTO Leyendas(IdIdioma, Modulo, Tag, Leyenda)
 INSERT INTO Leyendas(IdIdioma, Modulo, Tag, Leyenda)
     VALUES(2, 'Login', 'RestoreSaved', 'La poŝto estis konservita en {0}.')
 
+INSERT INTO Leyendas(IdIdioma, Modulo, Tag, Leyenda)
+    VALUES(2, 'Login', 'LoginFail', 'Malĝusta ensaluto.')
+
+INSERT INTO Leyendas(IdIdioma, Modulo, Tag, Leyenda)
+    VALUES(2, 'Login', 'Ingreso', 'Ensalutu al la Sistemo.')
+
 -- Menu
 INSERT INTO Leyendas(IdIdioma, Modulo, Tag, Leyenda)
     VALUES(2, 'Menu', 'Menu', '{0} - Uzanto.: {1} {2}')
@@ -127,13 +133,16 @@ INSERT INTO Leyendas(IdIdioma, Modulo, Tag, Leyenda)
     VALUES(2, 'Menu', 'tsmiBackup', 'Rezerva')
 
 INSERT INTO Leyendas(IdIdioma, Modulo, Tag, Leyenda)
-    VALUES(2, 'Menu', 'tsmiBitacora', 'Binacle')
+    VALUES(2, 'Menu', 'tsmiBitacoras', 'Binacle')
 
 INSERT INTO Leyendas(IdIdioma, Modulo, Tag, Leyenda)
     VALUES(2, 'Menu', 'tsmiCambioContra', 'Ŝanĝo de pasvorto')
 
 INSERT INTO Leyendas(IdIdioma, Modulo, Tag, Leyenda)
     VALUES(2, 'Menu', 'tsmiSalir', 'Eliri')
+
+INSERT INTO Leyendas(IdIdioma, Modulo, Tag, Leyenda)
+    VALUES(2, 'Menu', 'Salir', 'Sistemeliro.')
 
 -- Busqueda
 INSERT INTO Leyendas(IdIdioma, Modulo, Tag, Leyenda)
@@ -291,28 +300,41 @@ INSERT INTO Leyendas(IdIdioma, Modulo, Tag, Leyenda)
 
 -- Bitácora
 INSERT INTO Leyendas(IdIdioma, Modulo, Tag, Leyenda)
-    VALUES(2, 'Bitacora', 'Bitacora', 'Binacle')
+    VALUES(2, 'Bitacoras', 'Bitacora', 'Binacle')
 
 INSERT INTO Leyendas(IdIdioma, Modulo, Tag, Leyenda)
-    VALUES(2, 'Bitacora', 'lblUsuario', 'Uzanto')
+    VALUES(2, 'Bitacoras', 'lblUsuario', 'Uzanto')
 
 INSERT INTO Leyendas(IdIdioma, Modulo, Tag, Leyenda)
-    VALUES(2, 'Bitacora', 'lblCriticidad', 'Kritiko')
+    VALUES(2, 'Bitacoras', 'lblCriticidad', 'Kritiko')
 
 INSERT INTO Leyendas(IdIdioma, Modulo, Tag, Leyenda)
-    VALUES(2, 'Bitacora', 'lblDesde', 'Dato De')
+    VALUES(2, 'Bitacoras', 'lblDesde', 'Dato De')
 
 INSERT INTO Leyendas(IdIdioma, Modulo, Tag, Leyenda)
-    VALUES(2, 'Bitacora', 'lblHasha', 'Dato Ĝis')
+    VALUES(2, 'Bitacoras', 'lblHasha', 'Dato Ĝis')
 
 INSERT INTO Leyendas(IdIdioma, Modulo, Tag, Leyenda)
-    VALUES(2, 'Bitacora', 'tsbSalir', 'Eliri')
+    VALUES(2, 'Bitacoras', 'tsbSalir', 'Eliri')
 	
 INSERT INTO Leyendas(IdIdioma, Modulo, Tag, Leyenda)
-    VALUES(2, 'Bitacora', 'tsbBuscar', 'Serĉi')	
+    VALUES(2, 'Bitacoras', 'tsbBuscar', 'Serĉi')	
     
 INSERT INTO Leyendas(IdIdioma, Modulo, Tag, Leyenda)
-    VALUES(2, 'Bitacora', 'tsbImprimir', 'Presi')			
+    VALUES(2, 'Bitacoras', 'tsbImprimir', 'Presi')			
+
+INSERT INTO Leyendas(IdIdioma, Modulo, Tag, Leyenda)
+    VALUES(2, 'Bitacoras', 'FaltaCriticidad', 'Vi devas elekti kritikecon.')
+
+INSERT INTO Leyendas(IdIdioma, Modulo, Tag, Leyenda)
+    VALUES(2, 'Bitacoras', 'FaltaUsuario', 'Vi devas elekti uzanton.')
+
+INSERT INTO Leyendas(IdIdioma, Modulo, Tag, Leyenda)
+    VALUES(2, 'Bitacoras', 'LapsoInvalido', 'La enigita periodo estas nevalida.')
+
+-- ReporteBitacora
+INSERT INTO Leyendas(IdIdioma, Modulo, Tag, Leyenda)
+    VALUES(2, 'ReporteBitacora', 'ReporteBitacora', 'Raporto Bitacora')
 
 -- CambioPassword
 INSERT INTO Leyendas(IdIdioma, Modulo, Tag, Leyenda)
@@ -1290,3 +1312,28 @@ INSERT INTO Leyendas(IdIdioma, Modulo, Tag, Leyenda)
     
 INSERT INTO Leyendas(IdIdioma, Modulo, Tag, Leyenda)
 	VALUES(2, 'PermisosFamilias', 'ErrorAlGuardar', 'Ŝanĝoj ne estis konservitaj.{0}{2}')
+
+-- Backup
+INSERT INTO Leyendas(IdIdioma, Modulo, Tag, Leyenda)
+    VALUES(2, 'Backup', 'Backup', 'Rezervo')
+	
+INSERT INTO Leyendas(IdIdioma, Modulo, Tag, Leyenda)
+	VALUES(2, 'Backup', 'tsbSalir', 'Eliri')
+
+INSERT INTO Leyendas(IdIdioma, Modulo, Tag, Leyenda)
+	VALUES(2, 'Backup', 'tsbProcesar', 'Procezo')
+
+INSERT INTO Leyendas(IdIdioma, Modulo, Tag, Leyenda)
+	VALUES(2, 'Backup', 'lblDestino', 'Destina Dosierujo')
+
+INSERT INTO Leyendas(IdIdioma, Modulo, Tag, Leyenda)
+	VALUES(2, 'Backup', 'lblAvance', 'Progresoj')
+
+INSERT INTO Leyendas(IdIdioma, Modulo, Tag, Leyenda)
+	VALUES(2, 'Backup', 'lblVolumen', 'Volumo en Procezo')
+
+INSERT INTO Leyendas(IdIdioma, Modulo, Tag, Leyenda)
+	VALUES(2, 'Backup', 'FaltaCarpeta', 'Vi devas enigi cel-dosierujon.')
+
+INSERT INTO Leyendas(IdIdioma, Modulo, Tag, Leyenda)
+	VALUES(2, 'Backup', 'CarpetaNoExiste', 'La indikita dosierujo ne ekzistas aŭ ne estas alirebla.')

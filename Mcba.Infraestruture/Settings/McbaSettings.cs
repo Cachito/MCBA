@@ -20,6 +20,8 @@ namespace Mcba.Infraestruture.Settings
         public static string TempFolder { set; get; }
         public static int DataPagination { set; get; }
         public static string SinTraduccion { set; get; }
+        public static string MasterCnnString { set; get; }
+        public static int VolumenesBackup { set; get; }
 
         public static void MapSettings(InstanceSettings settings)
         {
@@ -39,6 +41,8 @@ namespace Mcba.Infraestruture.Settings
             TempFolder = settings.TempFolder;
             DataPagination = settings.DataPagination;
             SinTraduccion = settings.SinTraduccion;
+            MasterCnnString = settings.MasterCnnString;
+            VolumenesBackup = settings.VolumenesBackup;
         }
     }
 }

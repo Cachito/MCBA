@@ -1,4 +1,5 @@
-﻿using System.Collections.Generic;
+﻿using System;
+using System.Collections.Generic;
 using System.Data;
 using System.Linq;
 using Dapper;
@@ -6,6 +7,7 @@ using Mcba.Data;
 using Mcba.Entidad;
 using Mcba.Entidad.Dto;
 using Mcba.Entidad.Enums;
+using Mcba.Infraestruture.Settings;
 using Mcba.Seguridad;
 
 namespace Mcba.Dal
@@ -337,6 +339,17 @@ namespace Mcba.Dal
 
                         UpdateIntegrityByLogin(login, db, tr);
 
+                        var bitacora = new Bitacora
+                        {
+                            Login = login,
+                            Criticidad = CriticidadEnum.Alta,
+                            Descripcion = HashCalculator.Encrypt("Login incorrecto", McbaSettings.Key, McbaSettings.Salt),
+                            FechaHora = DateTime.Now,
+                            Patente = string.Empty
+                        };
+
+                        new BitacoraDal(connectionString).Registrar(bitacora, db, tr);
+
                         tr.Commit();
                     }
                     catch
@@ -475,7 +488,7 @@ namespace Mcba.Dal
             }
         }
 
-        private User GetUserById(int idUsuario, IDbConnection db, IDbTransaction tr)
+        internal User GetUserById(int idUsuario, IDbConnection db, IDbTransaction tr)
         {
             return db.Query<User>(QRY_GET_USER_BY_ID, new {Id = idUsuario}, transaction: tr).FirstOrDefault();
         }
@@ -571,7 +584,37 @@ namespace Mcba.Dal
             }
         }
 
-        public User LogUser(string login)
+        public void LogOffUser(string login, string message)
+        {
+            using (var db = new DataAccess(connectionString).GetOpenConnection())
+            {
+                using (var tr = db.BeginTransaction())
+                {
+                    try
+                    {
+                        var bitacora = new Bitacora
+                        {
+                            Login = login,
+                            Criticidad = CriticidadEnum.Baja,
+                            Descripcion = HashCalculator.Encrypt(message, McbaSettings.Key, McbaSettings.Salt),
+                            FechaHora = DateTime.Now,
+                            Patente = string.Empty
+                        };
+
+                        new BitacoraDal(connectionString).Registrar(bitacora, db, tr);
+
+                        tr.Commit();
+                    }
+                    catch
+                    {
+                        tr.Rollback();
+                        throw;
+                    }
+                }
+            }
+        }
+
+        public User LogOnUser(string login, string message)
         {
             using (var db = new DataAccess(connectionString).GetOpenConnection())
             {
@@ -587,6 +630,17 @@ namespace Mcba.Dal
                             UpdateIntegrityByLogin(login, db, tr);
                         }
 
+                        var bitacora = new Bitacora
+                        {
+                            Login = user.Login,
+                            Criticidad = CriticidadEnum.Baja,
+                            Descripcion = HashCalculator.Encrypt(message, McbaSettings.Key, McbaSettings.Salt),
+                            FechaHora = DateTime.Now,
+                            Patente = string.Empty
+                        };
+
+                        new BitacoraDal(connectionString).Registrar(bitacora, db, tr);
+
                         tr.Commit();
 
                         return new User
@@ -595,7 +649,8 @@ namespace Mcba.Dal
                             Email = user.Email,
                             Id = user.Id,
                             IdIdioma = user.IdIdioma,
-                            Nombre = user.Nombre
+                            Nombre = user.Nombre,
+                            Login = user.Login
                         };
                     }
                     catch

@@ -90,11 +90,18 @@ namespace Mcba.Bll
             return new UserDal(McbaSettings.CnnString).GetUserById(id);
         }
 
-        public User LogUser(string login)
+        public void UnLogUser(string login, string message)
         {
             var cryptLogin = HashCalculator.Crypt(login, McbaSettings.Salt);
 
-            return new UserDal(McbaSettings.CnnString).LogUser(cryptLogin);
+            new UserDal(McbaSettings.CnnString).LogOffUser(cryptLogin, message);
+        }
+
+        public User LogUser(string login, string message)
+        {
+            var cryptLogin = HashCalculator.Crypt(login, McbaSettings.Salt);
+
+            return new UserDal(McbaSettings.CnnString).LogOnUser(cryptLogin, message);
         }
 
         public bool Save(User user, out string newPassword)

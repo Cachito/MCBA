@@ -1,12 +1,14 @@
 ﻿using System;
+using System.Collections.Generic;
 using System.Windows.Forms;
 using Mcba.Bll.Helpers;
-using Mcba.Infraestruture.Helpers;
 
 namespace Mcba.UI
 {
     public partial class ReporteRemanente : Form
     {
+        private Dictionary<string, string> captions = new Dictionary<string, string>();
+
         public ReporteRemanente()
         {
             InitializeComponent();
@@ -29,8 +31,8 @@ namespace Mcba.UI
 
         private void SetCaptions()
         {
-            var caps = CaptionHelper.GetCaptions(Name);
-            CaptionHelper.SetCaptions(caps, this);
+            var captions = CaptionHelper.GetCaptions(Name);
+            CaptionHelper.SetCaptions(captions, this);
         }
     }
 }

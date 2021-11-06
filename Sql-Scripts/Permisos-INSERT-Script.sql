@@ -24,7 +24,7 @@ INSERT INTO Permiso(Nombre, Modulo, Criticidad) VALUES('Usuarios', 'tsmiUsuarios
 INSERT INTO Permiso(Nombre, Modulo, Criticidad) VALUES('Permisos a Usuarios', 'tsmiPermisosUsuarios', 3)
 INSERT INTO Permiso(Nombre, Modulo, Criticidad) VALUES('Permisos a Familias', 'tsmiPermisosFamilias', 3)
 INSERT INTO Permiso(Nombre, Modulo, Criticidad) VALUES('Backup', 'tsmiBackup', 3)
-INSERT INTO Permiso(Nombre, Modulo, Criticidad) VALUES('Bitacora', 'tsmiBitacora', 3)
+INSERT INTO Permiso(Nombre, Modulo, Criticidad) VALUES('Bitacoras', 'tsmiBitacoras', 3)
 INSERT INTO Permiso(Nombre, Modulo, Criticidad) VALUES('CambioContra', 'tsmiCambioContra', 3)
 INSERT INTO Permiso(Nombre, Modulo, Criticidad) VALUES('Salir', 'tsmiSalir', 1)
 INSERT INTO Permiso(Nombre, Modulo, Criticidad) VALUES('Familias', 'tsmiFamilias', 1)

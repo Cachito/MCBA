@@ -20,5 +20,7 @@ namespace Mcba.Infraestruture.Settings
         public string TempFolder { set; get; }
         public int DataPagination { set; get; }
         public string SinTraduccion { set; get; }
+        public string MasterCnnString { set; get; }
+        public int VolumenesBackup { set; get; }
     }
 }

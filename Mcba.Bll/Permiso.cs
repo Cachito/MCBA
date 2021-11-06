@@ -5,6 +5,11 @@ namespace Mcba.Bll
 {
     public class Permiso : Componente
     {
+        public Permiso()
+        {
+            TipoPermiso = TipoPermisoEnum.SinAcceso;
+        }
+
         public string Modulo { get; set; }
         public TipoPermisoEnum TipoPermiso { get; set; }
         public CriticidadEnum Criticidad { get; set; }

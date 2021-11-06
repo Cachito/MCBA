@@ -1,6 +1,6 @@
 ﻿namespace Mcba.UI
 {
-    partial class Bitacora
+    partial class Bitacoras
     {
         /// <summary>
         /// Required designer variable.
@@ -34,7 +34,7 @@
             this.tsbPrint = new System.Windows.Forms.ToolStripButton();
             this.gbData = new System.Windows.Forms.GroupBox();
             this.cmbCriticidad = new System.Windows.Forms.ComboBox();
-            this.dateTimePicker1 = new System.Windows.Forms.DateTimePicker();
+            this.dtpHasta = new System.Windows.Forms.DateTimePicker();
             this.dtpDesde = new System.Windows.Forms.DateTimePicker();
             this.cmbUsuarios = new System.Windows.Forms.ComboBox();
             this.lblHasha = new System.Windows.Forms.Label();
@@ -79,7 +79,7 @@
             this.tsbFind.Size = new System.Drawing.Size(23, 22);
             this.tsbFind.Tag = "tsbFind";
             this.tsbFind.Text = "Buscar";
-            this.tsbFind.Click += new System.EventHandler(this.tsbNew_Click);
+            this.tsbFind.Click += new System.EventHandler(this.tsbFind_Click);
             // 
             // tsbPrint
             // 
@@ -90,11 +90,12 @@
             this.tsbPrint.Size = new System.Drawing.Size(23, 22);
             this.tsbPrint.Tag = "tsbPrint";
             this.tsbPrint.Text = "Imprimir";
+            this.tsbPrint.Click += new System.EventHandler(this.tsbPrint_Click);
             // 
             // gbData
             // 
             this.gbData.Controls.Add(this.cmbCriticidad);
-            this.gbData.Controls.Add(this.dateTimePicker1);
+            this.gbData.Controls.Add(this.dtpHasta);
             this.gbData.Controls.Add(this.dtpDesde);
             this.gbData.Controls.Add(this.cmbUsuarios);
             this.gbData.Controls.Add(this.lblHasha);
@@ -110,20 +111,20 @@
             // cmbCriticidad
             // 
             this.cmbCriticidad.FormattingEnabled = true;
-            this.cmbCriticidad.Location = new System.Drawing.Point(85, 42);
+            this.cmbCriticidad.Location = new System.Drawing.Point(85, 44);
             this.cmbCriticidad.Name = "cmbCriticidad";
             this.cmbCriticidad.Size = new System.Drawing.Size(168, 21);
             this.cmbCriticidad.TabIndex = 15;
             // 
-            // dateTimePicker1
+            // dtpHasta
             // 
-            this.dateTimePicker1.CustomFormat = "dd/MM/yyyy";
-            this.dateTimePicker1.DropDownAlign = System.Windows.Forms.LeftRightAlignment.Right;
-            this.dateTimePicker1.Format = System.Windows.Forms.DateTimePickerFormat.Custom;
-            this.dateTimePicker1.Location = new System.Drawing.Point(357, 42);
-            this.dateTimePicker1.Name = "dateTimePicker1";
-            this.dateTimePicker1.Size = new System.Drawing.Size(79, 20);
-            this.dateTimePicker1.TabIndex = 14;
+            this.dtpHasta.CustomFormat = "dd/MM/yyyy";
+            this.dtpHasta.DropDownAlign = System.Windows.Forms.LeftRightAlignment.Right;
+            this.dtpHasta.Format = System.Windows.Forms.DateTimePickerFormat.Custom;
+            this.dtpHasta.Location = new System.Drawing.Point(357, 44);
+            this.dtpHasta.Name = "dtpHasta";
+            this.dtpHasta.Size = new System.Drawing.Size(79, 20);
+            this.dtpHasta.TabIndex = 14;
             // 
             // dtpDesde
             // 
@@ -193,7 +194,7 @@
             this.dgvBitacora.Size = new System.Drawing.Size(796, 353);
             this.dgvBitacora.TabIndex = 2;
             // 
-            // Bitacora
+            // Bitacoras
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
@@ -203,7 +204,7 @@
             this.Controls.Add(this.gbData);
             this.Controls.Add(this.tsBitacora);
             this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.FixedSingle;
-            this.Name = "Bitacora";
+            this.Name = "Bitacoras";
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterParent;
             this.Tag = "Bitacora";
             this.Text = "Bitacora";
@@ -230,7 +231,7 @@
         private System.Windows.Forms.ToolStripButton tsbPrint;
         private System.Windows.Forms.ComboBox cmbUsuarios;
         private System.Windows.Forms.Label lblHasha;
-        private System.Windows.Forms.DateTimePicker dateTimePicker1;
+        private System.Windows.Forms.DateTimePicker dtpHasta;
         private System.Windows.Forms.DateTimePicker dtpDesde;
         private System.Windows.Forms.ComboBox cmbCriticidad;
     }

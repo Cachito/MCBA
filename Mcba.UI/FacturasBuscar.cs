@@ -2,7 +2,6 @@
 using System.Text;
 using System.Windows.Forms;
 using Mcba.Bll.Helpers;
-using Mcba.Infraestruture.Helpers;
 
 namespace Mcba.UI
 {
