@@ -59,6 +59,9 @@ INSERT INTO Leyendas(IdIdioma, Modulo, Tag, Leyenda)
 INSERT INTO Leyendas(IdIdioma, Modulo, Tag, Leyenda)
     VALUES(1, 'Login', 'LoginFail', 'Login Incorrecto.')
 
+INSERT INTO Leyendas(IdIdioma, Modulo, Tag, Leyenda)
+    VALUES(1, 'Login', 'Ingreso', 'Ingreso al Sistema.')
+
 -- Menu
 INSERT INTO Leyendas(IdIdioma, Modulo, Tag, Leyenda)
     VALUES(1, 'Menu', 'Menu', '{0} - Usuario: {1} {2}')
@@ -140,6 +143,9 @@ INSERT INTO Leyendas(IdIdioma, Modulo, Tag, Leyenda)
 
 INSERT INTO Leyendas(IdIdioma, Modulo, Tag, Leyenda)
     VALUES(1, 'Menu', 'tsmiSalir', 'Salir')
+
+INSERT INTO Leyendas(IdIdioma, Modulo, Tag, Leyenda)
+    VALUES(1, 'Menu', 'Salir', 'Salida del Sistema.')
 
 -- Busqueda
 INSERT INTO Leyendas(IdIdioma, Modulo, Tag, Leyenda)

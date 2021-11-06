@@ -1,14 +1,15 @@
 ﻿using System;
-using System.Text;
+using System.Collections.Generic;
 using System.Windows.Forms;
+using Mcba.Bll;
 using Mcba.Bll.Helpers;
-using Mcba.Infraestruture.Helpers;
 
 namespace Mcba.UI
 {
     public partial class Bitacoras : Form
     {
-        private int idChofer { set; get; }
+        private Dictionary<string, string> captions = new Dictionary<string, string>();
+        private readonly UserLogged userLogged = UserLogged.GetInstance();
 
         public Bitacoras()
         {
@@ -20,31 +21,32 @@ namespace Mcba.UI
             Close();
         }
 
-        private void tsbNew_Click(object sender, EventArgs e)
+        private void tsbFind_Click(object sender, EventArgs e)
         {
-            New();
+            
         }
 
-        private void tsbEdit_Click(object sender, EventArgs e)
+        private void tsbPrint_Click(object sender, EventArgs e)
         {
-            Edit();
-        }
 
-        private void tsbSave_Click(object sender, EventArgs e)
-        {
-            Save();
         }
 
         private void Bitacora_Load(object sender, EventArgs e)
         {
             SetCaptions();
+            SetPermissions();
             LoadGrid();
+        }
+
+        private void SetPermissions()
+        {
+            userLogged.SetPermissions(this);
         }
 
         private void SetCaptions()
         {
-            var caps = CaptionHelper.GetCaptions(Name);
-            CaptionHelper.SetCaptions(caps, this);
+            captions = CaptionHelper.GetCaptions(Name);
+            CaptionHelper.SetCaptions(captions, this);
         }
 
         private void LoadGrid()
@@ -52,42 +54,14 @@ namespace Mcba.UI
 
         }
 
-        private void Edit()
-        {
-            ControlsEnabled(true);
-        }
-
-        private void New()
-        {
-            ControlsEnabled(true);
-            Clean();
-        }
 
         private void Clean()
         {
-            idChofer = 0;
+            
         }
 
         private void ControlsEnabled(bool enable)
         {
-        }
-
-        private void Save()
-        {
-            if (!Valida())
-            {
-                return;
-            }
-
-            LoadGrid();
-        }
-
-        private bool Valida()
-        {
-            var ret = true;
-            var mess = new StringBuilder();
-
-            return ret;
         }
     }
 }

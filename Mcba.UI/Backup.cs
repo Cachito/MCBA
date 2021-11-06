@@ -43,6 +43,10 @@ namespace Mcba.UI
 
         private void GenerarBackup()
         {
+            var filename = $"MCBA-Backup-{DateTime.Now:yyyyMMddHHmmss.fff}.bak";
+            var filePath = Path.Combine(txtCarpetaDestino.Text, filename);
+
+
             /*
                 // set backupfilename (you will get something like: "C:/temp/MyDatabase-2013-12-07.bak")
                 var backupFileName = String.Format("{0}{1}-{2}.bak", 
@@ -65,7 +69,7 @@ namespace Mcba.UI
 
         private void Backup_Load(object sender, EventArgs e)
         {
-            TipoPermisoEnum acceso = userLogged.GetAcceso($"tsmi{Name}");
+            TipoPermisoEnum acceso = userLogged.GetPermiso($"tsmi{Name}")?.TipoPermiso ?? TipoPermisoEnum.SinAcceso;
             tsbProcesar.Enabled = (acceso & TipoPermisoEnum.Gestion) != 0;
 
             SetCaptions();

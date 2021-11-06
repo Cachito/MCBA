@@ -25,6 +25,7 @@ namespace Mcba.Bll
         public string Nombre { set; get; }
         public string Apellido { set; get; }
         public string Login { set; get; }
+        public string CryptLogin { set; get; }
         public string Email { set; get; }
         public int IdIdioma { set; get; }
 
@@ -79,16 +80,40 @@ namespace Mcba.Bll
         {
             foreach (Control control in form.Controls)
             {
-                if (control is MenuStrip menu)
+                if (control is MenuStrip menuStrip)
                 {
-                    SetPermissions(menu);
+                    SetPermissions(menuStrip);
+                }
+
+                // la puta que te parió framework
+                if (!(control is MenuStrip menu) && control is ToolStrip toolStrip)
+                {
+                    SetPermissions(toolStrip);
                 }
             }
         }
 
-        public void SetPermissions(MenuStrip menu)
+        private void SetPermissions(ToolStrip toolStrip)
         {
-            foreach (ToolStripMenuItem menuItem in menu.Items)
+            foreach (ToolStripItem stripItem in toolStrip.Items)
+            {
+                if (string.IsNullOrWhiteSpace(stripItem.Tag.ToString()))
+                {
+                    continue;
+                }
+
+                if (stripItem.Tag != null)
+                {
+                    var acceso = GetPermiso(stripItem.Tag.ToString(), Permisos)?.TipoPermiso ?? TipoPermisoEnum.SinAcceso;
+                    stripItem.Enabled = acceso != TipoPermisoEnum.SinAcceso;
+
+                }
+            }
+        }
+
+        public void SetPermissions(MenuStrip menuStrip)
+        {
+            foreach (ToolStripMenuItem menuItem in menuStrip.Items)
             {
                 var acceso = TipoPermisoEnum.SinAcceso;
 
@@ -102,14 +127,9 @@ namespace Mcba.Bll
                     acceso = TipoPermisoEnum.Gestion;
                 }
 
-                if (string.IsNullOrWhiteSpace(menuItem.Tag.ToString()))
-                {
-                    continue;
-                }
-
                 if (acceso == TipoPermisoEnum.SinAcceso)
                 {
-                    acceso = GetAcceso(menuItem.Tag.ToString(), Permisos);
+                    acceso = GetPermiso(menuItem.Tag.ToString(), Permisos)?.TipoPermiso ?? TipoPermisoEnum.SinAcceso;
                 }
 
                 menuItem.Enabled = acceso != TipoPermisoEnum.SinAcceso;
@@ -134,49 +154,49 @@ namespace Mcba.Bll
 
                 if (acceso == TipoPermisoEnum.SinAcceso)
                 {
-                    acceso = GetAcceso(menuItem.Tag.ToString());
+                    acceso = GetPermiso(menuItem.Tag.ToString()).TipoPermiso;
                 }
 
                 menuItem.Enabled = acceso != TipoPermisoEnum.SinAcceso;
             }
         }
 
-        public TipoPermisoEnum GetAcceso(string modulo)
+        public Permiso GetPermiso(string modulo)
         {
-            TipoPermisoEnum ret = TipoPermisoEnum.SinAcceso;
+            var ret = new Permiso();
 
             foreach (var p in Permisos)
             {
                 if (p is Permiso permiso && permiso.Modulo == modulo)
                 {
-                    ret = permiso.TipoPermiso;
+                    ret = permiso;
                     break;
                 }
 
                 if (p is Familia familia)
                 {
-                    ret = GetAcceso(modulo, familia.GetPermisos());
+                    ret = GetPermiso(modulo, familia.GetPermisos());
                 }
             }
 
             return ret;
         }
 
-        public TipoPermisoEnum GetAcceso(string modulo, List<Componente> permisos)
+        public Permiso GetPermiso(string modulo, List<Componente> permisos)
         {
-            TipoPermisoEnum ret = TipoPermisoEnum.SinAcceso;
+            var ret = new Permiso();
 
             foreach (var p in permisos)
             {
                 if (p is Permiso permiso && permiso.Modulo == modulo)
                 {
-                    ret = permiso.TipoPermiso;
+                    ret = permiso;
                     break;
                 }
 
                 if (p is Familia familia)
                 {
-                    ret = GetAcceso(modulo, familia.GetPermisos());
+                    ret = GetPermiso(modulo, familia.GetPermisos());
                 }
             }
 

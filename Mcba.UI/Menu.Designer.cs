@@ -282,7 +282,7 @@
             // 
             this.tsmiBitacoras.Name = "tsmiBitacoras";
             this.tsmiBitacoras.Size = new System.Drawing.Size(195, 22);
-            this.tsmiBitacoras.Tag = "tsmiBitacora";
+            this.tsmiBitacoras.Tag = "tsmiBitacoras";
             this.tsmiBitacoras.Text = "Bitácora";
             this.tsmiBitacoras.Click += new System.EventHandler(this.tsmiBitacoras_Click);
             // 
@@ -298,7 +298,7 @@
             // 
             this.tsmiSalir.Name = "tsmiSalir";
             this.tsmiSalir.Size = new System.Drawing.Size(41, 20);
-            this.tsmiSalir.Tag = "";
+            this.tsmiSalir.Tag = "tsmiSalir";
             this.tsmiSalir.Text = "Salir";
             this.tsmiSalir.Click += new System.EventHandler(this.tsmiSalir_Click);
             // 
@@ -315,6 +315,7 @@
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "Boungiorno SA";
             this.WindowState = System.Windows.Forms.FormWindowState.Maximized;
+            this.FormClosing += new System.Windows.Forms.FormClosingEventHandler(this.Menu_FormClosing);
             this.Load += new System.EventHandler(this.Menu_Load);
             this.menuStrip.ResumeLayout(false);
             this.menuStrip.PerformLayout();

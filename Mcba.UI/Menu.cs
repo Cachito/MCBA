@@ -1,4 +1,5 @@
 ﻿using System;
+using System.Collections.Generic;
 using System.Linq;
 using System.Windows.Forms;
 using Mcba.Bll;
@@ -11,6 +12,7 @@ namespace Mcba.UI
     public partial class Menu : Form
     {
         private readonly UserLogged userLogged = UserLogged.GetInstance();
+        private Dictionary<string, string> captions = new Dictionary<string, string>();
 
         public Menu()
         {
@@ -19,10 +21,10 @@ namespace Mcba.UI
 
         private void SetCaptions()
         {
-            var caps = CaptionHelper.GetCaptions(Name);
-            CaptionHelper.SetCaptions(caps, this);
+            captions = CaptionHelper.GetCaptions(Name);
+            CaptionHelper.SetCaptions(captions, this);
 
-            caps.TryGetValue(Name, out var caption);
+            captions.TryGetValue(Name, out var caption);
             Text = string.Format(caption ?? McbaSettings.SinTraduccion, McbaSettings.MessageTitle, userLogged.Nombre,
                 userLogged.Apellido);
         }
@@ -271,6 +273,22 @@ namespace Mcba.UI
 
             frm.Show();
             frm.BringToFront();
+        }
+
+        private void Menu_FormClosing(object sender, FormClosingEventArgs e)
+        {
+            try
+            {
+                captions.TryGetValue("Salir", out var caption);
+                var userBll = new UserBll();
+
+                userBll.UnLogUser(userLogged.Login, $"{caption == McbaSettings.SinTraduccion} {e.CloseReason.ToString()}");
+            }
+            catch (Exception ex)
+            {
+                captions.TryGetValue("FaltaNombre", out var caption);
+                MessageBox.Show(caption ?? McbaSettings.SinTraduccion);
+            }
         }
     }
 }

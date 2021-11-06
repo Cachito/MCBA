@@ -4,8 +4,6 @@ using System.Linq;
 using System.Windows.Forms;
 using Mcba.Bll;
 using Mcba.Bll.Helpers;
-using Mcba.Entidad;
-using Mcba.Entidad.Enums;
 using Mcba.Infraestruture;
 using Mcba.Infraestruture.Enums;
 using Mcba.Infraestruture.Helpers;
@@ -107,10 +105,12 @@ namespace Mcba.UI
 
             if (ok)
             {
-                var user = userBll.LogUser(txtUsuario.Text);
+                captions.TryGetValue("Ingreso", out var caption);
+                var user = userBll.LogUser(txtUsuario.Text, caption ?? McbaSettings.SinTraduccion);
                 var userLogged = UserLogged.GetInstance();
 
-                userLogged.Login = user.Login;
+                userLogged.Login = txtUsuario.Text;
+                userLogged.CryptLogin = user.Login;
                 userLogged.Apellido = user.Apellido;
                 userLogged.Email = user.Email;
                 userLogged.Id = user.Id;

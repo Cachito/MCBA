@@ -79,7 +79,7 @@
             this.tsbFind.Size = new System.Drawing.Size(23, 22);
             this.tsbFind.Tag = "tsbFind";
             this.tsbFind.Text = "Buscar";
-            this.tsbFind.Click += new System.EventHandler(this.tsbNew_Click);
+            this.tsbFind.Click += new System.EventHandler(this.tsbFind_Click);
             // 
             // tsbPrint
             // 
@@ -90,6 +90,7 @@
             this.tsbPrint.Size = new System.Drawing.Size(23, 22);
             this.tsbPrint.Tag = "tsbPrint";
             this.tsbPrint.Text = "Imprimir";
+            this.tsbPrint.Click += new System.EventHandler(this.tsbPrint_Click);
             // 
             // gbData
             // 
@@ -193,7 +194,7 @@
             this.dgvBitacora.Size = new System.Drawing.Size(796, 353);
             this.dgvBitacora.TabIndex = 2;
             // 
-            // Bitacora
+            // Bitacoras
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
@@ -203,7 +204,7 @@
             this.Controls.Add(this.gbData);
             this.Controls.Add(this.tsBitacora);
             this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.FixedSingle;
-            this.Name = "Bitacora";
+            this.Name = "Bitacoras";
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterParent;
             this.Tag = "Bitacora";
             this.Text = "Bitacora";

@@ -584,7 +584,37 @@ namespace Mcba.Dal
             }
         }
 
-        public User LogUser(string login)
+        public void UnLogUser(string login, string message)
+        {
+            using (var db = new DataAccess(connectionString).GetOpenConnection())
+            {
+                using (var tr = db.BeginTransaction())
+                {
+                    try
+                    {
+                        var bitacora = new Bitacora
+                        {
+                            Login = login,
+                            Criticidad = CriticidadEnum.Alta,
+                            Descripcion = HashCalculator.Encrypt(message, McbaSettings.Key, McbaSettings.Salt),
+                            FechaHora = DateTime.Now,
+                            Patente = string.Empty
+                        };
+
+                        new BitacoraDal(connectionString).Registrar(bitacora, db, tr);
+
+                        tr.Commit();
+                    }
+                    catch
+                    {
+                        tr.Rollback();
+                        throw;
+                    }
+                }
+            }
+        }
+
+        public User LogUser(string login, string message)
         {
             using (var db = new DataAccess(connectionString).GetOpenConnection())
             {
@@ -604,7 +634,7 @@ namespace Mcba.Dal
                         {
                             Login = user.Login,
                             Criticidad = CriticidadEnum.Alta,
-                            Descripcion = HashCalculator.Encrypt("Ingreso al Sistema", McbaSettings.Key, McbaSettings.Salt),
+                            Descripcion = HashCalculator.Encrypt(message, McbaSettings.Key, McbaSettings.Salt),
                             FechaHora = DateTime.Now,
                             Patente = string.Empty
                         };
