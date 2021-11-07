@@ -42,6 +42,7 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="BackupBll.cs" />
     <Compile Include="BitacoraBll.cs" />
     <Compile Include="Composite\Componente.cs" />
     <Compile Include="Familia.cs" />

@@ -22,6 +22,8 @@ namespace Mcba.Infraestruture.Settings
         public static string SinTraduccion { set; get; }
         public static string MasterCnnString { set; get; }
         public static int VolumenesBackup { set; get; }
+        public static string Path7Zip { set; get; }
+        public static string Command7Zip { set; get; }
 
         public static void MapSettings(InstanceSettings settings)
         {
@@ -43,6 +45,8 @@ namespace Mcba.Infraestruture.Settings
             SinTraduccion = settings.SinTraduccion;
             MasterCnnString = settings.MasterCnnString;
             VolumenesBackup = settings.VolumenesBackup;
-        }
+            Path7Zip = settings.Path7Zip;
+            Command7Zip = settings.Command7Zip;
+        }   
     }
 }

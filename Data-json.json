@@ -15,5 +15,7 @@
 	"DataPagination": 50,
 	"SinTraduccion": "No hay traducción disponible",
 	"MasterCnnString": "Integrated Security=SSPI;Persist Security Info=False;Initial Catalog=master;Data Source=DESKTOP-M95JCSK\\SQLEXPRESS;",
-	"VolumenesBackup": 3,
+	"VolumenesBackup": 2,
+	"Path7Zip": "7z.exe",
+	"Command7Zip": "\"{0}\" a \"{1}\" \"{2}\" -v{3}k"
 }

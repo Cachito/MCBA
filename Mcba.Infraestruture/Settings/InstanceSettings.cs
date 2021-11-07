@@ -22,5 +22,7 @@ namespace Mcba.Infraestruture.Settings
         public string SinTraduccion { set; get; }
         public string MasterCnnString { set; get; }
         public int VolumenesBackup { set; get; }
+        public string Path7Zip { set; get; }
+        public string Command7Zip { set; get; }
     }
 }

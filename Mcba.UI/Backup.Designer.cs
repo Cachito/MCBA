@@ -66,7 +66,7 @@
             // tsbProcesar
             // 
             this.tsbProcesar.DisplayStyle = System.Windows.Forms.ToolStripItemDisplayStyle.Image;
-            this.tsbProcesar.Image = global::Mcba.UI.Properties.Resources.iconOrdenProduccion16;
+            this.tsbProcesar.Image = global::Mcba.UI.Properties.Resources.Backup_48;
             this.tsbProcesar.ImageTransparentColor = System.Drawing.Color.Magenta;
             this.tsbProcesar.Name = "tsbProcesar";
             this.tsbProcesar.Size = new System.Drawing.Size(23, 22);
@@ -115,6 +115,7 @@
             this.btnSelectRuta.TabIndex = 6;
             this.btnSelectRuta.Text = "...";
             this.btnSelectRuta.UseVisualStyleBackColor = true;
+            this.btnSelectRuta.Click += new System.EventHandler(this.btnSelectRuta_Click);
             // 
             // txtCarpetaDestino
             // 
@@ -131,7 +132,7 @@
             this.lblDestino.Size = new System.Drawing.Size(91, 20);
             this.lblDestino.TabIndex = 4;
             this.lblDestino.Tag = "lblDestino";
-            this.lblDestino.Text = "Carpeta Destino";
+            this.lblDestino.Text = "Carpeta Backups";
             this.lblDestino.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
             // 
             // Backup
@@ -144,7 +145,7 @@
             this.Controls.Add(this.tsBackup);
             this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.FixedSingle;
             this.Name = "Backup";
-            this.StartPosition = System.Windows.Forms.FormStartPosition.CenterParent;
+            this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "Backup";
             this.Load += new System.EventHandler(this.Backup_Load);
             this.tsBackup.ResumeLayout(false);
