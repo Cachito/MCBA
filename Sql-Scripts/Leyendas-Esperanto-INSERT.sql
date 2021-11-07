@@ -1352,3 +1352,6 @@ INSERT INTO Leyendas(IdIdioma, Modulo, Tag, Leyenda)
 
 INSERT INTO Leyendas(IdIdioma, Modulo, Tag, Leyenda)
 	VALUES(2, 'Backup', 'GenerandoVolumenes', 'Generando {0} volumenoj komprimitaj.')
+
+INSERT INTO Leyendas(IdIdioma, Modulo, Tag, Leyenda)
+	VALUES(2, 'Backup', 'Bitacora', 'Rezerva {0} generita kaj komprimita en {1}.')

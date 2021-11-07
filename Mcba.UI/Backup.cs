@@ -5,9 +5,11 @@ using System.IO;
 using System.Windows.Forms;
 using Mcba.Bll;
 using Mcba.Bll.Helpers;
+using Mcba.Entidad;
 using Mcba.Entidad.Enums;
 using Mcba.Infraestruture;
 using Mcba.Infraestruture.Settings;
+using Mcba.Seguridad;
 
 namespace Mcba.UI
 {
@@ -124,19 +126,36 @@ namespace Mcba.UI
                 var zipFilePath = Path.Combine(txtCarpetaDestino.Text, zipFileName);
                 var totalBytes = new FileInfo(backupFilePath).Length;
                 var volumeKBytes = totalBytes / McbaSettings.VolumenesBackup / 1024;
-                var volumeCmd = string.Format(McbaSettings.Command7Zip, zipExePath, zipFilePath,
-                    backupFilePath, volumeKBytes);
+                var arguments = string.Format(McbaSettings.Arguments7Zip, zipFilePath, backupFilePath, volumeKBytes);
 
-                Process process = new Process();
-                process.StartInfo.WorkingDirectory = txtCarpetaDestino.Text;
-                process.StartInfo.FileName = zipFilePath;
-                process.StartInfo.Arguments = ex2;
-                process.StartInfo.Password = new System.Security.SecureString();
-                process.StartInfo.UseShellExecute = false;
-                process.StartInfo.RedirectStandardOutput = true;
+                var process = new Process
+                {
+                    StartInfo =
+                    {
+                        WorkingDirectory = txtCarpetaDestino.Text,
+                        FileName = zipExePath,
+                        Arguments = arguments,
+                        CreateNoWindow = false,
+                        WindowStyle = ProcessWindowStyle.Normal
+                    }
+                };
 
+                process.Start();
 
-                System.Diagnostics.Process.Start(volumeCmd);
+                captions.TryGetValue("Bitacora", out caption);
+                var permiso = userLogged.GetPermiso($"tsmi{Name}");
+
+                Bitacora bitacora = new Bitacora
+                {
+                    Login = userLogged.CryptLogin,
+                    Criticidad = permiso.Criticidad,
+                    Descripcion = HashCalculator.Encrypt(string.Format(caption, backupFilename, txtCarpetaDestino.Text), McbaSettings.Key, McbaSettings.Salt),
+                    FechaHora = DateTime.Now,
+                    Patente = HashCalculator.Encrypt($"{permiso.Nombre} - {permiso.TipoPermiso.ToString()}", McbaSettings.Key, McbaSettings.Salt)
+                };
+
+                BitacoraBll bitacoraBll = new BitacoraBll();
+                bitacoraBll.Registrar(bitacora);
 
                 Cursor = Cursors.Default;
                 Application.DoEvents();

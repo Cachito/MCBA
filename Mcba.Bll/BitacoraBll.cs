@@ -21,11 +21,24 @@ namespace Mcba.Bll
 
             foreach (var bitacora in bitacoras)
             {
-                var desc = HashCalculator.Decrypt(bitacora.Descripcion, McbaSettings.Key, McbaSettings.Salt);
-                bitacora.Descripcion = desc;
+                var descripcion = HashCalculator.Decrypt(bitacora.Descripcion, McbaSettings.Key, McbaSettings.Salt);
+                var patente = string.Empty;
+                if (!string.IsNullOrWhiteSpace(bitacora.Patente))
+                {
+                    patente = HashCalculator.Decrypt(bitacora.Patente, McbaSettings.Key, McbaSettings.Salt);
+                }
+
+                bitacora.Descripcion = descripcion;
+                bitacora.Patente = patente;
             }
 
             return bitacoras;
+        }
+
+        public void Registrar(Bitacora bitacora)
+        {
+            BitacoraDal bitacoraDal = new BitacoraDal(McbaSettings.CnnString);
+            bitacoraDal.Registrar(bitacora);
         }
     }
 }

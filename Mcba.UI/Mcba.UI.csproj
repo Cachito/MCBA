@@ -413,9 +413,6 @@
     <None Include="Resources\Backup-48.png" />
     <None Include="Resources\Backup.png" />
     <None Include="Resources\Restore-48.png" />
-    <Content Include="7z.exe">
-      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
-    </Content>
     <Content Include="SqlServerTypes\readme.htm" />
     <Content Include="SqlServerTypes\x64\msvcr120.dll">
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
