@@ -82,7 +82,16 @@ namespace Mcba.Dal
             {
                 using (var tr = db.BeginTransaction())
                 {
-                    Registrar(bitacora, db, tr);
+                    try
+                    {
+                        Registrar(bitacora, db, tr);
+                        tr.Commit();
+                    }
+                    catch
+                    {
+                        tr.Rollback();
+                        throw;
+                    }
                 }
             }
         }

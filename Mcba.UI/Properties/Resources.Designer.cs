@@ -63,6 +63,16 @@ namespace Mcba.UI.Properties {
         /// <summary>
         ///   Looks up a localized resource of type System.Drawing.Bitmap.
         /// </summary>
+        internal static System.Drawing.Bitmap Backup_48 {
+            get {
+                object obj = ResourceManager.GetObject("Backup_48", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized resource of type System.Drawing.Bitmap.
+        /// </summary>
         internal static System.Drawing.Bitmap bsa {
             get {
                 object obj = ResourceManager.GetObject("bsa", resourceCulture);
@@ -236,6 +246,16 @@ namespace Mcba.UI.Properties {
         internal static System.Drawing.Bitmap printerBlack {
             get {
                 object obj = ResourceManager.GetObject("printerBlack", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized resource of type System.Drawing.Bitmap.
+        /// </summary>
+        internal static System.Drawing.Bitmap Restore_48 {
+            get {
+                object obj = ResourceManager.GetObject("Restore_48", resourceCulture);
                 return ((System.Drawing.Bitmap)(obj));
             }
         }

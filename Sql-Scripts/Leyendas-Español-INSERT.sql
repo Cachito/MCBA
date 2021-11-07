@@ -1325,10 +1325,13 @@ INSERT INTO Leyendas(IdIdioma, Modulo, Tag, Leyenda)
 	VALUES(1, 'Backup', 'tsbSalir', 'Salir')
 
 INSERT INTO Leyendas(IdIdioma, Modulo, Tag, Leyenda)
-	VALUES(1, 'Backup', 'tsbProcesar', 'Procesar')
+	VALUES(1, 'Backup', 'tsbProcesar', 'Backup')
 
 INSERT INTO Leyendas(IdIdioma, Modulo, Tag, Leyenda)
-	VALUES(1, 'Backup', 'lblDestino', 'Carpeta Destino')
+	VALUES(1, 'Backup', 'tsmiRestore', 'Restore')
+
+INSERT INTO Leyendas(IdIdioma, Modulo, Tag, Leyenda)
+	VALUES(1, 'Backup', 'lblDestino', 'Carpeta Backups')
 
 INSERT INTO Leyendas(IdIdioma, Modulo, Tag, Leyenda)
 	VALUES(1, 'Backup', 'lblAvance', 'Avance')
@@ -1337,7 +1340,22 @@ INSERT INTO Leyendas(IdIdioma, Modulo, Tag, Leyenda)
 	VALUES(1, 'Backup', 'lblVolumen', 'Volumen en Proceso')
 
 INSERT INTO Leyendas(IdIdioma, Modulo, Tag, Leyenda)
-	VALUES(1, 'Backup', 'FaltaCarpeta', 'Debe ingresar una carpeta de destino.')
+	VALUES(1, 'Backup', 'FaltaCarpeta', 'Debe Seleccionar una carpeta de backups.')
 
 INSERT INTO Leyendas(IdIdioma, Modulo, Tag, Leyenda)
 	VALUES(1, 'Backup', 'CarpetaNoExiste', 'La carpeta indicada no existe o no se tiene acceso.')
+
+INSERT INTO Leyendas(IdIdioma, Modulo, Tag, Leyenda)
+	VALUES(1, 'Backup', 'GenerandoBackup', 'Generando backup.')
+
+INSERT INTO Leyendas(IdIdioma, Modulo, Tag, Leyenda)
+	VALUES(1, 'Backup', 'ErrorBackupFile', 'No se puede encontrar el archivo {0}.{1}No se puede continuar.')
+
+INSERT INTO Leyendas(IdIdioma, Modulo, Tag, Leyenda)
+	VALUES(1, 'Backup', 'SelectFolder', 'Seleccione una carpeta para el backup.')
+
+INSERT INTO Leyendas(IdIdioma, Modulo, Tag, Leyenda)
+	VALUES(1, 'Backup', 'GenerandoVolumenes', 'Generando {0} volumenes comprimidos.')
+
+INSERT INTO Leyendas(IdIdioma, Modulo, Tag, Leyenda)
+	VALUES(1, 'Backup', 'Bitacora', 'Backup {0} generado y comprimido en {1}.')
