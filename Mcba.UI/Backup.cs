@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 using System.Diagnostics;
 using System.IO;
+using System.Linq;
 using System.Windows.Forms;
 using Mcba.Bll;
 using Mcba.Bll.Helpers;
@@ -45,6 +46,28 @@ namespace Mcba.UI
         private void btnSelectRuta_Click(object sender, EventArgs e)
         {
             SelectFolder();
+            LoadGrid();
+        }
+
+        private void LoadGrid()
+        {
+            if (string.IsNullOrWhiteSpace(txtCarpetaDestino.Text))
+            {
+                return;
+            }
+
+            if (!Directory.Exists(txtCarpetaDestino.Text))
+            {
+                captions.TryGetValue("FaltaCarpeta", out var caption);
+                this.ShowMessage(caption, McbaSettings.MessageTitle, MessageBoxButtons.OK,
+                    MessageBoxIcon.Exclamation);
+                return;
+            }
+
+            var filePaths = Directory.GetFiles(txtCarpetaDestino.Text, "*.zip.???").ToList();
+
+            dgvBackup.DataSource = null;
+            dgvBackup.DataSource = filePaths;
         }
 
         private void SelectFolder()
@@ -81,7 +104,18 @@ namespace Mcba.UI
             var filename = $"MCBA-Backup-{DateTime.Now:yyyyMMddHHmmss.fff}";
             var backupFilename = $"{filename}.bak";
             var backupFilePath = Path.Combine(txtCarpetaDestino.Text, backupFilename);
+            string caption;
+            var permiso = userLogged.GetPermiso($"tsmi{Name}");
 
+            Bitacora bitacora = new Bitacora
+            {
+                Login = userLogged.CryptLogin,
+                Criticidad = permiso.Criticidad,
+                FechaHora = DateTime.Now,
+                Patente = HashCalculator.Encrypt($"{permiso.Nombre} - {permiso.TipoPermiso.ToString()}", McbaSettings.Key, McbaSettings.Salt)
+            };
+
+            var bitacoraBll = new BitacoraBll();
             var backupBll = new BackupBll();
 
             try
@@ -89,7 +123,7 @@ namespace Mcba.UI
                 Cursor = Cursors.WaitCursor;
                 Application.DoEvents();
 
-                captions.TryGetValue("GenerandoBackup", out var caption);
+                captions.TryGetValue("GenerandoBackup", out caption);
                 lblVolumen.Text = caption ?? McbaSettings.SinTraduccion;
 
                 backupBll.Backup(backupFilePath);
@@ -97,6 +131,12 @@ namespace Mcba.UI
                 if (!File.Exists(backupFilePath))
                 {
                     captions.TryGetValue("ErrorBackupFile", out caption);
+
+                    bitacora.Descripcion = HashCalculator.Encrypt(
+                        string.Format(caption ?? McbaSettings.SinTraduccion, backupFilename, txtCarpetaDestino.Text),
+                        McbaSettings.Key, McbaSettings.Salt);
+                    bitacoraBll.Registrar(bitacora);
+
                     this.ShowMessage(string.Format(caption ?? McbaSettings.SinTraduccion, backupFilePath, Environment.NewLine), McbaSettings.MessageTitle,
                         MessageBoxButtons.OK, MessageBoxIcon.Error);
 
@@ -106,10 +146,16 @@ namespace Mcba.UI
                     return;
                 }
 
-                var zipExePath = Path.Combine(System.AppDomain.CurrentDomain.BaseDirectory, McbaSettings.Path7Zip);
-                if (!File.Exists(zipExePath))
+                //var zipExePath = Path.Combine(System.AppDomain.CurrentDomain.BaseDirectory, McbaSettings.Path7Zip);
+                if (!File.Exists(McbaSettings.Path7Zip))
                 {
                     captions.TryGetValue("ErrorBackupFile", out caption);
+
+                    bitacora.Descripcion = HashCalculator.Encrypt(
+                        string.Format(caption ?? McbaSettings.SinTraduccion, backupFilename, txtCarpetaDestino.Text),
+                        McbaSettings.Key, McbaSettings.Salt);
+                    bitacoraBll.Registrar(bitacora);
+
                     this.ShowMessage(string.Format(caption ?? McbaSettings.SinTraduccion, McbaSettings.Path7Zip, Environment.NewLine), McbaSettings.MessageTitle,
                         MessageBoxButtons.OK, MessageBoxIcon.Error);
 
@@ -133,7 +179,7 @@ namespace Mcba.UI
                     StartInfo =
                     {
                         WorkingDirectory = txtCarpetaDestino.Text,
-                        FileName = zipExePath,
+                        FileName = McbaSettings.Path7Zip,
                         Arguments = arguments,
                         CreateNoWindow = false,
                         WindowStyle = ProcessWindowStyle.Normal
@@ -143,18 +189,10 @@ namespace Mcba.UI
                 process.Start();
 
                 captions.TryGetValue("Bitacora", out caption);
-                var permiso = userLogged.GetPermiso($"tsmi{Name}");
-
-                Bitacora bitacora = new Bitacora
-                {
-                    Login = userLogged.CryptLogin,
-                    Criticidad = permiso.Criticidad,
-                    Descripcion = HashCalculator.Encrypt(string.Format(caption, backupFilename, txtCarpetaDestino.Text), McbaSettings.Key, McbaSettings.Salt),
-                    FechaHora = DateTime.Now,
-                    Patente = HashCalculator.Encrypt($"{permiso.Nombre} - {permiso.TipoPermiso.ToString()}", McbaSettings.Key, McbaSettings.Salt)
-                };
-
-                BitacoraBll bitacoraBll = new BitacoraBll();
+                bitacora.Descripcion =
+                    HashCalculator.Encrypt(
+                        string.Format(caption ?? McbaSettings.SinTraduccion, backupFilename, txtCarpetaDestino.Text),
+                        McbaSettings.Key, McbaSettings.Salt);
                 bitacoraBll.Registrar(bitacora);
 
                 Cursor = Cursors.Default;
@@ -164,6 +202,19 @@ namespace Mcba.UI
             {
                 Cursor = Cursors.Default;
                 Application.DoEvents();
+
+                try
+                {
+                    bitacora.Descripcion =
+                        HashCalculator.Encrypt(
+                            string.Format(ex.Message, backupFilename, txtCarpetaDestino.Text),
+                            McbaSettings.Key, McbaSettings.Salt);
+                    bitacoraBll.Registrar(bitacora);
+                }
+                catch (Exception e)
+                {
+                    this.ShowMessage(e.Message, McbaSettings.MessageTitle, MessageBoxButtons.OK, MessageBoxIcon.Error);
+                }
 
                 this.ShowMessage(ex.Message, McbaSettings.MessageTitle, MessageBoxButtons.OK, MessageBoxIcon.Error);
             }

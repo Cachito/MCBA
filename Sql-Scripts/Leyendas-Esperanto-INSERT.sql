@@ -1324,7 +1324,7 @@ INSERT INTO Leyendas(IdIdioma, Modulo, Tag, Leyenda)
 	VALUES(2, 'Backup', 'tsbProcesar', 'Rezervo')
 
 INSERT INTO Leyendas(IdIdioma, Modulo, Tag, Leyenda)
-	VALUES(2, 'Backup', 'tsmiRestore', 'Restaŭri')
+	VALUES(2, 'Backup', 'tsbRestore', 'Restaŭri')
 
 INSERT INTO Leyendas(IdIdioma, Modulo, Tag, Leyenda)
 	VALUES(2, 'Backup', 'lblDestino', 'Sekurkopioj dosierujo.')
