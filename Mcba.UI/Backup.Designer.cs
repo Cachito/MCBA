@@ -141,9 +141,15 @@
             // 
             // dgvBackup
             // 
+            this.dgvBackup.AllowUserToAddRows = false;
+            this.dgvBackup.AllowUserToDeleteRows = false;
+            this.dgvBackup.AutoSizeColumnsMode = System.Windows.Forms.DataGridViewAutoSizeColumnsMode.Fill;
             this.dgvBackup.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
+            this.dgvBackup.EditMode = System.Windows.Forms.DataGridViewEditMode.EditProgrammatically;
             this.dgvBackup.Location = new System.Drawing.Point(12, 124);
+            this.dgvBackup.MultiSelect = false;
             this.dgvBackup.Name = "dgvBackup";
+            this.dgvBackup.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect;
             this.dgvBackup.Size = new System.Drawing.Size(542, 250);
             this.dgvBackup.TabIndex = 2;
             // 
@@ -156,6 +162,7 @@
             this.tsbRestore.Size = new System.Drawing.Size(23, 22);
             this.tsbRestore.Tag = "tsbRestore";
             this.tsbRestore.Text = "tsbRestore";
+            this.tsbRestore.Click += new System.EventHandler(this.tsbRestore_Click);
             // 
             // Backup
             // 

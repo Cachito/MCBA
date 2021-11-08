@@ -34,6 +34,36 @@ namespace Mcba.UI
             Procesar();
         }
 
+        private void tsbRestore_Click(object sender, EventArgs e)
+        {
+            Restaurar();
+        }
+
+        private void Restaurar()
+        {
+            string caption;
+
+            if (dgvBackup.SelectedRows.Count == 0)
+            {
+                captions.TryGetValue("FaltaSeleccion", out caption);
+                this.ShowMessage(caption, McbaSettings.MessageTitle, MessageBoxButtons.OK,
+                    MessageBoxIcon.Exclamation);
+                return;
+            }
+
+
+            captions.TryGetValue("RestoreWarning", out caption);
+            var dr = this.ShowMessage(string.Format(caption ?? McbaSettings.SinTraduccion, Environment.NewLine), McbaSettings.MessageTitle, MessageBoxButtons.YesNo,
+                MessageBoxIcon.Warning);
+
+            if (dr != DialogResult.Yes)
+            {
+                return;
+            }
+
+
+        }
+
         private void Backup_Load(object sender, EventArgs e)
         {
             TipoPermisoEnum acceso = userLogged.GetPermiso($"tsmi{Name}")?.TipoPermiso ?? TipoPermisoEnum.SinAcceso;
@@ -64,10 +94,10 @@ namespace Mcba.UI
                 return;
             }
 
-            var filePaths = Directory.GetFiles(txtCarpetaDestino.Text, "*.zip.???").ToList();
+            var filePaths = Directory.GetFiles(txtCarpetaDestino.Text, "*.zip.??1").ToList();
 
             dgvBackup.DataSource = null;
-            dgvBackup.DataSource = filePaths;
+            dgvBackup.DataSource = filePaths.Select(x => new { Value = x }).ToList();
         }
 
         private void SelectFolder()

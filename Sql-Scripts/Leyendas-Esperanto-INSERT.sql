@@ -1355,3 +1355,9 @@ INSERT INTO Leyendas(IdIdioma, Modulo, Tag, Leyenda)
 
 INSERT INTO Leyendas(IdIdioma, Modulo, Tag, Leyenda)
 	VALUES(2, 'Backup', 'Bitacora', 'Rezerva {0} generita kaj komprimita en {1}.')
+
+INSERT INTO Leyendas(IdIdioma, Modulo, Tag, Leyenda)
+	VALUES(2, 'Backup', 'FaltaSeleccion', 'Vi devas elekti sekurkopion el la listo.')
+
+INSERT INTO Leyendas(IdIdioma, Modulo, Tag, Leyenda)
+	VALUES(2, 'Backup', 'RestoreWarning', 'Se vi daŭrigos, ĉiuj procezoj kurantaj en la datumbazo estos ĉesigitaj.{0}Ĉu vi certas?')
