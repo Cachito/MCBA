@@ -24,5 +24,6 @@ namespace Mcba.Infraestruture.Settings
         public int VolumenesBackup { set; get; }
         public string Path7Zip { set; get; }
         public string Arguments7Zip { set; get; }
+        public string ArgumentsExtract7Zip { set; get; }
     }
 }

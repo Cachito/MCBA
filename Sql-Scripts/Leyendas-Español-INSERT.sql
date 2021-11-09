@@ -1358,10 +1358,19 @@ INSERT INTO Leyendas(IdIdioma, Modulo, Tag, Leyenda)
 	VALUES(1, 'Backup', 'GenerandoVolumenes', 'Generando {0} volumenes comprimidos.')
 
 INSERT INTO Leyendas(IdIdioma, Modulo, Tag, Leyenda)
-	VALUES(1, 'Backup', 'Bitacora', 'Backup {0} generado y comprimido en {1}.')
+	VALUES(1, 'Backup', 'BackupGenerado', 'Backup {0} generado y comprimido en {1}.')
 
 INSERT INTO Leyendas(IdIdioma, Modulo, Tag, Leyenda)
 	VALUES(1, 'Backup', 'FaltaSeleccion', 'Debe seleccionar un backup de la lista.')
 
 INSERT INTO Leyendas(IdIdioma, Modulo, Tag, Leyenda)
-	VALUES(1, 'Backup', 'RestoreWarning', 'Si continúa se suspenderán todos los procesos en ejecución en la base de datos.{0}¿Está seguro?')
+	VALUES(1, 'Backup', 'RestoreWarning', 'Si continúa se eliminarán (kill) todos los procesos en ejecución en la base de datos.{0}Además se cerrarán todas las conexiones abiertas{0}¿Está seguro?')
+
+INSERT INTO Leyendas(IdIdioma, Modulo, Tag, Leyenda)
+	VALUES(1, 'Backup', 'ErrorCarpeta', 'No se puede encontrar la carpeta {0}.{1}No se puede continuar.')
+
+INSERT INTO Leyendas(IdIdioma, Modulo, Tag, Leyenda)
+	VALUES(1, 'Backup', 'DescomprimiendoVolumenes', 'Descomprimiendo {0} volúmenes.')
+
+INSERT INTO Leyendas(IdIdioma, Modulo, Tag, Leyenda)
+	VALUES(1, 'Backup', 'RestoreCompleto', 'Restore completado desde {0}.{1}El sistema se cerrará.')
