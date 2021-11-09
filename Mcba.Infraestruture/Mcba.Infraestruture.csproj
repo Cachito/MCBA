@@ -56,6 +56,7 @@
     <Compile Include="Settings\McbaSettings.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="FormExtensions.cs" />
+    <Compile Include="StringComparer.cs" />
   </ItemGroup>
   <ItemGroup>
     <None Include="packages.config" />

@@ -1324,7 +1324,7 @@ INSERT INTO Leyendas(IdIdioma, Modulo, Tag, Leyenda)
 	VALUES(2, 'Backup', 'tsbProcesar', 'Rezervo')
 
 INSERT INTO Leyendas(IdIdioma, Modulo, Tag, Leyenda)
-	VALUES(2, 'Backup', 'tsmiRestore', 'Restaŭri')
+	VALUES(2, 'Backup', 'tsbRestore', 'Restaŭri')
 
 INSERT INTO Leyendas(IdIdioma, Modulo, Tag, Leyenda)
 	VALUES(2, 'Backup', 'lblDestino', 'Sekurkopioj dosierujo.')
@@ -1354,4 +1354,19 @@ INSERT INTO Leyendas(IdIdioma, Modulo, Tag, Leyenda)
 	VALUES(2, 'Backup', 'GenerandoVolumenes', 'Generando {0} volumenoj komprimitaj.')
 
 INSERT INTO Leyendas(IdIdioma, Modulo, Tag, Leyenda)
-	VALUES(2, 'Backup', 'Bitacora', 'Rezerva {0} generita kaj komprimita en {1}.')
+	VALUES(2, 'Backup', 'BackupGenerado', 'Rezerva {0} generita kaj komprimita en {1}.')
+
+INSERT INTO Leyendas(IdIdioma, Modulo, Tag, Leyenda)
+	VALUES(2, 'Backup', 'FaltaSeleccion', 'Vi devas elekti sekurkopion el la listo.')
+
+INSERT INTO Leyendas(IdIdioma, Modulo, Tag, Leyenda)
+	VALUES(2, 'Backup', 'RestoreWarning', 'Se vi daŭrigos, ĉiuj procezoj kurantaj en la datumbazo estos ĉesigitaj (kill).{0}Ankaŭ ĉiuj malfermitaj konektoj estos fermitaj{0}Ĉu vi certas?')
+
+INSERT INTO Leyendas(IdIdioma, Modulo, Tag, Leyenda)
+	VALUES(2, 'Backup', 'ErrorCarpeta', 'Ne povas trovi dosierujon{0}.{1}Ne povas daŭrigi.')
+
+INSERT INTO Leyendas(IdIdioma, Modulo, Tag, Leyenda)
+	VALUES(2, 'Backup', 'DescomprimiendoVolumenes', 'Malfermi {0} volumojn.')
+
+INSERT INTO Leyendas(IdIdioma, Modulo, Tag, Leyenda)
+	VALUES(2, 'Backup', 'RestoreCompleto', 'Restarigo finiĝis de {0}.{1}La sistemo malŝaltos.')

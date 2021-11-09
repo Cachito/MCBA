@@ -16,6 +16,8 @@
 	"SinTraduccion": "No hay traducción disponible",
 	"MasterCnnString": "Integrated Security=SSPI;Persist Security Info=False;Initial Catalog=master;Data Source=DESKTOP-M95JCSK\\SQLEXPRESS;",
 	"VolumenesBackup": 2,
-	"Path7Zip": "C:\\Program Files\\7-Zip7z.exe",
+	"Path7Zip": "C:\\Program Files\\7-Zip\7z.exe",
 	"Arguments7Zip": "a \"{1}\" \"{2}\" -v{3}k"
+	"ArgumentsExtract7Zip": "x \"{0}\" -aoa",
+	"MasterCnnString": "Integrated Security=SSPI;Persist Security Info=False;Initial Catalog=master;Data Source=DESKTOP-M95JCSK\\SQLEXPRESS;"
 }

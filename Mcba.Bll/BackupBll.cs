@@ -10,5 +10,11 @@ namespace Mcba.Bll
             var backupDal = new BackupDal(McbaSettings.CnnString);
             backupDal.Backup(filePath);
         }
+
+        public void Restore(string filePath)
+        {
+            var backupDal = new BackupDal(McbaSettings.MasterCnnString);
+            backupDal.Restore(filePath);
+        }
     }
 }

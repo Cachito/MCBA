@@ -37,15 +37,19 @@
             this.btnSelectRuta = new System.Windows.Forms.Button();
             this.txtCarpetaDestino = new System.Windows.Forms.TextBox();
             this.lblDestino = new System.Windows.Forms.Label();
+            this.dgvBackup = new System.Windows.Forms.DataGridView();
+            this.tsbRestore = new System.Windows.Forms.ToolStripButton();
             this.tsBackup.SuspendLayout();
             this.gbData.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.dgvBackup)).BeginInit();
             this.SuspendLayout();
             // 
             // tsBackup
             // 
             this.tsBackup.Items.AddRange(new System.Windows.Forms.ToolStripItem[] {
             this.tsbSalir,
-            this.tsbProcesar});
+            this.tsbProcesar,
+            this.tsbRestore});
             this.tsBackup.Location = new System.Drawing.Point(0, 0);
             this.tsBackup.Name = "tsBackup";
             this.tsBackup.Size = new System.Drawing.Size(562, 25);
@@ -135,12 +139,38 @@
             this.lblDestino.Text = "Carpeta Backups";
             this.lblDestino.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
             // 
+            // dgvBackup
+            // 
+            this.dgvBackup.AllowUserToAddRows = false;
+            this.dgvBackup.AllowUserToDeleteRows = false;
+            this.dgvBackup.AutoSizeColumnsMode = System.Windows.Forms.DataGridViewAutoSizeColumnsMode.Fill;
+            this.dgvBackup.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
+            this.dgvBackup.EditMode = System.Windows.Forms.DataGridViewEditMode.EditProgrammatically;
+            this.dgvBackup.Location = new System.Drawing.Point(12, 124);
+            this.dgvBackup.MultiSelect = false;
+            this.dgvBackup.Name = "dgvBackup";
+            this.dgvBackup.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect;
+            this.dgvBackup.Size = new System.Drawing.Size(542, 250);
+            this.dgvBackup.TabIndex = 2;
+            // 
+            // tsbRestore
+            // 
+            this.tsbRestore.DisplayStyle = System.Windows.Forms.ToolStripItemDisplayStyle.Image;
+            this.tsbRestore.Image = global::Mcba.UI.Properties.Resources.Restore_48;
+            this.tsbRestore.ImageTransparentColor = System.Drawing.Color.Magenta;
+            this.tsbRestore.Name = "tsbRestore";
+            this.tsbRestore.Size = new System.Drawing.Size(23, 22);
+            this.tsbRestore.Tag = "tsbRestore";
+            this.tsbRestore.Text = "tsbRestore";
+            this.tsbRestore.Click += new System.EventHandler(this.tsbRestore_Click);
+            // 
             // Backup
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(562, 127);
+            this.ClientSize = new System.Drawing.Size(562, 386);
             this.ControlBox = false;
+            this.Controls.Add(this.dgvBackup);
             this.Controls.Add(this.gbData);
             this.Controls.Add(this.tsBackup);
             this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.FixedSingle;
@@ -152,6 +182,7 @@
             this.tsBackup.PerformLayout();
             this.gbData.ResumeLayout(false);
             this.gbData.PerformLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.dgvBackup)).EndInit();
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -168,5 +199,7 @@
         private System.Windows.Forms.Label lblAvance;
         private System.Windows.Forms.Button btnSelectRuta;
         private System.Windows.Forms.TextBox txtCarpetaDestino;
+        private System.Windows.Forms.DataGridView dgvBackup;
+        private System.Windows.Forms.ToolStripButton tsbRestore;
     }
 }
