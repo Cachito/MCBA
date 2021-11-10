@@ -40,11 +40,6 @@ namespace Mcba.Bll
             return new FamiliaDal(McbaSettings.CnnString).GetDisponibles(userId);
         }
 
-        //public IEnumerable<FamiliaDto> GetAsignadas(int userId)
-        //{
-        //    return new FamiliaDal(McbaSettings.CnnString).GetAsignadas(userId);
-        //}
-
         public IEnumerable<UsuarioFamilia> GetUsuarioFamilias()
         {
             return new FamiliaDal(McbaSettings.CnnString).GetUsuarioFamilias();

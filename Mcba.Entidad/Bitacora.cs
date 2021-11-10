@@ -6,6 +6,7 @@ namespace Mcba.Entidad
 {
     public class Bitacora
     {
+        [CryptMethod(CryptMethodEnum.Ignore)]
         public int Id { set; get; }
         public DateTime FechaHora { set; get; }
         public string Patente { set; get; }

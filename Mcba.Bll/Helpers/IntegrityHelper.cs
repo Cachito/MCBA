@@ -36,6 +36,9 @@ namespace Mcba.Bll.Helpers
                 case "usuariopermiso":
                     return CheckUsuarioPermiso(table.DV);
 
+                case "familiapermiso":
+                    return CheckFamiliaPermiso(table.DV);
+
                 case "bitacora":
                     return CheckBitacora(table.DV);
 
@@ -64,6 +67,33 @@ namespace Mcba.Bll.Helpers
             var usuarioPermisoDvv = HashCalculator.GetCryptString(dvvValue.ToString(), CryptMethodEnum.Sha1);
 
             if (usuarioPermisoDvv != dvv)
+            {
+                return false;
+            }
+
+            return true;
+        }
+
+        private static bool CheckFamiliaPermiso(string dvv)
+        {
+            var permisoBll = new PermisoBll();
+            var familiaPermisos = permisoBll.GetFamiliaPermisos();
+
+            long dvvTotal = 0;
+            foreach (var fp in familiaPermisos)
+            {
+                var dvhString = DvhCalculator<FamiliaPermiso>.GetDvhString(fp, out var dvhValue);
+                dvvTotal += dvhValue;
+                if (dvhString != fp.DV)
+                {
+                    return false;
+                }
+            }
+
+            var dvvValue = DvValue.GetDvValue(dvvTotal.ToString());
+            var familiaPermisoDvv = HashCalculator.GetCryptString(dvvValue.ToString(), CryptMethodEnum.Sha1);
+
+            if (familiaPermisoDvv != dvv)
             {
                 return false;
             }
@@ -152,35 +182,67 @@ namespace Mcba.Bll.Helpers
             return true;
         }
 
-        public static bool RepareIntegrity()
+        public static bool RepareIntegrity(string cnnString)
         {
             var ret = true;
-            var integrityDal = new IntegrityDal(McbaSettings.CnnString);
+            var integrityDal = new IntegrityDal(cnnString);
 
             var tables = integrityDal.GetTables();
             foreach (var table in tables)
             {
-                ret &= Repare(table);
+                ret &= Repare(table, cnnString);
             }
 
             return ret;
         }
 
-        private static bool Repare(Integrity table)
+        private static bool Repare(Integrity table, string cnnString)
         {
             switch (table.Tabla.ToLower())
             {
                 case "usuario":
-                    return RepareUser();
+                    return RepareUser(cnnString);
+
+                case "usuariofamilia":
+                    return RepareUsuarioFamilia(cnnString);
+
+                case "usuariopermiso":
+                    return RepareUsuarioPermiso(cnnString);
+
+                case "familiapermiso":
+                    return RepareFamiliaPermiso(cnnString);
+
+                case "bitacora":
+                    return RepareBitacora(cnnString);
 
                 default:
                     return true;
             }
         }
 
-        private static bool RepareUser()
+        private static bool RepareBitacora(string cnnString)
         {
-            return new UserDal(McbaSettings.CnnString).RepareIntegrity();
+            return new BitacoraDal(cnnString).RepareIntegrity();
+        }
+
+        private static bool RepareUsuarioPermiso(string cnnString)
+        {
+            return new PermisoDal(cnnString).RepareUsuarioPermisoIntegrity();
+        }
+
+        private static bool RepareUsuarioFamilia(string cnnString)
+        {
+            return new PermisoDal(cnnString).RepareUsuarioFamiliaIntegrity();
+        }
+
+        private static bool RepareFamiliaPermiso(string cnnString)
+        {
+            return new PermisoDal(cnnString).RepareFamiliaPermisoIntegrity();
+        }
+
+        private static bool RepareUser(string cnnString)
+        {
+            return new UserDal(cnnString).RepareIntegrity();
         }
     }
 }
