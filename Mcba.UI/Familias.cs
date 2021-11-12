@@ -5,15 +5,18 @@ using System.Text;
 using System.Windows.Forms;
 using Mcba.Bll;
 using Mcba.Bll.Helpers;
+using Mcba.Entidad;
 using Mcba.Entidad.Dto;
 using Mcba.Infraestruture;
 using Mcba.Infraestruture.Enums;
 using Mcba.Infraestruture.Settings;
+using Mcba.Seguridad;
 
 namespace Mcba.UI
 {
     public partial class Familias : ViewBase
     {
+        private readonly UserLogged userLogged = UserLogged.GetInstance();
         private Dictionary<string, string> captions = new Dictionary<string, string>();
 
         private int IdFamilia { set; get; }
@@ -91,18 +94,41 @@ namespace Mcba.UI
                 return;
             }
 
+            var bitacora = new Bitacora
+            {
+                Login = userLogged.CryptLogin,
+                Descripcion = "Guardar Familia",
+                FechaHora = DateTime.Now
+            };
+
             FamiliaDto familia;
             if (IdFamilia == 0)
             {
                 familia = new FamiliaDto();
+                bitacora.Descripcion = $"{bitacora.Descripcion} nueva.";
             }
             else
             {
                 familia = new FamiliaBll().GetFamilia(IdFamilia);
+                bitacora.Descripcion = $"{bitacora.Descripcion} modificación.";
                 if (familia == null)
                 {
                     captions.TryGetValue("NoEncontrado", out var caption);
                     this.ShowMessage(string.Format(caption ?? McbaSettings.SinTraduccion, Environment.NewLine));
+                    Undo();
+                    LoadGrid();
+
+                    return;
+                }
+            }
+
+            if (IdFamilia != 0 && !chkActivo.Checked && familia.Activo != chkActivo.Checked)
+            {
+                bitacora.Descripcion = $"{bitacora.Descripcion} Desactivar.";
+                captions.TryGetValue("DesactivarWarning", out var caption);
+                var dr = this.ShowMessage(string.Format(caption ?? McbaSettings.SinTraduccion, Environment.NewLine), McbaSettings.MessageTitle, MessageBoxButtons.YesNo, MessageBoxIcon.Warning);
+                if (dr != DialogResult.Yes)
+                {
                     Undo();
                     LoadGrid();
 
@@ -115,11 +141,27 @@ namespace Mcba.UI
 
             var familiaBll = new FamiliaBll();
 
-            var ok = familiaBll.Save(familia);
+            var ok = false;
+            try
+            {
+                var permiso = userLogged.GetPermiso($"tsmi{Name}");
+                bitacora.Descripcion = HashCalculator.Encrypt(bitacora.Descripcion, McbaSettings.Key, McbaSettings.Salt);
+                bitacora.Criticidad = permiso.Criticidad;
+                bitacora.Patente = HashCalculator.Encrypt($"{permiso.Nombre} - {permiso.TipoPermiso.ToString()}",
+                    McbaSettings.Key, McbaSettings.Salt);
+
+                ok = familiaBll.Save(familia, bitacora);
+            }
+            catch (Exception ex)
+            {
+                this.ShowMessage(string.Format(ex.Message), McbaSettings.MessageTitle);
+            }
+
             if (!ok)
             {
                 captions.TryGetValue("ErrorAlGuardar", out var caption);
-                this.ShowMessage(string.Format(caption ?? McbaSettings.SinTraduccion, Environment.NewLine));
+                this.ShowMessage(string.Format(caption ?? McbaSettings.SinTraduccion, Environment.NewLine),
+                    McbaSettings.MessageTitle);
             }
 
             LoadGrid();
@@ -257,11 +299,6 @@ namespace Mcba.UI
         {
             foreach (DataGridViewRow row in dgvFamilias.Rows)
             {
-                if (row.Index == 0)
-                {
-                    continue;
-                }
-
                 row.DefaultCellStyle.BackColor = (bool)row.Cells[COL_ACTIVE].Value ? SystemColors.Window : Color.Red;
                 row.DefaultCellStyle.ForeColor = (bool)row.Cells[COL_ACTIVE].Value ? SystemColors.ControlText : Color.White;
             }

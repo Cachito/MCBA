@@ -18,5 +18,20 @@ namespace Mcba.Bll
         {
             return new PermisoDal(McbaSettings.CnnString).GetFamiliaPermisos();
         }
+
+        public bool DejaPermisosHerfanos(int idUsuario)
+        {
+            return new PermisoDal(McbaSettings.CnnString).DejaPermisosHerfanos(idUsuario);
+        }
+
+        public bool ValidarRemovePermisoUsuario(int idUsuario, int idPermiso)
+        {
+            return new PermisoDal(McbaSettings.CnnString).ValidarRemovePermisoUsuario(idUsuario, idPermiso);
+        }
+
+        public bool ValidarRemovePermisoFamilia(int idFamilia, int idPermiso)
+        {
+            return new PermisoDal(McbaSettings.CnnString).ValidarRemovePermisoFamilia(idFamilia, idPermiso);
+        }
     }
 }

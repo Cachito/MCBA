@@ -28,6 +28,7 @@ namespace Mcba.Bll
         public string CryptLogin { set; get; }
         public string Email { set; get; }
         public int IdIdioma { set; get; }
+        public bool Activo { set; get; }
 
         public void SetAuthorization()
         {

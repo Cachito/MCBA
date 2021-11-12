@@ -106,7 +106,7 @@ namespace Mcba.UI
             if (ok)
             {
                 captions.TryGetValue("Ingreso", out var caption);
-                var user = userBll.LogUser(txtUsuario.Text, caption ?? McbaSettings.SinTraduccion);
+                var user = userBll.LogOnUser(txtUsuario.Text, caption ?? McbaSettings.SinTraduccion);
                 var userLogged = UserLogged.GetInstance();
 
                 userLogged.Login = txtUsuario.Text;
@@ -116,6 +116,8 @@ namespace Mcba.UI
                 userLogged.Id = user.Id;
                 userLogged.IdIdioma = user.IdIdioma;
                 userLogged.Nombre = user.Nombre;
+                userLogged.Activo = user.Activo;
+
                 userLogged.SetAuthorization();
 
                 DialogResult = DialogResult.OK;

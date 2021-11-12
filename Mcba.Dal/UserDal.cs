@@ -295,6 +295,22 @@ namespace Mcba.Dal
             ORDER BY Nombre
             ";
 
+        private const string QRY_GET_ACTIVO_BY_ID_USUARIO = @"
+            SELECT Activo
+            FROM Usuario
+            WHERE Id = @Id
+        ";
+
+        private const string QRY_DELETE_FAMILIAS_USUARIO = @"
+            DELETE UsuarioFamilia
+            WHERE IdUsuario = @IdUsuario
+        ";
+
+        private const string QRY_DELETE_PERMISOS_USUARIO = @"
+            DELETE UsuarioPermiso
+            WHERE IdUsuario = @IdUsuario
+        ";
+
         private readonly string connectionString;
 
         public UserDal(string connectionString)
@@ -529,12 +545,23 @@ namespace Mcba.Dal
             }
             else // update
             {
+                IntegrityDal integrityDal = new IntegrityDal(connectionString);
                 using (var db = new DataAccess(connectionString).GetOpenConnection())
                 {
                     using (var tr = db.BeginTransaction())
                     {
                         try
                         {
+                            var activo = db.ExecuteScalar<bool>(QRY_GET_ACTIVO_BY_ID_USUARIO, new {Id = user.Id}, transaction: tr);
+
+                            if (!user.Activo && activo != user.Activo)
+                            {
+                                db.Execute(QRY_DELETE_FAMILIAS_USUARIO, new {IdUsuario = user.Id}, transaction: tr);
+                                integrityDal.RepareUsuarioFamiliaIntegrity(db, tr);
+                                db.Execute(QRY_DELETE_PERMISOS_USUARIO, new {IdUsuario = user.Id}, transaction: tr);
+                                integrityDal.RepareUsuarioPermisoIntegrity(db, tr);
+                            }
+
                             var ok = db.Execute(QRY_UPDATE_USER,
                                 new
                                 {
@@ -650,7 +677,8 @@ namespace Mcba.Dal
                             Id = user.Id,
                             IdIdioma = user.IdIdioma,
                             Nombre = user.Nombre,
-                            Login = user.Login
+                            Login = user.Login,
+                            Activo = user.Activo
                         };
                     }
                     catch
@@ -679,7 +707,7 @@ namespace Mcba.Dal
             var dvvValue = DvValue.GetDvValue(dvvTotal.ToString());
             var dvvString = HashCalculator.GetCryptString(dvvValue.ToString(), CryptMethodEnum.Sha1);
 
-            IntegrityDal.UpdateIntegryty(TablaIntegridadEnum.Usuario, dvvString, db, tr);
+            IntegrityDal.UpdateIntegrity(TablaIntegridadEnum.Usuario, dvvString, db, tr);
         }
 
         public bool RepareIntegrity()
@@ -702,7 +730,7 @@ namespace Mcba.Dal
                         var dvvValue = DvValue.GetDvValue(dvvTotal.ToString());
                         var dvvString = HashCalculator.GetCryptString(dvvValue.ToString(), CryptMethodEnum.Sha1);
 
-                        IntegrityDal.UpdateIntegryty(TablaIntegridadEnum.Usuario, dvvString, db, tr);
+                        IntegrityDal.UpdateIntegrity(TablaIntegridadEnum.Usuario, dvvString, db, tr);
 
                         tr.Commit();
 
@@ -730,7 +758,7 @@ namespace Mcba.Dal
             }
         }
 
-        public void AsignarFamilias(int userId, List<int> familias)
+        public void AsignarFamilias(int userId, List<int> familias, Bitacora bitacora)
         {
             using (var db = new DataAccess(connectionString).GetOpenConnection())
             {
@@ -759,7 +787,9 @@ namespace Mcba.Dal
                         var dvvValue = DvValue.GetDvValue(dvvTotal.ToString());
                         var dvvString = HashCalculator.GetCryptString(dvvValue.ToString(), CryptMethodEnum.Sha1);
 
-                        IntegrityDal.UpdateIntegryty(TablaIntegridadEnum.UsuarioFamilia, dvvString, db, tr);
+                        IntegrityDal.UpdateIntegrity(TablaIntegridadEnum.UsuarioFamilia, dvvString, db, tr);
+
+                        new BitacoraDal(connectionString).Registrar(bitacora, db, tr);
 
                         tr.Commit();
                     }
@@ -772,7 +802,7 @@ namespace Mcba.Dal
             }
         }
 
-        public void AsignarPermisos(int userId, Dictionary<int, int> permisos)
+        public void AsignarPermisos(int userId, Dictionary<int, int> permisos, Bitacora bitacora)
         {
             using (var db = new DataAccess(connectionString).GetOpenConnection())
             {
@@ -802,7 +832,9 @@ namespace Mcba.Dal
                         var dvvValue = DvValue.GetDvValue(dvvTotal.ToString());
                         var dvvString = HashCalculator.GetCryptString(dvvValue.ToString(), CryptMethodEnum.Sha1);
 
-                        IntegrityDal.UpdateIntegryty(TablaIntegridadEnum.UsuarioPermiso, dvvString, db, tr);
+                        IntegrityDal.UpdateIntegrity(TablaIntegridadEnum.UsuarioPermiso, dvvString, db, tr);
+
+                        new BitacoraDal(connectionString).Registrar(bitacora, db, tr);
 
                         tr.Commit();
                     }

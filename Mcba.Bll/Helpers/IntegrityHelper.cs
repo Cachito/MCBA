@@ -196,7 +196,7 @@ namespace Mcba.Bll.Helpers
             return ret;
         }
 
-        private static bool Repare(Integrity table, string cnnString)
+        public static bool Repare(Integrity table, string cnnString)
         {
             switch (table.Tabla.ToLower())
             {
@@ -220,27 +220,27 @@ namespace Mcba.Bll.Helpers
             }
         }
 
-        private static bool RepareBitacora(string cnnString)
+        public static bool RepareBitacora(string cnnString)
         {
             return new BitacoraDal(cnnString).RepareIntegrity();
         }
 
-        private static bool RepareUsuarioPermiso(string cnnString)
+        public static bool RepareUsuarioPermiso(string cnnString)
         {
             return new PermisoDal(cnnString).RepareUsuarioPermisoIntegrity();
         }
 
-        private static bool RepareUsuarioFamilia(string cnnString)
+        public static bool RepareUsuarioFamilia(string cnnString)
         {
             return new PermisoDal(cnnString).RepareUsuarioFamiliaIntegrity();
         }
 
-        private static bool RepareFamiliaPermiso(string cnnString)
+        public static bool RepareFamiliaPermiso(string cnnString)
         {
             return new PermisoDal(cnnString).RepareFamiliaPermisoIntegrity();
         }
 
-        private static bool RepareUser(string cnnString)
+        public static bool RepareUser(string cnnString)
         {
             return new UserDal(cnnString).RepareIntegrity();
         }

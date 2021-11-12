@@ -1,6 +1,7 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Data;
+using System.Linq;
 using Dapper;
 using Mcba.Data;
 using Mcba.Entidad;
@@ -44,7 +45,7 @@ namespace Mcba.Dal
             FROM FamiliaPermiso
             ";
 
-        private const string QRY_USUARIO_FAMILIA= @"
+        private const string QRY_USUARIO_FAMILIA = @"
             SELECT
                 IdUsuario
                 , IdFamilia
@@ -75,6 +76,58 @@ namespace Mcba.Dal
                 IdUsuario = @IdUsuario
                 AND IdFamilia = @IdFamilia
             ";
+
+        private const string QRY_PERMISOS_BY_USUARIO_ID = @"
+            SELECT P.Id 
+            FROM Permiso P
+            WHERE P.Id IN(
+                SELECT UP.IdPermiso
+                FROM UsuarioPermiso UP
+                WHERE UP.idUsuario = @IdUsuario
+                )
+            ";
+
+        private const string QRY_PERMISO_OTRO_USUARIO_GESTION = @"
+            SELECT UP.IdPermiso
+            FROM UsuarioPermiso UP
+            WHERE 
+                UP.IdUsuario <> @IdUsuario
+                AND UP.IdPermiso = @IdPermiso
+                AND UP.IdTipoPermiso = @IdTipoPermiso     
+        ";
+
+        private const string QRY_PERMISO_UNA_FAMILIA_GESTION = @"
+            SELECT FP.IdPermiso
+            FROM FamiliaPermiso FP
+            WHERE FP.IdFamilia IN(
+                SELECT UP.IdFamilia
+                FROM UsuarioFamilia UP
+                WHERE UP.IdUsuario = @IdUsuario
+                )
+                AND FP.IdPermiso = @IdPermiso
+                AND FP.IdTipoPermiso = @IdTipoPermiso  
+        ";
+
+        private const string QRY_PERMISO_OTRA_FAMILIA_GESTION = @"
+            SELECT FP.IdPermiso
+            FROM FamiliaPermiso FP
+            WHERE 
+                FP.IdFamilia <> @IdFamilia
+                AND FP.IdPermiso = @IdPermiso
+                AND FP.IdTipoPermiso = @IdTipoPermiso  
+        ";
+
+        private const string QRY_PERMISO_UN_USUARIO_GESTION = @"
+            SELECT UP.IdPermiso
+            FROM UsuarioPermiso UP
+            WHERE UP.IdUsuario IN(
+                SELECT IdUsuario
+                FROM UsuarioFamilia UP
+                WHERE UP.IdFamilia = @IdFamilia
+                )
+                AND UP.IdPermiso = @IdPermiso
+                AND UP.IdTipoPermiso = @IdTipoPermiso  
+        ";
 
         private readonly string connectionString;
 
@@ -143,7 +196,7 @@ namespace Mcba.Dal
                         var dvvValue = DvValue.GetDvValue(dvvTotal.ToString());
                         var dvvString = HashCalculator.GetCryptString(dvvValue.ToString(), CryptMethodEnum.Sha1);
 
-                        IntegrityDal.UpdateIntegryty(TablaIntegridadEnum.UsuarioPermiso, dvvString, db, tr);
+                        IntegrityDal.UpdateIntegrity(TablaIntegridadEnum.UsuarioPermiso, dvvString, db, tr);
 
                         tr.Commit();
 
@@ -179,7 +232,7 @@ namespace Mcba.Dal
                         var dvvValue = DvValue.GetDvValue(dvvTotal.ToString());
                         var dvvString = HashCalculator.GetCryptString(dvvValue.ToString(), CryptMethodEnum.Sha1);
 
-                        IntegrityDal.UpdateIntegryty(TablaIntegridadEnum.FamiliaPermiso, dvvString, db, tr);
+                        IntegrityDal.UpdateIntegrity(TablaIntegridadEnum.FamiliaPermiso, dvvString, db, tr);
 
                         tr.Commit();
 
@@ -215,7 +268,7 @@ namespace Mcba.Dal
                         var dvvValue = DvValue.GetDvValue(dvvTotal.ToString());
                         var dvvString = HashCalculator.GetCryptString(dvvValue.ToString(), CryptMethodEnum.Sha1);
 
-                        IntegrityDal.UpdateIntegryty(TablaIntegridadEnum.UsuarioFamilia, dvvString, db, tr);
+                        IntegrityDal.UpdateIntegrity(TablaIntegridadEnum.UsuarioFamilia, dvvString, db, tr);
 
                         tr.Commit();
 
@@ -227,6 +280,103 @@ namespace Mcba.Dal
                         throw;
                     }
                 }
+            }
+        }
+
+        public bool DejaPermisosHerfanos(int idUsuario)
+        {
+            using (var db = new DataAccess(connectionString).GetOpenConnection())
+            {
+                var permisosUsuario = db.Query<int>(QRY_PERMISOS_BY_USUARIO_ID, new {IdUsuario = idUsuario}).ToList();
+
+                foreach (var pu in permisosUsuario)
+                {
+                    // no hay otro usuario con este permiso como gestión
+                    var puOtroGestion = db.Query<int>(QRY_PERMISO_OTRO_USUARIO_GESTION,
+                            new {IdUsuario = idUsuario, IdPermiso = pu, IdTipoPermiso = (int)TipoPermisoEnum.Gestion})
+                        .ToList();
+                    if (!puOtroGestion.Any())
+                    {
+                        return true;
+                    }
+
+                    // no hay una familia con otros usuarios con este permiso como gestión
+                    //var puOtraFamiliaGestion = db.Query<int>(QRY_PERMISO_OTRA_FAMILIA_GESTION,
+                    //        new {IdPermiso = pu, IdTipoPermiso = (int)TipoPermisoEnum.Gestion, IdUsuario = idUsuario})
+                    //    .ToList();
+                    //if (!puOtraFamiliaGestion.Any())
+                    //{
+                    //    return true;
+                    //}
+                }
+            }
+
+            return false;
+        }
+
+        public bool ValidarRemovePermisoUsuario(int idUsuario, int idPermiso)
+        {
+            using (var db = new DataAccess(connectionString).GetOpenConnection())
+            {
+                // otro usuario con este permiso como gestión
+                var otroGestion = db.Query<int>(QRY_PERMISO_OTRO_USUARIO_GESTION,
+                        new
+                        {
+                            IdUsuario = idUsuario,
+                            IdPermiso = idPermiso,
+                            IdTipoPermiso = (int)TipoPermisoEnum.Gestion
+                        })
+                    .ToList();
+
+                // una familia a la que pertenece este usuario que tiene permiso de gestión
+                var familiaGestion = db.Query<int>(QRY_PERMISO_UNA_FAMILIA_GESTION,
+                        new
+                        {
+                            IdUsuario = idUsuario,
+                            IdPermiso = idPermiso,
+                            IdTipoPermiso = (int)TipoPermisoEnum.Gestion
+                        })
+                    .ToList();
+
+                if (!otroGestion.Any() && !familiaGestion.Any())
+                {
+                    return false;
+                }
+
+                return true;
+            }
+        }
+
+        public bool ValidarRemovePermisoFamilia(int idFamilia, int idPermiso)
+        {
+            using (var db = new DataAccess(connectionString).GetOpenConnection())
+            {
+                // otra familia con este permiso como gestión
+                var otraGestion = db.Query<int>(QRY_PERMISO_OTRA_FAMILIA_GESTION,
+                        new
+                        {
+                            IdFamilia = idFamilia,
+                            IdPermiso = idPermiso,
+                            IdTipoPermiso = (int)TipoPermisoEnum.Gestion
+                        })
+                    .ToList();
+
+                // un usuario que pertenece a esta familia que tiene permiso de gestión
+                var usuarioGestion = db.Query<int>(QRY_PERMISO_UN_USUARIO_GESTION,
+                        new
+                        {
+                            IdFamilia = idFamilia,
+                            IdPermiso = idPermiso,
+                            IdTipoPermiso = (int)TipoPermisoEnum.Gestion
+                        })
+                    .ToList();
+
+                if (!otraGestion.Any() && !usuarioGestion.Any())
+                {
+                    return false;
+                }
+
+                return true;
             }
         }
     }

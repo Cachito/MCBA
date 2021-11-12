@@ -171,7 +171,7 @@ namespace Mcba.Dal
             var dvvValue = DvValue.GetDvValue(dvvTotal.ToString());
             var dvvString = HashCalculator.GetCryptString(dvvValue.ToString(), CryptMethodEnum.Sha1);
 
-            IntegrityDal.UpdateIntegryty(TablaIntegridadEnum.Bitacora, dvvString, db, tr);
+            IntegrityDal.UpdateIntegrity(TablaIntegridadEnum.Bitacora, dvvString, db, tr);
         }
 
         public bool RepareIntegrity()
@@ -194,7 +194,7 @@ namespace Mcba.Dal
                         var dvvValue = DvValue.GetDvValue(dvvTotal.ToString());
                         var dvvString = HashCalculator.GetCryptString(dvvValue.ToString(), CryptMethodEnum.Sha1);
 
-                        IntegrityDal.UpdateIntegryty(TablaIntegridadEnum.Bitacora, dvvString, db, tr);
+                        IntegrityDal.UpdateIntegrity(TablaIntegridadEnum.Bitacora, dvvString, db, tr);
 
                         tr.Commit();
 

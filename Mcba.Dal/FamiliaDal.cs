@@ -5,7 +5,6 @@ using System.Collections.Generic;
 using System.Data;
 using Mcba.Entidad;
 using Mcba.Entidad.Dto;
-using System;
 using Mcba.Entidad.Enums;
 using Mcba.Seguridad;
 
@@ -74,31 +73,6 @@ namespace Mcba.Dal
                     )
             ORDER BY Nombre
             ";
-
-        //private const string QRY_FAMILIAS_ASIGNADAS_BY_USER = @"
-        //    SELECT 
-        //        Id
-        //        , Nombre
-        //        , Activo
-        //    FROM Familia
-        //    WHERE 
-        //        Activo = 1
-        //        AND Id IN(
-        //            SELECT IdFamilia
-        //            FROM UsuarioFamilia
-        //            WHERE IdUsuario = @IdUsuario
-        //            )
-        //    ";
-
-        //private const string QRY_USUARIO_FAMILIAS_BY_USER = @"
-        //    SELECT 
-        //        IdUsuario
-        //        , IdFamilia
-        //        , DV
-        //    FROM UsuarioFamilia
-        //    WHERE 
-        //        IdUsuario = @IdUsuario
-        //    ";
 
         private const string QRY_USUARIO_FAMILIAS = @"
             SELECT 
@@ -208,6 +182,22 @@ namespace Mcba.Dal
                 AND IdPermiso = @IdPermiso
             ";
 
+        private const string QRY_GET_ACTIVA_BY_ID_FAMILIA = @"
+            SELECT Activo
+            FROM Familia
+            WHERE Id = @Id
+        ";
+
+        private const string QRY_DELETE_USUARIOS_FAMILIA = @"
+            DELETE UsuarioFamilia
+            WHERE IdFamilia = @IdFamilia
+        ";
+
+        private const string QRY_DELETE_PERMISOS_FAMILIA = @"
+            DELETE FamiliaPermiso
+            WHERE IdFamilia = @IdFamilia
+        ";
+
         private readonly string connectionString;
 
         public FamiliaDal(string connectionString)
@@ -215,7 +205,7 @@ namespace Mcba.Dal
             this.connectionString = connectionString;
         }
 
-        public bool Save(FamiliaDto familia)
+        public bool Save(FamiliaDto familia, Bitacora bitacora)
         {
             bool ret;
 
@@ -234,6 +224,8 @@ namespace Mcba.Dal
                                     Activo = familia.Activo
                                 }, transaction: tr);
 
+                            new BitacoraDal(connectionString).Registrar(bitacora, db, tr);
+
                             tr.Commit();
 
                             ret = ok > 0;
@@ -248,12 +240,24 @@ namespace Mcba.Dal
             }
             else // update
             {
+                IntegrityDal integrityDal = new IntegrityDal(connectionString);
                 using (var db = new DataAccess(connectionString).GetOpenConnection())
                 {
                     using (var tr = db.BeginTransaction())
                     {
                         try
                         {
+                            var activa = db.ExecuteScalar<bool>(QRY_GET_ACTIVA_BY_ID_FAMILIA,
+                                new {Id = familia.Id}, transaction: tr);
+
+                            if (!familia.Activo && activa != familia.Activo)
+                            {
+                                db.Execute(QRY_DELETE_USUARIOS_FAMILIA, new {IdFamilia = familia.Id}, transaction: tr);
+                                integrityDal.RepareUsuarioFamiliaIntegrity(db, tr);
+                                db.Execute(QRY_DELETE_PERMISOS_FAMILIA, new {IdFamilia = familia.Id}, transaction: tr);
+                                integrityDal.RepareFamiliaPermisoIntegrity(db, tr);
+                            }
+
                             var ok = db.Execute(QRY_UPDATE_FAMILIA,
                                 new
                                 {
@@ -261,6 +265,8 @@ namespace Mcba.Dal
                                     Activo = familia.Activo,
                                     Id = familia.Id
                                 }, tr);
+
+                            new BitacoraDal(connectionString).Registrar(bitacora, db, tr);
 
                             ret = ok > 0;
 
@@ -388,7 +394,7 @@ namespace Mcba.Dal
             }
         }
 
-        public void AsignarUsuarios(int familiaId, List<int> usuarios)
+        public void AsignarUsuarios(int familiaId, List<int> usuarios, Bitacora bitacora)
         {
             using (var db = new DataAccess(connectionString).GetOpenConnection())
             {
@@ -417,7 +423,9 @@ namespace Mcba.Dal
                         var dvvValue = DvValue.GetDvValue(dvvTotal.ToString());
                         var dvvString = HashCalculator.GetCryptString(dvvValue.ToString(), CryptMethodEnum.Sha1);
 
-                        IntegrityDal.UpdateIntegryty(TablaIntegridadEnum.UsuarioFamilia, dvvString, db, tr);
+                        IntegrityDal.UpdateIntegrity(TablaIntegridadEnum.UsuarioFamilia, dvvString, db, tr);
+
+                        new BitacoraDal(connectionString).Registrar(bitacora, db, tr);
 
                         tr.Commit();
                     }
@@ -430,7 +438,7 @@ namespace Mcba.Dal
             }
         }
 
-        public void AsignarPermisos(int familiaId, Dictionary<int, int> permisos)
+        public void AsignarPermisos(int familiaId, Dictionary<int, int> permisos, Bitacora bitacora)
         {
             using (var db = new DataAccess(connectionString).GetOpenConnection())
             {
@@ -460,7 +468,9 @@ namespace Mcba.Dal
                         var dvvValue = DvValue.GetDvValue(dvvTotal.ToString());
                         var dvvString = HashCalculator.GetCryptString(dvvValue.ToString(), CryptMethodEnum.Sha1);
 
-                        IntegrityDal.UpdateIntegryty(TablaIntegridadEnum.FamiliaPermiso, dvvString, db, tr);
+                        IntegrityDal.UpdateIntegrity(TablaIntegridadEnum.FamiliaPermiso, dvvString, db, tr);
+
+                        new BitacoraDal(connectionString).Registrar(bitacora, db, tr);
 
                         tr.Commit();
                     }
