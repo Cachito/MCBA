@@ -14,6 +14,7 @@ namespace Mcba.UI
 {
     public partial class Usuarios : ViewBase
     {
+        private readonly UserLogged userLogged = UserLogged.GetInstance();
         private Dictionary<string, string> captions = new Dictionary<string, string>();
 
         private int IdUsuario { set; get; }
@@ -393,6 +394,32 @@ namespace Mcba.UI
                 captions.TryGetValue("FaltaIdioma", out var caption);
                 errorProvider.SetError(cmbIdiomas, caption);
                 ret = false;
+            }
+
+            // No puedo eliminar el usuario si es el mismo que está logueado
+            if (IdUsuario == userLogged.Id && !chkActivo.Checked && chkActivo.Checked != userLogged.Activo)
+            {
+                captions.TryGetValue("EliminarSelf", out var caption);
+                this.ShowMessage(caption);
+                ret = false;
+            }
+
+            // No puedo eliminar un usuario si deja permisos huérfanos
+            if (IdUsuario != 0 && !chkActivo.Checked)
+            {
+                var userBll = new UserBll();
+                var user = userBll.GetUser(IdUsuario);
+                if (chkActivo.Checked != user.Activo)
+                {
+                    var permisoBll = new PermisoBll();
+                    if (permisoBll.DejaPermisosHerfanos(IdUsuario))
+                    {
+                        captions.TryGetValue("PermisosHuerfanos", out var caption);
+                        this.ShowMessage(string.Format(caption,
+                            $"{user.Nombre} {user.Apellido} (id:{user.Id})"));
+                        ret = false;
+                    }
+                }
             }
 
             if (!ret)

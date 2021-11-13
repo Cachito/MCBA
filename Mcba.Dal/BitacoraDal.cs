@@ -19,8 +19,9 @@ namespace Mcba.Dal
             ";
 
         private const string QRY_GET_BITACORAS = @"
-            SELECT 
-                FechaHora
+            SELECT
+                Id
+                , FechaHora
                 , Patente
                 , Descripcion
                 , Criticidad  
@@ -65,7 +66,13 @@ namespace Mcba.Dal
             ";
 
         private const string QRY_GET_ALL_BITACORAS = @"
-            SELECT FechaHora, Patente, Descripcion, Criticidad, Login, DV
+            SELECT 
+                FechaHora
+                , Patente
+                , Descripcion
+                , Criticidad
+                , Login
+                , DV
             FROM Bitacora 
             ";
         
@@ -116,6 +123,11 @@ namespace Mcba.Dal
             }
         }
 
+        public IEnumerable<Bitacora> GetBitacoras(IDbConnection db, IDbTransaction tr)
+        {
+            return db.Query<Bitacora>(QRY_GET_BITACORAS, transaction: tr);
+        }
+
         public IEnumerable<BitacoraDto> GetBitacoras(int idUsuario, int criticidad)
         {
             using (var db = new DataAccess(connectionString).GetOpenConnection())
@@ -159,7 +171,42 @@ namespace Mcba.Dal
             var dvvValue = DvValue.GetDvValue(dvvTotal.ToString());
             var dvvString = HashCalculator.GetCryptString(dvvValue.ToString(), CryptMethodEnum.Sha1);
 
-            IntegrityDal.UpdateIntegryty(TablaIntegridadEnum.Bitacora, dvvString, db, tr);
+            IntegrityDal.UpdateIntegrity(TablaIntegridadEnum.Bitacora, dvvString, db, tr);
+        }
+
+        public bool RepareIntegrity()
+        {
+            using (var db = new DataAccess(connectionString).GetOpenConnection())
+            {
+                using (var tr = db.BeginTransaction())
+                {
+                    try
+                    {
+                        var bitas = GetBitacoras(db, tr);
+                        long dvvTotal = 0;
+                        foreach (var bita in bitas)
+                        {
+                            var dvhString = DvhCalculator<Bitacora>.GetDvhString(bita, out var dvhValue);
+                            db.Execute(QRY_UPDATE_DV_BY_ID, new { Dv = dvhString, Id = bita.Id }, tr);
+                            dvvTotal += dvhValue;
+                        }
+
+                        var dvvValue = DvValue.GetDvValue(dvvTotal.ToString());
+                        var dvvString = HashCalculator.GetCryptString(dvvValue.ToString(), CryptMethodEnum.Sha1);
+
+                        IntegrityDal.UpdateIntegrity(TablaIntegridadEnum.Bitacora, dvvString, db, tr);
+
+                        tr.Commit();
+
+                        return true;
+                    }
+                    catch
+                    {
+                        tr.Rollback();
+                        throw;
+                    }
+                }
+            }
         }
     }
 }

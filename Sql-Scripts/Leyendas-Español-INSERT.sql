@@ -301,6 +301,11 @@ INSERT INTO Leyendas(IdIdioma, Modulo, Tag, Leyenda)
 INSERT INTO Leyendas(IdIdioma, Modulo, Tag, Leyenda)
     VALUES(1, 'Familias', 'NoEncontrado', 'No se encuentra el registro buscado.{0}Por favor recargue la grilla')	
 
+INSERT INTO Leyendas(IdIdioma, Modulo, Tag, Leyenda)
+    VALUES(1, 'Familias', 'DesactivarWarning', 'Si desactiva la familia se eliminarán las relaciones de usuarios y permisos.{0}¿Está seguro?')	
+
+INSERT INTO Leyendas(IdIdioma, Modulo, Tag, Leyenda)
+	VALUES(1, 'Familias', 'NoSePuedeEliminar', 'No es posible eliminar la familia {0} porque quedan permisos sin asignar.')
 
 -- Bitácora
 INSERT INTO Leyendas(IdIdioma, Modulo, Tag, Leyenda)
@@ -1060,7 +1065,13 @@ INSERT INTO Leyendas(IdIdioma, Modulo, Tag, Leyenda)
     VALUES(1, 'Usuarios', 'Activar', 'Va a volver a activar un usuario inactivo.{0}¿Está Seguro?')
 
 INSERT INTO Leyendas(IdIdioma, Modulo, Tag, Leyenda)
-    VALUES(1, 'Usuarios', 'Desactivar', 'Va a desactivar un usuario.{0}Sus trasacciones no se perderán pero no podrá volver a ingresar al sistema.{0}¿Está Seguro?')
+    VALUES(1, 'Usuarios', 'Desactivar', 'Va a desactivar un usuario.{0}Sus transacciones no se perderán pero no podrá volver a ingresar al sistema. Se eliminarán las relaciones con permisos y familias.{0}¿Está Seguro?')
+
+INSERT INTO Leyendas(IdIdioma, Modulo, Tag, Leyenda)
+    VALUES(1, 'Usuarios', 'EliminarSelf', 'No puede eliminar el usuario con que ingresó al sistema.')
+
+INSERT INTO Leyendas(IdIdioma, Modulo, Tag, Leyenda)
+    VALUES(1, 'Usuarios', 'PermisosHuerfanos', 'No puede eliminar el usuario {0} porque quedan permisos sin asignar o sin gestión.')
 
 -- Unidades
 INSERT INTO Leyendas(IdIdioma, Modulo, Tag, Leyenda)
@@ -1268,6 +1279,15 @@ INSERT INTO Leyendas(IdIdioma, Modulo, Tag, Leyenda)
 INSERT INTO Leyendas(IdIdioma, Modulo, Tag, Leyenda)
 	VALUES(1, 'PermisosUsuarios', 'ErrorAlGuardar', 'No se guardaron los cambios.{0}{1}')
 
+INSERT INTO Leyendas(IdIdioma, Modulo, Tag, Leyenda)
+	VALUES(1, 'PermisosUsuarios', 'NoSePuedeQuitarPermiso', 'No es posible quitar el/los permiso/s {0} porque no lo tiene/n otros usuarios.')
+
+INSERT INTO Leyendas(IdIdioma, Modulo, Tag, Leyenda)
+	VALUES(1, 'PermisosUsuarios', 'ErrorCargaGrillas', 'Error al cargar grillas.{0}{1}')
+
+INSERT INTO Leyendas(IdIdioma, Modulo, Tag, Leyenda)
+	VALUES(1, 'PermisosUsuarios', 'NoSePuedeQuitarFamilia', 'No es posible quitar la/las familia/s {0} porque quedan permisos sin asignar.')
+
 -- PermisosFamilias
 INSERT INTO Leyendas(IdIdioma, Modulo, Tag, Leyenda)
     VALUES(1, 'PermisosFamilias', 'PermisosFamilias', 'Permisos a Familias')
@@ -1316,6 +1336,12 @@ INSERT INTO Leyendas(IdIdioma, Modulo, Tag, Leyenda)
     
 INSERT INTO Leyendas(IdIdioma, Modulo, Tag, Leyenda)
 	VALUES(1, 'PermisosFamilias', 'ErrorAlGuardar', 'No se guardaron los cambios.{0}{1}')
+
+INSERT INTO Leyendas(IdIdioma, Modulo, Tag, Leyenda)
+	VALUES(1, 'PermisosFamilias', 'NoSePuedeQuitarPermiso', 'No es posible quitar el/los permiso/s {0} porque no lo tiene/n otras familias.')
+
+INSERT INTO Leyendas(IdIdioma, Modulo, Tag, Leyenda)
+	VALUES(1, 'PermisosFamilias', 'NoSePuedeQuitarUsuario', 'No es posible quitar el/los usuarios/s {0} porque quedan permisos sin asignar.')
 
 -- Backup
 INSERT INTO Leyendas(IdIdioma, Modulo, Tag, Leyenda)

@@ -298,6 +298,12 @@ INSERT INTO Leyendas(IdIdioma, Modulo, Tag, Leyenda)
 INSERT INTO Leyendas(IdIdioma, Modulo, Tag, Leyenda)
     VALUES(2, 'Familias', 'NoEncontrado', 'La serĉita registro ne troveblas.{0}Bonvolu reŝargi la kradon')	
 
+INSERT INTO Leyendas(IdIdioma, Modulo, Tag, Leyenda)
+    VALUES(2, 'Familias', 'DesactivarWarning', 'Malŝalti la familion forigos uzantrilatojn kaj permesojn.{0}Ĉu vi certas?')	
+
+INSERT INTO Leyendas(IdIdioma, Modulo, Tag, Leyenda)
+	VALUES(2, 'Familias', 'NoSePuedeEliminar', 'Familio {0} ne povas esti forigita ĉar permesoj restas neasignitaj.')
+
 -- Bitácora
 INSERT INTO Leyendas(IdIdioma, Modulo, Tag, Leyenda)
     VALUES(2, 'Bitacoras', 'Bitacora', 'Binacle')
@@ -1056,7 +1062,13 @@ INSERT INTO Leyendas(IdIdioma, Modulo, Tag, Leyenda)
     VALUES(2, 'Usuarios', 'Activar', 'Vi reaktivigos neaktivan uzanton.{0}Ĉu vi certas?')
 
 INSERT INTO Leyendas(IdIdioma, Modulo, Tag, Leyenda)
-    VALUES(2, 'Usuarios', 'Desactivar', 'Vi malaktivigas uzanton.{0}Viaj transakcioj ne perdiĝos, sed vi ne povos ensaluti reen en la sistemo.{0}Ĉu vi certas?')
+    VALUES(2, 'Usuarios', 'Desactivar', 'Vi malaktivigas uzanton. {0} Iliaj transakcioj ne estos perditaj sed ili ne povos reeniri la sistemon. Rilatoj kun permesoj kaj familioj estos forigitaj. {0} Ĉu vi certas?')
+
+INSERT INTO Leyendas(IdIdioma, Modulo, Tag, Leyenda)
+    VALUES(2, 'Usuarios', 'EliminarSelf', 'Vi ne povas forigi la uzanton, kun kiu vi eniris la sistemon.')
+
+INSERT INTO Leyendas(IdIdioma, Modulo, Tag, Leyenda)
+    VALUES(2, 'Usuarios', 'PermisosHuerfanos', 'Vi ne povas forigi la uzanton {0} ĉar estas neasignitaj aŭ neadministrataj permesoj.')
 
 -- Unidades
 INSERT INTO Leyendas(IdIdioma, Modulo, Tag, Leyenda)
@@ -1264,6 +1276,15 @@ INSERT INTO Leyendas(IdIdioma, Modulo, Tag, Leyenda)
 INSERT INTO Leyendas(IdIdioma, Modulo, Tag, Leyenda)
 	VALUES(2, 'PermisosUsuarios', 'ErrorAlGuardar', 'La ŝanĝoj ne estis konservitaj.{0}{1}')
 
+INSERT INTO Leyendas(IdIdioma, Modulo, Tag, Leyenda)
+	VALUES(2, 'PermisosUsuarios', 'NoSePuedeQuitarPermiso', 'Ne eblas forigi la permeson(j)n {0} ĉar aliaj uzantoj ne havas ĝin.')
+
+INSERT INTO Leyendas(IdIdioma, Modulo, Tag, Leyenda)
+	VALUES(2, 'PermisosUsuarios', 'ErrorCargaGrillas', 'Eraro dum ŝarĝo de kradoj. {0} {1}')
+
+INSERT INTO Leyendas(IdIdioma, Modulo, Tag, Leyenda)
+	VALUES(2, 'PermisosUsuarios', 'NoSePuedeQuitarFamilia', 'Ne eblas forigi la familio(j)n {0} ĉar estas neasignitaj permesoj.')
+
 -- PermisosFamilias
 INSERT INTO Leyendas(IdIdioma, Modulo, Tag, Leyenda)
     VALUES(2, 'PermisosFamilias', 'PermisosFamilias', 'Familiaj Permesiloj')
@@ -1312,6 +1333,12 @@ INSERT INTO Leyendas(IdIdioma, Modulo, Tag, Leyenda)
     
 INSERT INTO Leyendas(IdIdioma, Modulo, Tag, Leyenda)
 	VALUES(2, 'PermisosFamilias', 'ErrorAlGuardar', 'Ŝanĝoj ne estis konservitaj.{0}{2}')
+
+INSERT INTO Leyendas(IdIdioma, Modulo, Tag, Leyenda)
+	VALUES(2, 'PermisosFamilias', 'NoSePuedeQuitarPermiso', 'Ne eblas forigi la permeson(j)n {0} ĉar aliaj familioj ne havas ĝin.')
+
+INSERT INTO Leyendas(IdIdioma, Modulo, Tag, Leyenda)
+	VALUES(2, 'PermisosFamilias', 'NoSePuedeQuitarUsuario', 'Ne eblas forigi la uzanto(j)n {0} ĉar estas neasignitaj permesoj.')
 
 -- Backup
 INSERT INTO Leyendas(IdIdioma, Modulo, Tag, Leyenda)

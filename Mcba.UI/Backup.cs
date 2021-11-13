@@ -361,6 +361,7 @@ namespace Mcba.UI
                 })
                 {
                     process.Start();
+                    process.WaitForExit();
                 }
 
                 var backupFile = Path.Combine(txtCarpetaDestino.Text,
@@ -379,7 +380,7 @@ namespace Mcba.UI
                     Application.DoEvents();
 
                     this.ShowMessage(
-                        string.Format(caption ?? McbaSettings.SinTraduccion, backupFile),
+                        string.Format(caption ?? McbaSettings.SinTraduccion, backupFile, Environment.NewLine),
                         McbaSettings.MessageTitle, MessageBoxButtons.OK,
                         MessageBoxIcon.Exclamation);
 

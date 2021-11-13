@@ -392,6 +392,7 @@
             this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.FixedSingle;
             this.Name = "PermisosUsuarios";
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterParent;
+            this.Tag = "PermisosUsuarios";
             this.Text = "Permisos Usuarios";
             this.Load += new System.EventHandler(this.PermisosUsuarios_Load);
             this.tsSeguridad.ResumeLayout(false);

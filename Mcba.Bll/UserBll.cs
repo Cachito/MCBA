@@ -90,14 +90,14 @@ namespace Mcba.Bll
             return new UserDal(McbaSettings.CnnString).GetUserById(id);
         }
 
-        public void UnLogUser(string login, string message)
+        public void LogOffUser(string login, string message)
         {
             var cryptLogin = HashCalculator.Crypt(login, McbaSettings.Salt);
 
             new UserDal(McbaSettings.CnnString).LogOffUser(cryptLogin, message);
         }
 
-        public User LogUser(string login, string message)
+        public User LogOnUser(string login, string message)
         {
             var cryptLogin = HashCalculator.Crypt(login, McbaSettings.Salt);
 
@@ -158,14 +158,14 @@ namespace Mcba.Bll
             return new UserDal(McbaSettings.CnnString).FindPage(searchText, page, McbaSettings.DataPagination);
         }
 
-        public void AsignarFamilias(int userId, List<int> familias)
+        public void AsignarFamilias(int userId, List<int> familias, Bitacora bitacora)
         {
-            new UserDal(McbaSettings.CnnString).AsignarFamilias(userId, familias);
+            new UserDal(McbaSettings.CnnString).AsignarFamilias(userId, familias, bitacora);
         }
 
-        public void AsignarPermisos(int userId, Dictionary<int, int> permisos)
+        public void AsignarPermisos(int userId, Dictionary<int, int> permisos, Bitacora bitacora)
         {
-            new UserDal(McbaSettings.CnnString).AsignarPermisos(userId, permisos);
+            new UserDal(McbaSettings.CnnString).AsignarPermisos(userId, permisos, bitacora);
         }
 
         public IEnumerable<PermisoDto> GetPermisos(int userId)

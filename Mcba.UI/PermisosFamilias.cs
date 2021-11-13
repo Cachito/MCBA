@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 using System.Data;
 using System.Linq;
+using System.Text;
 using System.Windows.Forms;
 using Mcba.Bll;
 using Mcba.Bll.Helpers;
@@ -10,6 +11,7 @@ using Mcba.Entidad.Dto;
 using Mcba.Entidad.Enums;
 using Mcba.Infraestruture;
 using Mcba.Infraestruture.Settings;
+using Mcba.Seguridad;
 
 namespace Mcba.UI
 {
@@ -26,6 +28,7 @@ namespace Mcba.UI
         private const string COL_NOMBRE_PERMISO_ASIGNADO = "NombrePa";
         private const string COL_TIPO_PERMISO_ASIGNADO = "TipoPermiso";
 
+        private readonly UserLogged userLogged = UserLogged.GetInstance();
         private Dictionary<string, string> captions = new Dictionary<string, string>();
         private DataTable tipoPermisoSource;
 
@@ -145,13 +148,44 @@ namespace Mcba.UI
                 return;
             }
 
+            if (!(cmbFamilias.SelectedItem is FamiliaDto familia))
+            {
+                captions.TryGetValue("SinFamilia", out var caption);
+                this.ShowMessage(caption ?? McbaSettings.SinTraduccion,
+                    McbaSettings.MessageTitle, MessageBoxButtons.OK, MessageBoxIcon.Exclamation);
+
+                return;
+            }
+
+            var msj = new StringBuilder();
+            var sep = string.Empty;
+
+            var permisoBll = new PermisoBll();
+
             foreach (DataGridViewRow row in dgvPermisosAsignados.SelectedRows)
             {
-                var id = Int32.Parse(row.Cells[COL_ID_PERMISO_ASIGNADO].Value.ToString());
+                var idPermiso = int.Parse(row.Cells[COL_ID_PERMISO_ASIGNADO].Value.ToString());
                 var nombre = row.Cells[COL_NOMBRE_PERMISO_ASIGNADO].Value.ToString();
 
-                dgvPermisos.Rows.Add(id, nombre);
+                bool ok = permisoBll.ValidarRemovePermisoFamilia(familia.Id, idPermiso);
+
+                if (!ok)
+                {
+                    msj.Append($"{sep}{nombre}");
+                    sep = ", ";
+
+                    continue;
+                }
+
+                dgvPermisos.Rows.Add(idPermiso, nombre);
                 dgvPermisosAsignados.Rows.Remove(row);
+            }
+
+            if (msj.Length > 0)
+            {
+                captions.TryGetValue("NoSePuedeQuitarPermiso", out var caption);
+                this.ShowMessage(string.Format(caption ?? McbaSettings.SinTraduccion, msj),
+                    McbaSettings.MessageTitle, MessageBoxButtons.OK, MessageBoxIcon.Exclamation);
             }
         }
 
@@ -162,13 +196,44 @@ namespace Mcba.UI
                 return;
             }
 
+            if (!(cmbFamilias.SelectedItem is FamiliaDto familia))
+            {
+                captions.TryGetValue("SinFamilia", out var caption);
+                this.ShowMessage(caption ?? McbaSettings.SinTraduccion,
+                    McbaSettings.MessageTitle, MessageBoxButtons.OK, MessageBoxIcon.Exclamation);
+
+                return;
+            }
+
+            var msj = new StringBuilder();
+            var sep = string.Empty;
+
+            var permisoBll = new PermisoBll();
+
             foreach (DataGridViewRow row in dgvUsuariosAsignadas.SelectedRows)
             {
-                var id = Int32.Parse(row.Cells[COL_ID_USUARIO_ASIGNADO].Value.ToString());
+                var idUsuario = Int32.Parse(row.Cells[COL_ID_USUARIO_ASIGNADO].Value.ToString());
                 var nombre = row.Cells[COL_NOMBRE_USUARIO_ASIGNADA].Value.ToString();
 
-                dgvUsuarios.Rows.Add(id, nombre);
+                bool ok = permisoBll.ValidarRemoveUsuarioFamilia(familia.Id, idUsuario);
+
+                if (!ok)
+                {
+                    msj.Append($"{sep}{nombre}");
+                    sep = "; ";
+
+                    continue;
+                }
+
+                dgvUsuarios.Rows.Add(idUsuario, nombre);
                 dgvUsuariosAsignadas.Rows.Remove(row);
+            }
+
+            if (msj.Length > 0)
+            {
+                captions.TryGetValue("NoSePuedeQuitarUsuario", out var caption);
+                this.ShowMessage(string.Format(caption ?? McbaSettings.SinTraduccion, msj),
+                    McbaSettings.MessageTitle, MessageBoxButtons.OK, MessageBoxIcon.Exclamation);
             }
         }
 
@@ -184,7 +249,7 @@ namespace Mcba.UI
                 var id = Int32.Parse(row.Cells[COL_ID_PERMISO].Value.ToString());
                 var nombre = row.Cells[COL_NOMBRE_PERMISO].Value.ToString();
 
-                dgvPermisosAsignados.Rows.Add(id, nombre, (int)TipoPermisoEnum.SinAcceso);
+                dgvPermisosAsignados.Rows.Add(id, nombre, (int)TipoPermisoEnum.Gestion);
                 dgvPermisos.Rows.Remove(row);
             }
         }
@@ -337,12 +402,15 @@ namespace Mcba.UI
 
         private void Save()
         {
-            if (!Valida())
+            if (!(cmbFamilias.SelectedItem is FamiliaDto familia))
             {
                 return;
             }
 
-            var familia = cmbFamilias.SelectedItem as FamiliaDto;
+            if (!Valida())
+            {
+                return;
+            }
 
             var usuarios = new List<int>();
             foreach (DataGridViewRow row in dgvUsuariosAsignadas.Rows)
@@ -359,9 +427,23 @@ namespace Mcba.UI
 
             try
             {
+                var permiso = userLogged.GetPermiso($"tsmi{Name}");
+                var bitacora = new Bitacora()
+                {
+                    Login = userLogged.CryptLogin,
+                    FechaHora = DateTime.Now,
+                    Criticidad = permiso.Criticidad,
+                    Patente = HashCalculator.Encrypt($"{permiso.Nombre} - {permiso.TipoPermiso.ToString()}",
+                        McbaSettings.Key, McbaSettings.Salt)
+                };
+
                 var familiaBll = new FamiliaBll();
-                familiaBll.AsignarUsuarios(familia.Id, usuarios);
-                familiaBll.AsignarPermisos(familia.Id, permisos);
+
+                bitacora.Descripcion = HashCalculator.Encrypt("Asignar usuarios a familia", McbaSettings.Key, McbaSettings.Salt);
+                familiaBll.AsignarUsuarios(familia.Id, usuarios, bitacora);
+
+                bitacora.Descripcion = HashCalculator.Encrypt("Asignar permisos a familia", McbaSettings.Key, McbaSettings.Salt);
+                familiaBll.AsignarPermisos(familia.Id, permisos, bitacora);
 
                 LoadGrids(familia);
             }
@@ -382,13 +464,13 @@ namespace Mcba.UI
                 return false;
             }
 
-            if (dgvPermisosAsignados.Rows.Count == 0 || dgvUsuariosAsignadas.Rows.Count == 0)
-            {
-                captions.TryGetValue("SinSeleccion", out var caption);
-                this.ShowMessage(string.Format(caption ?? McbaSettings.SinTraduccion, Environment.NewLine));
+            //if (dgvPermisosAsignados.Rows.Count == 0)
+            //{
+            //    captions.TryGetValue("SinSeleccion", out var caption);
+            //    this.ShowMessage(string.Format(caption ?? McbaSettings.SinTraduccion, Environment.NewLine));
 
-                return false;
-            }
+            //    return false;
+            //}
 
             foreach (DataGridViewRow row in dgvPermisosAsignados.Rows)
             {

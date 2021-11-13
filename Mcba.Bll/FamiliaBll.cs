@@ -18,11 +18,11 @@ namespace Mcba.Bll
             return new FamiliaDal(McbaSettings.CnnString).GetFamiliaById(id);
         }
 
-        public bool Save(FamiliaDto familia)
+        public bool Save(FamiliaDto familia, Bitacora bitacora)
         {
             var familiaDal = new FamiliaDal(McbaSettings.CnnString);
 
-            return familiaDal.Save(familia);
+            return familiaDal.Save(familia, bitacora);
         }
 
         public IEnumerable<FamiliaDto> FindPage(string searchText, int page)
@@ -39,11 +39,6 @@ namespace Mcba.Bll
         {
             return new FamiliaDal(McbaSettings.CnnString).GetDisponibles(userId);
         }
-
-        //public IEnumerable<FamiliaDto> GetAsignadas(int userId)
-        //{
-        //    return new FamiliaDal(McbaSettings.CnnString).GetAsignadas(userId);
-        //}
 
         public IEnumerable<UsuarioFamilia> GetUsuarioFamilias()
         {
@@ -75,14 +70,14 @@ namespace Mcba.Bll
             return new FamiliaDal(McbaSettings.CnnString).GetByActivo(activo);
         }
 
-        public void AsignarUsuarios(int familiaId, List<int> usuarios)
+        public void AsignarUsuarios(int familiaId, List<int> usuarios, Bitacora bitacora)
         {
-            new FamiliaDal(McbaSettings.CnnString).AsignarUsuarios(familiaId, usuarios);
+            new FamiliaDal(McbaSettings.CnnString).AsignarUsuarios(familiaId, usuarios, bitacora);
         }
 
-        public void AsignarPermisos(int familiaId, Dictionary<int, int> permisos)
+        public void AsignarPermisos(int familiaId, Dictionary<int, int> permisos, Bitacora bitacora)
         {
-            new FamiliaDal(McbaSettings.CnnString).AsignarPermisos(familiaId, permisos);
+            new FamiliaDal(McbaSettings.CnnString).AsignarPermisos(familiaId, permisos, bitacora);
         }
     }
 }

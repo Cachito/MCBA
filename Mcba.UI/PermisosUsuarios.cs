@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 using System.Data;
 using System.Linq;
+using System.Text;
 using System.Windows.Forms;
 using Mcba.Bll;
 using Mcba.Bll.Helpers;
@@ -10,6 +11,7 @@ using Mcba.Entidad.Dto;
 using Mcba.Entidad.Enums;
 using Mcba.Infraestruture;
 using Mcba.Infraestruture.Settings;
+using Mcba.Seguridad;
 
 namespace Mcba.UI
 {
@@ -26,6 +28,7 @@ namespace Mcba.UI
         private const string COL_NOMBRE_PERMISO_ASIGNADO = "NombrePa";
         private const string COL_TIPO_PERMISO_ASIGNADO = "TipoPermiso";
 
+        private readonly UserLogged userLogged = UserLogged.GetInstance();
         private Dictionary<string, string> captions = new Dictionary<string, string>();
         private DataTable tipoPermisoSource;
 
@@ -145,13 +148,44 @@ namespace Mcba.UI
                 return;
             }
 
+            if (!(cmbUsuarios.SelectedItem is UserDto user))
+            {
+                captions.TryGetValue("SinUsuario", out var caption);
+                this.ShowMessage(caption ?? McbaSettings.SinTraduccion,
+                    McbaSettings.MessageTitle, MessageBoxButtons.OK, MessageBoxIcon.Exclamation);
+
+                return;
+            }
+
+            var msj = new StringBuilder();
+            var sep = string.Empty;
+
+            var permisoBll = new PermisoBll();
+
             foreach (DataGridViewRow row in dgvPermisosAsignados.SelectedRows)
             {
-                var id = Int32.Parse(row.Cells[COL_ID_PERMISO_ASIGNADO].Value.ToString());
+                var idPermiso = int.Parse(row.Cells[COL_ID_PERMISO_ASIGNADO].Value.ToString());
                 var nombre = row.Cells[COL_NOMBRE_PERMISO_ASIGNADO].Value.ToString();
 
-                dgvPermisos.Rows.Add(id, nombre);
+                bool ok = permisoBll.ValidarRemovePermisoUsuario(user.Id, idPermiso);
+
+                if (!ok)
+                {
+                    msj.Append($"{sep}{nombre}");
+                    sep = ", ";
+
+                    continue;
+                }
+
+                dgvPermisos.Rows.Add(idPermiso, nombre);
                 dgvPermisosAsignados.Rows.Remove(row);
+            }
+
+            if (msj.Length > 0)
+            {
+                captions.TryGetValue("NoSePuedeQuitarPermiso", out var caption);
+                this.ShowMessage(string.Format(caption ?? McbaSettings.SinTraduccion, msj),
+                    McbaSettings.MessageTitle, MessageBoxButtons.OK, MessageBoxIcon.Exclamation);
             }
         }
 
@@ -162,13 +196,44 @@ namespace Mcba.UI
                 return;
             }
 
+            if (!(cmbUsuarios.SelectedItem is UserDto user))
+            {
+                captions.TryGetValue("SinUsuario", out var caption);
+                this.ShowMessage(caption ?? McbaSettings.SinTraduccion,
+                    McbaSettings.MessageTitle, MessageBoxButtons.OK, MessageBoxIcon.Exclamation);
+
+                return;
+            }
+
+            var msj = new StringBuilder();
+            var sep = string.Empty;
+
+            var permisoBll = new PermisoBll();
+
             foreach (DataGridViewRow row in dgvFamiliasAsignadas.SelectedRows)
             {
-                var id = Int32.Parse(row.Cells[COL_ID_FAMILIA_ASIGNADA].Value.ToString());
+                var idFamilia = Int32.Parse(row.Cells[COL_ID_FAMILIA_ASIGNADA].Value.ToString());
                 var nombre = row.Cells[COL_NOMBRE_FAMILIA_ASIGNADA].Value.ToString();
 
-                dgvFamilias.Rows.Add(id, nombre);
+                bool ok = permisoBll.ValidarRemoveUsuarioFamilia(idFamilia, user.Id);
+
+                if (!ok)
+                {
+                    msj.Append($"{sep}{nombre}");
+                    sep = "; ";
+
+                    continue;
+                }
+
+                dgvFamilias.Rows.Add(idFamilia, nombre);
                 dgvFamiliasAsignadas.Rows.Remove(row);
+            }
+
+            if (msj.Length > 0)
+            {
+                captions.TryGetValue("NoSePuedeQuitarFamilia", out var caption);
+                this.ShowMessage(string.Format(caption ?? McbaSettings.SinTraduccion, msj),
+                    McbaSettings.MessageTitle, MessageBoxButtons.OK, MessageBoxIcon.Exclamation);
             }
         }
 
@@ -184,7 +249,7 @@ namespace Mcba.UI
                 var id = Int32.Parse(row.Cells[COL_ID_PERMISO].Value.ToString());
                 var nombre = row.Cells[COL_NOMBRE_PERMISO].Value.ToString();
 
-                dgvPermisosAsignados.Rows.Add(id, nombre, (int)TipoPermisoEnum.SinAcceso);
+                dgvPermisosAsignados.Rows.Add(id, nombre, (int)TipoPermisoEnum.Gestion);
                 dgvPermisos.Rows.Remove(row);
             }
         }
@@ -225,8 +290,9 @@ namespace Mcba.UI
             }
             catch (Exception ex)
             {
-                this.ShowMessage($"Error al cargar grillas.{Environment.NewLine}{ex.Message}",
-                    McbaSettings.MessageTitle, MessageBoxButtons.OK, MessageBoxIcon.Error);
+                captions.TryGetValue("ErrorAlGuardar", out var caption);
+                this.ShowMessage(string.Format(caption ?? McbaSettings.SinTraduccion, Environment.NewLine, ex.Message), McbaSettings.MessageTitle,
+                    MessageBoxButtons.OK, MessageBoxIcon.Error);
             }
         }
 
@@ -249,7 +315,7 @@ namespace Mcba.UI
 
             foreach (var pd in result)
             {
-                var tipoPermiso = pd.IdTipoPermiso.ToString();
+                //var tipoPermiso = pd.IdTipoPermiso.ToString();
                 dgvPermisosAsignados.Rows.Add(pd.Id, pd.Nombre);
 
                 DataGridViewRow gridRow = dgvPermisosAsignados.Rows[dgvPermisosAsignados.Rows.Count - 1];
@@ -337,12 +403,15 @@ namespace Mcba.UI
 
         private void Save()
         {
-            if (!Valida())
+            if (!(cmbUsuarios.SelectedItem is UserDto user))
             {
                 return;
             }
 
-            var user = cmbUsuarios.SelectedItem as UserDto;
+            if (!Valida())
+            {
+                return;
+            }
 
             var familias = new List<int>();
             foreach (DataGridViewRow row in dgvFamiliasAsignadas.Rows)
@@ -359,9 +428,23 @@ namespace Mcba.UI
 
             try
             {
+                var permiso = userLogged.GetPermiso($"tsmi{Name}");
+                var bitacora = new Bitacora()
+                {
+                    Login = userLogged.CryptLogin,
+                    FechaHora = DateTime.Now,
+                    Criticidad = permiso.Criticidad,
+                    Patente = HashCalculator.Encrypt($"{permiso.Nombre} - {permiso.TipoPermiso.ToString()}",
+                        McbaSettings.Key, McbaSettings.Salt)
+                };
+
                 var userBll = new UserBll();
-                userBll.AsignarFamilias(user.Id, familias);
-                userBll.AsignarPermisos(user.Id, permisos);
+
+                bitacora.Descripcion = HashCalculator.Encrypt("Asignar familias a usuario", McbaSettings.Key, McbaSettings.Salt);
+                userBll.AsignarFamilias(user.Id, familias, bitacora);
+
+                bitacora.Descripcion = HashCalculator.Encrypt("Asignar permisos a usuario", McbaSettings.Key, McbaSettings.Salt);
+                userBll.AsignarPermisos(user.Id, permisos, bitacora);
 
                 LoadGrids(user);
             }
@@ -382,13 +465,13 @@ namespace Mcba.UI
                 return false;
             }
 
-            if (dgvPermisosAsignados.Rows.Count == 0 || dgvFamiliasAsignadas.Rows.Count == 0)
-            {
-                captions.TryGetValue("SinSeleccion", out var caption);
-                this.ShowMessage(string.Format(caption ?? McbaSettings.SinTraduccion, Environment.NewLine));
+            //if (dgvPermisosAsignados.Rows.Count == 0)
+            //{
+            //    captions.TryGetValue("SinSeleccion", out var caption);
+            //    this.ShowMessage(string.Format(caption ?? McbaSettings.SinTraduccion, Environment.NewLine));
 
-                return false;
-            }
+            //    return false;
+            //}
 
             foreach (DataGridViewRow row in dgvPermisosAsignados.Rows)
             {
