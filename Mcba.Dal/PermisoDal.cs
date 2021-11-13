@@ -77,15 +77,22 @@ namespace Mcba.Dal
                 AND IdFamilia = @IdFamilia
             ";
 
-        private const string QRY_PERMISOS_BY_USUARIO_ID = @"
+        private const string QRY_PERMISOS_BY_ID_USUARIO = @"
             SELECT P.Id 
             FROM Permiso P
             WHERE P.Id IN(
                 SELECT UP.IdPermiso
                 FROM UsuarioPermiso UP
-                WHERE UP.idUsuario = @IdUsuario
+                WHERE UP.IdUsuario = @IdUsuario
                 )
             ";
+
+        private const string QRY_PERMISOS_BY_ID_FAMILIA = @"
+            SELECT FP.IdPermiso
+            FROM FamiliaPermiso FP
+            WHERE FP.IdFamilia = @IdFamilia
+            ";
+
 
         private const string QRY_PERMISO_OTRO_USUARIO_GESTION = @"
             SELECT UP.IdPermiso
@@ -115,6 +122,11 @@ namespace Mcba.Dal
                 FP.IdFamilia <> @IdFamilia
                 AND FP.IdPermiso = @IdPermiso
                 AND FP.IdTipoPermiso = @IdTipoPermiso  
+                AND (
+                    SELECT COUNT(IdUsuario)
+                    FROM UsuarioFamilia UF
+                    WHERE UF.IdFamilia = FP.IdFamilia
+                ) > 0
         ";
 
         private const string QRY_PERMISO_UN_USUARIO_GESTION = @"
@@ -122,11 +134,25 @@ namespace Mcba.Dal
             FROM UsuarioPermiso UP
             WHERE UP.IdUsuario IN(
                 SELECT IdUsuario
-                FROM UsuarioFamilia UP
-                WHERE UP.IdFamilia = @IdFamilia
+                FROM UsuarioFamilia UF
+                WHERE UF.IdFamilia = @IdFamilia
                 )
                 AND UP.IdPermiso = @IdPermiso
                 AND UP.IdTipoPermiso = @IdTipoPermiso  
+        ";
+
+        private const string QRY_PERMISO_USUARIO_GESTION = @"
+            SELECT UP.IdPermiso
+            FROM UsuarioPermiso UP
+            WHERE UP.IdPermiso = @IdPermiso
+                AND UP.IdTipoPermiso = @IdTipoPermiso  
+        ";
+
+        private const string QRY_OTROS_USUARIOS_FAMILIA = @"
+            SELECT UF.IdUsuario
+            FROM UsuarioFamilia UF
+            WHERE UF.IdFamilia = @IdFamilia
+                AND UF.IdUsuario <> @IdUsuario
         ";
 
         private readonly string connectionString;
@@ -287,7 +313,7 @@ namespace Mcba.Dal
         {
             using (var db = new DataAccess(connectionString).GetOpenConnection())
             {
-                var permisosUsuario = db.Query<int>(QRY_PERMISOS_BY_USUARIO_ID, new {IdUsuario = idUsuario}).ToList();
+                var permisosUsuario = db.Query<int>(QRY_PERMISOS_BY_ID_USUARIO, new {IdUsuario = idUsuario}).ToList();
 
                 foreach (var pu in permisosUsuario)
                 {
@@ -361,11 +387,10 @@ namespace Mcba.Dal
                         })
                     .ToList();
 
-                // un usuario que pertenece a esta familia que tiene permiso de gestión
-                var usuarioGestion = db.Query<int>(QRY_PERMISO_UN_USUARIO_GESTION,
+                // un usuario tiene permiso de gestión
+                var usuarioGestion = db.Query<int>(QRY_PERMISO_USUARIO_GESTION,
                         new
                         {
-                            IdFamilia = idFamilia,
                             IdPermiso = idPermiso,
                             IdTipoPermiso = (int)TipoPermisoEnum.Gestion
                         })
@@ -378,6 +403,122 @@ namespace Mcba.Dal
 
                 return true;
             }
+        }
+
+        public bool ValidarRemoveUsuarioFamilia(int idFamilia, int idUsuario)
+        {
+            using (var db = new DataAccess(connectionString).GetOpenConnection())
+            {
+                // ¿La familia tiene otros usuarios?
+                var usf = db.Query<int>(QRY_OTROS_USUARIOS_FAMILIA,
+                        new
+                        {
+                            IdFamilia = idFamilia,
+                            IdUsuario = idUsuario
+                        })
+                    .ToList();
+
+                if (usf.Any())
+                {
+                    return true;
+                }
+
+                bool hayAlguienMasConPermiso = true;
+
+                // ¿qué permisos tiene la familia?
+                var pfs = db.Query<int>(QRY_PERMISOS_BY_ID_FAMILIA,
+                        new
+                        {
+                            IdFamilia = idFamilia
+                        })
+                    .ToList();
+
+                foreach (var pf in pfs)
+                {
+                    // otra familia con este permiso como gestión
+                    var pfg = db.Query<int>(QRY_PERMISO_OTRA_FAMILIA_GESTION,
+                            new
+                            {
+                                IdFamilia = idFamilia,
+                                IdPermiso = pf,
+                                IdTipoPermiso = (int)TipoPermisoEnum.Gestion
+                            })
+                        .ToList();
+
+                    // un usuario con este permiso de gestión
+                    var upg = db.Query<int>(QRY_PERMISO_USUARIO_GESTION,
+                            new
+                            {
+                                IdPermiso = pf,
+                                IdTipoPermiso = (int)TipoPermisoEnum.Gestion
+                            })
+                        .ToList();
+
+                    if (!pfg.Any() && !upg.Any())
+                    {
+                        hayAlguienMasConPermiso = false;
+                        break;
+                    }
+                }
+
+                if (!hayAlguienMasConPermiso)
+                {
+                    return false;
+                }
+            }
+
+            return true;
+        }
+
+        public bool ValidarDeleteFamilia(int idFamilia)
+        {
+            using (var db = new DataAccess(connectionString).GetOpenConnection())
+            {
+                bool hayAlguienMasConPermiso = true;
+
+                // ¿qué permisos tiene la familia?
+                var pfs = db.Query<int>(QRY_PERMISOS_BY_ID_FAMILIA,
+                        new
+                        {
+                            IdFamilia = idFamilia
+                        })
+                    .ToList();
+
+                foreach (var pf in pfs)
+                {
+                    // otra familia con este permiso como gestión
+                    var pfg = db.Query<int>(QRY_PERMISO_OTRA_FAMILIA_GESTION,
+                            new
+                            {
+                                IdFamilia = idFamilia,
+                                IdPermiso = pf,
+                                IdTipoPermiso = (int)TipoPermisoEnum.Gestion
+                            })
+                        .ToList();
+
+                    // un usuario con este permiso de gestión
+                    var upg = db.Query<int>(QRY_PERMISO_USUARIO_GESTION,
+                            new
+                            {
+                                IdPermiso = pf,
+                                IdTipoPermiso = (int)TipoPermisoEnum.Gestion
+                            })
+                        .ToList();
+
+                    if (!pfg.Any() && !upg.Any())
+                    {
+                        hayAlguienMasConPermiso = false;
+                        break;
+                    }
+                }
+
+                if (!hayAlguienMasConPermiso)
+                {
+                    return false;
+                }
+            }
+
+            return true;
         }
     }
 }

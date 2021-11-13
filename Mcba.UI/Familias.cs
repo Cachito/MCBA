@@ -254,7 +254,23 @@ namespace Mcba.UI
                 ret = false;
             }
 
-            if(!ret)
+            var familiaBll = new FamiliaBll();
+            var f = familiaBll.GetFamilia(IdFamilia);
+
+            if (IdFamilia != 0 && !chkActivo.Checked && chkActivo.Checked != f.Activo)
+            {
+                var permisoBll = new PermisoBll();
+                var ok = permisoBll.ValidarDeleteFamilia(IdFamilia);
+
+                if (!ok)
+                {
+                    captions.TryGetValue("NoSePuedeEliminar", out var caption);
+                    mess.Append(string.Format(caption ?? McbaSettings.SinTraduccion, f.Nombre));
+                    ret = false;
+                }
+            }
+            
+            if (!ret)
             {
                 this.ShowMessage(mess.ToString(), McbaSettings.MessageTitle, MessageBoxButtons.OK,
                     MessageBoxIcon.Exclamation);

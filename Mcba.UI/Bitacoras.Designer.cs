@@ -189,6 +189,7 @@
             this.dgvBitacora.AllowUserToAddRows = false;
             this.dgvBitacora.AllowUserToDeleteRows = false;
             this.dgvBitacora.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
+            this.dgvBitacora.EditMode = System.Windows.Forms.DataGridViewEditMode.EditProgrammatically;
             this.dgvBitacora.Location = new System.Drawing.Point(12, 111);
             this.dgvBitacora.Name = "dgvBitacora";
             this.dgvBitacora.Size = new System.Drawing.Size(796, 353);

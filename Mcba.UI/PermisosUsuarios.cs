@@ -150,6 +150,10 @@ namespace Mcba.UI
 
             if (!(cmbUsuarios.SelectedItem is UserDto user))
             {
+                captions.TryGetValue("SinUsuario", out var caption);
+                this.ShowMessage(caption ?? McbaSettings.SinTraduccion,
+                    McbaSettings.MessageTitle, MessageBoxButtons.OK, MessageBoxIcon.Exclamation);
+
                 return;
             }
 
@@ -192,13 +196,44 @@ namespace Mcba.UI
                 return;
             }
 
+            if (!(cmbUsuarios.SelectedItem is UserDto user))
+            {
+                captions.TryGetValue("SinUsuario", out var caption);
+                this.ShowMessage(caption ?? McbaSettings.SinTraduccion,
+                    McbaSettings.MessageTitle, MessageBoxButtons.OK, MessageBoxIcon.Exclamation);
+
+                return;
+            }
+
+            var msj = new StringBuilder();
+            var sep = string.Empty;
+
+            var permisoBll = new PermisoBll();
+
             foreach (DataGridViewRow row in dgvFamiliasAsignadas.SelectedRows)
             {
-                var id = Int32.Parse(row.Cells[COL_ID_FAMILIA_ASIGNADA].Value.ToString());
+                var idFamilia = Int32.Parse(row.Cells[COL_ID_FAMILIA_ASIGNADA].Value.ToString());
                 var nombre = row.Cells[COL_NOMBRE_FAMILIA_ASIGNADA].Value.ToString();
 
-                dgvFamilias.Rows.Add(id, nombre);
+                bool ok = permisoBll.ValidarRemoveUsuarioFamilia(idFamilia, user.Id);
+
+                if (!ok)
+                {
+                    msj.Append($"{sep}{nombre}");
+                    sep = "; ";
+
+                    continue;
+                }
+
+                dgvFamilias.Rows.Add(idFamilia, nombre);
                 dgvFamiliasAsignadas.Rows.Remove(row);
+            }
+
+            if (msj.Length > 0)
+            {
+                captions.TryGetValue("NoSePuedeQuitarFamilia", out var caption);
+                this.ShowMessage(string.Format(caption ?? McbaSettings.SinTraduccion, msj),
+                    McbaSettings.MessageTitle, MessageBoxButtons.OK, MessageBoxIcon.Exclamation);
             }
         }
 
@@ -430,13 +465,13 @@ namespace Mcba.UI
                 return false;
             }
 
-            if (dgvPermisosAsignados.Rows.Count == 0)
-            {
-                captions.TryGetValue("SinSeleccion", out var caption);
-                this.ShowMessage(string.Format(caption ?? McbaSettings.SinTraduccion, Environment.NewLine));
+            //if (dgvPermisosAsignados.Rows.Count == 0)
+            //{
+            //    captions.TryGetValue("SinSeleccion", out var caption);
+            //    this.ShowMessage(string.Format(caption ?? McbaSettings.SinTraduccion, Environment.NewLine));
 
-                return false;
-            }
+            //    return false;
+            //}
 
             foreach (DataGridViewRow row in dgvPermisosAsignados.Rows)
             {

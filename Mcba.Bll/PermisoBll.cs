@@ -33,5 +33,15 @@ namespace Mcba.Bll
         {
             return new PermisoDal(McbaSettings.CnnString).ValidarRemovePermisoFamilia(idFamilia, idPermiso);
         }
+
+        public bool ValidarRemoveUsuarioFamilia(int idFamilia, int idUsuario)
+        {
+            return new PermisoDal(McbaSettings.CnnString).ValidarRemoveUsuarioFamilia(idFamilia, idUsuario);
+        }
+
+        public bool ValidarDeleteFamilia(int idFamilia)
+        {
+            return new PermisoDal(McbaSettings.CnnString).ValidarDeleteFamilia(idFamilia);
+        }
     }
 }

@@ -36,7 +36,7 @@
             this.gbPermisos = new System.Windows.Forms.GroupBox();
             this.btnRemoveFamilia = new System.Windows.Forms.Button();
             this.btnAddFamilia = new System.Windows.Forms.Button();
-            this.lblAsignadosP = new System.Windows.Forms.Label();
+            this.lblAsignadasP = new System.Windows.Forms.Label();
             this.lblDisponiblesP = new System.Windows.Forms.Label();
             this.dgvPermisosAsignados = new System.Windows.Forms.DataGridView();
             this.IdPa = new System.Windows.Forms.DataGridViewTextBoxColumn();
@@ -121,7 +121,7 @@
             // 
             this.gbPermisos.Controls.Add(this.btnRemoveFamilia);
             this.gbPermisos.Controls.Add(this.btnAddFamilia);
-            this.gbPermisos.Controls.Add(this.lblAsignadosP);
+            this.gbPermisos.Controls.Add(this.lblAsignadasP);
             this.gbPermisos.Controls.Add(this.lblDisponiblesP);
             this.gbPermisos.Controls.Add(this.dgvPermisosAsignados);
             this.gbPermisos.Controls.Add(this.dgvPermisos);
@@ -153,15 +153,15 @@
             this.btnAddFamilia.UseVisualStyleBackColor = true;
             this.btnAddFamilia.Click += new System.EventHandler(this.btnAddPermiso_Click);
             // 
-            // lblAsignadosP
+            // lblAsignadasP
             // 
-            this.lblAsignadosP.Location = new System.Drawing.Point(392, 16);
-            this.lblAsignadosP.Name = "lblAsignadosP";
-            this.lblAsignadosP.Size = new System.Drawing.Size(315, 23);
-            this.lblAsignadosP.TabIndex = 7;
-            this.lblAsignadosP.Tag = "lblAsignadosP";
-            this.lblAsignadosP.Text = "lblAsignadosP";
-            this.lblAsignadosP.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
+            this.lblAsignadasP.Location = new System.Drawing.Point(392, 16);
+            this.lblAsignadasP.Name = "lblAsignadasP";
+            this.lblAsignadasP.Size = new System.Drawing.Size(315, 23);
+            this.lblAsignadasP.TabIndex = 7;
+            this.lblAsignadasP.Tag = "lblAsignadasP";
+            this.lblAsignadasP.Text = "lblAsignadasP";
+            this.lblAsignadasP.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
             // 
             // lblDisponiblesP
             // 
@@ -378,6 +378,7 @@
             this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.FixedSingle;
             this.Name = "PermisosFamilias";
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterParent;
+            this.Tag = "PermisosFamilias";
             this.Text = "Permisos Familias";
             this.Load += new System.EventHandler(this.PermisosFamilias_Load);
             this.tsSeguridad.ResumeLayout(false);
@@ -401,7 +402,7 @@
         private System.Windows.Forms.Label lblFamilia;
         private System.Windows.Forms.ComboBox cmbFamilias;
         private System.Windows.Forms.GroupBox gbPermisos;
-        private System.Windows.Forms.Label lblAsignadosP;
+        private System.Windows.Forms.Label lblAsignadasP;
         private System.Windows.Forms.Label lblDisponiblesP;
         private System.Windows.Forms.DataGridView dgvPermisosAsignados;
         private System.Windows.Forms.DataGridView dgvPermisos;
