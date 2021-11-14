@@ -145,6 +145,9 @@ INSERT INTO Leyendas(IdIdioma, Modulo, Tag, Leyenda)
     VALUES(1, 'Menu', 'tsmiCambioCns', 'Cambio Cadena de Conexión')
 
 INSERT INTO Leyendas(IdIdioma, Modulo, Tag, Leyenda)
+    VALUES(1, 'Menu', 'tsmiReparar', 'Reparar Integridad')
+
+INSERT INTO Leyendas(IdIdioma, Modulo, Tag, Leyenda)
     VALUES(1, 'Menu', 'tsmiSalir', 'Salir')
 
 INSERT INTO Leyendas(IdIdioma, Modulo, Tag, Leyenda)
@@ -981,6 +984,9 @@ INSERT INTO Leyendas(IdIdioma, Modulo, Tag, Leyenda)
     VALUES(1, 'Usuarios', 'tsbSalir', 'Salir')
 
 INSERT INTO Leyendas(IdIdioma, Modulo, Tag, Leyenda)
+    VALUES(1, 'Usuarios', 'tsbUndo', 'Deshacer')
+
+INSERT INTO Leyendas(IdIdioma, Modulo, Tag, Leyenda)
     VALUES(1, 'Usuarios', 'tsbNew', 'Nuevo')
 	
 INSERT INTO Leyendas(IdIdioma, Modulo, Tag, Leyenda)
@@ -997,6 +1003,12 @@ INSERT INTO Leyendas(IdIdioma, Modulo, Tag, Leyenda)
 
 INSERT INTO Leyendas(IdIdioma, Modulo, Tag, Leyenda)
     VALUES(1, 'Usuarios', 'tsbBuscar', 'Buscar')
+
+INSERT INTO Leyendas(IdIdioma, Modulo, Tag, Leyenda)
+    VALUES(1, 'Usuarios', 'tsbPrevious', 'Página Anterior')
+
+INSERT INTO Leyendas(IdIdioma, Modulo, Tag, Leyenda)
+    VALUES(1, 'Usuarios', 'tsbNext', 'Página Siguiente')
 
 INSERT INTO Leyendas(IdIdioma, Modulo, Tag, Leyenda)
     VALUES(1, 'Usuarios', 'tsbRestorePass', 'Restaurar Contraseña')
@@ -1081,6 +1093,9 @@ INSERT INTO Leyendas(IdIdioma, Modulo, Tag, Leyenda)
 
 INSERT INTO Leyendas(IdIdioma, Modulo, Tag, Leyenda)
     VALUES(1, 'Usuarios', 'PermisosHuerfanos', 'No puede eliminar el usuario {0} porque quedan permisos sin asignar o sin gestión.')
+
+INSERT INTO Leyendas(IdIdioma, Modulo, Tag, Leyenda)
+    VALUES(1, 'Usuarios', 'EmailNoValido', 'Dirección de correo electrónico no válida.')
 
 -- Unidades
 INSERT INTO Leyendas(IdIdioma, Modulo, Tag, Leyenda)
@@ -1433,7 +1448,7 @@ INSERT INTO Leyendas(IdIdioma, Modulo, Tag, Leyenda)
     VALUES(1, 'CambioCns', 'SinCambios', 'No ha hecho ningún cambio.')
 
 INSERT INTO Leyendas(IdIdioma, Modulo, Tag, Leyenda)
-    VALUES(1 , 'CambioCns', 'CambioCnsWarning', 'Si acepta cambiará la base de datos a la que se conecta el sistema.{0}¿Está seguro?')
+    VALUES(1, 'CambioCns', 'CambioCnsWarning', 'Si acepta cambiará la base de datos a la que se conecta el sistema.{0}¿Está seguro?')
 
 INSERT INTO Leyendas(IdIdioma, Modulo, Tag, Leyenda)
     VALUES(1 , 'CambioCns', 'StringNoValida', 'No es posible establecer una conexión con los datos ingresados.')
@@ -1443,3 +1458,28 @@ INSERT INTO Leyendas(IdIdioma, Modulo, Tag, Leyenda)
 
 INSERT INTO Leyendas(IdIdioma, Modulo, Tag, Leyenda)
     VALUES(1, 'CambioCns', 'MenuLblBase', '[Servidor] / [Base de Datos]: {0} / {1}')
+
+-- RepararIntegridad
+INSERT INTO Leyendas(IdIdioma, Modulo, Tag, Leyenda)
+    VALUES(1, 'RepararIntegridad', 'RepararIntegridad', 'Reparar Integridad')
+
+INSERT INTO Leyendas(IdIdioma, Modulo, Tag, Leyenda)
+    VALUES(1, 'RepararIntegridad', 'btnOk', 'Ok')
+
+INSERT INTO Leyendas(IdIdioma, Modulo, Tag, Leyenda)
+    VALUES(1, 'RepararIntegridad', 'tsbSalir', 'Salir')
+
+INSERT INTO Leyendas(IdIdioma, Modulo, Tag, Leyenda)
+    VALUES(1, 'RepararIntegridad', 'lblWarning', 'Presionando el botón que está acá abajo regenerará todos los dígitos verificadores (verticales y horizontales).')
+
+INSERT INTO Leyendas(IdIdioma, Modulo, Tag, Leyenda)
+    VALUES(1, 'RepararIntegridad', 'Warning', '¿Está seguro?')
+
+INSERT INTO Leyendas(IdIdioma, Modulo, Tag, Leyenda)
+    VALUES(1, 'RepararIntegridad', 'Exito', 'Se reparó la integridad con éxito.')
+
+INSERT INTO Leyendas(IdIdioma, Modulo, Tag, Leyenda)
+    VALUES(1, 'RepararIntegridad', 'Error', 'Se intentó reparar la integridad pero se produjo un error.')
+
+INSERT INTO Leyendas(IdIdioma, Modulo, Tag, Leyenda)
+    VALUES(1, 'RepararIntegridad', 'Excepcion', 'Se intentó reparar la integridad pero se generó la excepción {0}')

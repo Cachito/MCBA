@@ -211,6 +211,12 @@
     <Compile Include="PermisosUsuarios.Designer.cs">
       <DependentUpon>PermisosUsuarios.cs</DependentUpon>
     </Compile>
+    <Compile Include="RepararIntegridad.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="RepararIntegridad.Designer.cs">
+      <DependentUpon>RepararIntegridad.cs</DependentUpon>
+    </Compile>
     <Compile Include="ReporteBitacora.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -357,6 +363,9 @@
     <EmbeddedResource Include="PermisosUsuarios.resx">
       <DependentUpon>PermisosUsuarios.cs</DependentUpon>
     </EmbeddedResource>
+    <EmbeddedResource Include="RepararIntegridad.resx">
+      <DependentUpon>RepararIntegridad.cs</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="ReporteBitacora.resx">
       <DependentUpon>ReporteBitacora.cs</DependentUpon>
     </EmbeddedResource>
@@ -422,6 +431,7 @@
     <None Include="Resources\Backup-48.png" />
     <None Include="Resources\Backup.png" />
     <None Include="Resources\Restore-48.png" />
+    <None Include="Resources\RepararIntegridad.png" />
     <Content Include="SqlServerTypes\readme.htm" />
     <Content Include="SqlServerTypes\x64\msvcr120.dll">
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>

@@ -62,6 +62,7 @@ namespace Mcba.UI
             Cursor = Cursors.WaitCursor;
             Application.DoEvents();
 
+            SetPermision();
             SetCaptions();
             LoadFamilias();
             LoadTipoPermiso();
@@ -69,11 +70,6 @@ namespace Mcba.UI
 
             Cursor = Cursors.Default;
             Application.DoEvents();
-        }
-
-        private void LoadTipoPermiso()
-        {
-            tipoPermisoSource = typeof(TipoPermisoEnum).EnumToDataTable();
         }
 
         private void btnAddUsuario_Click(object sender, EventArgs e)
@@ -119,6 +115,17 @@ namespace Mcba.UI
             {
                 comboboxSelectedValue = dgvPermisosAsignados.Rows[e.RowIndex].Cells[e.ColumnIndex].Value.ToString();
             }
+        }
+
+        private void SetPermision()
+        {
+            var acceso = userLogged.GetPermiso($"tsmi{Name}").TipoPermiso;
+            tsbSave.Enabled = (acceso & TipoPermisoEnum.Gestion) != 0;
+        }
+
+        private void LoadTipoPermiso()
+        {
+            tipoPermisoSource = typeof(TipoPermisoEnum).EnumToDataTable();
         }
 
         private void SetGrids()

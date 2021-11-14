@@ -291,6 +291,16 @@ namespace Mcba.UI
             frm.Show();
         }
 
+        private void tsmiReparar_Click(object sender, EventArgs e)
+        {
+            RepararIntegridad frm = new RepararIntegridad()
+            {
+                MdiParent = this
+            };
+
+            frm.Show();
+        }
+
         private void Menu_FormClosing(object sender, FormClosingEventArgs e)
         {
             try

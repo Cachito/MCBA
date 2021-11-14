@@ -12,6 +12,7 @@ using Mcba.Entidad.Enums;
 using Mcba.Infraestruture;
 using Mcba.Infraestruture.Settings;
 using Mcba.Seguridad;
+using StringComparer = Mcba.Infraestruture.StringComparer;
 
 namespace Mcba.UI
 {
@@ -62,6 +63,7 @@ namespace Mcba.UI
             Cursor = Cursors.WaitCursor;
             Application.DoEvents();
 
+            SetPermision();
             SetCaptions();
             LoadUsuarios();
             LoadTipoPermiso();
@@ -69,11 +71,6 @@ namespace Mcba.UI
 
             Cursor = Cursors.Default;
             Application.DoEvents();
-        }
-
-        private void LoadTipoPermiso()
-        {
-            tipoPermisoSource = typeof(TipoPermisoEnum).EnumToDataTable();
         }
 
         private void btnAddFamilia_Click(object sender, EventArgs e)
@@ -119,6 +116,17 @@ namespace Mcba.UI
             {
                 comboboxSelectedValue = dgvPermisosAsignados.Rows[e.RowIndex].Cells[e.ColumnIndex].Value.ToString();
             }
+        }
+
+        private void SetPermision()
+        {
+            var acceso = userLogged.GetPermiso($"tsmi{Name}").TipoPermiso;
+            tsbSave.Enabled = (acceso & TipoPermisoEnum.Gestion) != 0;
+        }
+
+        private void LoadTipoPermiso()
+        {
+            tipoPermisoSource = typeof(TipoPermisoEnum).EnumToDataTable();
         }
 
         private void SetGrids()
@@ -306,7 +314,7 @@ namespace Mcba.UI
 
         private void LoadPermisosAsignados(int userId)
         {
-            IEnumerable<PermisoDto> result = new UserBll().GetPermisos(userId).ToList();
+            IEnumerable<PermisoDto> result = new UserBll().GetPermisos(userId).OrderBy(x => x.Nombre).ToList();
 
             if (!result.Any())
             {
@@ -326,7 +334,7 @@ namespace Mcba.UI
 
         private void LoadFamiliasAsignadas(int userId)
         {
-            IEnumerable<FamiliaDto> result = new UserBll().GetFamilias(userId).ToList();
+            IEnumerable<FamiliaDto> result = new UserBll().GetFamilias(userId).OrderBy(x => x.Nombre).ToList();
 
             if (!result.Any())
             {
@@ -341,7 +349,7 @@ namespace Mcba.UI
 
         private void LoadFamiliasDisponibles(int userId)
         {
-            IEnumerable<FamiliaDto> result = new FamiliaBll().GetDisponibles(userId).ToList();
+            IEnumerable<FamiliaDto> result = new FamiliaBll().GetDisponibles(userId).OrderBy(x => x.Nombre).ToList();
 
             if (!result.Any())
             {
@@ -356,7 +364,7 @@ namespace Mcba.UI
 
         private void LoadPermisosDisponibles(int userId)
         {
-            IEnumerable<PermisoDto> result = new UserBll().GetPermisosDisponibles(userId).ToList();
+            IEnumerable<PermisoDto> result = new UserBll().GetPermisosDisponibles(userId).OrderBy(x => x.Nombre).ToList();
 
             dgvPermisos.AutoGenerateColumns = false;
 
@@ -365,7 +373,7 @@ namespace Mcba.UI
                 return;
             }
             
-            foreach (var pd in result)
+            foreach (var pd in result.OrderBy(x=>x.Nombre, new StringComparer()))
             {
                 dgvPermisos.Rows.Add(pd.Id, pd.Nombre);
             }
