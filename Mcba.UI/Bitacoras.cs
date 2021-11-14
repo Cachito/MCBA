@@ -116,6 +116,11 @@ namespace Mcba.UI
 
             dgvBitacora.DataSource = null;
             dgvBitacora.DataSource = bitacoras;
+
+            foreach (DataGridViewColumn column in dgvBitacora.Columns)
+            {
+                column.SortMode = DataGridViewColumnSortMode.Automatic;
+            }
         }
 
         private void LoadCriticidad()

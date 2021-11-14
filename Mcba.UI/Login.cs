@@ -184,7 +184,7 @@ namespace Mcba.UI
                 return;
             }
 
-            McbaSettings.Language = (LanguageEnum) (int) cmbLanguages.SelectedValue;
+            McbaSettings.Language = (LanguageEnum)(int)cmbLanguages.SelectedValue;
             SetCaptions();
         }
 

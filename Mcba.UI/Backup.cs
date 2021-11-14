@@ -214,7 +214,12 @@ namespace Mcba.UI
                 })
                 {
                     process.Start();
+                    process.WaitForExit();
                 }
+
+                var backupFileRename = $"{filename}.orig.bak";
+                var backupFileRepath = Path.Combine(txtCarpetaDestino.Text, backupFileRename);
+                File.Move(backupFilePath, backupFileRepath);
 
                 captions.TryGetValue("BackupGenerado", out caption);
                 bitacora.Descripcion =

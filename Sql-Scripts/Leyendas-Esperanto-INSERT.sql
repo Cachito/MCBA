@@ -139,10 +139,16 @@ INSERT INTO Leyendas(IdIdioma, Modulo, Tag, Leyenda)
     VALUES(2, 'Menu', 'tsmiCambioContra', 'Ŝanĝo de pasvorto')
 
 INSERT INTO Leyendas(IdIdioma, Modulo, Tag, Leyenda)
+    VALUES(2, 'Menu', 'tsmiCambioCns', 'Konekta Ĉeno Ŝanĝo')
+
+INSERT INTO Leyendas(IdIdioma, Modulo, Tag, Leyenda)
     VALUES(2, 'Menu', 'tsmiSalir', 'Eliri')
 
 INSERT INTO Leyendas(IdIdioma, Modulo, Tag, Leyenda)
     VALUES(2, 'Menu', 'Salir', 'Sistemeliro.')
+
+INSERT INTO Leyendas(IdIdioma, Modulo, Tag, Leyenda)
+    VALUES(2, 'Menu', 'lblBase', '[Servilo] / [Datumbazo]: {0}')
 
 -- Busqueda
 INSERT INTO Leyendas(IdIdioma, Modulo, Tag, Leyenda)
@@ -156,6 +162,9 @@ INSERT INTO Leyendas(IdIdioma, Modulo, Tag, Leyenda)
 
 INSERT INTO Leyendas(IdIdioma, Modulo, Tag, Leyenda)
     VALUES(2, 'Busqueda', 'lblBusqueda', 'Enigu tekston por serĉi en {0}.')
+
+INSERT INTO Leyendas(IdIdioma, Modulo, Tag, Leyenda)
+    VALUES(2, 'Busqueda', 'TextoVacio', 'Vi devas enigi tekston por serĉi.')
 
 -- Condiciones de IVA
 INSERT INTO Leyendas(IdIdioma, Modulo, Tag, Leyenda)
@@ -1397,3 +1406,37 @@ INSERT INTO Leyendas(IdIdioma, Modulo, Tag, Leyenda)
 
 INSERT INTO Leyendas(IdIdioma, Modulo, Tag, Leyenda)
 	VALUES(2, 'Backup', 'RestoreCompleto', 'Restarigo finiĝis de {0}.{1}La sistemo malŝaltos.')
+
+-- CambioCns
+INSERT INTO Leyendas(IdIdioma, Modulo, Tag, Leyenda)
+    VALUES(2, 'CambioCns', 'CambioCns', 'Konekta Ĉeno Ŝanĝo')
+
+INSERT INTO Leyendas(IdIdioma, Modulo, Tag, Leyenda)
+    VALUES(2, 'CambioCns', 'tsbOk', 'Bone')
+
+INSERT INTO Leyendas(IdIdioma, Modulo, Tag, Leyenda)
+    VALUES(2, 'CambioCns', 'tsbSalir', 'Eliri')
+
+INSERT INTO Leyendas(IdIdioma, Modulo, Tag, Leyenda)
+    VALUES(2, 'CambioCns', 'lblServer', 'Servilo')
+
+INSERT INTO Leyendas(IdIdioma, Modulo, Tag, Leyenda)
+    VALUES(2, 'CambioCns', 'lblBase', 'Datumbazo')
+
+INSERT INTO Leyendas(IdIdioma, Modulo, Tag, Leyenda)
+    VALUES(2, 'CambioCns', 'TextoVacio', 'Vi devas plenigi ĉiujn kampojn.')
+
+INSERT INTO Leyendas(IdIdioma, Modulo, Tag, Leyenda)
+    VALUES(2, 'CambioCns', 'SinCambios', 'Vi faris neniujn ŝanĝojn.')
+
+INSERT INTO Leyendas(IdIdioma, Modulo, Tag, Leyenda)
+    VALUES(2, 'CambioCns', 'CambioCnsWarning', 'Akceptante ŝanĝos la datumbazon al kiu la sistemo konektiĝas.{0}Ĉu vi certas?')
+
+INSERT INTO Leyendas(IdIdioma, Modulo, Tag, Leyenda)
+    VALUES(2, 'CambioCns', 'StringNoValida', 'Ne eblas establi konekton kun la enmetitaj datumoj.')
+
+INSERT INTO Leyendas(IdIdioma, Modulo, Tag, Leyenda)
+    VALUES(2, 'CambioCns', 'Error', 'La escepto estis ĵetita: {0}')
+
+INSERT INTO Leyendas(IdIdioma, Modulo, Tag, Leyenda)
+    VALUES(2, 'CambioCns', 'MenuLblBase', '[Servidor] / [Base de Datos]: {0}')

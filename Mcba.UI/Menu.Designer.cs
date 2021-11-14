@@ -55,8 +55,12 @@
             this.tsmiBackup = new System.Windows.Forms.ToolStripMenuItem();
             this.tsmiBitacoras = new System.Windows.Forms.ToolStripMenuItem();
             this.tsmiCambioContra = new System.Windows.Forms.ToolStripMenuItem();
+            this.tsmiCambioCns = new System.Windows.Forms.ToolStripMenuItem();
             this.tsmiSalir = new System.Windows.Forms.ToolStripMenuItem();
+            this.statusStrip1 = new System.Windows.Forms.StatusStrip();
+            this.lblBase = new System.Windows.Forms.ToolStripStatusLabel();
             this.menuStrip.SuspendLayout();
+            this.statusStrip1.SuspendLayout();
             this.SuspendLayout();
             // 
             // menuStrip
@@ -232,7 +236,8 @@
             this.tsmiPermisosFamilias,
             this.tsmiBackup,
             this.tsmiBitacoras,
-            this.tsmiCambioContra});
+            this.tsmiCambioContra,
+            this.tsmiCambioCns});
             this.tsmiGestion.Name = "tsmiGestion";
             this.tsmiGestion.Size = new System.Drawing.Size(59, 20);
             this.tsmiGestion.Tag = "tsmiGestion";
@@ -294,6 +299,14 @@
             this.tsmiCambioContra.Text = "Cambio de Contraseña";
             this.tsmiCambioContra.Click += new System.EventHandler(this.tsmiCambioContra_Click);
             // 
+            // tsmiCambioCns
+            // 
+            this.tsmiCambioCns.Name = "tsmiCambioCns";
+            this.tsmiCambioCns.Size = new System.Drawing.Size(195, 22);
+            this.tsmiCambioCns.Tag = "tsmiCambioCns";
+            this.tsmiCambioCns.Text = "tsmiCambioCns";
+            this.tsmiCambioCns.Click += new System.EventHandler(this.tsmiCambioCns_Click);
+            // 
             // tsmiSalir
             // 
             this.tsmiSalir.Name = "tsmiSalir";
@@ -302,11 +315,32 @@
             this.tsmiSalir.Text = "Salir";
             this.tsmiSalir.Click += new System.EventHandler(this.tsmiSalir_Click);
             // 
+            // statusStrip1
+            // 
+            this.statusStrip1.Items.AddRange(new System.Windows.Forms.ToolStripItem[] {
+            this.lblBase});
+            this.statusStrip1.Location = new System.Drawing.Point(0, 428);
+            this.statusStrip1.Name = "statusStrip1";
+            this.statusStrip1.Size = new System.Drawing.Size(800, 22);
+            this.statusStrip1.TabIndex = 3;
+            this.statusStrip1.Text = "statusStrip1";
+            // 
+            // lblBase
+            // 
+            this.lblBase.AutoSize = false;
+            this.lblBase.DisplayStyle = System.Windows.Forms.ToolStripItemDisplayStyle.Text;
+            this.lblBase.Name = "lblBase";
+            this.lblBase.Size = new System.Drawing.Size(785, 17);
+            this.lblBase.Spring = true;
+            this.lblBase.Tag = "lblBase";
+            this.lblBase.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
+            // 
             // Menu
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(800, 450);
+            this.Controls.Add(this.statusStrip1);
             this.Controls.Add(this.menuStrip);
             this.Icon = ((System.Drawing.Icon)(resources.GetObject("$this.Icon")));
             this.IsMdiContainer = true;
@@ -319,6 +353,8 @@
             this.Load += new System.EventHandler(this.Menu_Load);
             this.menuStrip.ResumeLayout(false);
             this.menuStrip.PerformLayout();
+            this.statusStrip1.ResumeLayout(false);
+            this.statusStrip1.PerformLayout();
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -353,5 +389,8 @@
         private System.Windows.Forms.ToolStripMenuItem tsmiSalir;
         private System.Windows.Forms.ToolStripMenuItem tsmiFamilias;
         private System.Windows.Forms.ToolStripMenuItem tsmiPermisosUsuarios;
+        private System.Windows.Forms.ToolStripMenuItem tsmiCambioCns;
+        private System.Windows.Forms.StatusStrip statusStrip1;
+        private System.Windows.Forms.ToolStripStatusLabel lblBase;
     }
 }

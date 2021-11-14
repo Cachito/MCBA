@@ -1,6 +1,7 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Linq;
+using System.Text.RegularExpressions;
 using System.Windows.Forms;
 using Mcba.Bll;
 using Mcba.Bll.Helpers;
@@ -13,7 +14,7 @@ namespace Mcba.UI
     {
         private readonly UserLogged userLogged = UserLogged.GetInstance();
         private Dictionary<string, string> captions = new Dictionary<string, string>();
-
+        
         public Menu()
         {
             InitializeComponent();
@@ -27,6 +28,11 @@ namespace Mcba.UI
             captions.TryGetValue(Name, out var caption);
             Text = string.Format(caption ?? McbaSettings.SinTraduccion, McbaSettings.MessageTitle, userLogged.Nombre,
                 userLogged.Apellido);
+
+            var baseData = BaseDataHelper.GetString();
+
+            captions.TryGetValue("lblBase", out var baseText);
+            lblBase.Text = string.Format(baseText ?? McbaSettings.SinTraduccion, baseData);
         }
 
         private void SetPermissions()
@@ -273,6 +279,16 @@ namespace Mcba.UI
 
             frm.Show();
             frm.BringToFront();
+        }
+
+        private void tsmiCambioCns_Click(object sender, EventArgs e)
+        {
+            CambioCns frm = new CambioCns
+            {
+                MdiParent = this
+            };
+
+            frm.Show();
         }
 
         private void Menu_FormClosing(object sender, FormClosingEventArgs e)

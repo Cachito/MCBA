@@ -28,3 +28,4 @@ INSERT INTO Permiso(Nombre, Modulo, Criticidad) VALUES('Bitacoras', 'tsmiBitacor
 INSERT INTO Permiso(Nombre, Modulo, Criticidad) VALUES('CambioContra', 'tsmiCambioContra', 3)
 INSERT INTO Permiso(Nombre, Modulo, Criticidad) VALUES('Salir', 'tsmiSalir', 1)
 INSERT INTO Permiso(Nombre, Modulo, Criticidad) VALUES('Familias', 'tsmiFamilias', 1)
+INSERT INTO Permiso(Nombre, Modulo, Criticidad) VALUES('CambioConexion', 'tsmiCambioCns', 1)

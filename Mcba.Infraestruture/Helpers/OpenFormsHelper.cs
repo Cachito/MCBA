@@ -7,17 +7,6 @@ namespace Mcba.Infraestruture.Helpers
     {
         public static bool CheckIfFormIsOpen(string formName)
         {
-
-            //FormCollection fc = Application.OpenForms;
-            //foreach (Form frm in fc)
-            //{
-            //    if (frm.Name == formname)
-            //    {
-            //        return true;
-            //    }
-            //}
-            //return false;
-
             var formOpen = Application.OpenForms.Cast<Form>().Any(form => form.Name == formName);
 
             return formOpen;
