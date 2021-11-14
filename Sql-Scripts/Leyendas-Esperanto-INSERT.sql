@@ -142,6 +142,9 @@ INSERT INTO Leyendas(IdIdioma, Modulo, Tag, Leyenda)
     VALUES(2, 'Menu', 'tsmiCambioCns', 'Konekta Ĉeno Ŝanĝo')
 
 INSERT INTO Leyendas(IdIdioma, Modulo, Tag, Leyenda)
+    VALUES(2, 'Menu', 'tsmiReparar', 'Ripari Integrecon')
+
+INSERT INTO Leyendas(IdIdioma, Modulo, Tag, Leyenda)
     VALUES(2, 'Menu', 'tsmiSalir', 'Eliri')
 
 INSERT INTO Leyendas(IdIdioma, Modulo, Tag, Leyenda)
@@ -978,6 +981,9 @@ INSERT INTO Leyendas(IdIdioma, Modulo, Tag, Leyenda)
     VALUES(2, 'Usuarios', 'tsbSalir', 'Eliri')
 
 INSERT INTO Leyendas(IdIdioma, Modulo, Tag, Leyenda)
+    VALUES(2, 'Usuarios', 'tsbUndo', 'Malfari')
+
+INSERT INTO Leyendas(IdIdioma, Modulo, Tag, Leyenda)
     VALUES(2, 'Usuarios', 'tsbNew', 'Nova')
 	
 INSERT INTO Leyendas(IdIdioma, Modulo, Tag, Leyenda)
@@ -994,6 +1000,12 @@ INSERT INTO Leyendas(IdIdioma, Modulo, Tag, Leyenda)
 
 INSERT INTO Leyendas(IdIdioma, Modulo, Tag, Leyenda)
     VALUES(2, 'Usuarios', 'tsbBuscar', 'Serĉi')
+
+INSERT INTO Leyendas(IdIdioma, Modulo, Tag, Leyenda)
+    VALUES(2, 'Usuarios', 'tsbPrevious', 'Antaŭa paĝo')
+
+INSERT INTO Leyendas(IdIdioma, Modulo, Tag, Leyenda)
+    VALUES(2, 'Usuarios', 'tsbNext', 'Sekva paĝo')
 
 INSERT INTO Leyendas(IdIdioma, Modulo, Tag, Leyenda)
     VALUES(2, 'Usuarios', 'tsbRestorePass', 'Restarigi Pasvorton')
@@ -1078,6 +1090,9 @@ INSERT INTO Leyendas(IdIdioma, Modulo, Tag, Leyenda)
 
 INSERT INTO Leyendas(IdIdioma, Modulo, Tag, Leyenda)
     VALUES(2, 'Usuarios', 'PermisosHuerfanos', 'Vi ne povas forigi la uzanton {0} ĉar estas neasignitaj aŭ neadministrataj permesoj.')
+
+INSERT INTO Leyendas(IdIdioma, Modulo, Tag, Leyenda)
+    VALUES(2, 'Usuarios', 'EmailNoValido', 'Nevalida retadreso.')
 
 -- Unidades
 INSERT INTO Leyendas(IdIdioma, Modulo, Tag, Leyenda)
@@ -1440,3 +1455,28 @@ INSERT INTO Leyendas(IdIdioma, Modulo, Tag, Leyenda)
 
 INSERT INTO Leyendas(IdIdioma, Modulo, Tag, Leyenda)
     VALUES(2, 'CambioCns', 'MenuLblBase', '[Servidor] / [Base de Datos]: {0}')
+
+-- RepararIntegridad
+INSERT INTO Leyendas(IdIdioma, Modulo, Tag, Leyenda)
+    VALUES(2, 'RepararIntegridad', 'RepararIntegridad', 'Ripari Integrecon')
+
+INSERT INTO Leyendas(IdIdioma, Modulo, Tag, Leyenda)
+    VALUES(2, 'RepararIntegridad', 'btnOk', 'Bone')
+
+INSERT INTO Leyendas(IdIdioma, Modulo, Tag, Leyenda)
+    VALUES(2, 'RepararIntegridad', 'tsbSalir', 'Eliri')
+
+INSERT INTO Leyendas(IdIdioma, Modulo, Tag, Leyenda)
+    VALUES(2, 'RepararIntegridad', 'lblWarning', 'Premante la butonon malsupre regeneros ĉiujn kontrolciferojn (vertikala kaj horizontala).')
+
+INSERT INTO Leyendas(IdIdioma, Modulo, Tag, Leyenda)
+    VALUES(2, 'RepararIntegridad', 'Warning', 'Ĉu vi certas?')
+
+INSERT INTO Leyendas(IdIdioma, Modulo, Tag, Leyenda)
+    VALUES(2, 'RepararIntegridad', 'Exito', 'Integreco riparita sukcese.')
+
+INSERT INTO Leyendas(IdIdioma, Modulo, Tag, Leyenda)
+    VALUES(2, 'RepararIntegridad', 'Error', 'Oni provis ripari la integrecon sed eraro okazis.')
+
+INSERT INTO Leyendas(IdIdioma, Modulo, Tag, Leyenda)
+    VALUES(2, 'RepararIntegridad', 'Excepcion', 'Oni provis ripari la integrecon sed la escepto {0} estis ĵetita')

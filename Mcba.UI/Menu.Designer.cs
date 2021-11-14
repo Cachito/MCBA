@@ -59,6 +59,7 @@
             this.tsmiSalir = new System.Windows.Forms.ToolStripMenuItem();
             this.statusStrip1 = new System.Windows.Forms.StatusStrip();
             this.lblBase = new System.Windows.Forms.ToolStripStatusLabel();
+            this.tsmiReparar = new System.Windows.Forms.ToolStripMenuItem();
             this.menuStrip.SuspendLayout();
             this.statusStrip1.SuspendLayout();
             this.SuspendLayout();
@@ -237,7 +238,8 @@
             this.tsmiBackup,
             this.tsmiBitacoras,
             this.tsmiCambioContra,
-            this.tsmiCambioCns});
+            this.tsmiCambioCns,
+            this.tsmiReparar});
             this.tsmiGestion.Name = "tsmiGestion";
             this.tsmiGestion.Size = new System.Drawing.Size(59, 20);
             this.tsmiGestion.Tag = "tsmiGestion";
@@ -335,6 +337,14 @@
             this.lblBase.Tag = "lblBase";
             this.lblBase.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
             // 
+            // tsmiReparar
+            // 
+            this.tsmiReparar.Name = "tsmiReparar";
+            this.tsmiReparar.Size = new System.Drawing.Size(195, 22);
+            this.tsmiReparar.Tag = "tsmiReparar";
+            this.tsmiReparar.Text = "tsmiReparar";
+            this.tsmiReparar.Click += new System.EventHandler(this.tsmiReparar_Click);
+            // 
             // Menu
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
@@ -392,5 +402,6 @@
         private System.Windows.Forms.ToolStripMenuItem tsmiCambioCns;
         private System.Windows.Forms.StatusStrip statusStrip1;
         private System.Windows.Forms.ToolStripStatusLabel lblBase;
+        private System.Windows.Forms.ToolStripMenuItem tsmiReparar;
     }
 }

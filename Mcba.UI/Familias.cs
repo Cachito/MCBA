@@ -87,12 +87,12 @@ namespace Mcba.UI
 
         protected internal override void Save()
         {
-            base.Save();
-
             if (!Valida())
             {
                 return;
             }
+
+            base.Save();
 
             var bitacora = new Bitacora
             {

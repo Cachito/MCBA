@@ -94,12 +94,12 @@ namespace Mcba.UI
 
         protected internal override void Save()
         {
-            base.Save();
-
             if (!Valida())
             {
                 return;
             }
+
+            base.Save();
 
             User user;
             if (IdUsuario == 0)
@@ -379,6 +379,13 @@ namespace Mcba.UI
             if (txtEmail.Text == string.Empty)
             {
                 captions.TryGetValue("FaltaEmail", out var caption);
+                errorProvider.SetError(txtEmail, caption);
+                ret = false;
+            }
+
+            if (!MailHelper.IsValid(txtEmail.Text))
+            {
+                captions.TryGetValue("EmailNoValido", out var caption);
                 errorProvider.SetError(txtEmail, caption);
                 ret = false;
             }

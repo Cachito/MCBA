@@ -253,6 +253,16 @@ namespace Mcba.UI.Properties {
         /// <summary>
         ///   Looks up a localized resource of type System.Drawing.Bitmap.
         /// </summary>
+        internal static System.Drawing.Bitmap RepararIntegridad {
+            get {
+                object obj = ResourceManager.GetObject("RepararIntegridad", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized resource of type System.Drawing.Bitmap.
+        /// </summary>
         internal static System.Drawing.Bitmap Restore_48 {
             get {
                 object obj = ResourceManager.GetObject("Restore_48", resourceCulture);

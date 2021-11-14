@@ -1,6 +1,7 @@
 ﻿using System;
 using System.IO;
 using System.Net.Mail;
+using System.Text.RegularExpressions;
 using Mcba.Infraestruture.Settings;
 
 namespace Mcba.Infraestruture.Helpers
@@ -53,6 +54,14 @@ namespace Mcba.Infraestruture.Helpers
             }
 
             File.WriteAllLines($"{Path.Combine(McbaSettings.TempFolder, fileName)}.txt", lines);
+        }
+
+        public static bool IsValid(string emailAddress)
+        {
+            var regex = new Regex(@"^([\w\.\-]+)@([\w\-]+)((\.(\w){2,3})+)$");
+            var match = regex.Match(emailAddress);
+
+            return match.Success;
         }
     }
 }
