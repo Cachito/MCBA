@@ -45,6 +45,22 @@ namespace Mcba.Bll.Helpers
                 {
                     SetCaptions(captions, toolStrip);
                 }
+
+                if (control is StatusStrip statusStrip)
+                {
+                    SetCaptions(captions, statusStrip);
+                }
+            }
+        }
+
+        private static void SetCaptions(Dictionary<string, string> captions, StatusStrip statusStrip)
+        {
+            foreach (ToolStripItem stripItem in statusStrip.Items)
+            {
+                if (stripItem.Tag != null && captions.TryGetValue(stripItem.Tag.ToString(), out var caption))
+                {
+                    stripItem.Text = caption;
+                }
             }
         }
 

@@ -25,6 +25,7 @@ namespace Mcba.Infraestruture.Settings
         public static string Path7Zip { set; get; }
         public static string Arguments7Zip { set; get; }
         public static string ArgumentsExtract7Zip { set; get; }
+        public static string CnnStringTemplate { set; get; }
 
         public static void MapSettings(InstanceSettings settings)
         {
@@ -49,6 +50,7 @@ namespace Mcba.Infraestruture.Settings
             Path7Zip = settings.Path7Zip;
             Arguments7Zip = settings.Arguments7Zip;
             ArgumentsExtract7Zip = settings.ArgumentsExtract7Zip;
+            CnnStringTemplate = settings.CnnStringTemplate;
         }
     }
 }

@@ -142,10 +142,16 @@ INSERT INTO Leyendas(IdIdioma, Modulo, Tag, Leyenda)
     VALUES(1, 'Menu', 'tsmiCambioContra', 'Cambio de Contraseña')
 
 INSERT INTO Leyendas(IdIdioma, Modulo, Tag, Leyenda)
+    VALUES(1, 'Menu', 'tsmiCambioCns', 'Cambio Cadena de Conexión')
+
+INSERT INTO Leyendas(IdIdioma, Modulo, Tag, Leyenda)
     VALUES(1, 'Menu', 'tsmiSalir', 'Salir')
 
 INSERT INTO Leyendas(IdIdioma, Modulo, Tag, Leyenda)
     VALUES(1, 'Menu', 'Salir', 'Salida del Sistema.')
+
+INSERT INTO Leyendas(IdIdioma, Modulo, Tag, Leyenda)
+    VALUES(1, 'Menu', 'lblBase', '[Servidor] / [Base de Datos]: {0}')
 
 -- Busqueda
 INSERT INTO Leyendas(IdIdioma, Modulo, Tag, Leyenda)
@@ -159,6 +165,9 @@ INSERT INTO Leyendas(IdIdioma, Modulo, Tag, Leyenda)
 
 INSERT INTO Leyendas(IdIdioma, Modulo, Tag, Leyenda)
     VALUES(1, 'Busqueda', 'lblBusqueda', 'Ingrese un texto a buscar en {0}.')
+
+INSERT INTO Leyendas(IdIdioma, Modulo, Tag, Leyenda)
+    VALUES(1, 'Busqueda', 'TextoVacio', 'Debe ingresar un texto a buscar.')
 
 -- Condiciones de IVA
 INSERT INTO Leyendas(IdIdioma, Modulo, Tag, Leyenda)
@@ -1400,3 +1409,37 @@ INSERT INTO Leyendas(IdIdioma, Modulo, Tag, Leyenda)
 
 INSERT INTO Leyendas(IdIdioma, Modulo, Tag, Leyenda)
 	VALUES(1, 'Backup', 'RestoreCompleto', 'Restore completado desde {0}.{1}El sistema se cerrará.')
+
+-- CambioCns
+INSERT INTO Leyendas(IdIdioma, Modulo, Tag, Leyenda)
+    VALUES(1, 'CambioCns', 'CambioCns', 'Cambio Cadena de Conexión')
+
+INSERT INTO Leyendas(IdIdioma, Modulo, Tag, Leyenda)
+    VALUES(1, 'CambioCns', 'tsbOk', 'Ok')
+
+INSERT INTO Leyendas(IdIdioma, Modulo, Tag, Leyenda)
+    VALUES(1, 'CambioCns', 'tsbSalir', 'Salir')
+
+INSERT INTO Leyendas(IdIdioma, Modulo, Tag, Leyenda)
+    VALUES(1, 'CambioCns', 'lblServer', 'Servidor')
+
+INSERT INTO Leyendas(IdIdioma, Modulo, Tag, Leyenda)
+    VALUES(1, 'CambioCns', 'lblBase', 'Base de Datos')
+
+INSERT INTO Leyendas(IdIdioma, Modulo, Tag, Leyenda)
+    VALUES(1, 'CambioCns', 'TextoVacio', 'Debe completar todos los campos.')
+
+INSERT INTO Leyendas(IdIdioma, Modulo, Tag, Leyenda)
+    VALUES(1, 'CambioCns', 'SinCambios', 'No ha hecho ningún cambio.')
+
+INSERT INTO Leyendas(IdIdioma, Modulo, Tag, Leyenda)
+    VALUES(1 , 'CambioCns', 'CambioCnsWarning', 'Si acepta cambiará la base de datos a la que se conecta el sistema.{0}¿Está seguro?')
+
+INSERT INTO Leyendas(IdIdioma, Modulo, Tag, Leyenda)
+    VALUES(1 , 'CambioCns', 'StringNoValida', 'No es posible establecer una conexión con los datos ingresados.')
+
+INSERT INTO Leyendas(IdIdioma, Modulo, Tag, Leyenda)
+    VALUES(1 , 'CambioCns', 'Error', 'Se generó la excepción: {0}')
+
+INSERT INTO Leyendas(IdIdioma, Modulo, Tag, Leyenda)
+    VALUES(1, 'CambioCns', 'MenuLblBase', '[Servidor] / [Base de Datos]: {0} / {1}')

@@ -285,9 +285,10 @@ namespace Mcba.UI
             }
 
             var userBll = new UserBll();
-            var newPassword = userBll.RestorePassword(Login);
+            var newPassword = userBll.RestorePassword(Login, true);
 
-            var userEmail = userBll.GetEmailByLogin(Login);
+            var user = userBll.GetUser(IdUsuario);
+            var userEmail = user.Email;
 
             captions.TryGetValue("RestoreSubject", out var restoreSubject);
             captions.TryGetValue("RestoreBody", out var restoreBody);
@@ -305,7 +306,7 @@ namespace Mcba.UI
             #endregion
 
             MailHelper.SaveToFile(userEmail, restoreSubject,
-                string.Format(restoreBody ?? McbaSettings.SinTraduccion, newPassword, Environment.NewLine));
+                string.Format(restoreBody ?? McbaSettings.SinTraduccion, $"{user.Nombre} {user.Apellido}", newPassword, Environment.NewLine));
 
             captions.TryGetValue("RestoreSaved", out var restoreSaved);
             this.ShowMessage(string.Format(restoreSaved ?? McbaSettings.SinTraduccion, McbaSettings.TempFolder), McbaSettings.MessageTitle);

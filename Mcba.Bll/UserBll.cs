@@ -66,12 +66,12 @@ namespace Mcba.Bll
             userDal.SaveNewPassword(idUsuario, cryptPass);
         }
 
-        public string RestorePassword(string login)
+        public string RestorePassword(string login, bool encriptedLogin = false)
         {
             var randomPass =
                 Membership.GeneratePassword(McbaSettings.RandomPassLength, McbaSettings.NumberOfNonAlphanumericCharacters);
 
-            var cryptLogin = HashCalculator.Crypt(login, McbaSettings.Salt);
+            var cryptLogin = encriptedLogin ? login : HashCalculator.Crypt(login, McbaSettings.Salt);
             var cryptPass = HashCalculator.Crypt(randomPass, McbaSettings.Salt);
 
             var userDal = new UserDal(McbaSettings.CnnString);

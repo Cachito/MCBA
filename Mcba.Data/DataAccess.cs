@@ -21,7 +21,7 @@ namespace Mcba.Data
             var retryPolicy = Policy
                 .Handle<InvalidOperationException>()
                 .Or<SqlException>()
-                .Retry(3);
+                .Retry(1);
 
             retryPolicy.Execute(() => { db.Open(); });
 

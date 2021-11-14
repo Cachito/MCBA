@@ -31,6 +31,7 @@
             this.tsBackup = new System.Windows.Forms.ToolStrip();
             this.tsbSalir = new System.Windows.Forms.ToolStripButton();
             this.tsbProcesar = new System.Windows.Forms.ToolStripButton();
+            this.tsbRestore = new System.Windows.Forms.ToolStripButton();
             this.gbData = new System.Windows.Forms.GroupBox();
             this.lblVolumen = new System.Windows.Forms.Label();
             this.lblAvance = new System.Windows.Forms.Label();
@@ -38,7 +39,6 @@
             this.txtCarpetaDestino = new System.Windows.Forms.TextBox();
             this.lblDestino = new System.Windows.Forms.Label();
             this.dgvBackup = new System.Windows.Forms.DataGridView();
-            this.tsbRestore = new System.Windows.Forms.ToolStripButton();
             this.tsBackup.SuspendLayout();
             this.gbData.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.dgvBackup)).BeginInit();
@@ -77,6 +77,17 @@
             this.tsbProcesar.Tag = "tsbProcesar";
             this.tsbProcesar.Text = "Procesar";
             this.tsbProcesar.Click += new System.EventHandler(this.tsbProcesar_Click);
+            // 
+            // tsbRestore
+            // 
+            this.tsbRestore.DisplayStyle = System.Windows.Forms.ToolStripItemDisplayStyle.Image;
+            this.tsbRestore.Image = global::Mcba.UI.Properties.Resources.Restore_48;
+            this.tsbRestore.ImageTransparentColor = System.Drawing.Color.Magenta;
+            this.tsbRestore.Name = "tsbRestore";
+            this.tsbRestore.Size = new System.Drawing.Size(23, 22);
+            this.tsbRestore.Tag = "tsbRestore";
+            this.tsbRestore.Text = "tsbRestore";
+            this.tsbRestore.Click += new System.EventHandler(this.tsbRestore_Click);
             // 
             // gbData
             // 
@@ -153,17 +164,6 @@
             this.dgvBackup.Size = new System.Drawing.Size(542, 250);
             this.dgvBackup.TabIndex = 2;
             // 
-            // tsbRestore
-            // 
-            this.tsbRestore.DisplayStyle = System.Windows.Forms.ToolStripItemDisplayStyle.Image;
-            this.tsbRestore.Image = global::Mcba.UI.Properties.Resources.Restore_48;
-            this.tsbRestore.ImageTransparentColor = System.Drawing.Color.Magenta;
-            this.tsbRestore.Name = "tsbRestore";
-            this.tsbRestore.Size = new System.Drawing.Size(23, 22);
-            this.tsbRestore.Tag = "tsbRestore";
-            this.tsbRestore.Text = "tsbRestore";
-            this.tsbRestore.Click += new System.EventHandler(this.tsbRestore_Click);
-            // 
             // Backup
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
@@ -174,6 +174,8 @@
             this.Controls.Add(this.gbData);
             this.Controls.Add(this.tsBackup);
             this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.FixedSingle;
+            this.MaximizeBox = false;
+            this.MinimizeBox = false;
             this.Name = "Backup";
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "Backup";

@@ -25,5 +25,6 @@ namespace Mcba.Infraestruture.Settings
         public string Path7Zip { set; get; }
         public string Arguments7Zip { set; get; }
         public string ArgumentsExtract7Zip { set; get; }
+        public string CnnStringTemplate { set; get; }
     }
 }
