@@ -1,38 +1,16 @@
 ﻿using System;
 using System.Text;
-using System.Windows.Forms;
 using Mcba.Bll.Helpers;
-using Mcba.Infraestruture.Helpers;
 
 namespace Mcba.UI
 {
-    public partial class Facturas : Form
+    public partial class Facturas : ViewBase
     {
-        private int idChofer { set; get; }
+        private int idFactura { set; get; }
 
         public Facturas()
         {
             InitializeComponent();
-        }
-
-        private void tsbSalir_Click(object sender, EventArgs e)
-        {
-            Close();
-        }
-
-        private void tsbNew_Click(object sender, EventArgs e)
-        {
-            New();
-        }
-
-        private void tsbEdit_Click(object sender, EventArgs e)
-        {
-            Edit();
-        }
-
-        private void tsbSave_Click(object sender, EventArgs e)
-        {
-            Save();
         }
 
         private void Facturas_Load(object sender, EventArgs e)
@@ -52,20 +30,20 @@ namespace Mcba.UI
 
         }
 
-        private void Edit()
+        protected internal override void Edit()
         {
             ControlsEnabled(true);
         }
 
-        private void New()
+        protected internal override void New()
         {
             ControlsEnabled(true);
             Clean();
         }
 
-        private void Clean()
+        protected internal override void Clean()
         {
-            idChofer = 0;
+            idFactura = 0;
             txtRazónSocial.Text = string.Empty;
         }
 
@@ -74,7 +52,7 @@ namespace Mcba.UI
             txtRazónSocial.Enabled = enable;
         }
 
-        private void Save()
+        protected internal override void Save()
         {
             if (!Valida())
             {

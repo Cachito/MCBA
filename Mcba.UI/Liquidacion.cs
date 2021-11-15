@@ -1,38 +1,16 @@
 ﻿using System;
 using System.Text;
-using System.Windows.Forms;
 using Mcba.Bll.Helpers;
-using Mcba.Infraestruture.Helpers;
 
 namespace Mcba.UI
 {
-    public partial class Liquidacion : Form
+    public partial class Liquidacion : ViewBase
     {
-        private int idChofer { set; get; }
+        private int idLiquidacion { set; get; }
 
         public Liquidacion()
         {
             InitializeComponent();
-        }
-
-        private void tsbSalir_Click(object sender, EventArgs e)
-        {
-            Close();
-        }
-
-        private void tsbNew_Click(object sender, EventArgs e)
-        {
-            New();
-        }
-
-        private void tsbEdit_Click(object sender, EventArgs e)
-        {
-            Edit();
-        }
-
-        private void tsbSave_Click(object sender, EventArgs e)
-        {
-            Save();
         }
 
         private void Liquidacion_Load(object sender, EventArgs e)
@@ -52,27 +30,27 @@ namespace Mcba.UI
 
         }
 
-        private void Edit()
+        protected internal override void Edit()
         {
             ControlsEnabled(true);
         }
 
-        private void New()
+        protected internal override void New()
         {
             ControlsEnabled(true);
             Clean();
         }
 
-        private void Clean()
+        protected internal override void Clean()
         {
-            idChofer = 0;
+            idLiquidacion = 0;
         }
 
         private void ControlsEnabled(bool enable)
         {
         }
 
-        private void Save()
+        protected internal override void Save()
         {
             if (!Valida())
             {

@@ -1457,7 +1457,7 @@ INSERT INTO Leyendas(IdIdioma, Modulo, Tag, Leyenda)
     VALUES(1 , 'CambioCns', 'Error', 'Se generó la excepción: {0}')
 
 INSERT INTO Leyendas(IdIdioma, Modulo, Tag, Leyenda)
-    VALUES(1, 'CambioCns', 'MenuLblBase', '[Servidor] / [Base de Datos]: {0} / {1}')
+    VALUES(1, 'CambioCns', 'MenuLblBase', '[Servidor] / [Base de Datos]: {0}')
 
 -- RepararIntegridad
 INSERT INTO Leyendas(IdIdioma, Modulo, Tag, Leyenda)

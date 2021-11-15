@@ -28,13 +28,6 @@
         /// </summary>
         private void InitializeComponent()
         {
-            this.tsHeader = new System.Windows.Forms.ToolStrip();
-            this.tsbSalir = new System.Windows.Forms.ToolStripButton();
-            this.tsbNew = new System.Windows.Forms.ToolStripButton();
-            this.tsbDelete = new System.Windows.Forms.ToolStripButton();
-            this.tsbSave = new System.Windows.Forms.ToolStripButton();
-            this.tsbPrint = new System.Windows.Forms.ToolStripButton();
-            this.tsbBuscar = new System.Windows.Forms.ToolStripButton();
             this.gbDataCliente = new System.Windows.Forms.GroupBox();
             this.txtTotal = new System.Windows.Forms.TextBox();
             this.lblTotal = new System.Windows.Forms.Label();
@@ -61,91 +54,12 @@
             this.tsbDeleteItem = new System.Windows.Forms.ToolStripButton();
             this.tsbEditItem = new System.Windows.Forms.ToolStripButton();
             this.dgvFacturas = new System.Windows.Forms.DataGridView();
-            this.tsHeader.SuspendLayout();
             this.gbDataCliente.SuspendLayout();
             this.gbData.SuspendLayout();
             this.gbDataItems.SuspendLayout();
             this.tsItems.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.dgvFacturas)).BeginInit();
             this.SuspendLayout();
-            // 
-            // tsHeader
-            // 
-            this.tsHeader.Items.AddRange(new System.Windows.Forms.ToolStripItem[] {
-            this.tsbSalir,
-            this.tsbNew,
-            this.tsbDelete,
-            this.tsbSave,
-            this.tsbPrint,
-            this.tsbBuscar});
-            this.tsHeader.Location = new System.Drawing.Point(0, 0);
-            this.tsHeader.Name = "tsHeader";
-            this.tsHeader.Size = new System.Drawing.Size(750, 25);
-            this.tsHeader.TabIndex = 0;
-            this.tsHeader.Text = "toolStrip1";
-            // 
-            // tsbSalir
-            // 
-            this.tsbSalir.DisplayStyle = System.Windows.Forms.ToolStripItemDisplayStyle.Image;
-            this.tsbSalir.Image = global::Mcba.UI.Properties.Resources.iconOut;
-            this.tsbSalir.ImageTransparentColor = System.Drawing.Color.Magenta;
-            this.tsbSalir.Name = "tsbSalir";
-            this.tsbSalir.Size = new System.Drawing.Size(23, 22);
-            this.tsbSalir.Tag = "tsbSalir";
-            this.tsbSalir.Text = "Salir";
-            this.tsbSalir.Click += new System.EventHandler(this.tsbSalir_Click);
-            // 
-            // tsbNew
-            // 
-            this.tsbNew.DisplayStyle = System.Windows.Forms.ToolStripItemDisplayStyle.Image;
-            this.tsbNew.Image = global::Mcba.UI.Properties.Resources.iconNew;
-            this.tsbNew.ImageTransparentColor = System.Drawing.Color.Magenta;
-            this.tsbNew.Name = "tsbNew";
-            this.tsbNew.Size = new System.Drawing.Size(23, 22);
-            this.tsbNew.Tag = "tsbNew";
-            this.tsbNew.Text = "Nuevo";
-            this.tsbNew.Click += new System.EventHandler(this.tsbNew_Click);
-            // 
-            // tsbDelete
-            // 
-            this.tsbDelete.DisplayStyle = System.Windows.Forms.ToolStripItemDisplayStyle.Image;
-            this.tsbDelete.Image = global::Mcba.UI.Properties.Resources.iconDelete;
-            this.tsbDelete.ImageTransparentColor = System.Drawing.Color.Magenta;
-            this.tsbDelete.Name = "tsbDelete";
-            this.tsbDelete.Size = new System.Drawing.Size(23, 22);
-            this.tsbDelete.Tag = "tsbDelete";
-            this.tsbDelete.Text = "Eliminar";
-            // 
-            // tsbSave
-            // 
-            this.tsbSave.DisplayStyle = System.Windows.Forms.ToolStripItemDisplayStyle.Image;
-            this.tsbSave.Image = global::Mcba.UI.Properties.Resources.iconSave;
-            this.tsbSave.ImageTransparentColor = System.Drawing.Color.Magenta;
-            this.tsbSave.Name = "tsbSave";
-            this.tsbSave.Size = new System.Drawing.Size(23, 22);
-            this.tsbSave.Tag = "tsbSave";
-            this.tsbSave.Text = "Guardar";
-            this.tsbSave.Click += new System.EventHandler(this.tsbSave_Click);
-            // 
-            // tsbPrint
-            // 
-            this.tsbPrint.DisplayStyle = System.Windows.Forms.ToolStripItemDisplayStyle.Image;
-            this.tsbPrint.Image = global::Mcba.UI.Properties.Resources.printerBlack;
-            this.tsbPrint.ImageTransparentColor = System.Drawing.Color.Magenta;
-            this.tsbPrint.Name = "tsbPrint";
-            this.tsbPrint.Size = new System.Drawing.Size(23, 22);
-            this.tsbPrint.Tag = "tsbPrint";
-            this.tsbPrint.Text = "Imprimir";
-            // 
-            // tsbBuscar
-            // 
-            this.tsbBuscar.DisplayStyle = System.Windows.Forms.ToolStripItemDisplayStyle.Image;
-            this.tsbBuscar.Image = global::Mcba.UI.Properties.Resources.IconBuscar;
-            this.tsbBuscar.ImageTransparentColor = System.Drawing.Color.Magenta;
-            this.tsbBuscar.Name = "tsbBuscar";
-            this.tsbBuscar.Size = new System.Drawing.Size(23, 22);
-            this.tsbBuscar.Tag = "tsbBuscar";
-            this.tsbBuscar.Text = "Buscar";
             // 
             // gbDataCliente
             // 
@@ -418,19 +332,17 @@
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(750, 450);
-            this.ControlBox = false;
             this.Controls.Add(this.gbDataItems);
             this.Controls.Add(this.gbData);
             this.Controls.Add(this.gbDataCliente);
-            this.Controls.Add(this.tsHeader);
-            this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.FixedSingle;
             this.Name = "Facturas";
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterParent;
             this.Tag = "Facturas";
             this.Text = "Facturas";
             this.Load += new System.EventHandler(this.Facturas_Load);
-            this.tsHeader.ResumeLayout(false);
-            this.tsHeader.PerformLayout();
+            this.Controls.SetChildIndex(this.gbDataCliente, 0);
+            this.Controls.SetChildIndex(this.gbData, 0);
+            this.Controls.SetChildIndex(this.gbDataItems, 0);
             this.gbDataCliente.ResumeLayout(false);
             this.gbDataCliente.PerformLayout();
             this.gbData.ResumeLayout(false);
@@ -446,15 +358,9 @@
         }
 
         #endregion
-
-        private System.Windows.Forms.ToolStrip tsHeader;
         private System.Windows.Forms.GroupBox gbDataCliente;
         private System.Windows.Forms.TextBox txtRazónSocial;
         private System.Windows.Forms.Label lblRazonSocial;
-        private System.Windows.Forms.ToolStripButton tsbSalir;
-        private System.Windows.Forms.ToolStripButton tsbNew;
-        private System.Windows.Forms.ToolStripButton tsbSave;
-        private System.Windows.Forms.ToolStripButton tsbDelete;
         private System.Windows.Forms.TextBox txtCuit;
         private System.Windows.Forms.Label lblCuit;
         private System.Windows.Forms.TextBox txtDomicilio;
@@ -478,7 +384,5 @@
         private System.Windows.Forms.ToolStripButton tsbEditItem;
         private System.Windows.Forms.TextBox textBox2;
         private System.Windows.Forms.Label lblFecha;
-        private System.Windows.Forms.ToolStripButton tsbBuscar;
-        private System.Windows.Forms.ToolStripButton tsbPrint;
     }
 }

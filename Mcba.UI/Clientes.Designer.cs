@@ -28,12 +28,6 @@
         /// </summary>
         private void InitializeComponent()
         {
-            this.tsClientes = new System.Windows.Forms.ToolStrip();
-            this.tsbSalir = new System.Windows.Forms.ToolStripButton();
-            this.tsbNew = new System.Windows.Forms.ToolStripButton();
-            this.tsbDelete = new System.Windows.Forms.ToolStripButton();
-            this.tsbEdit = new System.Windows.Forms.ToolStripButton();
-            this.tsbSave = new System.Windows.Forms.ToolStripButton();
             this.gbData = new System.Windows.Forms.GroupBox();
             this.cmbProvincia = new System.Windows.Forms.ComboBox();
             this.lblProvincia = new System.Windows.Forms.Label();
@@ -58,81 +52,12 @@
             this.tsbDeleteTelefono = new System.Windows.Forms.ToolStripButton();
             this.tsbEditTelefono = new System.Windows.Forms.ToolStripButton();
             this.dataGridView1 = new System.Windows.Forms.DataGridView();
-            this.tsClientes.SuspendLayout();
             this.gbData.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.dgvClientes)).BeginInit();
             this.gbTelefonos.SuspendLayout();
             this.tsComisiones.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.dataGridView1)).BeginInit();
             this.SuspendLayout();
-            // 
-            // tsClientes
-            // 
-            this.tsClientes.Items.AddRange(new System.Windows.Forms.ToolStripItem[] {
-            this.tsbSalir,
-            this.tsbNew,
-            this.tsbDelete,
-            this.tsbEdit,
-            this.tsbSave});
-            this.tsClientes.Location = new System.Drawing.Point(0, 0);
-            this.tsClientes.Name = "tsClientes";
-            this.tsClientes.Size = new System.Drawing.Size(810, 25);
-            this.tsClientes.TabIndex = 0;
-            this.tsClientes.Text = "toolStrip1";
-            // 
-            // tsbSalir
-            // 
-            this.tsbSalir.DisplayStyle = System.Windows.Forms.ToolStripItemDisplayStyle.Image;
-            this.tsbSalir.Image = global::Mcba.UI.Properties.Resources.iconOut;
-            this.tsbSalir.ImageTransparentColor = System.Drawing.Color.Magenta;
-            this.tsbSalir.Name = "tsbSalir";
-            this.tsbSalir.Size = new System.Drawing.Size(23, 22);
-            this.tsbSalir.Tag = "tsbSalir";
-            this.tsbSalir.Text = "Salir";
-            this.tsbSalir.Click += new System.EventHandler(this.tsbSalir_Click);
-            // 
-            // tsbNew
-            // 
-            this.tsbNew.DisplayStyle = System.Windows.Forms.ToolStripItemDisplayStyle.Image;
-            this.tsbNew.Image = global::Mcba.UI.Properties.Resources.iconNew;
-            this.tsbNew.ImageTransparentColor = System.Drawing.Color.Magenta;
-            this.tsbNew.Name = "tsbNew";
-            this.tsbNew.Size = new System.Drawing.Size(23, 22);
-            this.tsbNew.Tag = "tsbNew";
-            this.tsbNew.Text = "Nuevo";
-            this.tsbNew.Click += new System.EventHandler(this.tsbNew_Click);
-            // 
-            // tsbDelete
-            // 
-            this.tsbDelete.DisplayStyle = System.Windows.Forms.ToolStripItemDisplayStyle.Image;
-            this.tsbDelete.Image = global::Mcba.UI.Properties.Resources.iconDelete;
-            this.tsbDelete.ImageTransparentColor = System.Drawing.Color.Magenta;
-            this.tsbDelete.Name = "tsbDelete";
-            this.tsbDelete.Size = new System.Drawing.Size(23, 22);
-            this.tsbDelete.Tag = "tsbDelete";
-            this.tsbDelete.Text = "Eliminar";
-            // 
-            // tsbEdit
-            // 
-            this.tsbEdit.DisplayStyle = System.Windows.Forms.ToolStripItemDisplayStyle.Image;
-            this.tsbEdit.Image = global::Mcba.UI.Properties.Resources.iconEditar;
-            this.tsbEdit.ImageTransparentColor = System.Drawing.Color.Magenta;
-            this.tsbEdit.Name = "tsbEdit";
-            this.tsbEdit.Size = new System.Drawing.Size(23, 22);
-            this.tsbEdit.Tag = "tsbEdit";
-            this.tsbEdit.Text = "Editar";
-            this.tsbEdit.Click += new System.EventHandler(this.tsbEdit_Click);
-            // 
-            // tsbSave
-            // 
-            this.tsbSave.DisplayStyle = System.Windows.Forms.ToolStripItemDisplayStyle.Image;
-            this.tsbSave.Image = global::Mcba.UI.Properties.Resources.iconSave;
-            this.tsbSave.ImageTransparentColor = System.Drawing.Color.Magenta;
-            this.tsbSave.Name = "tsbSave";
-            this.tsbSave.Size = new System.Drawing.Size(23, 22);
-            this.tsbSave.Tag = "tsbSave";
-            this.tsbSave.Text = "Guardar";
-            this.tsbSave.Click += new System.EventHandler(this.tsbSave_Click);
             // 
             // gbData
             // 
@@ -378,19 +303,17 @@
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(810, 450);
-            this.ControlBox = false;
             this.Controls.Add(this.gbTelefonos);
             this.Controls.Add(this.dgvClientes);
             this.Controls.Add(this.gbData);
-            this.Controls.Add(this.tsClientes);
-            this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.FixedSingle;
             this.Name = "Clientes";
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterParent;
             this.Tag = "Clientes";
             this.Text = "Clientes";
             this.Load += new System.EventHandler(this.Clientes_Load);
-            this.tsClientes.ResumeLayout(false);
-            this.tsClientes.PerformLayout();
+            this.Controls.SetChildIndex(this.gbData, 0);
+            this.Controls.SetChildIndex(this.dgvClientes, 0);
+            this.Controls.SetChildIndex(this.gbTelefonos, 0);
             this.gbData.ResumeLayout(false);
             this.gbData.PerformLayout();
             ((System.ComponentModel.ISupportInitialize)(this.dgvClientes)).EndInit();
@@ -405,8 +328,6 @@
         }
 
         #endregion
-
-        private System.Windows.Forms.ToolStrip tsClientes;
         private System.Windows.Forms.GroupBox gbData;
         private System.Windows.Forms.DataGridView dgvClientes;
         private System.Windows.Forms.TextBox txtId;
@@ -414,11 +335,6 @@
         private System.Windows.Forms.Label lblApellido;
         private System.Windows.Forms.TextBox txtNombre;
         private System.Windows.Forms.Label lblNombre;
-        private System.Windows.Forms.ToolStripButton tsbSalir;
-        private System.Windows.Forms.ToolStripButton tsbNew;
-        private System.Windows.Forms.ToolStripButton tsbSave;
-        private System.Windows.Forms.ToolStripButton tsbEdit;
-        private System.Windows.Forms.ToolStripButton tsbDelete;
         private System.Windows.Forms.TextBox txtApellido;
         private System.Windows.Forms.ComboBox cmbPosicion;
         private System.Windows.Forms.TextBox txtLocalidad;
