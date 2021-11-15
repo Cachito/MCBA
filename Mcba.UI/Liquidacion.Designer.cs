@@ -28,14 +28,6 @@
         /// </summary>
         private void InitializeComponent()
         {
-            this.tsSock = new System.Windows.Forms.ToolStrip();
-            this.tsbSalir = new System.Windows.Forms.ToolStripButton();
-            this.tsbNew = new System.Windows.Forms.ToolStripButton();
-            this.tsbDelete = new System.Windows.Forms.ToolStripButton();
-            this.tsbEdit = new System.Windows.Forms.ToolStripButton();
-            this.tsbSave = new System.Windows.Forms.ToolStripButton();
-            this.tsbPrint = new System.Windows.Forms.ToolStripButton();
-            this.tsbBuscar = new System.Windows.Forms.ToolStripButton();
             this.gbData = new System.Windows.Forms.GroupBox();
             this.gbPrecios = new System.Windows.Forms.GroupBox();
             this.rbPrecioPlaza = new System.Windows.Forms.RadioButton();
@@ -68,102 +60,11 @@
             this.lblProducto = new System.Windows.Forms.Label();
             this.lblRemitente = new System.Windows.Forms.Label();
             this.dgvLiquidacion = new System.Windows.Forms.DataGridView();
-            this.tsSock.SuspendLayout();
             this.gbData.SuspendLayout();
             this.gbPrecios.SuspendLayout();
             this.gbComisiones.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.dgvLiquidacion)).BeginInit();
             this.SuspendLayout();
-            // 
-            // tsSock
-            // 
-            this.tsSock.Items.AddRange(new System.Windows.Forms.ToolStripItem[] {
-            this.tsbSalir,
-            this.tsbNew,
-            this.tsbDelete,
-            this.tsbEdit,
-            this.tsbSave,
-            this.tsbPrint,
-            this.tsbBuscar});
-            this.tsSock.Location = new System.Drawing.Point(0, 0);
-            this.tsSock.Name = "tsSock";
-            this.tsSock.Size = new System.Drawing.Size(729, 25);
-            this.tsSock.TabIndex = 0;
-            this.tsSock.Text = "toolStrip1";
-            // 
-            // tsbSalir
-            // 
-            this.tsbSalir.DisplayStyle = System.Windows.Forms.ToolStripItemDisplayStyle.Image;
-            this.tsbSalir.Image = global::Mcba.UI.Properties.Resources.iconOut;
-            this.tsbSalir.ImageTransparentColor = System.Drawing.Color.Magenta;
-            this.tsbSalir.Name = "tsbSalir";
-            this.tsbSalir.Size = new System.Drawing.Size(23, 22);
-            this.tsbSalir.Tag = "tsbSalir";
-            this.tsbSalir.Text = "Salir";
-            this.tsbSalir.Click += new System.EventHandler(this.tsbSalir_Click);
-            // 
-            // tsbNew
-            // 
-            this.tsbNew.DisplayStyle = System.Windows.Forms.ToolStripItemDisplayStyle.Image;
-            this.tsbNew.Image = global::Mcba.UI.Properties.Resources.iconNew;
-            this.tsbNew.ImageTransparentColor = System.Drawing.Color.Magenta;
-            this.tsbNew.Name = "tsbNew";
-            this.tsbNew.Size = new System.Drawing.Size(23, 22);
-            this.tsbNew.Tag = "tsbNew";
-            this.tsbNew.Text = "Nuevo";
-            this.tsbNew.Click += new System.EventHandler(this.tsbNew_Click);
-            // 
-            // tsbDelete
-            // 
-            this.tsbDelete.DisplayStyle = System.Windows.Forms.ToolStripItemDisplayStyle.Image;
-            this.tsbDelete.Image = global::Mcba.UI.Properties.Resources.iconDelete;
-            this.tsbDelete.ImageTransparentColor = System.Drawing.Color.Magenta;
-            this.tsbDelete.Name = "tsbDelete";
-            this.tsbDelete.Size = new System.Drawing.Size(23, 22);
-            this.tsbDelete.Tag = "tsbDelete";
-            this.tsbDelete.Text = "Eliminar";
-            // 
-            // tsbEdit
-            // 
-            this.tsbEdit.DisplayStyle = System.Windows.Forms.ToolStripItemDisplayStyle.Image;
-            this.tsbEdit.Image = global::Mcba.UI.Properties.Resources.iconEditar;
-            this.tsbEdit.ImageTransparentColor = System.Drawing.Color.Magenta;
-            this.tsbEdit.Name = "tsbEdit";
-            this.tsbEdit.Size = new System.Drawing.Size(23, 22);
-            this.tsbEdit.Tag = "tsbEdit";
-            this.tsbEdit.Text = "Editar";
-            this.tsbEdit.Click += new System.EventHandler(this.tsbEdit_Click);
-            // 
-            // tsbSave
-            // 
-            this.tsbSave.DisplayStyle = System.Windows.Forms.ToolStripItemDisplayStyle.Image;
-            this.tsbSave.Image = global::Mcba.UI.Properties.Resources.iconSave;
-            this.tsbSave.ImageTransparentColor = System.Drawing.Color.Magenta;
-            this.tsbSave.Name = "tsbSave";
-            this.tsbSave.Size = new System.Drawing.Size(23, 22);
-            this.tsbSave.Tag = "tsbSave";
-            this.tsbSave.Text = "Guardar";
-            this.tsbSave.Click += new System.EventHandler(this.tsbSave_Click);
-            // 
-            // tsbPrint
-            // 
-            this.tsbPrint.DisplayStyle = System.Windows.Forms.ToolStripItemDisplayStyle.Image;
-            this.tsbPrint.Image = global::Mcba.UI.Properties.Resources.printerBlack;
-            this.tsbPrint.ImageTransparentColor = System.Drawing.Color.Magenta;
-            this.tsbPrint.Name = "tsbPrint";
-            this.tsbPrint.Size = new System.Drawing.Size(23, 22);
-            this.tsbPrint.Tag = "tsbPrint";
-            this.tsbPrint.Text = "Imprimir";
-            // 
-            // tsbBuscar
-            // 
-            this.tsbBuscar.DisplayStyle = System.Windows.Forms.ToolStripItemDisplayStyle.Image;
-            this.tsbBuscar.Image = global::Mcba.UI.Properties.Resources.IconBuscar;
-            this.tsbBuscar.ImageTransparentColor = System.Drawing.Color.Magenta;
-            this.tsbBuscar.Name = "tsbBuscar";
-            this.tsbBuscar.Size = new System.Drawing.Size(23, 22);
-            this.tsbBuscar.Tag = "tsbBuscar";
-            this.tsbBuscar.Text = "Buecar";
             // 
             // gbData
             // 
@@ -497,18 +398,15 @@
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(729, 681);
-            this.ControlBox = false;
             this.Controls.Add(this.dgvLiquidacion);
             this.Controls.Add(this.gbData);
-            this.Controls.Add(this.tsSock);
-            this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.FixedSingle;
             this.Name = "Liquidacion";
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterParent;
             this.Tag = "Liquidacion";
             this.Text = "Liquidacion";
             this.Load += new System.EventHandler(this.Liquidacion_Load);
-            this.tsSock.ResumeLayout(false);
-            this.tsSock.PerformLayout();
+            this.Controls.SetChildIndex(this.gbData, 0);
+            this.Controls.SetChildIndex(this.dgvLiquidacion, 0);
             this.gbData.ResumeLayout(false);
             this.gbData.PerformLayout();
             this.gbPrecios.ResumeLayout(false);
@@ -522,23 +420,15 @@
         }
 
         #endregion
-
-        private System.Windows.Forms.ToolStrip tsSock;
         private System.Windows.Forms.GroupBox gbData;
         private System.Windows.Forms.DataGridView dgvLiquidacion;
         private System.Windows.Forms.Label lblProducto;
         private System.Windows.Forms.Label lblRemitente;
-        private System.Windows.Forms.ToolStripButton tsbSalir;
-        private System.Windows.Forms.ToolStripButton tsbNew;
-        private System.Windows.Forms.ToolStripButton tsbSave;
-        private System.Windows.Forms.ToolStripButton tsbEdit;
-        private System.Windows.Forms.ToolStripButton tsbDelete;
         private System.Windows.Forms.ComboBox cmbUnidad;
         private System.Windows.Forms.Label lblFecha;
         private System.Windows.Forms.Label lblLote;
         private System.Windows.Forms.ComboBox cmbRemitentes;
         private System.Windows.Forms.TextBox txtGuia;
-        private System.Windows.Forms.ToolStripButton tsbPrint;
         private System.Windows.Forms.TextBox txtProducto;
         private System.Windows.Forms.GroupBox gbPrecios;
         private System.Windows.Forms.RadioButton rbPrecioPlaza;
@@ -562,6 +452,5 @@
         private System.Windows.Forms.Label lblDecomiso;
         private System.Windows.Forms.TextBox txtCantidadVenta;
         private System.Windows.Forms.Label lblVenta;
-        private System.Windows.Forms.ToolStripButton tsbBuscar;
     }
 }

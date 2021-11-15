@@ -1,38 +1,16 @@
 ﻿using System;
 using System.Text;
-using System.Windows.Forms;
 using Mcba.Bll.Helpers;
-using Mcba.Infraestruture.Helpers;
 
 namespace Mcba.UI
 {
-    public partial class Clientes : Form
+    public partial class Clientes : ViewBase
     {
-        private int idChofer { set; get; }
+        private int idCliente { set; get; }
 
         public Clientes()
         {
             InitializeComponent();
-        }
-
-        private void tsbSalir_Click(object sender, EventArgs e)
-        {
-            Close();
-        }
-
-        private void tsbNew_Click(object sender, EventArgs e)
-        {
-            New();
-        }
-
-        private void tsbEdit_Click(object sender, EventArgs e)
-        {
-            Edit();
-        }
-
-        private void tsbSave_Click(object sender, EventArgs e)
-        {
-            Save();
         }
 
         private void Clientes_Load(object sender, EventArgs e)
@@ -52,20 +30,20 @@ namespace Mcba.UI
 
         }
 
-        private void Edit()
+        protected internal override void Edit()
         {
             ControlsEnabled(true);
         }
 
-        private void New()
+        protected internal override void New()
         {
             ControlsEnabled(true);
             Clean();
         }
 
-        private void Clean()
+        protected internal override void Clean()
         {
-            idChofer = 0;
+            idCliente = 0;
             txtId.Text = string.Empty;
             txtNombre.Text = string.Empty;
         }
@@ -76,7 +54,7 @@ namespace Mcba.UI
             txtNombre.Enabled = enable;
         }
 
-        private void Save()
+        protected internal override void Save()
         {
             if (!Valida())
             {
