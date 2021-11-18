@@ -92,6 +92,7 @@
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "RepararIntegridad";
             this.Load += new System.EventHandler(this.RepararIntegridad_Load);
+            this.HelpRequested += new System.Windows.Forms.HelpEventHandler(this.RepararIntegridad_HelpRequested);
             this.tsRepararIntegridad.ResumeLayout(false);
             this.tsRepararIntegridad.PerformLayout();
             this.ResumeLayout(false);

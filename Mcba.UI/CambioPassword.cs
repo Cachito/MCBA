@@ -146,5 +146,12 @@ namespace Mcba.UI
 
             return ret;
         }
+
+        private void CambioPassword_HelpRequested(object sender, HelpEventArgs hlpevent)
+        {
+            Help.ShowHelp(this,
+                "C:/Cacho/Proyectos/MCBA/Manual/Mnual-Mcba.chm",
+                "CambioContra.htm");
+        }
     }
 }

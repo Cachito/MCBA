@@ -395,6 +395,7 @@
             this.Tag = "PermisosUsuarios";
             this.Text = "Permisos Usuarios";
             this.Load += new System.EventHandler(this.PermisosUsuarios_Load);
+            this.HelpRequested += new System.Windows.Forms.HelpEventHandler(this.PermisosUsuarios_HelpRequested);
             this.tsSeguridad.ResumeLayout(false);
             this.tsSeguridad.PerformLayout();
             this.gbFamilias.ResumeLayout(false);

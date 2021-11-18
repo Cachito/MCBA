@@ -55,7 +55,7 @@ namespace Mcba.Bll.Helpers
         private static string GenerateLogin(string name, string surname, int loop)
         {
             var names = Regex.Replace(name, @"\s", "");
-            var surnames = surname.Split(new[] {' '}, StringSplitOptions.RemoveEmptyEntries);
+            var surnames = Regex.Replace(surname, @"\s", ""); //surname.Split(new[] {' '}, StringSplitOptions.RemoveEmptyEntries);
 
             if (loop > names.Length)
             {

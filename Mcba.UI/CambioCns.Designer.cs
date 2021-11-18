@@ -125,6 +125,7 @@
             this.Tag = "CambioCns";
             this.Text = "CambioCns";
             this.Load += new System.EventHandler(this.CambioCns_Load);
+            this.HelpRequested += new System.Windows.Forms.HelpEventHandler(this.CambioCns_HelpRequested);
             this.tsCambioCns.ResumeLayout(false);
             this.tsCambioCns.PerformLayout();
             this.ResumeLayout(false);

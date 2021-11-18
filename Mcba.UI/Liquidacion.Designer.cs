@@ -390,14 +390,14 @@
             this.dgvLiquidacion.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
             this.dgvLiquidacion.Location = new System.Drawing.Point(12, 290);
             this.dgvLiquidacion.Name = "dgvLiquidacion";
-            this.dgvLiquidacion.Size = new System.Drawing.Size(708, 379);
+            this.dgvLiquidacion.Size = new System.Drawing.Size(708, 295);
             this.dgvLiquidacion.TabIndex = 2;
             // 
             // Liquidacion
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(729, 681);
+            this.ClientSize = new System.Drawing.Size(729, 593);
             this.Controls.Add(this.dgvLiquidacion);
             this.Controls.Add(this.gbData);
             this.Name = "Liquidacion";

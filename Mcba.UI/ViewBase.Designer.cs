@@ -41,6 +41,7 @@
             this.tsbNext = new System.Windows.Forms.ToolStripButton();
             this.tsbRestorePass = new System.Windows.Forms.ToolStripButton();
             this.tsbChangePass = new System.Windows.Forms.ToolStripButton();
+            this.tsbHelp = new System.Windows.Forms.ToolStripButton();
             this.Toolbar.SuspendLayout();
             this.SuspendLayout();
             // 
@@ -58,7 +59,8 @@
             this.tsbPrevious,
             this.tsbNext,
             this.tsbRestorePass,
-            this.tsbChangePass});
+            this.tsbChangePass,
+            this.tsbHelp});
             this.Toolbar.Location = new System.Drawing.Point(0, 0);
             this.Toolbar.Name = "Toolbar";
             this.Toolbar.Size = new System.Drawing.Size(613, 25);
@@ -202,6 +204,16 @@
             this.tsbChangePass.Visible = false;
             this.tsbChangePass.Click += new System.EventHandler(this.tsbChangePass_Click);
             // 
+            // tsbHelp
+            // 
+            this.tsbHelp.DisplayStyle = System.Windows.Forms.ToolStripItemDisplayStyle.Image;
+            this.tsbHelp.Image = global::Mcba.UI.Properties.Resources.help;
+            this.tsbHelp.ImageTransparentColor = System.Drawing.Color.Magenta;
+            this.tsbHelp.Name = "tsbHelp";
+            this.tsbHelp.Size = new System.Drawing.Size(23, 22);
+            this.tsbHelp.Text = "Help";
+            this.tsbHelp.Click += new System.EventHandler(this.tsbHelp_Click);
+            // 
             // ViewBase
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
@@ -213,6 +225,7 @@
             this.Name = "ViewBase";
             this.Text = "ViewBase";
             this.Load += new System.EventHandler(this.ViewBase_Load);
+            this.HelpRequested += new System.Windows.Forms.HelpEventHandler(this.ViewBase_HelpRequested);
             this.Toolbar.ResumeLayout(false);
             this.Toolbar.PerformLayout();
             this.ResumeLayout(false);
@@ -234,5 +247,6 @@
         private System.Windows.Forms.ToolStripButton tsbNext;
         private System.Windows.Forms.ToolStripButton tsbUndo;
         private System.Windows.Forms.ToolStripButton tsbChangePass;
+        private System.Windows.Forms.ToolStripButton tsbHelp;
     }
 }

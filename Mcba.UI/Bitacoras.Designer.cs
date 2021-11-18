@@ -210,6 +210,7 @@
             this.Tag = "Bitacora";
             this.Text = "Bitacora";
             this.Load += new System.EventHandler(this.Bitacora_Load);
+            this.HelpRequested += new System.Windows.Forms.HelpEventHandler(this.Bitacoras_HelpRequested);
             this.tsBitacora.ResumeLayout(false);
             this.tsBitacora.PerformLayout();
             this.gbData.ResumeLayout(false);
