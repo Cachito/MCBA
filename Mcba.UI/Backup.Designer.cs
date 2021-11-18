@@ -180,6 +180,7 @@
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "Backup";
             this.Load += new System.EventHandler(this.Backup_Load);
+            this.HelpRequested += new System.Windows.Forms.HelpEventHandler(this.Backup_HelpRequested);
             this.tsBackup.ResumeLayout(false);
             this.tsBackup.PerformLayout();
             this.gbData.ResumeLayout(false);

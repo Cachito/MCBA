@@ -310,7 +310,7 @@ namespace Mcba.UI
 
                 userBll.LogOffUser(userLogged.Login, $"{caption ?? McbaSettings.SinTraduccion} {e.CloseReason.ToString()}");
             }
-            catch (Exception ex)
+            catch //(Exception ex)
             {
                 captions.TryGetValue("FaltaNombre", out var caption);
                 MessageBox.Show(caption ?? McbaSettings.SinTraduccion);

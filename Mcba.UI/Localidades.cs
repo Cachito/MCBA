@@ -85,11 +85,18 @@ namespace Mcba.UI
 
             if (txtId.Text == string.Empty)
             {
-                mess.Append("Debe ingreasr Nombre.");
+                mess.Append("Debe ingresar Nombre.");
                 ret = false;
             }
 
             return ret;
         }
+
+        //private void Localidades_HelpRequested(object sender, System.Windows.Forms.HelpEventArgs hlpevent)
+        //{
+        //    Help.ShowHelp(this,
+        //        "C:/Cacho/Proyectos/MCBA/Manual/Mnual-Mcba.chm",
+        //        "localidades.htm");
+        //}
     }
 }

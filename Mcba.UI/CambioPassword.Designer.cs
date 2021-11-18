@@ -182,6 +182,7 @@
             this.Tag = "CambioPassword";
             this.Text = "CambioPassword";
             this.Load += new System.EventHandler(this.CambioPassword_Load);
+            this.HelpRequested += new System.Windows.Forms.HelpEventHandler(this.CambioPassword_HelpRequested);
             this.tsCambioPassword.ResumeLayout(false);
             this.tsCambioPassword.PerformLayout();
             this.gbData.ResumeLayout(false);

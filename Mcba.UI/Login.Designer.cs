@@ -207,6 +207,7 @@ namespace Mcba.UI
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "Buongiorno S.A.";
             this.Load += new System.EventHandler(this.Login_Load);
+            this.HelpRequested += new System.Windows.Forms.HelpEventHandler(this.Login_HelpRequested);
             this.gbData.ResumeLayout(false);
             this.gbData.PerformLayout();
             ((System.ComponentModel.ISupportInitialize)(this.pbLogo)).EndInit();

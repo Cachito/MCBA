@@ -195,6 +195,8 @@
             this.ClientSize = new System.Drawing.Size(558, 447);
             this.Controls.Add(this.dgvUsuarios);
             this.Controls.Add(this.gbData);
+            this.MaximizeBox = false;
+            this.MinimizeBox = false;
             this.Name = "Usuarios";
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterParent;
             this.Tag = "Usuarios";

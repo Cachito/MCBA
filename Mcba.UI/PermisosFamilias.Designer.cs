@@ -381,6 +381,7 @@
             this.Tag = "PermisosFamilias";
             this.Text = "Permisos Familias";
             this.Load += new System.EventHandler(this.PermisosFamilias_Load);
+            this.HelpRequested += new System.Windows.Forms.HelpEventHandler(this.PermisosFamilias_HelpRequested);
             this.tsSeguridad.ResumeLayout(false);
             this.tsSeguridad.PerformLayout();
             this.gbPermisos.ResumeLayout(false);
