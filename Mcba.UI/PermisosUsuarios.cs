@@ -498,7 +498,7 @@ namespace Mcba.UI
         private void PermisosUsuarios_HelpRequested(object sender, HelpEventArgs hlpevent)
         {
             Help.ShowHelp(this,
-                "C:/Cacho/Proyectos/MCBA/Manual/Mnual-Mcba.chm",
+                McbaSettings.PathManual,
                 "PermisosUsuarios.htm");
         }
     }

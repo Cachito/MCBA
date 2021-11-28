@@ -179,7 +179,7 @@ namespace Mcba.UI
         private void Bitacoras_HelpRequested(object sender, HelpEventArgs hlpevent)
         {
             Help.ShowHelp(this,
-                "C:/Cacho/Proyectos/MCBA/Manual/Mnual-Mcba.chm",
+                McbaSettings.PathManual,
                 "Bitacora.htm");
         }
     }
