@@ -20,5 +20,6 @@
 	"Arguments7Zip": "a \"{1}\" \"{2}\" -v{3}k"
 	"ArgumentsExtract7Zip": "x \"{0}\" -aoa",
 	"CnnStringTemplate": "Integrated Security=SSPI;Persist Security Info=False;Initial Catalog={0};Data Source={1};",
-	"Administrador": "luis.carro@gmail.com"
+	"Administrador": "luis.carro@gmail.com",
+	"PathManual":"C:/Cacho/Proyectos/MCBA/Manual/Mnual-Mcba.chm"
 }

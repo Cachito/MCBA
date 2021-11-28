@@ -27,5 +27,6 @@ namespace Mcba.Infraestruture.Settings
         public string ArgumentsExtract7Zip { set; get; }
         public string CnnStringTemplate { set; get; }
         public string Administrador { set; get; }
+        public string PathManual { set; get; }
     }
 }

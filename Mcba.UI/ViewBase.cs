@@ -306,14 +306,14 @@ namespace Mcba.UI
         private void tsbHelp_Click(object sender, EventArgs e)
         {
             Help.ShowHelp(this,
-                @"C:\Cacho\Proyectos\MCBA\Manual\Mnual-Mcba.chm",
+                McbaSettings.PathManual,
                 "barraHerramientas.htm");
         }
 
         private void ViewBase_HelpRequested(object sender, HelpEventArgs hlpevent)
         {
             Help.ShowHelp(this,
-                "C:/Cacho/Proyectos/MCBA/Manual/Mnual-Mcba.chm",
+                McbaSettings.PathManual,
                 $"{Name}.htm");
         }
     }

@@ -95,7 +95,7 @@ namespace Mcba.UI
         //private void Localidades_HelpRequested(object sender, System.Windows.Forms.HelpEventArgs hlpevent)
         //{
         //    Help.ShowHelp(this,
-        //        "C:/Cacho/Proyectos/MCBA/Manual/Mnual-Mcba.chm",
+        //        McbaSettings.PathManual,
         //        "localidades.htm");
         //}
     }
